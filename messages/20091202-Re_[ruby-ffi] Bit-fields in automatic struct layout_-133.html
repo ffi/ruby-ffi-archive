@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Bit-fields in automatic struct layout?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Bit-fields in automatic struct layout?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/2/09 12:43 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 2, 2009, at 10:07 AM, Simon Chiang wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to convert the following struct into an FFI::Struct using
+<span class="moz-txt-citetags">&gt; </span>the struct generator:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>   struct symbolHashNode
+<span class="moz-txt-citetags">&gt; </span>     {
+<span class="moz-txt-citetags">&gt; </span>      struct symbolHashNode *next;
+<span class="moz-txt-citetags">&gt; </span>      long count;
+<span class="moz-txt-citetags">&gt; </span>      int depth;
+<span class="moz-txt-citetags">&gt; </span>      unsigned int permanent : 1;
+<span class="moz-txt-citetags">&gt; </span>      unsigned int markedEphemeral : 1;
+<span class="moz-txt-citetags">&gt; </span>      unsigned int neededSymbol : 1;
+<span class="moz-txt-citetags">&gt; </span>      unsigned int bucket : 29;
+<span class="moz-txt-citetags">&gt; </span>      char *contents;
+<span class="moz-txt-citetags">&gt; </span>     };
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>My question is, how do I specify the bit-fields?  When I do the naive
+<span class="moz-txt-citetags">&gt; </span>thing:
+</pre></blockquote><pre wrap>
+
+Bitfields are not supported and there is no current desire to do so.
+
+You should declare there to be a single :uint field for all 4 of those and do your own bit manipulation to extract the bits you need.
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>   class SymbolHashNode &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>     @@@
+<span class="moz-txt-citetags">&gt; </span>     struct do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>       s.name 'struct symbolHashNode'
+<span class="moz-txt-citetags">&gt; </span>       s.include 'symbol.h'
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>       s.field :next, :symbolHashNode
+<span class="moz-txt-citetags">&gt; </span>       s.field :count, :long
+<span class="moz-txt-citetags">&gt; </span>       s.field :depth, :int
+<span class="moz-txt-citetags">&gt; </span>       s.field :permanent, :uint
+<span class="moz-txt-citetags">&gt; </span>       s.field :markedEphemeral, :uint
+<span class="moz-txt-citetags">&gt; </span>       s.field :neededSymbol, :uint
+<span class="moz-txt-citetags">&gt; </span>       s.field :bucket, :uint
+<span class="moz-txt-citetags">&gt; </span>       s.field :contents, :string
+<span class="moz-txt-citetags">&gt; </span>     end
+<span class="moz-txt-citetags">&gt; </span>     @@@
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I get errors like:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> attempt to take address of bit-field structure member ‘permanent’
+<span class="moz-txt-citetags">&gt; </span> ‘sizeof’ applied to a bit-field
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks!
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

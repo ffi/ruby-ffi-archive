@@ -1,0 +1,29 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] default to :stdcall on windows?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] default to :stdcall on windows?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/11/10 7:55 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I think changing the default at this point would be bad, and as Luis
+said, a lot of non-microsoft DLLs are cdecl, not stdcall.
+
+Explicitly declaring the convention also matches up with C/C++, where
+you have to declare the function as STDCALL/WINAPI.
+
+
+On 12 June 2010 02:16, rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm not sure if this is necessary, but I recently saw a bug report
+<span class="moz-txt-citetags">&gt; </span>that, for one user, the fact that they weren't using stdcall for their
+<span class="moz-txt-citetags">&gt; </span>method declarations was causing a memory leak.  Maybe it should
+<span class="moz-txt-citetags">&gt; </span>default to stdcall on windows since that's what dll's default to,
+<span class="moz-txt-citetags">&gt; </span>isn't it?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thoughts? Or maybe I'm repeating myself here.
+<span class="moz-txt-citetags">&gt; </span>Thanks!
+<span class="moz-txt-citetags">&gt; </span>-rp
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,377 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp15491laa;
+        Thu, 12 Sep 2013 03:43:45 -0700 (PDT)
+X-Received: by 10.221.51.206 with SMTP id vj14mr6041468vcb.17.1378982624611;
+        Thu, 12 Sep 2013 03:43:44 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDNLFX7ZVQMRBX5VY2IQKGQE3XS6U5Y@googlegroups.com>
+Received: from mail-ve0-x237.google.com (mail-ve0-x237.google.com [2607:f8b0:400c:c01::237])
+        by mx.google.com with ESMTPS id st7si1005753vdc.16.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 12 Sep 2013 03:43:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDNLFX7ZVQMRBX5VY2IQKGQE3XS6U5Y@googlegroups.com designates 2607:f8b0:400c:c01::237 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDNLFX7ZVQMRBX5VY2IQKGQE3XS6U5Y@googlegroups.com designates 2607:f8b0:400c:c01::237 as permitted sender) smtp.mail=ruby-ffi+bncBDNLFX7ZVQMRBX5VY2IQKGQE3XS6U5Y@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-ve0-f183.google.com with SMTP id jw12sf2265701veb.20
+        for <headius@headius.com>; Thu, 12 Sep 2013 03:43:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=cPrJri9ZNORBx6kiBLDHlLEH463cwx6QKNPV3Qsmp5c=;
+        b=XK+gPijLIo1SKqJgaTAHZT+dHtZh8KpETpCPFHzNl0dZTXwEUS5nKDWGYmRzJiKaB6
+         EshpuJUBgF54xC8l0WAnsEa2xJ1DrN0iypaXETOe0tlfFzfn6zQSjPLYq8RlZAhzFFI5
+         GK4hPOXwSNNBeW/LVdJXigi7V32GXK3N6I+9ALaXoUTpCxf+6J5UwV+jVxu+OTJQVAgy
+         WAcHyehjAGxdmC80gFiVXMXyZgL3OS4Rk8mDo15PWan20qn4ryjKVkGqcLrssxGPp3Fi
+         TbM0H22WfPswhU+lRKNbBuAUdEyGtfbBCgK4Qd/bVFwsLMeqn433Bd8yYWAi2M2Ln64y
+         lUfg==
+X-Received: by 10.50.30.226 with SMTP id v2mr325097igh.17.1378982624037;
+        Thu, 12 Sep 2013 03:43:44 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.11.105 with SMTP id p9ls3806344igb.40.canary; Thu, 12 Sep
+ 2013 03:43:43 -0700 (PDT)
+X-Received: by 10.50.118.7 with SMTP id ki7mr17379810igb.4.1378982623590;
+        Thu, 12 Sep 2013 03:43:43 -0700 (PDT)
+Received: by 10.50.73.1 with SMTP id h1msigv;
+        Thu, 12 Sep 2013 00:53:51 -0700 (PDT)
+X-Received: by 10.49.82.137 with SMTP id i9mr2614qey.16.1378972430708;
+        Thu, 12 Sep 2013 00:53:50 -0700 (PDT)
+Date: Thu, 12 Sep 2013 00:53:50 -0700 (PDT)
+From: Marc Ruehlaender <ruehli@arcor.de>
+To: ruby-ffi@googlegroups.com
+Message-Id: <4875e89b-e82e-41fb-8515-9faf54e0ee74@googlegroups.com>
+Subject: [ruby-ffi] Correct usage of AdjustTokenPrivileges with FFI
+MIME-Version: 1.0
+X-Original-Sender: ruehli@arcor.de
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_454_31218688.1378972430266"
+
+------=_Part_454_31218688.1378972430266
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+
+Hi,
+
+I'm new to Ruby and I'm trying to do some GUI-based test automation of a 
+Win32 application using ruby/rspec and ffi.
+(ruby 2.0.0p247 (2013-06-27) [i386-mingw32], ffi 1.9.0)
+
+What I am trying to do is click a toolbar button. (More of an exercise than 
+a necessity, since I could of course call the corresponding menu function.)
+To get the coordinates for the mouse click I want to send the TB_GETRECT 
+message to the toolbar of my application.
+The second parameter of the message takes a pointer which will take a RECT 
+with the bounding rectangle of the button.
+Since I need to allocate memory for this pointer to point to in the 
+applications address space, I want to get DEBUG privileges.
+
+And this is where I am getting stumped.
+
+Relevant code patches:
+
+---------------
+#file myapp-test.rb
+require './ffi_winapi'
+
+module MyApp
+
+  #start my app
+  system 'start "" "<absolute path to my app>"'
+
+  #get the handle for the main window
+  sleep 0.2 while (handle = Win.find_window( nil, '<Window title>') ) <= 0
+  
+  #get the handle for the tool bar
+  tool_bar = Win.find_window_ex(handle, 0, "ToolbarWindow32", nil)
+
+  #get the process ID for the process in which tool bar is running
+  ppid = FFI::MemoryPointer.new(:uint32, 1)
+  tid = Win.get_window_thread_process_id(tool_bar, ppid)
+  pid = ppid.read_uint32
+
+  #open the process for getting a security token  
+  proc = WinKernel.open_process(WinKernel::PROCESS_QUERY_INFORMATION, 
+false, pid)
+
+  #get a token handle to adjust privileges
+  ptoken = FFI::MemoryPointer.new(:long)
+  bret = WinAuth.open_process_token(proc, WinAuth::TOKEN_QUERY | 
+WinAuth::TOKEN_ADJUST_DEFAULT, ptoken)
+  token = ptoken.read_long
+
+  #intitalize LUID struct
+  myluid = WinAuth::Luid.new
+  myluid[:lo] = 0
+  myluid[:hi] = 0
+
+  #get the system LUID for debug privileges
+  WinAuth.lookup_privilege_value("", WinAuth::SE_DEBUG_NAME, myluid)
+  
+  #up to this point everything seems to be working fine judging by puts 
+debugging
+
+  #prepare the TOKEN_PRIVILEGES struct for adjust token privileges
+  mytokenprivs = 
+WinAuth::TokenPrivileges.new(FFI::MemoryPointer.new(WinAuth::TokenPrivileges.size_with_privileges(1)))
+  mytokenprivs[:count] = 1
+  myluidattr = mytokenprivs.privilege(0)
+  myluidattr[:luid] = myluid
+  myluidattr[:attributes] = WinAuth::SE_PRIVILEGE_ENABLED
+
+  #code shamelessly adapted from chef code
+  plen = 
+FFI::MemoryPointer.new(:long).write_long(mytokenprivs.size_with_privileges)
+  prevtokenprivs = 
+WinAuth::TokenPrivileges.new(FFI::MemoryPointer.new(plen.read_long))
+
+  # !!! Failing code !!!
+  bret = WinAuth.adjust_token_privileges(token, false, mytokenprivs, 
+mytokenprivs.size_with_privileges, prevtokenprivs, plen)
+  err = WinKernel.get_last_error
+  puts "Adjust token privileges returned #{bret}; last error: #{err}"
+  puts "#{prevtokenprivs[:count]} privileges were modified."
+
+
+  #clean up
+  WinKernel.close_handle(token)
+  WinKernel.close_handle(proc)
+end
+#end file myapp_test.rb
+---------------
+#excerpts from file ffi_winapi.rb
+require 'ffi'
+
+module Win
+  extend FFI::Library
+
+  ffi_lib 'user32'
+  ffi_convention :stdcall
+
+  #... (consts, structs and method wrappers for user32)
+
+end
+
+module WinKernel
+  extend FFI::Library
+
+  ffi_lib 'kernel32'
+
+  #... (consts, structs and method wrappers for kernel32)
+
+end
+
+module WinAuth
+  extend FFI::Library
+
+  ffi_lib 'advapi32'
+  
+  TOKEN_QUERY = 0x0008
+  TOKEN_ADJUST_DEFAULT = 0x0080
+  
+  # BOOL WINAPI OpenProcessToken(_In_ HANDLE ProcessHandle, _In_ DWORD 
+DesiredAccess, _Out_ PHANDLE TokenHandle);
+  attach_function :open_process_token, :OpenProcessToken,
+                  [ :long, :int, :pointer ], :bool
+
+  class Luid < FFI::Struct
+    layout :lo, :int,
+           :hi, :int
+  end
+  
+  SE_DEBUG_NAME = "SeDebugPrivilege"
+  
+  # BOOL WINAPI LookupPrivilegeValue(_In_opt_ LPCTSTR lpSystemName, _In_ 
+LPCTSTR lpName, _Out_ PLUID lpLuid);
+  attach_function :lookup_privilege_value, :LookupPrivilegeValueA,
+                  [ :string, :string, :pointer], :bool
+
+  class LuidAndAttributes < FFI::Struct
+    layout :luid, Luid,
+           :attributes, :int
+  end
+  
+  SE_PRIVILEGE_ENABLED = 2
+  
+  #class definition shamelessly adapted from chef code
+  class TokenPrivileges < FFI::Struct
+    layout :count, :uint32,
+           :privileges, LuidAndAttributes
+  
+    def self.size_with_privileges(num_privileges)
+      offset_of(:privileges) + LuidAndAttributes.size*num_privileges
+    end
+    
+    def size_with_privileges
+      TokenPrivileges.size_with_privileges(self[:count])
+    end
+
+    def privilege(index)
+      LuidAndAttributes.new(pointer + offset_of(:privileges) + (index * 
+LuidAndAttributes.size))
+    end
+  end
+
+  # BOOL WINAPI AdjustTokenPrivileges(_In_ HANDLE TokenHandle, _In_ BOOL 
+DisableAllPrivileges, _In_opt_ PTOKEN_PRIVILEGES NewState, _In_ DWORD 
+BufferLength, _Out_opt_ PTOKEN_PRIVILEGES PreviousState, _Out_opt_ PDWORD 
+ReturnLength);
+  attach_function :adjust_token_privileges, :AdjustTokenPrivileges,
+                  [ :long, :bool, :pointer, :int, :pointer, :pointer ], 
+:bool
+end
+
+#end file ffi_winapi.rb
+---------------
+
+When running the ruby code, I get
+
+Adjust token privileges returned false; last error: 0
+0 privileges were modified.
+
+Running the equivalent algorithm implemented in visual C++ works fine (i.e. 
+it declares that 1 privilege has been modified, and also the following 
+steps - not shown in the ruby code - lead to a successful read of the RECT.)
+Therefore I assume, the error is in my lack of understanding ffi and/or 
+basic ruby concepts.
+
+Any pointers on how to proceed are appreciated.
+
+Cheers,
+Marc
+
+ 
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_454_31218688.1378972430266
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p>Hi,</p><p>I'm new to Ruby and I'm trying to do some GUI=
+-based test automation of a Win32 application using ruby/rspec and ffi.<br>=
+(ruby 2.0.0p247 (2013-06-27) [i386-mingw32], ffi 1.9.0)</p><p>What I am try=
+ing to do is click a toolbar button. (More of an exercise than a necessity,=
+ since I could of course call the&nbsp;corresponding menu function.)<br>To =
+get the coordinates for the mouse click I want to send the TB_GETRECT messa=
+ge to the toolbar of my application.<br>The second parameter of the message=
+ takes a pointer which will take a RECT with the bounding rectangle of the =
+button.<br>Since I need to allocate memory for this pointer to point to in =
+the applications address space, I want to get DEBUG privileges.</p><p>And t=
+his is where I am getting stumped.</p><p>Relevant code patches:</p><p>-----=
+----------<br>#file myapp-test.rb<br>require './ffi_winapi'</p><p>module My=
+App</p><p>&nbsp; #start my app<br>&nbsp; system 'start "" "&lt;absolute pat=
+h to my app&gt;"'</p><p>&nbsp; #get the handle for the main window<br>&nbsp=
+; sleep 0.2 while (handle =3D Win.find_window( nil, '&lt;Window title&gt;')=
+ ) &lt;=3D 0<br>&nbsp; <br>&nbsp; #get the handle for the tool bar<br>&nbsp=
+; tool_bar =3D Win.find_window_ex(handle, 0, "ToolbarWindow32", nil)</p><p>=
+&nbsp; #get the process ID for the process in which tool bar is running<br>=
+&nbsp; ppid =3D FFI::MemoryPointer.new(:uint32, 1)<br>&nbsp; tid =3D Win.ge=
+t_window_thread_process_id(tool_bar, ppid)<br>&nbsp; pid =3D ppid.read_uint=
+32</p><p>&nbsp; #open the process for getting a security token&nbsp; <br>&n=
+bsp; proc =3D WinKernel.open_process(WinKernel::PROCESS_QUERY_INFORMATION, =
+false, pid)</p><p>&nbsp; #get a token handle to adjust privileges<br>&nbsp;=
+ ptoken =3D FFI::MemoryPointer.new(:long)<br>&nbsp; bret =3D WinAuth.open_p=
+rocess_token(proc, WinAuth::TOKEN_QUERY | WinAuth::TOKEN_ADJUST_DEFAULT, pt=
+oken)<br>&nbsp; token =3D ptoken.read_long</p><p>&nbsp; #intitalize LUID st=
+ruct<br>&nbsp; myluid =3D WinAuth::Luid.new<br>&nbsp; myluid[:lo] =3D 0<br>=
+&nbsp; myluid[:hi] =3D 0</p><p>&nbsp; #get the system LUID for debug privil=
+eges<br>&nbsp; WinAuth.lookup_privilege_value("", WinAuth::SE_DEBUG_NAME, m=
+yluid)<br>&nbsp; <br>&nbsp; #up to this point everything seems to be workin=
+g fine judging by puts debugging</p><p>&nbsp; #prepare the TOKEN_PRIVILEGES=
+ struct for adjust token privileges<br>&nbsp; mytokenprivs =3D WinAuth::Tok=
+enPrivileges.new(FFI::MemoryPointer.new(WinAuth::TokenPrivileges.size_with_=
+privileges(1)))<br>&nbsp; mytokenprivs[:count] =3D 1<br>&nbsp; myluidattr =
+=3D mytokenprivs.privilege(0)<br>&nbsp; myluidattr[:luid] =3D myluid<br>&nb=
+sp; myluidattr[:attributes] =3D WinAuth::SE_PRIVILEGE_ENABLED</p><p>&nbsp; =
+#code shamelessly adapted from chef code<br>&nbsp; plen =3D FFI::MemoryPoin=
+ter.new(:long).write_long(mytokenprivs.size_with_privileges)<br>&nbsp; prev=
+tokenprivs =3D WinAuth::TokenPrivileges.new(FFI::MemoryPointer.new(plen.rea=
+d_long))</p><p>&nbsp; <font color=3D"#ff0000"># !!! Failing code !!!</font>=
+<br>&nbsp; bret =3D WinAuth.adjust_token_privileges(token, false, mytokenpr=
+ivs, mytokenprivs.size_with_privileges, prevtokenprivs, plen)<br>&nbsp; err=
+ =3D WinKernel.get_last_error<br>&nbsp; puts "Adjust token privileges retur=
+ned #{bret}; last error: #{err}"<br>&nbsp; puts "#{prevtokenprivs[:count]} =
+privileges were modified."</p><p><br>&nbsp; #clean up<br>&nbsp; WinKernel.c=
+lose_handle(token)<br>&nbsp; WinKernel.close_handle(proc)<br>end<br>#end fi=
+le myapp_test.rb<br>---------------<br>#excerpts from file ffi_winapi.rb<br=
+>require 'ffi'</p><p>module Win<br>&nbsp; extend FFI::Library</p><p>&nbsp; =
+ffi_lib 'user32'<br>&nbsp; ffi_convention :stdcall</p><p>&nbsp; #... (const=
+s, structs and method wrappers for user32)</p><p>end</p><p>module WinKernel=
+<br>&nbsp; extend FFI::Library</p><p>&nbsp; ffi_lib 'kernel32'</p><p>&nbsp;=
+ #... (consts, structs and method wrappers for kernel32)</p><p>end</p><p>mo=
+dule WinAuth<br>&nbsp; extend FFI::Library</p><p>&nbsp; ffi_lib 'advapi32'<=
+br>&nbsp; <br>&nbsp; TOKEN_QUERY =3D 0x0008<br>&nbsp; TOKEN_ADJUST_DEFAULT =
+=3D 0x0080<br>&nbsp; <br>&nbsp; # BOOL WINAPI OpenProcessToken(_In_ HANDLE =
+ProcessHandle, _In_ DWORD DesiredAccess, _Out_ PHANDLE TokenHandle);<br>&nb=
+sp; attach_function :open_process_token, :OpenProcessToken,<br>&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; [ :long, :int, :pointer ], :bool</p><p>&nbsp; class Luid &l=
+t; FFI::Struct<br>&nbsp;&nbsp;&nbsp; layout :lo, :int,<br>&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :hi, :int<br>&nbsp; end<br>&nbs=
+p; <br>&nbsp; SE_DEBUG_NAME =3D "SeDebugPrivilege"<br>&nbsp; <br>&nbsp; # B=
+OOL WINAPI LookupPrivilegeValue(_In_opt_ LPCTSTR lpSystemName, _In_ LPCTSTR=
+ lpName, _Out_ PLUID lpLuid);<br>&nbsp; attach_function :lookup_privilege_v=
+alue, :LookupPrivilegeValueA,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ :string, :st=
+ring, :pointer], :bool</p><p>&nbsp; class LuidAndAttributes &lt; FFI::Struc=
+t<br>&nbsp;&nbsp;&nbsp; layout :luid, Luid,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :attributes, :int<br>&nbsp; end<br>&nbsp; =
+<br>&nbsp; SE_PRIVILEGE_ENABLED =3D 2<br>&nbsp; <br>&nbsp; #class definitio=
+n shamelessly adapted from chef code<br>&nbsp; class TokenPrivileges &lt; F=
+FI::Struct<br>&nbsp;&nbsp;&nbsp; layout :count, :uint32,<br>&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :privileges, LuidAndAttribute=
+s<br>&nbsp; <br>&nbsp;&nbsp;&nbsp; def self.size_with_privileges(num_privil=
+eges)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; offset_of(:privileges) + LuidAndAtt=
+ributes.size*num_privileges<br>&nbsp;&nbsp;&nbsp; end<br>&nbsp;&nbsp;&nbsp;=
+ <br>&nbsp;&nbsp;&nbsp; def size_with_privileges<br>&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp; TokenPrivileges.size_with_privileges(self[:count])<br>&nbsp;&nbsp;&=
+nbsp; end</p><p>&nbsp;&nbsp;&nbsp; def privilege(index)<br>&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; LuidAndAttributes.new(pointer + offset_of(:privileges) + (in=
+dex * LuidAndAttributes.size))<br>&nbsp;&nbsp;&nbsp; end<br>&nbsp; end</p><=
+p>&nbsp; # BOOL WINAPI AdjustTokenPrivileges(_In_ HANDLE TokenHandle, _In_ =
+BOOL DisableAllPrivileges, _In_opt_ PTOKEN_PRIVILEGES NewState, _In_ DWORD =
+BufferLength, _Out_opt_ PTOKEN_PRIVILEGES PreviousState, _Out_opt_ PDWORD R=
+eturnLength);<br>&nbsp; attach_function :adjust_token_privileges, :AdjustTo=
+kenPrivileges,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ :long, :bool, :pointer, :in=
+t, :pointer, :pointer ], :bool<br>end</p><p>#end file ffi_winapi.rb<br>----=
+-----------</p><p>When running the ruby code, I get</p><p>Adjust token priv=
+ileges returned false; last error: 0<br>0 privileges were modified.</p><p>R=
+unning the equivalent algorithm implemented in visual C++ works fine (i.e. =
+it declares that 1 privilege has been modified, and also the following step=
+s - not shown in the ruby code - lead to a successful read of the RECT.)<br=
+>Therefore I assume, the error is in my lack of understanding ffi and/or ba=
+sic ruby concepts.</p><p>Any pointers on how to proceed are appreciated.</p=
+><p>Cheers,<br>Marc</p><p>&nbsp;</p></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_454_31218688.1378972430266--

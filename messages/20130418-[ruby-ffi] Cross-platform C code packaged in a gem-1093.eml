@@ -1,0 +1,89 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.130.163 with SMTP id of3csp176535lab;
+        Thu, 18 Apr 2013 13:28:54 -0700 (PDT)
+X-Received: by 10.60.54.6 with SMTP id f6mr1234430oep.136.1366316934019;
+        Thu, 18 Apr 2013 13:28:54 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDD7XRG5XYGRBBFPYGFQKGQEQ6RCDJY@googlegroups.com>
+Received: from mail-oa0-f57.google.com (mail-oa0-f57.google.com [209.85.219.57])
+        by mx.google.com with ESMTPS id tx10si6380207obc.79.2013.04.18.13.28.53
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 18 Apr 2013 13:28:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDD7XRG5XYGRBBFPYGFQKGQEQ6RCDJY@googlegroups.com designates 209.85.219.57 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDD7XRG5XYGRBBFPYGFQKGQEQ6RCDJY@googlegroups.com designates 209.85.219.57 as permitted sender) smtp.mail=ruby-ffi+bncBDD7XRG5XYGRBBFPYGFQKGQEQ6RCDJY@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-oa0-f57.google.com with SMTP id o17sf1041236oag.2
+        for <headius@headius.com>; Thu, 18 Apr 2013 13:28:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:mime-version:x-received:date
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=Jq5CYZ+0FyjeNBNbuBsyfAAXxaDArDfYADMi8N7j72w=;
+        b=FK20Y6RjjNi2oMxHM18uLDJ2WS1t3p11X3xQB778ZRLAW1znDMoSImhyOPvb3XbNsV
+         NPYjHkoYaKEveNJi2WnCqCsnGlIMVN62Guhf9YlXwkuSmDuQY7CySLERFO2YtBJWBrLj
+         xN2KnuB6L0zshp7UfSkbsHBzEsdDnoDcZqYfy1LwS/0G8Od10JgDeKQJEEYGzMnKv8WW
+         zR7QTXCiQj2lAHRvZ1MAGE4yfT4Dpn/J+OswWyXb7GHhv0HkeGZtACnnjiHLWfn9SzHi
+         8yNqv0es+TpmekM820vpufByq8DSvLLvNtWKM54LVfNK8Uy1xzFkqbY3wzoidveqeB09
+         QCaw==
+X-Received: by 10.49.0.48 with SMTP id 16mr1326059qeb.6.1366316933239;
+        Thu, 18 Apr 2013 13:28:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.127.230 with SMTP id nj6ls1213436qeb.87.gmail; Thu, 18 Apr
+ 2013 13:28:52 -0700 (PDT)
+X-Received: by 10.224.217.195 with SMTP id hn3mr8908329qab.5.1366316932707;
+        Thu, 18 Apr 2013 13:28:52 -0700 (PDT)
+Received: by 10.224.223.133 with SMTP id ik5msqab;
+        Thu, 18 Apr 2013 13:01:50 -0700 (PDT)
+MIME-Version: 1.0
+X-Received: by 10.49.15.68 with SMTP id v4mr1362161qec.37.1366315310345; Thu,
+ 18 Apr 2013 13:01:50 -0700 (PDT)
+Received: by m4g2000yqi.googlegroups.com with HTTP; Thu, 18 Apr 2013 13:01:50
+ -0700 (PDT)
+Date: Thu, 18 Apr 2013 13:01:50 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3)
+ AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31,gzip(gfe)
+Message-ID: <25fcd5cd-2241-4ebe-9061-bd081ca1d850@m4g2000yqi.googlegroups.com>
+Subject: [ruby-ffi] Cross-platform C code packaged in a gem
+From: Hugo Frappier <hugo@cekoya.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: hugo@cekoya.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of hugo@cekoya.com designates internal as permitted sender)
+ smtp.mail=hugo@cekoya.com; dkim=pass header.i=@cekoya.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Was anyone able to package cross-platform C code in a gem and loading
+it with FFI?
+
+I'm having a hard time compiling and linking the code (especially on
+Windows) using extconf.rb.  I looked at all the github FFI projects
+(the one listed on the Wiki) and none of them seems to be doing
+something similar.
+
+Thanks
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+

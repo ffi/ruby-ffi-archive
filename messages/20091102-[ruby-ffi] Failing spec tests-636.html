@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Failing spec tests</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Failing spec tests</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/2/09 12:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>I am running the spec tests on a Fedora Machine (F11) CPU info is:
+<br>
+<br>Linux MY.MACHINE 2.6.30.5-43.fc11.x86_64 #1 SMP Thu Aug 27 21:39:52 EDT 
+2009 x86_64 x86_64 x86_64 GNU/Linux
+<br>
+<br>And I am getting the following errors. They are all on the boundary of 
+the wiggle room. Is this something which I should be worried about, or 
+is one off of "wiggle room" good enough?
+<br>
+<br>Thanks!
+<br>
+<br>-- bk
+<br>
+<br>
+<br>1)
+<br>Spec::Mocks::MockExpectationError in 'AutoPointer cleanup via default 
+release method'
+<br>&lt;AutoPointerSubclass (class)&gt; expected :release with (any args) 28 
+times, but received it 27 times
+<br>./spec/ffi/pointer_spec.rb:142:
+<br>
+<br>2)
+<br>Spec::Mocks::MockExpectationError in 'AutoPointer cleanup when passed a 
+proc'
+<br>&lt;AutoPointerTestHelper (class)&gt; expected :release with (any args) 28 
+times, but received it 27 times
+<br>./spec/ffi/pointer_spec.rb:162:
+<br>
+<br>3)
+<br>Spec::Mocks::MockExpectationError in 'Managed Struct should release 
+memory properly'
+<br>&lt;PleaseReleaseMe (class)&gt; expected :release with (any args) 28 times, 
+but received it 27 times
+<br>./spec/ffi/managed_struct_spec.rb:50:
+<br></div></body>
+</html>
+</table></div>

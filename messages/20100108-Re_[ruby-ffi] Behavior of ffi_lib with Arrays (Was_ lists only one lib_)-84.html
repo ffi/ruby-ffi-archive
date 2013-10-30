@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/8/10 5:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+At 8:56 AM +0100 12/22/09, Vladimir Sizikov wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>Hi Jon,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>If memory serves, Wayne tweaked ffi_lib behavior in such a way that:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>a) doing ffil_lib 'one', 'two', 'three' would load up all three
+<span class="moz-txt-citetags">&gt;</span>libraries, or fail if any of them couldn't be found for some reason
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>b) doing ffi_lib ['var1', 'var2', 'var3'] would load some variant of
+<span class="moz-txt-citetags">&gt;</span>the same library
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>c) doing ffi_lib 'lib1', 'lib2', ['lib3-1', 'lib3-2', 'lib3-3'] would
+<span class="moz-txt-citetags">&gt;</span>load lib1, lib2 and one variant of lib3 from the array of
+<span class="moz-txt-citetags">&gt;</span>alternatives.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Thanks,
+<span class="moz-txt-citetags">&gt; </span> --Vladimir
+</pre></blockquote><pre wrap>
+
+I took Vladimir's explanation and made a page on the wiki:
+
+  <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/using-multiple-and-alternate-libraries">http://wiki.github.com/ffi/ffi/using-multiple-and-alternate-libraries</a>
+
+I'd appreciate it if someone who knows ffi better could review it.
+
+Also I'd shorten the page name to "Mulitple and Alternate Libraries" but am not sure how.
+</pre></div></body>
+</html>
+</table></div>

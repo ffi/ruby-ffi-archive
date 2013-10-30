@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Other compilers?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Other compilers?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jesús García Sáez &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/1/10 8:57 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><br><br><div class="gmail_quote">On Mon, Feb 1, 2010 at 15:34, Jon <span dir="ltr">&lt;<a href="mailto:jon.forums@gmail.com">jon.forums@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+
+<div class="im">&gt; On Sat, Jan 30, 2010 at 3:27 PM, Daniel Berger &lt;<a href="mailto:djberg96@gmail.com">djberg96@gmail.com</a>&gt; wrote:<br>
+&gt; &gt;<br>
+&gt; &gt; Someone pointed me to this:<br>
+&gt; &gt;<br>
+&gt; &gt; <a href="http://industriousone.com/premake" target="_blank">http://industriousone.com/premake</a><br>
+&gt; &gt;<br>
+&gt; &gt; Anyone tried it?<br>
+&gt; &gt;<br>
+&gt;<br>
+&gt; Yes, is nice but abstract and can end being complex.<br>
+&gt;<br>
+&gt; It doesn&#39;t support mingw32 cross compiling functionality either from<br>
+&gt; fedora, macports or ubuntu packages, so it requires some tricks to<br>
+&gt; make it generate proper GNU makefiles for those cases.<br>
+&gt;<br>
+&gt; If your library/dependency chain depends on autoconf, expect<br>
+&gt; reinventing the wheel to create the premake files.<br>
+&gt;<br>
+<br>
+</div>FWIW, I also keep meaning to check out<br>
+<br>
+<a href="http://www.cmake.org/" target="_blank">http://www.cmake.org/</a><br>
+<br>
+and the LLVM project has an quickstart page that links to page that tells how to cross compile with cmake<br>
+<br>
+<a href="http://www.llvm.org/docs/CMake.html" target="_blank">http://www.llvm.org/docs/CMake.html</a><br>
+<br>
+Anyone tried cmake?<br></blockquote><div><br><br>I&#39;m using cmake for my c++ projects, it&#39;s really great. You can generate makefiles for a unix environment (just cmake &lt;dir with CMakeList.txt&gt;) or for another environments out-of-the-box (like mingw with -G &quot;MSYS Makefiles&quot;). Really easy to use (put your cpp files, your flags, include directories, libraries) and quite powerful (for example you have conditions, like IF(WIN32) .... ELSE ... ENDIF(WIN32)).<br>
+
+<br>The last versions of boost (since 1.40) have a package for bulding it with cmake, and I think they want to make cmake their default build software.<br><br></div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+
+
+<font color="#888888"><br>
+Jon<br>
+</font></blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

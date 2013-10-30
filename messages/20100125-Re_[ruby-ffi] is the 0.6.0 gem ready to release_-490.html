@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] is the 0.6.0 gem ready to release?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] is the 0.6.0 gem ready to release?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mike Dalessio <mike.dalessio@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/25/10 6:38 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><br><br><div class="gmail_quote">On Mon, Jan 25, 2010 at 3:43 AM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+2010/1/25 Mike Dalessio &lt;<a href="mailto:mike.dalessio@gmail.com">mike.dalessio@gmail.com</a>&gt;:<br>
+<div><div></div><div class="h5">&gt;<br>
+&gt; On Mon, Jan 25, 2010 at 1:35 AM, Stephen Bannasch<br>
+&gt; &lt;<a href="mailto:stephen.bannasch@deanbrook.org">stephen.bannasch@deanbrook.org</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; Some of the new functionality in v0.6.0 is quite useful -- for example the<br>
+&gt;&gt; ability to look for multiple alternate libraries.<br>
+&gt;&gt;<br>
+&gt;&gt; But to get this version it needs to be built and installed from source.<br>
+&gt;&gt;<br>
+&gt;&gt;  $ gem list ffi -r<br>
+&gt;&gt;<br>
+&gt;&gt;  *** REMOTE GEMS ***<br>
+&gt;&gt;<br>
+&gt;&gt;  ffi (0.5.4)<br>
+&gt;&gt;<br>
+&gt;&gt; Is v0.6.0 ready to release?  If not what else needs to be done to get it<br>
+&gt;&gt; ready?<br>
+&gt;<br>
+&gt; FWIW, Nokogiri 1.4.1 is green on FFI 0.6.0.<br>
+<br>
+</div></div>Is it green on both FFI 0.6.0 and JRuby 1.4?  I mainly want to be sure<br>
+that the changes to ffi_lib behaviour are both forward and backward<br>
+compatible (or can be made to work), so gems work on both 0.6.0 and<br>
+older JRuby releases.<br></blockquote><div><br>Nokogiri has been green on every version of JRuby since 1.3.0. Yes, including 1.4.0. :-D<br> </div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+
+<br>
+Other than that, it probably needs to be checked that everything works<br>
+fine on at least:<br>
+- i386-Linux, x86_64-Linux;  at least on RHEL and Ubuntu<br></blockquote><div><br>i386 Ubuntu works.<br> </div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+
+- i386-Darwin, x86_64-Darwin;  10.6.2 works for me, but no idea if it<br>
+works on 10.5 or 10.4<br>
+- win32 (mainly using the rubyinstaller ruby builds, but also I guess<br>
+the older VC compiled ones)<br>
+- esoteric things like ppc-linux, whatever-*BSD and solaris<br>
+</blockquote></div><br>Perhaps we should ask people who care about their platforms to volunteer for &quot;final check&quot; duties on those platforms. That would streamline this process.<br><br>
+
+</div></body>
+</html>
+</table></div>

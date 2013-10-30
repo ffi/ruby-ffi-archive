@@ -1,0 +1,114 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs56850wfg;
+        Fri, 13 Nov 2009 20:53:20 -0800 (PST)
+Received: by 10.114.214.22 with SMTP id m22mr2698192wag.218.1258174399837;
+        Fri, 13 Nov 2009 20:53:19 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 8si29471123pzk.4.2009.11.13.20.53.18;
+        Fri, 13 Nov 2009 20:53:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12so649599pzk.13
+        for <headius@headius.com>; Fri, 13 Nov 2009 20:53:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=Ls3XdQWUwDBiuU+F7+3p3nQ7ufZPtiLplVCfp89Ngb4=;
+        b=u7UjD+xgRv0h3wVmDDCfUJz1xEDhERhhzils8Kkf7ABysjzigZyY/KkajEf1LluBeg
+         jhmwnjHbFy0nAQiJkkT4hROhYNfLj2gVXkXSaCK3CMDbtHOcVzRp/1/7o4dc77X5iYXF
+         8z0oqN7T2Or+UHqWlEt+09EdZgy7hl5TbRawc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=nuw52LfrRD6KxBc9ZKAu1T9HX5kRLPud32y7GMw2ZKKR1NyNavvzlYJh5qjqa2qUiq
+         FNy0RqkBsYV8NvtMrPxkGYMsiMbsRc2Rrg3doQhFaA+krGgwwiInUKNg6GoDfnIqLC74
+         lhxKN3Hg+WqROjiSgSZmRcwrXg1a93nC9AX9I=
+Received: by 10.115.133.15 with SMTP id k15mr172492wan.13.1258174396787;
+        Fri, 13 Nov 2009 20:53:16 -0800 (PST)
+Received: by 10.106.63.16 with SMTP id l16gr114pra.0;
+	Fri, 13 Nov 2009 20:53:16 -0800 (PST)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.142.74.16 with SMTP id w16mr899651wfa.11.1258174395551; Fri, 13 Nov 2009 20:53:15 -0800 (PST)
+Received: by 10.142.74.16 with SMTP id w16mr899650wfa.11.1258174395523; Fri, 13 Nov 2009 20:53:15 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f172.google.com (mail-pz0-f172.google.com [209.85.222.172]) by gmr-mx.google.com with ESMTP id 17si357181pxi.7.2009.11.13.20.53.14; Fri, 13 Nov 2009 20:53:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.172 as permitted sender) client-ip=209.85.222.172;
+Received: by pzk2 with SMTP id 2so2563695pzk.26 for <ruby-ffi@googlegroups.com>; Fri, 13 Nov 2009 20:53:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=ZvR566GToAveB0YtWSHTtp/kAVoUrtHzTAEpVWsBTqA=; b=UktbHILM7C4Zf0zd9fWzoftbJuxx3V7C+QzyNtJ4/Z78r4Wl+uhwY1z4KGfmfNJlOy LAmYkjylFU+Bya/dcM0ekkC5GPL+E5d9CI8X8sSlKkPD7EVK65coWabZ4+19QS68Ovlt uONcPLyGgUTK8VMwraFifmThN1xFMLJ3HEBU4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=Gf6obrFPQJZxmgKH+YjZ1yTN4LUfczwKiwMqkJ8FUbDk8MNq5bTZPFQvLs1k7l0vPO 3AZnETvC16RbtKxCGBJdd0Ryy12qiGb55srPsjS/5yUyzqqlxVJpIo0v6aTwPU1x9l6t ZgYCaSu+njQNMdpWyQspaASs1qE1LeZz8rmH0=
+MIME-Version: 1.0
+Received: by 10.140.255.5 with SMTP id c5mr303190rvi.123.1258174394154; Fri,  13 Nov 2009 20:53:14 -0800 (PST)
+In-Reply-To: <bf2f536c0911131859h3f15b1a0k2a6aad45ab323bfe@mail.gmail.com>
+References: <bf2f536c0911131859h3f15b1a0k2a6aad45ab323bfe@mail.gmail.com>
+Date: Sat, 14 Nov 2009 14:53:14 +1000
+Message-ID: <4ccee320911132053k2dc05322tfedde4d3144193bb@mail.gmail.com>
+Subject: [ruby-ffi] Re: New wiki page: Enums. Please improve and correct.
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Excellent work!
+
+I wouldn't call the first example (using constants), "BAD EXAMPLE",
+since its still a valid way to do integer constants.  Its just not as
+nice as the enum way.
+
+btw, there are a couple of other ways to declare enums
+
+1) Use typedef
+  typedef enum(:a, :b, :c), :my_enum
+
+That is the equivalent of enum :my_enum, [ :a, :b, :c ]
+
+2) Assign the new Enum type to a constant
+  MyEnum =3D enum(:a, :b, :c)
+
+
+Not sure if those add any value, or would just clutter up the page
+though.  Probably best left out, and in the realms of "if you really
+need it, you can do it".
+
+The second form however, is needed if you intend to use an enum as a
+Struct field type, for the same reason you need to do that for e.g.
+callbacks.  i.e. lexical scoping rules.
+
+2009/11/14 John Croisant <jacius@gmail.com>:
+>
+> I've added a new page on the wiki, with information about using enums
+> in FFI. This is mostly from my own investigations into the source code
+> several months ago, but I'm not sure it's accurate, complete, or up to
+> date. I'd love to have an FFI maintainer or expert check to make sure
+> it's right, and maybe even add some more info. :-)
+>
+> =A0http://wiki.github.com/ffi/ffi/enums
+>
+> - John
+>

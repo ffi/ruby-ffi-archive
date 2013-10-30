@@ -1,0 +1,21 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI::ManagedStruct #release method</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI::ManagedStruct #release method</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/20/13 10:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Thats the current behaviour - the problem with "raise exception", is ... where does it raise the exception, since the release method is called from a GC thread, which has to quash any exceptions, since it should never die.<div><br></div><div>On the other hand, I am open to suggestions on how to make debugging this easier, since it is likely to bite more people.</div><div><br><br>On Monday, 21 October 2013 13:26:25 UTC+11, Levi Wilson  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr">I'm using <font face="courier new, monospace">FFI::ManagedStruct</font> in a project of mine to be sure to clean up my memory. The question I have is around what happens if that call fails. The reason that I ask is because I had renamed the function and forgot to reflect this in the <font face="courier new, monospace">self.release</font> definition. I expected this to raise an exception as my function wasn't defined. Is there a way to make this more obvious to me if this happens again?<div><br></div><div><font face="courier new, monospace">class MyManagedStruct &lt; FFI::ManagedStruct</font></div><div><font face="courier new, monospace">&nbsp; layout :name, :string,</font></div><div><font face="courier new, monospace">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :ids, :pointer,</font></div><div><font face="courier new, monospace">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :ids_length, :int<br></font></div><div><font face="courier new, monospace"><br></font></div><div><font face="courier new, monospace">&nbsp; def self.release</font></div><div><font face="courier new, monospace">&nbsp; &nbsp; MyLibrary.release_my_struct</font></div><div><font face="courier new, monospace">&nbsp; &nbsp; # MyLibrary.oops_this_is_not_<wbr>named_correctly does not fail</font></div><div><font face="courier new, monospace">&nbsp; end</font></div><div><font face="courier new, monospace">end</font></div><div><br></div><div>Thanks in advance,</div><div><br></div><div>Levi</div></div></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

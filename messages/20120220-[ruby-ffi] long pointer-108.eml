@@ -1,0 +1,74 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp51520obb;
+        Sun, 19 Feb 2012 23:56:23 -0800 (PST)
+Received: by 10.68.219.234 with SMTP id pr10mr49204975pbc.11.1329724583174;
+        Sun, 19 Feb 2012 23:56:23 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id y4si18896123pbb.312.2012.02.19.23.56.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 19 Feb 2012 23:56:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by dadz9 with SMTP id z9sf8244798dad.7
+        for <headius@headius.com>; Sun, 19 Feb 2012 23:56:22 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOe7h4WtHBCa-Yf6BBoEVSD08w@googlegroups.com designates 10.50.183.136 as permitted sender) client-ip=10.50.183.136;
+Received: from mr.google.com ([10.50.183.136])
+        by 10.50.183.136 with SMTP id em8mr4205147igc.3.1329724582804 (num_hops = 1);
+        Sun, 19 Feb 2012 23:56:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=+qQYeQV4zPj5f5mk6sjT6z230XM5AfiZECpaVm+xzeI=;
+        b=edIqi2HJRgTvpP8ACa3G/uqQ1w/oHevKT2kqxZ11Yup0mNm7PgT6xNpRVd/Nwwr/vk
+         jCpCROWfW3vtQzIiS+88/2QyavXp7hAKIORn/Bbz52wY+q0KSZ7WXblfn9TcvZUtgmN/
+         l/KU+F/dLbnR3yXrpneJal2HPtO0jNpUTwkyU=
+Received: by 10.50.183.136 with SMTP id em8mr1338166igc.3.1329724570182;
+        Sun, 19 Feb 2012 23:56:10 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.131.138 with SMTP id om10ls8408619igb.8.gmail; Sun, 19 Feb
+ 2012 23:56:09 -0800 (PST)
+Received: by 10.43.117.132 with SMTP id fm4mr7864153icc.1.1329724569939;
+        Sun, 19 Feb 2012 23:56:09 -0800 (PST)
+Received: by 10.50.203.103 with SMTP id kp7msigc;
+        Sun, 19 Feb 2012 23:31:53 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.68.135.169 with SMTP id pt9mr3924726pbb.0.1329723113252; Sun,
+ 19 Feb 2012 23:31:53 -0800 (PST)
+Received: by qs5g2000pbc.googlegroups.com with HTTP; Sun, 19 Feb 2012 23:31:53
+ -0800 (PST)
+Date: Sun, 19 Feb 2012 23:31:53 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0.1)
+ Gecko/20100101 Firefox/10.0.1,gzip(gfe)
+Message-ID: <6794b71b-e4eb-4709-8b72-b0f433d133bd@qs5g2000pbc.googlegroups.com>
+Subject: [ruby-ffi] long pointer
+From: mydoghasworms <mydoghasworms@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mydoghasworms@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of mydoghasworms@gmail.com designates internal as permitted sender)
+ smtp.mail=mydoghasworms@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Sorry for my ignorance, I am fairly new to ruby-ffi.
+
+How do you declare a long pointer in ffi? I don't see it listed among
+the supported types.

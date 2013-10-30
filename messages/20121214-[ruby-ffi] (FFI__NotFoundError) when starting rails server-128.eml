@@ -1,0 +1,210 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.5.130 with SMTP id s2csp82930lbs;
+        Fri, 14 Dec 2012 13:35:43 -0800 (PST)
+Received: by 10.68.234.229 with SMTP id uh5mr19166542pbc.123.1355520942401;
+        Fri, 14 Dec 2012 13:35:42 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDJNN2OP24GBBLFXV2DAKGQE5CA4UUY@googlegroups.com>
+Received: from mail-pb0-f55.google.com (mail-pb0-f55.google.com [209.85.160.55])
+        by mx.google.com with ESMTPS id wk7si5998477pbc.109.2012.12.14.13.35.41
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 14 Dec 2012 13:35:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDJNN2OP24GBBLFXV2DAKGQE5CA4UUY@googlegroups.com designates 209.85.160.55 as permitted sender)
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBDJNN2OP24GBBLFXV2DAKGQE5CA4UUY@googlegroups.com designates 209.85.160.55 as permitted sender) smtp.mail=ruby-ffi+bncBDJNN2OP24GBBLFXV2DAKGQE5CA4UUY@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by mail-pb0-f55.google.com with SMTP id rp2sf1988824pbb.10
+        for <headius@headius.com>; Fri, 14 Dec 2012 13:35:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=yUCoHkp7gGZHhCba1BwnjbzSGni4xTiO7kZJnNYExjk=;
+        b=Q6PoROhtRBG6NT+OSmi11f3JDCoDGTO1DRDsJPem3Rukfn3SY+4D3H3n8JT0KwMpEC
+         5CclP+O94BKvCHAROhe+YGieoBg1BmBFY3AyDV+OX67MvV0zYCyAQ/yqP636NB0I5UQj
+         00ZD8OWEpscHk9gQ4CIOtp/vtMMgJgYybh5dtbbu1JI6pEeJc6bxF8iIB5nyOs5PVHh+
+         uU9548U3iBqFIeK5t29nWEdvT+5Y8xieq1uD4sjpbvff6C7d7seuhyifFXH5SgyE+xze
+         2NGjwmUzQ1cR1BewzzZM3mMP8gwSIT158RM9tej3YhrB/qjQVgETrKAodCUZGpLYkgdU
+         IqAA==
+Received: by 10.49.48.41 with SMTP id i9mr1240539qen.36.1355520940931;
+        Fri, 14 Dec 2012 13:35:40 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.127.142 with SMTP id ng14ls1157918qeb.61.gmail; Fri, 14 Dec
+ 2012 13:35:40 -0800 (PST)
+Received: by 10.224.180.141 with SMTP id bu13mr3526465qab.2.1355520940704;
+        Fri, 14 Dec 2012 13:35:40 -0800 (PST)
+Received: by 10.224.89.18 with SMTP id c18msqam;
+        Fri, 14 Dec 2012 07:31:10 -0800 (PST)
+Received: by 10.49.127.198 with SMTP id ni6mr1041208qeb.23.1355499070608;
+        Fri, 14 Dec 2012 07:31:10 -0800 (PST)
+Date: Fri, 14 Dec 2012 07:31:10 -0800 (PST)
+From: jason@jaymf.com
+To: ruby-ffi@googlegroups.com
+Message-Id: <b13b04cc-ef28-416d-b300-ddf902f29674@googlegroups.com>
+Subject: [ruby-ffi] (FFI::NotFoundError) when starting rails server
+MIME-Version: 1.0
+X-Original-Sender: jason@jaymf.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_651_22379956.1355499070075"
+
+------=_Part_651_22379956.1355499070075
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi - I am a noobie, so please be patient:
+
+I am running into an error when launching the rails server.
+
+The first error in my list is:
+
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in 
+`attach_function': Function 'inotify_init' not found in [libc.dylib] 
+(FFI::NotFoundError)
+
+The rails installation is fresh and clean along with all the gems. 
+Everything is up to date.
+
+I am running Mountain Lion 10.8.2
+
+Here is the entire error message when starting the rails server: 
+
+[eversite]$rails s -p 3015
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in 
+`attach_function': Function 'inotify_init' not found in [libc.dylib] 
+(FFI::NotFoundError)
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:24:in 
+`<module:Native>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:9:in 
+`<module:INotify>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:3:in 
+`<top (required)>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify.rb:1:in 
+`require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify.rb:1:in 
+`<top (required)>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:68:in 
+`require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:68:in 
+`block (2 levels) in require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:66:in 
+`each'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:66:in 
+`block in require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:55:in 
+`each'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:55:in 
+`require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler.rb:128:in 
+`require'
+from 
+/Users/Argo/Documents/rails_projects/eversite/eversite/config/application.rb:13:in 
+`<top (required)>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:53:in 
+`require'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:53:in 
+`block in <top (required)>'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:50:in 
+`tap'
+from 
+/usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:50:in 
+`<top (required)>'
+from script/rails:6:in `require'
+from script/rails:6:in `<main>'
+
+Can anyone point me in the right direction please?
+
+Many thanks.
+
+
+------=_Part_651_22379956.1355499070075
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi - I am a noobie, so please be patient:<div><br></div><div>I am running i=
+nto an error when launching the rails server.</div><div><br></div><div>The =
+first error in my list is:</div><div><br></div><div>/usr/local/rvm/gems/rub=
+y-1.9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in `attach_fun=
+ction': Function 'inotify_init' not found in [libc.dylib] (FFI::NotFoundErr=
+or)<br></div><div><br></div><div>The rails installation is fresh and clean =
+along with all the gems. Everything is up to date.</div><div><br></div><div=
+>I am running Mountain Lion 10.8.2</div><div><br></div><div>Here is the ent=
+ire error message when starting the rails server:&nbsp;</div><div><br></div=
+><div><div>[eversite]$rails s -p 3015</div><div>/usr/local/rvm/gems/ruby-1.=
+9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in `attach_functio=
+n': Function 'inotify_init' not found in [libc.dylib] (FFI::NotFoundError)<=
+/div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09</spa=
+n>from /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/l=
+ib/rb-inotify/native.rb:24:in `&lt;module:Native&gt;'</div><div><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from /usr/local/rvm=
+/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.=
+rb:9:in `&lt;module:INotify&gt;'</div><div><span class=3D"Apple-tab-span" s=
+tyle=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194=
+@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:3:in `&lt;top (req=
+uired)&gt;'</div><div><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-ino=
+tify-0.8.8/lib/rb-inotify.rb:1:in `require'</div><div><span class=3D"Apple-=
+tab-span" style=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby=
+-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify.rb:1:in `&lt;top =
+(required)&gt;'</div><div><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bund=
+ler-1.2.3/lib/bundler/runtime.rb:68:in `require'</div><div><span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">=09</span>from /usr/local/rvm/gems=
+/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:68:in `bl=
+ock (2 levels) in require'</div><div><span class=3D"Apple-tab-span" style=
+=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@glo=
+bal/gems/bundler-1.2.3/lib/bundler/runtime.rb:66:in `each'</div><div><span =
+class=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from /usr/loca=
+l/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb=
+:66:in `block in require'</div><div><span class=3D"Apple-tab-span" style=3D=
+"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@global=
+/gems/bundler-1.2.3/lib/bundler/runtime.rb:55:in `each'</div><div><span cla=
+ss=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from /usr/local/r=
+vm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:55=
+:in `require'</div><div><span class=3D"Apple-tab-span" style=3D"white-space=
+:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundle=
+r-1.2.3/lib/bundler.rb:128:in `require'</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">=09</span>from /Users/Argo/Documents/rails_=
+projects/eversite/eversite/config/application.rb:13:in `&lt;top (required)&=
+gt;'</div><div><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09=
+</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.=
+3/lib/rails/commands.rb:53:in `require'</div><div><span class=3D"Apple-tab-=
+span" style=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9=
+.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:53:in `block in =
+&lt;top (required)&gt;'</div><div><span class=3D"Apple-tab-span" style=3D"w=
+hite-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.3-p194@eversite=
+/gems/railties-3.2.3/lib/rails/commands.rb:50:in `tap'</div><div><span clas=
+s=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from /usr/local/rv=
+m/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:5=
+0:in `&lt;top (required)&gt;'</div><div><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre">=09</span>from script/rails:6:in `require'</div><div>=
+<span class=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from scr=
+ipt/rails:6:in `&lt;main&gt;'</div></div><div><br></div><div>Can anyone poi=
+nt me in the right direction please?</div><div><br></div><div>Many thanks.<=
+/div><div><br></div>
+------=_Part_651_22379956.1355499070075--

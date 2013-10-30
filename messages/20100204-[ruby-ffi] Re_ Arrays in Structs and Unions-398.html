@@ -1,0 +1,90 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Arrays in Structs and Unions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Arrays in Structs and Unions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/4/10 1:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm sorry, here's the attaching of the function:
+
+attach_function :get_version_ex, :GetVersionExW,
+[:buffer_inout], :bool
+
+Marvin
+
+On 4 Feb., 20:21, Quintus <a class="moz-txt-link-rfc2396E" href="mailto:sutn...@gmx.net">&lt;sutn...@gmx.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I've two questions. This is the more important one: How to use arrays
+<span class="moz-txt-citetags">&gt; </span>in Structs via FFI? I have this nice struct declaration:
+<span class="moz-txt-citetags">&gt; </span>----------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>typedef struct _OSVERSIONINFO {
+<span class="moz-txt-citetags">&gt; </span>  DWORD dwOSVersionInfoSize;
+<span class="moz-txt-citetags">&gt; </span>  DWORD dwMajorVersion;
+<span class="moz-txt-citetags">&gt; </span>  DWORD dwMinorVersion;
+<span class="moz-txt-citetags">&gt; </span>  DWORD dwBuildNumber;
+<span class="moz-txt-citetags">&gt; </span>  DWORD dwPlatformId;
+<span class="moz-txt-citetags">&gt; </span>  TCHAR szCSDVersion[128];} OSVERSIONINFO;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>----------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>( Fromhttp://msdn.microsoft.com/en-us/library/ms724834%28VS.85%29.aspx
+<span class="moz-txt-citetags">&gt; </span>, to be used with the GetVersionInfoEx() function:<a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms724451%28VS.85%29.aspx">http://msdn.microsoft.com/en-us/library/ms724451%28VS.85%29.aspx</a>)
+<span class="moz-txt-citetags">&gt; </span>and I'm not sure how to access the szCSDVVersion[128] member. I
+<span class="moz-txt-citetags">&gt; </span>thought, I had to work with Memory pointers for arrays, but the
+<span class="moz-txt-citetags">&gt; </span>following code doesn't work for me:
+<span class="moz-txt-citetags">&gt; </span>-----------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>class OSVersionInfo &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  layout  :os_version_info_size, :int,
+<span class="moz-txt-citetags">&gt; </span>            :major_version, :int,
+<span class="moz-txt-citetags">&gt; </span>            :minor_version, :int,
+<span class="moz-txt-citetags">&gt; </span>            :build_number, :int,
+<span class="moz-txt-citetags">&gt; </span>            :platform_id, :int,
+<span class="moz-txt-citetags">&gt; </span>            :csdv_version, :buffer_out
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ptr = FFI::MemoryPointer.new(:pointer, 128)
+<span class="moz-txt-citetags">&gt; </span>osversioninfo = OSVersionInfo.new
+<span class="moz-txt-citetags">&gt; </span>osversioninfo[:csdv_version] = ptr # line 106
+<span class="moz-txt-citetags">&gt; </span>osversioninfo[:os_version_info_size] = OSVersionInfo.size
+<span class="moz-txt-citetags">&gt; </span>get_version_ex(osversioninfo)
+<span class="moz-txt-citetags">&gt; </span>p osversioninfo[:major_version]
+<span class="moz-txt-citetags">&gt; </span>---------------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>I get this error:
+<span class="moz-txt-citetags">&gt; </span>---------------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>system_info.rb:106:in `put': put not supported for
+<span class="moz-txt-citetags">&gt; </span>FFI::StructLayout::Field (ArgumentError)
+<span class="moz-txt-citetags">&gt; </span>        from system_info.rb:106:in `[]='
+<span class="moz-txt-citetags">&gt; </span>        from system_info.rb:106:in `test_version'
+<span class="moz-txt-citetags">&gt; </span>        from system_info.rb:117:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt; </span>---------------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>I tried it without the MemoryPointer:
+<span class="moz-txt-citetags">&gt; </span>---------------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>osversioninfo = OSVersionInfo.new
+<span class="moz-txt-citetags">&gt; </span>osversioninfo[:os_version_info_size] = OSVersionInfo.size
+<span class="moz-txt-citetags">&gt; </span>get_version_ex(osversioninfo)
+<span class="moz-txt-citetags">&gt; </span>p osversioninfo[:major_version] #=&gt; 0
+<span class="moz-txt-citetags">&gt; </span>---------------------------------------------------------
+<span class="moz-txt-citetags">&gt; </span>That code doesn't thorw an error, but the function call fails - the
+<span class="moz-txt-citetags">&gt; </span>line starting with "p" should print out 6 on my Vista machine.
+<span class="moz-txt-citetags">&gt; </span>How can this be done?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The second question is a simple one: Where do I find a quick example
+<span class="moz-txt-citetags">&gt; </span>of how to use the FFI::Union class? The wiki just states this:&gt; The actual Windows INPUT struct contains an anonymous union member with MOUSEINPUT, KEYBDINPUT,
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>and HARDWAREINPUT members. As the MOUSEINPUT struct is the largest of these members, we can get
+<span class="moz-txt-citetags">&gt; &gt; </span>away with the hacky InputEvent FFI union definition for example purposes.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So, what to do if I haven't an "example purpose"?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ruby -v: ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+<span class="moz-txt-citetags">&gt; </span>OS: Windows Vista SP2
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Marvin
+</pre></div></body>
+</html>
+</table></div>

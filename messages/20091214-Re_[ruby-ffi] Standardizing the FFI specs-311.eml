@@ -1,0 +1,225 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs140356and;
+        Mon, 14 Dec 2009 15:51:51 -0800 (PST)
+Received: by 10.141.108.5 with SMTP id k5mr3808704rvm.128.1260834710632;
+        Mon, 14 Dec 2009 15:51:50 -0800 (PST)
+Return-Path: <3lc8mSxAJCNY6JF6KL.HJ2392C2J8E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 26si11877095pzk.71.2009.12.14.15.51.50;
+        Mon, 14 Dec 2009 15:51:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3lc8mSxAJCNY6JF6KL.HJ2392C2J8E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3lc8mSxAJCNY6JF6KL.HJ2392C2J8E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) smtp.mail=3lc8mSxAJCNY6JF6KL.HJ2392C2J8E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com
+Received: by pwj20 with SMTP id 20sf2133207pwj.27
+        for <headius@headius.com>; Mon, 14 Dec 2009 15:51:49 -0800 (PST)
+Received: by 10.114.162.37 with SMTP id k37mr608080wae.29.1260834709053;
+        Mon, 14 Dec 2009 15:51:49 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.188.15 with SMTP id l15ls1319158waf.3.p; Mon, 14 Dec 2009 
+	15:51:48 -0800 (PST)
+Received: by 10.114.237.4 with SMTP id k4mr1266295wah.23.1260834708245;
+        Mon, 14 Dec 2009 15:51:48 -0800 (PST)
+Received: by 10.114.237.4 with SMTP id k4mr1266294wah.23.1260834708211;
+        Mon, 14 Dec 2009 15:51:48 -0800 (PST)
+Return-Path: <ernest.prabhakar@gmail.com>
+Received: from mail-out4.apple.com (mail-out4.apple.com [17.254.13.23])
+        by gmr-mx.google.com with ESMTP id 25si1066058pzk.7.2009.12.14.15.51.48;
+        Mon, 14 Dec 2009 15:51:48 -0800 (PST)
+Received-SPF: neutral (google.com: 17.254.13.23 is neither permitted nor denied by domain of ernest.prabhakar@gmail.com) client-ip=17.254.13.23;
+Received: from relay13.apple.com (relay13.apple.com [17.128.113.29])
+	by mail-out4.apple.com (Postfix) with ESMTP id BF54B827B83B
+	for <ruby-ffi@googlegroups.com>; Mon, 14 Dec 2009 15:51:47 -0800 (PST)
+X-AuditID: 1180711d-b7b18ae000001001-b5-4b26cf932bdc
+Received: from elliott.apple.com (elliott.apple.com [17.151.62.13])
+	by relay13.apple.com (Apple SCV relay) with SMTP id D6.4B.04097.39FC62B4; Mon, 14 Dec 2009 15:51:47 -0800 (PST)
+MIME-version: 1.0
+Received: from selfserve.apple.com (selfserve.apple.com [17.203.40.11])
+ by elliott.apple.com
+ (Sun Java(tm) System Messaging Server 6.3-7.04 (built Sep 26 2008; 32bit))
+ with ESMTPSA id <0KUO00LL32ABOK90@elliott.apple.com> for
+ ruby-ffi@googlegroups.com; Mon, 14 Dec 2009 15:51:47 -0800 (PST)
+From: Ernest Prabhakar <ernest.prabhakar@gmail.com>
+Subject: Re: [ruby-ffi] Standardizing the FFI specs
+Date: Mon, 14 Dec 2009 15:51:47 -0800
+In-reply-to: <618c07250912141539p52fc4ba7ja669b38a1d14f20a@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+References: <20091210050131.GF18652@hinegardner.org>
+ <4ccee320912092211y5436f813j6f40e2a33e7d9c62@mail.gmail.com>
+ <20091210164632.GH18652@hinegardner.org>
+ <639B95D4-BE42-4AFC-87E9-DFFDC577ABAD@gmail.com>
+ <618c07250912141539p52fc4ba7ja669b38a1d14f20a@mail.gmail.com>
+Message-id: <70D04CDF-C495-4E02-9117-ECAF9D466903@gmail.com>
+X-Mailer: Apple Mail (2.1077)
+X-Brightmail-Tracker: AAAAAQAAAZE=
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	17.254.13.23 is neither permitted nor denied by domain of 
+	ernest.prabhakar@gmail.com) smtp.mail=ernest.prabhakar@gmail.com
+X-Original-Sender: ernest.prabhakar@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/e9a24d52f776ab04
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/e488747e57961ff0
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative;
+ boundary="Boundary_(ID_rDLqtXOCMlx/Z29LqfVFMQ)"
+
+--Boundary_(ID_rDLqtXOCMlx/Z29LqfVFMQ)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+Hi Mike,
+
+On Dec 14, 2009, at 3:39 PM, Mike Dalessio wrote:
+> We've had a couple of threads about this in the last 6 months, and although I think FFI developers are in favor of a unifying / standard test suite, nobody has had the time or the will to be point-man for the project.
+> 
+> So: thanks for volunteering?
+
+You're welcome. I think. :-}
+
+> The API is pretty stable at this point, I think -- at least between CRuby/MRI and JRuby, which have recently been the biggest supporters of FFI.
+> 
+> I'm willing to help unify and standardize,
+
+Sweet!
+
+> if someone is willing to coordinate and pester all the people who need to be pestered.
+
+Deal.
+
+Hey, my primary skill is annoying engineers. It is nice to find a way to use that power for good. :-)
+
+I've started by filing a bug:
+
+http://kenai.com/jira/browse/RUBY_FFI-47
+
+What's the next step?  Do we need to fix this first?
+
+http://kenai.com/jira/browse/RUBY_FFI-37
+
+-- Ernie P.
+
+> 
+> -m
+> 
+> 
+> On Mon, Dec 14, 2009 at 5:17 PM, Ernest Prabhakar <ernest.prabhakar@gmail.com> wrote:
+> Hi all,
+> 
+> This is Dr. Ernie, one of the MacRuby committers. We would like to add the FFI specs <http://github.com/ffi/ffi/tree/master/spec/ffi/> to our existing RubySpec tests.
+> 
+> When I asked on the rubyspec list about what could be done to "mainstream" FFI, I was told:
+> 
+> On Dec 4, 2009, at 2:51 PM, Brian Ford wrote:
+> > The specs need quite a bit of cleanup to conform to the rubyspec style guide.
+> 
+> http://rubyspec.org/wiki/rubyspec/Style_Guide
+> 
+> > Also, the API is still in flux a bit. If you'd like to
+> > contribute to the specs or FFI API,  please coordinate with Evan
+> > Phoenix (evan in #rubinius on freenode.net) as he is the original API
+> > author and is trying to get the API standardized across
+> > implementations.
+> 
+> Evan, are you here? What process would you suggest?
+> 
+> Should I file a bug about the specs (on Kenai)?  Or should I wait until the API stabilizes a bit more?
+> 
+> -- Ernie P.
+> 
+> 
+> 
+> 
+> 
+> 
+> -- 
+> mike dalessio
+> mike@csa.net
+> 
+
+
+--Boundary_(ID_rDLqtXOCMlx/Z29LqfVFMQ)
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: quoted-printable
+
+<html><head></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">Hi =
+Mike,<div><br><div><div>On Dec 14, 2009, at 3:39 PM, Mike Dalessio =
+wrote:</div><blockquote type=3D"cite">We've had a couple of threads =
+about this in the last 6 months, and although I think FFI developers are =
+in favor of a unifying / standard test suite, nobody has had the time or =
+the will to be point-man for the project.<br>
+<br>So: thanks for =
+volunteering?<br></blockquote><div><br></div><div>You're welcome. I =
+think. :-}</div><br><blockquote type=3D"cite">The API is pretty stable =
+at this point, I think -- at least between CRuby/MRI and JRuby, which =
+have recently been the biggest supporters of FFI.<br><br>I'm willing to =
+help unify and standardize, =
+</blockquote><div><br></div><div>Sweet!</div><br><blockquote =
+type=3D"cite">if someone is willing to coordinate and pester all the =
+people who need to be =
+pestered.<br></blockquote><div><br></div>Deal.<br><div><br></div><div>Hey,=
+ my primary skill is annoying engineers. It is nice to find a way to use =
+that power for good. :-)</div><div><br></div><div>I've started by filing =
+a bug:</div><div><br></div><div><a =
+href=3D"http://kenai.com/jira/browse/RUBY_FFI-47">http://kenai.com/jira/br=
+owse/RUBY_FFI-47</a></div><div><br></div><div>What's the next step? =
+&nbsp;Do we need to fix this first?</div><div><br></div><div><a =
+href=3D"http://kenai.com/jira/browse/RUBY_FFI-37">http://kenai.com/jira/br=
+owse/RUBY_FFI-37</a></div><div><br></div><div>-- Ernie =
+P.</div><br><blockquote type=3D"cite">
+<br>-m<br><br><br><div class=3D"gmail_quote">On Mon, Dec 14, 2009 at =
+5:17 PM, Ernest Prabhakar <span dir=3D"ltr">&lt;<a =
+href=3D"mailto:ernest.prabhakar@gmail.com">ernest.prabhakar@gmail.com</a>&=
+gt;</span> wrote:<br><blockquote class=3D"gmail_quote" =
+style=3D"border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt =
+0.8ex; padding-left: 1ex;">
+Hi all,<br>
+<br>
+This is Dr. Ernie, one of the MacRuby committers. We would like to add =
+the FFI specs &lt;<a =
+href=3D"http://github.com/ffi/ffi/tree/master/spec/ffi/" =
+target=3D"_blank">http://github.com/ffi/ffi/tree/master/spec/ffi/</a>&gt; =
+to our existing RubySpec tests.<br>
+
+<br>
+When I asked on the rubyspec list about what could be done to =
+"mainstream" FFI, I was told:<br>
+<br>
+On Dec 4, 2009, at 2:51 PM, Brian Ford wrote:<br>
+&gt; The specs need quite a bit of cleanup to conform to the rubyspec =
+style guide.<br>
+<br>
+<a href=3D"http://rubyspec.org/wiki/rubyspec/Style_Guide" =
+target=3D"_blank">http://rubyspec.org/wiki/rubyspec/Style_Guide</a><br>
+<br>
+&gt; Also, the API is still in flux a bit. If you'd like to<br>
+&gt; contribute to the specs or FFI API, &nbsp;please coordinate with =
+Evan<br>
+&gt; Phoenix (evan in #rubinius on <a href=3D"http://freenode.net/" =
+target=3D"_blank">freenode.net</a>) as he is the original API<br>
+&gt; author and is trying to get the API standardized across<br>
+&gt; implementations.<br>
+<br>
+Evan, are you here? What process would you suggest?<br>
+<br>
+Should I file a bug about the specs (on Kenai)? &nbsp;Or should I wait =
+until the API stabilizes a bit more?<br>
+<br>
+-- Ernie P.<br>
+<br>
+<br>
+<br>
+</blockquote></div><br><br clear=3D"all"><br>-- <br>mike dalessio<br><a =
+href=3D"mailto:mike@csa.net">mike@csa.net</a><br><br>
+</blockquote></div><br></div></body></html>=
+
+--Boundary_(ID_rDLqtXOCMlx/Z29LqfVFMQ)--

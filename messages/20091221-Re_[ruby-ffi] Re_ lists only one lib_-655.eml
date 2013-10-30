@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs512551and;
+        Mon, 21 Dec 2009 09:11:15 -0800 (PST)
+Received: by 10.115.132.12 with SMTP id j12mr5010243wan.121.1261415474696;
+        Mon, 21 Dec 2009 09:11:14 -0800 (PST)
+Return-Path: <3L6wvSwgJCFYJG6N68CJ4Ay69.0CAFIzM-3364CC4924FCIDG.0CA@listserv.bounces.google.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 38si13471296pzk.80.2009.12.21.09.11.13;
+        Mon, 21 Dec 2009 09:11:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3L6wvSwgJCFYJG6N68CJ4Ay69.0CAFIzM-3364CC4924FCIDG.0CA@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3L6wvSwgJCFYJG6N68CJ4Ay69.0CAFIzM-3364CC4924FCIDG.0CA@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) smtp.mail=3L6wvSwgJCFYJG6N68CJ4Ay69.0CAFIzM-3364CC4924FCIDG.0CA@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12sf2108150pzk.13
+        for <headius@headius.com>; Mon, 21 Dec 2009 09:11:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=1fIzQJsRCrpxz39APV/ZSOR3fMJQwFXzyhJ+rVq/H8Y=;
+        b=030gJsqNYJmy0Kr5PVSea3wrT7cyzetf+GSGf1D+TJpf6XYWA954NjfaFoBQ320nCU
+         OwKaKqQ68ZWHNEXfjEKHR/WOhQLfSkoFA/tl1saaG2GPaeHsbs6yJJ91YOZDxzd77FDa
+         FyxdgLNdJKLryHmHIoAv8cEKLj6K9AHFqTLf4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=4vej13SSD06qXajJ+7aOCDcUkx61u/Bwk3p9eetB7Xxc05kEoebmcFgJdySLb131TM
+         vi0hgk3xkJEZPfGfXlVncbmHNB3rFvtc2XdNxZpoS1yLuKeIcY2kP/Zoj1pmiTe9S1/C
+         53ZgYE96kx9xtAo+kJQXAhTjxoaxEPtN/I7TE=
+Received: by 10.142.9.12 with SMTP id 12mr641463wfi.1.1261415471928;
+        Mon, 21 Dec 2009 09:11:11 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.21.11 with SMTP id y11ls570478wfi.1.p; Mon, 21 Dec 2009 
+	09:11:11 -0800 (PST)
+Received: by 10.143.21.35 with SMTP id y35mr1460048wfi.24.1261415470961;
+        Mon, 21 Dec 2009 09:11:10 -0800 (PST)
+Received: by 10.143.21.35 with SMTP id y35mr1460047wfi.24.1261415470738;
+        Mon, 21 Dec 2009 09:11:10 -0800 (PST)
+Return-Path: <vsizikov@gmail.com>
+Received: from mail-ew0-f226.google.com (mail-ew0-f226.google.com [209.85.219.226])
+        by gmr-mx.google.com with ESMTP id 9si1570008pxi.2.2009.12.21.09.11.09;
+        Mon, 21 Dec 2009 09:11:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of vsizikov@gmail.com designates 209.85.219.226 as permitted sender) client-ip=209.85.219.226;
+Received: by mail-ew0-f226.google.com with SMTP id 26so1830736ewy.23
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 09:11:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.216.90.138 with SMTP id e10mr2847335wef.150.1261415467262; 
+	Mon, 21 Dec 2009 09:11:07 -0800 (PST)
+In-Reply-To: <71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com>
+References: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com>
+	 <4ccee320912190435r785388eaoabb0c81b39c6a51@mail.gmail.com>
+	 <3c2f449c-7ff7-478e-b7be-69831ae9d3df@m26g2000yqb.googlegroups.com>
+	 <71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com>
+Date: Mon, 21 Dec 2009 18:11:07 +0100
+Message-ID: <3454c9680912210911u59888c63m6c5b94c13b77f11a@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: lists only one lib?
+From: Vladimir Sizikov <vsizikov@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of vsizikov@gmail.com designates 209.85.219.226 as permitted sender) 
+	smtp.mail=vsizikov@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: vsizikov@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/742b249d67b7cd3e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/47f49d24d9c2d503
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi Luis,
+
+On Mon, Dec 21, 2009 at 4:59 PM, Luis Lavena <luislavena@gmail.com> wrote:
+> Wayne already answered to you that ffi_lib takes an array, multiple
+> invocations to append are not possible.
+
+ From the perspective of a new FFI API user, these are all valid
+questions with no immediate/clear answer:
+- What would happen on subsequent ffi_lib call? Will it append, or
+will it overwrite?
+- Is that even legal? If legal, is that a good practice?
+
+I know I had those questions when I was starting using FFI. :) And I
+was bugging Wayne with such questions as well... :)
+
+Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+calls are not good. Well, maybe we should make that totally explicit,
+and just don't allow to call ffi_lib the second time?
+
+Thanks,
+  --Vladimri

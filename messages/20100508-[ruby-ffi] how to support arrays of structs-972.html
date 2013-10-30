@@ -1,0 +1,67 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] how to support arrays of structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] how to support arrays of structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/8/10 1:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I have a C function call that takes a pointer to an array of structs. I've searched the ML, examples and existing projects using FFI but I haven't found anything yet that covers that case.
+
+I want to ask if this is a reasonable methodology to mimic that behavior.
+
+Here's some code.
+
+module Lib
+# not showing everything...
+
+type struct foo_t {
+  long a;
+  long b;
+  long c;
+  char *d;
+};
+
+int bar(foo_t *array, int len);
+
+Ideally I would like to work with that kind of C like it was ruby.
+
+attach_function :bar, [:pointer, :int], :int
+
+Foo &lt; FFI::Struct
+  layout :a, :long,
+:b, :long,
+:c, :long,
+:d, :pointer
+end
+end # module
+
+my_array = []
+my_array &lt;&lt; Foo.new
+my_array &lt;&lt; Foo.new
+my_array &lt;&lt; Foo.new
+
+Lib.bar my_array, my_array.size
+
+That doesn't work presumably because +my_array+ doesn't necessarily point to the beginning of the C or Java array backing the Ruby array. The C function then starts reading bogus data and potentially trampling over stuff it shouldn't.
+
+
+However, I think this might work.
+
+mem_chunk_ptr = FFI::MemoryPointer.new(:char, Foo.size * number_of_items)
+
+foo1 = Foo.new mem_chunk_ptr
+
+foo2 = Foo.new(mem_chunk_ptr + Foo.size)
+
+etc.
+
+Now I can pass +mem_chunk_ptr+ to my C function and everything should be ordered in memory. The big downfall of this technique is it uses a static chunk of memory. If you ever need to dynamically add more Foo structs to the array and you run out of space in your memory chunk, you need to allocate a bigger one, relocate/copy all existing structs and free up the original memory chunk. Obviously this could all be wrapped up and made a little nicer.
+
+Should the first technique work with ruby arrays and I just have a different problem? If I'm right that it doesn't work (and I've tried), would a patch implementing the behavior I described be accepted into FFI core?
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

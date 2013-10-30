@@ -1,0 +1,143 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp124091laf;
+        Sat, 2 Mar 2013 05:54:57 -0800 (PST)
+X-Received: by 10.182.155.66 with SMTP id vu2mr4812311obb.6.1362232495761;
+        Sat, 02 Mar 2013 05:54:55 -0800 (PST)
+Return-Path: <ruby-ffi+bncBCM2NCE73UJRBLMJZCEQKGQEJ5MQPYY@googlegroups.com>
+Received: from mail-ie0-x23f.google.com (mail-ie0-x23f.google.com [2607:f8b0:4001:c03::23f])
+        by mx.google.com with ESMTPS id q5si3163018igl.67.2013.03.02.05.54.55
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 02 Mar 2013 05:54:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBCM2NCE73UJRBLMJZCEQKGQEJ5MQPYY@googlegroups.com designates 2607:f8b0:4001:c03::23f as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBCM2NCE73UJRBLMJZCEQKGQEJ5MQPYY@googlegroups.com designates 2607:f8b0:4001:c03::23f as permitted sender) smtp.mail=ruby-ffi+bncBCM2NCE73UJRBLMJZCEQKGQEJ5MQPYY@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-ie0-f191.google.com with SMTP id c10sf1779087ieb.28
+        for <headius@headius.com>; Sat, 02 Mar 2013 05:54:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=ay9Nmcn5jXOrkcrCZ2GbEF2xTkYjKNJO+CvC0vAwSjs=;
+        b=K75eKqs4LkJj4U/mWe5Grry437fQYd6ECLhcAMu2RRmIrFsx2KNNQywQ55/Er1Tdfy
+         GO7j4HumkeZV7VGi3VDhypJvwd8h2t8HCgMFe8bvLKRPNjuIJVu8BcGB6njId5K64EFr
+         x9rOqfKSc+uufBpbxJzDq9alWSNmQUokjs2cp4I4ZjwriO4cResbaN63hYwT+s7dOLKp
+         E+Qgyy+mUxnDLpBNphW7baMhXZM28pNYB8Vk5BIHBBkRf2bw32v5O48OLzuVT43cK2Ld
+         UAUpQyAvEB6fX3+SMDJbjaecGINJNyzEO7U0OjyDgxmmZbafcxYfYFHHU1eRNXJ1u/QV
+         FblA==
+X-Received: by 10.49.95.68 with SMTP id di4mr1631443qeb.0.1362232494524;
+        Sat, 02 Mar 2013 05:54:54 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.0.132 with SMTP id 4ls1336260qee.56.gmail; Sat, 02 Mar 2013
+ 05:54:53 -0800 (PST)
+X-Received: by 10.224.19.78 with SMTP id z14mr12434468qaa.4.1362232493377;
+        Sat, 02 Mar 2013 05:54:53 -0800 (PST)
+Received: by 10.224.52.134 with SMTP id i6msqag;
+        Sat, 2 Mar 2013 05:51:10 -0800 (PST)
+X-Received: by 10.49.120.67 with SMTP id la3mr1607387qeb.12.1362232269618;
+        Sat, 02 Mar 2013 05:51:09 -0800 (PST)
+Date: Sat, 2 Mar 2013 05:51:09 -0800 (PST)
+From: codehacker@comcast.net
+To: ruby-ffi@googlegroups.com
+Message-Id: <4d33f958-9b72-4ddc-84cd-2969324a5d95@googlegroups.com>
+Subject: [ruby-ffi] Need help to understand FFI 1.4 installation failure
+MIME-Version: 1.0
+X-Original-Sender: codehacker@comcast.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_810_24479462.1362232269359"
+
+------=_Part_810_24479462.1362232269359
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm a bit out of my depth here. Any insight would be appreciated.
+
+Installing FFI 1.4 with bundler I see:
+
+** [out :: pa491.railsplayground.net] Gem::Installer::ExtensionBuildError: 
+ERROR: Failed to build gem native extension.
+ ** [out :: pa491.railsplayground.net] 
+ ** [out :: pa491.railsplayground.net] /usr/local/bin/ruby extconf.rb
+ ** [out :: pa491.railsplayground.net] checking for ffi.h... no
+ ** [out :: pa491.railsplayground.net] checking for ffi.h in 
+/usr/local/include,/usr/include/ffi... no
+ ** [out :: pa491.railsplayground.net] checking for 
+rb_thread_blocking_region()... yes
+ ** [out :: pa491.railsplayground.net] checking for 
+rb_thread_call_with_gvl()... yes
+ ** [out :: pa491.railsplayground.net] checking for 
+rb_thread_call_without_gvl()... yes
+ ** [out :: pa491.railsplayground.net] checking for ffi_prep_cif_var()... no
+ ** [out :: pa491.railsplayground.net] creating extconf.h
+ ** [out :: pa491.railsplayground.net] creating Makefile
+ ** [out :: pa491.railsplayground.net] 
+ ** [out :: pa491.railsplayground.net] make
+ ** [out :: pa491.railsplayground.net] make: *** No rule to make target 
+`/include/i686-linux/ruby/config.h', needed by `MemoryPointer.o'.  Stop.
+
+any suggestions for how to proceed would be greatly appreciated
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_810_24479462.1362232269359
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I'm a bit out of my depth here. Any insight would be appreciated.<div><br><=
+/div><div>Installing FFI 1.4 with bundler I see:<br><br></div><div><div>** =
+[out :: pa491.railsplayground.net] Gem::Installer::ExtensionBuildError: ERR=
+OR: Failed to build gem native extension.</div><div>&nbsp;** [out :: pa491.=
+railsplayground.net]&nbsp;</div><div>&nbsp;** [out :: pa491.railsplayground=
+.net] /usr/local/bin/ruby extconf.rb</div><div>&nbsp;** [out :: pa491.rails=
+playground.net] checking for ffi.h... no</div><div>&nbsp;** [out :: pa491.r=
+ailsplayground.net] checking for ffi.h in /usr/local/include,/usr/include/f=
+fi... no</div><div>&nbsp;** [out :: pa491.railsplayground.net] checking for=
+ rb_thread_blocking_region()... yes</div><div>&nbsp;** [out :: pa491.railsp=
+layground.net] checking for rb_thread_call_with_gvl()... yes</div><div>&nbs=
+p;** [out :: pa491.railsplayground.net] checking for rb_thread_call_without=
+_gvl()... yes</div><div>&nbsp;** [out :: pa491.railsplayground.net] checkin=
+g for ffi_prep_cif_var()... no</div><div>&nbsp;** [out :: pa491.railsplaygr=
+ound.net] creating extconf.h</div><div>&nbsp;** [out :: pa491.railsplaygrou=
+nd.net] creating Makefile</div><div>&nbsp;** [out :: pa491.railsplayground.=
+net]&nbsp;</div><div>&nbsp;** [out :: pa491.railsplayground.net] make</div>=
+<div>&nbsp;** [out :: pa491.railsplayground.net] make: *** No rule to make =
+target `/include/i686-linux/ruby/config.h', needed by `MemoryPointer.o'. &n=
+bsp;Stop.</div></div><div><br></div><div>any suggestions for how to proceed=
+ would be greatly appreciated</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_810_24479462.1362232269359--

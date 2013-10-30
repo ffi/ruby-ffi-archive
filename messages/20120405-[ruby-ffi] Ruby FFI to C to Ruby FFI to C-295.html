@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Ruby FFI to C to Ruby FFI to C</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Ruby FFI to C to Ruby FFI to C</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>avalanche123 <mallluhuct@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/5/12 4:50 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I'm working on libuv ffi bindings for Ruby and have an issue I can't
+understand
+
+Libuv needs an allocated buffer it can write to, here is a gist of
+code <a class="moz-txt-link-freetext" href="https://gist.github.com/2313277">https://gist.github.com/2313277</a> that has my ruby module and usage
+examples both in C and Ruby
+The C example works fine, while ruby makes Libuv raise EINVAL. I've
+used some basic debugging and figured out that the buffer len than
+comes from Ruby is 140735085305696
+instead of 128, as can be seen from shell outputs examples I've added
+to the gist. I've also added relevant pieces of Libuv to the gist,
+specifically uv_buf_init that is
+responsible for creating uv_buf_t and part of libuv's uv__read that is
+responsible for using it.
+
+From my debugging it looks like a corrupted uv_buf_t memory comes back
+from Ruby, making libuv believe beffer's len attribute is
+140735085305696 bytes long.
+
+I will appreciate any feedback as I've been struggling with this for a
+while.
+
+Best,
+Bulat
+</pre></div></body>
+</html>
+</table></div>

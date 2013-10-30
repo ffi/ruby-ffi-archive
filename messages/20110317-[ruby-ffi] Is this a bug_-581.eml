@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs2498faj;
+        Thu, 17 Mar 2011 22:29:54 -0700 (PDT)
+Received: by 10.101.22.2 with SMTP id z2mr504899ani.59.1300426192406;
+        Thu, 17 Mar 2011 22:29:52 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKfDrsGoChDK24vsBBoE7wq9Fw@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTPS id 9si6978288anr.22.2011.03.17.22.29.52
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 17 Mar 2011 22:29:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKfDrsGoChDK24vsBBoE7wq9Fw@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKfDrsGoChDK24vsBBoE7wq9Fw@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCKfDrsGoChDK24vsBBoE7wq9Fw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj22 with SMTP id 22sf5351349gwj.7
+        for <headius@headius.com>; Thu, 17 Mar 2011 22:29:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Y+eKuElFY4R9oDep2q9V7LDOIakCGNTdatfyAZw8Zy8=;
+        b=0G8FwglZa8vXzmANwtvu1tWSCu5f7pB5neVjKtHh92Hau5dJBGSFerhsFdU4jzwgr+
+         HLLbyECz1Blj9+HovCc8OysTV4rkhleLK8ufiWU45LDWMj1uo7IFmgv43KAejbJ08vGC
+         rcG7DciDnTELvT99rvFu1sCcyMuBd9CxjhhyU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=RQTyXP2KjAdnLRNYBWWaoP739fcQeceZFmHcYteyx0bjq+YlVvZ9NabNCUDpaTzaUq
+         Zi8CMOlpjlnexXeUktka0A9NhNV9TW75JNg9s+ceVc50fsAHk/HHIVXo39FpOaG6jT/t
+         TUZ6Eya4AyfClNNjlBam6MWfMUHBd44YFzi9Y=
+Received: by 10.151.138.12 with SMTP id q12mr134153ybn.51.1300426186917;
+        Thu, 17 Mar 2011 22:29:46 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.71.26 with SMTP id t26ls2372700yba.1.p; Thu, 17 Mar 2011
+ 22:29:46 -0700 (PDT)
+Received: by 10.150.172.8 with SMTP id u8mr355897ybe.22.1300426186557;
+        Thu, 17 Mar 2011 22:29:46 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.58.8 with SMTP id l8mr78146ank.6.1300417036660; Thu, 17
+ Mar 2011 19:57:16 -0700 (PDT)
+Received: by y36g2000pra.googlegroups.com with HTTP; Thu, 17 Mar 2011 19:57:16
+ -0700 (PDT)
+Date: Thu, 17 Mar 2011 19:57:16 -0700 (PDT)
+X-IP: 174.31.71.219
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.15)
+ Gecko/20110303 SUSE/3.6.15-1.1 Firefox/3.6.15,gzip(gfe)
+Message-ID: <29bae365-6f30-4dea-949f-4e35cb50db30@y36g2000pra.googlegroups.com>
+Subject: [ruby-ffi] Is this a bug?
+From: David <lilgeekboy@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: lilgeekboy@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I was going through the group messages and found what I was looking
+for but it doesn't seem to work anymore.
+
+ppdev = FFI::MemoryPointer.new :pointer
+errbuf = FFI::MemoryPointer.new :char, Pcap::PCAP_ERRBUF_SIZE
+res = Pcap.pcap_findalldevs(ppdev, errbuf)
+
+http://groups.google.com/group/ruby-ffi/browse_thread/thread/26de1897ec0597a5
+
+This code raises invalid string parameter and when passing in an empty
+string instead of errbuf the JVM crashes because various registers are
+holding invalid pointer addresses.
+
+The problem exists in both Jruby 1.6(using ruby 1.9.2) and MRI 1.9.2.

@@ -1,0 +1,151 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs222650and;
+        Wed, 16 Dec 2009 00:51:55 -0800 (PST)
+Received: by 10.142.247.6 with SMTP id u6mr499059wfh.181.1260953514663;
+        Wed, 16 Dec 2009 00:51:54 -0800 (PST)
+Return-Path: <3qJ8oSwQPCLsfwbogbmmjohtopx.ofusvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com>
+Received: from mail-pz0-f152.google.com (mail-pz0-f152.google.com [209.85.222.152])
+        by mx.google.com with ESMTP id 11si1905152pzk.52.2009.12.16.00.51.53;
+        Wed, 16 Dec 2009 00:51:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3qJ8oSwQPCLsfwbogbmmjohtopx.ofusvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.222.152 as permitted sender) client-ip=209.85.222.152;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3qJ8oSwQPCLsfwbogbmmjohtopx.ofusvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.222.152 as permitted sender) smtp.mail=3qJ8oSwQPCLsfwbogbmmjohtopx.ofusvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk16 with SMTP id 16sf353390pzk.22
+        for <headius@headius.com>; Wed, 16 Dec 2009 00:51:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-sa-exim-connect-ip:x-sa-exim-mail-from:x-spam-checker-version
+         :x-spam-level:x-spam-status:subject:x-sa-exim-version
+         :x-sa-exim-scanned:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=/kJ1il9Bs43zslJDVdXeT6gclhYec+vIwaLw1O9PTD0=;
+        b=46IVN5jsOAezH1PnS6IvvVjRK2j+mDnzZSkPdokpuOmgBGdRjVK+AG7a5q4T4CpHSm
+         DRA+TGhpPR0jeAB3HTlu/5riPJhB0ZgJY7IqjcyNCU9ku5YIM8ouwsvcOY8s7jXd4EL+
+         RuP8SZ3nnRqtlYx/zvqgAazVFAc7zWw4APJCE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=OGn6PsVj7qsibPubngx3cNJIIGzJVANVRYIcPRLGmnRCzKGZ6SjOQHKM1FS5PromLI
+         kCB3/z768jVPYkaSPY+AZXG6bTI1vxYWeBtF2SK9NTkuV60IEHJ8K/nbSt/msJA4kwHH
+         NrsgShIZIQIu88Uv2b3092XmfzFkQqeIaKdq8=
+Received: by 10.141.124.10 with SMTP id b10mr88542rvn.22.1260953512265;
+        Wed, 16 Dec 2009 00:51:52 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.141.188.31 with SMTP id q31ls249039rvp.2.p; Wed, 16 Dec 2009 
+	00:51:51 -0800 (PST)
+Received: by 10.141.124.12 with SMTP id b12mr129622rvn.6.1260953510156;
+        Wed, 16 Dec 2009 00:51:50 -0800 (PST)
+Received: by 10.114.5.28 with SMTP id 28mr150943wae.5.1260952220066;
+        Wed, 16 Dec 2009 00:30:20 -0800 (PST)
+Received: by 10.114.5.28 with SMTP id 28mr150942wae.5.1260952220035;
+        Wed, 16 Dec 2009 00:30:20 -0800 (PST)
+Return-Path: <evan@fallingsnow.net>
+Received: from elle.fallingsnow.net (elle.fallingsnow.net [67.43.164.196])
+        by gmr-mx.google.com with ESMTP id 38si176684pxi.3.2009.12.16.00.30.19;
+        Wed, 16 Dec 2009 00:30:19 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 as permitted sender) client-ip=67.43.164.196;
+Received: from cpe-76-170-133-160.socal.res.rr.com ([76.170.133.160] helo=[10.0.1.194])
+	by elle.fallingsnow.net with esmtpa (Exim 4.69)
+	(envelope-from <evan@fallingsnow.net>)
+	id 1NKpGv-0006nH-Qp
+	for ruby-ffi@googlegroups.com; Wed, 16 Dec 2009 00:30:18 -0800
+Mime-Version: 1.0 (Apple Message framework v1077)
+From: Evan Phoenix <evan@fallingsnow.net>
+In-Reply-To: <71166b3b0912152249g510e2f17x19107caeb98020e@mail.gmail.com>
+Date: Wed, 16 Dec 2009 00:30:13 -0800
+Message-Id: <2DDE1F65-DD83-4BBE-AA6B-81B5E6CA9CB3@fallingsnow.net>
+References: <E1011BFF-3DCA-4782-B3D9-2E795ECB0914@gmail.com>  <7121ea06-d828-4eff-97d8-111fabb604fb@e7g2000vbi.googlegroups.com> <71166b3b0912152249g510e2f17x19107caeb98020e@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1077)
+X-SA-Exim-Connect-IP: 76.170.133.160
+X-SA-Exim-Mail-From: evan@fallingsnow.net
+X-Spam-Checker-Version: SpamAssassin 3.2.5 (2008-06-10) on elle.fallingsnow.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.2 required=5.0 tests=ALL_TRUSTED,AWL,BAYES_00
+	autolearn=ham version=3.2.5
+Subject: Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI
+X-SA-Exim-Version: 4.2.1 (built Wed, 25 Jun 2008 17:14:11 +0000)
+X-SA-Exim-Scanned: Yes (on elle.fallingsnow.net)
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ccf77d629a0be537
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/cc299459bb684b30
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On Dec 15, 2009, at 10:49 PM, Luis Lavena wrote:
+
+> On Wed, Dec 16, 2009 at 3:21 AM, Victor Costan <costan@gmail.com> =
+wrote:
+>> Is it feasible to make "FFI.add_sys_types" available on all platforms
+>> if it's implemented at runtime?
+>>=20
+>=20
+> You just made me discard my previous message. I was going to ask
+> exactly the same thing.
+>=20
+> I believe these values should be computed at build time and not at
+> runtime. runtime calculation and shelling out is a hidden requirement
+> and add complexity to debug it.
+>=20
+> Even you put guards to avoid errors, expect bug reports about these
+> sys types being missing from people not having the development tools
+> for their platforms at hand.
+
+Fully agree. My intention was not to mean that FFI.add_sys_types would =
+begin parsing header files right then figure out the results. Only that =
+the by hiding it behind a method, every implementation is free to make =
+the best decision about how they want to import them.
+
+I'd imagine that typically, ruby-ffi would calculate these values at =
+build time and put them in either a .rb file that you include, or =
+perhaps the FFI.add_sys_types method would be a C method that adds the =
+types, thereby using the compiler itself to do most of the work.
+
+Again, the method is a simple abstraction to allow each implementation =
+the most flexibility with the least pain.
+
+>=20
+>> I'm thinking ideally the ffi gem will come prebuilt, at least for OSX
+>> and Windows, so users might not have Xcode / mingw / Vistual Studio.
+>> To me, the biggest advantage of using ffi is not having to deal with
+>> all the extension building stuff on a per-gem basis.
+>>=20
+>=20
+> On this field, I'm working on adding an option to rake-compiler to use
+> and abuse of RVM and Pik to build fat binaries on all the platforms,
+> for anyone that cares.
+>=20
+> Cheers,
+> --=20
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to =
+add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry
+>=20
+

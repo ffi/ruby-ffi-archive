@@ -1,0 +1,119 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Calling libclang&#39;s clang_getLocation causes segfault</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Calling libclang&#39;s clang_getLocation causes segfault</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>shinichy <shin1.katayama@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/25/11 8:49 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+I'm trying to use libclang through ruby-ffi.
+But calling clang_getLocation causes segfault.
+Sample code and result are below.
+I ran similar c code and it worked fine.
+clang_getLocation specification is here.
+<a class="moz-txt-link-freetext" href="http://clang.llvm.org/doxygen/group__CINDEX__LOCATIONS.html#ga86d822034407d60d9e1f36e07cbc0f67">http://clang.llvm.org/doxygen/group__CINDEX__LOCATIONS.html#ga86d822034407d60d9e1f36e07cbc0f67</a>
+
+require 'ffi'
+
+module Lib
+  extend FFI::Library
+
+  libs = ["clang"]
+
+  ffi_lib libs
+
+ 
+attach_function :create_index,                       :clang_createIndex,
+[:int,      :int],     :pointer
+
+  TranslationUnitFlags     = enum
+[:none, :detailed_preprocessing_record, :incomplete, :precompiled_preamble, :cache_completion_results]
+
+ 
+attach_function :parse_translation_unit,             :clang_parseTranslationUnit,
+[:pointer,  :string,   :pointer, :int, :pointer, :uint, :uint], :pointer
+
+  attach_function :get_file, :clang_getFile,
+[:pointer, :string], :pointer
+
+  attach_function :get_cursor, :clang_getCursor,
+[:pointer, :pointer], :pointer
+
+  class CXSourceLocation &lt; FFI::Struct
+    layout :ptr_data, :pointer,
+           :int_data, :uint
+  end
+
+  attach_function :get_location, :clang_getLocation,
+[:pointer, :pointer, :uint, :uint], CXSourceLocation.by_value
+
+  def self.bitmask_from(enum, opts)
+    bitmask = 0
+
+    opts.each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>key, val<span class="moz-txt-tag">|</span></code>
+      next unless val
+
+      if int = enum[key]
+        bitmask |= int
+      else
+        raise Error, "unknown option: #{key.inspect}, expected one of
+#{enum.symbols}"
+      end
+    end
+
+    bitmask
+  end
+end
+
+def args_pointer_from(command_line_args)
+  args_pointer = FFI::MemoryPointer.new(:pointer)
+
+  strings = command_line_args.map do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>arg<span class="moz-txt-tag">|</span></code>
+    FFI::MemoryPointer.from_string(arg.to_s)
+  end
+
+  args_pointer.put_array_of_pointer(0, strings) unless strings.empty?
+  args_pointer
+end
+
+def options_bitmask_from(opts)
+  Lib.bitmask_from Lib::TranslationUnitFlags, opts
+end
+
+filename = "/Users/shinichi/programming/ffi-clang/spec/fixtures/a.c"
+index = Lib.create_index(1, 1)
+tu = Lib.parse_translation_unit(index, filename,
+args_pointer_from([]), 0, nil, 0, options_bitmask_from({}))
+file = Lib.get_file(tu, filename)
+loc = Lib.get_location(tu, file, 3, 16) # causes segfault
+# cursor = Lib.get_cursor(tu, loc)
+
+### Result ###
+
+spec/get_location_test.rb:64: [BUG] Segmentation fault
+ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-darwin10.8.0]
+
+-- control frame ----------
+c:0004 p:---- s:0018 b:0018 l:000017 d:000017 CFUNC  :get_location
+c:0003 p:0181 s:0011 b:0011 l:0014e8 d:000b70 EVAL   spec/
+get_location_test.rb:64
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0014e8 d:0014e8 TOP
+---------------------------
+-- Ruby level backtrace information
+----------------------------------------
+spec/get_location_test.rb:64:in `&lt;main&gt;'
+spec/get_location_test.rb:64:in `get_location'
+
+-- C level backtrace information
+-------------------------------------------
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension
+libraries.
+Bug reports are welcome.
+For details: <a class="moz-txt-link-freetext" href="http://www.ruby-lang.org/bugreport.html">http://www.ruby-lang.org/bugreport.html</a>
+</pre></div></body>
+</html>
+</table></div>

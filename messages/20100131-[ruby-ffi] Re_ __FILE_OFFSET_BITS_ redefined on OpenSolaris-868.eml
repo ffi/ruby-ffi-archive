@@ -1,0 +1,203 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.5.7 with SMTP id 7cs13894ane;
+        Sun, 31 Jan 2010 01:21:36 -0800 (PST)
+Received: by 10.101.136.3 with SMTP id o3mr3435592ann.173.1264929696571;
+        Sun, 31 Jan 2010 01:21:36 -0800 (PST)
+Return-Path: <3nktlSwgJCJoB8HLSD8HTNOH8.H8NLO5S-99CAIIAF8ALIOJM.6IG@groups.bounces.google.com>
+Received: from mail-gx0-f185.google.com (mail-gx0-f185.google.com [209.85.217.185])
+        by mx.google.com with ESMTP id 6si6971370ywh.78.2010.01.31.01.21.35;
+        Sun, 31 Jan 2010 01:21:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3nktlSwgJCJoB8HLSD8HTNOH8.H8NLO5S-99CAIIAF8ALIOJM.6IG@groups.bounces.google.com designates 209.85.219.216 as permitted sender) client-ip=209.85.219.216;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3nktlSwgJCJoB8HLSD8HTNOH8.H8NLO5S-99CAIIAF8ALIOJM.6IG@groups.bounces.google.com designates 209.85.219.216 as permitted sender) smtp.mail=3nktlSwgJCJoB8HLSD8HTNOH8.H8NLO5S-99CAIIAF8ALIOJM.6IG@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by mail-gx0-f185.google.com with SMTP id 1sf8246065gxk.15
+        for <headius@headius.com>; Sun, 31 Jan 2010 01:21:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received
+         :in-reply-to:references:date:message-id:subject:from:to:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=JgcfUD9y5XvvOP7vo2PPdfAlHCRpKmpYiz+jrBEYHeY=;
+        b=wQoq2RpapbJ78G9Q6RHXK0nlXryDnS9aaCcQEYFoDuq2cOO263jCDZAikaHEumNnPQ
+         mm4Uz4vBYbbaa+MC80aRqSH9ZOhdJKWDX1GwQlOOeBrqPXL629aw/h+qLr1pi60f7QZP
+         HrG5di6/9UHVa7fSsRGYdt8APV1sZJFMkxpes=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=CPYePVz3CwK/+iDnWa3fGQOCy23pXMA9zJwsB0nQ6y7+o84VkNT1h+w9TJgQinVkP8
+         DELLkTXOf6sbrxa59ul4aWJmUuPLZ0sJtg+V9gwcGd84G/6Xhh/YV0wFQfx9ja70Tfl+
+         piGJWWbhyAJT28+Vue40qnHCXzFE6c0TokNik=
+Received: by 10.101.165.32 with SMTP id s32mr208545ano.38.1264929694423;
+        Sun, 31 Jan 2010 01:21:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.87.42.37 with SMTP id u37ls686046fgj.1.p; Sun, 31 Jan 2010 
+	01:21:33 -0800 (PST)
+Received: by 10.87.48.16 with SMTP id a16mr56682fgk.20.1264929693395;
+        Sun, 31 Jan 2010 01:21:33 -0800 (PST)
+Received: by 10.213.104.91 with SMTP id n27mr25200ebo.9.1264924165055;
+        Sat, 30 Jan 2010 23:49:25 -0800 (PST)
+Received: by 10.213.104.91 with SMTP id n27mr25199ebo.9.1264924165028;
+        Sat, 30 Jan 2010 23:49:25 -0800 (PST)
+Return-Path: <henryjen@ztune.net>
+Received: from mail-ew0-f216.google.com (mail-ew0-f216.google.com [209.85.219.216])
+        by gmr-mx.google.com with ESMTP id 12si553253ewy.2.2010.01.30.23.49.24;
+        Sat, 30 Jan 2010 23:49:24 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.219.216 is neither permitted nor denied by best guess record for domain of henryjen@ztune.net) client-ip=209.85.219.216;
+Received: by ewy8 with SMTP id 8so853394ewy.29
+        for <ruby-ffi@googlegroups.com>; Sat, 30 Jan 2010 23:49:24 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.76.65 with SMTP id b1mr2694451ebk.65.1264924164589; Sat, 
+	30 Jan 2010 23:49:24 -0800 (PST)
+In-Reply-To: <5fe392c4-7a44-4690-8e03-216968b333a4@k36g2000prb.googlegroups.com>
+References: <5fe392c4-7a44-4690-8e03-216968b333a4@k36g2000prb.googlegroups.com>
+Date: Sat, 30 Jan 2010 23:49:24 -0800
+Message-ID: <e1b0a99c1001302349t58a3e8d6tc79a1912b12592f6@mail.gmail.com>
+Subject: [ruby-ffi] Re: "_FILE_OFFSET_BITS" redefined on OpenSolaris
+From: Henry Jen <henryjen@ztune.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9e39612ba02d33cc
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/f5db69a3fa9873a5
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/mixed; boundary=00c09f7d599c7f887c047e711b07
+
+--00c09f7d599c7f887c047e711b07
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+BTW, I can fix the issue with attached patch, however, I am not
+confortable with that. Maybe there is a way to pass CFLAGS when
+invoking rake, that way, at least one can give correct value.
+
+Another way would be to include <ruby.h> first before any others, is
+there an issue for doing that?
+
+Cheers,
+Henry
+
+2010/1/30 slowhog <henryjen@ztune.net>:
+> Hi,
+>
+> I am trying to install ffi gem on OpenSolaris b130, but encounter
+> "_FILE_OFFSET_BITS" redefined error. Below is the result from `rake --
+> trace gem:install`.
+>
+> The error is obvious, but I am not sure what's the right fix. Am I
+> missing something?
+>
+> Cheers,
+> Henry
+>
+> =3D=3D=3D> suspicious, not sure if this is expected?
+> ** Invoke spec/ffi/rbx/spec_helper.rb (first_time, not_needed)
+> ** Invoke spec/ffrake-compiler must be configured first to enable
+> cross-compilation
+> rake-compiler must be configured first to enable cross-compilation
+> rake-compiler must be configured first to enable cross-compilation
+> rake-compiler must be configured first to enable cross-compilation
+> rm -r pkg
+> <...snip...>
+> sudo gem install --local pkg/ffi-0.6.0
+> Password:
+> Building native extensions. =A0This could take a while...
+> ERROR: =A0Error installing pkg/ffi-0.6.0:
+> =A0 =A0 =A0 =A0ERROR: Failed to build gem native extension.
+>
+> /usr/ruby/1.8/bin/ruby extconf.rb
+> checking for ffi_call() in -lffi... yes
+> checking for ffi_prep_closure()... yes
+> checking for ffi_raw_call()... no
+> checking for rb_thread_blocking_region()... no
+> creating extconf.h
+> creating Makefile
+>
+> make
+> /usr/sfw/bin/gcc -I. -I. -I/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11
+> -I. -DRUBY_EXTCONF_H=3D\"extconf.h\" -I/usr/sfw/include -fPIC -g -O3 -
+> fPIC -I/usr/lib/libffi-3.0.8/include =A0 -Werror -Wunused -Wformat -
+> Wimplicit -Wreturn-type =A0 -c Buffer.c
+> In file included from /usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/
+> ruby.h:24,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from Buffer.c:31:
+> /usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/config.h:27:1:
+> "_FILE_OFFSET_BITS" redefined
+> In file included from /usr/include/sys/int_types.h:55,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from /usr/include/sys/stdint.h:38,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from /usr/include/stdint.h:38,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from Buffer.c:29:
+> /usr/include/sys/feature_tests.h:209:1: this is the location of the
+> previous definition
+> make: *** [Buffer.o] Error 1
+>
+>
+> Gem files will remain installed in /var/ruby/1.8/gem_home/gems/
+> ffi-0.6.0 for inspection.
+> Results logged to /var/ruby/1.8/gem_home/gems/ffi-0.6.0/ext/ffi_c/
+> gem_make.out
+> rake aborted!
+> Command failed with status (1): [sudo gem install --local pkg/
+> ffi-0.6.0...]
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:995:in `sh'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `call'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `sh'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1094:in `sh'
+> /home/henryjen/git/ffi/tasks/gem.rake:171
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:597:in
+> `invoke_with_call_chain'
+> /usr/ruby/1.8/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:590:in
+> `invoke_with_call_chain'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2051:in
+> `invoke_task'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+> `standard_exception_handling'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+> `standard_exception_handling'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+> /var/ruby/1.8/gem_home/gems/rake-0.8.7/bin/rake:31
+> /usr/bin/rake:19:in `load'
+> /usr/bin/rake:19
+>
+
+--00c09f7d599c7f887c047e711b07
+Content-Type: application/octet-stream; name="ffi_osol.diff"
+Content-Disposition: attachment; filename="ffi_osol.diff"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_g53j2ckj0
+
+ZGlmZiAtLWdpdCBhL2V4dC9mZmlfYy9leHRjb25mLnJiIGIvZXh0L2ZmaV9jL2V4dGNvbmYucmIK
+aW5kZXggZTg2ZjJhOC4uM2U3NGQ4MyAxMDA2NDQKLS0tIGEvZXh0L2ZmaV9jL2V4dGNvbmYucmIK
+KysrIGIvZXh0L2ZmaV9jL2V4dGNvbmYucmIKQEAgLTIyLDYgKzIyLDcgQEAgJGRlZnMgPDwgIi1E
+VVNFX0lOVEVSTkFMX0xJQkZGSSIgdW5sZXNzIGxpYmZmaV9vawogY3JlYXRlX2hlYWRlcgogCiAk
+Q0ZMQUdTIDw8ICIgLW13aW4zMiAiIGlmIENvbmZpZzo6Q09ORklHWydob3N0X29zJ10gPX4gL2N5
+Z3dpbi8KKyRDRkxBR1MgPDwgIiAtRF9GSUxFX09GRlNFVF9CSVRTPTY0ICIgaWYgQ29uZmlnOjpD
+T05GSUdbJ2hvc3Rfb3MnXSA9fiAvc29sYXJpcy8KICRDRkxBR1MgPDwgIiAtV2Vycm9yIC1XdW51
+c2VkIC1XZm9ybWF0IC1XaW1wbGljaXQgLVdyZXR1cm4tdHlwZSAiCiAKIGNyZWF0ZV9tYWtlZmls
+ZSgiZmZpX2MiKQo=
+--00c09f7d599c7f887c047e711b07--

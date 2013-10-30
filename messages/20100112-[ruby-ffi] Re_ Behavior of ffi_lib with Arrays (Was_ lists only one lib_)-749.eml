@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs25787ane;
+        Tue, 12 Jan 2010 08:23:46 -0800 (PST)
+Received: by 10.101.3.26 with SMTP id f26mr7707057ani.121.1263313426138;
+        Tue, 12 Jan 2010 08:23:46 -0800 (PST)
+Return-Path: <3D6JMSwAACEk25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 21si11524936gxk.25.2010.01.12.08.23.45;
+        Tue, 12 Jan 2010 08:23:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3D6JMSwAACEk25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3D6JMSwAACEk25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3D6JMSwAACEk25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf1818302yxe.13
+        for <headius@headius.com>; Tue, 12 Jan 2010 08:23:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:message-id:in-reply-to
+         :references:date:to:from:subject:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=mf6X/b68utO59KRGIjSxKOHkcC3+BJNRPNFj26JckXo=;
+        b=XFAj6BAkMlM8JudQjFwI+6Wk06JCa+AO1GYkqClGBSEUrxUZS7YBLLTJ8GKlmCsnFF
+         SAoBZwKYWNnh48n7KkTofoCEmTGJxhi5RWJB3WamZaBkyc3M81r4hD9eEW0EJwm3j/YR
+         lbrj6EPKv4c6vnOdVckWTO5SCirJBcHtEM5oo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:message-id:in-reply-to
+         :references:date:to:from:subject:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=GNT18YnI/NgkERtrIA+JzBo40+JeJ8BVUpkntXH4rRutHWFQW+r+GpOppTt1AFY1gB
+         /9DOiWwvntRPQ5KcpNd4JT/AwqGPgbB8dhUhcQe4rqMuaaCg+Imngv1eJfJZ6l03Yk7l
+         IybzkTPhExEJFHJFYba/8Hxg22BUnIQyz4ygI=
+Received: by 10.100.228.1 with SMTP id a1mr531654anh.16.1263313423965;
+        Tue, 12 Jan 2010 08:23:43 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.244.1 with SMTP id r1ls141450agh.1.p; Tue, 12 Jan 2010 
+	08:23:42 -0800 (PST)
+Received: by 10.91.148.11 with SMTP id a11mr11636438ago.9.1263313421917;
+        Tue, 12 Jan 2010 08:23:41 -0800 (PST)
+Received: by 10.91.148.11 with SMTP id a11mr11636436ago.9.1263313421894;
+        Tue, 12 Jan 2010 08:23:41 -0800 (PST)
+Return-Path: <stephen.bannasch@deanbrook.org>
+Received: from deanbrook.org (deanbrook.org [72.52.70.192])
+        by gmr-mx.google.com with SMTP id 18si3208507yxe.8.2010.01.12.08.23.41;
+        Tue, 12 Jan 2010 08:23:41 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of stephen.bannasch@deanbrook.org designates 72.52.70.192 as permitted sender) client-ip=72.52.70.192;
+Received: from ::ffff:63.138.152.134 ([63.138.152.134]) by deanbrook.org for <ruby-ffi@googlegroups.com>; Tue, 12 Jan 2010 08:23:38 -0800
+Mime-Version: 1.0
+Message-Id: <p06240801c772516ef33a@[63.138.152.134]>
+In-Reply-To: <4b7d939a-b87f-4569-845e-3c35046d362c@j4g2000yqe.googlegroups.com>
+References: <bf2f536c0912211449q7a337147g69257040a6abab91@mail.gmail.com> 
+ <3454c9680912212356g2c79f728rad39f7c1796611cd@mail.gmail.com> 	<p0624080cc76d7159175f@[63.138.152.192]>
+ <4b7d939a-b87f-4569-845e-3c35046d362c@j4g2000yqe.googlegroups.com>
+Date: Tue, 12 Jan 2010 11:23:34 -0500
+To: ruby-ffi@googlegroups.com
+From: Stephen Bannasch <stephen.bannasch@deanbrook.org>
+Subject: [ruby-ffi] Re: Behavior of ffi_lib with Arrays (Was: lists only one  	
+	lib?)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	best guess record for domain of stephen.bannasch@deanbrook.org designates 
+	72.52.70.192 as permitted sender) smtp.mail=stephen.bannasch@deanbrook.org
+X-Original-Sender: stephen.bannasch@deanbrook.org
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/11b365ae7374c20d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4d34e1f4cb27e600
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset="us-ascii"
+
+>Hi,
+>
+>does it already work with 0.5.4?
+>
+>It seems that this change http://github.com/ffi/ffi/commit/9657b43b5946aa24cfa87bb3cdc73903029191d3
+>didn't make into http://gemcutter.org/gems/ffi/versions/0.5.4
+
+Right and also this change:
+
+http://github.com/ffi/ffi/commit/8def900a43445375d0d642aea6093baeebdf4aa1
+
+is only in 0.6.0 -- which doesn't appear to have been released as a gem yet.
+
+
+>Alternate loading does not work in 0.5.4. Tested for 1.8.7, 1.9 and
+>jruby.
+
+I compiled from source and installed and it does work using multiple and alternate libraries.
+
+
+It works in JRuby head (1.5.0 dev) also -- I'm not sure when the change was made.
+
+Ask Wayne if there is anything holding up a release of the v0.6.0 gem of ffi.

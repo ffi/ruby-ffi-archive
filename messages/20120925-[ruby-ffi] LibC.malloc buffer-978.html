@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] LibC.malloc buffer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] LibC.malloc buffer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>subsonnic <davidspautz@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/25/12 3:00 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hi,<br><br>when i create a FFI::Pointer object by <i>LibC.malloc(8096)</i> i get<br><br><b>/usr/local/lib/ruby/gems/1.9.1/gems/rsml-0.1/lib/rsml/sml_file.rb:54: [BUG] Segmentation fault<br>ruby 1.9.3p125 (2012-02-16 revision 34643) [x86_64-linux]</b><br><br>Then i checked the buffer size.<br><br><b>p "buffer size: #{buffer.size}"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =====&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "buffer size: 9223372036854775807"</b><br><br>Why the buffer size is so big? How i can get a buffer width length of 8096 bytes?<br><br>I will rewrite <br><span style="font-family: courier new,monospace;">unsigned char buffer[8096];</span><br><br>Thanks for help<br>
+</div></body>
+</html>
+</table></div>

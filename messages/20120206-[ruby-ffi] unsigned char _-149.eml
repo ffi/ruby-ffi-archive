@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.146.82.16 with SMTP id f16cs39280yab;
+        Tue, 7 Feb 2012 18:26:48 -0800 (PST)
+Received: by 10.50.216.231 with SMTP id ot7mr24177820igc.8.1328668008013;
+        Tue, 07 Feb 2012 18:26:48 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMXjnc2ZExDmusf5BBoEtnZ_tw@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id at4si104817igc.55.2012.02.07.18.26.47
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 07 Feb 2012 18:26:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMXjnc2ZExDmusf5BBoEtnZ_tw@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMXjnc2ZExDmusf5BBoEtnZ_tw@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCMXjnc2ZExDmusf5BBoEtnZ_tw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by iaoh14 with SMTP id h14sf903084iao.7
+        for <headius@headius.com>; Tue, 07 Feb 2012 18:26:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=JxFGJuVaRiFQQlhyUseQ+XEgBMmuU0zdgz6oYMQLdrc=;
+        b=o+iB7T/+rKGrGoYOqFH050k2DpbSOmYJNh+Vt5HD59niwsCT99GjtxYPygPFXiBEC9
+         tsGQq+rqNn2xvubHWJfiTDk/KLmhyGRUc1Cuk+HDefRaIUF248KJg8ro9uSf+pL2bAOQ
+         ivKT/d/YbOYk2mJ+QVSswUDfhWuz+ouSO0qNI=
+Received: by 10.50.187.194 with SMTP id fu2mr7324102igc.5.1328668006188;
+        Tue, 07 Feb 2012 18:26:46 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.216.230 with SMTP id ot6ls64653igc.3.gmail; Tue, 07 Feb
+ 2012 18:26:45 -0800 (PST)
+Received: by 10.42.165.70 with SMTP id j6mr13412385icy.6.1328668005796;
+        Tue, 07 Feb 2012 18:26:45 -0800 (PST)
+Received: by 10.50.171.67 with SMTP id as3msigc;
+        Mon, 6 Feb 2012 01:15:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.68.221.132 with SMTP id qe4mr657661pbc.1.1328519708904; Mon,
+ 06 Feb 2012 01:15:08 -0800 (PST)
+Received: by i10g2000pbl.googlegroups.com with HTTP; Mon, 6 Feb 2012 01:15:08
+ -0800 (PST)
+Date: Mon, 6 Feb 2012 01:15:08 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:10.0)
+ Gecko/20100101 Firefox/10.0,gzip(gfe)
+Message-ID: <50b4cbb8-d001-4537-a02f-9020fa743e93@i10g2000pbl.googlegroups.com>
+Subject: [ruby-ffi] unsigned char *
+From: Jeffrey Jones <jjones@toppan-f.co.jp>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jjones@toppan-f.co.jp
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of jjones@toppan-f.co.jp designates internal as permitted sender)
+ smtp.mail=jjones@toppan-f.co.jp; dkim=pass header.i=@toppan-f.co.jp
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello all,
+
+I am in the early stages of investigating ruby FFI for use with a
+particular third party library.
+
+This library makes use of a few functions with the following
+signature.
+
+struct * function (unsigned char*, unsigned int)
+
+These functions are basically used for reading data in from various
+places (fread for example) so it is the data itself and the data size.
+
+Looking at all the various documentation and examples and code, I
+cannot actually see what I need to do in ruby to match the signature.
+
+module Foo
+  attach_function :function, [:uchar, :uint], :pointer
+end
+
+Doesn't work because it isn't expecting a single char but a char*.
+
+Does anyone know what I need to do? (If it is even possible?)
+
+Cheers
+
+Jeff

@@ -1,0 +1,67 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs9866eea;
+        Fri, 19 Aug 2011 06:37:03 -0700 (PDT)
+Received: by 10.52.185.8 with SMTP id ey8mr2040131vdc.415.1313761022419;
+        Fri, 19 Aug 2011 06:37:02 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCODBv_nyDBD4zbnyBBoEmX1Z2w@googlegroups.com>
+Received: from mail-vx0-f190.google.com ([209.85.220.190])
+        by mx.google.com with ESMTPS id f6si7461050vdi.10.2011.08.19.06.37.01
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 19 Aug 2011 06:37:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCODBv_nyDBD4zbnyBBoEmX1Z2w@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCODBv_nyDBD4zbnyBBoEmX1Z2w@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCODBv_nyDBD4zbnyBBoEmX1Z2w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vxj3 with SMTP id 3sf3981973vxj.7
+        for <headius@headius.com>; Fri, 19 Aug 2011 06:37:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=C2Btt1nRCs25bbeWfM3QMU6DqpqAAQmD1Bjl+RAc1aM=;
+        b=KDJwCJHE9hKc66VlFvDjhJNyNKT+8gw0R76R7g1mRgFK53guONZOFBBQ/03Ec5wgfw
+         jnR20CJJtXE0mR/P/k+MKczmLdywyY2hr4car1pgEqNxlqnG08sKpTkI7ikG/rcEJiAJ
+         uAkzKfLnPO114HuXVth8DWFFTYi3pRtsbNZvM=
+Received: by 10.220.107.131 with SMTP id b3mr639513vcp.20.1313761016128;
+        Fri, 19 Aug 2011 06:36:56 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.221.0.18 with SMTP id nk18ls6822655vcb.4.gmail; Fri, 19 Aug
+ 2011 06:36:55 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.195.131 with SMTP id ec3mr626224vcb.54.1313761015765; Fri,
+ 19 Aug 2011 06:36:55 -0700 (PDT)
+Received: by z7g2000vbp.googlegroups.com with HTTP; Fri, 19 Aug 2011 06:36:55
+ -0700 (PDT)
+Date: Fri, 19 Aug 2011 06:36:55 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <7c04baf1-f660-480d-ad17-0df09d11e14c@z7g2000vbp.googlegroups.com>
+Subject: [ruby-ffi] How to declare (int *argc, char *argv)?
+From: przemo_li <an.przemek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: an.przemek@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ an.przemek@gmail.com designates internal as permitted sender)
+ smtp.mail=an.przemek@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm trying to do my own bindings for freeGLUT, but fail at:
+
+FGAPI void FGAPIENTRY glutInit( int* pargc, char** argv )
+
+how to declare it with ruby ffi?
+Then how to pass argc, argv? (ruby seam to have no such thing)

@@ -1,0 +1,88 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] struct questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] struct questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/09 5:54 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/19 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>With char arrays, it seems "difficult" to insert a string
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>(rdb:1) ss[:title] = "abc"
+<span class="moz-txt-citetags">&gt; </span>ArgumentError Exception: put not supported for
+<span class="moz-txt-citetags">&gt; </span>FFI::StructLayout::Array
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>is there an easier way than ss[:title][0] = 33; ss[:title][1] = 34; //
+<span class="moz-txt-citetags">&gt; </span>one at a time?
+</pre></blockquote><pre wrap>
+
+
+Assuming you mean an array like this:
+class S &lt; FFI::Struct
+  layout :title, [ :char, 20 ]
+end
+
+Then currently the only easy way to fill it is:
+
+s[:title].to_ptr.put_string(0, "foo")
+
+Thats kinda ugly, so we should have an easier syntax.
+
+I have patches that make the following work for :char/:uchar arrays:
+
+s[:title] = "foo"
+s[:title] = [ 'f'.ord, 'o'.ord, 'o'.ord ]
+s[:title] = [ 1, 2, 3]
+
+The second form also works for all other array element types.
+
+The inverse also works for :char/:uchar arrays:
+
+s[:title].to_s # =&gt; "foo"
+
+
+There are a couple of corner cases that need to be figured out though.
+1) What to do when a string + nul byte is larger than the array size
+  a) raise an error
+  b) do not terminate the string with a nul byte
+  c) truncate the string and terminate with a nul byte
+
+Currently (a) is the preferred way (makes it consistent with put_string()
+
+e.g.
+class S &lt; FFI::Struct
+  layout :title, [ :char, 4 ]
+end
+
+s = S.new
+s[:title] = "abc"  # works
+s[:title] = "test" # raises IndexError
+
+
+
+2) Should array assignments be zero padded?
+i.e.
+class S &lt; FFI::Struct
+  layout :i, [ :int, 100 ]
+end
+
+s = S.new
+s[:i] = [ 1, 2, 3]
+
+Currently it zero pads the array if the source is smaller than the
+array field size.
+
+3) Should over-sized array assignments raise an error or truncate?
+class S &lt; FFI::Struct
+  layout :i, [ :int, 2 ]
+end
+s = S.new
+s[:i] = [ 1, 2, 3]
+
+This currently raises an IndexError
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.175.98 with SMTP id bz2csp110371obc;
+        Tue, 6 Mar 2012 12:39:59 -0800 (PST)
+Received: by 10.236.197.100 with SMTP id s64mr28592246yhn.108.1331066399545;
+        Tue, 06 Mar 2012 12:39:59 -0800 (PST)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhCb7Nn6BBoENcc94A@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id l3si9673744anm.25.2012.03.06.12.39.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 06 Mar 2012 12:39:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCb7Nn6BBoENcc94A@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCb7Nn6BBoENcc94A@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhCb7Nn6BBoENcc94A@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yhkk61 with SMTP id k61sf8423342yhk.7
+        for <headius@headius.com>; Tue, 06 Mar 2012 12:39:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-virus-version
+         :x-proofpoint-spam-details:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=nkINekGGUaRUO/9wbToof95Xli7hTgJtSTVLKBLJKyA=;
+        b=1/WdS5G9LOdsfh8OXRfyDOy2ML9oX5YUO+JiYXL9jofzRNqm/CLvNyq9UXhDRbIX8S
+         1PQ7m8w3uKhB4fJuMjufvzGmdrC8g8Ojq02ITT1u1E+zE+3kR9RrVot6i7tpAGdXIk+Q
+         lxzy9Gze8HSc6vFwSkxJMAAJj1yE5oXpNWENU=
+Received: by 10.68.243.208 with SMTP id xa16mr26055pbc.5.1331066395463;
+        Tue, 06 Mar 2012 12:39:55 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.141.9 with SMTP id rk9ls3213632pbb.9.gmail; Tue, 06 Mar
+ 2012 12:39:55 -0800 (PST)
+Received: by 10.68.135.231 with SMTP id pv7mr42917pbb.8.1331066395203;
+        Tue, 06 Mar 2012 12:39:55 -0800 (PST)
+Received: by 10.68.135.231 with SMTP id pv7mr42915pbb.8.1331066395192;
+        Tue, 06 Mar 2012 12:39:55 -0800 (PST)
+Received: from asmtpout030.mac.com (asmtpout030.mac.com. [17.148.16.105])
+        by gmr-mx.google.com with ESMTP id e6si24062760pbt.1.2012.03.06.12.39.55;
+        Tue, 06 Mar 2012 12:39:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted sender) client-ip=17.148.16.105;
+MIME-version: 1.0
+Received: from [192.168.0.101] ([76.8.86.186])
+ by asmtp030.mac.com (Oracle Communications Messaging Server 7u4-23.01
+ (7.0.4.23.0) 64bit (built Aug 10 2011))
+ with ESMTPSA id <0M0H00HJUDE56Y30@asmtp030.mac.com> for
+ ruby-ffi@googlegroups.com; Tue, 06 Mar 2012 12:39:42 -0800 (PST)
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.6.7498,1.0.260,0.0.0000
+ definitions=2012-03-06_06:2012-03-06,2012-03-06,1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx scancount=1 engine=6.0.2-1012030000
+ definitions=main-1203060208
+Subject: Re: [ruby-ffi] Unable to load .so file - any ideas?
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <14072510.211.1331046642686.JavaMail.geo-discussion-forums@ynlr19>
+Date: Tue, 06 Mar 2012 14:39:41 -0600
+Message-id: <E0D5E8F9-6147-4E3F-9DD8-C0A921453A36@mac.com>
+References: <14072510.211.1331046642686.JavaMail.geo-discussion-forums@ynlr19>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1084)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted
+ sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+
+
+On Mar 6, 2012, at 9:10 AM, Tony Summerville wrote:
+
+> I'd really appreciate any help or thoughts on this issue.
+> 
+> I'm trying to wrap a simple shared library in a Ruby Gem. The .so file was precompiled by a 3rd-party vendor and I don't have access to the C source files.
+> 
+> I've installed FFI gem v1.0.11 and am able to get the basic "getpid" example working perfectly, but when I try to load the .so file I get the following error:
+> 
+> ruby-1.9.2-p180 :001 > require "prova-vhm-raw2xml"
+> LoadError: Could not open library '/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so': dlopen(/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so, 5): no suitable image found.  Did find:
+> 	/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so: unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x00
+> 
+
+> Other potentially relevant notes:
+> - I'm on Mac OSX with 64 bit processor
+> - The libZVLParser64.so was compiled for 64 bit architecture
+> 
+> Anything obvious that I'm missing? I'm new to FFI and wrapping C libs with Ruby in general, so I'm just not quite sure what I'm doing wrong. I've read through all the documentation and looked through the Google Group but can't figure out what the problem is.
+> 
+> Thanks again for any help or insight you can provide!
+
+
+What is the output of:
+
+  file /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so
+
+It sounds like there is an architecture mismatch, so the output from that should hopefully shed some light on the problem.
+
+cr
+

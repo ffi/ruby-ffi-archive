@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] DataConverter for callback type</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] DataConverter for callback type</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/30/13 11:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr"><div><br></div>Hmm. &nbsp;There are a couple of ways of doing it:<div>- making a DataConverter that has a native_type of a Type::Function actually *work* instead of crashing the VM (or failing with an error on JRuby)</div><div>- allowing FFI::Function.new() to take a call context and a function pointer/proc/block instead of a separate rtype and param_type array for efficiency.</div><div><br></div><div>In the meantime, you can probably achieve what you want.</div><div>e.g.</div><div><div><br></div><div>module QSort</div><div>&nbsp; extend FFI::Library</div><div>&nbsp; ffi_lib 'c'</div><div><br></div><div>&nbsp; module Comparator</div><div>&nbsp; &nbsp; RTYPE = FFI::Type::SINT</div><div>&nbsp; &nbsp; PARAM_TYPES = &nbsp;[ FFI::Type::POINTER, FFI::Type::POINTER ].freeze</div><div>&nbsp; &nbsp; extend FFI::DataConverter</div><div><br></div><div>&nbsp; &nbsp; def self.native_type</div><div>&nbsp; &nbsp; &nbsp; FFI::Type::POINTER</div><div>&nbsp; &nbsp; end</div><div><br></div><div>&nbsp; &nbsp; def self.to_native(value, ctx)</div><div>&nbsp; &nbsp; &nbsp; FFI::Function.new(RTYPE, PARAM_TYPES, value)</div><div>&nbsp; &nbsp; end</div><div>&nbsp; end</div><div>&nbsp; attach_function :qsort, [ :pointer, :size_t, :size_t, Comparator ], :void</div><div>end</div><div><br></div><div>ptr = FFI::MemoryPointer.new(:int, 2)</div><div>ptr[0].write_int(2)</div><div>ptr[1].write_int(1)</div><div>puts "unsorted=#{ptr.get_array_of_int(0, 2)}"</div><div>QSort.qsort(ptr, 2, 4, -&gt;(p1, p2) { i1, i2 = p1.read_int, p2.read_int; &nbsp;i1 &lt; i2 ? -1 : i1 &gt; i2 ? 1 : 0 })</div><div>puts "sorted=#{ptr.get_array_of_int(0, 2)}"</div><div><br></div><br>On Monday, 23 September 2013 05:37:23 UTC+10, Matijs van Zuijlen  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">I've been digging a little further, and it seems that the rbffi_Function_ForProc
+<br>function defined in Function.c does exactly what I want, since I have a
+<br>FFI::FunctionType (i.e., self::Callback), and a Proc (the value argument of
+<br>#to_native), and I would like to turn this into a FFI::Function.
+<br>
+<br>Would it be possible to expose this function to Ruby?
+<br>
+<br>On 22/09/13 13:05, Matijs van Zuijlen wrote:
+<br>&gt; Hello,
+<br>&gt; 
+<br>&gt; I'm trying to create a DataConverter that represents a callback function. The
+<br>&gt; code basically boils down to this:
+<br>&gt; 
+<br>&gt; module Lib
+<br>&gt; &nbsp; include FFI::Library
+<br>&gt; &nbsp; ffi_lib 'some-library'
+<br>&gt; end
+<br>&gt; 
+<br>&gt; class Foo &lt; Proc
+<br>&gt; &nbsp; extend FFI::DataConverter
+<br>&gt; 
+<br>&gt; &nbsp; Callback = Lib.callback ... # usual call to FFI::Library.callback
+<br>&gt; 
+<br>&gt; &nbsp; def self.native_type
+<br>&gt; &nbsp; &nbsp; self::Callback
+<br>&gt; &nbsp; end
+<br>&gt; end
+<br>&gt; 
+<br>&gt; [The reason I'm doing this is that I want to wrap procs passed from ruby in some
+<br>&gt; argument conversion code using a method defined on, in this case, Foo]
+<br>&gt; 
+<br>&gt; Now, I'm unable to figure out what the definition of Foo.to_native should be.
+<br>&gt; Foo::Callback is of type FFI::FunctionType, which doesn't have a to_native method.
+<br>&gt; 
+<br>&gt; Any ideas?
+<br>&gt; 
+<br>&gt; Thanks and regards,
+<br>&gt; 
+<br>
+<br>
+<br>-- 
+<br>Matijs
+<br>
+<br></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

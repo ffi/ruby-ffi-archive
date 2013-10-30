@@ -1,0 +1,78 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: pointers and out parameters</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: pointers and out parameters</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/20/12 6:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">It looks like you need to pass the address of a zmsg_t pointer, so you need to use Pointer#write_pointer()<div>i.e. I think something like this might work:</div><div><br></div><div>&nbsp; def once&nbsp;<br>&nbsp; &nbsp; &nbsp; raise "Worker needs a responder block" unless block_given?&nbsp;<br><br>&nbsp; &nbsp; &nbsp; ptr = FFI::MemoryPointer.new(:<wbr>pointer)&nbsp;</div><div>&nbsp; &nbsp; &nbsp; reply = nil<br>&nbsp; &nbsp; &nbsp; while true</div><div>&nbsp; &nbsp; &nbsp; &nbsp; puts "calling receive"&nbsp;<br>&nbsp; &nbsp; &nbsp; &nbsp; request = Majordomo.mdwrk_recv @session, ptr&nbsp;<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "worker interrupted" unless request&nbsp;<br><br>&nbsp; &nbsp; &nbsp; &nbsp; reply = yield request&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; # The block returned a zmsg_t pointer</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ptr.write_pointer(reply)<br></div><div>&nbsp; &nbsp; &nbsp; end&nbsp;<br>&nbsp; &nbsp; end&nbsp;<br><div><br>On Thursday, 19 January 2012 17:40:01 UTC+10, Mark  Wotton  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi all,
+<br>
+<br>I'm trying to move some code from C to Ruby using FFI.
+<br>
+<br>&nbsp; The problematic chunk looks like this:
+<br>
+<br>&nbsp; int verbose = (argc &gt; 1 &amp;&amp; streq (argv [1], "-v"));
+<br>&nbsp; &nbsp; mdwrk_t *session = mdwrk_new (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; "tcp://localhost:5555", "echo", verbose);
+<br>
+<br>&nbsp; &nbsp; zmsg_t *reply = NULL;
+<br>&nbsp; &nbsp; while (1) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; zmsg_t *request = mdwrk_recv (session, &amp;reply);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; if (request == NULL)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp;Worker was interrupted
+<br>&nbsp; &nbsp; &nbsp; &nbsp; reply = request; &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp;Echo is complex... :-)
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; mdwrk_destroy (&amp;session);
+<br>&nbsp; &nbsp; return 0;
+<br>
+<br>
+<br>I'm not quite sure how to model the "reply = request" chunk - I have
+<br>this:
+<br>
+<br>
+<br>module Majordomo
+<br>&nbsp; extend FFI::Library
+<br>&nbsp; ffi_lib 'lib0mq_majordomo'
+<br>
+<br>&nbsp; attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+<br>&nbsp; attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+<br>&nbsp; attach_function :mdwrk_destroy, [:pointer], :void
+<br>&nbsp; class Worker &lt; FFI::ManagedStruct
+<br>&nbsp; &nbsp; def initialize(host, service, verbose=false)
+<br>&nbsp; &nbsp; &nbsp; @session = Majordomo.mdwrk_new host, service, verbose
+<br>&nbsp; &nbsp; end
+<br>
+<br>&nbsp; &nbsp; # this is a bit ugly, but the C expects to be in a run loop
+<br>&nbsp; &nbsp; # and therefore makes mdwrk_recv do two things...
+<br>&nbsp; &nbsp; def once
+<br>&nbsp; &nbsp; &nbsp; raise "Worker needs a responder block" unless block_given?
+<br>
+<br>&nbsp; &nbsp; &nbsp; ptr = FFI::MemoryPointer.new(:<wbr>pointer)
+<br>&nbsp; &nbsp; &nbsp; while true
+<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "calling receive"
+<br>&nbsp; &nbsp; &nbsp; &nbsp; request = Majordomo.mdwrk_recv @session, ptr
+<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "worker interrupted" unless request
+<br>
+<br>&nbsp; &nbsp; &nbsp; &nbsp; ptr = yield request
+<br>&nbsp; &nbsp; &nbsp; end
+<br>&nbsp; &nbsp; end
+<br>&nbsp; end
+<br>end
+<br>
+<br>calling it as
+<br>
+<br>&nbsp; while true
+<br>&nbsp; &nbsp; worker.once {|x| x}
+<br>&nbsp; end
+<br>
+<br>to test. The first run goes through ok, but the "ptr = yield request"
+<br>is clearly bogus: it should really be one layer of indirection out.
+<br>
+<br>I can't see how to model this, even after going through the out
+<br>parameter section in the wiki. Could you help?
+<br>
+<br>cheers
+<br>Mark</blockquote></div></div>
+</div></body>
+</html>
+</table></div>

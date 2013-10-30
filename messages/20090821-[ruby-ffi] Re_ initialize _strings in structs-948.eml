@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.212.6 with SMTP id k6cs57182wfg;
+        Fri, 21 Aug 2009 16:40:11 -0700 (PDT)
+Received: by 10.115.24.11 with SMTP id b11mr2479387waj.69.1250898011612;
+        Fri, 21 Aug 2009 16:40:11 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-px0-f148.google.com (mail-px0-f148.google.com [209.85.216.148])
+        by mx.google.com with ESMTP id 36si6076653pzk.80.2009.08.21.16.40.10;
+        Fri, 21 Aug 2009 16:40:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.148 as permitted sender) client-ip=209.85.216.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.148 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=hardfail (test mode) header.i=@googlegroups.com
+Received: by pxi12 with SMTP id 12so2111242pxi.22
+        for <headius@headius.com>; Fri, 21 Aug 2009 16:40:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:authentication-results
+         :received:dkim-signature:domainkey-signature:mime-version:received
+         :in-reply-to:references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=6YS/RAKt6rTf6WVfbhF9BcNvHb8b9EyYplAykR6W7PE=;
+        b=C3KmJmFOaEqBGyXugsDM2sp5OfU2SBpTf/4KpdEpwoVwevweB0oPQaG3CQdyDosX3X
+         x1Z3plObFnmWlcEjjsuG8x79tthAZOoT0TNFVBgswOlUnxMWuuJ7fLCqFAdwrUUgD0Gh
+         MhE4ntN7Xwqw1yliJ+e/mkAq0lgbWLyvOIQQw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=Vq9Pe7D+N6+XpD0IA1+A+fjTBba4F3at+GIXGdBW4kwXzqUbDFye/vJ0rHusY2+uac
+         DXwU9R073KgynsR7NZ6tAPJJ1ZW3bn5epCiV4SG+0xL/sI81R/HteUYkaoMP7IkXPuOW
+         rR0TGaCDE4M3C9RG88F76TIKd/Wdp4cvRcbcE=
+Received: by 10.143.21.40 with SMTP id y40mr194783wfi.20.1250898010285;
+        Fri, 21 Aug 2009 16:40:10 -0700 (PDT)
+Received: by 10.106.99.27 with SMTP id w27gr12prb.0;
+	Fri, 21 Aug 2009 16:40:10 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.143.20.35 with SMTP id x35mr380288wfi.28.1250898009591; Fri, 21 Aug 2009 16:40:09 -0700 (PDT)
+Received: by 10.143.20.35 with SMTP id x35mr380287wfi.28.1250898009572; Fri, 21 Aug 2009 16:40:09 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from rv-out-0708.google.com (rv-out-0708.google.com [209.85.198.243]) by gmr-mx.google.com with ESMTP id k19si925685waf.4.2009.08.21.16.40.08; Fri, 21 Aug 2009 16:40:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.198.243 as permitted sender) client-ip=209.85.198.243;
+Received: by rv-out-0708.google.com with SMTP id c5so345741rvf.42 for <ruby-ffi@googlegroups.com>; Fri, 21 Aug 2009 16:40:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=ShTGN7hhexInlq4oIYIEWXcNkOESCkxXxU3VAoe+FgI=; b=mVygjVCCUOiNOfrSm1gARLp33mSTCZGRqWMmZnekIC9N5Oo9K636aDhheuqZHOh4Ji 0g1m0E203oU1Jb+b47pwxh+bGLIVnKX7rXgjwtwVkIDk7Og8xdPhfvaIWEralhj7gArm /u0qnxzSPB3Hk3Y4HubcJNit45EFun/qh5rqQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=EErc4tpCQmYuwKEExUTpLV0qel+hBV55vRVP7Zy86mSVF297kZHcFksrYAMZs1qLHP gBIwqqR7D05Gy6m+nwvghC217YhV7aXeCN7Ie97bmzSCSkSdS8Nr1b8ahDr27zg60n1P PQskyijIvksC8AaQhhRH+48zqGer+R4+kIkOs=
+MIME-Version: 1.0
+Received: by 10.140.208.15 with SMTP id f15mr985255rvg.164.1250898008488; Fri,  21 Aug 2009 16:40:08 -0700 (PDT)
+In-Reply-To: <2a41a5bb-7107-4a41-8d6d-3cb7f1ec4057@32g2000yqj.googlegroups.com>
+References: <2a41a5bb-7107-4a41-8d6d-3cb7f1ec4057@32g2000yqj.googlegroups.com>
+Date: Sat, 22 Aug 2009 09:40:08 +1000
+Message-ID: <4ccee320908211640haf09f67g9a5b60d04b6f9a21@mail.gmail.com>
+Subject: [ruby-ffi] Re: initialize :strings in structs
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Its a Ruby FFI problem.
+
+The problem is that to set a string in a C struct (which is just a
+pointer to some native memory), you need to allocate & manage the
+deallocation of native memory.  Automatically managing the
+deallocation so the memory is not freed prematurely (and crashing the
+VM), nor kept indefinitely (a memory leak) is a bit tricky, so we
+punted on it and pushed that back up to the FFI API user.
+
+So, to be able to set string fields, you need to declare them as
+:pointer, and manage the memory yourself via a MemoryPointer, or
+mapping in malloc()/free() and using them.
+
+Thats no exactly convenient, but for now, its what you have to do.
+
+Note: JRuby works around this by attaching the string memory ownership
+to the Struct ruby instance.  I'm not exactly sure if this is the best
+way to do it, since it hides the allocation/deallocation in a
+potentially dangerous way - when the ruby object gets collected, the
+memory gets freed, and if that struct got passed to native code that
+kept references to the strings, then that memory gets freed, and the
+next time the native code accesses those memory locations, everything
+goes *boom*, and its hard to figure out why.
+
+2009/8/22 Jan <jan.berkel@gmail.com>:
+>
+> hey all,
+>
+> is it possible (with NiceFFI) to initialize strings inside a struct?
+> e.g.
+>
+> class Config < NiceFFI::Struct
+> =A0 =A0layout(:api_version, :int,
+> =A0 =A0 =A0:cache_location, :string
+> =A0 =A0 =A0:settings_location, :string
+> =A0 )
+>
+> Config.new(:api_version=3D>1, :cache_location=3D>"/tmp")
+>
+> I get
+>
+> /Library/Ruby/Gems/1.8/gems/nice-ffi-0.1/lib/nice-ffi/nicestruct.rb:
+> 380:in `[]=3D': Cannot set :string fields (ArgumentError)
+>
+> is this a problem with FFI in general or could support for this added?
+>
+> =A0thanks,
+>
+> =A0 jan
+>

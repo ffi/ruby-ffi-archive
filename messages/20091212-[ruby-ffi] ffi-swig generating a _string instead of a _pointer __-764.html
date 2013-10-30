@@ -1,0 +1,33 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 9:15 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">I have a C++ function that takes a pointer to a buffer where the function stores a C-string.
+<br>
+<br>This is what I wrote and got working.
+<br>
+<br>&nbsp; attach_function :GoIO_GetNthAvailableDeviceName, [:pointer, :int, :int, :int, :int], :int
+<br>
+<br>However if I use ffi-swig it generates a :string as the first parameter.
+<br>
+<br>&nbsp; attach_function :GoIO_GetNthAvailableDeviceName, [ :string, :int, :int, :int, :int ], :int
+<br>
+<br>Is there anyway this could work? The function needs an address to a location to store a C-string.
+<br>
+<br>Here's the C++ function:
+<br>
+<br>GOIO_DLL_INTERFACE_DECL gtype_int32 GoIO_GetNthAvailableDeviceName(
+<br>&nbsp; char *pBuf,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // [out] ptr to buffer to store device name string.
+<br>&nbsp; gtype_int32 bufSize,&nbsp;&nbsp; // [in] number of bytes in buffer pointed to by pBuf.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Strlen(pBuf) &lt; bufSize, because the string is NULL terminated.
+<br>&nbsp; gtype_int32 vendorId,&nbsp; // [in] USB vendor id
+<br>&nbsp; gtype_int32 productId, //[in] USB product id
+<br>&nbsp; gtype_int32 N);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //[in] index into list of known devices, 0 =&gt; first device in list.
+<br>
+<br>
+<br></div></body>
+</html>
+</table></div>

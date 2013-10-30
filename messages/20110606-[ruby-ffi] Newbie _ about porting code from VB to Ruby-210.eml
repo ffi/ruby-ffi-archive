@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.116.12 with SMTP id o12cs81620agc;
+        Mon, 6 Jun 2011 20:18:21 -0700 (PDT)
+Received: by 10.236.132.14 with SMTP id n14mr34515yhi.67.1307416700031;
+        Mon, 06 Jun 2011 20:18:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMC-paeAExD0sLbvBBoEJj70Sw@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id 64si24835713yhs.74.2011.06.06.20.18.18
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 06 Jun 2011 20:18:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMC-paeAExD0sLbvBBoEJj70Sw@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMC-paeAExD0sLbvBBoEJj70Sw@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCMC-paeAExD0sLbvBBoEJj70Sw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd10 with SMTP id 10sf9185542gyd.7
+        for <headius@headius.com>; Mon, 06 Jun 2011 20:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=LgzULtXVEW/Sp1VgBEcnnQX2w3WntEkNmhYfk5NRv2k=;
+        b=z1MUFJh/affTUt9tQDWJ7ynpQt25GgJrT3xuGUDP6kBBaOcVphv1bipGnLtcqKlNGI
+         TW/X/n1NEJBr+mk+A+DS1dGhfpQdxlRa+x5lUX6dKfYIG3NvbdXqTTGgW9v3x0gwlhGH
+         7efbEl14jxcfO9TpiSw1lNsi0UaUEbtK9mcH4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=hd6U4PBcypnb7eBsC6w5im6qzikRaKg6YI983b+LsXvmPp+CWmQQ7vgkBzZYsOHxCZ
+         RY3zwZlH/acBFh3BUaFA6UoUZxkRWmkIiF15yR/TmeywTze0+VfZjHD7r3GuDGE/+yDx
+         bPeYp0ZtLlv+3OZU1B2hKVW3R/j6Qdkoi1tdc=
+Received: by 10.101.152.37 with SMTP id e37mr539437ano.39.1307416692841;
+        Mon, 06 Jun 2011 20:18:12 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.197.18 with SMTP id z18ls852700anp.1.gmail; Mon, 06 Jun
+ 2011 20:18:12 -0700 (PDT)
+Received: by 10.101.116.9 with SMTP id t9mr3153150anm.19.1307416692290;
+        Mon, 06 Jun 2011 20:18:12 -0700 (PDT)
+Received: by 10.151.1.41 with SMTP id d41msybi;
+        Mon, 6 Jun 2011 16:09:29 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.143.15.11 with SMTP id s11mr631327wfi.42.1307401768959; Mon,
+ 06 Jun 2011 16:09:28 -0700 (PDT)
+Received: by f31g2000pri.googlegroups.com with HTTP; Mon, 6 Jun 2011 16:09:28
+ -0700 (PDT)
+Date: Mon, 6 Jun 2011 16:09:28 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1;
+ Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152;
+ .NET CLR 3.5.30729; InfoPath.2),gzip(gfe)
+Message-ID: <2ea50fbd-bd24-4ad7-b04c-bc5f936d520e@f31g2000pri.googlegroups.com>
+Subject: [ruby-ffi] Newbie ? about porting code from VB to Ruby
+From: JesseFair <jfair9@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jfair9@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi there I am new to Ruby programming and I am trying to port the
+below code over to Ruby:
+
+
+
+Declare Function WinHLLAPI Lib "\\Wally\WinApps
+\SYNAPSE5.32\Whllapi.dll" (lpwFunction As Long, ByVal lpbyString As
+Any, lpwLength As Any, lpwReturnCode As Long) As Long
+
+
+Declare Function WinHLLAPIStartup Lib "\\Wally\WinApps
+\SYNAPSE5.32\Whllapi.dll" (ByVal wVersionRequired As Long, lpData As
+WHLLAPIDATA) As Long
+
+Public tHLLAPIData As WHLLAPIDATA
+
+
+Public Type WHLLAPIDATA
+    wVersion As Long
+    'szDescription(128) As Byte
+    szDescription As String * 128
+End Type
+
+
+    VersionRequired = 3
+    tHLLAPIData.wVersion = 3
+
+hold = WinHLLAPIStartup(VersionRequired, tHLLAPIData)
+
+
+
+Any help would be greatly appreciated.

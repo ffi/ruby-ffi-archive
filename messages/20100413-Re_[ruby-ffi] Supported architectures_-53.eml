@@ -1,0 +1,156 @@
+Delivered-To: headius@headius.com
+Received: by 10.151.157.14 with SMTP id j14cs171373ybo;
+        Tue, 13 Apr 2010 14:52:01 -0700 (PDT)
+Received: by 10.114.54.1 with SMTP id c1mr2307092waa.61.1271195520595;
+        Tue, 13 Apr 2010 14:52:00 -0700 (PDT)
+Return-Path: <3fefESwkJCHUpfXbllgXkZfTbe.VhfknUr-YYbZhhZeXZkhnil.Vhf@groups.bounces.google.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id 5si44485899pzk.50.2010.04.13.14.51.59;
+        Tue, 13 Apr 2010 14:51:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3fefESwkJCHUpfXbllgXkZfTbe.VhfknUr-YYbZhhZeXZkhnil.Vhf@groups.bounces.google.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3fefESwkJCHUpfXbllgXkZfTbe.VhfknUr-YYbZhhZeXZkhnil.Vhf@groups.bounces.google.com designates 74.125.83.190 as permitted sender) smtp.mail=3fefESwkJCHUpfXbllgXkZfTbe.VhfknUr-YYbZhhZeXZkhnil.Vhf@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg12 with SMTP id 12sf3224605pvg.7
+        for <headius@headius.com>; Tue, 13 Apr 2010 14:51:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:received:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=c6s5/+zC+c0Fqd3yLwitpaYj97jPdaT+lgJr0o7uOvM=;
+        b=ghZkI8912EFNzj9aSeKI3tikpXdbCscZ6wtdnwGsYH1nnOTeirxW+SxIZT7KrM54hW
+         tftPhick9nc5iqcZ640vYfwvHy8vi2fHlZC2XrZDEvCnEnBop81ttiXyZTT1BXvAQb4B
+         Lx+TO3Vv4g+NnpOci4i2k6AZ2TORF9tTQNt2Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=eh19M5YVqnQH4KU4ZGqjhOSZQpf1w85t919VoQzPQDSbTddJ7ASgYWW9mDN5xgrAck
+         J+dye8jMIwmCZ3hEJY3fYuXMnBMKRYJzAOQQ/k2R7kN9+OJvaC/Hl1D63hgRSAikHgLu
+         bvSIMOC3p8eJ/CCcMIs26B6SWDbPWAubgUTOM=
+Received: by 10.142.247.36 with SMTP id u36mr369746wfh.49.1271195517335;
+        Tue, 13 Apr 2010 14:51:57 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.248.9 with SMTP id v9ls124780wfh.1.p; Tue, 13 Apr 2010 
+	14:51:55 -0700 (PDT)
+Received: by 10.143.20.42 with SMTP id x42mr1077955wfi.17.1271195515213;
+        Tue, 13 Apr 2010 14:51:55 -0700 (PDT)
+Received: by 10.143.20.42 with SMTP id x42mr1077954wfi.17.1271195515194;
+        Tue, 13 Apr 2010 14:51:55 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pw0-f46.google.com (mail-pw0-f46.google.com [209.85.160.46])
+        by gmr-mx.google.com with ESMTP id 19si1207345pzk.7.2010.04.13.14.51.54;
+        Tue, 13 Apr 2010 14:51:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.160.46 as permitted sender) client-ip=209.85.160.46;
+Received: by mail-pw0-f46.google.com with SMTP id 9so5697506pwj.5
+        for <ruby-ffi@googlegroups.com>; Tue, 13 Apr 2010 14:51:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.140.225.7 with HTTP; Tue, 13 Apr 2010 14:51:53 -0700 (PDT)
+In-Reply-To: <863083a0-c4f8-4bbc-98e2-be07cf94bdf4@c36g2000yqm.googlegroups.com>
+References: <863083a0-c4f8-4bbc-98e2-be07cf94bdf4@c36g2000yqm.googlegroups.com>
+Date: Wed, 14 Apr 2010 07:51:53 +1000
+Received: by 10.140.252.7 with SMTP id z7mr1559304rvh.186.1271195513994; Tue, 
+	13 Apr 2010 14:51:53 -0700 (PDT)
+Message-ID: <y2o4ccee321004131451z44d1be7od66d49b1baf5ca23@mail.gmail.com>
+Subject: Re: [ruby-ffi] Supported architectures?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.160.46 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f18a6e56e31352f
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4be33f27bb798b84
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+"Officially" (meaning what I'll try and debug) only i386 and x86_64
+are supported.  Other people have fixed up the ppc and ppc64 ports,
+but everything else is in the "waiting until someone cares enough to
+test it and fix what breaks".
+
+Depending on how much effort you want to put in, and given there are
+probably only a handful of people on those alternative arches, it
+might be best to just disable builds on them.  If someone complains
+enough about it not being there, let them fix it.
+
+The kfreebsd arches could conceivably be supported - FreeBSD should
+be, but that weird freebsd-kernel-with-gnu-libc setup might require an
+ifdef tweak.
+
+
+On 14 April 2010 03:12, micah <micaho@gmail.com> wrote:
+> Hi all,
+>
+> When I uploaded ffi to Debian, it was automatically sent to the Debian
+> buildd network, where a build was attempted on all the different
+> architectures that Debian supports. Many of these failed, a few of
+> them succeeded.
+>
+> I will disable the builds on these failing architectures, but am
+> available to do anything to try and help debug the failures. What
+> architectures the project aims to support?
+>
+> The ones that succeeded were: amd64, i386, powerpc, and sparc.
+>
+> The ones that failed were: alpha, armel, hppa, ia64, mipsel, s390,
+> kfreebsd_amd64 and kfreebsd_i386.
+>
+> The alpha, armel, hppa, ia64, mipsel, s390 architectures all had this
+> build error:
+>
+> cc -I. -I. -I/usr/lib/ruby/1.8/alpha-linux -I/build/buildd-libffi-
+> ruby_0.6.2debian-5-alpha-WnppY4/libffi-ruby-0.6.2debian/ext/ffi_c -
+> DRUBY_EXTCONF_H=3D\"extconf.h\" =A0 =A0-fPIC -mieee -fno-strict-aliasing =
+-g -
+> g -O2 =A0-fPIC =A0 -c Platform.c
+> Platform.c:28:2: error: #error "Unknown cpu type"
+> Platform.c: In function 'rbffi_Platform_Init':
+> Platform.c:57: error: 'CPU' undeclared (first use in this function)
+> Platform.c:57: error: (Each undeclared identifier is reported only
+> once
+> Platform.c:57: error: for each function it appears in.)
+> make[1]: *** [Platform.o] Error 1
+>
+> kfreebsd_amd64 and kfreebsd_i386 both gave this error:
+> make[1]: Entering directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+> kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c'
+> cc -I. -I. -I/usr/lib/ruby/1.8/x86_64-kfreebsd-gnu -I/build/buildd-
+> libffi-ruby_0.6.2debian-5-kfreebsd-amd64-gPYTzl/libffi-
+> ruby-0.6.2debian/ext/ffi_c -DRUBY_EXTCONF_H=3D\"extconf.h\" =A0 =A0-fPIC =
+-
+> fno-strict-aliasing -g -g -O2 =A0-fPIC =A0 -c Variadic.c
+> In file included from /usr/include/sys/types.h:217,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from /usr/include/sys/param.h:42,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 from Variadic.c:28:
+> ./endian.h:37:4: error: #error "Cannot determine the endian-ness of
+> this platform"
+> make[1]: *** [Variadic.o] Error 1
+> make[1]: Leaving directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+> kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c
+>
+>
+>
+> --
+> To unsubscribe, reply using "remove me" as the subject.
+>

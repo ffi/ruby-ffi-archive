@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] char array inside struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] char array inside struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>daniel åkerud &lt;daniel.akerud@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/30/09 7:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+I have a char array baked into a struct (not a pointer), and I just
+want a confirm that I do it the correct/intended way.
+
+struct {
+ uint8 Value;
+ uint8 String[SIZE_OF_ARRAY];
+} MyArray_t;
+
+class MyArray_t &lt; FFI::Struct
+ layout  :Value,  :uint8,
+         :String, [:uint8, SIZE_OF_ARRAY]
+end
+
+my_array_struct = MyArray_t.new
+c_function(my_array_struct.pointer) #the c_function fills the char
+array
+str = my_array_struct[:String].to_s # is to_s the correct function to
+retrieve a string? read_string doesn't work.
+
+Thanks,
+/D
+
+</pre></div></body>
+</html>
+</table></div>

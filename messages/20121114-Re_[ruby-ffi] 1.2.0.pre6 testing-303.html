@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 1.2.0.pre6 testing</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 1.2.0.pre6 testing</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/14/12 4:37 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>While I never install ffi this way, jruby+bundler on Win7 32bit with JRuby 
+<span class="moz-txt-citetags">&gt; &gt; </span>1.7.0 ended up in Wile E. flames trying to build the C ext due to my 
+<span class="moz-txt-citetags">&gt; &gt; </span>scheming: 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>C:\Users\Jon\Downloads\temp\ffi-java&gt;type Gemfile 
+<span class="moz-txt-citetags">&gt; &gt; </span>source :rubygems 
+<span class="moz-txt-citetags">&gt; &gt; </span>gem 'ffi', '1.2.0.pre6', :platforms =&gt; :jruby 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>C:\Users\Jon\Downloads\temp\ffi-java&gt;bundle install 
+<span class="moz-txt-citetags">&gt; &gt; </span>Fetching gem metadata from <a class="moz-txt-link-freetext" href="http://rubygems.org/">http://rubygems.org/</a>........... 
+<span class="moz-txt-citetags">&gt; &gt; </span>Fetching gem metadata from <a class="moz-txt-link-freetext" href="http://rubygems.org/">http://rubygems.org/</a>.. 
+<span class="moz-txt-citetags">&gt; &gt; </span>Installing ffi (1.2.0.pre6) with native extensions 
+<span class="moz-txt-citetags">&gt; &gt; </span>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native 
+<span class="moz-txt-citetags">&gt; &gt; </span>extension. 
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> 
+<span class="moz-txt-citetags">&gt; </span>Hmm.  When installing on something that is not MRI, extconf.rb generates a 
+<span class="moz-txt-citetags">&gt; </span>dummy Makefile.  I suspect on win32, the dummy Makefile isn't quite 
+<span class="moz-txt-citetags">&gt; </span>correct.  Can you investigate this one a bit more (look right at the bottom 
+<span class="moz-txt-citetags">&gt; </span>of ext/ext_c/extconf.rb)?  It could be something as simple as \r\n vs \n 
+<span class="moz-txt-citetags">&gt; </span>line termination.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I can continue to publish the ffi-java gem, but, I want to get rid of it in 
+<span class="moz-txt-citetags">&gt; </span>the long term.
+</pre></blockquote><pre wrap>
+
+Likely just need this tweak at extconf.rb:59
+
+-  File.open("Makefile", "w") do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>mf<span class="moz-txt-tag">|</span></code>
++  File.open("Makefile", "wb") do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>mf<span class="moz-txt-tag">|</span></code>
+
+I'll try it out a bit later.
+</pre></div></body>
+</html>
+</table></div>

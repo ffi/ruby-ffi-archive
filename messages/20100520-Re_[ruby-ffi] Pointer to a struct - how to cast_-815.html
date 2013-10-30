@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 8:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 21 May 2010 05:04, DA <a class="moz-txt-link-rfc2396E" href="mailto:drew.avis@gmail.com">&lt;drew.avis@gmail.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>So I guess I need the equivalent of "get_array_of_struct"?  I can't
+<span class="moz-txt-citetags">&gt; </span>find an example for this case (array of struct) on the wiki.  Any
+<span class="moz-txt-citetags">&gt; </span>ideas?
+</pre></blockquote><pre wrap>
+
+That one is going to be a bit nasty.
+
+Try using FFI::Pointer#+
+
+e.g.
+0.upto(tis[:len]).each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code>
+  s = FM::FTexFtItemT.new(tis[:val] + (i * FM::FTexFtItemT.size))
+  # do stuff with s here
+end
+
+
+Alternatively, you can use Pointer.new(FTexFtItemT, tis[:val]) to
+create a new pointer with a different type_size (the size used to step
+along it using the [] method).
+
+e.g.
+
+val_array = FFI::Pointer.new(FM::FTexFtItemT, tis[:val])
+0.upto(tis[:len]).each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code>
+  s = FM::FTexFtItemT.new(val_array[i])
+  # do stuff with s struct here
+end
+
+It wouldn't be that hard to create a bit of a helper class to do this,
+since its a pretty common thing ... and some enterprising induhvidual
+might want to do that and submit it for inclusion in say ... NiceFFI.
+</pre></div></body>
+</html>
+</table></div>

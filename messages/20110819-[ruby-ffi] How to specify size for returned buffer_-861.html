@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] How to specify size for returned buffer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] How to specify size for returned buffer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>cfis <cfis@savagexi.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/19/11 11:57 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm trying to wrap FreeImage (<a class="moz-txt-link-freetext" href="http://freeimage.sourceforge.net/">http://freeimage.sourceforge.net/</a>) and
+it has this function:
+
+DLL_API BOOL DLL_CALLCONV FreeImage_AcquireMemory(FIMEMORY *stream,
+BYTE **data, DWORD *size_in_bytes);
+
+The way this works is you hand FreeImage a pointer (data) which it
+then allocates memory for and returns the size in the size_in_bytes
+out parameter.  I've attached example C code from the FreeImage docs
+in case it helps.
+
+So I'm not sure how to wrap this function.  So far I have this:
+
+FreeImage.attach_function('FreeImage_AcquireMemory',
+[:pointer, :pointer, :uint], :bool)
+
+buffer = MemoryPointer.new(:pointer)
+size_ptr = MemoryPointer.new(:uint)
+FreeImage.FreeImage_AcquireMemory(self, buffer, size);
+
+What I would then like to do is something like:
+
+buffer.size = size_ptr.read_pointer()
+
+But buffer doesn't have any such API.
+
+Any help appreciated.
+
+Thanks,
+
+Charlie
+------------
+void testAcquireMemIO(const char *lpszPathName) {
+  FIMEMORY *hmem = NULL;
+  // load a regular file
+  FREE_IMAGE_FORMAT fif = FreeImage_GetFileType(lpszPathName);
+  FIBITMAP *dib = FreeImage_Load(fif, lpszPathName, 0);
+
+  // open and allocate a memory stream
+  hmem = FreeImage_OpenMemory();
+
+  // save the image to a memory stream
+  FreeImage_SaveToMemory(FIF_PNG, dib, hmem, PNG_DEFAULT);
+  FreeImage_Unload(dib);
+
+  // get the buffer from the memory stream
+  BYTE *mem_buffer = NULL;
+  DWORD size_in_bytes = 0;
+  FreeImage_AcquireMemory(hmem, &amp;mem_buffer, &amp;size_in_bytes);
+
+  // save the buffer to a file stream
+  FILE *stream = fopen("buffer.png", "wb");
+  if(stream) {
+    fwrite(mem_buffer, sizeof(BYTE), size_in_bytes, stream);
+    fclose(stream);
+  }
+  // close and free the memory stream
+  FreeImage_CloseMemory(hmem);
+}
+</pre></div></body>
+</html>
+</table></div>

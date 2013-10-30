@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: How to declare (int *argc, char *argv)?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: How to declare (int *argc, char *argv)?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>przemo_li <an.przemek@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/19/11 8:38 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Oh
+FGAPI and FGAPIENTRY have no meaning on Linux and I care only about
+Linux support.
+
+/* Non-Windows definition of FGAPI and FGAPIENTRY */
+# define FGAPI
+# define FGAPIENTRY
+
+On Aug 19, 3:36 pm, przemo_li <a class="moz-txt-link-rfc2396E" href="mailto:an.prze...@gmail.com">&lt;an.prze...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to do my own bindings for freeGLUT, but fail at:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>FGAPI void FGAPIENTRY glutInit( int* pargc, char** argv )
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>how to declare it with ruby ffi?
+<span class="moz-txt-citetags">&gt; </span>Then how to pass argc, argv? (ruby seam to have no such thing)
+</pre></div></body>
+</html>
+</table></div>

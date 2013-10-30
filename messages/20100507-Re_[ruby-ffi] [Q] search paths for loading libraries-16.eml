@@ -1,0 +1,126 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.226.5 with SMTP id y5cs47509ybg;
+        Fri, 7 May 2010 17:15:07 -0700 (PDT)
+Received: by 10.227.145.133 with SMTP id d5mr737252wbv.43.1273277706859;
+        Fri, 07 May 2010 17:15:06 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNehycqZFhCH2pLfBBoEFInH9g@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id l25si7589961wbl.5.2010.05.07.17.15.05;
+        Fri, 07 May 2010 17:15:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNehycqZFhCH2pLfBBoEFInH9g@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNehycqZFhCH2pLfBBoEFInH9g@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCNehycqZFhCH2pLfBBoEFInH9g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwc33 with SMTP id 33sf681941wwc.7
+        for <headius@headius.com>; Fri, 07 May 2010 17:15:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=YylnqAr9t9S+6TVDn/vTeLmmKSFJm+HBj2tOPoFmFDU=;
+        b=OAFEOfzhKURxkR6vukThZGmvCk/1KF0pgZnKZr6uWgd8bvQLKo9DIYay38r/60TNF3
+         Ce33obxGbazzc5ohhXraZ9s/QIFk9fG1hS5p3fKA13YmVv4DyyiQTbgXAlR7AN9Tllnx
+         9OPbZXVs7bEHfB0UEV88fB3TnabZVdX+JbQ1E=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=HTmq8SlyL6sXdF46QL+RxksoLGXJ/3uxEpgiM6fWjB7/yUPjbRPe+u+IwNTGKlhyVu
+         NX2eHJ0Z7Gg214Qxa/x1NsSYEY0f7Yz/V2gOhDBvWoyDxPgxl5UKltTh9GVxGzK97sfc
+         mlMoAAiQjQL0i2ahvSqOhRMfjjl9G3F2hmgJk=
+Received: by 10.223.15.141 with SMTP id k13mr91435faa.16.1273277703492;
+        Fri, 07 May 2010 17:15:03 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.213.59.76 with SMTP id k12ls2841394ebh.3.p; Fri, 07 May 2010 
+	17:15:01 -0700 (PDT)
+Received: by 10.213.68.65 with SMTP id u1mr104588ebi.20.1273277701688;
+        Fri, 07 May 2010 17:15:01 -0700 (PDT)
+Received: by 10.213.68.65 with SMTP id u1mr104587ebi.20.1273277701661;
+        Fri, 07 May 2010 17:15:01 -0700 (PDT)
+Return-Path: <jacius@gmail.com>
+Received: from mail-gw0-f41.google.com (mail-gw0-f41.google.com [74.125.83.41])
+        by gmr-mx.google.com with ESMTP id 17si192728ewy.7.2010.05.07.17.15.00;
+        Fri, 07 May 2010 17:15:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jacius@gmail.com designates 74.125.83.41 as permitted sender) client-ip=74.125.83.41;
+Received: by mail-gw0-f41.google.com with SMTP id 18so994335gwj.28
+        for <ruby-ffi@googlegroups.com>; Fri, 07 May 2010 17:15:00 -0700 (PDT)
+Received: by 10.91.1.16 with SMTP id d16mr681471agi.113.1273277700109; Fri, 07 
+	May 2010 17:15:00 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.30.13 with HTTP; Fri, 7 May 2010 17:14:40 -0700 (PDT)
+In-Reply-To: <z2w94e476fd1005061541s71c77e72hf3ffd475fd52df67@mail.gmail.com>
+References: <F00D5192-ED75-4A6A-BE66-A8B203915C08@mac.com> 
+	<o2i4ccee321005061526w3b872f1dyce9dc561f693b257@mail.gmail.com> 
+	<x2o94e476fd1005061531ye84e474fgaef7777d7ef48536@mail.gmail.com> 
+	<t2k4ccee321005061538o8cc73453y27220017514cee1a@mail.gmail.com> 
+	<z2w94e476fd1005061541s71c77e72hf3ffd475fd52df67@mail.gmail.com>
+From: John Croisant <jacius@gmail.com>
+Date: Fri, 7 May 2010 19:14:40 -0500
+Message-ID: <v2rbf2f536c1005071714h8a6bb9c0k4536c3da99f69c1e@mail.gmail.com>
+Subject: Re: [ruby-ffi] [Q] search paths for loading libraries
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jacius@gmail.com designates 74.125.83.41 as permitted sender) 
+	smtp.mail=jacius@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jacius@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 6, 2010 at 5:41 PM, Jeremy Voorhis <jvoorhis@gmail.com> wrote:
+>
+> On Thu, May 6, 2010 at 3:38 PM, Wayne Meissner <wmeissner@gmail.com> wrot=
+e:
+>>
+>> On 7 May 2010 08:31, Jeremy Voorhis <jvoorhis@gmail.com> wrote:
+>> > Is it only possible to specify complete, absolute paths to libraries f=
+or
+>> > ffi_lib? An api similar to Ruby's $: would be convenient for adding
+>> > directories to the load path, like FFI.load_paths << '/usr/local/lib'.
+>>
+>> It would be fairly trivial to add ffi_library_path on a per-module
+>> basis. =C2=A0I'm not sure whether adding it globally is such a good idea=
+ -
+>> one library can potentially screw another one over that way.
+>>
+>> If anyone wants to hack on it, look in lib/ffi/library.rb in the
+>> ffi_lib method. =C2=A0Both ruby-ffi and JRuby use the same code for that
+>> section, so a patch for one should apply to the other.
+>
+> +1 to scoping it per-module. I had a feeling that idea was only half-bake=
+d
+> :)
+>
+
+Shameless plug:
+
+My Nice-FFI library <http://github.com/jacius/nice-ffi/> has code to
+do exactly what you want. Have a look at the usage guide and see if
+you're interested:
+
+  http://github.com/jacius/nice-ffi/blob/master/docs/usage.rdoc
+
+Be aware, the API for Nice-FFI is not considered stable yet, i.e. I
+might change stuff in the future (although in practice it doesn't
+change much). But all the code is under the MIT License, so you could
+package it (or parts of it) with your code if API changes concern you.
+
+- John

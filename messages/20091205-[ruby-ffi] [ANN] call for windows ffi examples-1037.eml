@@ -1,0 +1,120 @@
+Delivered-To: headius@headius.com
+Received: by 10.115.91.6 with SMTP id t6cs593576wal;
+        Sat, 5 Dec 2009 08:45:46 -0800 (PST)
+Received: by 10.224.14.143 with SMTP id g15mr2494271qaa.123.1260031544689;
+        Sat, 05 Dec 2009 08:45:44 -0800 (PST)
+Return-Path: <3No4aSwoJCCoPUT.LUXaSYMSGOR.IUSXaHe-LLOMUUMRKMXUaVY.IUS@listserv.bounces.google.com>
+Received: from mail-qy0-f156.google.com (mail-qy0-f156.google.com [209.85.221.156])
+        by mx.google.com with ESMTP id 26si9972005qwa.30.2009.12.05.08.45.43;
+        Sat, 05 Dec 2009 08:45:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3No4aSwoJCCoPUT.LUXaSYMSGOR.IUSXaHe-LLOMUUMRKMXUaVY.IUS@listserv.bounces.google.com designates 209.85.221.156 as permitted sender) client-ip=209.85.221.156;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3No4aSwoJCCoPUT.LUXaSYMSGOR.IUSXaHe-LLOMUUMRKMXUaVY.IUS@listserv.bounces.google.com designates 209.85.221.156 as permitted sender) smtp.mail=3No4aSwoJCCoPUT.LUXaSYMSGOR.IUSXaHe-LLOMUUMRKMXUaVY.IUS@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by qyk28 with SMTP id 28sf2087582qyk.13
+        for <headius@headius.com>; Sat, 05 Dec 2009 08:45:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:x-mailer:mime-version
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=7vuUMklakUxaMccohT77IUQDvVuGQ89NQN/C5YCrXN0=;
+        b=xZQ0Hckkk7Dh8GvheMQzs8/MuB81I7Du74AnI98ZsXTuJCbXxPIxNj+95g5kj8RATB
+         jMAsblCa/b79zFAD0xxXpZrHvwLj7ceJh/xsPE5racBjlwGHOT7Ohrcpgi/01Ildf8IL
+         SUNqpcs9xF8KEXJ7HE8RZAv8QWFNbTzgIOlJM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id:x-mailer
+         :mime-version:x-original-authentication-results:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:x-thread-url
+         :x-message-url:list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=uv2t/jA9QIMVHxMbTTVA7DN1tCpoh/ZW9Q8XJiF7ZNvGLvCUyzb90hUrziWQVxogPB
+         TX8vh9aPSCfVAjzROx0A27aG4u0rLZ5c3CuVgd7MYfZdhtuRsmWBUKwdTlqhA67hpFwq
+         YJ+SONNF3IpyA2YYYarq7aXjnXuRSykMblpkc=
+Received: by 10.229.78.141 with SMTP id l13mr71099qck.16.1260031542322;
+        Sat, 05 Dec 2009 08:45:42 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.3.146 with SMTP id 18ls140259qcn.2.p; Sat, 05 Dec 2009 
+	08:45:41 -0800 (PST)
+Received: by 10.229.106.34 with SMTP id v34mr386390qco.7.1260031541702;
+        Sat, 05 Dec 2009 08:45:41 -0800 (PST)
+Received: by 10.229.106.34 with SMTP id v34mr386389qco.7.1260031541665;
+        Sat, 05 Dec 2009 08:45:41 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-vw0-f184.google.com (mail-vw0-f184.google.com [209.85.212.184])
+        by gmr-mx.google.com with ESMTP id 19si469771qyk.0.2009.12.05.08.45.40;
+        Sat, 05 Dec 2009 08:45:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.212.184 as permitted sender) client-ip=209.85.212.184;
+Received: by mail-vw0-f184.google.com with SMTP id 14so1518160vws.32
+        for <multiple recipients>; Sat, 05 Dec 2009 08:45:40 -0800 (PST)
+Received: by 10.220.127.2 with SMTP id e2mr5923665vcs.10.1260031540372;
+        Sat, 05 Dec 2009 08:45:40 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-96-11-70-171.central.biz.rr.com [96.11.70.171])
+        by mx.google.com with ESMTPS id 23sm8685798vws.9.2009.12.05.08.45.37
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Sat, 05 Dec 2009 08:45:39 -0800 (PST)
+Date: Sat, 5 Dec 2009 11:45:28 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com, rubyinstaller@googlegroups.com,
+ user@jruby.codehaus.org
+Subject: [ruby-ffi] [ANN] call for windows ffi examples
+Message-Id: <20091205114528.4a154d3d.jon.forums@gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.212.184 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/52378a154278bf8e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4ee1bef6bbe6a13f
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+You probably know that FFI enables you to use existing and custom native libraries by writing only Ruby code.
+
+You probably know that a Ruby FFI extension is multi-platform, multi-implementation and will work without changes on Ruby, JRuby, and any other Ruby implementation that supports FFI.
+
+You may even know that FFI has been part of JRuby for awhile.
+
+But you may not know that mswin32 and mingw32 binary MRI RubyGems exist for Windows users *and* they support both 1.8 and 1.9 environments.  Installation is just a "gem install ffi" away!
+
+While using FFI with the Windows API works great, documentation has been a bit sparse.  We'd like to change this and have started to collect typical usage examples at http://wiki.github.com/ffi/ffi/windows-examples
+
+The goal of the wiki page is not to try to cover everything or show off just puzzler-style code. Rather, we'd like to provide common examples for the use cases you'll likely encounter when working with the Windows API from Ruby.  You know, the 80% story.
+
+So what's the point to all of this?
+
+We'd like more real-world Windows FFI examples and I'm asking for your help in adding these examples, especially intermediate and advanced level examples.
+
+Guidelines
+==========
+1) Show off "core" examples that can be conceptually reused 
+2) Try to keep the C part of the example to less than 35 LOC
+3) Take relevant shortcuts in favor of highlighting the core idea (eg - full FFI::Struct definition really needed?) 
+4) Add unnecessary code (e.g. - free) if it hilites fundamental FFI behavior
+5) Confirm that your C code compiles and runs
+6) Validate that your Ruby FFI code runs on MRI 1.8, 1.9 and JRuby in 1.8 and 1.9 modes
+7) Reuse the side-by-side Textile wiki markup sections for your examples
+
+Feel free to edit the wiki page but be warned that the Textile + HTML + inline CSS is twitchy and non-DRY. I'm pushing the wiki page past what it was meant to do, but don't be scared off as GitHub version controls these pages...it's really hard to really mess things up.
+
+If you have a cool contribution, but can't update the wiki page, please create a http://gist.github.com/ or a http://pastie.org/ or an email and reply back to this message on our Google Group at http://groups.google.com/group/ruby-ffi
+
+Thanks!
+
+Jon

@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] extconf.rb and libffi on OSX</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] extconf.rb and libffi on OSX</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Simon Chiang <simon.a.chiang@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/12/10 12:38 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm trying to use the unreleased 0.6 version of FFI and I'm having an
+issue that I ultimately tracked back to this part of extconf.rb:
+
+  unless Config::CONFIG['host_os'] =~ /mswin32|mingw32/
+    if pkg_config("libffi") || find_header("ffi.h", "<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/local<span class="moz-txt-tag">/</span></i>
+include")
+
+      # We need at least ffi_call and ffi_prep_closure
+      libffi_ok = have_library("ffi", "ffi_call", [ "ffi.h" ]) &amp;&amp;
+have_func("ffi_prep_closure")
+
+      # Check if the raw api is available.
+      $defs &lt;&lt; "-DHAVE_RAW_API" if have_func("ffi_raw_call") &amp;&amp;
+have_func("ffi_prep_raw_closure")
+    end
+  end
+
+Apparently I need to access the raw api and so I think I need -
+DHAVE_RAW_API to be set. When I modify extconf.rb to enable that flag,
+everything works on OSX 10.5.8 but it still doesn't work on OSX
+10.6.2.
+
+By looking at the commits where this code was introduced, I gather
+this code is about detecting a functional libffi. So is libffi broke
+on OSX or does it vary between 10.5.8 and 10.6.2 in some way that
+causes FFI problems? Do I need to update libffi?
+
+Thanks.
+
+Relevant commits:
+
+<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/commit/8cbc3f54a875a61e1fb67ac88a25b71940a3ed91">http://github.com/ffi/ffi/commit/8cbc3f54a875a61e1fb67ac88a25b71940a3ed91</a>
+<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/commit/31e65abbf7e57b9776557227a41e4cd45886c986">http://github.com/ffi/ffi/commit/31e65abbf7e57b9776557227a41e4cd45886c986</a>
+</pre></div></body>
+</html>
+</table></div>

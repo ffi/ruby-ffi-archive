@@ -1,0 +1,112 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Help for Beginner - Compiling C Extension on Windows</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Help for Beginner - Compiling C Extension on Windows</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/2/10 1:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, Sep 2, 2010 at 1:22 PM, Karl <a class="moz-txt-link-rfc2396E" href="mailto:threadhead@gmail.com">&lt;threadhead@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Boring Background:
+<span class="moz-txt-citetags">&gt; </span>Let me say first that I'm no Windows expert and it's been 20 years
+<span class="moz-txt-citetags">&gt; </span>since I last compiled anything I wrote in C. But I need to access an
+<span class="moz-txt-citetags">&gt; </span>API on a Windows machine (controls a DAQ board) from Ruby. So I'm
+<span class="moz-txt-citetags">&gt; </span>trying to get the first steps down, compiling a C lib I can access
+<span class="moz-txt-citetags">&gt; </span>through ruby.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Also, I apologize if this is the wrong place to post, but it seems
+<span class="moz-txt-citetags">&gt; </span>that this is the only forum that C extension writers on windows
+<span class="moz-txt-citetags">&gt; </span>frequent.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Hello Karl
+
+Ruby FFI aims to replace the need to compile an extension to access a
+library, please see the wiki:
+
+<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi">http://wiki.github.com/ffi/ffi</a>
+
+With examples to access Windows API.
+
+Going to respond your question anyhow, but please read the wiki.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Can't Compile Simple C DLL:
+<span class="moz-txt-citetags">&gt; </span>Installed Ruby 1.8.7-p302 from rubyinstaller.org (used the .exe).
+<span class="moz-txt-citetags">&gt; </span>Installed DevKit-4.5.0-20100819-1536-sfx.exe from rubyinstaller.org
+<span class="moz-txt-citetags">&gt; </span>Performed the devkit install, all it working (installing gems that
+<span class="moz-txt-citetags">&gt; </span>require compiling work)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Also tried setup up 'fstab' using this site
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://geeksharp.com/2010/01/18/windows-ruby-native-gems-1-9-1/">http://geeksharp.com/2010/01/18/windows-ruby-native-gems-1-9-1/</a> but
+<span class="moz-txt-citetags">&gt; </span>nothing he shows looks remotely like my installation. So I set C:
+<span class="moz-txt-citetags">&gt; </span>\devkit\etc\fstab to:
+<span class="moz-txt-citetags">&gt; </span> C:/devkit/mingw/lib/gcc/mingw32/4.5.0  /mingw
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+You don't need to modify the fstab.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Trying to compile the following:
+<span class="moz-txt-citetags">&gt; </span>#stree.c
+<span class="moz-txt-citetags">&gt; </span>#include &lt;ruby.h&gt;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>static VALUE hello_world(VALUE klass)
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span> return rb_str_new2("hello world");
+<span class="moz-txt-citetags">&gt; </span>}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>void Init_stree()
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span> VALUE mStree = rb_define_module("Stree");
+<span class="moz-txt-citetags">&gt; </span> rb_define_singleton_method(mStree, "hello_world", hello_world, 0);
+<span class="moz-txt-citetags">&gt; </span>}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>#extconf.rb
+<span class="moz-txt-citetags">&gt; </span>require 'mkmf'
+<span class="moz-txt-citetags">&gt; </span>create_makefile('stree/stree')
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On the win machine I run: ruby extconf.rb
+<span class="moz-txt-citetags">&gt; </span> creates the Makefile, no errors
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I run: 'make' and receive the following:
+<span class="moz-txt-citetags">&gt; </span> Compile the C Code to a DLL
+<span class="moz-txt-citetags">&gt; </span> 'cl' is not recognized as an internal or external command, operable
+<span class="moz-txt-citetags">&gt; </span>program or batch file.
+<span class="moz-txt-citetags">&gt; </span> Could Not Find C:\rails\ext_test\stree\ext\stree\*.obj
+<span class="moz-txt-citetags">&gt; </span> Done.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+You're using the wrong ruby to compile. Basically you're running Ruby
+compiled with mswin32 (Visual C) instead of RubyInstaller.
+
+It trying to look for cl indicates that rbconfig used by your ruby
+installation came from mswin32 version.
+
+So, either you installed RubyInstaller on top of another Ruby, or you
+modified anything in your installation.
+
+Please try a clean Ruby+DevKit installation.
+
+Also, please read the instructions at our wiki for details on DevKit
+installation.
+
+<a class="moz-txt-link-freetext" href="http://github.com/oneclick/rubyinstaller/wiki/Development-Kit">http://github.com/oneclick/rubyinstaller/wiki/Development-Kit</a>
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

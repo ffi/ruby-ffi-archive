@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] attach_function a bit draconian</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] attach_function a bit draconian</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/5/11 2:10 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Hi Charlie,
+<br>
+<br>On 04/09/2011 23:19, cfis wrote:
+<br><blockquote type=cite style="color: #000000;">I've written a ffi wrapper for the free image library, which is here:
+<br>
+<br><a class="moz-txt-link-freetext" href="http://cfis.github.com/free-image-ruby/">http://cfis.github.com/free-image-ruby/</a>
+<br>
+<br>The problem is that I've coded against the latest version of
+<br>FreeImage, and most linux distributions have older versions
+<br>installed.&nbsp; Thus when I try to load the gem it fails since
+<br>attach_function throws an error because the older versions don't have
+<br>all the functions.
+<br></blockquote>
+<br>You can just wrap the call to attach_function in a begin-rescue-end 
+construct. Then in the rescue block, you can do whatever you want. In 
+your case, this would probably mean issuing a warning and then defining 
+a stub function. You can even wrap that in a method, say, 
+attach_function_safely.
+<br>
+<br>Regards,
+<br>Matijs
+<br></div></body>
+</html>
+</table></div>

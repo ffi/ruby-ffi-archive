@@ -1,0 +1,82 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Arrays in Structs and Unions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Arrays in Structs and Unions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/4/10 1:21 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+I've two questions. This is the more important one: How to use arrays
+in Structs via FFI? I have this nice struct declaration:
+----------------------------------------------------
+typedef struct _OSVERSIONINFO {
+  DWORD dwOSVersionInfoSize;
+  DWORD dwMajorVersion;
+  DWORD dwMinorVersion;
+  DWORD dwBuildNumber;
+  DWORD dwPlatformId;
+  TCHAR szCSDVersion[128];
+} OSVERSIONINFO;
+----------------------------------------------------
+( From <a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms724834%28VS.85%29.aspx">http://msdn.microsoft.com/en-us/library/ms724834%28VS.85%29.aspx</a>
+, to be used with the GetVersionInfoEx() function:
+<a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms724451%28VS.85%29.aspx">http://msdn.microsoft.com/en-us/library/ms724451%28VS.85%29.aspx</a> )
+and I'm not sure how to access the szCSDVVersion[128] member. I
+thought, I had to work with Memory pointers for arrays, but the
+following code doesn't work for me:
+-----------------------------------------------------
+class OSVersionInfo &lt; FFI::Struct
+
+  layout  :os_version_info_size, :int,
+            :major_version, :int,
+            :minor_version, :int,
+            :build_number, :int,
+            :platform_id, :int,
+            :csdv_version, :buffer_out
+
+end
+
+ptr = FFI::MemoryPointer.new(:pointer, 128)
+osversioninfo = OSVersionInfo.new
+osversioninfo[:csdv_version] = ptr # line 106
+osversioninfo[:os_version_info_size] = OSVersionInfo.size
+get_version_ex(osversioninfo)
+p osversioninfo[:major_version]
+---------------------------------------------------------
+I get this error:
+---------------------------------------------------------
+system_info.rb:106:in `put': put not supported for
+FFI::StructLayout::Field (ArgumentError)
+	from system_info.rb:106:in `[]='
+	from system_info.rb:106:in `test_version'
+	from system_info.rb:117:in `&lt;main&gt;'
+---------------------------------------------------------
+I tried it without the MemoryPointer:
+---------------------------------------------------------
+osversioninfo = OSVersionInfo.new
+osversioninfo[:os_version_info_size] = OSVersionInfo.size
+get_version_ex(osversioninfo)
+p osversioninfo[:major_version] #=&gt; 0
+---------------------------------------------------------
+That code doesn't thorw an error, but the function call fails - the
+line starting with "p" should print out 6 on my Vista machine.
+How can this be done?
+
+The second question is a simple one: Where do I find a quick example
+of how to use the FFI::Union class? The wiki just states this:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>The actual Windows INPUT struct contains an anonymous union member with MOUSEINPUT, KEYBDINPUT,
+<span class="moz-txt-citetags">&gt; </span>and HARDWAREINPUT members. As the MOUSEINPUT struct is the largest of these members, we can get
+<span class="moz-txt-citetags">&gt; </span>away with the hacky InputEvent FFI union definition for example purposes.
+</pre></blockquote><pre wrap>
+So, what to do if I haven't an "example purpose"?
+
+ruby -v: ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+OS: Windows Vista SP2
+
+Marvin
+</pre></div></body>
+</html>
+</table></div>

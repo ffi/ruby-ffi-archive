@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs119806wfg;
+        Sun, 15 Nov 2009 14:13:16 -0800 (PST)
+Received: by 10.150.239.15 with SMTP id m15mr12198903ybh.109.1258323196099;
+        Sun, 15 Nov 2009 14:13:16 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 28si11686162gxk.2.2009.11.15.14.13.14;
+        Sun, 15 Nov 2009 14:13:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.217.197 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21so8676925gxk.7
+        for <headius@headius.com>; Sun, 15 Nov 2009 14:13:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:received:received:date:from:to:subject
+         :message-id:in-reply-to:references:x-mailer:mime-version
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=iTfVkpantgJSqivZc5OzzVePTUPlbbSzfQIwMt6p0G4=;
+        b=FBqesmVaZFaLTBK6YnnpxArLjjE5+aV9bjY21tphxZ6nW4tEcmT35sLmyNGRrqHsnm
+         iQBq5N3OQdTCxDoZr3rvyovrnr/gjH2rwRyKWWCST/rGc2Rzj8rBqvuArbkc6v7Gfh/m
+         P7K78S3vjWmoKBITyXdvKFsKusfbVRtVy+8VM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=tnuSBc/SG7MU5CUgCIJGShh3kmpEu5glcBoddQcd6LSevuIat6Y/nmi/SJ6LuQ9DW9
+         wcEqB5/2lZP+VnZY0xo+MntZSxmA/V3p9NMxrc57FoUxbFkPdRHgdFGDBB132cLpxw2I
+         McAifzzgg3KnD353tiPTHlIGIg7Fj3MTq+tWM=
+Received: by 10.100.24.22 with SMTP id 22mr154367anx.56.1258323192958;
+        Sun, 15 Nov 2009 14:13:12 -0800 (PST)
+Received: by 10.176.241.26 with SMTP id o26gr119yqh.0;
+	Sun, 15 Nov 2009 14:13:12 -0800 (PST)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.224.17.225 with SMTP id t33mr589495qaa.0.1258323192663; Sun, 15 Nov 2009 14:13:12 -0800 (PST)
+Received: by 10.224.17.225 with SMTP id t33mr589494qaa.0.1258323192641; Sun, 15 Nov 2009 14:13:12 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-qy0-f182.google.com (mail-qy0-f182.google.com [209.85.221.182]) by gmr-mx.google.com with ESMTP id 18si656345qyk.13.2009.11.15.14.13.11; Sun, 15 Nov 2009 14:13:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.221.182 as permitted sender) client-ip=209.85.221.182;
+Received: by qyk12 with SMTP id 12so2075765qyk.6 for <ruby-ffi@googlegroups.com>; Sun, 15 Nov 2009 14:13:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:received:received:date:from:to:subject :message-id:in-reply-to:references:x-mailer:mime-version :content-type:content-transfer-encoding; bh=jfrRW/5bZtHrZqJQF2eO9muxFE8IUjncRBFWzXBjuOo=; b=tVXKBRug3ECqFRo8DGpyiGa48NhyTz64dQ2SLf2L+lPg+QA99vx6a2VU+4ZNuG3TKd 8w8D19jODvt6emVTtQD4wntjIHuDtFGbJJNXcl4Mk3gB+hDlIsCC8sSVvda7bxV8GTo0 yjXJ6vOT3CimfepjTNkKSR8fKvuccRtBl1MO4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=date:from:to:subject:message-id:in-reply-to:references:x-mailer :mime-version:content-type:content-transfer-encoding; b=t7/z4dYPwoyYEy6rgiRbi9P/YjYF9ZZGH4inY+r6HydAH1T+59Or5pzvxzkN6ug8vm FxPcogpIIoE/dhFUqIX5EluCRa/t5pas2UG+sPTe64aqVoY16E7d7MlHSHRS5jkLiRIP CRUdp2JZbpfqHvhr/2GfW/r+YLDtCNaxLU31Y=
+Received: by 10.224.1.28 with SMTP id 28mr4356160qad.313.1258323191512; Sun, 15 Nov 2009 14:13:11 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from SQUEAK (cpe-71-65-104-132.woh.res.rr.com [71.65.104.132]) by mx.google.com with ESMTPS id 22sm1099875qyk.6.2009.11.15.14.13.09 (version=TLSv1/SSLv3 cipher=RC4-MD5); Sun, 15 Nov 2009 14:13:10 -0800 (PST)
+Date: Sun, 15 Nov 2009 17:13:12 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] Re: ffi_lib and symbol/string usage?
+Message-Id: <20091115171312.3117e908.jon.forums@gmail.com>
+In-Reply-To: <4ccee320911151401r6f43dbd5j76cae127d22a1eac@mail.gmail.com>
+References: <20091115165240.236db197.jon.forums@gmail.com> <4ccee320911151401r6f43dbd5j76cae127d22a1eac@mail.gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+> > I've updated my examples on the wiki to use only String's, but am wondering if FFI core should be agnostic for the ffi_lib arg?
+> 
+> I have no preference, but is there really any style reason to use
+> symbols over strings or vice-versa for this?
+
+Nope, other than just liking the way symbols look.
+
+Probably as interesting as a discussion trying to get Windows developers to ditch their editor and move gVim.
+
+> 
+> Well, compared to the cost of a dlopen() call, the cost of symbol vs
+> string for the ffi_lib arg isn't even a rounding error.  Its
+> equivalent to a butterfly flapping its wings in a hurricane.
+
+Hehe.
+
+Jon

@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs516458and;
+        Mon, 21 Dec 2009 10:27:31 -0800 (PST)
+Received: by 10.231.42.150 with SMTP id s22mr1495056ibe.22.1261420050872;
+        Mon, 21 Dec 2009 10:27:30 -0800 (PST)
+Return-Path: <3EL4vSw0JCEk2zrp20lnvDBBGrxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 14si8660187iwn.18.2009.12.21.10.27.29;
+        Mon, 21 Dec 2009 10:27:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3EL4vSw0JCEk2zrp20lnvDBBGrxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3EL4vSw0JCEk2zrp20lnvDBBGrxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3EL4vSw0JCEk2zrp20lnvDBBGrxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf15744036ywh.3
+        for <headius@headius.com>; Mon, 21 Dec 2009 10:27:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=uTxPzxKeYMzrXwqyNyOctw/RFN0opxGAx2ngs/xZ40A=;
+        b=5C3Csb1+3wB5MDJKt+DPSmMC6KfKetJS6KK9l13lfLHukplctQrV9FMgulT8vcln/0
+         MSiIolOpFRSfQsKwYodTMFdfCkVmVkXtlBIBBtu+ei1RR840Ebu2IVQQW5rcHBcqoo32
+         XcbgXAwUKmk0oEHx6kBpsig0yTyk61/h2farM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=KDTTpNFqrjHe7qEN2sn34Vz5x2OEdxn00Rrh7fs6GubvgXT+Is3d6kFFOcuHQh52z8
+         k74DQvR9qCoqyUuepzKWKap1Omc6tldpespqnTx0T+aigjTzDxxDtS1gHv/G4UPzOXkf
+         Hsv+llO4GyZUYfIMr3qqPHjEsyU1UZpyaS/KE=
+Received: by 10.101.17.19 with SMTP id u19mr495162ani.51.1261420048569;
+        Mon, 21 Dec 2009 10:27:28 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.214.12 with SMTP id r12ls1069737anq.0.p; Mon, 21 Dec 2009 
+	10:27:28 -0800 (PST)
+Received: by 10.101.65.1 with SMTP id s1mr5261791ank.13.1261420047965;
+        Mon, 21 Dec 2009 10:27:27 -0800 (PST)
+Received: by 10.101.65.1 with SMTP id s1mr5261790ank.13.1261420047940;
+        Mon, 21 Dec 2009 10:27:27 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-gx0-f194.google.com (mail-gx0-f194.google.com [209.85.217.194])
+        by gmr-mx.google.com with ESMTP id 24si725678yxe.11.2009.12.21.10.27.27;
+        Mon, 21 Dec 2009 10:27:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.217.194 as permitted sender) client-ip=209.85.217.194;
+Received: by mail-gx0-f194.google.com with SMTP id 10so12907941gxk.3
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 10:27:27 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.24.7 with SMTP id b7mr92230anj.35.1261420047898; Mon, 21 
+	Dec 2009 10:27:27 -0800 (PST)
+Date: Mon, 21 Dec 2009 10:27:27 -0800 (PST)
+In-Reply-To: <71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com> 
+	<4ccee320912190435r785388eaoabb0c81b39c6a51@mail.gmail.com> 
+	<3c2f449c-7ff7-478e-b7be-69831ae9d3df@m26g2000yqb.googlegroups.com> 
+	<71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <d7d5601a-6f01-43e2-be15-37dc009f9305@d20g2000yqh.googlegroups.com>
+Subject: [ruby-ffi] Re: lists only one lib?
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.217.194 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/742b249d67b7cd3e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4e327e933fa8f8
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> > I assume this is unexpected?
+>
+> Roger, for the sake of my mental health, would you mind put a sample
+> that indeed works?
+
+Oops looks like I was testing the wrong code after all.  Sorry about
+that.  It does work when you pass more than one.
+
+> Probably best to have ffi_lib raise an exception if the libs are already set. That solves it nicely and keeps users from tripping up on this.
+
++1
+
+-r

@@ -1,0 +1,110 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs536350fam;
+        Fri, 7 Jan 2011 11:36:46 -0800 (PST)
+Received: by 10.236.109.168 with SMTP id s28mr7329080yhg.74.1294429005522;
+        Fri, 07 Jan 2011 11:36:45 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIL02KzeDxDL1p3pBBoECy1sdg@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id g4si49689540yha.85.2011.01.07.11.36.44
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Fri, 07 Jan 2011 11:36:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIL02KzeDxDL1p3pBBoECy1sdg@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIL02KzeDxDL1p3pBBoECy1sdg@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCIL02KzeDxDL1p3pBBoECy1sdg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywe9 with SMTP id 9sf19070046ywe.7
+        for <headius@headius.com>; Fri, 07 Jan 2011 11:36:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=Or++a8jOFKNnulX+md9C4/vtMVj/kCwsshLOwQBraHg=;
+        b=buvB5z05vxoeozjKijaOpKBoCrsi+NTX1AzetI/DXXJZNSyzquFi59MSb1Q07xpM6G
+         VLYCjtzvbWNRbU881a5YGY+y6SvqYURd1SetW2MDNd0lLVNR7Fq+ZNZztgXbmnElKlY6
+         Hxj1dArTCuGzgkfeyLt6wXSHXq8418cJFxOHM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=3iCxg2Sm8BEQJgxO09yK27NcFK1Eqonaa9fKHU/odXHN9mVl38ircpKOi0tS6f0eg4
+         F0MVMyfL0JkfpyCToHNNRApvBakaRXqLEq+iSkkM6R8tjhtoAoE8k0HZS8Np/kSbI+GB
+         +CBKSQGz8pd2KF0es6YjC+f9qTPi3XWHNd8UI=
+Received: by 10.91.66.12 with SMTP id t12mr245993agk.31.1294429003657;
+        Fri, 07 Jan 2011 11:36:43 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.181.16 with SMTP id d16ls4174763agf.3.p; Fri, 07 Jan 2011
+ 11:36:43 -0800 (PST)
+Received: by 10.91.7.8 with SMTP id k8mr1253290agi.25.1294429003309;
+        Fri, 07 Jan 2011 11:36:43 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.91.69.8 with SMTP id w8mr204711agk.17.1294384711839; Thu, 06
+ Jan 2011 23:18:31 -0800 (PST)
+Received: by o23g2000prh.googlegroups.com with HTTP; Thu, 6 Jan 2011 23:18:31
+ -0800 (PST)
+Date: Thu, 6 Jan 2011 23:18:31 -0800 (PST)
+X-IP: 24.22.33.109
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US;
+ rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13,gzip(gfe)
+Message-ID: <dfb1edb8-66b3-4e3b-9ab1-f587c7368f02@o23g2000prh.googlegroups.com>
+Subject: [ruby-ffi] 'encoding' type?
+From: dubl <rmiddlehouse@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rmiddlehouse@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+hello,
+i'm trying to attach CFStringCreateWithCString..
+
+below is the reference documentation, which allows you to pass null as
+the first argument, a cstring as the second, and an 'encoding' as the
+third..
+
+my question is, how do i attach this?  i'm trying
+  attach_function :CFStringCreateWithCString,
+[:void,:char,:int], :void
+..using ':int', its erroring out saying 'invalid parameter type' for
+the 0 I pass it...
+
+question is: what symbol do i give it as the third argument, and then
+what do i pass it?
+
+I admit I'm new to the concept. this is my first attempt at FFI... i'm
+trying to rewrite an old dl/importable version which used the int,
+passing it a 0, and it worked fine.
+
+thanks for the opportunity to ask the question.
+
+Jon
+
+----------------
+CFStringRef CFStringCreateWithCString (
+   CFAllocatorRef alloc,
+   const char *cStr,
+   CFStringEncoding encoding
+);
+Parameters
+alloc
+The allocator to use to allocate memory for the new string. Pass NULL
+or kCFAllocatorDefault to use the current default allocator.
+cStr
+The NULL-terminated C string to be used to create the CFString object.
+The string must use an 8-bit encoding.
+encoding
+The encoding of the characters in the C string. The encoding must
+specify an 8-bit encoding.
+---------------------

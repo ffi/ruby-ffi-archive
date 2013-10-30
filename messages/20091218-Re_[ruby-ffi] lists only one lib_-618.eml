@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs385004and;
+        Fri, 18 Dec 2009 10:29:19 -0800 (PST)
+Received: by 10.143.26.32 with SMTP id d32mr2762193wfj.297.1261160959256;
+        Fri, 18 Dec 2009 10:29:19 -0800 (PST)
+Return-Path: <3_MkrSwoJCD0kthrkZudmZflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 8si20495752pzk.38.2009.12.18.10.29.17;
+        Fri, 18 Dec 2009 10:29:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3_MkrSwoJCD0kthrkZudmZflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3_MkrSwoJCD0kthrkZudmZflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) smtp.mail=3_MkrSwoJCD0kthrkZudmZflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj20 with SMTP id 20sf1494801pwj.27
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:29:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=cZxzo3MIgij4/J4zU4A+j3EhXPwsZVougo9s+HretSQ=;
+        b=VTTksBWC9Zh9ZB+m4VxIYUPZuIJA9fwdabtNdsfDGeRoaYPqDVQS7J9XiRxj387xy7
+         jlrEHpxRR5sFHDcJgjnm0cyTDhxAzC1Jv/yozMslFjfIU3HO65kxLH6CxWT35mkwOdn3
+         Rp38UP4Vp5CmeUPizXQ7XOMCYhdNtN/6YSjXY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=vvxFcd6kL+fFys6SDjUJW8xiWcdqG6rQdYhWbUkICopJlPYvgOYZp3WbqQ1Cc3fWaL
+         YuKg8pcLGtal10eIhWDxuC2Uqblv/b9vAYxFreZpa/De59qEl26X4SXSI5nHZ/s+IEPL
+         JXkIoz1KZpikCTWaTx2r8S1p8424G1uQqv2yY=
+Received: by 10.142.2.36 with SMTP id 36mr389805wfb.27.1261160956639;
+        Fri, 18 Dec 2009 10:29:16 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.20.3 with SMTP id x3ls2716wfi.2.p; Fri, 18 Dec 2009 
+	10:29:15 -0800 (PST)
+Received: by 10.142.75.4 with SMTP id x4mr812163wfa.9.1261160955770;
+        Fri, 18 Dec 2009 10:29:15 -0800 (PST)
+Received: by 10.142.75.4 with SMTP id x4mr812162wfa.9.1261160955744;
+        Fri, 18 Dec 2009 10:29:15 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f209.google.com (mail-fx0-f209.google.com [209.85.220.209])
+        by gmr-mx.google.com with ESMTP id 19si710865pzk.4.2009.12.18.10.29.14;
+        Fri, 18 Dec 2009 10:29:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.209 as permitted sender) client-ip=209.85.220.209;
+Received: by fxm1 with SMTP id 1so3203481fxm.16
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:29:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.158.66 with SMTP id t2mr479696hbc.200.1261160953432; Fri, 
+	18 Dec 2009 10:29:13 -0800 (PST)
+In-Reply-To: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com>
+References: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 18 Dec 2009 15:28:52 -0300
+Message-ID: <71166b3b0912181028k1f651215s2f1ac9978346e420@mail.gmail.com>
+Subject: Re: [ruby-ffi] lists only one lib?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.209 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/742b249d67b7cd3e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/5af848ec7a09a877
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 18, 2009 at 3:11 PM, rogerdpack <rogerpack2005@gmail.com> wrote=
+:
+> For my curiosity...
+>
+> Currently with this snippet:
+>
+> =A0ffi_lib 'user32'
+> =A0ffi_lib 'msvcrt'
+> =A0attach_function 'FindWindow', [ :string, :string], :pointer
+>
+> I get this response
+> #<FFI::NotFoundError: Function 'FindWindow' not found in [msvcrt]>
+> Function 'FindWindow' not found in [msvcrt]
+>
+> Is it expected for that to be [msvcrt] and not [msvcrt, user32]?
+>
+
+Can you report this as a bug/feature request?
+
+Also, please provide a working code, we discussed earlier than there
+is no FindWindow function, only FindWindowA or FindWindowW.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

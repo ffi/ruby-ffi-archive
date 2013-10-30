@@ -1,0 +1,73 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>bbiker <renard@nc.rr.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:19 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+
+On Dec 17, 7:28 pm, rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2...@gmail.com">&lt;rogerpack2...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Perhaps I'm missing something here...
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module Hello
+<span class="moz-txt-citetags">&gt; </span>  extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>  ffi_lib 'user32'
+<span class="moz-txt-citetags">&gt; </span>  attach_function 'FindWindow', [ :string, :string], :pointer # blows
+<span class="moz-txt-citetags">&gt; </span>up
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ref:<a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx">http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>What might it be...?
+<span class="moz-txt-citetags">&gt; </span>-r
+</pre></blockquote><pre wrap>
+
+'FindWindow' does not exists in user32.dll ... the following 4
+functions are in user32.dll although at I am at loss to explain the
+differences among them.
+
+FindWindowA
+FindWindowExA
+FindWindowExW
+FindWindowW
+
+This was my result from snippet:
+
+irb(main):002:0&gt;
+irb(main):003:0* module Hello
+irb(main):004:1&gt; extend FFI::Library
+irb(main):005:1&gt; ffi_lib 'user32'
+irb(main):006:1&gt; attach_function 'FindWindow',
+[ :string, :string], :pointer
+irb(main):007:1&gt; end
+FFI::NotFoundError: Function 'FindWindow' not found in [user32]
+        from C:/Ruby19/lib/ruby/gems/1.9.1/gems/ffi-0.5.4-x86-mingw32/
+lib/ffi/library.rb:77:in `attach_function'
+        from (irb):6:in `&lt;module:Hello&gt;'
+        from (irb):3
+        from C:/Ruby19/bin/irb:12:in `&lt;main&gt;'
+
+This is the result when I used 'FindWindowW':
+
+irb(main):010:1&gt; module Hello
+irb(main):011:1&gt; extend FFI::Library
+irb(main):012:1&gt; ffi_lib 'user32'
+irb(main):013:1&gt; attach_function 'FindWindow',
+[ :string, :string], :pointer
+irb(main):014:1&gt; end
+=&gt; #&lt;FFI::Pointer address=7E42C9C3&gt;
+
+I suggest you go to: <a class="moz-txt-link-freetext" href="http://www.nirsoft.net/utils/dll_export_viewer.html">http://www.nirsoft.net/utils/dll_export_viewer.html</a>
+and download their dll_export_viewer utility...it's free.
+
+Hope this helps.
+
+<a class="moz-txt-link-abbreviated" href="mailto:renard@nc.rr.com">renard@nc.rr.com</a>
+</pre></div></body>
+</html>
+</table></div>

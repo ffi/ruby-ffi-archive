@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/27/09 2:06 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/11/28 Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>In the Novice section of <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a> I'm trying to finish the Enumerate Top Level Windows example and am getting segfaults under MRI 1.8.6 and 1.9.1 but not JRuby 1.4.0 in either 1.8 or 1.9 modes.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm ramping up to speed on FFI and not yet sure whether it's my code or the MRI FFI impl or a Ruby impl issue or something else.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Details below, but in the segfault cases the top-level windows are enumerated and then the segfault occurs.  I've futzed with the signatures (e.g. changed EnumDesktopWindows return type from :bool to :int as windows "typedef int BOOL"), kept the Ruby script alive with "STDIN.gets" at script end, and futzed with param types to EnumDesktopWindows all to no avail.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>What have I missed?
+</pre></blockquote><pre wrap>
+
+It could be the calling convention.  On JRuby, that isn't wired up
+yet, so it creates callbacks with C calling convention always, but on
+MRI, it is wired up, so it creates a callback with the convention as
+set by ffi_convention.
+
+Try setting ffi_convention to :default before declaring the callback,
+and then to :stdcall when declaring the functions exported by the
+library.
+</pre></div></body>
+</html>
+</table></div>

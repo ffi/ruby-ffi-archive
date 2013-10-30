@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Burgestrand <kim@burgestrand.se></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/28/13 12:57 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">
+                <div><span style="color: rgb(160, 160, 168); ">On Wednesday, 27 February 2013 at 23:46, Wayne Meissner wrote:</span></div><blockquote type="cite" style="border-left-style:solid;border-width:1px;margin-left:0px;padding-left:10px;">
+                    <span><div><div><div>It is also possible there are bugs in libspotify itself - you could try converting your C example to use malloc() allocated memory instead of stack/global memory (i.e. emulate what FFI does), and see if it fails in the same way.</div></div></div></span></blockquote><div>Updated the rest of the MemoryPointers (as far as I am aware). The ruby example still appears to segfault.&nbsp;</div><div>&nbsp;</div><div>I converted the C example to use malloc()-allocated memory, and freeing it aggressively after it’s purpose</div><div>has been fulfilled, and I’m happy to say that the C example now also segfault with similar errors (randomly).</div><div>I also removed the calls to free (no time to upload), and it appears the library still segfault.</div><div><br></div><div>From what I can gather from this, it appears the library has some issues with malloc()-memory, only on the</div><div>ARM platform. That is interesting. I’ll have to experiment some this evening to see if I can figure out exactly</div><div>which part of it is, and probably file a bug report with the library authors.</div><div><br></div><div>Thanks Wayne; the problem existing because of stack/heap memory was not something that could have</div><div>occurred to me.</div><div><br></div><div>— Kim</div>
+            
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

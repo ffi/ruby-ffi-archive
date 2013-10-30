@@ -1,0 +1,139 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs417500and;
+        Sat, 19 Dec 2009 04:34:53 -0800 (PST)
+Received: by 10.141.108.19 with SMTP id k19mr3313501rvm.248.1261226092543;
+        Sat, 19 Dec 2009 04:34:52 -0800 (PST)
+Return-Path: <3asgsSwkJCKogWOSccXObQWKSV.MYWbeLi-PPSQYYQVOQbYeZc.MYW@listserv.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 41si8962580pzk.0.2009.12.19.04.34.51;
+        Sat, 19 Dec 2009 04:34:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3asgsSwkJCKogWOSccXObQWKSV.MYWbeLi-PPSQYYQVOQbYeZc.MYW@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3asgsSwkJCKogWOSccXObQWKSV.MYWbeLi-PPSQYYQVOQbYeZc.MYW@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=3asgsSwkJCKogWOSccXObQWKSV.MYWbeLi-PPSQYYQVOQbYeZc.MYW@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi41 with SMTP id 41sf1524265pxi.23
+        for <headius@headius.com>; Sat, 19 Dec 2009 04:34:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=IRut4b+c1rJnK4cuy8G9zrodLK+yR7zwasBTnfePWqw=;
+        b=IcMet55ZZLmWAP+mtG4DRV8gizMo/LFFzXCcCKmyu+hRFJhRUBnFfNClu9lN95C3Nh
+         Psw1rxZY+0Qkd8KX1WMnnB+F6GTsn4gOfY+yhH6mB+G4lkm+IZLJ0G3bxC6PHldrHhF8
+         imrYqkWWEe6h/BZPk+GjPrBH4Nv+xRsyP0R8g=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=pTnPBSlcWZiA5EbkxiDoI5CEzuc+jqHrwojiHMCScUXtlFAVkzuDEoK4KO+q0pw89b
+         GJXWO1ImrwDyBdrTT4FpUKFYgKk6gP4K+nTsSdJ2SGbvpLkAmqcA7Y30tp8lvkHgL2M5
+         lfyHUf2Y+VMEsCXuF6u+dx579gvAf5ops/24I=
+Received: by 10.142.6.8 with SMTP id 8mr451045wff.40.1261226090083;
+        Sat, 19 Dec 2009 04:34:50 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.21.11 with SMTP id y11ls73647wfi.1.p; Sat, 19 Dec 2009 
+	04:34:49 -0800 (PST)
+Received: by 10.142.249.38 with SMTP id w38mr975579wfh.8.1261226088951;
+        Sat, 19 Dec 2009 04:34:48 -0800 (PST)
+Received: by 10.142.249.38 with SMTP id w38mr975578wfh.8.1261226088933;
+        Sat, 19 Dec 2009 04:34:48 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f179.google.com (mail-pz0-f179.google.com [209.85.222.179])
+        by gmr-mx.google.com with ESMTP id 23si1018634pxi.4.2009.12.19.04.34.47;
+        Sat, 19 Dec 2009 04:34:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.179 as permitted sender) client-ip=209.85.222.179;
+Received: by pzk9 with SMTP id 9so2596754pzk.16
+        for <ruby-ffi@googlegroups.com>; Sat, 19 Dec 2009 04:34:47 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.106.11 with SMTP id i11mr3502683rvm.239.1261226087635; 
+	Sat, 19 Dec 2009 04:34:47 -0800 (PST)
+In-Reply-To: <6d99087d-4325-4a6d-8196-f4a38d55ed62@l13g2000yqb.googlegroups.com>
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com>
+	 <3454c9680912180025s288a8e81gb89913c0ce304d7e@mail.gmail.com>
+	 <20091218090513.a27833fc.jon.forums@gmail.com>
+	 <6d99087d-4325-4a6d-8196-f4a38d55ed62@l13g2000yqb.googlegroups.com>
+Date: Sat, 19 Dec 2009 22:34:47 +1000
+Message-ID: <4ccee320912190434s4bb0a1eeo35fcdcff6b15ac27@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: unable to find method?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.179 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/8993542e73bb8192
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Is MessageBoxA a WINAPI function?  That might need:
+
+  ffi_convention :stdcall
+
+before the attach_function call
+
+2009/12/19 rogerdpack <rogerpack2005@gmail.com>:
+>
+>> BTW, where are you guys with coming up with more interesting windows exa=
+mples (64-bit, pointer-to-pointer return types, etc)!? ;)
+>
+> Got stuck with this example segfaulting.
+>
+> require 'ffi'
+>
+> # button constants
+> BUTTONS_OK =3D 0
+> BUTTONS_OKCANCEL =3D 1
+> BUTTONS_ABORTRETRYIGNORE =3D 2
+> BUTTONS_YESNO =3D 4
+>
+> # return code constants
+> CLICKED_OK =3D 1
+> CLICKED_CANCEL =3D 2
+> CLICKED_ABORT =3D 3
+> CLICKED_RETRY =3D 4
+> CLICKED_IGNORE =3D 5
+> CLICKED_YES =3D 6
+> CLICKED_NO =3D 7
+>
+>
+> extend FFI::Library
+> ffi_lib 'user32'
+>
+> attach_function :msgbox, 'MessageBoxA',
+> [:pointer, :string, :string, :uint], :int
+>
+> def message_box(txt, title=3DAPP_TITLE, buttons=3DBUTTONS_OK)
+> =A0 =A0ffi_lib 'user32'
+> =A0 =A0r =3D msgbox(nil, txt, title, buttons)
+> =A0 =A0return r
+> end
+>
+> response =3D message_box("Are you sure you want to proceed?",
+> "Proceed?", BUTTONS_YESNO)
+> if response =3D=3D CLICKED_YES
+> =A0 =A0# insert your code here
+> end
+>
+> -r
+>

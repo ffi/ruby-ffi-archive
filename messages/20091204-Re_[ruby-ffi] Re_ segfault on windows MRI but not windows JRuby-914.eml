@@ -1,0 +1,199 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.52.18 with SMTP id z18cs506057wfz;
+        Fri, 4 Dec 2009 10:24:35 -0800 (PST)
+Received: by 10.150.106.15 with SMTP id e15mr5996845ybc.300.1259951074968;
+        Fri, 04 Dec 2009 10:24:34 -0800 (PST)
+Return-Path: <34VMZSxAJCJk4HLDH.BO3GBL7OB59F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com>
+Received: from mail-yw0-f138.google.com (mail-yw0-f138.google.com [209.85.211.138])
+        by mx.google.com with ESMTP id 1si7389439gxk.74.2009.12.04.10.24.33;
+        Fri, 04 Dec 2009 10:24:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of 34VMZSxAJCJk4HLDH.BO3GBL7OB59F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) client-ip=209.85.211.138;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 34VMZSxAJCJk4HLDH.BO3GBL7OB59F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) smtp.mail=34VMZSxAJCJk4HLDH.BO3GBL7OB59F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by ywh2 with SMTP id 2sf1996758ywh.27
+        for <headius@headius.com>; Fri, 04 Dec 2009 10:24:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received
+         :in-reply-to:references:date:message-id:subject:from:to:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=dVcmJaahL80tQy6g4obvmMuXDuOGRVTQ1IqGDMelMQs=;
+        b=GHVtABG2wuqp8BEfzcesxatyU4CuurwUr9Nuv77MxSpmif/Y4vmEo7ErJOf95w+VYJ
+         jU1EZG8MLra7xv4ZmZ9MncsYz9PK7q6ib/vLAFjnFTpCdBwmvFFVXjwLyuqn26aVSG/g
+         AFeW8SpojBfriqfbTsMGUWVBBvuOWquvivJMg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type;
+        b=EttJPGrABphZ9TKtRYtFfspeDs3WQWWPjyh9TmIpYEQYc6apEYENxXHYhOqHmxawuj
+         Ek2HyylfcoYcvcLJTbjucj4rQp7lwQa8Ld1lyxpeO1lmsNonBJcdx1Wfwf9V63pIeQ9d
+         X1x451DSvNErPdxbmHRiECSNNQxjOrdw7AZUs=
+Received: by 10.91.95.6 with SMTP id x6mr128078agl.38.1259951073127;
+        Fri, 04 Dec 2009 10:24:33 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.87.19.15 with SMTP id w15ls1108879fgi.2.p; Fri, 04 Dec 2009 
+	10:24:31 -0800 (PST)
+Received: by 10.86.224.31 with SMTP id w31mr43403fgg.24.1259951071579;
+        Fri, 04 Dec 2009 10:24:31 -0800 (PST)
+Received: by 10.223.127.204 with SMTP id h12mr95770fas.12.1259937001424;
+        Fri, 04 Dec 2009 06:30:01 -0800 (PST)
+Received: by 10.223.127.204 with SMTP id h12mr95769fas.12.1259937001262;
+        Fri, 04 Dec 2009 06:30:01 -0800 (PST)
+Return-Path: <bosko.ivanisevic@gmail.com>
+Received: from mail-bw0-f224.google.com (mail-bw0-f224.google.com [209.85.218.224])
+        by gmr-mx.google.com with ESMTP id 11si166153fxm.10.2009.12.04.06.30.00;
+        Fri, 04 Dec 2009 06:30:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of bosko.ivanisevic@gmail.com designates 209.85.218.224 as permitted sender) client-ip=209.85.218.224;
+Received: by bwz24 with SMTP id 24so1991443bwz.30
+        for <ruby-ffi@googlegroups.com>; Fri, 04 Dec 2009 06:30:00 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.204.27.14 with SMTP id g14mr3348465bkc.127.1259936999948; Fri, 
+	04 Dec 2009 06:29:59 -0800 (PST)
+In-Reply-To: <2c0671440912040618m1aa4e37bsed3619c8f4d6d8cd@mail.gmail.com>
+References: <20091127124131.0f3ca7b2.jon.forums@gmail.com>
+	 <ce9339db-91a2-42c5-8428-925a6afc9117@j14g2000yqm.googlegroups.com>
+	 <20091202085358.55048b8a.jon.forums@gmail.com>
+	 <2c0671440912040618m1aa4e37bsed3619c8f4d6d8cd@mail.gmail.com>
+Date: Fri, 4 Dec 2009 15:29:59 +0100
+Message-ID: <2c0671440912040629s536b78f6qeb2143b68ea94564@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby
+From: Bosko Ivanisevic <bosko.ivanisevic@gmail.com>
+To: ruby-ffi@googlegroups.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/1712f5507b15b467
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/e87149e9fbdd3d6f
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=000325557b225241d50479e7f12f
+
+--000325557b225241d50479e7f12f
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Fri, Dec 4, 2009 at 3:18 PM, Bosko Ivanisevic <bosko.ivanisevic@gmail.com
+> wrote:
+
+>
+> On Wed, Dec 2, 2009 at 2:53 PM, Jon <jon.forums@gmail.com> wrote:
+>
+>>  > What versions of MRI are you using [as in compile--mingw, etc.]
+>> > are you using pre built gems?
+>>
+>> From the original post's DETAILS section, my setup below.  The MRI is
+>> RubyInstaller (mingw) RC1.
+>>
+>> The FFI 0.5.3 gem is the prebuilt mingw binary.  It also segfaults with
+>> the prebuilt mingw 0.5.4 gem.
+>>
+>> Thanks, Jon
+>>
+>>
+>> > ruby --version
+>> ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+>>
+>> > gem --version
+>> 1.3.5
+>>
+>> > gem list ffi
+>>
+>> *** LOCAL GEMS ***
+>> ffi (0.5.3)
+>>
+>
+> I've cloned ffi, executed:
+>
+> rake install
+>
+> and with new installation enumerating desktop windows sample works without
+> problems except that sample on the Wiki has one error. Line:
+>
+> if not Win.EnumDesktopWindows
+>
+> should be:
+>
+> if not Win.enum_desktop_windows
+>
+> and in order to display window title puts command should be:
+>
+> puts "[%03i] Found '%s'" % [ win_count += 1, title.get_string(0) ]
+>
+> I was using Rubyinstaller 1.8.6. version of Ruby (mingw) with devkit to
+> build ffi gem.
+>
+>
+> Just tried same but with 1.9.1 and everything works just fine. Obviously
+there is an error in binary gem, not in FFI code.
+
+Regards,
+Bosko Ivanisevic
+
+--000325557b225241d50479e7f12f
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<br><br><div class=3D"gmail_quote">On Fri, Dec 4, 2009 at 3:18 PM, Bosko Iv=
+anisevic <span dir=3D"ltr">&lt;<a href=3D"mailto:bosko.ivanisevic@gmail.com=
+">bosko.ivanisevic@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"=
+gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-=
+left:1ex;">
+<br><div class=3D"gmail_quote"><div><div></div><div class=3D"h5">On Wed, De=
+c 2, 2009 at 2:53 PM, Jon <span dir=3D"ltr">&lt;<a href=3D"mailto:jon.forum=
+s@gmail.com" target=3D"_blank">jon.forums@gmail.com</a>&gt;</span> wrote:<b=
+r><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex">
+
+<div>=A0&gt; What versions of MRI are you using [as in compile--mingw, etc.=
+]<br>
+&gt; are you using pre built gems?<br>
+<br>
+</div>From the original post&#39;s DETAILS section, my setup below. =A0The =
+MRI is RubyInstaller (mingw) RC1.<br>
+<br>
+The FFI 0.5.3 gem is the prebuilt mingw binary. =A0It also segfaults with t=
+he prebuilt mingw 0.5.4 gem.<br>
+<br>
+Thanks, Jon<br>
+<div><div></div><div><br>
+<br>
+&gt; ruby --version<br>
+ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]<br>
+<br>
+&gt; gem --version<br>
+1.3.5<br>
+<br>
+&gt; gem list ffi<br>
+<br>
+*** LOCAL GEMS ***<br>
+ffi (0.5.3)</div></div></blockquote><div><br></div></div></div><div>I&#39;v=
+e cloned ffi, executed:</div><div><br></div><div>rake install</div><div><br=
+></div><div>and with new installation enumerating desktop windows sample wo=
+rks without problems except that sample on the Wiki has one error. Line:</d=
+iv>
+
+<div><br></div><div>if not Win.EnumDesktopWindows</div><div><br></div><div>=
+should be:</div><div><br></div><div>if not Win.enum_desktop_windows</div><d=
+iv><br></div><div>and in order to display window title puts command should =
+be:</div>
+
+<div><br></div><div>puts &quot;[%03i] Found &#39;%s&#39;&quot; % [ win_coun=
+t +=3D 1, title.get_string(0) ]</div><div><br></div><div>I was using Rubyin=
+staller 1.8.6. version of Ruby (mingw) with devkit to build ffi gem.</div>
+
+<div><br></div><div><br></div></div></blockquote><div>Just tried same but w=
+ith 1.9.1 and everything works just fine. Obviously there is an error in bi=
+nary gem, not in FFI code.</div><div><br></div><div>Regards,</div><div>
+Bosko Ivanisevic</div></div>
+
+--000325557b225241d50479e7f12f--

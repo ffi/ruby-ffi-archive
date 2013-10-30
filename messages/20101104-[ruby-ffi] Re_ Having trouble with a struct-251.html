@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Having trouble with a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Having trouble with a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/4/10 2:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+It is 32 bit.
+
+Is there a reason pack doesn't exist in JRuby?
+
+On Nov 3, 11:54 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 4 November 2010 10:24, Qwerty <a class="moz-txt-link-rfc2396E" href="mailto:qwerty123451...@hotmail.com">&lt;qwerty123451...@hotmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>1. Open suse 11.3 kernel: 2.6.34.7-0.5-desktop #1 SMP PREEMPT.
+<span class="moz-txt-citetags">&gt; &gt; </span>Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is your ruby running as 32bit or 64bit?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>2. I tried it with JRuby 1.5.2 and got an error about pack being
+<span class="moz-txt-citetags">&gt; &gt; </span>undefined. I tried the alias packed with no luck. The JRuby ffi gem
+<span class="moz-txt-citetags">&gt; &gt; </span>directory only has 1 file ffi-0.6.3-java/lib/ffi.rb. Are the other
+<span class="moz-txt-citetags">&gt; &gt; </span>files outside this directory? The docs only show the 3 methods defined
+<span class="moz-txt-citetags">&gt; &gt; </span>in that file(Pointer), yet is doesn't complain about FFI::Struct.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>All of FFI for JRuby is contained in JRuby itself - the ffi gem is
+<span class="moz-txt-citetags">&gt; </span>just a shim to satisfy gem dependencies (and occasionally used to
+<span class="moz-txt-citetags">&gt; </span>patch the API post release).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>At least this bug is easily reproducable, so shouldn't be too hard to
+<span class="moz-txt-citetags">&gt; </span>track down where in StructLayoutBuilder the problem is.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,55 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Unable to compile on Lion</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Unable to compile on Lion</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Adrian Byng-Clarke <adrianbc@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/25/12 6:59 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+There still appears to be an issue install libffi in lion...
+
+"   If a cross compiler is detected then cross compile mode will be used."
+
+Adrian
+
+
+
+
+07:56:13 $&gt; sudo gem install ffi 
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+        /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+checking for ffi.h... no
+checking for ffi.h in /usr/local/include... no
+checking for rb_thread_blocking_region()... no
+checking for ruby_thread_has_gvl_p()... no
+checking for ruby_native_thread_p()... no
+checking for rb_thread_call_with_gvl()... no
+creating extconf.h
+creating Makefile
+
+make
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not recognized
+configure: error: /bin/sh /Library/Ruby/Gems/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not recognized
+configure: error: /bin/sh /Library/Ruby/Gems/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** ["/Library/Ruby/Gems/1.8/gems/ffi-1.0.11/ext/ffi_c/libffi"/.libs/libffi_convenience.a] Error 2
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/ffi-1.0.11 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/ffi-1.0.11/ext/ffi_c/gem_make.out
+07:56:20 adrian@DeathStar-2 /source/phoenix $&gt; 
+
+</pre></div></body>
+</html>
+</table></div>

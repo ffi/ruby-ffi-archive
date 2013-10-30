@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] invalid ELF header on hello world example</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] invalid ELF header on hello world example</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/26/10 6:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Wed, May 26, 2010 at 8:25 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Don't use 'libc' as the library, use FFI::Library::LIBC
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On linux, /usr/lib/libc.so is a linker script, not a library.  (you
+<span class="moz-txt-citetags">&gt; </span>have to use libc.so.6, which is what FFI::Library::LIBC will be on
+<span class="moz-txt-citetags">&gt; </span>linux)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If thats in an example on the wiki, please correct it, or if its in
+<span class="moz-txt-citetags">&gt; </span>the source tree, report and issue with a patch for it.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+No, wiki says this:
+
+<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/basic-usage">http://wiki.github.com/ffi/ffi/basic-usage</a>
+
+module Hello
+  extend FFI::Library
+  ffi_lib LIBC
+  attach_function 'puts', [ :string ], :int
+end
+
+Hello.puts("Hello, World")
+
+But LIBC is not defined in that context, better be explicit:
+
+ffi_lib FFI::Library::LIBC
+
+Works even on Windows <span class="moz-smiley-s3" title=";-)"><span>;-)</span></span>
+
+ruby -v t.rb
+ruby 1.8.7 (2010-01-10 patchlevel 249) [i386-mingw32]
+Hello, World
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

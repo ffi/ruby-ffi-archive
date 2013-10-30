@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.196.201 with SMTP id io9cs22132igc;
+        Thu, 10 Nov 2011 11:35:52 -0800 (PST)
+Received: by 10.146.181.25 with SMTP id d25mr3796403yaf.3.1320953751219;
+        Thu, 10 Nov 2011 11:35:51 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOvxyeiUAxCTz_D1BBoEJ2u-DA@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id n18si4021817ann.64.2011.11.10.11.35.51
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 10 Nov 2011 11:35:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOvxyeiUAxCTz_D1BBoEJ2u-DA@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOvxyeiUAxCTz_D1BBoEJ2u-DA@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCOvxyeiUAxCTz_D1BBoEJ2u-DA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yenm5 with SMTP id m5sf1900316yen.7
+        for <headius@headius.com>; Thu, 10 Nov 2011 11:35:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=UClzh5IBdWmVfu+M37SBTSGoGIzQGXSNYAxLUQ387o0=;
+        b=S+Yi5TYMAhhvfEfmZD32X0qx+Pp07oI9XB2CeqEEUbRAQ3Ta6KF6cpYaAFd3ZNQIa6
+         VxZJ4CAfM+sbAe4JHQvlggBuGMFLNB4eOBAYx9IqdwTxKax2iYG6/DpZmqDMfy6lt9la
+         ZxgAAeZ6hij1rVuxvg1HqIbZp8w+lpPJRg9r8=
+Received: by 10.236.124.77 with SMTP id w53mr2185430yhh.11.1320953747067;
+        Thu, 10 Nov 2011 11:35:47 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.208.32 with SMTP id k32ls4438883anq.5.gmail; Thu, 10 Nov
+ 2011 11:35:46 -0800 (PST)
+Received: by 10.101.20.1 with SMTP id x1mr2361596ani.41.1320953746263;
+        Thu, 10 Nov 2011 11:35:46 -0800 (PST)
+Received: by 10.150.40.13 with SMTP id n13msybn;
+        Thu, 10 Nov 2011 10:43:35 -0800 (PST)
+Received: by 10.50.6.200 with SMTP id d8mr850099iga.0.1320950614956;
+        Thu, 10 Nov 2011 10:43:34 -0800 (PST)
+Date: Thu, 10 Nov 2011 10:43:34 -0800 (PST)
+From: Michael Cohen <michael.lee.cohen@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <29349448.161.1320950614353.JavaMail.geo-discussion-forums@prlm15>
+Subject: [ruby-ffi] Error trying to install ffi
+MIME-Version: 1.0
+X-Original-Sender: michael.lee.cohen@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_160_14106706.1320950614351"
+
+------=_Part_160_14106706.1320950614351
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+I'm trying to install the ffi gem but when I run the gem install command I 
+get the following error message:
+
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+ERROR: Failed to build gem native extension.
+
+        /Users/frozencanuck/.rvm/rubies/ruby-1.9.2-p290/bin/ruby extconf.rb
+checking for ffi.h... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Any idea what is going on? I've tried to explicitly download v1.0.10 but I 
+get the same error message. 
+
+I'm using Ruby v1.9.2-p290 running on Mac OS X 10.7.2. I also have xcode 
+4.2 installed. Any meaningful thoughts on this would be appreciated.
+
+-Mike 
+
+------=_Part_160_14106706.1320950614351
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi,<div><br></div><div>I'm trying to install the ffi gem but when I run the=
+ gem install command I get the following error message:</div><div><br></div=
+><div><div>Building native extensions. &nbsp;This could take a while...</di=
+v><div>ERROR: &nbsp;Error installing ffi:</div><div><span class=3D"Apple-ta=
+b-span" style=3D"white-space:pre">=09</span>ERROR: Failed to build gem nati=
+ve extension.</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; /Users/f=
+rozencanuck/.rvm/rubies/ruby-1.9.2-p290/bin/ruby extconf.rb</div><div>check=
+ing for ffi.h... *** extconf.rb failed ***</div><div>Could not create Makef=
+ile due to some reason, probably lack of</div><div>necessary libraries and/=
+or headers. &nbsp;Check the mkmf.log file for more</div><div>details. &nbsp=
+;You may need configuration options.</div></div><div><br></div><div>Any ide=
+a what is going on? I've tried to explicitly download v1.0.10 but I get the=
+ same error message.&nbsp;</div><div><br></div><div>I'm using Ruby v1.9.2-p=
+290 running on Mac OS X 10.7.2. I also have xcode 4.2 installed. Any meanin=
+gful thoughts on this would be appreciated.</div><div><br></div><div>-Mike&=
+nbsp;</div>
+------=_Part_160_14106706.1320950614351--

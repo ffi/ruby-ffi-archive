@@ -1,0 +1,57 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/4/09 6:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Ok, that one is fixed.
+
+Does that mean it works (at least all the tests) on ppc32 now?
+
+
+2009/11/5 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 11/03/2009 01:46 PM, Wayne Meissner wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>2009/11/4 Bryan Kearney<a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>I  have applied both, and I have gotten past the earlier issue (Thank
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>you!).
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>I am now seeing different errors on ppc and ppc64. On the ppc build [1] I
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>build and get a couple of unit test failures.. On the ppc64 build [2] I
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>see
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>a wierd error about wrong number of arguments.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm not surprised.  You're probably the first person on the planet to
+<span class="moz-txt-citetags">&gt;&gt; </span>try ruby-ffi on either ppc-linux or ppc64-linux.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>You have two choices:
+<span class="moz-txt-citetags">&gt;&gt; </span>1) Cut your losses and declare the package usable for i386 and x86_64
+<span class="moz-txt-citetags">&gt;&gt; </span>only.  This is probably the easiest path, and given how obsolete ppc
+<span class="moz-txt-citetags">&gt;&gt; </span>machines are, probably not a huge loss.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>2) Learn enough details about the ppc32 and ppc64 abi, and debug
+<span class="moz-txt-citetags">&gt;&gt; </span>ruby-ffi.  It will probably turn out to be something simple, but it
+<span class="moz-txt-citetags">&gt;&gt; </span>could take a lot of tears and pain to track down.  The upside is that
+<span class="moz-txt-citetags">&gt;&gt; </span>this will help knock out any bugs for other arches like arm.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Naturally, I advocate option #1.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Yeah.. If I dont get this running in fedora I wont be able to use it for
+<span class="moz-txt-citetags">&gt; </span>Augeas/Puppet.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Here is a patch for the ppc platform. Change is in the test library only.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- bk
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

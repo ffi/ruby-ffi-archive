@@ -1,0 +1,124 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs16453qcb;
+        Wed, 26 May 2010 16:28:39 -0700 (PDT)
+Received: by 10.227.157.142 with SMTP id b14mr9166635wbx.183.1274916518991;
+        Wed, 26 May 2010 16:28:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRCk3fbfBBoEN9_hDw@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id u30si1682859wbs.59.2010.05.26.16.28.37;
+        Wed, 26 May 2010 16:28:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCk3fbfBBoEN9_hDw@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCk3fbfBBoEN9_hDw@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRCk3fbfBBoEN9_hDw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwd20 with SMTP id 20sf566093wwd.7
+        for <headius@headius.com>; Wed, 26 May 2010 16:28:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=6shlS/Q9EkVc8QmDtwAEDKR4mxhx9Ln2WfSox6UAERg=;
+        b=Gr9d50sxrySSiudySrHCiEj8oefZs+NG6fyM+MrZB4llVSAQwf4w1mz6oMLUL+8TMA
+         yxyI91YYx3DL3VsdVsFACJf+4d+naeyMNjzFFAkfwbEaRrsUSzi/MfqmE+N/7H44jM5T
+         524og+KVzjZs1WNmygXIDKQP+NSp0QJ/nc5Y0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=JuHB3YW/rFxJtqBx9fQmamBiJRooBwiKaSblEtcorKDHppGOwZ8Wcqo/rqh3F+awo1
+         11B1HRl614u+d0/c15V4kBpHAAh2e1Yml1CFv4uZHCdIMnA5hwqvJ5AqidaQJLaW9X8O
+         RPnX/jEn+a5PKIFJCgNihfOJi+6GnPxIUyOFY=
+Received: by 10.223.7.12 with SMTP id b12mr697771fab.25.1274916516931;
+        Wed, 26 May 2010 16:28:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.86.125.19 with SMTP id x19ls209460fgc.1.p; Wed, 26 May 2010 
+	16:28:36 -0700 (PDT)
+Received: by 10.86.119.17 with SMTP id r17mr740410fgc.11.1274916516410;
+        Wed, 26 May 2010 16:28:36 -0700 (PDT)
+Received: by 10.86.119.17 with SMTP id r17mr740409fgc.11.1274916516391;
+        Wed, 26 May 2010 16:28:36 -0700 (PDT)
+Received: from mail-fx0-f41.google.com (mail-fx0-f41.google.com [209.85.161.41])
+        by gmr-mx.google.com with ESMTP id g17si398710fai.2.2010.05.26.16.28.35;
+        Wed, 26 May 2010 16:28:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.161.41 as permitted sender) client-ip=209.85.161.41;
+Received: by fxm11 with SMTP id 11so166791fxm.28
+        for <ruby-ffi@googlegroups.com>; Wed, 26 May 2010 16:28:35 -0700 (PDT)
+Received: by 10.239.188.202 with SMTP id q10mr821229hbh.126.1274916515110; 
+	Wed, 26 May 2010 16:28:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.239.164.207 with HTTP; Wed, 26 May 2010 16:28:15 -0700 (PDT)
+In-Reply-To: <AANLkTinfstZG4iFodfiySvBfMIuwWe2m8UVdCGbguN3d@mail.gmail.com>
+References: <fbca960d-859a-4e2c-8538-d900252b54ef@32g2000prq.googlegroups.com> 
+	<AANLkTinfstZG4iFodfiySvBfMIuwWe2m8UVdCGbguN3d@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 26 May 2010 20:28:15 -0300
+Message-ID: <AANLkTim8k8Nm6kS4a2_xGL2MulrdAWGUWyrnu3x0k4bQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] invalid ELF header on hello world example
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.161.41 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, May 26, 2010 at 8:25 PM, Wayne Meissner <wmeissner@gmail.com> wrote=
+:
+> Don't use 'libc' as the library, use FFI::Library::LIBC
+>
+> On linux, /usr/lib/libc.so is a linker script, not a library. =A0(you
+> have to use libc.so.6, which is what FFI::Library::LIBC will be on
+> linux)
+>
+> If thats in an example on the wiki, please correct it, or if its in
+> the source tree, report and issue with a patch for it.
+>
+
+No, wiki says this:
+
+http://wiki.github.com/ffi/ffi/basic-usage
+
+module Hello
+  extend FFI::Library
+  ffi_lib LIBC
+  attach_function 'puts', [ :string ], :int
+end
+
+Hello.puts("Hello, World")
+
+But LIBC is not defined in that context, better be explicit:
+
+ffi_lib FFI::Library::LIBC
+
+Works even on Windows ;-)
+
+ruby -v t.rb
+ruby 1.8.7 (2010-01-10 patchlevel 249) [i386-mingw32]
+Hello, World
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

@@ -1,0 +1,74 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.36.206 with SMTP id u14cs78323qcd;
+        Sat, 5 Jun 2010 01:31:19 -0700 (PDT)
+Received: by 10.151.19.16 with SMTP id w16mr11248880ybi.440.1275726679572;
+        Sat, 05 Jun 2010 01:31:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLvR4rYNENaWqOAEGgRALM2E@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id 3si8311187ybi.74.2010.06.05.01.31.18;
+        Sat, 05 Jun 2010 01:31:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLvR4rYNENaWqOAEGgRALM2E@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLvR4rYNENaWqOAEGgRALM2E@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCLvR4rYNENaWqOAEGgRALM2E@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb11 with SMTP id 11sf3528196gwb.7
+        for <headius@headius.com>; Sat, 05 Jun 2010 01:31:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=J1UjxvQRKsDOiW7Bb6yZumKULqfB1eOmFK6MKIbFPgo=;
+        b=zxRwcbsNtV/ToRoqQObgYZxHtRyCZHdC02EFnQVq650FSeAScPcGTqSbXTz/LnGQiH
+         9qzBB8I0DNY89InbHmOoIobBJoanMKQTBUKxLwt9f9+ErQEmnKUvwGyI7A3C8Ex6hUQn
+         naPxrcTD2g1cu6E/aHn2mpbkbDYV/yByDVyPo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        b=L11i+XJYKUFs3sznZNIdeBft1P+7Ts0Zn/2ztdYQ44icN0OqAZGI2yO48wo++UdznZ
+         3G/CNsQsPEiLBb2eMxwfdG9tV0XmD7cyxSpU8n2nV+6gz+sdeWkTLnYirfOZsjXx7B3n
+         7GFg73HnTHCws6HJlN8sBZJVrSFlaB01YY0dY=
+Received: by 10.101.152.22 with SMTP id e22mr503560ano.20.1275726678207;
+        Sat, 05 Jun 2010 01:31:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.11.8 with SMTP id o8ls2551258ani.6.p; Sat, 05 Jun 2010 
+	01:31:17 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.152.22 with SMTP id e22mr513215ano.60.1275726677763; Sat, 
+	05 Jun 2010 01:31:17 -0700 (PDT)
+Received: by 31g2000prc.googlegroups.com with HTTP; Sat, 5 Jun 2010 01:31:17 
+	-0700 (PDT)
+Date: Sat, 5 Jun 2010 01:31:17 -0700 (PDT)
+In-Reply-To: <3e447811-7a2e-4750-850b-fcfc71d37d2b@e34g2000pra.googlegroups.com>
+X-IP: 122.18.132.68
+References: <3e447811-7a2e-4750-850b-fcfc71d37d2b@e34g2000pra.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; 
+	rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2 (.NET CLR 3.5.30729),gzip(gfe)
+Message-ID: <5fc6af6a-6dd5-4dc4-88e1-4adf1ec4cfa3@31g2000prc.googlegroups.com>
+Subject: [ruby-ffi] Re: Attaching function with two different signatures
+From: Arvicco <arvitallian@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+OK, I guess there is no way to tell attach_function that one of the
+arguments can be either :long or :pointer. I'm attaching this function
+twice with different names and signatures, and then using convenience
+method to check argument type and route call to attached function with
+appropriate signature...

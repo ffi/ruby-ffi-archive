@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Proper memory management</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Proper memory management</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/10 8:02 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">I know from discussions over irc that Evan Phoenix isn&#39;t too keen on using finalizers for memory management for this very reason. In my own projects, I&#39;ve found myself occasionally writing #dispose methods for manual object deletion, along with a block form of the constructor that ensures #dispose is called after the block is run. If controlling when memory should be freed is important, it&#39;s probably best not to rely on MRI&#39;s GC!<div>
+<br></div><div>Best</div><div><br></div><div>Jeremy<br><br><div class="gmail_quote">On Wed, May 5, 2010 at 3:56 PM, v01d <span dir="ltr">&lt;<a href="mailto:phreakuencies@gmail.com">phreakuencies@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">Hi,<br>
+I&#39;m in the process of developing a Ruby binding to the GSL numerical<br>
+library using FFI. Recently I stumbled upon a problematic issue<br>
+regarding memory management and finalizers.<br>
+<br>
+Since the GSL library allows creation and destruction of instances<br>
+like this:<br>
+gsl_vector* ptr = gsl_alloc_vector(size_t n);<br>
+...<br>
+gsl_free_vector(ptr);<br>
+<br>
+Then, in Ruby I do something like this:<br>
+<br>
+class Vector<br>
+  def initialize(n)<br>
+    @ptr = GSLng.backend.gsl_alloc_vector(n)<br>
+    Vector.define_finalizer(self, @ptr)<br>
+  end<br>
+<br>
+  def Vector.define_finalizer(self, ptr)<br>
+    ObjectSpace.define_finalizer(self, lambda {|id|<br>
+GSLng.backend.gsl_free_vector(ptr)})<br>
+  end<br>
+end<br>
+<br>
+The problem is that if later I instatiante a Vector inside a loop,<br>
+like:<br>
+10000.times do<br>
+  Vector.new(3)<br>
+end<br>
+<br>
+This obviously eats a lot of memory until GC runs. Now, if I do:<br>
+10000.times do<br>
+  Vector.new(3)<br>
+  GC.start<br>
+end<br>
+<br>
+the memory that the Vector instances themselves occupy is freed but<br>
+the finalizer is not called (it is later called at program end),<br>
+therefore all of the memory allocated through gsl_alloc_vector() is<br>
+sitting there until program ends.<br>
+<br>
+I know that Ruby doesn&#39;t guarantee that finalizers are called in any<br>
+particular moment (even after GC.start, which I thought would<br>
+suffice). So what I&#39;m asking probably is not really related to FFI<br>
+itself, but I wanted to ask here since I imagined this would be a<br>
+common pattern among FFI users. The question is then: is there a<br>
+better way to manage this type of memory? I obviously cant use the<br>
+transaction-like pattern (like File.open) since for a Vector that<br>
+wouldn&#39;t make sense. It would be ideal to make the gsl_vector_free<br>
+call when the actual Vector class is free&#39;d. Maybe I need to go to a<br>
+lower level for this and use the C api to register this call in the<br>
+&quot;free&quot; function for this class, but that would be overkill since I<br>
+wanted to avoid using C altogether.<br>
+<br>
+Thank you!<br>
+</blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

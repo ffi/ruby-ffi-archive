@@ -1,0 +1,97 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: initialize :strings in structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: initialize :strings in structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/26/09 4:50 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+
+
+On Aug 21, 4:40 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Its a Ruby FFI problem.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The problem is that to set a string in a C struct (which is just a
+<span class="moz-txt-citetags">&gt; </span>pointer to some native memory), you need to allocate &amp; manage the
+<span class="moz-txt-citetags">&gt; </span>deallocation of native memory.  Automatically managing the
+<span class="moz-txt-citetags">&gt; </span>deallocation so the memory is not freed prematurely (and crashing the
+<span class="moz-txt-citetags">&gt; </span>VM), nor kept indefinitely (a memory leak) is a bit tricky, so we
+<span class="moz-txt-citetags">&gt; </span>punted on it and pushed that back up to the FFI API user.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So, to be able to set string fields, you need to declare them as
+<span class="moz-txt-citetags">&gt; </span>:pointer, and manage the memory yourself via a MemoryPointer, or
+<span class="moz-txt-citetags">&gt; </span>mapping in malloc()/free() and using them.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thats no exactly convenient, but for now, its what you have to do.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Note: JRuby works around this by attaching the string memory ownership
+<span class="moz-txt-citetags">&gt; </span>to the Struct ruby instance.  I'm not exactly sure if this is the best
+<span class="moz-txt-citetags">&gt; </span>way to do it, since it hides the allocation/deallocation in a
+<span class="moz-txt-citetags">&gt; </span>potentially dangerous way - when the ruby object gets collected, the
+<span class="moz-txt-citetags">&gt; </span>memory gets freed, and if that struct got passed to native code that
+<span class="moz-txt-citetags">&gt; </span>kept references to the strings, then that memory gets freed, and the
+<span class="moz-txt-citetags">&gt; </span>next time the native code accesses those memory locations, everything
+<span class="moz-txt-citetags">&gt; </span>goes <b class="moz-txt-star"><span class="moz-txt-tag">*</span>boom<span class="moz-txt-tag">*</span></b>, and its hard to figure out why.
+</pre></blockquote><pre wrap>
+
+The JRuby special case should probably be removed, since it lets
+people write FFI code that works on JRuby, but not anywhere else.
+You've hit the nail on the head, the problem isn't solvable except by
+the user, so all implementations need to delegate to the FFI user to
+solve this.
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/8/22 Jan <a class="moz-txt-link-rfc2396E" href="mailto:jan.ber...@gmail.com">&lt;jan.ber...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>hey all,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>is it possible (with NiceFFI) to initialize strings inside a struct?
+<span class="moz-txt-citetags">&gt; &gt; </span>e.g.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>class Config &lt; NiceFFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; </span>   layout(:api_version, :int,
+<span class="moz-txt-citetags">&gt; &gt; </span>     :cache_location, :string
+<span class="moz-txt-citetags">&gt; &gt; </span>     :settings_location, :string
+<span class="moz-txt-citetags">&gt; &gt; </span>  )
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Config.new(:api_version=&gt;1, :cache_location=&gt;"/tmp")
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I get
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>/Library/Ruby/Gems/1.8/gems/nice-ffi-0.1/lib/nice-ffi/nicestruct.rb:
+<span class="moz-txt-citetags">&gt; &gt; </span>380:in `[]=': Cannot set :string fields (ArgumentError)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>is this a problem with FFI in general or could support for this added?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span> thanks,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>  jan
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs55502faj;
+        Thu, 17 Mar 2011 13:18:43 -0700 (PDT)
+Received: by 10.220.183.234 with SMTP id ch42mr62550vcb.125.1300393122825;
+        Thu, 17 Mar 2011 13:18:42 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMbJ8Mv9HxCd2YnsBBoEbx1IuQ@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id n21si2589779vcn.171.2011.03.17.13.18.42
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 17 Mar 2011 13:18:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMbJ8Mv9HxCd2YnsBBoEbx1IuQ@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMbJ8Mv9HxCd2YnsBBoEbx1IuQ@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCMbJ8Mv9HxCd2YnsBBoEbx1IuQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf5942140qwj.7
+        for <headius@headius.com>; Thu, 17 Mar 2011 13:18:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=qbhvYGcwBA6S1qdrPSZ3QhESB4YWIWv6/8pZgj78uPU=;
+        b=cRT7u8G3+grTw+I/vhkEJ14IPOGqxln8KWaxjD8Lb6hWJrCSUl4H7Q0yi8QPNy8hEi
+         KcP/WUkgCc27rDVHC+Knb//HT8FfU3Qp1T1OIo8hXLb5NLQ5jPUSsCtb/Cxwe7d1PufT
+         bkEqFCE9G3eTs9PO6bb6GiURSo6beK5Npha1A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=4dGbZZTsD1bLwD/FHzjTJfEEAG+D9d2+TeF9qL6As37NXvajoFQc8ABQBR9lVb1oN9
+         6feOeEZORFM/taK7H+ZQaF2bxUuCAzkD2P7ZyArhUjRJ6gJmFJmyylNXggmJoNubKj1D
+         dskJ3SQ8b5q6LRkLDI8XM0aFUIwZTQrhfbOe4=
+Received: by 10.224.70.142 with SMTP id d14mr20578qaj.14.1300393117177;
+        Thu, 17 Mar 2011 13:18:37 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.196.195 with SMTP id eh3ls640447qab.1.p; Thu, 17 Mar 2011
+ 13:18:36 -0700 (PDT)
+Received: by 10.224.196.2 with SMTP id ee2mr20502qab.19.1300393116784;
+        Thu, 17 Mar 2011 13:18:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.178.9 with SMTP id bk9mr143779vcb.48.1300353674222; Thu,
+ 17 Mar 2011 02:21:14 -0700 (PDT)
+Received: by u12g2000vbf.googlegroups.com with HTTP; Thu, 17 Mar 2011 02:21:14
+ -0700 (PDT)
+Date: Thu, 17 Mar 2011 02:21:14 -0700 (PDT)
+X-IP: 193.29.76.37
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.15)
+ Gecko/20110303 Firefox/3.6.15,gzip(gfe)
+Message-ID: <f098cd75-5399-4e59-9d9c-5bcf5a81cd7f@u12g2000vbf.googlegroups.com>
+Subject: [ruby-ffi] needing help with using a Callback in a :Varargs parameter list
+From: aaalex <apeuchert@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: apeuchert@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello ruby-ffi group,
+hopefully, some FFI wizard can help me with this rather unusual
+function definition.
+
+I try to access the OPSEC API with Ruby FFI. OPSEC is a collection of
+C libraries to access CheckPoint firewalls and it is very C indeed.
+
+So, I ran into a problem of giving a pointer to a callback function
+inside a varargs parameter list, but let me explain a little bit.
+
+
+To setup an OPSEC entity the API provides the opsec_init_entity
+function like this:
+
+OpsecEntity *opsec_init_entity (OpsecEnv *env, OpsecEntityType
+*entity_type, ...);
+
+so this resolves to the following RubyFFI definition:
+
+module Opsec
+  extend FFI::Library
+  ffi_lib 'opsec'
+
+  typedef :pointer, :opsec_entity
+  attach_function :opsec_init_entity,
+[:opsec_env, :pointer, :int, :varargs], :opsec_entity
+end
+
+The varargs is a list of attributes and their values and finally
+ending with a NULL. The attribute is just an integer, the value
+depends on the attribute and can be an integer, a CHAR * or a handler.
+As with FFI you need to give the type for every parameter in
+a :varargs, invoking this function would look something like this:
+
+server = opsec_init_entity opsec_env, objptr, :int,
+OPSEC_ENTITY_NAME, :string, "lea_server", :int, 0
+
+and it works! Isn't FFI just great?
+
+
+But it is also needed to provide callbacks here. This is how it looks
+like in C:
+
+int LeaStartHandler(OpsecSession *);
+pClient = opsec_init_entity(pEnv, LEA_CLIENT,
+OPSEC_SESSION_START_HANDLER, LeaStartHandler, OPSEC_EOL);
+
+In Ruby callbacks are Procs or Lambdas, but how do I get them into the
+function call described here with <callback>?
+
+client = opsec_init_entity opsec_env, objptr, :int,
+OPSEC_SESSION_START_HANDLER, :callback, <callback>, :int, 0
+
+Does anybody know a way to give a pointer to a Proc into this function
+call? Any hint is appreciated.
+
+-aaalex

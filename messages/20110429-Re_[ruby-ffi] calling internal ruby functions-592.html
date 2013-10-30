@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] calling internal ruby functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] calling internal ruby functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Aman Gupta <themastermind1@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/29/11 5:17 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>&quot;ruby-ffi@googlegroups.com&quot; &lt;ruby-ffi@googlegroups.com&gt;</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You can use ffi_lib(FFI::CURRENT_PROCESS).
+
+How are you emulating the FD_* macros via FFI?
+
+  Aman
+
+On Friday, April 29, 2011, mixtli <a class="moz-txt-link-rfc2396E" href="mailto:ronmcclain75@gmail.com">&lt;ronmcclain75@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I wanted to call rb_thread_select to do some async polling, so I made
+<span class="moz-txt-citetags">&gt; </span>a quick wrapper.  It actually works fine, but I have to specify the
+<span class="moz-txt-citetags">&gt; </span>full path to my libruby.dylib in the call to ffi_lib.   If I just put
+<span class="moz-txt-citetags">&gt; </span>"libruby", it segfaults.   Is there some standard mechanism for
+<span class="moz-txt-citetags">&gt; </span>forcing ffi to use the libs from the rvm environment?   This is for a
+<span class="moz-txt-citetags">&gt; </span>public gem (<a class="moz-txt-link-freetext" href="http://github.com/mixtli/net-snmp">http://github.com/mixtli/net-snmp</a>), so I'd like it to
+<span class="moz-txt-citetags">&gt; </span>automagically work in the user's environment.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Also, is there a standard set of wrappers for ruby internals similar
+<span class="moz-txt-citetags">&gt; </span>to the set for libc (ffi-libc)?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>And finally, since I'm here..  Anyone else having problems requiring
+<span class="moz-txt-citetags">&gt; </span>ffi-libc on snow leopard?  A bunch of the functions don't seem to be
+<span class="moz-txt-citetags">&gt; </span>defined on my system (clearenv, stdin, etc).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,170 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs65605bkh;
+        Sat, 23 Oct 2010 08:19:02 -0700 (PDT)
+Received: by 10.150.50.19 with SMTP id x19mr8866903ybx.249.1287847142047;
+        Sat, 23 Oct 2010 08:19:02 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICH0uSrDRDj-YvmBBoERYdftw@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id q25si13222838ybk.10.2010.10.23.08.19.00;
+        Sat, 23 Oct 2010 08:19:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDj-YvmBBoERYdftw@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDj-YvmBBoERYdftw@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCICH0uSrDRDj-YvmBBoERYdftw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj16 with SMTP id 16sf3794873gwj.7
+        for <headius@headius.com>; Sat, 23 Oct 2010 08:19:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=b+fpntozfQhuwNKrDtvlBUt+vaqEoQyqWCHVzxdD3NM=;
+        b=FRrrFbEE7PPPutHlyg97Qr83yymDEj2bsLUqyIYWVA1wnGZYYy7yu1cX7WVgmE7tgO
+         b8TGOu46RNM6ZUK2aA5gQatNENe+pADWJVjDJQiiRbYA6lXWU8WYpg14kTGVgjAk8NMF
+         MTHO046MATsaYFyyQD4dVLGlRF5VzYRSGRNDs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=na6dlI4cswyv9uRbjZiCV5nEgYQZWNilulUaBYzIu3s16bOVNfMVc9paczJcb7hzZa
+         R548uBaGhI0hCau8VeWiqOLJMxqLGX5qt9FW4Y/nW0aun/p+bzSinJHPTPELeTS2tzxO
+         ImhrVZ+XIUoQXHBA2RBiQfGrdk9Kyxzs12pSU=
+Received: by 10.151.62.4 with SMTP id p4mr703192ybk.30.1287847139195;
+        Sat, 23 Oct 2010 08:18:59 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.249.20 with SMTP id w20ls2610102ybh.6.p; Sat, 23 Oct 2010
+ 08:18:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.150.250.10 with SMTP id x10mr697241ybh.45.1287847138346; Sat,
+ 23 Oct 2010 08:18:58 -0700 (PDT)
+Received: by h7g2000yqn.googlegroups.com with HTTP; Sat, 23 Oct 2010 08:18:58
+ -0700 (PDT)
+Date: Sat, 23 Oct 2010 08:18:58 -0700 (PDT)
+In-Reply-To: <AANLkTim2Dx5GL5ZFpW0MCi+fT5U78y=-svOEgS2ft0Rv@mail.gmail.com>
+X-IP: 71.205.17.111
+References: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+ <AANLkTim2Dx5GL5ZFpW0MCi+fT5U78y=-svOEgS2ft0Rv@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US)
+ AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.41 Safari/534.7,gzip(gfe)
+Message-ID: <fd1caa93-ba45-4e0c-b2d8-9f7f05636c80@h7g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Re: Link to non-windows dlls
+From: kvberge <kvandenberge@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: kvandenberge@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I can provide the c declarations to the functions I am attempting to
+wrap, but I cannot provide the dll because it is a dll for the company
+I work for and I am not allowed to supply the dll.
+
+---------------------------------------------------------------------------=
+--------------------------------
+here is the code for the ruby module that is using FFI to wrap the
+dll:
+#usblibrary.rb
+
+require "ffi"
+module UsbLibrary
+  extend FFI::Library
+  ffi_lib "xrusblib.dll"
+  ffi_convention :stdcall
+
+  attach_function :OpenPort, [ :int ], :int
+  attach_function :ClosePort, [ :int ], :void
+  attach_function :Send, [ :int , :pointer], :bool
+  attach_function :Receive, [ :int, :int ], :pointer
+end
+#endfile
+
+here is the code that attemps to use it:
+
+#test_usb.rb
+
+require "./usblibrary"
+
+a =3D UsbLibrary.OpenPort(0x3020)
+puts UsbLibrary.Send(a,"some command")
+puts UsbLibrary.Receive(a,1000)
+b =3D UsbLibrary.ClosePort(a)
+
+#endfile
+
+Here is the c header file for the c functions I am attempting to wrap:
+
+#include <string>
+
+using namespace std;
+
+int    __stdcall OpenPort(int ProductID);
+void   __stdcall ClosePort(int iPort);
+void   __stdcall FlushReceiveBuffer(int iPort);
+string __stdcall ControlReceive(int iPort, int Timeout);
+int    __stdcall ControlSend(int iPort, string strData);
+BOOL   __stdcall IsDataAvailable(int iPort);
+string __stdcall Receive(int iPort, int Timeout);
+string __stdcall ReceiveBcpPacket(int iPort, int Timeout);
+BOOL   __stdcall Send(int iPort, string strData);
+---------------------------------------------------------------------------=
+-------------------------------------------
+
+Here is some background;  I am attempting to connect to a device that
+our my company makes through this custom usb library.  Basically once
+we connect we have commands that we send to and responses we receive
+from the instrument.  This is all made in house.  The dll is
+successfully being used to run custom PC software and as I said before
+I use it successfully on ruby 1.8.6 through a swig wrapper on a
+Windows XP Box.
+
+The OpenPort function will return an Id of the the port opened, this
+index will then be used by the Send, Receive, and ClosePort functions
+to do the requested action on the appropriate port.
+
+On Oct 23, 10:46=A0am, Luis Lavena <luislav...@gmail.com> wrote:
+> On Fri, Oct 22, 2010 at 8:33 PM, kvberge <kvandenbe...@gmail.com> wrote:
+> > Is there a trick to using FFI and the non-windows api dll's? =A0I am
+> > attempting to link to a custom usb dll that is known to work
+> > (currently using wrapper created from swig and using ruby 1.8.6). =A0I
+> > am now attempting to run ruby 1.9.2 and FFI seemed like a simpler
+> > solution than worrying about using swig. =A0I should also note that I a=
+m
+> > on windows 7 and ran the ruby one click installer for windows. =A0When
+> > running the script I get this error:
+>
+> > Any advice?
+> > If you need more information let me know.
+>
+> Please show the code, we need to look at the code to be able to see
+> what are you talking about. Perhaps even reproduce it.
+>
+> Some non-microsoft DLLs uses cdecl as calling convention instead of
+> stdcall, which is the default on Windows.
+>
+> Please provide every single piece of code and information for us to be
+> able to reproduce the problem. Linsk to download of the DLL, the code
+> that generates the issue, any documentation.
+>
+> That will really help us help you.
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry

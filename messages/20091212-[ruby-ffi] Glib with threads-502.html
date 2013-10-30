@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Glib with threads</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Glib with threads</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Christoph Kappel <unexist@dorfelite.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 7:34 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+any idea why this doesn't work?
+
+require "ffi"
+
+module
+Glib
+  extend
+FFI::Library
+  ffi_lib "libglib-2.0"
+
+  attach_function :thread_init, :g_thread_init,
+[ :pointer ], :void
+end
+
+I am getting following error:
+
+/usr/lib/ruby/gems/1.9.1/gems/ffi-0.4.0/lib/ffi/library.rb:62:in
+`attach_function': Function 'g_thread_init' not found in
+[libglib-2.0.so] (FFI::NotFoundError)
+        from glib.rb:6:in `&lt;module:FFIGlib&gt;'
+        from glib.rb:3:in `&lt;main&gt;'
+
+I can use g_thread_init in a C program, I verified this before
+posting. So this symbol exists in the glib lib.
+</pre></div></body>
+</html>
+</table></div>

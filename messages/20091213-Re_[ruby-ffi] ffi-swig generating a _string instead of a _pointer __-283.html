@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Andrea Fazzi <andrea.fazzi@alcacoop.it></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/13/09 2:58 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+Excerpts from Stephen Bannasch's message of dom dic 13 05:23:50 +0100 2009:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>I have a C++ function that takes a pointer to a buffer where the function stores a C-string.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>This is what I wrote and got working.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span> attach_function :GoIO_GetNthAvailableDeviceName, [:pointer, :int, :int, :int, :int], :int
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>However if I use ffi-swig it generates a :string as the first parameter.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span> attach_function :GoIO_GetNthAvailableDeviceName, [ :string, :int, :int, :int, :int ], :int
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>Is there anyway this could work? The function needs an address to a location to store a C-string.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Looking more closely at ffi-swig it's type_spec.rb does expect:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  char *string;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>to be turned into a :string.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm not much of a C programmer but is that correct? It seems in this case it
+<span class="moz-txt-citetags">&gt; </span>should be a pointer.
+</pre></blockquote><pre wrap>
+
+Using char* rather than const char* for string it's not strictly incorrect 
+IMHO. I'd say it's a bad practice so, in this case, the generator is 
+favoring a bad practice. I was troubled about the behaviour to impose in 
+cases like this since so many libraries I processed with the generator 
+follow the bad practice. And I ended up with the conversion char* -&gt;
+:string.
+
+That said, you need a different behaviour now so I should reconsider my 
+choice. BTW, I'd like to read the opinion of the ML about this.
+
+Cheers,
+<div class="moz-txt-sig">-- 
+Andrea Fazzi @ alcacoop.it
+Follow me on <a class="moz-txt-link-freetext" href="http://twitter.com/remogatto">http://twitter.com/remogatto</a>
+</div></pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,80 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.36.206 with SMTP id u14cs65660qcd;
+        Tue, 8 Jun 2010 15:25:46 -0700 (PDT)
+Received: by 10.101.193.40 with SMTP id v40mr17819337anp.204.1276035946418;
+        Tue, 08 Jun 2010 15:25:46 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOeQwYraAhDlhrvgBBoEnzAPgA@googlegroups.com>
+Received: from mail-yw0-f164.google.com (mail-yw0-f164.google.com [209.85.211.164])
+        by mx.google.com with ESMTP id a22si12594974anp.8.2010.06.08.15.25.45;
+        Tue, 08 Jun 2010 15:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOeQwYraAhDlhrvgBBoEnzAPgA@googlegroups.com designates 209.85.211.164 as permitted sender) client-ip=209.85.211.164;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOeQwYraAhDlhrvgBBoEnzAPgA@googlegroups.com designates 209.85.211.164 as permitted sender) smtp.mail=ruby-ffi+bncCOeQwYraAhDlhrvgBBoEnzAPgA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh36 with SMTP id 36sf12281615ywh.27
+        for <headius@headius.com>; Tue, 08 Jun 2010 15:25:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=DkQXgcJA3r1h8qwlo8+QJc+x6uBbT6VdiTxVgnWUjC4=;
+        b=4gZ0j/eO189uZExOA2XlRlpkyjTbOi4inwxYHc+u+UftKtNGP5CrJ41+j6ZSUv/kxK
+         tgCC3M+TshD9IDwBpMealFiXd2EDfKgaCj6kGUEv49bZg87HodqLXeiseOlm7rgk/9Vc
+         AzRP1izpH05JxZ+DbHqAM+65TpjsK+5Jl+Evw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=aL+F8+Sq1wLvousLfblZPFv1BcHDWdufE99ZmoEK8coD5GgSe0LGXQs3FPfi6h8Rly
+         0AAQilRNlZY9SeWoymIAhIzEviXxJM4oXVyEZ8grGRNWJCoc60YjMYzOPUPeRQ11eyG3
+         PbW6914NxuH3W4+fKhvpwOK1/anbN/UqSSHD0=
+Received: by 10.150.162.2 with SMTP id k2mr975053ybe.14.1276035941720;
+        Tue, 08 Jun 2010 15:25:41 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.247.33 with SMTP id u33ls3946578ybh.4.p; Tue, 08 Jun 2010 
+	15:25:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.150.247.4 with SMTP id u4mr982282ybh.68.1276035941392; Tue, 08 
+	Jun 2010 15:25:41 -0700 (PDT)
+Received: by e5g2000yqn.googlegroups.com with HTTP; Tue, 8 Jun 2010 15:25:41 
+	-0700 (PDT)
+Date: Tue, 8 Jun 2010 15:25:41 -0700 (PDT)
+X-IP: 200.55.98.137
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/533.4 
+	(KHTML, like Gecko) Chrome/5.0.375.55 Safari/533.4,gzip(gfe)
+Message-ID: <dc461261-6198-439e-b568-5597a5e64cbe@e5g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Ruby Array  Pointer
+From: v01d <phreakuencies@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+is it possible to pass a C function the data pointer to a Ruby array?
+I have a Matrix class, and I wish to write a "to_a" method which will
+produce an array of arrays. I've tried several ways and tested the
+performance but it seems really slow, and I think it would be better
+to just attach a C function that would take the pointer to the
+destination array and the pointer to the input data contained in the
+matrix (this second part is no problem).
+Is this possible? Or I have to resort to writing a C function that
+accesses the array using RARRAY_PTR and such?
+
+Thanks,
+Matt

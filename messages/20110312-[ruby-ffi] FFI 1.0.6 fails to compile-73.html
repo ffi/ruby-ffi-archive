@@ -1,0 +1,227 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI 1.0.6 fails to compile</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI 1.0.6 fails to compile</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/12/11 2:45 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi there,
+
+I've been trying to update my ffi gem today, but it didn't work out.
+Here's the update log:
+
+=============================
+$ sudo gem update ffi
+Passwort:
+Updating installed gems
+Updating ffi
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+        /opt/rubies/ruby-1.9.2-p180/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/opt/rubies/ruby-1.9.2-p180/bin/ruby
+	--with-ffi_c-dir
+	--without-ffi_c-dir
+	--with-ffi_c-include
+	--without-ffi_c-include=${ffi_c-dir}/include
+	--with-ffi_c-lib
+	--without-ffi_c-lib=${ffi_c-dir}/lib
+	--with-libffi-config
+	--without-libffi-config
+	--with-pkg-config
+	--without-pkg-config
+	--with-ffilib
+	--without-ffilib
+/opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:368:in `try_do':
+The complier failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:435:in
+`try_link0'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:440:in
+`try_link'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:552:in
+`try_func'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:748:in `block
+in have_library'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:693:in `block
+in checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+(2 levels) in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:276:in
+`postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:692:in
+`checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:743:in
+`have_library'
+	from extconf.rb:10:in `&lt;main&gt;'
+
+
+Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.9.2-p180/lib<span class="moz-txt-tag">/</span></i>
+ruby/gems/1.9.1/gems/ffi-1.0.6 for inspection.
+Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1/gems<span class="moz-txt-tag">/</span></i>
+ffi-1.0.6/ext/ffi_c/gem_make.out
+Nothing to update
+=============================
+
+The gem_make.out file says this:
+
+=============================
+$ cat /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1/gems/ffi-1.0.6/
+ext/ffi_c/gem_make.out
+/opt/rubies/ruby-1.9.2-p180/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/opt/rubies/ruby-1.9.2-p180/bin/ruby
+	--with-ffi_c-dir
+	--without-ffi_c-dir
+	--with-ffi_c-include
+	--without-ffi_c-include=${ffi_c-dir}/include
+	--with-ffi_c-lib
+	--without-ffi_c-lib=${ffi_c-dir}/lib
+	--with-libffi-config
+	--without-libffi-config
+	--with-pkg-config
+	--without-pkg-config
+	--with-ffilib
+	--without-ffilib
+/opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:368:in `try_do':
+The complier failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:435:in
+`try_link0'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:440:in
+`try_link'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:552:in
+`try_func'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:748:in `block
+in have_library'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:693:in `block
+in checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+(2 levels) in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:276:in
+`postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:692:in
+`checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:743:in
+`have_library'
+	from extconf.rb:10:in `&lt;main&gt;'
+=============================
+
+The libffi I have installed however <b class="moz-txt-star"><span class="moz-txt-tag">*</span>does<span class="moz-txt-tag">*</span></b> have the ffi_call symbol:
+
+=============================
+$ objdump -T /usr/lib/libffi.so | grep ffi_call
+0000000000005c1c g    DF .text	000000000000016e  Base
+ffi_call_unix64
+0000000000005800 g    DF .text	000000000000041a  Base        ffi_call
+=============================
+
+I'm running Arch Linux with these things:
+
+=============================
+$ ruby -v
+ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-linux]
+$ gem env
+RubyGems Environment:
+  - RUBYGEMS VERSION: 1.6.2
+  - RUBY VERSION: 1.9.2 (2011-02-18 patchlevel 180) [x86_64-linux]
+  - INSTALLATION DIRECTORY: <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.9.2-p180/lib/ruby/gems<span class="moz-txt-tag">/</span></i>
+1.9.1
+  - RUBY EXECUTABLE: /opt/rubies/ruby-1.9.2-p180/bin/ruby
+  - EXECUTABLE DIRECTORY: /opt/rubies/ruby-1.9.2-p180/bin
+  - RUBYGEMS PLATFORMS:
+    - ruby
+    - x86_64-linux
+  - GEM PATHS:
+     - /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1
+     - <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/quintus<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1
+  - GEM CONFIGURATION:
+     - :update_sources =&gt; true
+     - :verbose =&gt; true
+     - :benchmark =&gt; false
+     - :backtrace =&gt; false
+     - :bulk_threshold =&gt; 1000
+     - "install" =&gt; "--format-executable"
+     - "update" =&gt; "--format-executable"
+     - "rdoc" =&gt; "--format=hanna"
+  - REMOTE SOURCES:
+     - <a class="moz-txt-link-freetext" href="http://rubygems.org/">http://rubygems.org/</a>
+$ LANG=EN_US gcc --version
+gcc (GCC) 4.5.2 20110127 (prerelease)
+Copyright (C) 2010 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There
+is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+
+$ LANG=EN_US pacman -Qi libffi
+Name           : libffi
+Version        : 3.0.9-1
+URL            : <a class="moz-txt-link-freetext" href="http://sourceware.org/libffi">http://sourceware.org/libffi</a>
+Licenses       : MIT
+Groups         : None
+Provides       : None
+Depends On     : glibc  texinfo
+Optional Deps  : None
+Required By    : gobject-introspection  python  python2
+Conflicts With : None
+Replaces       : None
+Installed Size : 180.00 K
+Packager       : Jan de Groot <a class="moz-txt-link-rfc2396E" href="mailto:jgc@archlinux.org">&lt;jgc@archlinux.org&gt;</a>
+Architecture   : x86_64
+Build Date     : Sat Mar 13 21:42:37 2010
+Install Date   : Fri Nov 26 21:31:34 2010
+Install Reason : Installed as a dependency for another package
+Install Script : Yes
+Description    : A portable, high level programming interface to
+various calling conventions.
+=============================
+
+What am I missing?
+
+Valete,
+Marvin
+</pre></div></body>
+</html>
+</table></div>

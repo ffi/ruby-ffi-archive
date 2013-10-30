@@ -1,0 +1,100 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/23/09 11:48 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Mon, Dec 21, 2009 at 4:20 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>2009/12/22 Thomas E Enebo <a class="moz-txt-link-rfc2396E" href="mailto:tom.enebo@gmail.com">&lt;tom.enebo@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>I have been wondering about the Struct API myself.   It seems like it
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>should support a simple explicit memory management API ala:
+<span class="moz-txt-citetags">&gt; &gt;&gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>class MyFFIStruct &lt; FFI::Struct ....
+<span class="moz-txt-citetags">&gt; &gt;&gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>MyFFIStruct.new do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>struct_instance<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>  some_ffi_call struct_instance
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>  # Do other stuff....
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span># I know the block has disposed of my allocated struct
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>It does support this indirectly via MemoryPointer.new
+<span class="moz-txt-citetags">&gt; &gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; &gt; </span> MemoryPointer.new(MyFFIStruct.size) do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>p<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; &gt; </span>   s = MyFFIStruct.new(p)
+<span class="moz-txt-citetags">&gt; &gt; </span>   some_ffi_call s
+<span class="moz-txt-citetags">&gt; &gt; </span>   # do other stuff
+<span class="moz-txt-citetags">&gt; &gt; </span> end
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>An alternative is to use FFI::Buffer as the backing memory - on JRuby,
+<span class="moz-txt-citetags">&gt; &gt; </span>that is jvm-heap memory, which is copied in/out of a temporary native
+<span class="moz-txt-citetags">&gt; &gt; </span>memory area (usually on the stack) when passed to a native function.
+<span class="moz-txt-citetags">&gt; &gt; </span>For small structs, especially ones that are passed to a native
+<span class="moz-txt-citetags">&gt; &gt; </span>function just once, this can be up to 10x faster than the alloc/free
+<span class="moz-txt-citetags">&gt; &gt; </span>cycle of a MemoryPointer backed Struct.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks for the additional info and the code snippet for explicit
+<span class="moz-txt-citetags">&gt; </span>management.  Personally, I think that an explicit API like this should
+<span class="moz-txt-citetags">&gt; </span>be the norm since there are no guarantees on when GC happens and in my
+<span class="moz-txt-citetags">&gt; </span>experience it is much longer than most people expect.   I think too
+<span class="moz-txt-citetags">&gt; </span>many people believe in magic and the only way to combat it is to make
+<span class="moz-txt-citetags">&gt; </span>the implicit stuff be more typing (or the explicit stuff less typing).
+<span class="moz-txt-citetags">&gt; </span>  I will probably make a class method in Struct which allows something
+<span class="moz-txt-citetags">&gt; </span>like:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>MyFFStruct.create do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>struct<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>...
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Under the covers it will do what you demonstrated above:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>def self.create(&amp;block)
+<span class="moz-txt-citetags">&gt; </span>    MemoryPointer.new(size) { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>p<span class="moz-txt-tag">|</span></code> block.call new(p) }
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Or something like this...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>-Tom
+</pre></blockquote><pre wrap>
+
+
+As another API-level option to Tom's, where's the holes this wild-eyed-unresearched-NOT-a-proposal brainstorming idea?
+
+module FFI
+  def self.autofree(instance, free_proc=nil, options={}, &amp;block)
+    # do your stuff in your block
+    # if your instance has a 'free', i'll call it (ruby specific cleanup)
+    # don't give me a 'free_proc' and i'll call my FFI::DEFAULT_FREE Proc to free your native resources (!?)
+    # give me a 'free_proc' and i'll call it to free your native resources
+  end
+
+typical usage:
+
+  autofree MyFFIStruct.new do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>instance<span class="moz-txt-tag">|</span></code>
+    ...
+  end
+
+
+* explicit
+* applicable to any instance (!!??)
+* similar usage to Python's 'with'[1] and C#'s 'using' statements
+* handle 80% of common usage cases via the FFI::DEFAULT_FREE Proc while providing an escape hatch to address Evan's comments and Wayne's "no-win" comment (does a custom 'free_proc' Proc open up the door to a bunch of circular dependency issues?)
+* abstracts impl-specific stuff to address Wayne's "in hindsight [refactoring]" comments (potential for reusing/repacking much of the existing battle-tested ffi code?)
+* provides maximum flexibility to the different ffi implementations?
+
+
+I still need to dig around in the nokogiri ffi code Wayne mentioned as well as the autopointer, etc code, but this little mind virus needs more &amp; different perspectives than I'm able to give it <span class="moz-smiley-s2" title=":("><span>:(</span></span>  
+
+Jon
+
+
+[1] <a class="moz-txt-link-freetext" href="http://docs.python.org/reference/compound_stmts.html#the-with-statement">http://docs.python.org/reference/compound_stmts.html#the-with-statement</a>
+</pre></div></body>
+</html>
+</table></div>

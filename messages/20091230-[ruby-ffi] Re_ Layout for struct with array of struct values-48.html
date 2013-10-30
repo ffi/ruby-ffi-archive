@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Layout for struct with array of struct values</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Layout for struct with array of struct values</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Simon Chiang <simon.a.chiang@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/30/09 1:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+As an FYI, this raises a TypeError ('wrong argument type Class
+(expected Data)'):
+
+      class Field &lt; FFI::Struct
+        layout :type, :ushort, :value, :pointer
+      end
+      class Multifield &lt; FFI::Struct
+        layout :theFields, [Field, 1]
+      end
+
+
+On Dec 30, 10:37 am, Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chi...@gmail.com">&lt;simon.a.chi...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>How can I layout structures like this?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  struct field
+<span class="moz-txt-citetags">&gt; </span>    {
+<span class="moz-txt-citetags">&gt; </span>     unsigned short type;
+<span class="moz-txt-citetags">&gt; </span>     void *value;
+<span class="moz-txt-citetags">&gt; </span>    };
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  struct multifield
+<span class="moz-txt-citetags">&gt; </span>    {
+<span class="moz-txt-citetags">&gt; </span>     struct field theFields[1];
+<span class="moz-txt-citetags">&gt; </span>    };
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If theFields was another type, say a pointer, then I'd try something
+<span class="moz-txt-citetags">&gt; </span>like this (although I'm not sure if this would be correct either):
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>      class Field &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>        layout :type, :ushort, :value, :pointer
+<span class="moz-txt-citetags">&gt; </span>      end
+<span class="moz-txt-citetags">&gt; </span>      class Multifield &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>        layout :theFields, [:pointer, 1]
+<span class="moz-txt-citetags">&gt; </span>      end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>How can I specify 'struct field' as a type?
+</pre></div></body>
+</html>
+</table></div>

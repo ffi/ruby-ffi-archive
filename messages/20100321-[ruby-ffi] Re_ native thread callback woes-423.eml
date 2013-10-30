@@ -1,0 +1,148 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.225.19 with SMTP id x19cs74925ybg;
+        Sun, 21 Mar 2010 04:13:39 -0700 (PDT)
+Received: by 10.101.107.7 with SMTP id j7mr8832262anm.186.1269170018798;
+        Sun, 21 Mar 2010 04:13:38 -0700 (PDT)
+Return-Path: <3YP-lSwkJCFEF5x1BB6xAz5t14.v75ADuH-yy1z77z4xzA7D8B.v75@groups.bounces.google.com>
+Received: from mail-yx0-f138.google.com (mail-yx0-f138.google.com [209.85.210.138])
+        by mx.google.com with ESMTP id 2si14640505yxe.14.2010.03.21.04.13.37;
+        Sun, 21 Mar 2010 04:13:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3YP-lSwkJCFEF5x1BB6xAz5t14.v75ADuH-yy1z77z4xzA7D8B.v75@groups.bounces.google.com designates 209.85.210.138 as permitted sender) client-ip=209.85.210.138;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3YP-lSwkJCFEF5x1BB6xAz5t14.v75ADuH-yy1z77z4xzA7D8B.v75@groups.bounces.google.com designates 209.85.210.138 as permitted sender) smtp.mail=3YP-lSwkJCFEF5x1BB6xAz5t14.v75ADuH-yy1z77z4xzA7D8B.v75@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe2 with SMTP id 2sf3259674yxe.13
+        for <headius@headius.com>; Sun, 21 Mar 2010 04:13:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=4qNe9wFAhDXdr4gwpMgdMC7APVmTWMA1Vgz2aXERskc=;
+        b=V7fEkNIi1KhQzZVmA8ZZfx6jmzNLMLr6bBUpSaouQAXIPX/KzOQosWI0HE8MUDez6n
+         u4kKwVwo5y8wnrvLEuNPyGBgC4uYEK8WqEhtPQJOvlUM78CAarRircBkqvbQgMRzt+zq
+         z6TY5j6lJIQzCwgyKmvurt30K55UoJIEOGoFU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=Xqm2waocXcp94lowpSZwpJhK6VbODUi/PzaLZZrly1AzyYxcT+zB7wsPG0kAHqiyUk
+         pS8DrLFQ0k85BR4r7Is7pY2CEnv3ODNjf4UJkWFN8pE3A1gLLDgbRG5mFI3IQiJbiVIB
+         X2VQ1lIpYqB5+njUJZiIfdAiZNxsQbmyaFHUo=
+Received: by 10.100.229.3 with SMTP id b3mr215712anh.79.1269170016232;
+        Sun, 21 Mar 2010 04:13:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.8.6 with SMTP id l6ls35087agi.6.p; Sun, 21 Mar 2010 
+	04:13:35 -0700 (PDT)
+Received: by 10.90.162.9 with SMTP id k9mr1051614age.6.1269170015474;
+        Sun, 21 Mar 2010 04:13:35 -0700 (PDT)
+Received: by 10.90.162.9 with SMTP id k9mr1051613age.6.1269170015448;
+        Sun, 21 Mar 2010 04:13:35 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-gw0-f64.google.com (mail-gw0-f64.google.com [74.125.83.64])
+        by gmr-mx.google.com with ESMTP id 19si171071ywh.4.2010.03.21.04.13.35;
+        Sun, 21 Mar 2010 04:13:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.83.64 as permitted sender) client-ip=74.125.83.64;
+Received: by mail-gw0-f64.google.com with SMTP id 20so431424gwj.19
+        for <ruby-ffi@googlegroups.com>; Sun, 21 Mar 2010 04:13:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.22.12 with SMTP id z12mr205239ani.21.1269170015406; Sun, 
+	21 Mar 2010 04:13:35 -0700 (PDT)
+Date: Sun, 21 Mar 2010 04:13:35 -0700 (PDT)
+In-Reply-To: <c410d2f21003191036u486e24e9g6e4189cfafa2c45c@mail.gmail.com>
+X-IP: 121.91.118.222
+References: <c410d2f21003191036u486e24e9g6e4189cfafa2c45c@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-GB; 
+	rv:1.9.2) Gecko/20100115 Firefox/3.6,gzip(gfe),gzip(gfe)
+Message-ID: <418376a6-e7f8-4337-b3c3-848ce9b265bc@b9g2000pri.googlegroups.com>
+Subject: [ruby-ffi] Re: native thread callback woes
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 74.125.83.64 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/df4fd948cde0255e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/bfc51685d671242b
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I *think* this should work now.  Whenever a callback to ruby from a
+non-ruby native thread is encountered, the native thread is paused,
+the callback is despatched on a new ruby thread, and the the result of
+the callback is returned to the native thread.
+
+Its 1.9 only, and you really want to restrict your gem to running on
+CRuby 1.9 or JRuby (both 1.8 and 1.9 mode will work).
+
+You will also need to mark any function that waits in native code as
+blocking.  I'm not sure what the best API for this is, but I
+implemented a quick&dirty hack for 0.6.4 that won't break backward
+compatibility with older versions of Ruby-FFI or JRuby.
+
+To mark a method as blocking, you simply set the @blocking ivar before
+each attach_function call
+
+e.g.
+
+    @blocking =3D true
+    attach_function :al_wait_for_event, [:pointer, :pointer], :void
+
+
+@blocking is non-sticky - i.e. it gets reset after every
+attach_function, and is assumed to be non-true by default.
+
+
+
+On Mar 20, 3:36=A0am, Shawn Anderson <shaw...@gmail.com> wrote:
+> I'm trying to get allegro-ffi to work with the latest 4.9 branch of alleg=
+ro
+> in SVN. =A0Allegro has recently changed to run everything in a native
+> callback.
+> ie..
+>
+> ... setup code ...
+> al_run_main argc, argv, &method(:run)
+> puts "this code will never be called"
+>
+> running this in ruby 1.9.1 I see the error:
+>
+> examples/simple_window.rb:13: [BUG] object allocation during garbage
+> collection phase
+> ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+>
+> full trace here:https://gist.github.com/95d3ccc14fd8fdc1febf
+>
+> Allegro spins off a new native thread (os x only) and calls the callback
+> from that native thread. =A0Apparently os x needs the main thread for its
+> event stuff...
+> Is there anyway to let this new non-ruby native thread call back into rub=
+y
+> code?
+>
+> http://github.com/shawn42/ffi-allegrohttp://alleg.sourceforge.net/
+>
+> /Shawn
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words "REMOVE ME" as the subject.

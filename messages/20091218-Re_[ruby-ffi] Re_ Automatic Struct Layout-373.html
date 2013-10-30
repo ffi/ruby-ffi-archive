@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Automatic Struct Layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Automatic Struct Layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 18, 2009, at 10:04 AM, rogerdpack wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>It does, the wiki just hasn't been updated ... in about a year - so
+<span class="moz-txt-citetags">&gt;&gt; </span>feel free to fix it up.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Cool, thanks.
+<span class="moz-txt-citetags">&gt; </span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>That will calculate the offset of :b automatically for you, and take
+<span class="moz-txt-citetags">&gt;&gt; </span>into account 32bit vs 64bit, minimum alignments, tail padding, etc.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Question
+<span class="moz-txt-citetags">&gt; </span>How does ffi deal with #pragma pack in msvc?
+</pre></blockquote><pre wrap>
+
+It does not. It uses some basic rules that work in most cases. If these rules don't work for your struct, you need to specify the offsets manually.
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>ex:
+<span class="moz-txt-citetags">&gt; </span>gc.c:#pragma pack(push, 1) /* magic for reducing sizeof(RVALUE): 24 -&gt;
+<span class="moz-txt-citetags">&gt; </span>20 */
+<span class="moz-txt-citetags">&gt; </span>Just wondering.
+<span class="moz-txt-citetags">&gt; </span>Thanks.
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

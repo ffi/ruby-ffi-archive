@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] How to use native c-code&#39;s dynamic buffer pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] How to use native c-code&#39;s dynamic buffer pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>MJoutsi <miika.joutsi@saunalahti.fi></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/10/12 4:14 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+On c-code side it goes:
+
+/* Declarations */
+DATABLOCK *new_db ();
+edit_db(DATABLOCK **db);
+
+/* Usage */
+db = new_db();
+edit_db(&amp;db);
+
+How this goes on Ruby? <a class="moz-txt-link-freetext" href="https://github.com/ffi/ffi/wiki/Examples">https://github.com/ffi/ffi/wiki/Examples</a>
+mentions about MemoryPointer but on my case I already have that buffer
+(created by new_db()), so how to pass reference to buffer for
+edit_db() or how it should go?
+</pre></div></body>
+</html>
+</table></div>

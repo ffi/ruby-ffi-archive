@@ -1,0 +1,74 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Passing a String Pointer to Callback Procs -- How to append?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Passing a String Pointer to Callback Procs -- How to append?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/9/10 7:56 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You can't pass ruby objects through C callbacks with FFI, so any
+variables you want to access from the callback have to be visible to
+the Proc when you create it.
+
+You seem to be mostly doing it correct with your data_handler() method
+- i.e. the _string parameter to data_handler() will be visible inside
+the proc callback, and you can just append the data to it.  The
+handler parameter to the callback will not be used (and is most likely
+nil anyway).
+
+I would change the first parameter (stream) of the curl handler to be
+of type pointer though, and get the data out like so:
+
+   _string &lt;&lt; stream.get_string(0, size)
+
+I'm not sure if curl guarantees that the buffer is NUL terminated, but
+I suspect not, since it is binary data, so you only want to copy out
+as many bytes as curl indicates are ready (the size param).
+
+One <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>VERY<span class="moz-txt-tag">_</span></span> important thing to remember, always keep a reference to the
+proc returned by data_handler somewhere - e.g. as an @variable in each
+Request instance.  FFI dynamically generates native code for the
+callback, and you need to keep a strong reference to it to avoid it
+being prematurely collected, and crashing the VM.  Stashing the proc
+somewhere for the lifetime of the Request instance should suffice.
+
+
+On 9 November 2010 10:30, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gonyea@gmail.com">&lt;gonyea@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm having a really painful time figuring this out.  I jumped onto
+<span class="moz-txt-citetags">&gt; </span>what NoKarma had already begun, with his curl-ffi library, and started
+<span class="moz-txt-citetags">&gt; </span>running with it.  I'm trying to emulate the ruby extension layers used
+<span class="moz-txt-citetags">&gt; </span>in some different Curl gems (Streamly and Patron, atm).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Curl wants you to pass a method reference, which it will then
+<span class="moz-txt-citetags">&gt; </span>callback.  You can see examples used in Streamly and Patron:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Streamly, lines 29-83:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29">https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Patron, lines 59-75 (Much simpler):
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c#L59">https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c#L59</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Basically, they're allocating a buffer and providing a callback + that
+<span class="moz-txt-citetags">&gt; </span>buffer, which is sent to the callback. I've added this callback to
+<span class="moz-txt-citetags">&gt; </span>CurlFFI and I have the Proc working, etc... But I cannot seem to get
+<span class="moz-txt-citetags">&gt; </span>it to append to the string.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Callback Additions to CurlFFI:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923</a>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'll delete 926, as it's not necessary (I think).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Procs that get called:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/lib/streamly/request.rb#L11">https://github.com/aitrus/streamly/blob/master/lib/streamly/request.rb#L11</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I suppose the last resort can be to call C libraries, allocating /
+<span class="moz-txt-citetags">&gt; </span>freeing a string.  But that makes me think I'm doing it wrong.  I
+<span class="moz-txt-citetags">&gt; </span>can't imagine that I'm doing anything overly interesting with my code.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Scott
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

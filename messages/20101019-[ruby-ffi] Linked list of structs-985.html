@@ -1,0 +1,100 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Linked list of structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Linked list of structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/19/10 12:31 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Given this struct
+
+struct pcap_if {
+	struct pcap_if *next;
+	char *name;		/* name to hand to "pcap_open_live()" */
+	char *description;	/* textual description of interface, or NULL */
+	struct pcap_addr *addresses;
+	bpf_u_int32 flags;	/* PCAP_IF_ interface flags */
+};
+
+The code to fill the list:
+
+pcap_if_t* find_devs()
+{
+   pcap_if_t *devs;
+   char errbuf[PCAP_ERRBUF_SIZE];
+   int res;
+   res=pcap_findalldevs(&amp;devs, errbuf);
+   return devs;
+ }
+
+
+And the FFI code
+
+module Pcap
+  extend FFI::Library
+  ffi_lib 'pcap'
+  ffi_lib "#{Dir.pwd}/libpcap_ffi.so"
+
+  attach_function :pcap_lookupdev,[:string],:string
+
+  attach_function :find_devs,[],:pointer
+  class Pcap_if_t &lt; FFI::Struct
+    layout :next,:pointer,
+	   :name,:string,
+	   :description,:string,
+	   :pcap_addr,:pointer,
+ 	   :flags,:int
+    def self.release ptr
+      Pcap.free_object ptr
+    end
+  end
+end
+
+How do you iterate over the linked list using FFI?
+
+I have tried read_array_of_pointer, it didn't seem to work.
+
+I tried
+
+ptr = FFI::MemoryPointer.new :pointer
+ptr = Pcap.find_devs
+
+devs = Pcap::Pcap_if_t.new ptr
+puts devs[:name]
+
+And I can get the first name, but I can't figure out how to iterate
+over it.
+
+This works but it feels wrong
+
+while true
+devs = Pcap::Pcap_if_t.new ptr
+break if devs[:name].nil? or devs[:name].empty?
+puts devs[:name]
+ptr=devs[:next]
+
+
+end
+
+
+So I guess all I need is to figure out the number of elements in a
+list?
+
+******
+
+Also is it true that FFI can not handle a multidimensional array? The
+actual function to do the above has a signature of int
+pcap_findalldevs(pcap_if_t **, char *); and I couldn't get it to work
+without creating a C function to return pcap_if_t*.
+
+pcap_if_t* find_devs()
+{
+   pcap_if_t *devs;
+   char errbuf[PCAP_ERRBUF_SIZE];
+   int res;
+   res=pcap_findalldevs(&amp;devs, errbuf);
+   return devs;
+ }
+</pre></div></body>
+</html>
+</table></div>

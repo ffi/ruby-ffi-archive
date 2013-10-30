@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.42.5 with SMTP id u5csp111569wfj;
+        Thu, 5 Jul 2012 21:10:22 -0700 (PDT)
+Received: by 10.66.76.134 with SMTP id k6mr42047144paw.58.1341547822239;
+        Thu, 05 Jul 2012 21:10:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCuytn_BBoECuvdgg@googlegroups.com>
+Received: from mail-pb0-f62.google.com (mail-pb0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id ms9si38160181pbb.192.2012.07.05.21.10.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Jul 2012 21:10:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuytn_BBoECuvdgg@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuytn_BBoECuvdgg@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCuytn_BBoECuvdgg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by pbbrq2 with SMTP id rq2sf17805106pbb.7
+        for <headius@headius.com>; Thu, 05 Jul 2012 21:10:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=HlSksY1YxRZt1S7HXCpWHDxyzKafwika1hlf2g3iyhM=;
+        b=zMFiU+rbB8PUKD1expbqlOBLDAXeLrLjwxKkB67pM/TlDrCgDcS7ZIjb7ww7IMRNcs
+         Lgt6myEIZiUu5jOnkXhqtmP+SUAEsqVEWlSZShZmrgwaIqJvVfPK6f3emsWxH47UbJxf
+         /czaTzmle7XhAtFD0fBJbakQ3f+43u88nIobQ=
+Received: by 10.68.233.74 with SMTP id tu10mr1002817pbc.2.1341547822025;
+        Thu, 05 Jul 2012 21:10:22 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.233.8 with SMTP id ts8ls2104465pbc.7.gmail; Thu, 05 Jul
+ 2012 21:10:21 -0700 (PDT)
+Received: by 10.68.194.230 with SMTP id hz6mr1859362pbc.4.1341547821850;
+        Thu, 05 Jul 2012 21:10:21 -0700 (PDT)
+Date: Thu, 5 Jul 2012 21:10:21 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <16b3be2d-831d-4bdf-8718-a0e6726978be@googlegroups.com>
+In-Reply-To: <137d31fa-f908-4db8-8b73-7ef0cd0788f0@googlegroups.com>
+References: <137d31fa-f908-4db8-8b73-7ef0cd0788f0@googlegroups.com>
+Subject: [ruby-ffi] Re: Segfault problem somewhere between ruby-ffi and bound lib
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_228_183705.1341547821197"
+
+------=_Part_228_183705.1341547821197
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Could you provide a minimal reproducible test case?
+
+i.e. the minimum function/struct mappings you need, plus the smallest 
+amount of code required to reproduce.
+
+Without any of that, its a tad impossible to say why its crashing for you.
+
+On Saturday, June 30, 2012 1:35:23 AM UTC+10, Alex Peuchert wrote:
+>
+> Hi ruby-ffi group
+>
+> I try to access the OPSEC library developed by CheckPoint. The library 
+> itself provides an async interface with its own event dispatch loop; 
+> results and data are delivered to callback functions.
+> The problem is that I get a segfault while receiving data back from the 
+> other side. This happens inside the event loop of the library, so there is 
+> no ruby statement executed right before that. I enabled some library 
+> debugging statements and put the output into a GIST: 
+> https://gist.github.com/3018584
+>
+> I additionally tried to do the same steps with a pure C program and this 
+> works without problems. So I expect the problem to lie somewhere between 
+> that OPSEC lib and ruby-ffi.
+>
+> Now, the question is: How can I trace down where the problem is? I 
+> absolutely have no experience in finding segfaults.
+>
+> Thanks in advance for your help, Alex
+>
+
+------=_Part_228_183705.1341547821197
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<br>Could you provide a minimal reproducible test case?<br><br>i.e. the min=
+imum function/struct mappings you need, plus the smallest amount of code re=
+quired to reproduce.<br><br>Without any of that, its a tad impossible to sa=
+y why its crashing for you.<br><br>On Saturday, June 30, 2012 1:35:23 AM UT=
+C+10, Alex Peuchert wrote:<blockquote class=3D"gmail_quote" style=3D"margin=
+: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi r=
+uby-ffi group<br><br>I try to access the OPSEC library developed by CheckPo=
+int. The library itself provides an async interface with its own event disp=
+atch loop; results and data are delivered to callback functions.<br>The pro=
+blem is that I get a segfault while receiving data back from the other side=
+. This happens inside the event loop of the library, so there is no ruby st=
+atement executed right before that. I enabled some library debugging statem=
+ents and put the output into a GIST: <a href=3D"https://gist.github.com/301=
+8584" target=3D"_blank">https://gist.github.com/<wbr>3018584</a><br><br>I a=
+dditionally tried to do the same steps with a pure C program and this works=
+ without problems. So I expect the problem to lie somewhere between that OP=
+SEC lib and ruby-ffi.<br><br>Now, the question is: How can I trace down whe=
+re the problem is? I absolutely have no experience in finding segfaults.<br=
+><br>Thanks in advance for your help, Alex<br></blockquote>
+------=_Part_228_183705.1341547821197--

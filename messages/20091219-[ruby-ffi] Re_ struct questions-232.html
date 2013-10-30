@@ -1,0 +1,90 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: struct questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: struct questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/09 10:04 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Then currently the only easy way to fill it is:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>s[:title].to_ptr.put_string(0, "foo")
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thats kinda ugly, so we should have an easier syntax.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I have patches that make the following work for :char/:uchar arrays:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>s[:title] = "foo"
+<span class="moz-txt-citetags">&gt; </span>s[:title] = [ 'f'.ord, 'o'.ord, 'o'.ord ]
+<span class="moz-txt-citetags">&gt; </span>s[:title] = [ 1, 2, 3]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The second form also works for all other array element types.
+</pre></blockquote><pre wrap>
+
+That second one is a big scary because how does it know what the fill
+the rest in? (I guess zeroes would work though).
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The inverse also works for :char/:uchar arrays:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>s[:title].to_s # =&gt; "foo"
+</pre></blockquote><pre wrap>
+
++1
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>There are a couple of corner cases that need to be figured out though.
+<span class="moz-txt-citetags">&gt; </span>1) What to do when a string + nul byte is larger than the array size
+<span class="moz-txt-citetags">&gt; </span>  a) raise an error
+<span class="moz-txt-citetags">&gt; </span>  b) do not terminate the string with a nul byte
+<span class="moz-txt-citetags">&gt; </span>  c) truncate the string and terminate with a nul byte
+</pre></blockquote><pre wrap>
+
+vote for a
+
+if they want b, they can do it by hand <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>#&lt;SnarlStruct field1: value1, field2: value2...&gt;
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I prefer this not happen. This would require all fields to be read, which is hardly cheap. Plus, reading a field can cause a segfault, so I'd prefer all field reads are explicit by the user.
+</pre></blockquote><pre wrap>
+
+In retrospect I agree (plus if the fields are too long, you don't want
+to see them, anyway).
+
+How about something like what rails does...
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>#&lt;SnarlStruct (field1: type1, field2: type2, field3: type3)...&gt;
+</pre></blockquote></blockquote><pre wrap>
+
+Also another question.
+
+When I first started using FFI::Struct's
+
+I anticipated being able to call methods, like
+a = Struct.new
+a.name = "hello there"
+
+(since that's how you access them in C, and they are certainly not
+hashes).  Would a patch for such be acceptable?
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>They were never designed to be subclassed, so I don't consider it a bug.
+</pre></blockquote><pre wrap>
+
+That's fine--however currently it doesn't throw any warnings or
+anything if you use a subclass--it allows you to still set things like
+
+subclass_instance[:element] = 3
+
+then silently fails in marshalling, so I think something should could
+be done to help this be less of a confusion.
+
+-r
+</pre></div></body>
+</html>
+</table></div>

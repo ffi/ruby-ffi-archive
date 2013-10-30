@@ -1,0 +1,244 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.80.134 with SMTP id t6cs448644qak;
+        Tue, 9 Mar 2010 10:52:00 -0800 (PST)
+Received: by 10.141.188.15 with SMTP id q15mr128017rvp.46.1268160719020;
+        Tue, 09 Mar 2010 10:51:59 -0800 (PST)
+Return-Path: <3zJiWSwoJCEcqw4mn1rpw1pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@groups.bounces.google.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id 17si12248942pzk.97.2010.03.09.10.51.57;
+        Tue, 09 Mar 2010 10:51:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3zJiWSwoJCEcqw4mn1rpw1pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@groups.bounces.google.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3zJiWSwoJCEcqw4mn1rpw1pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@groups.bounces.google.com designates 74.125.83.190 as permitted sender) smtp.mail=3zJiWSwoJCEcqw4mn1rpw1pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvh11 with SMTP id 11sf2949676pvh.7
+        for <headius@headius.com>; Tue, 09 Mar 2010 10:51:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=KTo3/gsBfs0LGk0+wToWOyDuC1Ipj75DKzLDD4EzD+4=;
+        b=wg4zt/HQjClypEwPzhJbEePJzBmUs8iwXRxw2dzI6UM6lkt4rvv2CTSow9qo0gvWWQ
+         8kTVduiCJi+uk9bEKpsjJbOvKBAdCNjjTeRtykbsFhgGO0BFid7/Qm5LVb3DxeFlcEVv
+         w6Ik9BCy368l8aJcdIO6tOR1tQhJJYjRV2V40=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=UK5VqVdNZ3WPOLMYNzRdbK9UVCtYylAX2RG+Z1AhUFEiibg7pIDdL2x0ZRdpZw3/Jo
+         5DSrKYAJNL2AqSFX1yArkQ1NvEMb3kKf3dqq54X0ES/rNAcNOJitjIMonFtP5H0IUL+L
+         jS7oyzXirSMdVRjEp33VcJNO1ITphjtHT+rq8=
+Received: by 10.140.56.15 with SMTP id e15mr19502rva.7.1268160716375;
+        Tue, 09 Mar 2010 10:51:56 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.141.188.27 with SMTP id q27ls1338235rvp.3.p; Tue, 09 Mar 2010 
+	10:51:55 -0800 (PST)
+Received: by 10.141.91.10 with SMTP id t10mr46420rvl.19.1268160715103;
+        Tue, 09 Mar 2010 10:51:55 -0800 (PST)
+Received: by 10.143.20.17 with SMTP id x17mr1050223wfi.28.1268142130298;
+        Tue, 09 Mar 2010 05:42:10 -0800 (PST)
+Received: by 10.143.20.17 with SMTP id x17mr1050222wfi.28.1268142130272;
+        Tue, 09 Mar 2010 05:42:10 -0800 (PST)
+Return-Path: <hnvdesigns@gmail.com>
+Received: from mail-gw0-f64.google.com (mail-gw0-f64.google.com [74.125.83.64])
+        by gmr-mx.google.com with ESMTP id 40si136109pxi.9.2010.03.09.05.42.09;
+        Tue, 09 Mar 2010 05:42:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of hnvdesigns@gmail.com designates 74.125.83.64 as permitted sender) client-ip=74.125.83.64;
+Received: by gwj22 with SMTP id 22so2846534gwj.29
+        for <ruby-ffi@googlegroups.com>; Tue, 09 Mar 2010 05:42:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.254.15 with SMTP id b15mr3738ybi.25.1268142129562; Tue, 09 
+	Mar 2010 05:42:09 -0800 (PST)
+Date: Tue, 9 Mar 2010 05:42:09 -0800 (PST)
+X-IP: 117.196.102.221
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.89 Safari/532.5,gzip(gfe),gzip(gfe)
+Message-ID: <4c284530-56d8-40fe-b349-1c51788d553e@m35g2000prh.googlegroups.com>
+Subject: [ruby-ffi] no such file to load -- ffi_c
+From: Hardik <hnvdesigns@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of hnvdesigns@gmail.com designates 74.125.83.64 as permitted sender) 
+	smtp.mail=hnvdesigns@gmail.com
+X-Original-Sender: hnvdesigns@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/346badabd5b131ec
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/e18c62cc4d50688b
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello Everyone,
+
+I have installed ffi gem on my shared hosting server. But when I run
+my application it gives me this kind of error " no such file to load
+-- ffi_c". I am stuck over here.
+I have rails 2.3.5 and ffi 0.6.2
+
+This is full trace of error
+
+/!\ FAILSAFE /!\  Tue Mar 09 08:38:06 -0500 2010
+  Status: 500 Internal Server Error
+  no such file to load -- ffi_c
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /home/hnvdesig/rails_apps/twitter-app-hardik/vendor/gems/ffi-0.6.0/
+lib/ffi.rb:8
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in
+`gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in
+`require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /home/hnvdesig/rails_apps/twitter-app-hardik/vendor/gems/
+sqlite3-0.0.6/lib/sqlite3.rb:1
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in
+`gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in
+`require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:521:in `new_constants_in'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+dependencies.rb:156:in `require'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+core_ext/kernel/requires.rb:7:in `require_library_or_gem'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/
+core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:223:in
+`new_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:245:in
+`checkout_new_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:326:in
+`retrieve_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_specification.rb:123:in
+`retrieve_connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_specification.rb:115:in
+`connection'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+query_cache.rb:9:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+query_cache.rb:28:in `call'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/
+connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+string_coercion.rb:25:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:
+24:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+params_parser.rb:15:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+session/cookie_store.rb:93:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+failsafe.rb:26:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in
+`synchronize'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+dispatcher.rb:114:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+reloader.rb:34:in `run'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/
+dispatcher.rb:108:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:
+31:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in
+`each'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/
+log_tailer.rb:17:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:
+13:in `call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in
+`call'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:
+64:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in
+`process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in
+`each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in
+`process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in
+`run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in
+`initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in
+`new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in
+`run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in
+`initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in
+`new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in
+`run'
+    /usr/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:
+34:in `run'
+    /usr/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+    /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+    script/server:4

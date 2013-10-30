@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.100.1 with SMTP id w1cs211892fan;
+        Wed, 30 Mar 2011 04:06:52 -0700 (PDT)
+Received: by 10.101.52.2 with SMTP id e2mr794130ank.26.1301483211428;
+        Wed, 30 Mar 2011 04:06:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDFnczsBBoEAotOBA@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id 26si8284034anx.87.2011.03.30.04.06.50
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 30 Mar 2011 04:06:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDFnczsBBoEAotOBA@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDFnczsBBoEAotOBA@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDFnczsBBoEAotOBA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywf9 with SMTP id 9sf3284384ywf.7
+        for <headius@headius.com>; Wed, 30 Mar 2011 04:06:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=eXRsu8yWrRDxB6atNicYMrlB+xLClkXVYKoRmMWP/Gg=;
+        b=27hL2V8ca99x/dNvdTnoPSkOTEJy1EoS/ZVqNFVoL9FoexvooVStkMeS8/J8Uj+0Qa
+         Rf63AKtMZ6rM1qknKsjTwLpgaUhsFnyp2Wi7yEVEe33/+RYaPT/hyur+hr2M70ApDXap
+         2mMvMTwu7Hs6sOa24cewKap7tN/QiJtEB+5bg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=VDg/FzqyrMaGi4WyhJgk2BX4CInjVJsl8oYSMYbn3peLLyAdSAzvklbbKKBL6RezzW
+         updyvC9M6zBbJcErE6IRnL2bMk3tGMpjbYgc9VT+clIY7+XfBEgFXkhqCgZxpiV1rX6Z
+         /1eEPCKoOzrmawNnGhfGN4M1OAUMPcEQPY34M=
+Received: by 10.91.85.9 with SMTP id n9mr253375agl.3.1301483205039;
+        Wed, 30 Mar 2011 04:06:45 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.200.24 with SMTP id c24ls266663agq.2.p; Wed, 30 Mar 2011
+ 04:06:44 -0700 (PDT)
+Received: by 10.91.6.1 with SMTP id j1mr240391agi.44.1301483204482;
+        Wed, 30 Mar 2011 04:06:44 -0700 (PDT)
+Date: Wed, 30 Mar 2011 04:06:43 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <24715445.89.1301483203726.JavaMail.geo-discussion-forums@prc35>
+In-Reply-To: <ba400552-3c9b-4175-aae1-78b97f5961ba@w21g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Re: Defining an Extern from a Header File
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_88_20199613.1301483203723"
+
+------=_Part_88_20199613.1301483203723
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+try attach_variable.
+
+e.g.
+module Foo
+  # std library stuff here
+  # ...
+  # Attach C global LEA_SERVER as ruby variable lea_server
+  attach_variable :lea_server, :LEA_SERVER, :pointer
+end
+
+Then use it like so:
+
+Foo.opsec_init_entity(env, Foo.lea_server, Foo::OPSEC_EOL);
+
+
+
+------=_Part_88_20199613.1301483203723
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>try attach_variable.</div><div><br></div><div>e.g.</div><div>module Foo</div><div>&nbsp; # std library stuff here</div><div>&nbsp; # ...</div><div>&nbsp; # Attach C global LEA_SERVER as ruby variable lea_server</div><div>&nbsp; attach_variable :lea_server, :LEA_SERVER, :pointer</div><div>end</div><div><br></div><div>Then use it like so:</div><div><br></div><div>Foo.opsec_init_entity(env, Foo.lea_server, Foo::OPSEC_EOL);</div><div><br></div><div><br></div>
+------=_Part_88_20199613.1301483203723--

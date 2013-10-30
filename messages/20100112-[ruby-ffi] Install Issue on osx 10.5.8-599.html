@@ -1,0 +1,24 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Install Issue on osx 10.5.8</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Install Issue on osx 10.5.8</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>bmo <brianmo@yahoo.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/12/10 6:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Just a FYI, this is an encapsulation of a email thread from a month
+ago or so -- if you're missing ffi.h when installing on 10.5.8, you
+should
+
+port install libffi
+
+An even better non-workaround would be to change extconf.rb in the ffi
+gem to actually build libffi (which is included in the ext/ffi_c/
+libffi directory), and modify the include and link paths in the
+Makefile accordingly if ffi.h isn't originally found.
+
+Brian Moran
+<a class="moz-txt-link-freetext" href="http://www.onehub.com">http://www.onehub.com</a>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Array of Ints</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Array of Ints</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Lee <jiujitsu1985@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/26/11 1:46 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thanks a lot. Your code really helped!
+
+On Oct 26, 9:35 am, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devl...@mac.com">&lt;cremes.devl...@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Oct 26, 2011, at 10:31 AM, John Lee wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I tried wrapping my code inside a module, but the problem still
+<span class="moz-txt-citetags">&gt; &gt; </span>persists.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Do you think :pointer is the correct type to represent the array in
+<span class="moz-txt-citetags">&gt; &gt; </span>attach_function.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I know that if you have an array in a struct, you can specify it as:
+<span class="moz-txt-citetags">&gt; &gt; </span>class Struct1 &lt; ::FFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; </span>  layout :value1, [:int, 3]
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>So I tried to replace :pointer with [:int, 3] in attach_function, but
+<span class="moz-txt-citetags">&gt; &gt; </span>it complains about "unable to resolve type ':int, 3]' &lt;TypeError&gt;"
+<span class="moz-txt-citetags">&gt; &gt; </span>attach_function :function1, [[:int, 3], :int, :int], :int
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Has anyone got arrays to work with FFI?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I have gotten it working in my own project. Take a look at my definition for a function that takes an array:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/libzm">https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/libzm</a>...
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I call that function here:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll">https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll</a>....
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The array that is passed to that function is constructed in this file:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll_">https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll_</a>...
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>In that file, the #clean method is where most of the array work is done where I construct the array.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I know it's a big example, but it works and has worked without change since the ffi gem was at 0.6.3.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+</pre></div></body>
+</html>
+</table></div>

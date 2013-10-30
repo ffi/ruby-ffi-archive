@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: lists only one lib?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: lists only one lib?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 11:32 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Mon, Dec 21, 2009 at 4:59 PM, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Wayne already answered to you that ffi_lib takes an array, multiple
+<span class="moz-txt-citetags">&gt; &gt; </span>invocations to append are not possible.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>From the perspective of a new FFI API user, these are all valid
+<span class="moz-txt-citetags">&gt; </span>questions with no immediate/clear answer:
+<span class="moz-txt-citetags">&gt; </span>- What would happen on subsequent ffi_lib call? Will it append, or
+<span class="moz-txt-citetags">&gt; </span>will it overwrite?
+<span class="moz-txt-citetags">&gt; </span>- Is that even legal? If legal, is that a good practice?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I know I had those questions when I was starting using FFI. <span class="moz-smiley-s1" title=":)"><span>:)</span></span> And I
+<span class="moz-txt-citetags">&gt; </span>was bugging Wayne with such questions as well... <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+<span class="moz-txt-citetags">&gt; </span>calls are not good. Well, maybe we should make that totally explicit,
+<span class="moz-txt-citetags">&gt; </span>and just don't allow to call ffi_lib the second time?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks,
+<span class="moz-txt-citetags">&gt; </span>  --Vladimri
+</pre></blockquote><pre wrap>
+
+Vladimir,
+
+How about starting a Library wiki page to begin capturing key usage points like this for FFI::Library?  Yeh, I know you're already busy with JRuby but think I and others can help with tweaks <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+I think if we can continue to build up the wiki, especially for the core objects and usage patterns (and keep them up-to-date) it will go a long way to ease FFI startup costs.
+
+One balancing challenge will be to keep them API-ish enough that they are applicable across the impls while highlighting (not overwhelming) impl-specific issues that may trip you up when trying to write a cross-impl and cross-platform FFI-based extension.
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

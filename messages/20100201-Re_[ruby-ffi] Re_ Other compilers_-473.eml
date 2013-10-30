@@ -1,0 +1,204 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.5.7 with SMTP id 7cs75336ane;
+        Mon, 1 Feb 2010 06:58:03 -0800 (PST)
+Received: by 10.101.7.29 with SMTP id k29mr5473505ani.12.1265036283222;
+        Mon, 01 Feb 2010 06:58:03 -0800 (PST)
+Return-Path: <3-OtmSwcJCJY1B0NJ4H6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@groups.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 9si9434865ywh.84.2010.02.01.06.58.02;
+        Mon, 01 Feb 2010 06:58:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3-OtmSwcJCJY1B0NJ4H6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@groups.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3-OtmSwcJCJY1B0NJ4H6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@groups.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3-OtmSwcJCJY1B0NJ4H6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf11600521ywh.3
+        for <headius@headius.com>; Mon, 01 Feb 2010 06:58:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=UbLAM6X7F79LXi44+mqRXBdwBqbh96AKfgZL8Owqf/s=;
+        b=SUnZoWcF5DEOUNaHOKSVJ5ZxNKxTajqTUOWyg4E8x94jzf1n+V5L9TGzwjiA516QRI
+         jRSx4hks0+9yuHz6zdOPeHGZuNR6Hvc3RLqsvIL6yd3iu3DUR2TwdJ634H9akv0LwlEa
+         00vUEsB+B9um/Dw5IdanV1vmxThIt0zCmWdEE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=UFV+sgRNZqkekektYIfDYwo57cIj15eMZPvjxQ9il+uds8vH04voE76EdHohewvcS1
+         RgBwOKeVUs2U6i1vnxJSfT+HBRhq4jjYGPtvwB0uCgJFF9m4VEbwBsMcGbZofUpwam06
+         Pgtl+tVh87LfGUs+GsiQNVPE5bDarBSE9kNrM=
+Received: by 10.101.139.7 with SMTP id r7mr333261ann.41.1265036280979;
+        Mon, 01 Feb 2010 06:58:00 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.213.2.77 with SMTP id 13ls2132456ebi.0.p; Mon, 01 Feb 2010 
+	06:57:59 -0800 (PST)
+Received: by 10.213.38.14 with SMTP id z14mr684217ebd.21.1265036271551;
+        Mon, 01 Feb 2010 06:57:51 -0800 (PST)
+Received: by 10.213.38.14 with SMTP id z14mr684216ebd.21.1265036271504;
+        Mon, 01 Feb 2010 06:57:51 -0800 (PST)
+Return-Path: <blaxter@gmail.com>
+Received: from ey-out-1920.google.com (ey-out-1920.google.com [74.125.78.148])
+        by gmr-mx.google.com with ESMTP id 11si756132ewy.5.2010.02.01.06.57.50;
+        Mon, 01 Feb 2010 06:57:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of blaxter@gmail.com designates 74.125.78.148 as permitted sender) client-ip=74.125.78.148;
+Received: by ey-out-1920.google.com with SMTP id 26so977274eyw.8
+        for <ruby-ffi@googlegroups.com>; Mon, 01 Feb 2010 06:57:50 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.216.89.141 with SMTP id c13mr2748361wef.66.1265036270186; Mon, 
+	01 Feb 2010 06:57:50 -0800 (PST)
+In-Reply-To: <20100201093459.d06c4de9.jon.forums@gmail.com>
+References: <d1d846ab-3511-48e8-89b1-1b52aa69c472@m16g2000yqc.googlegroups.com> 
+	<4ccee321001241606u3ba21b65x127fdcc3bdaccf2e@mail.gmail.com> 
+	<ab94f1ed-c615-401a-b186-423e971510bc@p13g2000pre.googlegroups.com> 
+	<71166b3b1001280912l1e3705fbua1348401f8077377@mail.gmail.com> 
+	<d463748a-51c7-4ff2-a4cd-796709ec2c83@e19g2000prn.googlegroups.com> 
+	<6650eb11-6418-432d-9dee-106417b82455@22g2000yqr.googlegroups.com> 
+	<71166b3b1001311159g23610f2ds3e8201954c9bbd0f@mail.gmail.com> 
+	<20100201093459.d06c4de9.jon.forums@gmail.com>
+From: =?ISO-8859-1?Q?Jes=FAs_Garc=EDa_S=E1ez?= <blaxter@gmail.com>
+Date: Mon, 1 Feb 2010 15:57:30 +0100
+Message-ID: <1a2dd4711002010657j6a2476jebbdfd30ca5421b8@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Other compilers?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of blaxter@gmail.com designates 74.125.78.148 as permitted sender) 
+	smtp.mail=blaxter@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: blaxter@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3980eb9fc5849a8
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/263c5f123784d54c
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016e6d7e06583309e047e8b352e
+
+--0016e6d7e06583309e047e8b352e
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Mon, Feb 1, 2010 at 15:34, Jon <jon.forums@gmail.com> wrote:
+
+> > On Sat, Jan 30, 2010 at 3:27 PM, Daniel Berger <djberg96@gmail.com>
+> wrote:
+> > >
+> > > Someone pointed me to this:
+> > >
+> > > http://industriousone.com/premake
+> > >
+> > > Anyone tried it?
+> > >
+> >
+> > Yes, is nice but abstract and can end being complex.
+> >
+> > It doesn't support mingw32 cross compiling functionality either from
+> > fedora, macports or ubuntu packages, so it requires some tricks to
+> > make it generate proper GNU makefiles for those cases.
+> >
+> > If your library/dependency chain depends on autoconf, expect
+> > reinventing the wheel to create the premake files.
+> >
+>
+> FWIW, I also keep meaning to check out
+>
+> http://www.cmake.org/
+>
+> and the LLVM project has an quickstart page that links to page that tells
+> how to cross compile with cmake
+>
+> http://www.llvm.org/docs/CMake.html
+>
+> Anyone tried cmake?
+>
+
+
+I'm using cmake for my c++ projects, it's really great. You can generate
+makefiles for a unix environment (just cmake <dir with CMakeList.txt>) or
+for another environments out-of-the-box (like mingw with -G "MSYS
+Makefiles"). Really easy to use (put your cpp files, your flags, include
+directories, libraries) and quite powerful (for example you have conditions,
+like IF(WIN32) .... ELSE ... ENDIF(WIN32)).
+
+The last versions of boost (since 1.40) have a package for bulding it with
+cmake, and I think they want to make cmake their default build software.
+
+
+> Jon
+>
+
+--0016e6d7e06583309e047e8b352e
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<br><br><div class=3D"gmail_quote">On Mon, Feb 1, 2010 at 15:34, Jon <span =
+dir=3D"ltr">&lt;<a href=3D"mailto:jon.forums@gmail.com">jon.forums@gmail.co=
+m</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"borde=
+r-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-le=
+ft: 1ex;">
+
+<div class=3D"im">&gt; On Sat, Jan 30, 2010 at 3:27 PM, Daniel Berger &lt;<=
+a href=3D"mailto:djberg96@gmail.com">djberg96@gmail.com</a>&gt; wrote:<br>
+&gt; &gt;<br>
+&gt; &gt; Someone pointed me to this:<br>
+&gt; &gt;<br>
+&gt; &gt; <a href=3D"http://industriousone.com/premake" target=3D"_blank">h=
+ttp://industriousone.com/premake</a><br>
+&gt; &gt;<br>
+&gt; &gt; Anyone tried it?<br>
+&gt; &gt;<br>
+&gt;<br>
+&gt; Yes, is nice but abstract and can end being complex.<br>
+&gt;<br>
+&gt; It doesn&#39;t support mingw32 cross compiling functionality either fr=
+om<br>
+&gt; fedora, macports or ubuntu packages, so it requires some tricks to<br>
+&gt; make it generate proper GNU makefiles for those cases.<br>
+&gt;<br>
+&gt; If your library/dependency chain depends on autoconf, expect<br>
+&gt; reinventing the wheel to create the premake files.<br>
+&gt;<br>
+<br>
+</div>FWIW, I also keep meaning to check out<br>
+<br>
+<a href=3D"http://www.cmake.org/" target=3D"_blank">http://www.cmake.org/</=
+a><br>
+<br>
+and the LLVM project has an quickstart page that links to page that tells h=
+ow to cross compile with cmake<br>
+<br>
+<a href=3D"http://www.llvm.org/docs/CMake.html" target=3D"_blank">http://ww=
+w.llvm.org/docs/CMake.html</a><br>
+<br>
+Anyone tried cmake?<br></blockquote><div><br><br>I&#39;m using cmake for my=
+ c++ projects, it&#39;s really great. You can generate makefiles for a unix=
+ environment (just cmake &lt;dir with CMakeList.txt&gt;) or for another env=
+ironments out-of-the-box (like mingw with -G &quot;MSYS Makefiles&quot;). R=
+eally easy to use (put your cpp files, your flags, include directories, lib=
+raries) and quite powerful (for example you have conditions, like IF(WIN32)=
+ .... ELSE ... ENDIF(WIN32)).<br>
+
+<br>The last versions of boost (since 1.40) have a package for bulding it w=
+ith cmake, and I think they want to make cmake their default build software=
+.<br><br></div><blockquote class=3D"gmail_quote" style=3D"border-left: 1px =
+solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+
+
+<font color=3D"#888888"><br>
+Jon<br>
+</font></blockquote></div><br>
+
+--0016e6d7e06583309e047e8b352e--

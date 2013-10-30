@@ -1,0 +1,123 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs70380lae;
+        Mon, 5 Sep 2011 13:23:16 -0700 (PDT)
+Received: by 10.236.180.1 with SMTP id i1mr20543558yhm.3.1315254195533;
+        Mon, 05 Sep 2011 13:23:15 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMzwhrDPDBCt35TzBBoE3USvbQ@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id x4si309841ybd.51.2011.09.05.13.23.14
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 13:23:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMzwhrDPDBCt35TzBBoE3USvbQ@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMzwhrDPDBCt35TzBBoE3USvbQ@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCMzwhrDPDBCt35TzBBoE3USvbQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxk30 with SMTP id 30sf4841707yxk.7
+        for <headius@headius.com>; Mon, 05 Sep 2011 13:23:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:subject:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=1xQ2lpwBqv8cyeb2JzAmmqx7GSAVQljvn23pn1sqh/c=;
+        b=kut5XpXCvk6Q35wT90Xp711Er1qJD+nV4ciSLhqF0OOZP3TdXt2Oi2UcWBdDgckPp6
+         PRWKoYNAKSUfON7glB0nQpfzCP5FNlpphOOyuiYxL2RD4avoTdYBaLydHxUi9GMdLhiS
+         i4g6fn7r/OcU6J8pU8GFnJYtxwCts3EANmQRs=
+Received: by 10.91.55.1 with SMTP id h1mr232664agk.23.1315254189166;
+        Mon, 05 Sep 2011 13:23:09 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.189.8 with SMTP id m8ls504781agf.1.gmail; Mon, 05 Sep 2011
+ 13:23:08 -0700 (PDT)
+Received: by 10.236.22.169 with SMTP id t29mr12149665yht.5.1315254188781;
+        Mon, 05 Sep 2011 13:23:08 -0700 (PDT)
+Received: by 10.150.109.2 with SMTP id h2msybc;
+        Mon, 5 Sep 2011 12:45:07 -0700 (PDT)
+Received: by 10.68.47.201 with SMTP id f9mr3155747pbn.16.1315251906273;
+        Mon, 05 Sep 2011 12:45:06 -0700 (PDT)
+Received: by 10.68.47.201 with SMTP id f9mr3155745pbn.16.1315251906240;
+        Mon, 05 Sep 2011 12:45:06 -0700 (PDT)
+Received: from mrpink.hcro.org (mrpink.hcro.org. [74.43.140.12])
+        by gmr-mx.google.com with ESMTPS id kr11si11574663pbb.1.2011.09.05.12.45.06
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 12:45:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 74.43.140.12 is neither permitted nor denied by domain of colbygk@gmail.com) client-ip=74.43.140.12;
+Received: from [10.3.0.32] (obsidian.hcro.org [10.3.0.32])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by mrpink.hcro.org (Postfix) with ESMTP id EB8FAAE4FE
+	for <ruby-ffi@googlegroups.com>; Mon,  5 Sep 2011 12:45:04 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1244.3)
+Subject: Re: [ruby-ffi] attach_function a bit draconian
+From: Colby Gutierrez-Kraybill <colbygk@gmail.com>
+In-Reply-To: <4E6475CC.4040304@matijs.net>
+Date: Mon, 5 Sep 2011 12:45:04 -0700
+Message-Id: <A9EF9B3E-4340-4A9D-810A-70880206D19E@gmail.com>
+References: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com> <4E6475CC.4040304@matijs.net>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1244.3)
+X-Original-Sender: colbygk@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 74.43.140.12 is neither permitted nor denied by domain of colbygk@gmail.com) smtp.mail=colbygk@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On Sep 5, 2011, at 12:10 AM, Matijs van Zuijlen wrote:
+
+> Hi Charlie,
+>=20
+> On 04/09/2011 23:19, cfis wrote:
+>> I've written a ffi wrapper for the free image library, which is here:
+>>=20
+>> http://cfis.github.com/free-image-ruby/
+>>=20
+>> The problem is that I've coded against the latest version of
+>> FreeImage, and most linux distributions have older versions
+>> installed.  Thus when I try to load the gem it fails since
+>> attach_function throws an error because the older versions don't have
+>> all the functions.
+>=20
+> You can just wrap the call to attach_function in a begin-rescue-end =
+construct. Then in the rescue block, you can do whatever you want. In =
+your case, this would probably mean issuing a warning and then defining =
+a stub function. You can even wrap that in a method, say, =
+attach_function_safely.
+>=20
+> Regards,
+> Matijs
+
+this++
+
+I had a need to create convenience aliases for GSL routines and I =
+created a new method that wrapped around attach_function as well as a =
+side-along override of method_missing:
+
+By using method_missing, you could capture any calls that a developer =
+expects to be in the library (a more current one) and do exactly what =
+you need doing.
+
+See:
+
+attach_gsl_function,
+=
+http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4r/util.r=
+b;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD
+
+and
+
+=
+http://shrewdraven.org/content/automatically-generated-method-aliases-gsl4=
+r=

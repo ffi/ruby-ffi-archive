@@ -1,0 +1,130 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs508807and;
+        Mon, 21 Dec 2009 07:59:43 -0800 (PST)
+Received: by 10.90.20.38 with SMTP id 38mr5114275agt.77.1261411182650;
+        Mon, 21 Dec 2009 07:59:42 -0800 (PST)
+Return-Path: <3bJsvSwoJCIIr0oyrg1ktgmsgor.iusx0h4-llomuumrkmxu0vy.ius@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 7si12969142gxk.13.2009.12.21.07.59.41;
+        Mon, 21 Dec 2009 07:59:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3bJsvSwoJCIIr0oyrg1ktgmsgor.iusx0h4-llomuumrkmxu0vy.ius@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3bJsvSwoJCIIr0oyrg1ktgmsgor.iusx0h4-llomuumrkmxu0vy.ius@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3bJsvSwoJCIIr0oyrg1ktgmsgor.iusx0h4-llomuumrkmxu0vy.ius@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf11469246gxk.7
+        for <headius@headius.com>; Mon, 21 Dec 2009 07:59:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=+f00xmu3gFCTo8MzVScqWepER2k8dHf7MMa3xbK8cHc=;
+        b=EDZQi4scGjCTL3GL9DUbJhz9eEk1dX7qTWetRbJw5RgIr/AZ3fgHxPHjacPlBeQ+Gt
+         qqnhSLrOPtGISeBbA0R3TFRfTxS1408HGH23DW73f4CGfjnKyXNo93hj+35gS1QAlFe6
+         P/bTv3279xmETMyRRmpa1rl0DVTkjI3cuaL3g=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=5WtHokmm4dqbNVK2wZH9aRD5mfYOpBZiowuXwoPLK9WOFU7wYuRt/Bl4GEsIrQ+gw7
+         ALZ0FHjNnr2nD7sn/GKNT/JrE5xnthWDiVZfjn1I27T/LxWgiZlIv3mXdd6LKd0kNwCO
+         2eRBHuly2CzUxRHttZ1DkB+eh9+sesT7+FE0c=
+Received: by 10.91.215.11 with SMTP id s11mr922444agq.0.1261411180558;
+        Mon, 21 Dec 2009 07:59:40 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.86.239.10 with SMTP id m10ls258882fgh.0.p; Mon, 21 Dec 2009 
+	07:59:39 -0800 (PST)
+Received: by 10.86.176.2 with SMTP id y2mr147527fge.13.1261411179300;
+        Mon, 21 Dec 2009 07:59:39 -0800 (PST)
+Received: by 10.86.176.2 with SMTP id y2mr147526fge.13.1261411179276;
+        Mon, 21 Dec 2009 07:59:39 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f211.google.com (mail-fx0-f211.google.com [209.85.220.211])
+        by gmr-mx.google.com with ESMTP id 18si486645fxm.8.2009.12.21.07.59.38;
+        Mon, 21 Dec 2009 07:59:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.211 as permitted sender) client-ip=209.85.220.211;
+Received: by mail-fx0-f211.google.com with SMTP id 3so2412111fxm.4
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 07:59:38 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.181.73 with SMTP id l9mr734088hbg.79.1261411178132; Mon, 
+	21 Dec 2009 07:59:38 -0800 (PST)
+In-Reply-To: <3c2f449c-7ff7-478e-b7be-69831ae9d3df@m26g2000yqb.googlegroups.com>
+References: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com> 
+	<4ccee320912190435r785388eaoabb0c81b39c6a51@mail.gmail.com> 
+	<3c2f449c-7ff7-478e-b7be-69831ae9d3df@m26g2000yqb.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Mon, 21 Dec 2009 12:59:17 -0300
+Message-ID: <71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: lists only one lib?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.211 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/742b249d67b7cd3e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/c1578861fd8bc150
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 21, 2009 at 11:03 AM, rogerdpack <rogerpack2005@gmail.com> wrot=
+e:
+>> =A0 ffi_lib 'user32', 'msvcrt'
+>
+> Hmm.
+> This code:
+>
+> require 'ffi'
+> module M
+> =A0extend FFI::Library
+> =A0ffi_lib 'user32'
+> =A0ffi_lib 'msvcrt'
+> =A0attach_function 'FindWindow', [ :string, :string], :pointer
+> end
+>
+> yields this response:
+>
+> C:/installs/ruby19_mingw/lib/ruby/gems/1.9.1/gems/ffi-0.5.4-x86-
+> mingw32/lib/ffi/library.rb:77:in `attach_function': Function
+> 'FindWindow' not found in [msvcrt] (FFI::NotFoundError)
+> =A0 =A0 =A0 =A0from go2.rb:6:in `<module:M>'
+> =A0 =A0 =A0 =A0from go2.rb:2:in `<main>'
+>
+> I assume this is unexpected?
+
+Roger, for the sake of my mental health, would you mind put a sample
+that indeed works?
+
+Wayne already answered to you that ffi_lib takes an array, multiple
+invocations to append are not possible.
+
+If you believe that could be improved, send a patch.
+
+Also, when using functions, try put the indication to a true function,
+which in the case of FindWindow, as discussed before, do not exist.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

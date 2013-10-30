@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: char array inside struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: char array inside struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/30/09 9:20 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/10/30 daniel åkerud <a class="moz-txt-link-rfc2396E" href="mailto:daniel.akerud@gmail.com">&lt;daniel.akerud@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I have a char array baked into a struct (not a pointer), and I just
+<span class="moz-txt-citetags">&gt; </span>want a confirm that I do it the correct/intended way.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>struct {
+<span class="moz-txt-citetags">&gt; </span> uint8 Value;
+<span class="moz-txt-citetags">&gt; </span> uint8 String[SIZE_OF_ARRAY];
+<span class="moz-txt-citetags">&gt; </span>} MyArray_t;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class MyArray_t &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout  :Value,  :uint8,
+<span class="moz-txt-citetags">&gt; </span>        :String, [:uint8, SIZE_OF_ARRAY]
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+Yes, that is the correct way to declare array fields in structs.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>my_array_struct = MyArray_t.new
+<span class="moz-txt-citetags">&gt; </span>c_function(my_array_struct.pointer) #the c_function fills the char
+<span class="moz-txt-citetags">&gt; </span>array
+<span class="moz-txt-citetags">&gt; </span>str = my_array_struct[:String].to_s # is to_s the correct function to
+<span class="moz-txt-citetags">&gt; </span>retrieve a string? read_string doesn't work.
+</pre></blockquote><pre wrap>
+
+You should be able to get the string via:
+
+my_array_struct[:String].to_ptr.read_string
+</pre></div></body>
+</html>
+</table></div>

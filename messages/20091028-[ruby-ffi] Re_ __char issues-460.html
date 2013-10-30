@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: **char issues</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: **char issues</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/28/09 8:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/10/29 bk <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I am attempting to convert the augeas bindings to ffi. I did this with
+<span class="moz-txt-citetags">&gt; </span>JNA, and it was very helpful. The method in question is:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>int aug_get(const augeas *aug, const char *path, const char **value);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>where the last paraemeter returns the result of the get. I have
+<span class="moz-txt-citetags">&gt; </span>attempted to wrap this with
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> attach_function :aug_get, [:pointer, :string, :pointer], :int
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and then call this with:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   def get(path)
+<span class="moz-txt-citetags">&gt; </span>       ptr = FFI::MemoryPointer.new(:pointer, 1)
+<span class="moz-txt-citetags">&gt; </span>       AugeasLib.aug_get(@aug, path, ptr)
+<span class="moz-txt-citetags">&gt; </span>       strPtr = ptr.read_pointer()
+<span class="moz-txt-citetags">&gt; </span>       return strPtr.read_string()
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This works fine if the get returns something, but if the get ruturns a
+<span class="moz-txt-citetags">&gt; </span>null string I fail with:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>FFI::NullPointerError: invalid memory read at address=(nil)
+</pre></blockquote><pre wrap>
+
+You need to test strPtr for null
+e.g.
+
+  if !((strPtr = ptr.read_pointer).null?
+    strPtr.read_string
+  else
+    ""  # Or whatever end value you want
+  end
+</pre></div></body>
+</html>
+</table></div>

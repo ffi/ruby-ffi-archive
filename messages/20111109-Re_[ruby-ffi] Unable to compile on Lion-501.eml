@@ -1,0 +1,263 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.193.169 with SMTP id hp9cs68030igc;
+        Wed, 9 Nov 2011 14:28:57 -0800 (PST)
+Received: by 10.52.28.211 with SMTP id d19mr7947767vdh.48.1320877735552;
+        Wed, 09 Nov 2011 14:28:55 -0800 (PST)
+Return-Path: <ruby-ffi+bncCNf64-LMCxCj_ev1BBoEIDgwdg@googlegroups.com>
+Received: from mail-vx0-f190.google.com (mail-vx0-f190.google.com [209.85.220.190])
+        by mx.google.com with ESMTPS id p1si1468751vcv.80.2011.11.09.14.28.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 09 Nov 2011 14:28:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNf64-LMCxCj_ev1BBoEIDgwdg@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNf64-LMCxCj_ev1BBoEIDgwdg@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCNf64-LMCxCj_ev1BBoEIDgwdg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vcge1 with SMTP id e1sf1099870vcg.7
+        for <headius@headius.com>; Wed, 09 Nov 2011 14:28:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:from:mime-version:content-type:subject
+         :date:in-reply-to:to:references:message-id:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe;
+        bh=Rpufol1PsMC+JQA6l8V8sff1yYy5xoZFXZFtT5j5634=;
+        b=kO4/B62noTUxPurWsxhHNYhEcgJmXQdDSkcxESchHYyw11z+5XOwjgTIP4yxLQYPHq
+         BHey48i8308pNrGRJsWgkHEBncsca4jTUC3B2AjwmuO1/Yp073WNy6WJOpndlFApHb4Y
+         VSG2mgVh7Z3CklN/lZ9DcA1cxsmVMMUqjXcjM=
+Received: by 10.52.73.130 with SMTP id l2mr757384vdv.14.1320877731302;
+        Wed, 09 Nov 2011 14:28:51 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.8.196 with SMTP id i4ls3593117vci.0.canary; Wed, 09 Nov
+ 2011 14:28:50 -0800 (PST)
+Received: by 10.52.187.65 with SMTP id fq1mr4760821vdc.6.1320877730889;
+        Wed, 09 Nov 2011 14:28:50 -0800 (PST)
+Received: by 10.52.187.65 with SMTP id fq1mr4760817vdc.6.1320877730878;
+        Wed, 09 Nov 2011 14:28:50 -0800 (PST)
+Received: from mail-vx0-f171.google.com (mail-vx0-f171.google.com [209.85.220.171])
+        by gmr-mx.google.com with ESMTPS id b8si3088287vdu.2.2011.11.09.14.28.50
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 09 Nov 2011 14:28:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of adrianbc@gmail.com designates 209.85.220.171 as permitted sender) client-ip=209.85.220.171;
+Received: by mail-vx0-f171.google.com with SMTP id fk13so2376011vcb.2
+        for <ruby-ffi@googlegroups.com>; Wed, 09 Nov 2011 14:28:50 -0800 (PST)
+Received: by 10.52.38.6 with SMTP id c6mr8183132vdk.73.1320877730769;
+        Wed, 09 Nov 2011 14:28:50 -0800 (PST)
+Received: from [10.1.10.49] (70-91-129-202-ma-ne.hfc.comcastbusiness.net. [70.91.129.202])
+        by mx.google.com with ESMTPS id k20sm455630vdd.20.2011.11.09.14.28.48
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 09 Nov 2011 14:28:49 -0800 (PST)
+From: Adrian Byng-Clarke <adrianbc@gmail.com>
+Mime-Version: 1.0 (Apple Message framework v1251.1)
+Content-Type: multipart/signed; boundary="Apple-Mail=_B1A843F3-74EB-4317-9EA9-F36F5FF01F6F"; protocol="application/pkcs7-signature"; micalg=sha1
+Subject: Re: [ruby-ffi] Unable to compile on Lion
+Date: Wed, 9 Nov 2011 17:28:47 -0500
+In-Reply-To: <953220C8-4E1B-4890-B3B9-53B769F6DCA7@gmail.com>
+To: ruby-ffi@googlegroups.com
+References: <9fa64505-6ee9-458e-8a1f-e79f4d520ec0@s5g2000vbe.googlegroups.com> <41AB7CDA-2A77-4EBC-A2AC-219D82F5B768@gmail.com> <9B1DFB2D-27DA-47A8-A95F-6948AF37234B@gmail.com> <953220C8-4E1B-4890-B3B9-53B769F6DCA7@gmail.com>
+Message-Id: <30372AB5-F6A6-4865-ACC9-9C95C994220F@gmail.com>
+X-Mailer: Apple Mail (2.1251.1)
+X-Original-Sender: adrianbc@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of adrianbc@gmail.com designates 209.85.220.171 as permitted sender)
+ smtp.mail=adrianbc@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+
+
+--Apple-Mail=_B1A843F3-74EB-4317-9EA9-F36F5FF01F6F
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=iso-8859-1
+
+OK.. should i try to install in a different way?
+
+Thanks,
+
+Adrian
+
+On Nov 9, 2011, at 3:03 PM, Colby Gutierrez-Kraybill wrote:
+
+>=20
+> On Nov 9, 2011, at 11:43 AM, Adrian Byng-Clarke wrote:
+>=20
+>> Yes i have..
+>>=20
+>> xcodebuild -version
+>> Xcode 4.2
+>> Build version 4D199
+>>=20
+>=20
+> Good!
+>=20
+> The current gem for ffi is 1.0.10, and it seems to build cleanly under =
+10.7.2 for me.
+> Perhaps this is an issue of Bundler/Brew being behind?
+>=20
+> - Colby
+>=20
+>=20
+>=20
+>> Adrian
+>>=20
+>> On Nov 9, 2011, at 11:59 AM, Colby Gutierrez-Kraybill wrote:
+>>=20
+>>>=20
+>>> Have you installed Xcode/Developer tools?
+>>>=20
+>>> - Colby
+>>>=20
+>>> On Nov 8, 2011, at 5:29 PM, Adrian wrote:
+>>>=20
+>>>> When trying to install the lib ffi as a ruby gem from bundler or =
+brew
+>>>> i get the following output.. Has anybody run into this and found a
+>>>> solution?
+>>>>=20
+>>>> Adrian
+>>>>=20
+>>>>=20
+>>>> 11.2.0 Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011;
+>>>> root:xnu-1699.24.8~1/RELEASE_X86_64 x86_64
+>>>>=20
+>>>>=20
+>>>>=20
+>>>> Installing ffi (1.0.9) with native extensions
+>>>> Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem =
+native
+>>>> extension.
+>>>>=20
+>>>>     /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/
+>>>> ruby extconf.rb
+>>>> checking for ffi.h in /usr/local/include... no
+>>>> checking for rb_thread_blocking_region()... no
+>>>> checking for ruby_thread_has_gvl_p()... no
+>>>> checking for ruby_native_thread_p()... no
+>>>> checking for rb_thread_call_with_gvl()... no
+>>>> creating extconf.h
+>>>> creating Makefile
+>>>>=20
+>>>> make
+>>>> Configuring libffi for rch
+>>>> configure: WARNING: If you wanted to set the --build type, don't =
+use --
+>>>> host.
+>>>> If a cross compiler is detected then cross compile mode will be
+>>>> used.
+>>>> Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+>>>> recognized
+>>>> configure: error: /bin/sh /Users/adrian/.bundler/tmp/21514/gems/
+>>>> ffi-1.0.9/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+>>>> make[1]: *** No targets specified and no makefile found.  Stop.
+>>>> Configuring libffi for rch
+>>>> configure: WARNING: If you wanted to set the --build type, don't =
+use --
+>>>> host.
+>>>> If a cross compiler is detected then cross compile mode will be
+>>>> used.
+>>>> Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+>>>> recognized
+>>>> configure: error: /bin/sh /Users/adrian/.bundler/tmp/21514/gems/
+>>>> ffi-1.0.9/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+>>>> make[1]: *** No targets specified and no makefile found.  Stop.
+>>>> make: *** =
+[/Users/adrian/.bundler/tmp/21514/gems/ffi-1.0.9/ext/ffi_c/
+>>>> libffi/.libs/libffi_convenience.a] Error 2
+>>>>=20
+>>>>=20
+>>>> Gem files will remain installed in =
+/Users/adrian/.bundler/tmp/21514/
+>>>> gems/ffi-1.0.9 for inspection.
+>>>> Results logged to =
+/Users/adrian/.bundler/tmp/21514/gems/ffi-1.0.9/ext/
+>>>> ffi_c/gem_make.out
+>>>> An error occured while installing ffi (1.0.9), and Bundler cannot
+>>>> continue.
+>>>> Make sure that `gem install ffi -v '1.0.9'` succeeds before =
+bundling.
+>>>=20
+>>=20
+>=20
+
+
+--Apple-Mail=_B1A843F3-74EB-4317-9EA9-F36F5FF01F6F
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIKRzCCBRow
+ggQCoAMCAQICEG0Z6qcZT2ozIuYiMnqqcd4wDQYJKoZIhvcNAQEFBQAwga4xCzAJBgNVBAYTAlVT
+MQswCQYDVQQIEwJVVDEXMBUGA1UEBxMOU2FsdCBMYWtlIENpdHkxHjAcBgNVBAoTFVRoZSBVU0VS
+VFJVU1QgTmV0d29yazEhMB8GA1UECxMYaHR0cDovL3d3dy51c2VydHJ1c3QuY29tMTYwNAYDVQQD
+Ey1VVE4tVVNFUkZpcnN0LUNsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgRW1haWwwHhcNMTEwNDI4
+MDAwMDAwWhcNMjAwNTMwMTA0ODM4WjCBkzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
+TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
+OTA3BgNVBAMTMENPTU9ETyBDbGllbnQgQXV0aGVudGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBD
+QTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJKEhFtLV5jUXi+LpOFAyKNTWF9mZfEy
+TvefMn1V0HhMVbdClOD5J3EHxcZppLkyxPFAGpDMJ1Zifxe1cWmu5SAb5MtjXmDKokH2auGj/7jf
+H0htZUOMKi4rYzh337EXrMLaggLW1DJq1GdvIBOPXDX65VSAr9hxCh03CgJQU2yVHakQFLSZlVkS
+Mf8JotJM3FLb3uJAAVtIaN3FSrTg7SQfOq9xXwfjrL8UO7AlcWg99A/WF1hGFYE8aIuLgw9teiFX
+5jSw2zJ+40rhpVJyZCaRTqWSD//gsWD9Gm9oUZljjRqLpcxCm5t9ImPTqaD8zp6Q30QZ9FxbNboW
+86eb/8ECAwEAAaOCAUswggFHMB8GA1UdIwQYMBaAFImCZ33EnSZwAEu0UEh83j2uBG59MB0GA1Ud
+DgQWBBR6E04AdFvGeGNkJ8Ev4qBbvHnFezAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB
+/wIBADARBgNVHSAECjAIMAYGBFUdIAAwWAYDVR0fBFEwTzBNoEugSYZHaHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VUTi1VU0VSRmlyc3QtQ2xpZW50QXV0aGVudGljYXRpb25hbmRFbWFpbC5jcmww
+dAYIKwYBBQUHAQEEaDBmMD0GCCsGAQUFBzAChjFodHRwOi8vY3J0LnVzZXJ0cnVzdC5jb20vVVRO
+QWRkVHJ1c3RDbGllbnRfQ0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3Qu
+Y29tMA0GCSqGSIb3DQEBBQUAA4IBAQCF1r54V1VtM39EUv5C1QaoAQOAivsNsv1Kv/avQUn1G1rF
+0q0bc24+6SZ85kyYwTAo38v7QjyhJT4KddbQPTmGZtGhm7VNm2+vKGwdr+XqdFqo2rHA8XV6L566
+k3nK/uKRHlZ0sviN0+BDchvtj/1gOSBH+4uvOmVIPJg9pSW/ve9g4EnlFsjrP0OD8ODuDcHTzTNf
+m9C9YGqzO/761Mk6PB/tm/+bSTO+Qik5g+4zaS6CnUVNqGnagBsePdIaXXxHmaWbCG0SmYbWXVcH
+G6cwvktJRLiQfsrReTjrtDP6oDpdJlieYVUYtCHVmdXgQ0BCML7qpeeU0rD+83X5f27nMIIFJTCC
+BA2gAwIBAgIQOLoget57dXX+5yaktMGmlDANBgkqhkiG9w0BAQUFADCBkzELMAkGA1UEBhMCR0Ix
+GzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMR
+Q09NT0RPIENBIExpbWl0ZWQxOTA3BgNVBAMTMENPTU9ETyBDbGllbnQgQXV0aGVudGljYXRpb24g
+YW5kIFNlY3VyZSBFbWFpbCBDQTAeFw0xMTA2MTAwMDAwMDBaFw0xMjA2MDkyMzU5NTlaMCMxITAf
+BgkqhkiG9w0BCQEWEmFkcmlhbmJjQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAJmr3LztP8+zkxMakf09tGYPVnAz30Mpj89oWsfKrtKjCxF4geaEnClirWXg2KMosUil
+mafrO3xN1xod+KZiB9m70VuMLtWGknUvJ9kKoxoHA5by0SeUWZmDvLNuf1EverrqfdLONX4hj/um
+oMjA8TZMQQA0eewHjhz6Ox5l4tMgeX/T+ZX7JXjBjgaDLmSGSIcAgpYskpajSkrGoM7/6fVAm36h
+LLrR6ab+XnN6FrR1WGVvntvWnK5PaAshyop//qWlpLMRD92sKk8+IOBfDxZRPELCpZioUVQMHUW2
+3i2okJTBNkMGZUKPGEC29e5XSibEI8W37JCCgb7xNePCnYcCAwEAAaOCAeIwggHeMB8GA1UdIwQY
+MBaAFHoTTgB0W8Z4Y2QnwS/ioFu8ecV7MB0GA1UdDgQWBBTz5bfOrFe1VAat99eaRLJI77iccjAO
+BgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAgBgNVHSUEGTAXBggrBgEFBQcDBAYLKwYBBAGy
+MQEDBQIwEQYJYIZIAYb4QgEBBAQDAgUgMEYGA1UdIAQ/MD0wOwYMKwYBBAGyMQECAQEBMCswKQYI
+KwYBBQUHAgEWHWh0dHBzOi8vc2VjdXJlLmNvbW9kby5uZXQvQ1BTMFcGA1UdHwRQME4wTKBKoEiG
+Rmh0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET0NsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2Vj
+dXJlRW1haWxDQS5jcmwwgYgGCCsGAQUFBwEBBHwwejBSBggrBgEFBQcwAoZGaHR0cDovL2NydC5j
+b21vZG9jYS5jb20vQ09NT0RPQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNy
+dDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMB0GA1UdEQQWMBSBEmFkcmlh
+bmJjQGdtYWlsLmNvbTANBgkqhkiG9w0BAQUFAAOCAQEAYwiziLOhQX+4ClFegfQC+1z2i8N89xbK
+Qmc5RunwdrGDbRIVw4Qem1mqqXjCyjWn7RngaZw/LMrmwSHRpHUnp4gftjqgm143jojMn0cH2kPH
+rEBff0wmwiTqYE08UH6KmmeXoDz1tH5Uvchk3UwjlTkrDC4M016L4z/ttEwlSLWyB8iF0+7brMl1
+6/pMtOsp2Ljd5iC3G/+BekUgS9EoRED0urKl37iecMNfeTmDIuoR4nsmV7h/rwUwC+XRd7mMUNHj
+JqLjfnm8Ncqts6ta54vnKS4Wqfh6Sb/HlOxrxLbzfh1vg/HMAKzsnYH6ZR3nXM7U/ASFdcevhuP4
+dw74HzGCA6swggOnAgEBMIGoMIGTMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5j
+aGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRowGAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDE5MDcG
+A1UEAxMwQ09NT0RPIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhA4
+uiB63nt1df7nJqS0waaUMAkGBSsOAwIaBQCgggHXMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEw
+HAYJKoZIhvcNAQkFMQ8XDTExMTEwOTIyMjg0OFowIwYJKoZIhvcNAQkEMRYEFFD3XMom/fQg6kWD
+SymgEL6cdMaRMIG5BgkrBgEEAYI3EAQxgaswgagwgZMxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJH
+cmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNVBAoTEUNPTU9ETyBDQSBM
+aW1pdGVkMTkwNwYDVQQDEzBDT01PRE8gQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUg
+RW1haWwgQ0ECEDi6IHree3V1/ucmpLTBppQwgbsGCyqGSIb3DQEJEAILMYGroIGoMIGTMQswCQYD
+VQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRow
+GAYDVQQKExFDT01PRE8gQ0EgTGltaXRlZDE5MDcGA1UEAxMwQ09NT0RPIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhA4uiB63nt1df7nJqS0waaUMA0GCSqGSIb3DQEB
+AQUABIIBAJaNpEsckyDjiRNLqMyzqBvB9Ck+QX9Cy1TlKt2u5m0RL7sQWqsm2VKi82/r7T1gg8f1
+WV+wyf9EOYX132LNRBgO81ks/8MmKm4HrSmeBZurg61PQdgJTbadIzf1xU5mTh2B2JoQy3XfGn2c
+p8WEFsQTNzcTdDvCyXVQp3D15RI8s0F6yNzkPxZHdLysVlp86DFHe0fPNtA6dAZr4YilDrCj6W9P
+fWvzOjE4JgdO6/ow100UGICgBk03ZV7hJMplZnrQqYHkC2y3i7TtZ4LcPwvT9Po/CESa/vherVjN
+OHo1GaeXRlOLVFsMjKVF5bYHzb/Ls6EgkP07lsyzHdJqWekAAAAAAAA=
+
+--Apple-Mail=_B1A843F3-74EB-4317-9EA9-F36F5FF01F6F--

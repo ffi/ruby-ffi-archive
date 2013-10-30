@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: extconf.rb typo?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: extconf.rb typo?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/14/09 12:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>On Wed, Oct 14, 2009 at 11:56 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>Yep, should be changed, although in that specific case, it doesn't
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>matter, since we no longer use that part of libffi; ruby-ffi
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>implements its own closure allocator.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Yet still the condition in extconf is being used to define options for
+<span class="moz-txt-citetags">&gt; &gt; </span>the build process, right?
+<span class="moz-txt-citetags">&gt; &gt; </span>
+<span class="moz-txt-citetags">&gt; &gt; </span>As long that is true, the evaluation of the platform is still relevant
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>So far, extconf.rb was the only issue I saw.  The main Rakefile appears to be correct for platform evaluation.  Probably just a quick grep of host_os is need to verify.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Jon
+</pre></blockquote><pre wrap>
+
+shouldn't cause issues, but lib/ffi/platform.rb line 17 inconsistently uses "when <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>win|mingw<span class="moz-txt-tag">/</span></i>"
+
+</pre></div></body>
+</html>
+</table></div>

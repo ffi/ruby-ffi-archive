@@ -1,0 +1,153 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.186.206 with SMTP id ct14cs59150qcb;
+        Wed, 12 May 2010 18:27:24 -0700 (PDT)
+Received: by 10.115.67.11 with SMTP id u11mr6526204wak.196.1273714044017;
+        Wed, 12 May 2010 18:27:24 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBD4qq3fBBoEj_zDcQ@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTP id w28si1697968wah.5.2010.05.12.18.27.22;
+        Wed, 12 May 2010 18:27:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD4qq3fBBoEj_zDcQ@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD4qq3fBBoEj_zDcQ@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBD4qq3fBBoEj_zDcQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi18 with SMTP id 18sf180543pxi.7
+        for <headius@headius.com>; Wed, 12 May 2010 18:27:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=UgtuJp3lpi6FWAuHexyRjlY37ecg6L1wxj452WvuQtk=;
+        b=EPHNnf91vXEhPLd97RYZ1lcpZFSUwkmXJfTsq//lOpPrAvYRn3DsqZNzRR7z0u5L0/
+         ZOZsnsDzq2I8DtRknyn3sAFmeIBXIhCHXkpGbjJZcKKsLR/L8ZnPeOJnXfGR2tlyaVHn
+         DEcYZRVuHkM6vmrJEArg7thjYN9oLeHSQ+eKw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=2bnkttTS65A8+t5mBFw2ajTgZIKZgfNkXGlCnQPGDXcPKHu3GwDPYnXvMnllrij+hU
+         TTfevvfPV3JcI3M+O5u9REsFZJz2oVOt/5Y4pCT03jyZZZEetdIzJ0xSgIcWhxvQ5Hb9
+         h37eTLtXF0k4P6n4CPNXTRW0oxJaXBmFOuqjg=
+Received: by 10.143.20.32 with SMTP id x32mr498756wfi.17.1273714040033;
+        Wed, 12 May 2010 18:27:20 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.8.28 with SMTP id 28ls21615310wfh.0.p; Wed, 12 May 2010 
+	18:27:19 -0700 (PDT)
+Received: by 10.143.20.42 with SMTP id x42mr1828544wfi.17.1273714038870;
+        Wed, 12 May 2010 18:27:18 -0700 (PDT)
+Received: by 10.143.20.42 with SMTP id x42mr1828543wfi.17.1273714038843;
+        Wed, 12 May 2010 18:27:18 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f175.google.com (mail-px0-f175.google.com [209.85.212.175])
+        by gmr-mx.google.com with ESMTP id k13si1075498waf.5.2010.05.12.18.27.17;
+        Wed, 12 May 2010 18:27:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.212.175 as permitted sender) client-ip=209.85.212.175;
+Received: by pxi14 with SMTP id 14so360851pxi.34
+        for <ruby-ffi@googlegroups.com>; Wed, 12 May 2010 18:27:17 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.141.105.16 with SMTP id h16mr5595608rvm.274.1273714037624; 
+	Wed, 12 May 2010 18:27:17 -0700 (PDT)
+Received: by 10.141.51.6 with HTTP; Wed, 12 May 2010 18:27:17 -0700 (PDT)
+In-Reply-To: <8370A6E2-D2AB-4F86-A73B-6E128DF3FA8C@mac.com>
+References: <9D5826EF-82C4-4939-AD5B-912135A8AAE4@mac.com>
+	 <AANLkTimmaVy5szNx7IFZOiiyMQWHXNqDzKYpk7QylUS4@mail.gmail.com>
+	 <8370A6E2-D2AB-4F86-A73B-6E128DF3FA8C@mac.com>
+Date: Thu, 13 May 2010 11:27:17 +1000
+Message-ID: <AANLkTilESRJWCeaE1UOtYcicdhQXvAHaNpnZGw1NH6n2@mail.gmail.com>
+Subject: Re: [ruby-ffi] ruby 1.9.1 crashing when executing callback
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.212.175 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Depends on what the "weird" behaviour is.  The other half of the
+threading equation, is calling native functions which block (i.e.
+sleep, wait for I/O, take a long time to complete, whatever).
+
+In JRuby, its not a problem, since it has real threads and no GIL, but
+for MRI (once again, 1.9 only, ffi from master), you can add the
+@blocking attribute when you attach your functions, like so:
+
+  @blocking =3D true
+  attach_function :zmq_whatever, [ ... ], :rtype
+
+That is a hint to FFI that the function could block, and it should
+release the GIL before calling it.  Thats a bit of a performance hit,
+which is why its functions are not assumed to be blocking by default.
+
+
+On 13 May 2010 10:36, Chuck Remes <cremes.devlist@mac.com> wrote:
+> That fixed the crashes with 1.9.1 but I am still seeing some odd behavior=
+. It may be a bug on my side, so I'll play with it a while longer.
+>
+> Many thanks...
+>
+> cr
+>
+> On May 12, 2010, at 6:29 PM, Wayne Meissner wrote:
+>
+>> Can you build ffi from github and retry it on 1.9? =A0I added special
+>> support for callbacks from non-ruby threads (only works on 1.9 though
+>> - 1.8 is completely screwed in that situation).
+>>
+>> JRuby has no problem, because upcalls from C -> java always check &
+>> attach a JVM context, and jruby automagically adopts threads it does
+>> not know about.
+>>
+>>
+>> On 13 May 2010 05:53, Chuck Remes <cremes.devlist@mac.com> wrote:
+>>> I'm starting to work with callbacks and have run into a consistent cras=
+her. Take a look at the trace here:
+>>>
+>>> http://gist.github.com/398987
+>>>
+>>> I downloaded the ruby-1.9.1 source and poked through vm_eval.c which co=
+ntains the vm_call0() function. There is a big switch statement in there th=
+at falls through to calling rb_bug().
+>>>
+>>> This all occurs *only* when invoking the callback. The stack trace clea=
+rly shows it is invoking a block (rb_funcall2) from the FFI library. It cra=
+shes regardless of the contents of the block (empty, puts, nil, etc.).
+>>>
+>>> In 1.8.7 it crashes with a LocalJumpError somewhere else.
+>>>
+>>> When I disable the callback, there are no crashes under either MRI.
+>>>
+>>> Under JRuby, everything works fine. The callback is invoked successfull=
+y.
+>>>
+>>> I'm wondering if this is failing because the callback may be invoked by=
+ another native thread. The library being wrapped by FFI spawns many thread=
+s that do various background tasks; one of them is likely the invocation of=
+ the cleanup callback that is causing the crash.
+>>>
+>>> Are there any known issues with MRI, FFI and callbacks?
+>>>
+>>> cr
+>>>
+>>>
+>
+>

@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI::Library::LIBC and other constants?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI::Library::LIBC and other constants?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/11/10 11:18 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>In this list there were a couple of times when the following constant
+<span class="moz-txt-citetags">&gt;</span>has been mentioned:
+<span class="moz-txt-citetags">&gt;</span>FFI::Library::LIBC
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Which is a pretty handy thing, since it guarantees to proper value for
+<span class="moz-txt-citetags">&gt;</span>C lib on every platform.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span><b class="moz-txt-star"><span class="moz-txt-tag">*</span>BUT<span class="moz-txt-tag">*</span></b>, it is not available on the latest ruby-ffi 0.5.4 (on Windows, at least).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Furthermore, the constants in FFI::Library are just different:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>1. JRuby-dev: FFI::Library.constants
+<span class="moz-txt-citetags">&gt;</span>=&gt; ["LIBC", "CURRENT_PROCESS"]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>2. ruby-ffi with MRI 1.8.7: FFI::Library.constants
+<span class="moz-txt-citetags">&gt;</span>=&gt; ["DEFAULT"]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>It would be great to have the constants aligned. At the minimum, it
+<span class="moz-txt-citetags">&gt;</span>would be really nice to have FFI::Library::LIBC present.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+I get the same results on a Mac using v0.5.4
+
+After installing v 0.6.0 from source I get:
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::Library.constants
+</pre></blockquote></blockquote><pre wrap>
+=&gt; ["CURRENT_PROCESS", "LIBC"]
+
+Needed to update RakeFile to specify dependency on bones &lt; 3.0.0
+
+The setup method has been removed from Bones 3.x and
+at least the documentation has stopped mentioning the use
+of PROC.&lt;method&gt; in the RakeFile.
+
+see:
+<a class="moz-txt-link-freetext" href="http://github.com/stepheneb/ffi/commit/b4c6e89f6a60bcd150077d59c93397d9cf77a1e5">http://github.com/stepheneb/ffi/commit/b4c6e89f6a60bcd150077d59c93397d9cf77a1e5</a>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,679 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs70395lae;
+        Mon, 5 Sep 2011 13:23:50 -0700 (PDT)
+Received: by 10.236.181.135 with SMTP id l7mr20196189yhm.85.1315254229131;
+        Mon, 05 Sep 2011 13:23:49 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMzwhrDPDBDP35TzBBoEkIFTrQ@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id u46si6741500yhm.26.2011.09.05.13.23.48
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 13:23:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMzwhrDPDBDP35TzBBoEkIFTrQ@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMzwhrDPDBDP35TzBBoEkIFTrQ@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCMzwhrDPDBDP35TzBBoEkIFTrQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywa12 with SMTP id 12sf5985859ywa.7
+        for <headius@headius.com>; Mon, 05 Sep 2011 13:23:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:from:mime-version:subject:date:in-reply-to
+         :to:references:message-id:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=sdo5xvbFtkWkju7IWfPGaJrd+uMhBH4EfXwZH7wFuVg=;
+        b=pFxBXQWELl2SKOU8rgDgpI1lP6RF/JTmx4yn8p1l6IO67CxP/TQLpGeWsp+bLBOlQb
+         ODvB1uXqSb8QPsWA5KkWCl2yutC/J6v14uvirhZKyCUIv5mscdb+503pbLk9db+a7fB6
+         KdRmw+rFXZepfmFVEQbM+eaHbuGHHjgS3ZldI=
+Received: by 10.101.189.6 with SMTP id r6mr497095anp.15.1315254223777;
+        Mon, 05 Sep 2011 13:23:43 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.189.5 with SMTP id r5ls408624anp.6.gmail; Mon, 05 Sep 2011
+ 13:23:43 -0700 (PDT)
+Received: by 10.236.22.169 with SMTP id t29mr12151682yht.5.1315254223419;
+        Mon, 05 Sep 2011 13:23:43 -0700 (PDT)
+Received: by 10.151.138.5 with SMTP id q5msybn;
+        Mon, 5 Sep 2011 12:52:20 -0700 (PDT)
+Received: by 10.68.32.194 with SMTP id l2mr3319395pbi.14.1315252340684;
+        Mon, 05 Sep 2011 12:52:20 -0700 (PDT)
+Received: by 10.68.32.194 with SMTP id l2mr3319392pbi.14.1315252340652;
+        Mon, 05 Sep 2011 12:52:20 -0700 (PDT)
+Received: from mrpink.hcro.org (mrpink.hcro.org. [74.43.140.12])
+        by gmr-mx.google.com with ESMTPS id kr11si11594524pbb.1.2011.09.05.12.52.20
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 12:52:20 -0700 (PDT)
+Received-SPF: neutral (google.com: 74.43.140.12 is neither permitted nor denied by domain of colbygk@gmail.com) client-ip=74.43.140.12;
+Received: from [10.3.0.32] (obsidian.hcro.org [10.3.0.32])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by mrpink.hcro.org (Postfix) with ESMTP id AF20DABD49
+	for <ruby-ffi@googlegroups.com>; Mon,  5 Sep 2011 12:52:19 -0700 (PDT)
+From: Colby Gutierrez-Kraybill <colbygk@gmail.com>
+Mime-Version: 1.0 (Apple Message framework v1244.3)
+Subject: Re: [ruby-ffi] attach_function a bit draconian
+Date: Mon, 5 Sep 2011 12:52:19 -0700
+In-Reply-To: <A9EF9B3E-4340-4A9D-810A-70880206D19E@gmail.com>
+To: ruby-ffi@googlegroups.com
+References: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com> <4E6475CC.4040304@matijs.net> <A9EF9B3E-4340-4A9D-810A-70880206D19E@gmail.com>
+Message-Id: <B030C4B2-597D-4090-9453-55915B1ED1D1@gmail.com>
+X-Mailer: Apple Mail (2.1244.3)
+X-Original-Sender: colbygk@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 74.43.140.12 is neither permitted nor denied by domain of colbygk@gmail.com) smtp.mail=colbygk@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary="Apple-Mail=_A934788D-E4B7-4458-8E15-AE4B4703CEEC"
+
+--Apple-Mail=_A934788D-E4B7-4458-8E15-AE4B4703CEEC
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=iso-8859-1
+
+
+On Sep 5, 2011, at 12:45 PM, Colby Gutierrez-Kraybill wrote:
+
+>=20
+> On Sep 5, 2011, at 12:10 AM, Matijs van Zuijlen wrote:
+>=20
+>> Hi Charlie,
+>>=20
+>> On 04/09/2011 23:19, cfis wrote:
+>>> I've written a ffi wrapper for the free image library, which is =
+here:
+>>>=20
+>>> http://cfis.github.com/free-image-ruby/
+>>>=20
+>>> The problem is that I've coded against the latest version of
+>>> FreeImage, and most linux distributions have older versions
+>>> installed.  Thus when I try to load the gem it fails since
+>>> attach_function throws an error because the older versions don't =
+have
+>>> all the functions.
+>>=20
+>> You can just wrap the call to attach_function in a begin-rescue-end =
+construct. Then in the rescue block, you can do whatever you want. In =
+your case, this would probably mean issuing a warning and then defining =
+a stub function. You can even wrap that in a method, say, =
+attach_function_safely.
+>>=20
+>> Regards,
+>> Matijs
+>=20
+> this++
+>=20
+> I had a need to create convenience aliases for GSL routines and I =
+created a new method that wrapped around attach_function as well as a =
+side-along override of method_missing:
+>=20
+> By using method_missing, you could capture any calls that a developer =
+expects to be in the library (a more current one) and do exactly what =
+you need doing.
+>=20
+> See:
+>=20
+> attach_gsl_function,
+> =
+http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4r/util.r=
+b;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD
+>=20
+
+OH, and,
+
+There's a lot of extra cruft in the attach_gsl_function that creates =
+both ruby and C based tests so that the C code can be compiled and the =
+results tested against the output of the FFI wrapper around GSL calls.  =
+I wanted to avoid having to write those tests by hand.  Hope this helps.
+
+The bit to pay attention to is:
+
+ 129     module AutoPrefix=20
+ 130=20
+ 131       $prefixLock =3D Monitor.new
+ 132=20
+ 133       # This traps method calls intended to create shortened =
+versions
+ 134       # of the GSL function calls.
+ 135       #=20
+ 136       # This first checks if the called method matches the Module
+ 137       # function call gsl_complex_#{called_method} (where =
+called_method
+ 138       # might be 'abs').
+ 139       #
+ 140       # If it finds a match (respond_to), it will then create a new
+ 141       # method for the class as a whole (class_eval), making the =
+method
+ 142       # available to not just this instance of the class, but all
+ 143       # existing instances and all those created after.
+ 144       #=20
+ 145       # Finally, the creation is wrapped up in a synchronized call
+ 146       # to ensure thread safety.  It is only unsafe the first time
+ 147       # the method is invoked (and non-existent at that point).  =
+Every
+ 148       # time the method is invoked after, it should not hit =
+method_missing.
+ 149       # TODO: Is this true for java threads too, or is it per 'vm' =
+per
+ 150       # thread?
+ 151       def method_missing( called_method, *args, &block )
+ 152=20
+ 153         $prefixLock.synchronize do
+ 154=20
+ 155           prefix =3D self.class::GSL_PREFIX
+ 156=20
+ 157           if ( =
+self.class::GSL_MODULE::Methods.respond_to?("#{prefix}#{called_method}") =
+=3D=3D false )
+ 158             prefix =3D ""
+ 159             if ( =
+self.class::GSL_MODULE::Methods.respond_to?("#{called_method}") =3D=3D =
+false )
+ 160               super # NoMethodError
+ 161             end
+ 162           end
+ 163=20
+ 164           # TODO: this could be smoothed out with the =
+#args/#parameters parts of
+ 165           # Ruby 1.9.
+ 166           # This could inspect the definition of the parameter and =
+if the
+ 167           # first argument in the definition were of the same type =
+as self
+ 168           # then self could be inserted into the args list per =
+below
+ 169           # rather than requiring the =
+#{called_method.to_s.upcase}_ADD_SELF
+ 170           # boolean definition and check
+ 171           self.class.class_eval <<-end_eval
+ 172           def #{called_method}(*args, &block)
+ 173             if =
+::#{self.class::GSL_MODULE.to_s}::Methods::#{prefix.to_s.upcase}#{called_m=
+ethod.to_s.upcase}_ADD_SELF=20
+ 174               args.insert(0, self)
+ 175             end
+ 176             =
+::#{self.class::GSL_MODULE.to_s}::Methods::#{prefix}#{called_method}( =
+*args, &block )
+ 177           end
+ 178           end_eval
+ 179=20
+ 180           __send__(called_method, *args, &block)
+ 181         end # prefixLock.synchronize
+ 182       end # method_missing
+ 183     end # AutoPrefix
+
+
+--Apple-Mail=_A934788D-E4B7-4458-8E15-AE4B4703CEEC
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=iso-8859-1
+
+<html><head></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space; =
+"><br><div><div>On Sep 5, 2011, at 12:45 PM, Colby Gutierrez-Kraybill =
+wrote:</div><br class=3D"Apple-interchange-newline"><blockquote =
+type=3D"cite"><div><br>On Sep 5, 2011, at 12:10 AM, Matijs van Zuijlen =
+wrote:<br><br><blockquote type=3D"cite">Hi =
+Charlie,<br></blockquote><blockquote =
+type=3D"cite"><br></blockquote><blockquote type=3D"cite">On 04/09/2011 =
+23:19, cfis wrote:<br></blockquote><blockquote type=3D"cite"><blockquote =
+type=3D"cite">I've written a ffi wrapper for the free image library, =
+which is here:<br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote =
+type=3D"cite"><br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote type=3D"cite"><a =
+href=3D"http://cfis.github.com/free-image-ruby/">http://cfis.github.com/fr=
+ee-image-ruby/</a><br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote =
+type=3D"cite"><br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote type=3D"cite">The problem is that I've coded =
+against the latest version of<br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote type=3D"cite">FreeImage, and most linux =
+distributions have older =
+versions<br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote type=3D"cite">installed. &nbsp;Thus when I try =
+to load the gem it fails since<br></blockquote></blockquote><blockquote =
+type=3D"cite"><blockquote type=3D"cite">attach_function throws an error =
+because the older versions don't =
+have<br></blockquote></blockquote><blockquote type=3D"cite"><blockquote =
+type=3D"cite">all the =
+functions.<br></blockquote></blockquote><blockquote =
+type=3D"cite"><br></blockquote><blockquote type=3D"cite">You can just =
+wrap the call to attach_function in a begin-rescue-end construct. Then =
+in the rescue block, you can do whatever you want. In your case, this =
+would probably mean issuing a warning and then defining a stub function. =
+You can even wrap that in a method, say, =
+attach_function_safely.<br></blockquote><blockquote =
+type=3D"cite"><br></blockquote><blockquote =
+type=3D"cite">Regards,<br></blockquote><blockquote =
+type=3D"cite">Matijs<br></blockquote><br>this++<br><br>I had a need to =
+create convenience aliases for GSL routines and I created a new method =
+that wrapped around attach_function as well as a side-along override of =
+method_missing:<br><br>By using method_missing, you could capture any =
+calls that a developer expects to be in the library (a more current one) =
+and do exactly what you need =
+doing.<br><br>See:<br><br>attach_gsl_function,<br><a =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD">http://g=
+sl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4r/util.rb;h=3D3c=
+2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD</a><br><br></div></blockq=
+uote><div><br></div><div>OH, and,</div><div><br></div></div>There's a =
+lot of extra cruft in the attach_gsl_function that creates both ruby and =
+C based tests so that the C code can be compiled and the results tested =
+against the output of the FFI wrapper around GSL calls. &nbsp;I wanted =
+to avoid having to write those tests by hand. &nbsp;Hope this =
+helps.<div><br><div>The bit to pay attention to =
+is:</div><div><br></div><div><span class=3D"Apple-style-span" =
+style=3D"font-family: monospace; font-size: small; "><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l129" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l129" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 129</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;module&nbsp;AutoPrefix&nbsp;</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l130" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l130" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 130</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l131" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l131" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 131</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$prefixLock&nbsp;=3D&nbsp;Monitor.new<=
+/div><div class=3D"pre" style=3D"font-family: monospace; font-size: =
+12px; white-space: pre; "><a id=3D"l132" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l132" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 132</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l133" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l133" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 133</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nbsp;traps&nbsp;method&nbs=
+p;calls&nbsp;intended&nbsp;to&nbsp;create&nbsp;shortened&nbsp;versions</di=
+v><div class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l134" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l134" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 134</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;of&nbsp;the&nbsp;GSL&nbsp;funct=
+ion&nbsp;calls.</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l135" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l135" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 135</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l136" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l136" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 136</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nbsp;first&nbsp;checks&nbs=
+p;if&nbsp;the&nbsp;called&nbsp;method&nbsp;matches&nbsp;the&nbsp;Module</d=
+iv><div class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l137" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l137" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 137</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;function&nbsp;call&nbsp;gsl_com=
+plex_#{called_method}&nbsp;(where&nbsp;called_method</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l138" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l138" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 138</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;might&nbsp;be&nbsp;'abs').</div=
+><div class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l139" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l139" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 139</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l140" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l140" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 140</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;If&nbsp;it&nbsp;finds&nbsp;a&nb=
+sp;match&nbsp;(respond_to),&nbsp;it&nbsp;will&nbsp;then&nbsp;create&nbsp;a=
+&nbsp;new</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l141" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l141" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 141</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;method&nbsp;for&nbsp;the&nbsp;c=
+lass&nbsp;as&nbsp;a&nbsp;whole&nbsp;(class_eval),&nbsp;making&nbsp;the&nbs=
+p;method</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l142" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l142" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 142</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;available&nbsp;to&nbsp;not&nbsp=
+;just&nbsp;this&nbsp;instance&nbsp;of&nbsp;the&nbsp;class,&nbsp;but&nbsp;a=
+ll</div><div class=3D"pre" style=3D"font-family: monospace; font-size: =
+12px; white-space: pre; "><a id=3D"l143" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l143" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 143</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;existing&nbsp;instances&nbsp;an=
+d&nbsp;all&nbsp;those&nbsp;created&nbsp;after.</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l144" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l144" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 144</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l145" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l145" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 145</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Finally,&nbsp;the&nbsp;creation=
+&nbsp;is&nbsp;wrapped&nbsp;up&nbsp;in&nbsp;a&nbsp;synchronized&nbsp;call</=
+div><div class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l146" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l146" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 146</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;to&nbsp;ensure&nbsp;thread&nbsp=
+;safety.&nbsp;&nbsp;It&nbsp;is&nbsp;only&nbsp;unsafe&nbsp;the&nbsp;first&n=
+bsp;time</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l147" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l147" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 147</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;method&nbsp;is&nbsp;in=
+voked&nbsp;(and&nbsp;non-existent&nbsp;at&nbsp;that&nbsp;point).&nbsp;&nbs=
+p;Every</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l148" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l148" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 148</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;time&nbsp;the&nbsp;method&nbsp;=
+is&nbsp;invoked&nbsp;after,&nbsp;it&nbsp;should&nbsp;not&nbsp;hit&nbsp;met=
+hod_missing.</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l149" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l149" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 149</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;TODO:&nbsp;Is&nbsp;this&nbsp;tr=
+ue&nbsp;for&nbsp;java&nbsp;threads&nbsp;too,&nbsp;or&nbsp;is&nbsp;it&nbsp;=
+per&nbsp;'vm'&nbsp;per</div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l150" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l150" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 150</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;thread?</div><div class=3D"pre"=
+ style=3D"font-family: monospace; font-size: 12px; white-space: pre; =
+"><a id=3D"l151" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l151" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 151</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;method_missing(&nbsp;called_m=
+ethod,&nbsp;*args,&nbsp;&amp;block&nbsp;)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l152" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l152" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 152</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l153" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l153" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 153</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$prefixLock.synchronize&nb=
+sp;do</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l154" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l154" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 154</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l155" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l155" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 155</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prefix&nbsp;=3D=
+&nbsp;self.class::GSL_PREFIX</div><div class=3D"pre" style=3D"font-family:=
+ monospace; font-size: 12px; white-space: pre; "><a id=3D"l156" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l156" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 156</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l157" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l157" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 157</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp=
+;self.class::GSL_MODULE::Methods.respond_to?("#{prefix}#{called_method}")&=
+nbsp;=3D=3D&nbsp;false&nbsp;)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l158" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l158" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 158</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pr=
+efix&nbsp;=3D&nbsp;""</div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l159" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l159" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 159</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if=
+&nbsp;(&nbsp;self.class::GSL_MODULE::Methods.respond_to?("#{called_method}=
+")&nbsp;=3D=3D&nbsp;false&nbsp;)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l160" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l160" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 160</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;super&nbsp;#&nbsp;NoMethodError</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l161" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l161" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 161</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;en=
+d</div><div class=3D"pre" style=3D"font-family: monospace; font-size: =
+12px; white-space: pre; "><a id=3D"l162" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l162" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 162</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l163" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l163" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 163</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l164" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l164" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 164</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;TODO:&n=
+bsp;this&nbsp;could&nbsp;be&nbsp;smoothed&nbsp;out&nbsp;with&nbsp;the&nbsp=
+;#args/#parameters&nbsp;parts&nbsp;of</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l165" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l165" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 165</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Ruby&nb=
+sp;1.9.</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l166" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l166" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 166</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;This&nb=
+sp;could&nbsp;inspect&nbsp;the&nbsp;definition&nbsp;of&nbsp;the&nbsp;param=
+eter&nbsp;and&nbsp;if&nbsp;the</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l167" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l167" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 167</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;first&n=
+bsp;argument&nbsp;in&nbsp;the&nbsp;definition&nbsp;were&nbsp;of&nbsp;the&n=
+bsp;same&nbsp;type&nbsp;as&nbsp;self</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l168" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l168" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 168</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;then&nb=
+sp;self&nbsp;could&nbsp;be&nbsp;inserted&nbsp;into&nbsp;the&nbsp;args&nbsp=
+;list&nbsp;per&nbsp;below</div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l169" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l169" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 169</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;rather&=
+nbsp;than&nbsp;requiring&nbsp;the&nbsp;#{called_method.to_s.upcase}_ADD_SE=
+LF</div><div class=3D"pre" style=3D"font-family: monospace; font-size: =
+12px; white-space: pre; "><a id=3D"l170" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l170" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 170</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;boolean=
+&nbsp;definition&nbsp;and&nbsp;check</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l171" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l171" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 171</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.class.cla=
+ss_eval&nbsp;&lt;&lt;-end_eval</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l172" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l172" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 172</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;#{cal=
+led_method}(*args,&nbsp;&amp;block)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l173" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l173" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 173</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if=
+&nbsp;::#{self.class::GSL_MODULE.to_s}::Methods::#{prefix.to_s.upcase}#{ca=
+lled_method.to_s.upcase}_ADD_SELF&nbsp;</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l174" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l174" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 174</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;args.insert(0,&nbsp;self)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l175" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l175" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 175</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;en=
+d</div><div class=3D"pre" style=3D"font-family: monospace; font-size: =
+12px; white-space: pre; "><a id=3D"l176" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l176" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 176</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::=
+#{self.class::GSL_MODULE.to_s}::Methods::#{prefix}#{called_method}(&nbsp;*=
+args,&nbsp;&amp;block&nbsp;)</div><div class=3D"pre" style=3D"font-family:=
+ monospace; font-size: 12px; white-space: pre; "><a id=3D"l177" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l177" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 177</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end</div><div =
+class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l178" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l178" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 178</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end_eval</div>=
+<div class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l179" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l179" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 179</a> </div><div class=3D"pre" style=3D"font-family: =
+monospace; font-size: 12px; white-space: pre; "><a id=3D"l180" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l180" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 180</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__send__(calle=
+d_method,&nbsp;*args,&nbsp;&amp;block)</div><div class=3D"pre" =
+style=3D"font-family: monospace; font-size: 12px; white-space: pre; "><a =
+id=3D"l181" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l181" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 181</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;#&nbsp;prefixLock=
+.synchronize</div><div class=3D"pre" style=3D"font-family: monospace; =
+font-size: 12px; white-space: pre; "><a id=3D"l182" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l182" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 182</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;#&nbsp;method_missing</div><d=
+iv class=3D"pre" style=3D"font-family: monospace; font-size: 12px; =
+white-space: pre; "><a id=3D"l183" =
+href=3D"http://gsl4r.rubyforge.org/git?p=3Dgsl4r.git;a=3Dblob;f=3Dlib/gsl4=
+r/util.rb;h=3D3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=3DHEAD#l183" =
+class=3D"linenr" style=3D"color: rgb(153, 153, 153); text-decoration: =
+none; "> 183</a> =
+&nbsp;&nbsp;&nbsp;&nbsp;end&nbsp;#&nbsp;AutoPrefix</div><div><br></div></s=
+pan></div></div></body></html>=
+
+--Apple-Mail=_A934788D-E4B7-4458-8E15-AE4B4703CEEC--

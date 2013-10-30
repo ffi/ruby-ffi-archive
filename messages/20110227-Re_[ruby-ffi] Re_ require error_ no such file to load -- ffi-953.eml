@@ -1,0 +1,112 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.101.141 with SMTP id c13cs93245fao;
+        Sat, 26 Feb 2011 23:06:00 -0800 (PST)
+Received: by 10.236.103.11 with SMTP id e11mr7399732yhg.43.1298790358034;
+        Sat, 26 Feb 2011 23:05:58 -0800 (PST)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhDP76frBBoEUnl_mg@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTPS id l46si5250433yha.64.2011.02.26.23.05.56
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 26 Feb 2011 23:05:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDP76frBBoEUnl_mg@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDP76frBBoEUnl_mg@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhDP76frBBoEUnl_mg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg3 with SMTP id 3sf529660pvg.7
+        for <headius@headius.com>; Sat, 26 Feb 2011 23:05:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :x-proofpoint-virus-version:x-proofpoint-spam-details:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results
+         :x-google-group-id:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        bh=cHborN7pcA+ooE83Xg/OA8oYyN8J04+xcTBJ86Kw1VU=;
+        b=lSA68SizyD90HZqIrx0gZwVhq9E9IfI3Rh9Y1Kwu64XPAknH2cGXJoJrgfDeadS50e
+         HhLr2xpFR268gTvqX4LRZ384yiQMCsZGxiy0e97YurQSlmGOWrDMennCdYtl31yQe++2
+         7fdQ5cEoGFssU7aA8lcvGLjq27n8IVnHzuWKg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-virus-version
+         :x-proofpoint-spam-details:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:x-google-group-id:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        b=I9W9VqVL3cWRQ1k67zAFVnZax187RU/eeYTC4U21r2LHrOwANsrUJlnWST3QNHum9a
+         w470ZETCW+o03GUQTCQn/OpFvkpdXFHWJIcq+CXjoHP9eMH4f/ktZRQ+VRK6qtYFeYS1
+         3EY33U1xNdkhtF5ofp011MUzUggIYFsoA7YME=
+Received: by 10.142.170.5 with SMTP id s5mr263812wfe.48.1298790351126;
+        Sat, 26 Feb 2011 23:05:51 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.97.18 with SMTP id u18ls2575450wfb.2.p; Sat, 26 Feb 2011
+ 23:05:50 -0800 (PST)
+Received: by 10.142.83.8 with SMTP id g8mr92414wfb.35.1298790350737;
+        Sat, 26 Feb 2011 23:05:50 -0800 (PST)
+Received: by 10.142.83.8 with SMTP id g8mr92413wfb.35.1298790350716;
+        Sat, 26 Feb 2011 23:05:50 -0800 (PST)
+Received: from asmtpout030.mac.com (asmtpout030.mac.com [17.148.16.105])
+        by gmr-mx.google.com with ESMTP id x35si2431278wfd.0.2011.02.26.23.05.50;
+        Sat, 26 Feb 2011 23:05:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted sender) client-ip=17.148.16.105;
+MIME-version: 1.0
+Received: from [192.168.1.100]
+ (c-71-239-242-179.hsd1.il.comcast.net [71.239.242.179])
+ by asmtp030.mac.com (Oracle Communications Messaging Exchange Server 7u4-20.01
+ 64bit (built Nov 21 2010)) with ESMTPSA id <0LH900ICLL1OVJ00@asmtp030.mac.com>
+ for ruby-ffi@googlegroups.com; Sat, 26 Feb 2011 23:05:50 -0800 (PST)
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2011-02-26_08:2011-02-26,2011-02-26,1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1012030000 definitions=main-1102260195
+Subject: Re: [ruby-ffi] Re: require error: no such file to load -- ffi
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <15212428.1045.1298751516015.JavaMail.geo-discussion-forums@prgz35>
+Date: Sun, 27 Feb 2011 01:05:48 -0600
+Message-id: <E14A5C74-38D2-445A-80B9-C5246FFCEA09@mac.com>
+References: <15212428.1045.1298751516015.JavaMail.geo-discussion-forums@prgz35>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted
+ sender) smtp.mail=cremes.devlist@mac.com
+X-Google-Group-Id: -2112722312
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+
+On Feb 26, 2011, at 2:18 PM, Allan Bowhill wrote:
+
+> Did a complete reinstall of MRI, after imploding .rvm - a completely clean slate.
+> 
+> gem version displays 1.5.2
+> ruby version is 1.9.2-p180
+> 
+> Still getting the same errors on FreeBSD 8.1 running code in the example directory.
+> 
+> Is there any os-platform-specific code in ff-rzmq? I noticed some array names "OSX", "Linux" and "Windows" in the source for wrapper.rb. A couple of these have hard-coded paths to library locations. Could this be causing a problem, or is it unrelated?
+> 
+> It's probably just a Ruby installation problem under RVM, but I can't replicate a similar error with any other gems. 
+
+I'm the author the ffi-rzmq gem. What is the error message you receive when trying to load the gem?
+
+I don't have freebsd loaded up anywhere, but I could probably get a vmware image going to try and duplicate what you are doing. Give me some details (feel free to email me privately) and I'll see what I can do.
+
+cr
+
+
+

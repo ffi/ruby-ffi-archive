@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Rubygame now uses FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Rubygame now uses FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Charles Oliver Nutter <headius@headius.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/28/09 6:42 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+Ok John, thanks for the clarification. It seems like the extra calls
+ought to be something you could do from FFI, but perhaps that's too
+late or too complicated?
+
+On Mon, Oct 26, 2009 at 1:10 AM, John Croisant <a class="moz-txt-link-rfc2396E" href="mailto:jacius@gmail.com">&lt;jacius@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>RSDL is essentially a wrapper around the Ruby interpreter, but it
+<span class="moz-txt-citetags">&gt; </span>performs some SDL initialization magic that is only necessary on Mac.
+<span class="moz-txt-citetags">&gt; </span>It has something to do with priming Cocoa to open a display window,
+<span class="moz-txt-citetags">&gt; </span>but the details are somewhat arcane, and the implementation is rather
+<span class="moz-txt-citetags">&gt; </span>messy. Without RSDL -- that is, using the plain Ruby (or JRuby)
+<span class="moz-txt-citetags">&gt; </span>interpreter -- Rubygame and Ruby/SDL applications just print a bunch
+<span class="moz-txt-citetags">&gt; </span>of gibberish to the console instead of opening a display window.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Due to the messy and obscure implementation hidden inside SDL, I'm not
+<span class="moz-txt-citetags">&gt; </span>sure there's any way around it except to create a Java program that
+<span class="moz-txt-citetags">&gt; </span>initializes SDL and then runs an embedded JRuby interpreter. It <b class="moz-txt-star"><span class="moz-txt-tag">*</span>may<span class="moz-txt-tag">*</span></b>
+<span class="moz-txt-citetags">&gt; </span>be possible to initiate some of the Cocoa stuff that SDL wants via FFI
+<span class="moz-txt-citetags">&gt; </span>or other means, but the mish-mash of C (SDL), Objective-C (Cocoa),
+<span class="moz-txt-citetags">&gt; </span>Java, and Ruby makes my head spin just thinking about it. A Java app
+<span class="moz-txt-citetags">&gt; </span>wrapper would probably be simpler -- although more inconvenient for
+<span class="moz-txt-citetags">&gt; </span>users, because it's one more thing to install, and it's annoying to
+<span class="moz-txt-citetags">&gt; </span>have to remember to use it instead of the usual Ruby interpreter.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I think (or at least hope) that this annoying issue will be solved in
+<span class="moz-txt-citetags">&gt; </span>SDL 1.3, but I have no clue when that will be released. It has been
+<span class="moz-txt-citetags">&gt; </span>"almost ready" several times over the past 2-3 years, but it has never
+<span class="moz-txt-citetags">&gt; </span>managed to get off the ground. I could possibly set up a binding to
+<span class="moz-txt-citetags">&gt; </span>the SDL 1.3 SVN version, but I'm generally not in the habit of using
+<span class="moz-txt-citetags">&gt; </span>unreleased software as dependencies.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>My own feeling is that the best, simplest, cleanest course right now
+<span class="moz-txt-citetags">&gt; </span>is for Rubygame to provide an OpenGL back end, but I'm not sure how
+<span class="moz-txt-citetags">&gt; </span>soon I'll be able to attempt it. If someone with Java knowledge wants
+<span class="moz-txt-citetags">&gt; </span>to try making a JRuby-ish RSDL wrapper, I think that would also have a
+<span class="moz-txt-citetags">&gt; </span>good chance of letting Rubygame work on Mac JRuby in the meantime.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- John
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

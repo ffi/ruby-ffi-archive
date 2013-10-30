@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/24/10 6:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/22 John Croisant <a class="moz-txt-link-rfc2396E" href="mailto:jacius@gmail.com">&lt;jacius@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Sat, Dec 19, 2009 at 6:35 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>You need to list them all on the same line.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>i.e.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> ffi_lib 'user32', 'msvcrt'
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I always thought that giving multiple args to ffi_lib was a way of
+<span class="moz-txt-citetags">&gt; </span>providing fallback libraries /alternate names in case the first one
+<span class="moz-txt-citetags">&gt; </span>failed. I guess I assumed that it didn't make sense (or wouldn't work)
+<span class="moz-txt-citetags">&gt; </span>to load more than one library into the same module, anyway. I'm not
+<span class="moz-txt-citetags">&gt; </span>sure why I assumed that, though.
+</pre></blockquote><pre wrap>
+
+the way ffi_lib handles multiple args changed in 0.6:
+
+now, ffi_lib "a", "b", "c" will fail if <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>any<span class="moz-txt-tag">_</span></span> of a, b, or c fail to load.
+
+If you need alternate library names (e.g. for linux shared libs), you can use []
+e.g.
+# try to load libncurses, fall back to libncurses.so.5 on linux if
+that fails, but also load libc
+ffi_lib [ "ncurses", "libncurses.so.5" ], FFI::Platform::LIBC
+
+However, a better idea is probably to use NiceFFI and its find_library function.
+</pre></div></body>
+</html>
+</table></div>

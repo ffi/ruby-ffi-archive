@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: how do I properly attach to this function?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: how do I properly attach to this function?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jason Toy <jasontoy@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/3/11 4:41 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I've added a trunk function to fix this.
+
+On Nov 2, 4:24 pm, Jason Toy <a class="moz-txt-link-rfc2396E" href="mailto:jason...@gmail.com">&lt;jason...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I have a function  that is called like this in a c ++ app:
+<span class="moz-txt-citetags">&gt; </span>   CompactLangDet::DetectLanguage( .....)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I see that C++ symbols are not visible in C so I ran nm on the library
+<span class="moz-txt-citetags">&gt; </span>to see the names of the functions:
+<span class="moz-txt-citetags">&gt; </span>0000000000002820 T
+<span class="moz-txt-citetags">&gt; </span>__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8La nguagePS5_PiPdS7_Pb
+<span class="moz-txt-citetags">&gt; </span>00000000000028a0 T __ZN14CompactLangDet21DetectLanguageVersionEv
+<span class="moz-txt-citetags">&gt; </span>0000000000004440 T
+<span class="moz-txt-citetags">&gt; </span>__ZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15Det ectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_Pb
+<span class="moz-txt-citetags">&gt; </span>000000000013b180 s
+<span class="moz-txt-citetags">&gt; </span>__ZZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15De tectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_PbE18default_cld_tables
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So I tried running:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt; </span>module MyLib
+<span class="moz-txt-citetags">&gt; </span>  extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>  ffi_lib "#{Dir.pwd}/cld.so"
+<span class="moz-txt-citetags">&gt; </span>   #attach_function "CompactLangDet::DetectLanguage",
+<span class="moz-txt-citetags">&gt; </span>[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:dou ble,:int,:bool ], :int
+<span class="moz-txt-citetags">&gt; </span>   attach_function
+<span class="moz-txt-citetags">&gt; </span>"__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8L anguagePS5_PiPdS7_Pb",
+<span class="moz-txt-citetags">&gt; </span>[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:dou ble,:int,:bool ], :int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>but I still get an error:
+<span class="moz-txt-citetags">&gt; </span>FFI::NotFoundError: Function
+<span class="moz-txt-citetags">&gt; </span>'__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8L anguagePS5_PiPdS7_Pb'
+<span class="moz-txt-citetags">&gt; </span>not found in [/Users/jtoy/sandbox/ccld/cld.so]
+<span class="moz-txt-citetags">&gt; </span>        from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/jtoy<span class="moz-txt-tag">/</span></i>.rbenv/versions/1.9.3-preview1/lib/ruby/gems/1.9.1/
+<span class="moz-txt-citetags">&gt; </span>gems/ffi-1.0.10/lib/ffi/library.rb:247:in `attach_function'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>What is the correct way for me to reference this function?
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs138682bkh;
+        Thu, 21 Oct 2010 13:32:14 -0700 (PDT)
+Received: by 10.151.98.2 with SMTP id a2mr109223ybm.426.1287693132811;
+        Thu, 21 Oct 2010 13:32:12 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRDKxoLmBBoEKWESTw@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id 7si4698995yhl.172.2010.10.21.13.32.11;
+        Thu, 21 Oct 2010 13:32:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRDKxoLmBBoEKWESTw@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRDKxoLmBBoEKWESTw@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRDKxoLmBBoEKWESTw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvh11 with SMTP id 11sf11622pvh.7
+        for <headius@headius.com>; Thu, 21 Oct 2010 13:32:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=mlqqtltSx2mpUrnSs0dWBm5BEFedyNMSsEwNZUb8HhM=;
+        b=vvHnftPPMusMHIwA7uElFdlIYoRiVZD1SQ9oSKpvpaWG+zbh0poVJPJTUGstmH3o99
+         9KxWi9L5qqZz3mmeTtW1pPfNbWG8NXKRUOmhdVa4YhnMegQH77EeLgp4cfZvUfx1J4Cs
+         2QoEQr/T/D3KIMPh2UBIehYlPBOVlZmcBnXD8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=Qj1Jl1pm2V1eFkaeWxBY6RLttq2Cps0wQ2J/hAgspSmbMaC1Q+UPnaZZxnv+sSoUQe
+         LtnduCcKZaaYb2wTzoKAT6jjqrafm8J69yFqQhhL6yhaE9lt6Y+MMmkw9KJg2hUKpsBe
+         GYGnrTblVMO93TBtQsizFzCqvqG+dYMfbnlus=
+Received: by 10.142.62.31 with SMTP id k31mr98302wfa.9.1287693130440;
+        Thu, 21 Oct 2010 13:32:10 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.78.15 with SMTP id a15ls3477022wfb.2.p; Thu, 21 Oct 2010
+ 13:32:08 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.142.250.33 with SMTP id x33mr95476wfh.37.1287693128637; Thu,
+ 21 Oct 2010 13:32:08 -0700 (PDT)
+Received: by 37g2000prx.googlegroups.com with HTTP; Thu, 21 Oct 2010 13:32:07
+ -0700 (PDT)
+Date: Thu, 21 Oct 2010 13:32:07 -0700 (PDT)
+In-Reply-To: <AANLkTikE2YXWEDr7-5Erwoqt__=NJx7xM2WDtxwNYp2Y@mail.gmail.com>
+X-IP: 174.31.65.79
+References: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+ <AANLkTik783R+H+quONriDia62AS6WRdtzwLEasEEW2Ym@mail.gmail.com>
+ <9586cd7d-ffbc-4255-8c73-adb575b9a5b8@u24g2000pru.googlegroups.com>
+ <AANLkTikyfsK+rnB39F7Rf3vG4bLRwz_4QT6JcVvFhBJF@mail.gmail.com>
+ <d77ca1d2-3ae8-4e1f-a712-666396bda2bd@s12g2000prs.googlegroups.com> <AANLkTikE2YXWEDr7-5Erwoqt__=NJx7xM2WDtxwNYp2Y@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <25d56f66-5efc-4931-b6da-381a8762f562@37g2000prx.googlegroups.com>
+Subject: [ruby-ffi] Re: Linked list of structs
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thank you! I appreciate your help.
+
+On Oct 20, 10:57=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Off the top of my head, that one should be laid out something like:
+>
+> class Pcap_pkthdr< FFI::Struct
+> =A0 layout :ts, TimeStamp::Timeval.by_value,
+> =A0 =A0 =A0:caplen, :int,
+> =A0 =A0 =A0:len, :int
+> end
+>
+> The important bit is the ".by_value" bit - that makes the Pcap_pkthdr
+> struct include the Timeval struct inline, not a pointer to it.
+>
+> Then you can just use it as normal:
+> pack=3DHeader::Pcap_pkthdr.new ph_ptr
+>
+> # Note, you don't need to create an instance of Timeval, as
+> Pcap_pkthdr contains one inline.
+> pack[:ts][:tv_sec] =3D 0xcafebeef
+> pack[:ts][:tv_usec] =3D 0xfee1dead
+>
+> On 21 October 2010 13:58, Qwerty <qwerty123451...@hotmail.com> wrote:
+>
+> > Thanks, I am starting to get the hang of it. One last problem
+> > remains(I hope).
+>
+> > This struct is giving me fits
+>
+> > struct pcap_pkthdr {
+> > =A0 =A0 =A0 =A0struct timeval ts; =A0 =A0 =A0/* time stamp */
+> > =A0 =A0 =A0 =A0bpf_u_int32 caplen; =A0 =A0 /* length of portion present=
+ */
+> > =A0 =A0 =A0 =A0bpf_u_int32 len; =A0 =A0 =A0 =A0/* length this packet (o=
+ff wire) */
+> > };
+>
+> > A pointer of this gets passed into: const u_char* =A0pcap_next(pcap_t *=
+,
+> > struct pcap_pkthdr *);
+>
+> > attach_function :pcap_next,[:pointer,:pointer],:pointer
+>
+> > I can apparently get caplen and len without issue, but the timeval
+> > field is reported as a pointer and any attempt to get at it results in
+> > a seg fault.
+>
+> > ph_ptr =3D FFI::MemoryPointer.new :pointer,Header::Pcap_pkthdr.size,tru=
+e
+> > pack=3DHeader::Pcap_pkthdr.new ph_ptr
+> > pack[:ts]=3DTimeStamp::Timeval.new
+> > packet=3DPcap::pcap_next @pcap_ptr,pack
+> > raise "no packet read" if packet.null?
+>
+> > puts pack[:ts] #pointer object
+>
+> > packet is not null, so it appears the packet is read properly(I
+> > haven't laid out the various header and payload structures yet.

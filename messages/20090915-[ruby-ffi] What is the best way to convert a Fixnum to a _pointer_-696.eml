@@ -1,0 +1,85 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.67.198 with SMTP id s6cs323832qai;
+        Tue, 15 Sep 2009 09:56:49 -0700 (PDT)
+Received: by 10.224.53.88 with SMTP id l24mr6488724qag.259.1253033809270;
+        Tue, 15 Sep 2009 09:56:49 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-vw0-f170.google.com (mail-vw0-f170.google.com [209.85.212.170])
+        by mx.google.com with ESMTP id 31si1282272qyk.87.2009.09.15.09.56.48;
+        Tue, 15 Sep 2009 09:56:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) client-ip=209.85.212.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws42 with SMTP id 42so5306044vws.13
+        for <headius@headius.com>; Tue, 15 Sep 2009 09:56:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=YJm4Xde56Po8bIAAjf9Sbt2ptM6j4Rt7BUrdrHg3Yh8=;
+        b=gk3NrS00qCVz+WHBmP1TjNBLZJTqO+N3fss2LGrKeMKhBJ8vpSNS9zY4AnI8wtO9ja
+         ibkOAreOKCUa4ApBITwWmyRBc6FLwIsA/ol2h/l5EFs2cTC3T6Won3aeVEtbWC3DOfLw
+         KybphJjLIhQUzJeTGhGvcDcILXZKkg5rI2S0s=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=R3ubha8/FXW14uComMZNQJM800JX3ilJS+tWPfqs5ud/tiv6c58mhOcDotYSxjn4GC
+         +4P5ScQ2sere2w6RRdpJKLJS0gYom5qHEHwC424qWaXDFMI5hG0i5AhpumNvBkEWMd9g
+         N4z0evjLLQy28f2G45RT+fwO6Eob03nNSTf9o=
+Received: by 10.220.68.134 with SMTP id v6mr1848115vci.3.1253033806202;
+        Tue, 15 Sep 2009 09:56:46 -0700 (PDT)
+Received: by 10.230.12.222 with SMTP id y30gr28vby.0;
+	Tue, 15 Sep 2009 09:56:46 -0700 (PDT)
+X-Sender: brett.blackham@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.19.3 with SMTP id 3mr2280608ybs.32.1253033805283; Tue, 15  Sep 2009 09:56:45 -0700 (PDT)
+Date: Tue, 15 Sep 2009 09:56:44 -0700 (PDT)
+X-IP: 190.84.127.192
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); en-US; rv:1.9.1.3)  Gecko/20090824 Firefox/3.5.3,gzip(gfe),gzip(gfe)
+Message-ID: <375f210e-392d-4156-bd7f-70d8588735d8@31g2000vbf.googlegroups.com>
+Subject: [ruby-ffi] What is the best way to convert a Fixnum to a :pointer?
+From: Brett Blackham <brett.blackham@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+What is the best way to convert a Fixnum to a :pointer?
+
+Currently I have found the following works:
+
+        if address.class == Fixnum
+          pointer = FFI::MemoryPointer.new :pointer
+          pointer.write_long( address )
+        else
+          pointer = address
+        end
+
+        result = Libc.ptrace( PTRACE_PEEKTEXT, pid,
+pointer.read_pointer, nil )
+
+
+But it seems like a waste of processing to write_long, then
+read_pointer using the same data. And a waste of memory to create a
+pointer to help with the convert. Which is why I want to know if there
+is a better way to do this?  Perhaps a way to set the address of
+MemoryPointer that I don't know about?

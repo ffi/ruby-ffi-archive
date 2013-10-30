@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs379946and;
+        Fri, 18 Dec 2009 09:18:27 -0800 (PST)
+Received: by 10.90.24.11 with SMTP id 11mr600776agx.30.1261156706508;
+        Fri, 18 Dec 2009 09:18:26 -0800 (PST)
+Return-Path: <3YLkrSwYPCJA3yBy6I127y0uBx7yB.8B0BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 7si6963504gxk.53.2009.12.18.09.18.25;
+        Fri, 18 Dec 2009 09:18:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3YLkrSwYPCJA3yBy6I127y0uBx7yB.8B0BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3YLkrSwYPCJA3yBy6I127y0uBx7yB.8B0BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3YLkrSwYPCJA3yBy6I127y0uBx7yB.8B0BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf7992916ywh.3
+        for <headius@headius.com>; Fri, 18 Dec 2009 09:18:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:date:from:to:subject:message-id
+         :reply-to:mail-followup-to:references:mime-version:in-reply-to
+         :user-agent:x-original-authentication-results:x-original-sender
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-disposition;
+        bh=DS+bWjwv9kCiMW5j3rxTxMAvQth3m5rbzaiFxvxnv4k=;
+        b=CCEnwpEn7AoIaQGuQSBrKr1BodyvFm/DMtk2j78/2YleFNBByBHK4LZp/fBZfBnIgS
+         7tmkikLYzx35quRQBuStFibjIGfzN9MmDtPkd1GLA5O1FdP1kmBb76JqIW92lATr/xJD
+         6p6AKB615aD65xF2seszhdNWogkc04mQ5oVjs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id:reply-to
+         :mail-followup-to:references:mime-version:in-reply-to:user-agent
+         :x-original-authentication-results:x-original-sender:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:x-thread-url
+         :x-message-url:sender:list-unsubscribe:list-subscribe:content-type
+         :content-disposition;
+        b=gNBbcPjls8VOjhM0p5scJTKjf8Oanu/9Jr22l0dfEi5HSo32VaE5Br02njT68KMUI3
+         MqoMcN7aDDARVPd5z0KzonVW6zPZKgPsfvIEgz1iFDnGmuRH/e7l2lNi0XoYEf12fW5p
+         e9l8mNBPpZqfO70+xF2wfOcoqLCAuIPNbyPgk=
+Received: by 10.91.121.8 with SMTP id y8mr126027agm.24.1261156704370;
+        Fri, 18 Dec 2009 09:18:24 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.5.15 with SMTP id 15ls14536ibt.1.p; Fri, 18 Dec 2009 
+	09:18:23 -0800 (PST)
+Received: by 10.231.120.31 with SMTP id b31mr283648ibr.20.1261156703091;
+        Fri, 18 Dec 2009 09:18:23 -0800 (PST)
+Received: by 10.231.120.31 with SMTP id b31mr283647ibr.20.1261156703072;
+        Fri, 18 Dec 2009 09:18:23 -0800 (PST)
+Return-Path: <jeremy@hinegardner.org>
+Received: from planchet.hinegardner.org (hinegardner.org [216.17.180.14])
+        by gmr-mx.google.com with ESMTP id 24si354621iwn.3.2009.12.18.09.18.22;
+        Fri, 18 Dec 2009 09:18:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of jeremy@hinegardner.org designates 216.17.180.14 as permitted sender) client-ip=216.17.180.14;
+Received: by planchet.hinegardner.org (Postfix, from userid 1000)
+	id E03F71599EE0; Fri, 18 Dec 2009 10:18:21 -0700 (MST)
+Date: Fri, 18 Dec 2009 10:18:21 -0700
+From: Jeremy Hinegardner <jeremy@hinegardner.org>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] int size?
+Message-ID: <20091218171821.GQ18652@hinegardner.org>
+Reply-To: ruby-ffi@googlegroups.com
+Mail-Followup-To: ruby-ffi@googlegroups.com
+References: <faf173f9-7e8e-40f2-967c-96a4c9b50d5c@o28g2000yqh.googlegroups.com> <4ccee320912171633o4af1ae9em89150b816f707a33@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <4ccee320912171633o4af1ae9em89150b816f707a33@mail.gmail.com>
+User-Agent: Mutt/1.5.16 (2007-06-09)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jeremy@hinegardner.org designates 216.17.180.14 as permitted 
+	sender) smtp.mail=jeremy@hinegardner.org
+X-Original-Sender: jeremy@hinegardner.org
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/4762fc77130339b1
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/cb5eba0724b3b36c
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Dec 18, 2009 at 10:33:59AM +1000, Wayne Meissner wrote:
+>
+> ** I know of _one_ person using FFI via JRuby on an IBM mainframe
+> running zLinux.  It apparently worked fine, even running nokogiri.
+
+This. Is. Awesome.
+
+-- 
+========================================================================
+ Jeremy Hinegardner                              jeremy@hinegardner.org 
+

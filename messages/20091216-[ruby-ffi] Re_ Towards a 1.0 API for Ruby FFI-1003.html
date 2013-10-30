@@ -1,0 +1,94 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Victor Costan <costan@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/16/09 12:21 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Is it feasible to make "FFI.add_sys_types" available on all platforms
+if it's implemented at runtime?
+
+I'm thinking ideally the ffi gem will come prebuilt, at least for OSX
+and Windows, so users might not have Xcode / mingw / Vistual Studio.
+To me, the biggest advantage of using ffi is not having to deal with
+all the extension building stuff on a per-gem basis.
+
+    Victor
+
+
+On Dec 14, 8:04 pm, Ernest Prabhakar <a class="moz-txt-link-rfc2396E" href="mailto:ernest.prabha...@gmail.com">&lt;ernest.prabha...@gmail.com&gt;</a>
+wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi Evan,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Dec 14, 2009, at 3:28 PM, Evan Phoenix wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>My original API was slim and light, but had a number of holes. Those holes have been filled by the different implementations in different ways and thusly only the simplest of APIs are now common.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I think that it is in the best interest of FFI, if it is truly to be a cross implementation API, that all new API additions stop and we begin to formalize a 1.0 API.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>This would allow us a clean, consistent target for all implementations. In addition, it would simplify what to spec.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Sounds good to me.  I'm starting a new thread, as Google Groups gets gnarly about such things, and I want to be able to track this.  I'll put the spec effort on hold until we hash this out.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I don't want to turn this into design by committee, but if people do want the API to be cross implementation, some degree of coordination and agreement must be reached. Unilateral changes only destabilize the effort.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Since it appears that most of the FFI implementers are on this list, please reply to this email and indicate that you'd like to participate in the planning of the 1.0 API.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>To kick off the 1.0 planning, here is the list of builtin types that I believe the 1.0 should contain:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Fundamental Types:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span> Platform Independent: int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64, pointer, string, buffer
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span> Platform Dependent: char, uchar, int, uint, long, ulong, float, double
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Composite Types:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span> struct, callback
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Users would have the ability to add their own aliases for structs, etc.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>In addition, I believe the unix types provided by sys/types should be made available by requesting so. Perhaps calling "FFI.add_sys_types" would be fine (this as opposed to a require so that it can be calculated entirely at runtime if need be)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thats a good place for us to start. Please comment.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Nice. I'll try to capture the discussion on the wiki:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/proposal-for-standard-10-api">http://wiki.github.com/ffi/ffi/proposal-for-standard-10-api</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- Ernie P.
+</pre></div></body>
+</html>
+</table></div>

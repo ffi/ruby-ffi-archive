@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI check &amp; questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI check &amp; questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/27/12 10:14 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode">Hi Jeffrey,
+<br>
+<br>On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+<br><blockquote type=cite style="color: #000000;">I am in the process of looking at using the following library from ruby
+<br>(<a class="moz-txt-link-freetext" href="http://www.datalogics.com/products/pdf2img/">http://www.datalogics.com/products/pdf2img/</a>) using FFI but have run into a few
+<br>issues mainly due to my lack of FFI experience and general lack of C++.
+<br>
+<br>[...]
+<br>
+<br>The following Gist has the example C++ code (Posted with permission) and my Ruby
+<br>code along side some example output. <a class="moz-txt-link-freetext" href="https://gist.github.com/1920005">https://gist.github.com/1920005</a>
+<br>
+<br>[...]
+<br>
+<br>On line 22 of the ruby file I have defined the second argument as an :int, this
+<br>is probably wrong but it suffices for the moment I think. I assume the real
+<br>value is an Enumeration, struct or something along those lines. It is not
+<br>documented so I will ask the original developers.
+<br></blockquote>
+<br>You should take a look at the file 'pdf2imglib.h', to see what the values of 
+that enumeration are. In particular, what integer value corresponds to GIFoutput.
+<br>
+<br><blockquote type=cite style="color: #000000;">Questions:
+<br>
+<br>1. On line 40 of the ruby file the required memory is apparently 4Gb, this is
+<br>obviously wrong, does anyone know why? (I assume I have messed something up
+<br>somewhere)
+<br></blockquote>
+<br>Perhaps setting the output type to 0 is wrong. I'm not sure what output type 
+would demand 4GB, though.
+<br>
+<br><blockquote type=cite style="color: #000000;">2. Can anyone see any other obvious mistakes on my part?
+<br></blockquote>
+<br>I'm guessing allocating 4GB is not going very well. Do check the that the 
+resulting pointer isn't null, i.e., with picBuf.null?
+<br>
+<br>Regards,
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

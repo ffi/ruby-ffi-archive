@@ -1,0 +1,57 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Getting a pointer from a String</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Getting a pointer from a String</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>candlerb <bcandler100@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/11 8:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Take the following code:
+
+    class Msghdr &lt; FFI::Struct
+      layout :name, :pointer,
+        :namelen, :socklen_t,
+        :iov, :pointer,
+        :iovlen, :size_t,
+        :control, :pointer,
+        :controllen, :socklen_t,
+        :flags, :int
+    end
+
+    class IOVec &lt; FFI::Struct
+      layout :base, :pointer,
+        :len, :size_t
+    end
+
+    def sendmsg(mesg)
+      data = FFI::MemoryPointer.new(mesg.bytesize, 1, false)
+      data.put_bytes(0, mesg)
+
+      iov = IOVec.new
+      iov[:base] = data
+      iov[:len] = mesg.bytesize
+
+      header = Msghdr.new
+      header[:iov] = iov
+      header[:iovlen] = 1
+
+This works. However, I would like to avoid copying the incoming String
+object into a new MemoryPointer. Is this possible?
+
+If I write:
+
+    iov[:base] = mesg
+
+then I get an error saying that mesg is not a pointer.
+
+I found method MemoryPointer.from_string, but that just does a copy as
+well.
+
+Have I missed something?
+
+Thanks,
+
+Brian.
+</pre></div></body>
+</html>
+</table></div>

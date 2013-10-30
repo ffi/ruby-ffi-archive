@@ -1,0 +1,123 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs302026faj;
+        Mon, 29 Nov 2010 23:09:42 -0800 (PST)
+Received: by 10.91.185.16 with SMTP id m16mr1131166agp.198.1291100981517;
+        Mon, 29 Nov 2010 23:09:41 -0800 (PST)
+Return-Path: <ruby-ffi+bncCKmtnZWtBxCyxtLnBBoESRqRyw@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTP id d7si15300529and.184.2010.11.29.23.09.40;
+        Mon, 29 Nov 2010 23:09:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKmtnZWtBxCyxtLnBBoESRqRyw@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKmtnZWtBxCyxtLnBBoESRqRyw@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCKmtnZWtBxCyxtLnBBoESRqRyw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywe9 with SMTP id 9sf5450227ywe.7
+        for <headius@headius.com>; Mon, 29 Nov 2010 23:09:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=7fw+vtja5YzAqkJVtMIFiVrP7LrTxxS/wsrxfqZwXkw=;
+        b=xFoHcIK2QsXBp3aYWGlcgrrpySpAeVBfDigLbDGWYMwfO9C8Ca5GJ4m3UVZSL3gF+l
+         GIZYl9yF7XDXDZww/jAD9WbZKCSr0uLhCzMB9B59lKi4D6seE0WF9ysiqDXX0HP3MnMJ
+         5UwIjvL1T3WTNlrISTmPny3EY016tovIatY98=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=ILWqCCUVzetji5yZD5uSeD7PsmYBCF/hbbWxtxN7j9C8C65YgYmZTa1Vx3gMS9OIZ5
+         dMvDvB5EBDW5sYtNbKMFkHhuw/ExyRjcUciDx84Is9NUh6YyZm4rGzm87Sg41DUsSbYS
+         XSdYeHv4eit6Idq6PCJEXwhciVgUHuj7T9xfo=
+Received: by 10.91.16.6 with SMTP id t6mr515152agi.11.1291100978974;
+        Mon, 29 Nov 2010 23:09:38 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.55.14 with SMTP id h14ls1176325agk.0.p; Mon, 29 Nov 2010
+ 23:09:38 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.90.3.14 with SMTP id 14mr506398agc.43.1291100978561; Mon, 29
+ Nov 2010 23:09:38 -0800 (PST)
+Received: by l8g2000yqh.googlegroups.com with HTTP; Mon, 29 Nov 2010 23:09:38
+ -0800 (PST)
+Date: Mon, 29 Nov 2010 23:09:38 -0800 (PST)
+In-Reply-To: <AANLkTini2hswxAm3nS58y_Pw9349kogQfYrof=ruCfDo@mail.gmail.com>
+X-IP: 41.135.39.70
+References: <7444468f-efc4-4d95-8aea-8483aed362de@f20g2000vbc.googlegroups.com>
+ <AANLkTinezYQPGTXQRh=G8vjKPHdFqFFCNs2_3iMTR43Y@mail.gmail.com>
+ <f99577ea-073c-42da-8553-7fe486e6408c@k11g2000vbf.googlegroups.com> <AANLkTini2hswxAm3nS58y_Pw9349kogQfYrof=ruCfDo@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.12)
+ Gecko/20101026 Firefox/3.6.12,gzip(gfe)
+Message-ID: <5a1032e5-75d7-4b36-a097-214a98be8d82@l8g2000yqh.googlegroups.com>
+Subject: [ruby-ffi] Re: What constitutes a sane building environment?
+From: James <james.b.thompson@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: james.b.thompson@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Well I've been installing a bunch of other things in the mean time and
+amazingly enough ffi 0.6.3 has managed to successfully install iteslf
+somewhere along the way!
+
+I have no idea what has changed, but at least it is working now :)
+
+Thanks for your help!
+
+On Nov 29, 9:05=A0pm, Mike Dalessio <mike.dales...@gmail.com> wrote:
+> On Sat, Nov 27, 2010 at 5:18 AM, James <james.b.thomp...@gmail.com> wrote=
+:
+> > Hey Mike - thanks for giving me a hand.
+>
+> > So I installed the libffi-devel package and then got past the initial
+> > error that I had and on to a new one. I have managed to install
+> > version 0.6.2, but I am getting the following errors for 0.6.3...
+> > (sorry about the massive copy-paste)
+>
+> > gem_make.out: =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+> <snip>
+>
+> > gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=3D
+> > \"extconf.h\" =A0 =A0-fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=3D2=
+ -
+> > fexceptions -fstack-protector --param=3Dssp-buffer-size=3D4 -m64 -
+> > mtune=3Dgeneric -fno-strict-aliasing =A0-fPIC =A0-I/usr/lib64/libffi-3.=
+0.9/
+> > include =A0 =A0-c MappedType.c
+> > MappedType.c: In function =91mapped_allocate=92:
+> > MappedType.c:54:26: error: =91NATIVE_MAPPED=92 undeclared (first use in
+> > this function)
+> > MappedType.c:54:26: note: each undeclared identifier is reported only
+> > once for each function it appears in
+> > MappedType.c: In function =91mapped_initialize=92:
+> > MappedType.c:64:11: warning: unused variable =91t=92
+> > make: *** [MappedType.o] Error 1
+>
+> I don't think this is an environment issue. NATIVE_MAPPED is defined in
+> Types.h, which is included by Type.h, which is included by MappedType.c o=
+n
+> line 33. So I'm at a loss to explain what's going on.
+>
+> Perhaps if you included some information about your platform - what distr=
+o,
+> version of GCC, etc., someone might have deeper insight than I do.
+>
+> Good luck,
+> -mike

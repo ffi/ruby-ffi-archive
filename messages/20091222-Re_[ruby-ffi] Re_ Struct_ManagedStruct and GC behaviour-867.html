@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/09 1:56 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/23 Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32API.rb?rev=498a8743a12ed64e3fa6f994318caf62dfa73aa5">http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32API.rb?rev=498a8743a12ed64e3fa6f994318caf62dfa73aa5</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Very nice.  Ah, another thing to add to the old to-look-at list <span class="moz-smiley-s3" title=";)"><span>;)</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Should line 2 match for mingw in addition to mswin?
+</pre></blockquote><pre wrap>
+
+If you want it to be portable, then yes.  On JRuby, windows is always
+mswin.  That implementation uses a couple of JRuby internals - like
+FFI::Type::WIN32PTR (to allow int values as :pointer arguments), and
+loading ffi-internal.so instead of the more generic 'ffi' (shaves
+about 50ms off startup).
+</pre></div></body>
+</html>
+</table></div>

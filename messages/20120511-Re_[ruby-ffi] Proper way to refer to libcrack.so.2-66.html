@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Proper way to refer to libcrack.so.2</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Proper way to refer to libcrack.so.2</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/12 3:55 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Something like that would be great. A helper method to list available versions 
+would also be nice; I'm now relying on a rather unpleasant set of rescue blocks 
+to load either the preferred version or an unsupported version of a library 
+(with proper warnings shown, of course).
+<br>
+<br>On 05/11/2012 08:59 AM, postmodern wrote:
+<br><blockquote type=cite style="color: #000000;">This brings up a feature I wanted to request. Most Linux distributions
+<br>have moved the primary "libfoo.so" file into "foo-dev" or "foo-devel"
+<br>packages, with the "libfoo" package containing "libfoo.so.X". Maybe in
+<br>the future, you could specify the Major version of the library you wish
+<br>to load?
+<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; ffi_lib 'crack', '&gt;= 2' # loads "libcrack.so.2"
+<br>
+<br>On 05/10/2012 11:40 PM, broberts wrote:
+<br><blockquote type=cite style="color: #000000;">On CentOS cracklib is deploy as libcrack.so.2 which is a symlink to
+<br>libcrack.so.2.8.1. There is no libcrack.so. Referring to this library
+<br>using:
+<br>
+<br>ffi_lib 'crack'
+<br>
+<br>fails with a file not found error. Referring to the library using:
+<br>
+<br>ffi_lib 'crack.so.2'
+<br>
+<br>succeeds. I assume that this is the expected behavior but I wanted to
+<br>make sure before I get too far down the road.
+<br>
+<br>Thanks for any help.
+<br>
+<br>Baron
+<br></blockquote></blockquote>
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

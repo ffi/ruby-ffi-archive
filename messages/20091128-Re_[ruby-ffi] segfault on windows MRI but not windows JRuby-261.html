@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/28/09 2:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>It could be the calling convention.  On JRuby, that isn't wired up
+<span class="moz-txt-citetags">&gt; </span>yet, so it creates callbacks with C calling convention always, but on
+<span class="moz-txt-citetags">&gt; </span>MRI, it is wired up, so it creates a callback with the convention as
+<span class="moz-txt-citetags">&gt; </span>set by ffi_convention.
+</pre></blockquote><pre wrap>
+
+If it's not wired up in JRuby I'd also expect things to fail in JRuby as the example's callback prototype has CALLBACK which is defined as __stdcall in Windows.  Odd...JRuby's default __cdecl should cause problems.
+
+Does ffi_convention set the calling convention for all attached fcn's of a module?  It appears to in lib/ffi/library.rb[64] but I haven't dug into any more of the code.
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Try setting ffi_convention to :default before declaring the callback,
+<span class="moz-txt-citetags">&gt; </span>and then to :stdcall when declaring the functions exported by the
+<span class="moz-txt-citetags">&gt; </span>library.
+</pre></blockquote><pre wrap>
+
+OK.  Will also try ffi_convention :stdcall before declaring the callback <b class="moz-txt-star"><span class="moz-txt-tag">*</span>and<span class="moz-txt-tag">*</span></b> before declaring the exported library fcns.
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

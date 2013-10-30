@@ -1,0 +1,121 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs565844and;
+        Tue, 22 Dec 2009 06:21:44 -0800 (PST)
+Received: by 10.150.117.14 with SMTP id p14mr13629036ybc.76.1261491704382;
+        Tue, 22 Dec 2009 06:21:44 -0800 (PST)
+Return-Path: <39tUwSw0JCEg1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 12si14196618yxe.78.2009.12.22.06.21.43;
+        Tue, 22 Dec 2009 06:21:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of 39tUwSw0JCEg1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 39tUwSw0JCEg1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=39tUwSw0JCEg1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf18058335ywh.3
+        for <headius@headius.com>; Tue, 22 Dec 2009 06:21:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=8OQqKrfe0WEOmnmyMaJCynPykyGCOQ20AmOtLrOoQIc=;
+        b=xe8CydYncsnZyyotZnzW7m1f8ST/wDX4143bp/krZrQe4u5Lz43sxR+k6yPuA84xPp
+         IXhz+sPm3ANXhpcamqUQQlYjPZuzYYxHrh5z4wwwpI2kTzQYtK6fGbC+TCLrh+66/mzU
+         qMhDnthrQdWHucsWEEHdMnBLErkr008wEPwsw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=M1vT8IMbgpDDKu4/1VPnrDOO8gV2vJbkxaK3jEuefawnJYmD6DgEyk7YQUc5hrA1KR
+         4DVBkuyK/Y+z0r6G5KJ0G1mevdBxLSMxttas4FMXgxphH/9ao6Dp2RbGvIzPt709/S4r
+         OWg8Z2QlHCngu1bRG/U6zUIDsem/yF+/CUTJM=
+Received: by 10.101.42.20 with SMTP id u20mr288055anj.57.1261491702300;
+        Tue, 22 Dec 2009 06:21:42 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.154.37 with SMTP id g37ls251171ano.3.p; Tue, 22 Dec 2009 
+	06:21:41 -0800 (PST)
+Received: by 10.101.179.11 with SMTP id g11mr6443141anp.6.1261491701128;
+        Tue, 22 Dec 2009 06:21:41 -0800 (PST)
+Received: by 10.101.179.11 with SMTP id g11mr6443139anp.6.1261491701096;
+        Tue, 22 Dec 2009 06:21:41 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f163.google.com (mail-yx0-f163.google.com [209.85.210.163])
+        by gmr-mx.google.com with ESMTP id 18si974443ywh.9.2009.12.22.06.21.41;
+        Tue, 22 Dec 2009 06:21:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.163 as permitted sender) client-ip=209.85.210.163;
+Received: by mail-yx0-f163.google.com with SMTP id 35so27572457yxe.2
+        for <ruby-ffi@googlegroups.com>; Tue, 22 Dec 2009 06:21:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.2.33 with SMTP id e33mr387846ani.42.1261491701037; Tue, 22 
+	Dec 2009 06:21:41 -0800 (PST)
+Date: Tue, 22 Dec 2009 06:21:40 -0800 (PST)
+In-Reply-To: <20091221152637.62654e37.jon.forums@gmail.com>
+X-IP: 216.49.181.128
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <5d0a6fc0-6026-44b2-b5ad-6cef3a55fbf1@v25g2000yqk.googlegroups.com>
+Subject: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.163 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/c3d5261c270393a8
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> 1) Both FFI::Struct and FFI::ManagedStruct are able to be freed by the Ruby impl's GC. Overall GC semantics are no different that any other Ruby object GC'd by the specific Ruby impl.
+
+My question is
+1) is the "struct's worth of memory" allocated when you call #new
+
+2) when you do struct[:member] = something
+
+does it actually set the bits within the struct right then, or at some
+later marshalling time?
+
+> You mean, like this?
+> http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win...
+
+Ooh.
+
+> I should have added a footnote that just because it *can* be
+> collected, there is in fact no guarantee that objects are in fact ever
+> collected by the GC.  Depending on the implementation, there might not
+> be sufficient ruby/java memory pressure to cause a GC event, so the
+> objects are not collected, and the native memory is never freed.
+
+In theory there is a guarantee that it will be collected
+"at_exit" [objects with finalizers are all called in an at_exit in
+MRI].
+
+> Automated management of native memory is a no-win situation:
+> If we have it in FFI core, then people will (ab)use it and rely on it
+> when they really should not.
+
+Requiring it always might be a bit stiff...
+
+-r

@@ -1,0 +1,75 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.49.2 with SMTP id t2csp152607bkf;
+        Fri, 28 Sep 2012 02:38:20 -0700 (PDT)
+Received: by 10.182.124.102 with SMTP id mh6mr5311725obb.48.1348825099348;
+        Fri, 28 Sep 2012 02:38:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBCH6FQ6QZMCBBCPASWBQKGQELAZDI4Q@googlegroups.com>
+Received: from mail-ob0-f190.google.com (mail-ob0-f190.google.com [209.85.214.190])
+        by mx.google.com with ESMTPS id ks5si9381659obb.80.2012.09.28.02.38.18
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 28 Sep 2012 02:38:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBCH6FQ6QZMCBBCPASWBQKGQELAZDI4Q@googlegroups.com designates 209.85.214.190 as permitted sender) client-ip=209.85.214.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBCH6FQ6QZMCBBCPASWBQKGQELAZDI4Q@googlegroups.com designates 209.85.214.190 as permitted sender) smtp.mail=ruby-ffi+bncBCH6FQ6QZMCBBCPASWBQKGQELAZDI4Q@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by obcdn14 with SMTP id dn14sf3815654obc.7
+        for <headius@headius.com>; Fri, 28 Sep 2012 02:38:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=MuLRZ/4Q0/S9fGeMhhvCgBhPSm1Jk/Jg9BWknXwcdS4=;
+        b=YTydaZtqqzYQfIy9ZUDC2D9ukSemMkKli3izkz5UsUFOzqUhYq+p9OJ8PZ5C3aKxBz
+         ZCNOBMJ4WNeLIC2qBukYizzharOSAlULofu//f2I4TMDun7HLd3oG34cRgWm7r9OdqFk
+         RTLyrS+emz9pzyd7KdT5PAlD9n/3UDh7g9abKOvMbFAW5u4Jy/97qjbwPnfluWaGo4Jn
+         4z4wPCcNLxNbvA9RCP7CwGRSrjw5CiacFFHZU6J6rbCq8tLawf+gWtTY1adzlMmgeW+Z
+         RwX/aK+FGLtWQY9Ul/LYZ5UsNk3LzqQZAtjzsP1N9cpBgOvGo/xBi9pm9vB81KeoxdPN
+         wawQ==
+Received: by 10.224.201.6 with SMTP id ey6mr2489988qab.12.1348825097653;
+        Fri, 28 Sep 2012 02:38:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.105.85 with SMTP id s21ls5518238qco.1.gmail; Fri, 28 Sep
+ 2012 02:38:17 -0700 (PDT)
+Received: by 10.224.181.83 with SMTP id bx19mr6004535qab.1.1348825097464;
+        Fri, 28 Sep 2012 02:38:17 -0700 (PDT)
+Received: by 10.224.28.72 with SMTP id l8msqac;
+        Fri, 28 Sep 2012 02:02:18 -0700 (PDT)
+Received: by 10.52.72.197 with SMTP id f5mr1592737vdv.17.1348822938479;
+        Fri, 28 Sep 2012 02:02:18 -0700 (PDT)
+Date: Fri, 28 Sep 2012 02:02:17 -0700 (PDT)
+From: Ivo Wever <ivo.wever@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <7f38af77-882a-4f23-b28b-f10b3b68b77c@googlegroups.com>
+Subject: [ruby-ffi] Using a 32-bit C library from 64-bit Ruby
+MIME-Version: 1.0
+X-Original-Sender: ivo.wever@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_508_15325865.1348822937584"
+
+------=_Part_508_15325865.1348822937584
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Given the differences between the ia32 and x86_64 architectures I suppose 
+this is impossible, but just to verify: is it indeed impossible to use a 
+32-bit C library in a 64-bit Ruby process using FFI? Would the best 
+solution to this problem be to run a separate 32-bit Ruby process with a 
+DRb server and access the library from the 64-bit Ruby process using DRb?
+------=_Part_508_15325865.1348822937584
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Given the differences between the ia32 and x86_64 architectures I suppose this is impossible, but just to verify: is it indeed impossible to use a 32-bit C library in a 64-bit Ruby process using FFI? Would the best solution to this problem be to run a separate 32-bit Ruby process with a DRb server and access the library from the 64-bit Ruby process using DRb?
+------=_Part_508_15325865.1348822937584--

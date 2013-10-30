@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 0.5.1 install failed on JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 0.5.1 install failed on JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Charles Oliver Nutter <headius@headius.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/29/09 1:32 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+If I were to guess, I'd say the -java gem hasn't been released?
+
+On Thursday, October 29, 2009, Jerome Riga <a class="moz-txt-link-rfc2396E" href="mailto:lamit.jay@googlemail.com">&lt;lamit.jay@googlemail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On my dev environment, it seems that FFI 0.5.1 is trying to build the C-extension on the JRuby.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>$ jgem i ffi --no-ri --no-rdoc --version=0.5.0
+<span class="moz-txt-citetags">&gt; </span>Successfully installed ffi-0.5.0-java
+<span class="moz-txt-citetags">&gt; </span>1 gem installed
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>$ jgem i ffi --no-ri --no-rdoc --version=0.5.1
+<span class="moz-txt-citetags">&gt; </span>Building native extensions.  This could take a while...
+<span class="moz-txt-citetags">&gt; </span>ERROR:  Error installing ffi:
+<span class="moz-txt-citetags">&gt; </span>        ERROR: Failed to build gem native extension.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/opt/local/bin/jruby extconf.rb
+<span class="moz-txt-citetags">&gt; </span>WARNING: JRuby does not support native extensions or the `mkmf' library.
+<span class="moz-txt-citetags">&gt; </span>         Check wiki.jruby.org for alternatives.
+<span class="moz-txt-citetags">&gt; </span>extconf.rb:4: undefined method `dir_config' for main:Object (NoMethodError)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Gem files will remain installed in /opt/local/lib/jruby-1.4.0RC3/lib/ruby/gems/1.8/gems/ffi-0.5.1 for inspection.
+<span class="moz-txt-citetags">&gt; </span>Results logged to /opt/local/lib/jruby-1.4.0RC3/lib/ruby/gems/1.8/gems/ffi-0.5.1/ext/ffi_c/gem_make.out
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Could someone verify this, please?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Cheers,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Jerome Riga
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

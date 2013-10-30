@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs96213bkh;
+        Wed, 20 Oct 2010 15:39:56 -0700 (PDT)
+Received: by 10.101.141.32 with SMTP id t32mr79137ann.214.1287614395678;
+        Wed, 20 Oct 2010 15:39:55 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRC53_3lBBoEMh7lbw@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id x39si1722973anx.178.2010.10.20.15.39.54;
+        Wed, 20 Oct 2010 15:39:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRC53_3lBBoEMh7lbw@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRC53_3lBBoEMh7lbw@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRC53_3lBBoEMh7lbw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj19 with SMTP id 19sf5274568gwj.7
+        for <headius@headius.com>; Wed, 20 Oct 2010 15:39:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=PBqBh2TW6W7OlzGNK+M87DqNell4vwAViJ6Yx5J/CN4=;
+        b=L2XyzHev2zhlQORbM5Q2BCqsqrK/xkea2eEmoSp/BwcDhWUuET3a6c/qbfn0hlVdHV
+         CFyPxDbTPDX2RJe5QGhQsfdWObPZu33Ez7yO2QNeEaIFpxZdIcKBx5QTzE43N5ks6vay
+         HBX7mmACpvBISGVPQ6brZk+xWU5w+NtvbEmbs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=vfFYcCRYxGvKFe+AF4CJVtp3dc2cLVKBwWSJvjT/VSv7rA91r07qGSZKuuyBFWa6v4
+         Ek6VOXK+5i/dsOUwvNecPRhuRKoXfTMgoOtUK95eqGVEoQ9jcb6qypMpH+jmHVWAsAzW
+         jpbfvx6mNcI6o8Firvmpjy9WBypDyOipSqY8I=
+Received: by 10.90.30.19 with SMTP id d19mr71765agd.21.1287614393219;
+        Wed, 20 Oct 2010 15:39:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.62.36 with SMTP id k36ls201977aga.3.p; Wed, 20 Oct 2010
+ 15:39:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.53.2 with SMTP id b2mr71854aga.30.1287614392903; Wed, 20
+ Oct 2010 15:39:52 -0700 (PDT)
+Received: by u24g2000pru.googlegroups.com with HTTP; Wed, 20 Oct 2010 15:39:52
+ -0700 (PDT)
+Date: Wed, 20 Oct 2010 15:39:52 -0700 (PDT)
+In-Reply-To: <AANLkTik783R+H+quONriDia62AS6WRdtzwLEasEEW2Ym@mail.gmail.com>
+X-IP: 174.31.65.79
+References: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+ <AANLkTik783R+H+quONriDia62AS6WRdtzwLEasEEW2Ym@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <9586cd7d-ffbc-4255-8c73-adb575b9a5b8@u24g2000pru.googlegroups.com>
+Subject: [ruby-ffi] Re: Linked list of structs
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thanks! That worked.
+
+Is the errbuff pointer necessary? A ruby string seems to work, are
+there any gotchas with that?
+
+On Oct 19, 6:34=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> On 20 October 2010 03:31, Qwerty <qwerty123451...@hotmail.com> wrote:
+>
+>
+>
+> > How do you iterate over the linked list using FFI?
+>
+> How about something like this:
+>
+> ptr =3D Pcap.find_devs
+> until ptr.null?
+> =A0 devs =3D Pcap::Pcap_if_t.new ptr
+> =A0 puts devs[:name]
+> =A0 ptr=3Ddevs[:next]
+> end
+>
+> > Also is it true that FFI can not handle a multidimensional array? The
+>
+> You should be able to fix this one as follows:
+>
+> ppdev =3D FFI::MemoryPointer.new :pointer
+> errbuf =3D FFI::MemoryPointer.new :char, Pcap::PCAP_ERRBUF_SIZE
+> res =3D Pcap.pcap_findalldevs(ppdev, errbuf)
+> # ... check res for error conditions
+>
+> # now get the first device pointer
+> ptr =3D ppdev.read_pointer
+>
+> # now loop over them all as above
+> until ptr.null?
+> =A0 devs =3D Pcap::Pcap_if_t.new ptr
+> =A0 puts devs[:name]
+> =A0 ptr=3Ddevs[:next]
+> end

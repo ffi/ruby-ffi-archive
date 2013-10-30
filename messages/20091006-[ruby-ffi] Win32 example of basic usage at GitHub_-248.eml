@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs178700qaj;
+        Tue, 6 Oct 2009 09:46:18 -0700 (PDT)
+Received: by 10.210.4.13 with SMTP id 13mr1773806ebd.45.1254847576847;
+        Tue, 06 Oct 2009 09:46:16 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 7si31195510ewy.58.2009.10.06.09.46.15;
+        Tue, 06 Oct 2009 09:46:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so5109044yxe.13
+        for <headius@headius.com>; Tue, 06 Oct 2009 09:46:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=hoy6POEH1+EwaLu3VAAD23Lsnf7TC29dfYjorqzaDOA=;
+        b=DPEZXtPRguXjOBJkH5EDHvHtPOkRJHuC2IJAsYspTogqu74YeIBPv8Hodb6sgj5KfO
+         ZRBEjj9s0Uc8v4HzSlURPdt4nkvRVO+pACSWiL5jwNXoNjULmZJYEiY+29wF/ussOHDI
+         Srwxn3E07Wo2aybzENzs7Sy30Ll1+sBXC0dHY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=5inzPVPR//VKcDZyGOZLM27LRrXwwnTh+CZ9v1W0c+7Hszxyo/GR6+ridvTHs2W6Wt
+         G6BINNL1uy28fnAXZkuK+a+GC65155CQoi+797empFkYogApoVqGwy6HezJgxCgZ7rce
+         o7J5CujssE6Zg7nWHXjms4ov5VtMCZA7VXWMg=
+Received: by 10.150.87.2 with SMTP id k2mr908182ybb.26.1254847573507;
+        Tue, 06 Oct 2009 09:46:13 -0700 (PDT)
+Received: by 10.177.112.39 with SMTP id p39gr41yqm.0;
+	Tue, 06 Oct 2009 09:46:13 -0700 (PDT)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.101.90.16 with SMTP id s16mr913330anl.29.1254847572970; Tue,  06 Oct 2009 09:46:12 -0700 (PDT)
+Date: Tue, 6 Oct 2009 09:46:12 -0700 (PDT)
+X-IP: 12.161.100.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US)  AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.25 Safari/532.0,gzip(gfe),gzip(gfe)
+Message-ID: <5e71ba2d-28b9-476e-bc13-e52141bb6422@g1g2000vbr.googlegroups.com>
+Subject: [ruby-ffi] Win32 example of basic usage at GitHub?
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Would you mind if I updated
+
+http://wiki.github.com/ffi/ffi/basic-usage
+
+...with a section below "Hello, World using FFI" with code (and some
+blah blah) like the following (assuming this is the correct basic
+usage for calling typical Win32 API fcns):
+
+require 'ffi'
+
+module HelloWin32
+  extend FFI::Library
+
+  ffi_lib :user32
+  ffi_convention :stdcall
+
+  attach_function :message_box, :MessageBoxA,
+[ :pointer, :string, :string, :uint ], :int
+end
+
+rc = HelloWin32.message_box nil, 'Hello Win32 World!', 'FFI Win32
+Example', 1
+puts "Return code: #{rc}"
+
+
+Jon

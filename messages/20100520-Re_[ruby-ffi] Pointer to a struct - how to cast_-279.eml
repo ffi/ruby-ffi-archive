@@ -1,0 +1,135 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs9212qcb;
+        Thu, 20 May 2010 11:48:29 -0700 (PDT)
+Received: by 10.143.27.18 with SMTP id e18mr279671wfj.41.1274381308836;
+        Thu, 20 May 2010 11:48:28 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhD5h9bfBBoEWBnKvw@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTP id 2si208991pzk.96.2010.05.20.11.48.27;
+        Thu, 20 May 2010 11:48:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD5h9bfBBoEWBnKvw@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD5h9bfBBoEWBnKvw@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhD5h9bfBBoEWBnKvw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi18 with SMTP id 18sf47483pxi.7
+        for <headius@headius.com>; Thu, 20 May 2010 11:48:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=0JQQKCO+gPk/2+aRbpHjCR+UOY0C3BQK7imXuwOuX3k=;
+        b=eIOWHs3ia3OyjenfL90q+/L46289RzEAmocrWTl1PyCZsbRUFCEHudnrDhgFH2MMlT
+         0yIblUUl7EdnsrtCUorN8p2wabW8zULS0tgABDIVE6u3yKpyPs/J936d8hwSGqNgUwyl
+         MTem9OGTGzRP4gqyZIHnmQUeY1FdY617To98A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=imBj4LbvxBmbTQ+zmP4PHK9XjgPfZjvY9PqMD3ibeUdICs3SI350B7iQ99LvNtvxAb
+         NfXR0B8WY87jXyGrT2iAT0LJQlJdtaaRO3G2rjqsuJQndSe9uf3ACqagUu/ijI6T7PEx
+         qcm8gp6LKGFi7xgG4HiJJ04WdyyD42cW7Mkjk=
+Received: by 10.142.247.9 with SMTP id u9mr59634wfh.30.1274381305468;
+        Thu, 20 May 2010 11:48:25 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.248.9 with SMTP id v9ls292671wfh.1.p; Thu, 20 May 2010 
+	11:48:24 -0700 (PDT)
+Received: by 10.143.27.38 with SMTP id e38mr137240wfj.43.1274381304571;
+        Thu, 20 May 2010 11:48:24 -0700 (PDT)
+Received: by 10.143.27.38 with SMTP id e38mr137239wfj.43.1274381304547;
+        Thu, 20 May 2010 11:48:24 -0700 (PDT)
+Return-Path: <cremes.devlist@mac.com>
+Received: from asmtpout023.mac.com (asmtpout023.mac.com [17.148.16.98])
+        by gmr-mx.google.com with ESMTP id 25si34244pzk.8.2010.05.20.11.48.24;
+        Thu, 20 May 2010 11:48:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) client-ip=17.148.16.98;
+MIME-version: 1.0
+Received: from [192.168.0.101] ([76.8.86.186])
+ by asmtp023.mac.com (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec
+ 16 2008; 32bit)) with ESMTPSA id <0L2Q002H6EWH2P90@asmtp023.mac.com> for
+ ruby-ffi@googlegroups.com; Thu, 20 May 2010 11:48:18 -0700 (PDT)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0
+ reason=mlx engine=6.0.2-1004200000 definitions=main-1005200120
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=1.12.8161:2.4.5,1.2.40,4.0.166
+ definitions=2010-05-20_01:2010-02-06,2010-05-20,2010-05-20 signatures=0
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <AANLkTilNtcrmZLxJCKbBd2hiP31LylEaGEweh4d98sju@mail.gmail.com>
+Date: Thu, 20 May 2010 13:48:16 -0500
+Message-id: <6DCFD30D-74A0-4ECF-AEB0-179C0BE0945C@mac.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+ <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+ <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+ <AANLkTili1Czv42tlJoSK00kXSGDRXttq8pHB2TMWLle7@mail.gmail.com>
+ <AANLkTilNtcrmZLxJCKbBd2hiP31LylEaGEweh4d98sju@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1078)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) 
+	smtp.mail=cremes.devlist@mac.com
+X-Original-Sender: cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+
+On May 20, 2010, at 1:00 PM, DA wrote:
+
+> Here's how I'm getting the array:
+> 
+> // c struct:
+> typedef struct {
+> 	UIntT len;
+> 	F_TextItemT *val;
+> } F_TextItemsT;
+> 
+> // ruby def:
+> class FTextItemsT < FFI::Struct
+>    layout :len, :uint,
+>      :val, :pointer
+> end
+> 
+> // ruby code:
+> 
+> tis = FM.FApiGetText(docid, flowid, (FM.FTIString | FM.FTILineEnd));
+> parr = tis[:val].read_array_of_pointer(tis[:len])
+> puts "tis len: #{tis[:len]}"
+> 
+> The tis[:len] gives me the same value as calling this code in c, so
+> I'm pretty sure the FApiGetText call is working and I'm getting a
+> valid struct returned. Am I using read_array_of_pointer wrong?
+
+That looks kind of funky to me. In the F_TextItemsT C struct, it shows *val which is just a single pointer. There is no array of pointers to read from at that location. I believe the syntax for arrays of pointers are more like:
+
+struct {
+  int len;
+  item_t **list;
+}
+
+Note the double-asterisk.
+
+Have you written this in C to see how to get each F_TextItemT?
+
+cr
+

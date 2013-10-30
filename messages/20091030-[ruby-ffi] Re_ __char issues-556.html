@@ -1,0 +1,102 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: **char issues</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: **char issues</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/30/09 9:46 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>On 10/28/2009 09:03 PM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>2009/10/29 bk<a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+<br><blockquote type=cite style="color: #000000;">
+<br>I am attempting to convert the augeas bindings to ffi. I did this with
+<br>JNA, and it was very helpful. The method in question is:
+<br>
+<br>int aug_get(const augeas *aug, const char *path, const char **value);
+<br>
+<br>where the last paraemeter returns the result of the get. I have
+<br>attempted to wrap this with
+<br>
+<br>&nbsp; attach_function :aug_get, [:pointer, :string, :pointer], :int
+<br>
+<br>and then call this with:
+<br>
+<br>&nbsp;&nbsp;&nbsp; def get(path)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr = FFI::MemoryPointer.new(:pointer, 1)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AugeasLib.aug_get(@aug, path, ptr)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr = ptr.read_pointer()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return strPtr.read_string()
+<br>&nbsp;&nbsp;&nbsp; end
+<br>
+<br>This works fine if the get returns something, but if the get ruturns a
+<br>null string I fail with:
+<br>
+<br>FFI::NullPointerError: invalid memory read at address=(nil)
+<br></blockquote>
+<br>You need to test strPtr for null
+<br>e.g.
+<br>
+<br>&nbsp;&nbsp; if !((strPtr = ptr.read_pointer).null?
+<br>&nbsp;&nbsp;&nbsp;&nbsp; strPtr.read_string
+<br>&nbsp;&nbsp; else
+<br>&nbsp;&nbsp;&nbsp;&nbsp; ""&nbsp; # Or whatever end value you want
+<br>&nbsp;&nbsp; end
+<br></blockquote>Thank you.. that worked. Next one is a ***char issue. the augeas API 
+returns an array of Strings:
+<br>
+<br>int aug_match(const augeas *aug, const char *path, char ***matches);
+<br>
+<br>I have mapped it as
+<br>
+<br>&nbsp; attach_function :aug_match, [:pointer, :string, :pointer], :int
+<br>
+<br>and I am trying to call it. I have 2 tries:
+<br>
+<br>
+<br>&nbsp;&nbsp;&nbsp; def match2(path)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr = FFI::MemoryPointer.new(:pointer, 1)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; len = AugeasLib.aug_match(@aug, path, ptr)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts(len)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr = ptr.read_pointer()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr.null? ? [] : strPtr.read_array_of_type(:string, 
+:read_pointer, len)
+<br>&nbsp;&nbsp;&nbsp; end
+<br>
+<br>&nbsp;&nbsp;&nbsp; def match(path)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rv = []
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr = FFI::MemoryPointer.new(:pointer, 1)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; len = AugeasLib.aug_match(@aug, path, ptr)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts(len)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr = ptr.read_pointer()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (not (strPtr.null?))
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0..len).each() do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>x<span class="moz-txt-tag">|</span></code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rv &lt;&lt; 
+strPtr.get_pointer(x*FFI::Pointer.size()).read_string()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>&nbsp;&nbsp;&nbsp; end
+<br>
+<br>
+<br>match segfaults, and match2 results in:
+<br>
+<br>test_basics(TestAugeas):
+<br>ArgumentError: Unknown native type
+<br>&nbsp;&nbsp;&nbsp; /usr/lib/ruby/gems/1.8/gems/ffi-0.5.1/lib/ffi/types.rb:137:in 
+`type_size'
+<br>&nbsp;&nbsp;&nbsp; /usr/lib/ruby/gems/1.8/gems/ffi-0.5.1/lib/ffi/pointer.rb:76:in 
+`read_array_of_type'
+<br>&nbsp;&nbsp;&nbsp; /home/bkearney/code/ruby-augeas/lib/augeas.rb:167:in `match'
+<br>&nbsp;&nbsp;&nbsp; ./tests/tc_augeas.rb:32:in `test_basics'
+<br>
+<br>
+<br>
+<br>Is there an example which shows how to do this? Thanks!
+<br>
+<br>-- bk
+<br>
+<br></div></body>
+</html>
+</table></div>

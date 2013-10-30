@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ruby-ffi and ruby -w</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ruby-ffi and ruby -w</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Mettraux <jmettraux@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/22/09 12:17 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Hi,
+
+I've written code leveraging ruby-ffi and lately people have been
+complaining about running it with ruby -w. I cleaned my code but I'm
+left with things like :
+
+---8&lt;---
+#!/usr/bin/env ruby -w
+
+require 'rubygems'
+require 'ffi'
+
+module Lib
+  extend FFI::Library
+  attach_function :strlen, [ :string ], :int
+end
+---&gt;8---
+(<a class="moz-txt-link-freetext" href="http://gist.github.com/190829">http://gist.github.com/190829</a>)
+
+On SnoLeo (ruby-ffi 0.5.0),
+
+Ruby 1.8.7p72 says :
+---
+/Library/Ruby/Gems/1.8/gems/ffi-0.5.0/lib/ffi/variadic.rb:10: warning:
+method redefined; discarding old call
+---
+
+Ruby 1.9.1p243 says :
+---
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.5.0/lib/ffi_c.bundle:
+warning: method redefined; discarding old inspect
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.5.0/lib/ffi/variadic.rb:10:
+warning: method redefined; discarding old call
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.5.0/lib/ffi/library.rb:93:
+warning: method redefined; discarding old strlen
+---
+
+On arch-linux (ruby-ffi 0.4.0),
+
+Ruby 1.8.7p174 says :
+---
+/usr/lib/ruby/gems/1.8/gems/ffi-0.4.0/lib/ffi/struct.rb:26: warning:
+method redefined; discarding old offset
+/usr/lib/ruby/gems/1.8/gems/ffi-0.4.0/lib/ffi/variadic.rb:15: warning:
+method redefined; discarding old call
+---
+
+Ruby 1.9.1p243 says :
+---
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.4.0/lib/ffi_c.so:
+warning: method redefined; discarding old inspect
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.4.0/lib/ffi/struct.rb:26:
+warning: method redefined; discarding old offset
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.4.0/lib/ffi/variadic.rb:15:
+warning: method redefined; discarding old call
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jmettraux<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby/1.9.1/gems/ffi-0.4.0/lib/ffi/library.rb:78:
+warning: method redefined; discarding old strlen
+---
+
+Is there a way to minimize that warning output ? There is one warning
+output per method attached.
+
+
+Best regards,
+
+<div class="moz-txt-sig">-- 
+John Mettraux   -   <a class="moz-txt-link-freetext" href="http://jmettraux.wordpress.com">http://jmettraux.wordpress.com</a>
+</div></pre></div></body>
+</html>
+</table></div>

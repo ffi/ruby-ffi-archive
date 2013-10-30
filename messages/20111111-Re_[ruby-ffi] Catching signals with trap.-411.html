@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Catching signals with trap.</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Catching signals with trap.</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/11 3:47 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">On 11/06/2011 05:59 PM, meh. wrote:
+<br><blockquote type=cite style="color: #000000;">I'm writing a window manager in Ruby using my x11 binding/wrapper in
+<br>ruby-ffi but I'm having a small problem with signals.
+<br>
+<br>If the process is in a XNextEvent waiting for a new event and I send a
+<br>signal to the process it doesn't call the block until an event
+<br>arrives.
+<br>
+<br>Is there a way to make signals work within the ruby-ffi API or do I
+<br>have to bind to the signal function and do it ugly?
+<br></blockquote>
+<br>Have you considered binding and using XCB? Or even skipping the C part and 
+implementing the X protocol in Ruby? The old RubyX11 library did this, and you 
+could probably generate something straight from XML, which is how XCB is generated.
+<br>
+<br>Anyway, this would allow you to work asynchronously and not have your program 
+wait for XNextEvent to return.
+<br>
+<br>Regards,
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

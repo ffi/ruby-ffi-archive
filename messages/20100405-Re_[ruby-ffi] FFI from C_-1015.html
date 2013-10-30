@@ -1,0 +1,61 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI from C?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI from C?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/5/10 3:10 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Short answer is 'no' - there is no C api for Ruby-FFI.
+
+However, can you drive the integration from the ruby side, ala the lua
+bindings (<a class="moz-txt-link-freetext" href="http://github.com/jmettraux/rufus-lua">http://github.com/jmettraux/rufus-lua</a>)?
+
+I had a quick search for calling Haskell from C, and it looks like it
+might be doable - if its callable from straight C, then you can call
+it via FFI.
+
+Basically how it would go is:
+
+1) create ruby wrapper method
+2) massage ruby data into basic C types (int, string, struct, raw
+chunk of memory, etc)
+3) call C method exported by Haskell with massaged parameters
+4) convert Haskell result back into ruby type.
+
+Calling back into ruby from Haskell via a C function pointer works
+similarly, but in reverse.
+
+There was an example on stackoverflow using DL to do this - FFI would
+work much the same.
+
+If you're doing it the other way round, calling ruby from Haskell,
+you're doomed.  There is no common C api, and no C api at all on JRuby
+or IronRuby.
+
+
+On 5 April 2010 09:03, Mark  Wotton <a class="moz-txt-link-rfc2396E" href="mailto:mwotton@gmail.com">&lt;mwotton@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I know this is not the standard method of using the FFI, but is it
+<span class="moz-txt-citetags">&gt; </span>possible to do everything from C? I'm the author of Hubris, a bridge
+<span class="moz-txt-citetags">&gt; </span>between Haskell and Ruby, and because I have way more type information
+<span class="moz-txt-citetags">&gt; </span>on the Haskell side, I'd much rather keep computation on that side,
+<span class="moz-txt-citetags">&gt; </span>which means accessing the FFI from the C side. I'm currently using
+<span class="moz-txt-citetags">&gt; </span>libruby, and it's pretty painful - there's a lot of work to support
+<span class="moz-txt-citetags">&gt; </span>1.8 and 1.9, and I haven't even considered what it'd take to support
+<span class="moz-txt-citetags">&gt; </span>JRuby yet.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>so, to recap: I need a way to reach into the ruby interpreter and get
+<span class="moz-txt-citetags">&gt; </span>type info, as well as access to basic data (numbers, strings, arrays
+<span class="moz-txt-citetags">&gt; </span>and hashes is probably sufficient for now). Is ruby-FFI a good bet?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cheers
+<span class="moz-txt-citetags">&gt; </span>Mark
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt; </span>To unsubscribe, reply using "remove me" as the subject.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,108 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.187.11 with SMTP id k11cs241789wff;
+        Thu, 29 Oct 2009 05:50:27 -0700 (PDT)
+Received: by 10.100.20.22 with SMTP id 22mr14561ant.43.1256820626764;
+        Thu, 29 Oct 2009 05:50:26 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yw0-f154.google.com (mail-yw0-f154.google.com [209.85.211.154])
+        by mx.google.com with ESMTP id 28si4899756yxe.12.2009.10.29.05.50.25;
+        Thu, 29 Oct 2009 05:50:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) client-ip=209.85.211.154;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh26 with SMTP id 26so2413253ywh.13
+        for <headius@headius.com>; Thu, 29 Oct 2009 05:50:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:received:received:message-id:from:to
+         :content-type:content-transfer-encoding:mime-version:subject:date
+         :x-mailer:reply-to:sender:precedence:x-google-loop:mailing-list
+         :list-id:list-post:list-help:list-unsubscribe:x-beenthere-env
+         :x-beenthere;
+        bh=m1/Fihzc6ahmPb0/61b2GI9Cyww3ZpxtnLW3PZ+cZhw=;
+        b=5GeOvaXtSakqjn87DluPVqNDyZ2cuQs3/8zH574Ieq9sSbQuKExwykeYRFElBp6Nek
+         FONCEZDZ9pIeOUZt5TWotJvmRlb/mNJeo1KoeC4l+b5e4zY0n+n8zr4Q3z+F3uM5RYPb
+         6lTRMAdL1ZPws5qTMQoiaYBOgpF22QPsQ9sxI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:message-id:from:to:content-type
+         :content-transfer-encoding:mime-version:subject:date:x-mailer
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=fiYxBA0UR25WVOnw0hONmcOXczPubTCCzrJ/sjiiWHEdpFw1RjJK51J8ZhYnKeknuo
+         Ir9Jz/GSPehymrUORuGM74KHczV7FoYm4CKg06ck/kcMBj+mvNa8a44zyu356OAaDULB
+         /9snnFyXF6yoWgnA1pw+fEizO6IkjTZM0hHp0=
+Received: by 10.150.44.14 with SMTP id r14mr29198ybr.8.1256820623711;
+        Thu, 29 Oct 2009 05:50:23 -0700 (PDT)
+Received: by 10.176.149.32 with SMTP id w32gr72yqd.0;
+	Thu, 29 Oct 2009 05:50:23 -0700 (PDT)
+X-Sender: lamit.jay@googlemail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.211.161.31 with SMTP id n31mr2251ebo.5.1256820623191; Thu, 29 Oct 2009 05:50:23 -0700 (PDT)
+Received: by 10.211.161.31 with SMTP id n31mr2250ebo.5.1256820623143; Thu, 29 Oct 2009 05:50:23 -0700 (PDT)
+Return-Path: <lamit.jay@googlemail.com>
+Received: from mail-ew0-f219.google.com (mail-ew0-f219.google.com [209.85.219.219]) by gmr-mx.google.com with ESMTP id 14si508536ewy.5.2009.10.29.05.50.22; Thu, 29 Oct 2009 05:50:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lamit.jay@googlemail.com designates 209.85.219.219 as permitted sender) client-ip=209.85.219.219;
+Received: by ewy19 with SMTP id 19so1906786ewy.4 for <ruby-ffi@googlegroups.com>; Thu, 29 Oct 2009 05:50:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=googlemail.com; s=gamma; h=domainkey-signature:received:received:message-id:from:to :content-type:content-transfer-encoding:mime-version:subject:date :x-mailer; bh=Zj4PsRRL26KYPy4RNVoEjPjHVTJs9H1sIEUWfJRk9fY=; b=gtYYKTmvSXWVijVoSt9bK0xuSoaWJYCRqQyeURXmUclA6CiEWkMgvAQP3RYR7riBL3 GB6OYw3fRCxckHlnb5+fTj91szjptwc/Ezv5SRtni983GRf1Ru1RjZCR5PtWUuHKrdYl zHaxkCgpxL5OfBxD8/WsS5HML8qIf8IsBRC3E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=googlemail.com; s=gamma; h=message-id:from:to:content-type:content-transfer-encoding :mime-version:subject:date:x-mailer; b=C8jDVcwvWMrum8MJBxMID0ByZw+mRJ5UU14MdRLlfryp/S3yZkVEufR0kreyEp8Dwn eNkeS6+0/qpA1rDZ7EKb6HrkHlCwAga2S4G3ftDrzPk611917G7aT05F8k0hOyOQW1lT p9HkzlQEp4SwJ8S+Z/jqyjsXZ1rkYcJ2jcBC0=
+Received: by 10.211.160.11 with SMTP id m11mr3260868ebo.79.1256820621538; Thu, 29 Oct 2009 05:50:21 -0700 (PDT)
+Return-Path: <lamit.jay@googlemail.com>
+Received: from Lamit.config (93-97-178-118.zone5.bethere.co.uk [93.97.178.118]) by mx.google.com with ESMTPS id 24sm5624648eyx.13.2009.10.29.05.50.20 (version=TLSv1/SSLv3 cipher=RC4-MD5); Thu, 29 Oct 2009 05:50:20 -0700 (PDT)
+Message-Id: <32159AE4-1CD6-4AFC-8964-34327F7D2EDD@gmail.com>
+From: Jerome Riga <lamit.jay@googlemail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-Transfer-Encoding: 7bit
+Mime-Version: 1.0 (Apple Message framework v936)
+Subject: [ruby-ffi] 0.5.1 install failed on JRuby
+Date: Thu, 29 Oct 2009 12:50:19 +0000
+X-Mailer: Apple Mail (2.936)
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Hi all,
+
+On my dev environment, it seems that FFI 0.5.1 is trying to build the  
+C-extension on the JRuby.
+
+$ jgem i ffi --no-ri --no-rdoc --version=0.5.0
+Successfully installed ffi-0.5.0-java
+1 gem installed
+
+$ jgem i ffi --no-ri --no-rdoc --version=0.5.1
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+/opt/local/bin/jruby extconf.rb
+WARNING: JRuby does not support native extensions or the `mkmf' library.
+          Check wiki.jruby.org for alternatives.
+extconf.rb:4: undefined method `dir_config' for main:Object  
+(NoMethodError)
+
+
+Gem files will remain installed in /opt/local/lib/jruby-1.4.0RC3/lib/ 
+ruby/gems/1.8/gems/ffi-0.5.1 for inspection.
+Results logged to /opt/local/lib/jruby-1.4.0RC3/lib/ruby/gems/1.8/gems/ 
+ffi-0.5.1/ext/ffi_c/gem_make.out
+
+Could someone verify this, please?
+
+Cheers,
+
+Jerome Riga

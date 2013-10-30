@@ -1,0 +1,62 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Is the release interface supposed to swallow errors?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Is the release interface supposed to swallow errors?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Burgestrand <kim@burgestrand.se></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/9/13 3:25 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Also, if you set $DEBUG to true, or start ruby with the -d-flag, all exceptions are printed to stderr, no matter if they are caught or not. This output can be noisy, depending on how much exceptions are used for flow control.<div>
+
+<div class="gmail_extra"><br clear="all"><div>— Kim Burgestrand</div>
+<br><br><div class="gmail_quote">On Wed, Oct 9, 2013 at 9:04 AM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+<div dir="ltr"><div><br></div>All errors from the release method are indeed swallowed - release is called from a garbage collection thread, so it has to quash any exceptions.  <div><br></div><div>If you explicitly call kptr.pointer.free(), it should propagate exceptions from KStatCtl.release().<div>
+
+
+<div><br><br>On Wednesday, 9 October 2013 02:52:15 UTC+11, Daniel Berger  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir="ltr">Hi,<div>
+<br></div><div>ffi 1.9.0</div><div><br></div><div>I noticed that if I declare a struct using .auto_ptr, that the corresponding release method seems to swallow errors.</div><div><br></div><div><font size="1" face="times new roman, serif">require &#39;ffi&#39;</font></div>
+
+
+<font size="1" face="times new roman, serif"><br>class Solaris<br>  extend FFI::Library<br>  ffi_lib :kstat<br><br>  class KstatCtl &lt; FFI::Struct<br>    layout(:kc_chain_id, :int, :kc_chain, :pointer, :kc_kd, :int)<br>
+
+
+<br>    def self.release(pointer)<br>      puts &quot;Releasing...&quot; # Yep, I see this<br>      bogus # Shouldn&#39;t this raise an error? Instead, nothing happens.<br>    end<br>  end<br><br>  attach_function :kstat_open, [], KstatCtl.auto_ptr<br>
+
+
+  attach_function :kstat_close, [KstatCtl], :int<br><br>  def self.kstat<br>    kptr = kstat_open()<br>    kstat_close(kptr)<br>  end<br>end<br><br>Solaris.kstat</font><div><font size="1" face="times new roman, serif"><br>
+
+
+</font></div><div><font size="1" face="times new roman, serif">What I&#39;m really trying to do is have the release method call kstat_close inside the KstatCtl&#39;s release method. It fails, but I can&#39;t tell -why- it fails since the error is getting swallowed.</font></div>
+
+
+<div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">Help or advice appreciated.</font></div><div><font size="1" face="times new roman, serif"><br></font></div>
+
+
+<div><font size="1" face="times new roman, serif">Regards,</font></div><div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">Dan</font></div></div></blockquote>
+
+
+</div></div></div></div><div><div>
+
+<p></p>
+
+-- <br>
+ <br>
+--- <br>
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an email to <a href="mailto:ruby-ffi%2Bunsubscribe@googlegroups.com" target="_blank">ruby-ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/groups/opt_out</a>.<br>
+</div></div></blockquote></div><br></div></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

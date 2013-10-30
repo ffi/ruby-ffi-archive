@@ -1,0 +1,83 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp95772obb;
+        Tue, 21 Feb 2012 13:52:29 -0800 (PST)
+Received: by 10.50.149.162 with SMTP id ub2mr18583702igb.1.1329861148632;
+        Tue, 21 Feb 2012 13:52:28 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id w10si18693350icy.29.2012.02.21.13.52.28
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 21 Feb 2012 13:52:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by iaoh14 with SMTP id h14sf6397320iao.7
+        for <headius@headius.com>; Tue, 21 Feb 2012 13:52:28 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCYpJD6BBoEKdsHmg@googlegroups.com designates 10.68.141.203 as permitted sender) client-ip=10.68.141.203;
+Received: from mr.google.com ([10.68.141.203])
+        by 10.68.141.203 with SMTP id rq11mr20248644pbb.13.1329861148472 (num_hops = 1);
+        Tue, 21 Feb 2012 13:52:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=X4SyQfMQGpiVK5sCRKrY+qNSexrNrU2x0/Jzn9vX3Ew=;
+        b=50K1PclX9XWXXPfhTCMu/KUBXzcWKUfpfJEwu+aHQpm05JPmnnxyhhpLGQntbS3YA2
+         SBg/oCAXjoa79AgC7xAmsi04eiJdiwt260AEz17YBBThU4Quat5fWUUazC0G2aMjUl0n
+         A7vUjOxOq34+PiCRkboLMfqS6QSHvXACabbyc=
+Received: by 10.68.141.203 with SMTP id rq11mr5569468pbb.13.1329861144066;
+        Tue, 21 Feb 2012 13:52:24 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.135.164 with SMTP id pt4ls25285771pbb.0.gmail; Tue, 21 Feb
+ 2012 13:52:23 -0800 (PST)
+Received: by 10.68.233.168 with SMTP id tx8mr5583078pbc.19.1329861143895;
+        Tue, 21 Feb 2012 13:52:23 -0800 (PST)
+Date: Tue, 21 Feb 2012 13:52:22 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <32471754.2645.1329861142875.JavaMail.geo-discussion-forums@pbhh5>
+In-Reply-To: <815c37ce-cdc8-4ed6-a0c5-66f10885c1c4@bs8g2000vbb.googlegroups.com>
+References: <6794b71b-e4eb-4709-8b72-b0f433d133bd@qs5g2000pbc.googlegroups.com>
+ <11911075.1224.1329734760900.JavaMail.geo-discussion-forums@pbeo1>
+ <815c37ce-cdc8-4ed6-a0c5-66f10885c1c4@bs8g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Re: long pointer
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2644_11816957.1329861142874"
+
+------=_Part_2644_11816957.1329861142874
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Unfortunately, long double isn't supported by ruby-ffi.
+
+Please raise a ticket for it, and I'll see if it can be implemented cleanly.
+
+
+
+------=_Part_2644_11816957.1329861142874
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Unfortunately, long double isn't supported by ruby-ffi.<div><br></div><div>Please raise a ticket for it, and I'll see if it can be implemented cleanly.</div><div><br></div><div><br></div>
+------=_Part_2644_11816957.1329861142874--

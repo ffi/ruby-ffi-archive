@@ -1,0 +1,66 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:36 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 18, 2009 at 3:10 PM, rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>ref:<a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx">http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>What might it be...?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>FindWindow is an alias of FindWindowA or FindWindowW depending if
+<span class="moz-txt-citetags">&gt;&gt; </span>unicode/wide condition was defined prior including the headers.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>So: there is no FindWindow, as pointed by others on this thread.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Interesting.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks for the help.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>C:\&gt;strings \WINDOWS\system32\user32.dll | grep  FindWindow
+<span class="moz-txt-citetags">&gt; </span>FindWindowA
+<span class="moz-txt-citetags">&gt; </span>FindWindowExA
+<span class="moz-txt-citetags">&gt; </span>FindWindowExW
+<span class="moz-txt-citetags">&gt; </span>FindWindowW
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Any guesses as to how VB is able to accomplish its snippet?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>&lt;DllImport("user32.dll", CharSet:=CharSet.Auto)&gt; _
+<span class="moz-txt-citetags">&gt; </span>Public Shared Function FindWindow(ByVal lpClassName As String, ByVal
+<span class="moz-txt-citetags">&gt; </span>lpWindowName As String) As IntPtr
+<span class="moz-txt-citetags">&gt; </span>End Function
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Magic is in CharSet... Depending in the character encoding NET is
+doing the magic of turning String to WideString for you,
+transparently.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Does it add a W or something, for us? (and ffi theoretically could,
+<span class="moz-txt-citetags">&gt; </span>too?)
+</pre></blockquote><pre wrap>
+
+You're trying to compare apple to oranges.
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

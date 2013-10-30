@@ -1,0 +1,103 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs464480anc;
+        Wed, 20 Jan 2010 10:58:21 -0800 (PST)
+Received: by 10.150.250.14 with SMTP id x14mr677811ybh.148.1264013901764;
+        Wed, 20 Jan 2010 10:58:21 -0800 (PST)
+Return-Path: <3S1JXSw0JCEAtqigtrcem4227iockn.eqotwd0-hhkiqqingitqwru.eqo@listserv.bounces.google.com>
+Received: from mail-yw0-f152.google.com (mail-yw0-f152.google.com [209.85.211.152])
+        by mx.google.com with ESMTP id 14si304630yxe.51.2010.01.20.10.58.20;
+        Wed, 20 Jan 2010 10:58:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3S1JXSw0JCEAtqigtrcem4227iockn.eqotwd0-hhkiqqingitqwru.eqo@listserv.bounces.google.com designates 209.85.211.152 as permitted sender) client-ip=209.85.211.152;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3S1JXSw0JCEAtqigtrcem4227iockn.eqotwd0-hhkiqqingitqwru.eqo@listserv.bounces.google.com designates 209.85.211.152 as permitted sender) smtp.mail=3S1JXSw0JCEAtqigtrcem4227iockn.eqotwd0-hhkiqqingitqwru.eqo@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh16 with SMTP id 16sf12922844ywh.25
+        for <headius@headius.com>; Wed, 20 Jan 2010 10:58:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=s9Vwl0KQpD34IRmHggV5mIs6y1hKjQ8JhOk6nIZ9uh8=;
+        b=kMvfimqECgZAlT6Cw20+OKwLLwlKDjvP6DKCTAy5xhkDC2gpx/Iji1c6xl4ZmkHuaU
+         FW7WYjVubBFAQEPUEAsruy7/Qdv44I0Wo9MK5mM1gsOrANid9yToj9kMhaYhKHIq5tFi
+         ngcUdQa7FLSavZ8qjE6v9OXXzHkBSOUlSxqUE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=6SE2/vLCowQWRbbn6re5kd5s0NhQi8licOj5zSPPJITSMyPPLv6lIafNkLH9ewd4TD
+         AB4+EbLDzR3uuygL1ipqhigLlb/BT5We7XpB0hNT0sYEt1h8Dd2+Cg9a+fZksdweaAwM
+         0d2n1cvMaPR9e4UMIzWc+6eza6IjkcgNx9XG8=
+Received: by 10.101.179.34 with SMTP id g34mr28316anp.52.1264013899314;
+        Wed, 20 Jan 2010 10:58:19 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.182.11 with SMTP id j11ls797778anp.0.p; Wed, 20 Jan 2010 
+	10:58:17 -0800 (PST)
+Received: by 10.101.180.22 with SMTP id h22mr426712anp.7.1264013897277;
+        Wed, 20 Jan 2010 10:58:17 -0800 (PST)
+Received: by 10.101.180.22 with SMTP id h22mr426709anp.7.1264013897258;
+        Wed, 20 Jan 2010 10:58:17 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-gx0-f200.google.com (mail-gx0-f200.google.com [209.85.217.200])
+        by gmr-mx.google.com with ESMTP id 18si17644ywh.1.2010.01.20.10.58.17;
+        Wed, 20 Jan 2010 10:58:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.217.200 as permitted sender) client-ip=209.85.217.200;
+Received: by gxk24 with SMTP id 24so13042852gxk.1
+        for <ruby-ffi@googlegroups.com>; Wed, 20 Jan 2010 10:58:17 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.115.15 with SMTP id s15mr12961ybm.26.1264013897171; Wed, 
+	20 Jan 2010 10:58:17 -0800 (PST)
+Date: Wed, 20 Jan 2010 10:58:17 -0800 (PST)
+In-Reply-To: <7a1b9d75-b909-4f00-a183-64637704c5a1@k35g2000yqb.googlegroups.com>
+X-IP: 216.49.181.128
+References: <9ef47d23-21f0-4657-ac94-3cf8d7725016@a32g2000yqm.googlegroups.com> 
+	<71166b3b1001200648h654a12cdke6e0b431eb6b4987@mail.gmail.com> 
+	<7a1b9d75-b909-4f00-a183-64637704c5a1@k35g2000yqb.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.8 (KHTML, like Gecko) Chrome/4.0.295.0 Safari/532.8,gzip(gfe),gzip(gfe)
+Message-ID: <4dfac7d8-4aa0-46eb-b689-1da03206ccbf@r19g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Re: Using Windows Unicode functions
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.217.200 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ada0ea99600b7fa1
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/52fca0032a184469
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> > I was thinking more of commenting out the line that throws the
+> > exception "string contains null byte"
+>
+> That wouldn't make much sense, because then there wouldn't be any
+> message box displayed. But that was the aim of my code...
+
+that is, commenting out the line that says
+#raise  "string contains null byte"
+
+in the guts of ffi.
+-r

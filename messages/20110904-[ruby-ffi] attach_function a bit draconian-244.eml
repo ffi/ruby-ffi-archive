@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs34493lae;
+        Sun, 4 Sep 2011 14:19:16 -0700 (PDT)
+Received: by 10.224.0.193 with SMTP id 1mr2514975qac.80.1315171154680;
+        Sun, 04 Sep 2011 14:19:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxDN1o_zBBoEEjSY5g@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id fh7si4739473qab.64.2011.09.04.14.19.14
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 04 Sep 2011 14:19:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDN1o_zBBoEEjSY5g@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDN1o_zBBoEEjSY5g@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxDN1o_zBBoEEjSY5g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyg14 with SMTP id 14sf3244996qyg.7
+        for <headius@headius.com>; Sun, 04 Sep 2011 14:19:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=6nZqHGzNx4y0bJ5efnhgWaxQddsQpaLLoATf7acol0Y=;
+        b=j+Prvfzh67xh0ZlNEJTeV8WaS2lvgBWL/XUCs8GjkfYgRxIp/TgjgNyLHsHN02YvKg
+         ZKX604/GH0lujJ1EnY6iGaTddDTjxi5e3wki/uUwoD/mZQyyJlW5YOU3dIUhSAPWaXNs
+         ZHLlbOcjAAjqYFb1e4hc/d9fjxFxeeQHBRTyk=
+Received: by 10.229.65.79 with SMTP id h15mr265428qci.41.1315171149466;
+        Sun, 04 Sep 2011 14:19:09 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.207.1 with SMTP id fw1ls4105950qab.4.gmail; Sun, 04 Sep
+ 2011 14:19:09 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.191.72 with SMTP id dl8mr283210qab.7.1315171149099; Sun,
+ 04 Sep 2011 14:19:09 -0700 (PDT)
+Received: by h9g2000vbr.googlegroups.com with HTTP; Sun, 4 Sep 2011 14:19:09
+ -0700 (PDT)
+Date: Sun, 4 Sep 2011 14:19:09 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.1) Gecko/20100101 Firefox/6.0.1,gzip(gfe)
+Message-ID: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+Subject: [ruby-ffi] attach_function a bit draconian
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I've written a ffi wrapper for the free image library, which is here:
+
+http://cfis.github.com/free-image-ruby/
+
+The problem is that I've coded against the latest version of
+FreeImage, and most linux distributions have older versions
+installed.  Thus when I try to load the gem it fails since
+attach_function throws an error because the older versions don't have
+all the functions.
+
+This isn't what I want - the older versions work perfectly fine, they
+just don't include as much functionality.  So instead of blowing up, I
+would prefer if FFI throw a warning message but continue loading the
+library.
+
+If a user does call one of these unimplemented functions, then FFI
+should throw an error and allows the wrapping library to customize
+that message to say something useful (sorry, to use this function you
+need to upgrade to a newer version of freeimage).
+
+I can think of lots of ways of doing this, here is one possibility:
+
+* If a function is not implemented, instead of throwing an error, wrap
+it with a NotImplemented function (to go along with Function and
+Variadic).
+
+* When a NotImplemented function is called, throw an error.  This
+could:
+    - Just hard-code an error, not allow customization
+    - Call a method on library, not_implemented, that developers could
+override
+    - Call a proc which would be passed to attach_function which would
+be called
+
+I lean towards the 2nd choice, but don't feel very strongly about it.
+
+Does this sound like an idea that could be accepted to FFI?  If so,
+I'll code up a patch for review.
+
+Thanks - Charlie

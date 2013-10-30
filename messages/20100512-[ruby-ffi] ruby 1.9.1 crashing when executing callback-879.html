@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ruby 1.9.1 crashing when executing callback</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ruby 1.9.1 crashing when executing callback</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/12/10 2:53 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm starting to work with callbacks and have run into a consistent crasher. Take a look at the trace here:
+
+<a class="moz-txt-link-freetext" href="http://gist.github.com/398987">http://gist.github.com/398987</a>
+
+I downloaded the ruby-1.9.1 source and poked through vm_eval.c which contains the vm_call0() function. There is a big switch statement in there that falls through to calling rb_bug(). 
+
+This all occurs <b class="moz-txt-star"><span class="moz-txt-tag">*</span>only<span class="moz-txt-tag">*</span></b> when invoking the callback. The stack trace clearly shows it is invoking a block (rb_funcall2) from the FFI library. It crashes regardless of the contents of the block (empty, puts, nil, etc.).
+
+In 1.8.7 it crashes with a LocalJumpError somewhere else.
+
+When I disable the callback, there are no crashes under either MRI.
+
+Under JRuby, everything works fine. The callback is invoked successfully.
+
+I'm wondering if this is failing because the callback may be invoked by another native thread. The library being wrapped by FFI spawns many threads that do various background tasks; one of them is likely the invocation of the cleanup callback that is causing the crash.
+
+Are there any known issues with MRI, FFI and callbacks?
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

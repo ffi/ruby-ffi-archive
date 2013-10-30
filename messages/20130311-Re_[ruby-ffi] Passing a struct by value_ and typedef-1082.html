@@ -1,0 +1,721 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Passing a struct by value, and typedef</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Passing a struct by value, and typedef</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Maurizio De Santis <desantis.maurizio@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/11/13 8:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr"><div><div><div>uhm, <a href="http://libglib-2.0.so">libglib-2.0.so</a> ... I forgot the dash!!!! &gt;.&lt; thank you!!!</div><div><br></div><div>Ok, now I am at a good point: I think I&#39;m managing an array of ints correctly, included a custom free! \o/</div>
+
+<div>Could you please confirm it? I&#39;m interested above all at the part of the pointer, if I managed them correctly, and if I used AutoPointer correctly (the :g_free part included). It should be correct, but maybe you have some suggestions.</div>
+
+<div><br></div><div>This is <font face="courier new, monospace">glibtop_get_proclist</font>:</div><div><br></div></div></div></div><blockquote style="margin:0 0 0 40px;border:none;padding:0px"><div dir="ltr"><div><div><div>
+
+<font face="courier new, monospace">unsigned * glibtop_get_proclist (glibtop_proclist *buf, gint64 which, gint64 arg)</font></div></div></div></div></blockquote><div dir="ltr"><div><br></div><div><font face="courier new, monospace">glibtop_proclist</font> is a struct, while the returned value is an array of uint of <font face="courier new, monospace">glibtop_proclist.number</font> length, and it should be freed with <font face="courier new, monospace">g_free</font> .</div>
+
+<div><br></div><div>Here is my code (if you want you can see the full library at <a href="https://github.com/ProGNOMmers/gtop">https://github.com/ProGNOMmers/gtop</a> ):</div><div><br></div><div><font face="courier new, monospace">module GTop</font></div>
+
+<div><font face="courier new, monospace">  extend FFI::Library</font></div><div><font face="courier new, monospace">  ffi_lib &#39;libgtop-2.0&#39;</font></div><div><font face="courier new, monospace">  typedef :int64,  :gint64</font></div>
+
+<div><font face="courier new, monospace">  typedef :uint64, :guint64</font></div><div><font face="courier new, monospace">  typedef :ulong,  :uintptr_t</font></div><div><font face="courier new, monospace">  attach_function :process_list, :glibtop_get_proclist, [:pointer, :gint64, :gint64], :uintptr_t</font></div>
+
+<div><font face="courier new, monospace"><br></font></div><div><font face="courier new, monospace">  module GLib</font></div><div><font face="courier new, monospace">    extend FFI::Library</font></div><div><font face="courier new, monospace">    ffi_lib &#39;libglib-2.0&#39;</font></div>
+
+<div><font face="courier new, monospace">    typedef :pointer, :gpointer</font></div><div><font face="courier new, monospace">    attach_function :g_free, [:gpointer], :void</font></div><div><font face="courier new, monospace">  end</font></div>
+
+<div><font face="courier new, monospace">end</font></div><div><font face="courier new, monospace"><br></font></div><div><font face="courier new, monospace">s = GTop::ProcessList.new</font></div><div><font face="courier new, monospace">addr = GTop.process_list(s, 0, 0)</font></div>
+
+<div><font face="courier new, monospace">ptr = FFI::Pointer.new(:pointer, addr)</font></div><div><font face="courier new, monospace">ap = FFI::AutoPointer.new ptr, GTop::GLib.method(:g_free)</font></div><div><font face="courier new, monospace">if ap.null?</font></div>
+
+<div><font face="courier new, monospace">  &#39;ap is null&#39;</font></div><div><font face="courier new, monospace">else</font></div><div><font face="courier new, monospace">  p ap.read_array_of_uint(s[:number])</font></div>
+
+<div><font face="courier new, monospace">end</font></div><div><font face="courier new, monospace">p Hash[ s.members.map { |m| [ m, s[m] ] } ]</font></div><div><br></div><div>Thank you!</div></div><div class="gmail_extra">
+
+
+<br clear="all"><div>--<div><br>Maurizio De Santis</div></div>
+<br><br><div class="gmail_quote">2013/3/11 Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span><br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+
+<div><br></div>Isn&#39;t it <a href="http://libglib-2.0.so" target="_blank">libglib-2.0.so</a> ?<div><br></div><div>i.e. try:</div><div><br></div><div>  ffi_lib &#39;glib-2.0&#39;</div><div><br></div><div>If you just want to try and see if a library can be found by FFI, use this:</div>
+
+
+
+<div><br></div><div>  ruby -rffi -e &#39;FFI::DynamicLibrary.open(&quot;<a href="http://libglib-2.0.so" target="_blank">libglib-2.0.so</a>&quot;, FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_LOCAL)&#39;<br>
+
+
+</div>
+<div><br></div><div><br></div><div>As for the pointer result, NULL is handled fine - just use Pointer#null? to check if the return value is NULL.</div><div><div><div><br><br>On Monday, 11 March 2013 02:50:27 UTC+10, Maurizio De Santis  wrote:</div>
+
+
+
+</div><blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div><div dir="ltr"><div><div>Thank you, the porting is going well; if you want you can see the progress at <a href="https://github.com/ProGNOMmers/gtop" target="_blank">https://github.com/<u></u>ProGNOMmers/gtop</a> .<br>
+
+
+
+<br></div>Now I have some troubles: I need to use <span style="font-family:courier new,monospace">g_free</span> from <span style="font-family:courier new,monospace">glib</span>, so I tried to wrap it:<br>
+
+<br><span style="font-family:courier new,monospace">require &#39;gtop&#39;<br><br>module GTop<br>  module GLib<br>    extend FFI::Library<br>    ffi_lib &#39;libglib2.0&#39;<br><br>    typedef :pointer, :gpointer<br><br>
+
+
+
+
+    attach_function :g_free, [:gpointer], :void<br>
+  end<br>end</span><br><br>On my pc <a href="http://libglib2.0.so" target="_blank">libglib2.0.so</a> is located inside /usr/lib/x86_64-linux-gnu/ , which should be found since it is inside the ld paths, which on my machine are<br>
+
+
+
+<br><span style="font-family:courier new,monospace"># Multiarch support<br>
+
+/lib/i386-linux-gnu<br>/usr/lib/i386-linux-gnu<br>/lib/i686-linux-gnu<br>/usr/lib/i686-linux-gnu<br># libc default configuration<br>/usr/local/lib<br>/usr/lib/nvidia-settings<br># Multiarch support<br>/lib/x86_64-linux-gnu<br>
+
+
+
+
+
+/usr/lib/x86_64-linux-gnu<br>/usr/lib/x86_64-linux-gnu/mesa</span><br><br></div><div>but I get a LoadError:<br><br><span style="font-family:courier new,monospace">Could not open library &#39;libglib2.0&#39;: libglib2.0: cannot open shared object file: No such file or directory.<br>
+
+
+
+
+
+Could not open library &#39;<a href="http://libglib2.0.so" target="_blank">libglib2.0.so</a>&#39;: <a href="http://libglib2.0.so" target="_blank">libglib2.0.so</a>: cannot open shared object file: No such file or directory<br>
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/ffi-1.4.0/lib/ffi/<u></u>library.rb:123:in `block in ffi_lib&#39;<br>
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/ffi-1.4.0/lib/ffi/<u></u>library.rb:90:in `map&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/ffi-1.4.0/lib/ffi/<u></u>library.rb:90:in `ffi_lib&#39;<br>
+
+
+
+
+
+/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:6:in `&lt;module:GLib&gt;&#39;<br>/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:4:in `&lt;module:GTop&gt;&#39;<br>/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:3:in `&lt;top (required)&gt;&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>
+
+
+
+
+
+/home/user/github/me/gtop/lib/<u></u>gtop.rb:7:in `&lt;module:GTop&gt;&#39;<br>/home/user/github/me/gtop/lib/<u></u>gtop.rb:3:in `&lt;top (required)&gt;&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>/home/user/github/me/gtop/<u></u>Rakefile:4:in `block in &lt;top (required)&gt;&#39;<br>
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:228:in `call&#39;<br>
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:228:in `block in execute&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:223:in `each&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:223:in `execute&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:166:in `block in invoke_with_call_chain&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/2.0.0/monitor.<u></u>rb:211:in `mon_synchronize&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:159:in `invoke_with_call_chain&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:152:in `invoke&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:143:in `invoke_task&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:101:in `block (2 levels) in top_level&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:101:in `each&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:101:in `block in top_level&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:110:in `run_with_threads&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:95:in `top_level&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:73:in `block in run&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:160:in `standard_exception_handling&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:70:in `run&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/bin/rake:33:<u></u>in `&lt;top (required)&gt;&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/bin/rake:23:in `load&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/bin/rake:23:in `&lt;main&gt;&#39;</span><br>
+
+
+
+
+
+<br></div><div>I tried to set LD_LIBRARY_PATH too, but without success.<br><br></div><div>Oh, and I have another doubt: gpointer is the return value of `glibtop_get_proclist&#39;, and can be either `NULL&#39; on error or a `unsigned *&#39; list of pids.<br>
+
+
+
+
+
+</div><div>I defined it as :pointer, it is correct? could the NULL value give problems? should I manage it?<br></div></div></div></div><div><br clear="all"><div>--<div><br>Maurizio De Santis</div></div>
+<br><br><div class="gmail_quote">2013/3/5 Wayne Meissner <span dir="ltr">&lt;<a>wmei...@gmail.com</a>&gt;</span><br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div>
+
+
+
+<div>
+
+<div><br></div>:buffer_in, and :buffer_out are optimization hints for VMs when they need to copy data from VM heap memory to native memory:<div><br></div><div>:buffer_in means &quot;allocate some temporary native memory, copy the contents of this object to it, then pass the temporary memory address to the function&quot;</div>
+
+
+
+
+
+<div><br></div><div><div>:buffer_out means &quot;allocate some temporary native memory, pass that address to the function, then afterwards, copy the contents of the temporary memory area back to the VM heap object&quot;</div>
+
+
+
+
+
+</div><div><br></div><div>:pointer and :buffer_inout are analogous and mean &quot;do both of the above&quot; - i.e. copies both in to and out of the temporary memory area.</div><div><br></div><div>If you&#39;re using a MemoryPointer as your memory (as Struct does), then it is already native, so it doesn&#39;t matter, so you can just use :pointer.</div>
+
+
+
+
+
+<div><br></div><div>The original rationale behind the :buffer_in and :buffer_out directives was that allocating VM heap objects is really cheap, and most VMs have a very hard time managing native memory allocations.  So from an implementation point of view, it was better to bias towards VM heap allocations and copy data in/out of temporary native memory.  Thats where FFI::Buffer came from - it was VM heap memory that was always copied to/from native memory when passed as a parameter.</div>
+
+
+
+
+
+<div><br></div><div>In practice, people found it difficult and confusing to understand, so I just made native allocation management work as best it could in JRuby-1.7.</div><div><br></div><div><br></div><div>tl;dr - just use :pointer - it will work just fine, at an occasional minor performance penalty.</div>
+
+
+
+
+
+<div><br></div><div><br></div><div><div>On Monday, 4 March 2013 11:45:38 UTC+10, Postmodern  wrote:</div><blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+  
+    
+  
+  <div bgcolor="#FFFFFF" text="#000000"><div>
+    <div>You want :pointer in this case. I
+      believe :buffer_out is a meant as a hint to FFI that data will be
+      written back into an Array of chars/ints.<br>
+      <br>
+      On 03/03/2013 05:41 PM, Maurizio De Santis wrote:<br>
+    </div>
+    </div><blockquote type="cite"><div>
+      <div dir="ltr">
+        <div>
+          <div>Another question: <span style="font-family:courier new,monospace">glibtop_get_cpu</span> takes a struct as
+            parameter, and fills it with informations about cpu.<br>
+            <br>
+          </div>
+          I declared it as <br>
+          <br>
+          <span style="font-family:courier new,monospace">attach_function
+            :glibtop_get_cpu, [:pointer], :void</span><br>
+          <br>
+        </div>
+        I think I can substitute <span style="font-family:courier new,monospace">:pointer</span> with <span style="font-family:courier new,monospace">:buffer_out</span> ,
+        am I right?<br>
+      </div>
+      </div><div><br clear="all">
+        <div>--
+          <div><br>
+            Maurizio De Santis</div>
+        </div>
+        <br>
+        <br>
+        <div class="gmail_quote">2013/3/4 Maurizio De Santis <span dir="ltr">&lt;<a>desantis...@gmail.com</a>&gt;</span><br>
+          <blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div>
+            <div dir="ltr">Thank you a lot, your suggestions are
+              precious.<br>
+            </div>
+            </div><div>
+              <div>
+                <div><br clear="all">
+                  <div>--
+                    <div><br>
+                      Maurizio De Santis</div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="gmail_quote">2013/3/3 postmodern <span dir="ltr">&lt;<a>postmod...@gmail.com</a>&gt;</span><br>
+                    <blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+                      <div bgcolor="#FFFFFF" text="#000000"><div><div>
+                        <div>You can simplify that code to just:<br>
+                          <blockquote>
+                            <pre><span style="font-family:courier new,monospace">a = LibGtop::GlibtopCpu.new
+LibGtop.glibtop_get_cpu(a)
+p a[:frequency]</span></pre>
+                          </blockquote>
+                          This will allocate memory for a GlibtopCpu
+                          struct, pass the pointer to the memory to
+                          glibtop_get_cpu and access to the struct field
+                          within the memory. Once you are done with the
+                          &quot;a&quot; variable, Ruby will just GC it and FFI
+                          will free the underlying memory.
+                          <div>
+                            <div><br>
+                              <br>
+                              On 03/02/2013 07:54 PM, Maurizio De Santis
+                              wrote:<br>
+                            </div>
+                          </div>
+                        </div>
+                        </div></div><div>
+                          <div>
+                            <blockquote type="cite"><div><div>
+                              <div dir="ltr">
+                                <div>
+                                  <div>Thank you. Now, the code runs
+                                    without errors:<br>
+                                    <br>
+                                    <span style="font-family:courier new,monospace">require &#39;ffi&#39;<br>
+                                      <br>
+                                      module LibGtop<br>
+                                        <br>
+                                        extend FFI::Library<br>
+                                        ffi_lib &#39;libgtop-2.0&#39;<br>
+                                      <br>
+                                        typedef :uint64, :guint64<br>
+                                      <br>
+                                        attach_function
+                                      :glibtop_get_cpu, [:pointer],
+                                      :void<br>
+                                      <br>
+                                        class GlibtopCpu &lt;
+                                      FFI::Struct<br>
+                                          layout :flags,        
+                                      :guint64,<br>
+                                                 :total,        
+                                      :guint64,<br>
+                                                 :user,         
+                                      :guint64,<br>
+                                                 :nice,         
+                                      :guint64,<br>
+                                                 :sys,          
+                                      :guint64,<br>
+                                                 :idle,         
+                                      :guint64,<br>
+                                                 :iowait,       
+                                      :guint64,<br>
+                                                 :irq,          
+                                      :guint64,<br>
+                                                 :softirq,      
+                                      :guint64,<br>
+                                                 :frequency,    
+                                      :guint64,<br>
+                                                 :xcpu_total,  
+                                      [:guint64, 32],<br>
+                                                 :xcpu_user,   
+                                      [:guint64, 32],<br>
+                                                 :xcpu_nice,   
+                                      [:guint64, 32],<br>
+                                                 :xcpu_sys,    
+                                      [:guint64, 32],<br>
+                                                 :xcpu_idle,   
+                                      [:guint64, 32],<br>
+                                                 :xcpu_iowait, 
+                                      [:guint64, 32],<br>
+                                                 :xcpu_irq,    
+                                      [:guint64, 32],<br>
+                                                 :xcpu_softirq,
+                                      [:guint64, 32],<br>
+                                                 :xcpu_flags,   
+                                      :guint64<br>
+                                        end<br>
+                                      <br>
+                                      end<br>
+                                      <br>
+                                      <br>
+                                      # taken from <a href="https://github.com/ffi/ffi/wiki/Structs" target="_blank">https://github.com/ffi/ffi/<u></u>wik<u></u>i/Structs</a><br>
+                                      pointer = FFI::MemoryPointer.new
+                                      :uint64, LibGtop::GlibtopCpu.size,
+                                      true<br>
+                                      a = LibGtop::GlibtopCpu.new
+                                      pointer<br>
+                                      LibGtop.glibtop_get_cpu(a)<br>
+                                      p a[:frequency]</span><br>
+                                    <br>
+                                  </div>
+                                  Another question: I initialized the
+                                  pointer with <span style="font-family:courier new,monospace">clear = true</span>,
+                                  because the struct pointed by the
+                                  pointer gets filled by
+                                  glibtop_get_cpu, and then must be
+                                  managed by Ruby, since <span style="font-family:courier new,monospace">glibtop_get_cpu<font face="arial,helvetica,sans-serif">
+                                      just fills the struct. Am I wrong?</font></span><br>
+                                </div>
+                              </div>
+                              </div></div><div><br clear="all">
+                                <div>--
+                                  <div><br>
+                                    Maurizio De Santis</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="gmail_quote">2013/3/3
+                                  postmodern <span dir="ltr">&lt;<a>postmod...@gmail.com</a>&gt;</span><br>
+                                  <blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+                                    <div bgcolor="#FFFFFF" text="#000000"><div><div>
+                                      <div>You need to find out
+                                        guint64&#39;s underlying type, and
+                                        create the typedef in Ruby:<br>
+                                        <br>
+                                        <blockquote>
+                                          <pre>module <span style="font-family:courier new,monospace">LibGtop</span>
+  extend FFI::Library
+
+  typedef :uint64, :guint64
+end
+</pre>
+                                        </blockquote>
+                                        <div>
+                                          <div> <br>
+                                            On 03/02/2013 06:06 PM,
+                                            Maurizio De Santis wrote:<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div></div><blockquote type="cite"><div><div>
+                                        <div>
+                                          <div>I am writing a libgtop2
+                                            wrapper using ffi in order
+                                            to learn how to use ffi; I
+                                            am new to ffi, so I have a
+                                            lot of doubts.<br>
+                                            <br>
+                                            libgtop2 lets get system and
+                                            processes informations (cpu
+                                            usage, memory usage, ...).<br>
+                                            <br>
+                                            Here some informations about
+                                            <span style="font-family:courier new,monospace">glibtop_get_cpu</span>:<br>
+                                            <br>
+                                            <span style="font-family:courier new,monospace">Library
+                                              function
+                                              `glibtop_get_cpu&#39;:<br>
+                                              <br>
+                                                   void glibtop_get_cpu
+                                              (glibtop_cpu *buf);<br>
+                                                   void
+                                              glibtop_get_cpu_l (glibtop
+                                              *server, glibtop_cpu
+                                              *buf);<br>
+                                              <br>
+                                                 Declaration of
+                                              `glibtop_cpu&#39; in
+                                              `&lt;glibtop/cpu.h&gt;&#39;:<br>
+                                              <br>
+                                                   typedef struct
+                                              _glibtop_cpu    
+                                              glibtop_cpu;<br>
+                                              <br>
+                                                   struct _glibtop_cpu<br>
+                                                   {<br>
+                                                       guint64   flags,<br>
+                                                           total,<br>
+                                                           user,<br>
+                                                           nice,<br>
+                                                           sys,<br>
+                                                           idle,<br>
+                                                           iowait,<br>
+                                                           irq,<br>
+                                                           softirq,<br>
+                                                           frequency,<br>
+                                                           xcpu_total
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_user
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_nice
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_sys 
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_idle
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_iowait
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_irq
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_softirq
+                                              [GLIBTOP_NCPU],<br>
+                                                           xcpu_flags;<br>
+                                                   };<br>
+                                              <br>
+                                              ...</span><br>
+                                            <br>
+                                            <br>
+                                            Here is what I wrote:<br>
+                                            <span style="font-family:courier new,monospace"><br>
+                                              require &#39;ffi&#39;<br>
+                                              <br>
+                                              class GlibtopCpu &lt;
+                                              FFI::Struct<br>
+                                                layout :flags,       
+                                              :guint64,<br>
+                                                       :total,       
+                                              :guint64,<br>
+                                                       :user,        
+                                              :guint64,<br>
+                                                       :nice,        
+                                              :guint64,<br>
+                                                       :sys,         
+                                              :guint64,<br>
+                                                       :idle,        
+                                              :guint64,<br>
+                                                       :iowait,      
+                                              :guint64,<br>
+                                                       :irq,         
+                                              :guint64,<br>
+                                                       :softirq,     
+                                              :guint64,<br>
+                                                       :frequency,   
+                                              :guint64,<br>
+                                                       :xcpu_total,  
+                                              :guint64,<br>
+                                                       :xcpu_user,   
+                                              :guint64,<br>
+                                                       :xcpu_nice,   
+                                              :guint64,<br>
+                                                       :xcpu_sys,    
+                                              :guint64,<br>
+                                                       :xcpu_idle,   
+                                              :guint64,<br>
+                                                       :xcpu_iowait, 
+                                              :guint64,<br>
+                                                       :xcpu_irq,    
+                                              :guint64,<br>
+                                                       :xcpu_softirq,
+                                              :guint64,<br>
+                                                       :xcpu_flags,  
+                                              :guint64<br>
+                                              end<br>
+                                              <br>
+                                              module LibGtop<br>
+                                                <br>
+                                                extend FFI::Library<br>
+                                                ffi_lib &#39;libgtop-2.0&#39;<br>
+                                                attach_function
+                                              :glibtop_get_cpu,
+                                              [:pointer], :void<br>
+                                              <br>
+                                              end<br>
+                                              <br>
+                                              # taken from <a href="https://github.com/ffi/ffi/wiki/Structs" target="_blank">https://github.com/ffi/ffi/<u></u>wik<u></u>i/Structs</a><br>
+                                              pointer =
+                                              FFI::MemoryPointer.new
+                                              :byte, GlibtopCpu.size,
+                                              false<br>
+                                              a = GlibtopCpu.new pointer<br>
+                                              p
+                                              LibGtop.glibtop_get_cpu(a)</span><br>
+                                            <br>
+                                            Executing this gives
+                                            (unsurprisingly) an error:<br>
+                                            <br>
+                                            <span style="font-family:courier new,monospace">$ ruby
+                                              lib/lib_gtop.rb <br>
+                                              /home/izietto/.rbenv/versions/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/lib/ffi/types.<u></u>rb<u></u>:57:in
+
+
+                                              `find_type&#39;: unable to
+                                              resolve type &#39;guint64&#39;
+                                              (TypeError)<br>
+                                                  from
+                                              /home/izietto/.rbenv/versions/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/lib/ffi/struct.<u></u>r<u></u>b:316:in
+
+
+                                              `find_type&#39;<br>
+                                                  from
+                                              /home/izietto/.rbenv/versions/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/lib/ffi/struct.<u></u>r<u></u>b:309:in
+
+
+                                              `find_field_type&#39;<br>
+                                                  from
+                                              /home/izietto/.rbenv/versions/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/lib/ffi/struct.<u></u>r<u></u>b:351:in
+
+
+                                              `array_layout&#39;<br>
+                                                  from
+                                              /home/izietto/.rbenv/versions/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/lib/ffi/struct.<u></u>r<u></u>b:261:in
+
+
+                                              `layout&#39;<br>
+                                                  from
+                                              lib/lib_gtop.rb:4:in
+                                              `&lt;class:GlibtopCpu&gt;&#39;<br>
+                                                  from
+                                              lib/lib_gtop.rb:3:in
+                                              `&lt;main&gt;&#39;</span><br>
+                                            <br>
+                                            It doesn&#39;t find the <span style="font-family:courier new,monospace">guint64</span>
+                                            type; how should I declare
+                                            it?<br>
+                                            <br>
+                                            Also: <span style="font-family:courier new,monospace">xcpu_total,
+                                              xcpu_user<span style="font-family:arial,sans-serif">
+                                                are arrays... how should
+                                                I declare them?<br>
+                                                <br>
+                                                Finally... if someone
+                                                could give me an
+                                                explanation and an
+                                                example of how to
+                                                implement the bind to
+                                                glibtop_get_cpu, I would
+                                                appreciate it very much
+                                                :)</span></span> -- <br>
+                                             <br>
+                                            --- <br>
+                                          </div>
+                                        </div>
+                                        You received this message
+                                        because you are subscribed to
+                                        the Google Groups &quot;ruby-ffi&quot;
+                                        group.<br></div></div>
+                                        To unsubscribe from this group
+                                        and stop receiving emails from
+                                        it, send an email to <a>ruby-ffi+u...@<u></u>googlegroups.com</a><u></u>.
+                                        <div><div><br>
+                                          For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<u></u>grou<u></u>ps/opt_out</a>.<br>
+                                           <br>
+                                           <br>
+                                        </div>
+                                      </div></blockquote><div>
+                                      <span><font color="#888888"> <br>
+                                          <br>
+                                          <pre cols="72">-- 
+Blog: <a href="http://postmodern.github.com/" target="_blank">http://postmodern.github.com/</a>
+GitHub: <a href="https://github.com/postmodern" target="_blank">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+                                        </font></span></div></div>
+                                  </blockquote>
+                                </div>
+                                <br>
+                              </div><div>
+                              -- <br>
+                               <br>
+                              --- <br>
+                              You received this message because you are
+                              subscribed to the Google Groups &quot;ruby-ffi&quot;
+                              group.<br></div>
+                              To unsubscribe from this group and stop
+                              receiving emails from it, send an email to
+                              <a>ruby-ffi+u...@<u></u>googlegroups.com</a><u></u>.<div><br>
+                              For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<u></u>grou<u></u>ps/opt_out</a>.<br>
+                               <br>
+                               <br>
+                            </div></blockquote><div>
+                            <br>
+                            <br>
+                            <pre cols="72">-- 
+Blog: <a href="http://postmodern.github.com/" target="_blank">http://postmodern.github.com/</a>
+GitHub: <a href="https://github.com/postmodern" target="_blank">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+                          </div></div>
+                        </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+        <br>
+      </div><div>
+      -- <br>
+       <br>
+      --- <br>
+      You received this message because you are subscribed to the Google
+      Groups &quot;ruby-ffi&quot; group.<br></div>
+      To unsubscribe from this group and stop receiving emails from it,
+      send an email to <a>ruby-ffi+u...@<u></u>googlegroups.com</a><u></u>.<div><br>
+      For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<u></u>grou<u></u>ps/opt_out</a>.<br>
+       <br>
+       <br>
+    </div></blockquote><div>
+    <br>
+    <br>
+    <pre cols="72">-- 
+Blog: <a href="http://postmodern.github.com/" target="_blank">http://postmodern.github.com/</a>
+GitHub: <a href="https://github.com/postmodern" target="_blank">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+  </div></div><span><font color="#888888">
+
+</font></span></blockquote></div></div></div><span><font color="#888888"><div><div>
+
+<p></p>
+
+-- <br>
+ <br>
+--- <br>
+You received this message because you are subscribed to a topic in the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this topic, visit <a href="https://groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=en" target="_blank">https://groups.google.com/d/<u></u>topic/ruby-ffi/sG-TsAHcWiM/<u></u>unsubscribe?hl=en</a>.<br>
+
+
+
+</div></div>
+To unsubscribe from this group and all its topics, send an email to <a>ruby-ffi+u...@<u></u>googlegroups.com</a>.</font></span><div><div><div>
+
+<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<u></u>groups/opt_out</a>.<br>
+ <br>
+ <br>
+</div></div></div></blockquote></div><br></div>
+</blockquote></div>
+
+<p></p>
+
+-- <br>
+ <div><div><br>
+--- <br>
+You received this message because you are subscribed to a topic in the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this topic, visit <a href="https://groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=en" target="_blank">https://groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=en</a>.<br>
+To unsubscribe from this group and all its topics, send an email to <a href="mailto:ruby-ffi%2Bunsubscribe@googlegroups.com" target="_blank">ruby-ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/groups/opt_out</a>.<br>
+ <br>
+ <br>
+</div></div></blockquote></div><br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

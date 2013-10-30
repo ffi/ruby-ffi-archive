@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs124309and;
+        Mon, 14 Dec 2009 10:43:46 -0800 (PST)
+Received: by 10.91.54.13 with SMTP id g13mr3332347agk.119.1260816226616;
+        Mon, 14 Dec 2009 10:43:46 -0800 (PST)
+Return-Path: <3RocmSwcJCD8tibxo53hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 19si11068704gxk.48.2009.12.14.10.43.46;
+        Mon, 14 Dec 2009 10:43:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3RocmSwcJCD8tibxo53hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3RocmSwcJCD8tibxo53hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3RocmSwcJCD8tibxo53hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com
+Received: by gxk21 with SMTP id 21sf4801787gxk.7
+        for <headius@headius.com>; Mon, 14 Dec 2009 10:43:46 -0800 (PST)
+Received: by 10.91.63.35 with SMTP id q35mr112505agk.32.1260816199588;
+        Mon, 14 Dec 2009 10:43:19 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.54.22 with SMTP id o22ls842077fag.3.p; Mon, 14 Dec 2009 
+	10:43:17 -0800 (PST)
+Received: by 10.223.75.83 with SMTP id x19mr178669faj.26.1260816197734;
+        Mon, 14 Dec 2009 10:43:17 -0800 (PST)
+Received: by 10.223.75.83 with SMTP id x19mr178668faj.26.1260816197695;
+        Mon, 14 Dec 2009 10:43:17 -0800 (PST)
+Return-Path: <shawn42@gmail.com>
+Received: from mail-bw0-f228.google.com (mail-bw0-f228.google.com [209.85.218.228])
+        by gmr-mx.google.com with ESMTP id 18si312434fxm.0.2009.12.14.10.43.16;
+        Mon, 14 Dec 2009 10:43:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of shawn42@gmail.com designates 209.85.218.228 as permitted sender) client-ip=209.85.218.228;
+Received: by mail-bw0-f228.google.com with SMTP id 28so2677546bwz.17
+        for <ruby-ffi@googlegroups.com>; Mon, 14 Dec 2009 10:43:16 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.204.154.142 with SMTP id o14mr651234bkw.125.1260816196522; 
+	Mon, 14 Dec 2009 10:43:16 -0800 (PST)
+From: Shawn Anderson <shawn42@gmail.com>
+Date: Mon, 14 Dec 2009 13:42:55 -0500
+Message-ID: <c410d2f20912141042g2f255903k8678b4da6ed4f06d@mail.gmail.com>
+Subject: [ruby-ffi] MemoryPointer help
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of shawn42@gmail.com designates 209.85.218.228 as permitted sender) 
+	smtp.mail=shawn42@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: shawn42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/56d08bb8d7b55f4d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/36d9a311b72559e2
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0015175cae1885552a047ab4a56c
+
+--0015175cae1885552a047ab4a56c
+Content-Type: text/plain; charset=ISO-8859-1
+
+I have a struct that has a void* data, I use MemoryPointer to alloc some mem
+and assign:
+mem = FFI::MemoryPointer.new(:long)
+@struct.data = mem
+
+Struct says around in my app, but I was seeing strange GC behavior.  Is
+assigning the mem pointer to the struct good enough to keep it around?
+I was seeing my struct.data being corrupted over time.
+
+adding
+@mem = mem
+
+fixed the problem.  Am I using MemoryPointer correctly?
+
+/Shawn
+
+--0015175cae1885552a047ab4a56c
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I have a struct that has a void* data, I use MemoryPointer to alloc some me=
+m and assign:<br>mem =3D FFI::MemoryPointer.new(:long)<br>@struct.data =3D =
+mem<br><br>Struct says around in my app, but I was seeing strange GC behavi=
+or.=A0 Is assigning the mem pointer to the struct good enough to keep it ar=
+ound?<br>
+
+I was seeing my struct.data being corrupted over time.<br><br>adding<br>@me=
+m =3D mem<br><br>fixed the problem.=A0 Am I using MemoryPointer correctly?<=
+br><br>/Shawn<br>
+
+--0015175cae1885552a047ab4a56c--

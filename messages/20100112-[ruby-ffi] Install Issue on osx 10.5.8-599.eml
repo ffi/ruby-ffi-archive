@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs46872ane;
+        Tue, 12 Jan 2010 17:00:18 -0800 (PST)
+Received: by 10.151.16.22 with SMTP id t22mr914822ybi.138.1263344418675;
+        Tue, 12 Jan 2010 17:00:18 -0800 (PST)
+Return-Path: <3IBtNSwcJCNM0G7zCBDNz6DD.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 14si43504751ywh.56.2010.01.12.17.00.17;
+        Tue, 12 Jan 2010 17:00:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3IBtNSwcJCNM0G7zCBDNz6DD.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3IBtNSwcJCNM0G7zCBDNz6DD.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3IBtNSwcJCNM0G7zCBDNz6DD.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf2500903yxe.13
+        for <headius@headius.com>; Tue, 12 Jan 2010 17:00:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        bh=Q2KHSvOVjpjSS9KhPIANUbm8x+1k6Jl/4kbxOTltcyg=;
+        b=elidcgJqQE/WBlm+xBLadI9gAdxOEAjAeOYsp1NJYvd6eXgDOdDxeF/ABZtE1EVuB+
+         HAFkrCaxvHc17XEXC5aXI+dflhL+qWD8cVKfjYzE3K6BB6L6yYSNszU7yTmWhAilfSTP
+         gq8mc2QJvTqqxTVThPkoNbFQAf4V+O9m5KdWo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:x-thread-url
+         :x-message-url:sender:list-unsubscribe:list-subscribe:content-type;
+        b=h+Ezvrr30fJGyRHWEVPDqyw2f3zZZA3zW66Co+UKboeEeMzwDY2aPRNDhWYmadMCIk
+         eAX1AxieOB5jzneRrw5YuZCAwj4DgiJ950oxhVyhNyMHNkVXoAK1PYBsiC1mqgP2Q5KF
+         JMCysuzBv6LEekTlMzbDHYMeV1zy6x/zx2NFU=
+Received: by 10.150.173.8 with SMTP id v8mr67647ybe.25.1263344416486;
+        Tue, 12 Jan 2010 17:00:16 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.39.12 with SMTP id m12ls443149ybm.2.p; Tue, 12 Jan 2010 
+	17:00:15 -0800 (PST)
+Received: by 10.150.90.1 with SMTP id n1mr34988378ybb.5.1263344415143;
+        Tue, 12 Jan 2010 17:00:15 -0800 (PST)
+Received: by 10.91.160.22 with SMTP id m22mr16161897ago.6.1263343508656;
+        Tue, 12 Jan 2010 16:45:08 -0800 (PST)
+Received: by 10.91.160.22 with SMTP id m22mr16161896ago.6.1263343508629;
+        Tue, 12 Jan 2010 16:45:08 -0800 (PST)
+Return-Path: <brianmo@yahoo.com>
+Received: from mail-yw0-f148.google.com (mail-yw0-f148.google.com [209.85.211.148])
+        by gmr-mx.google.com with ESMTP id 12si2824897gxk.14.2010.01.12.16.45.08;
+        Tue, 12 Jan 2010 16:45:08 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.211.148 is neither permitted nor denied by best guess record for domain of brianmo@yahoo.com) client-ip=209.85.211.148;
+Received: by ywh12 with SMTP id 12so58979349ywh.19
+        for <ruby-ffi@googlegroups.com>; Tue, 12 Jan 2010 16:45:08 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.32.5 with SMTP id k5mr24086ybj.15.1263343508556; Tue, 12 
+	Jan 2010 16:45:08 -0800 (PST)
+Date: Tue, 12 Jan 2010 16:45:08 -0800 (PST)
+X-IP: 63.226.234.37
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; 
+	rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6,gzip(gfe),gzip(gfe)
+Message-ID: <f5b4fdf8-a43a-4f7f-a895-5c3bfdd401cb@p8g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Install Issue on osx 10.5.8
+From: bmo <brianmo@yahoo.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/572d86fbc7c36d93
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/cea6556ecbeea9d6
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Just a FYI, this is an encapsulation of a email thread from a month
+ago or so -- if you're missing ffi.h when installing on 10.5.8, you
+should
+
+port install libffi
+
+An even better non-workaround would be to change extconf.rb in the ffi
+gem to actually build libffi (which is included in the ext/ffi_c/
+libffi directory), and modify the include and link paths in the
+Makefile accordingly if ffi.h isn't originally found.
+
+Brian Moran
+http://www.onehub.com

@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 5:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>[315] Found ''
+<span class="moz-txt-citetags">&gt; </span>(eval):3: [BUG] Segmentation fault
+<span class="moz-txt-citetags">&gt; </span>ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+</pre></blockquote><pre wrap>
+
+I get this too.
+
+1.8.6 mingw
+
+...
+[543] Found 'M'
+[544] Found 'Default IME'
+(eval):3: [BUG] Segmentation fault
+ruby 1.8.6 (2009-03-31) [i386-mingw32]
+
+1.9.1 mingw
+
+[544] Found 'Default IME'
+(eval):3: [BUG] Segmentation fault
+ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+
+-- control frame ----------
+c:0005 p:---- s:0019 b:0019 l:000018 d:000018 CFUNC  :call
+c:0004 p:0016 s:0013 b:0013 l:000012 d:000012 METHOD (eval):3
+c:0003 p:0116 s:0008 b:0008 l:00227c d:00109c EVAL   test3.rb:32
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:00227c d:00227c TOP
+
+-r
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,52 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 4:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 21, 2009, at 1:21 PM, Jon wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'll address the biggest hole in this here. FFI::MemoryPointer, FFI::Struct, and FFI::ManagedStruct are all proxy objects. Nothing they reference lives in the ruby heap.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>While these proxy objects live in the ruby heap and are subject to the will of the specific ruby impls gc, the real goodies are always in the native heap.  Got it, thanks.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>When a ruby GC detects that an FFI::Struct is garbage, the memory that the FFI::Struct references is acted upon at all. This is because FFI::Struct is just a proxy for some unmanaged memory.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>You mean the unmanaged mem is <b class="moz-txt-star"><span class="moz-txt-tag">*</span>not<span class="moz-txt-tag">*</span></b> acted upon at all (typo) right?
+</pre></blockquote><pre wrap>
+
+Yes, typo. I meant that the pointed to native heap memory is not acted upon.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Are you also saying that if the proxy object is ruby GC'd the unmanaged mem is (currently) never freed by any of the impls?
+</pre></blockquote><pre wrap>
+
+Not automatically, no. The user is responsible for releasing it back. Because every C library does this different (use free(), call a specific cleanup function), we can never do anything without more information or explicit action.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>So while we should never see the dangling pointer class of issues, do you see real-world potential for writing ruby ffi code that can easily leak memory?  For example, if I'm creating/destroying FFI::Struct proxies in a callback in some long-lived process, the ruby heap will be cleaned but the underlying unmanaged mem in the native heap would not be?
+</pre></blockquote><pre wrap>
+
+Yes, thats a big problem. You need to be cleaning up those resources manually based on the rules of whatever C code you're interacting with.
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Jon
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

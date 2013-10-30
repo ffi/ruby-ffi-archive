@@ -1,0 +1,154 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs1046494ane;
+        Thu, 31 Dec 2009 11:25:27 -0800 (PST)
+Received: by 10.150.102.5 with SMTP id z5mr28850825ybb.160.1262287527762;
+        Thu, 31 Dec 2009 11:25:27 -0800 (PST)
+Return-Path: <3pfo8SwcJCCgWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 4si21653549ywh.81.2009.12.31.11.25.26;
+        Thu, 31 Dec 2009 11:25:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3pfo8SwcJCCgWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3pfo8SwcJCCgWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3pfo8SwcJCCgWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf32744689gxk.7
+        for <headius@headius.com>; Thu, 31 Dec 2009 11:25:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:from:date
+         :message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=6HWW7ZpY9JRj5nn2Kcp4SVsXwVkcfRWOUmTgzbjVffc=;
+        b=g1q82g2K9Yv7cVXIaPNTBzLcqmqE3PpF/nm+0ZajIFHuykExuARwbYHNgTg3h2GKBd
+         2m56ezslBLXqI/VfIvXHvqO3EQC0o2yGPcdUy/F0F7kqjPTBmGKJYryLWgZ8tMBpklPQ
+         BbFJTEYCLIuHBlJ63xpuJPd14JDto0L1P9uyw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:date:message-id:subject
+         :to:x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        b=XulJDhnw9IrLTWyyrXzl/geWzA7tQAQSkl3aHyb6dZomSbzVFbhSQyv4BlpfYqa7kQ
+         eHk/wEYdNUJKiD6ONhbovfOrLFeuq9fRlLAJub92Dpi0pQSgjY9CNtr477VxHerVOkxk
+         RN5aJoosPkJr8M32Z3aIc2hhMBTfzcn0qV4Hc=
+Received: by 10.101.51.12 with SMTP id d12mr177532ank.47.1262287525737;
+        Thu, 31 Dec 2009 11:25:25 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.69.18 with SMTP id x18ls588827fai.0.p; Thu, 31 Dec 2009 
+	11:25:24 -0800 (PST)
+Received: by 10.223.98.206 with SMTP id r14mr781256fan.19.1262287524350;
+        Thu, 31 Dec 2009 11:25:24 -0800 (PST)
+Received: by 10.223.98.206 with SMTP id r14mr781255fan.19.1262287524315;
+        Thu, 31 Dec 2009 11:25:24 -0800 (PST)
+Return-Path: <shawn42@gmail.com>
+Received: from mail-bw0-f225.google.com (mail-bw0-f225.google.com [209.85.218.225])
+        by gmr-mx.google.com with ESMTP id 12si1414463fxm.13.2009.12.31.11.25.23;
+        Thu, 31 Dec 2009 11:25:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of shawn42@gmail.com designates 209.85.218.225 as permitted sender) client-ip=209.85.218.225;
+Received: by mail-bw0-f225.google.com with SMTP id 25so9248784bwz.18
+        for <ruby-ffi@googlegroups.com>; Thu, 31 Dec 2009 11:25:23 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.204.154.213 with SMTP id p21mr12141936bkw.163.1262287523098; 
+	Thu, 31 Dec 2009 11:25:23 -0800 (PST)
+From: Shawn Anderson <shawn42@gmail.com>
+Date: Thu, 31 Dec 2009 14:25:03 -0500
+Message-ID: <c410d2f20912311125t591c0856nb31d91ec9b5c1f48@mail.gmail.com>
+Subject: [ruby-ffi] Performance help
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of shawn42@gmail.com designates 209.85.218.225 as permitted sender) 
+	smtp.mail=shawn42@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: shawn42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/525e5b8fb6ab25fd
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/69baa5295049994a
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0015175cd86e6b30ba047c0b37d8
+
+--0015175cd86e6b30ba047c0b37d8
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm seeing my ffi version of chipmunk bindings are about 10 times slower.
+Can any experts take a look and tell me if I'm doing something wrong?
+
+http://github.com/shawn42/chipmunk-ffi
+
+you will need ffi 0.6 and nice-ffi 0.2 and chipmunk built from svn (
+http://code.google.com/p/chipmunk-physics/source/checkout )
+
+/Shawn
+
+perf test:
+
+require 'rubygems'
+require 'benchmark'
+
+n = 10000
+Benchmark.bm do |x|
+  # old bindings
+  require 'chipmunk'
+  x.report("cp vec2    ") {
+    n.times do
+      vec2(4,3)
+    end
+  }
+  x.report("cp vec2 sub") {
+    n.times do
+      vec2(4,3)-vec2(5,6)
+    end
+  }
+  # new bindings
+  require 'chipmunk-ffi'
+  x.report("cp-ffi vec2") {
+    n.times do
+      vec2(4,3)
+    end
+  }
+  x.report("cp vec2 ffi sub") {
+    n.times do
+      vec2(4,3)-vec2(5,6)
+    end
+  }
+end
+
+--0015175cd86e6b30ba047c0b37d8
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I&#39;m seeing my ffi version of chipmunk bindings are about 10 times slowe=
+r.=A0 Can any experts take a look and tell me if I&#39;m doing something wr=
+ong?<br><br><a href=3D"http://github.com/shawn42/chipmunk-ffi">http://githu=
+b.com/shawn42/chipmunk-ffi</a><br>
+
+<br>you will need ffi 0.6 and nice-ffi 0.2 and chipmunk built from svn ( <a=
+ href=3D"http://code.google.com/p/chipmunk-physics/source/checkout">http://=
+code.google.com/p/chipmunk-physics/source/checkout</a> )<br><br>/Shawn<br>
+
+<br>perf test:<br><br>require &#39;rubygems&#39;<br>require &#39;benchmark&=
+#39;<br><br>n =3D 10000<br>Benchmark.bm do |x|<br>=A0 # old bindings<br>=A0=
+ require &#39;chipmunk&#39;<br>=A0 x.report(&quot;cp vec2=A0=A0=A0 &quot;) =
+{<br>=A0=A0=A0 n.times do<br>
+
+=A0=A0=A0=A0=A0 vec2(4,3)<br>=A0=A0=A0 end<br>=A0 }<br>=A0 x.report(&quot;c=
+p vec2 sub&quot;) {<br>=A0=A0=A0 n.times do<br>=A0=A0=A0=A0=A0 vec2(4,3)-ve=
+c2(5,6)<br>=A0=A0=A0 end<br>=A0 }<br>=A0 # new bindings<br>=A0 require &#39=
+;chipmunk-ffi&#39;<br>=A0 x.report(&quot;cp-ffi vec2&quot;) {<br>
+
+=A0=A0=A0 n.times do<br>=A0=A0=A0=A0=A0 vec2(4,3)<br>=A0=A0=A0 end<br>=A0 }=
+<br>=A0 x.report(&quot;cp vec2 ffi sub&quot;) {<br>=A0=A0=A0 n.times do<br>=
+=A0=A0=A0=A0=A0 vec2(4,3)-vec2(5,6)<br>=A0=A0=A0 end<br>=A0 }<br>end<br>
+
+--0015175cd86e6b30ba047c0b37d8--

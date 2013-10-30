@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.58.80 with SMTP id f16csp5532bkh;
+        Wed, 12 Sep 2012 00:13:40 -0700 (PDT)
+Received: by 10.60.29.134 with SMTP id k6mr20570404oeh.5.1347434019462;
+        Wed, 12 Sep 2012 00:13:39 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDX5XJEO2MJBBIXMYCBAKGQEKG352HQ@googlegroups.com>
+Received: from mail-ob0-f190.google.com (mail-ob0-f190.google.com [209.85.214.190])
+        by mx.google.com with ESMTPS id ue6si24904636obb.70.2012.09.12.00.13.39
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 12 Sep 2012 00:13:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDX5XJEO2MJBBIXMYCBAKGQEKG352HQ@googlegroups.com designates 209.85.214.190 as permitted sender) client-ip=209.85.214.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBDX5XJEO2MJBBIXMYCBAKGQEKG352HQ@googlegroups.com designates 209.85.214.190 as permitted sender) smtp.mail=ruby-ffi+bncBDX5XJEO2MJBBIXMYCBAKGQEKG352HQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by obbtb18 with SMTP id tb18sf1599929obb.7
+        for <headius@headius.com>; Wed, 12 Sep 2012 00:13:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=uus27AKvzRuZguUoCfZpse1fiG29UU1KKa83aAKzTDE=;
+        b=OCdb2qSFeL6dR+PjlNHEJrhdOsHX5xDNCFmX0RBu4bHzhni4+LzRcXnyaUOW7iWu/0
+         fMvYIZS+9IxHSexH21lba+qx1doLiI1/4L5RbDD5Oe8aGAQTkKlv9P7cbh1GrvPFOhIS
+         dNXnqzdnTHWvEf2UQn+efuDYJOwigYHomrCwraXIuKxY3K+zxeQdjMRsfvQzWIfGD3l4
+         M3AscoX8CGyet05V/TnB9uSngQ6EMEK9rI2xBPM0FYCiMKWnnrbGbmwJ+CRBzt42PTS8
+         4zUI/YTleO6dRK1ZzVdWDHKOx+Jmr/Z+BBRM17g0SrNoSRYyi7+RjyXWAK0K7jX5nehz
+         twDw==
+Received: by 10.224.221.19 with SMTP id ia19mr3721884qab.3.1347434018718;
+        Wed, 12 Sep 2012 00:13:38 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.214.132 with SMTP id ha4ls2448810qab.1.gmail; Wed, 12 Sep
+ 2012 00:13:38 -0700 (PDT)
+Received: by 10.224.111.8 with SMTP id q8mr8922299qap.3.1347434018489;
+        Wed, 12 Sep 2012 00:13:38 -0700 (PDT)
+Received: by 10.224.28.72 with SMTP id l8msqac;
+        Tue, 11 Sep 2012 23:09:27 -0700 (PDT)
+Received: by 10.236.139.196 with SMTP id c44mr2562337yhj.17.1347430167558;
+        Tue, 11 Sep 2012 23:09:27 -0700 (PDT)
+Date: Tue, 11 Sep 2012 23:09:27 -0700 (PDT)
+From: Eugene Zheganin <zheganin@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <2f921d96-f9e5-4bdd-acc1-cf04c5efcfa3@googlegroups.com>
+Subject: [ruby-ffi] cannot install ffi gem on Solaris
+MIME-Version: 1.0
+X-Original-Sender: zheganin@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_584_10937916.1347430167199"
+
+------=_Part_584_10937916.1347430167199
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi.
+
+I use ruby 1.8.7.
+
+Is there any way to build ffi gem on solaris 10 ? I am able to build 
+ffi_c.so library and get rake to this point (inserting -m64 in one place, 
+and -std=c99 in another):
+
+[warn] YARD unavailable
+install -c build/i386-solaris2.10/ffi_c/1.8.7/ffi_c.so lib/ffi_c.so
+gmake -f libtest/GNUmakefile CPU=i386 OS=solaris 
+gmake: libtest/GNUmakefile: No such file or directory
+gmake: *** No rule to make target `libtest/GNUmakefile'.  Stop.
+rake aborted!
+Command failed with status (2): [gmake -f libtest/GNUmakefile CPU=i386 
+OS=s...]
+
+Tasks: TOP => default => specs => build/libtest.so
+(See full trace by running task with --trace)
+
+But I don't see any libtest or GNUmakefile, so I'm pretty much stuck here.
+
+Thanks.
+
+------=_Part_584_10937916.1347430167199
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hi.<div><br></div><div>I use ruby 1.8.7.<br><div><br></div><div>Is there any way to build ffi gem on solaris 10 ? I am able to build ffi_c.so library and get rake to this point (inserting -m64 in one place, and -std=c99 in another):</div><div><br></div><div><div>[warn] YARD unavailable</div><div>install -c build/i386-solaris2.10/ffi_c/1.8.7/ffi_c.so lib/ffi_c.so</div><div>gmake -f libtest/GNUmakefile CPU=i386 OS=solaris&nbsp;</div><div>gmake: libtest/GNUmakefile: No such file or directory</div><div>gmake: *** No rule to make target `libtest/GNUmakefile'. &nbsp;Stop.</div><div>rake aborted!</div><div>Command failed with status (2): [gmake -f libtest/GNUmakefile CPU=i386 OS=s...]</div><div><br></div><div>Tasks: TOP =&gt; default =&gt; specs =&gt; build/libtest.so</div><div>(See full trace by running task with --trace)</div></div><div><br></div><div>But I don't see any libtest or GNUmakefile, so I'm pretty much stuck here.</div><div><br></div><div>Thanks.</div></div>
+------=_Part_584_10937916.1347430167199--

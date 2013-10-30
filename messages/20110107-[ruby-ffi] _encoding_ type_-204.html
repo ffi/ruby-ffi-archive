@@ -1,0 +1,52 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] &#39;encoding&#39; type?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] &#39;encoding&#39; type?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>dubl <rmiddlehouse@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/7/11 1:18 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+hello,
+i'm trying to attach CFStringCreateWithCString..
+
+below is the reference documentation, which allows you to pass null as
+the first argument, a cstring as the second, and an 'encoding' as the
+third..
+
+my question is, how do i attach this?  i'm trying
+  attach_function :CFStringCreateWithCString,
+[:void,:char,:int], :void
+..using ':int', its erroring out saying 'invalid parameter type' for
+the 0 I pass it...
+
+question is: what symbol do i give it as the third argument, and then
+what do i pass it?
+
+I admit I'm new to the concept. this is my first attempt at FFI... i'm
+trying to rewrite an old dl/importable version which used the int,
+passing it a 0, and it worked fine.
+
+thanks for the opportunity to ask the question.
+
+Jon
+
+----------------
+CFStringRef CFStringCreateWithCString (
+   CFAllocatorRef alloc,
+   const char *cStr,
+   CFStringEncoding encoding
+);
+Parameters
+alloc
+The allocator to use to allocate memory for the new string. Pass NULL
+or kCFAllocatorDefault to use the current default allocator.
+cStr
+The NULL-terminated C string to be used to create the CFString object.
+The string must use an 8-bit encoding.
+encoding
+The encoding of the characters in the C string. The encoding must
+specify an 8-bit encoding.
+---------------------
+</pre></div></body>
+</html>
+</table></div>

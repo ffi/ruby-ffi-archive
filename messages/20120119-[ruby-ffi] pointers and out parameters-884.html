@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] pointers and out parameters</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] pointers and out parameters</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mark  Wotton <mwotton@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/19/12 1:40 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+
+I'm trying to move some code from C to Ruby using FFI.
+
+  The problematic chunk looks like this:
+
+  int verbose = (argc &gt; 1 &amp;&amp; streq (argv [1], "-v"));
+    mdwrk_t *session = mdwrk_new (
+        "tcp://localhost:5555", "echo", verbose);
+
+    zmsg_t *reply = NULL;
+    while (1) {
+        zmsg_t *request = mdwrk_recv (session, &amp;reply);
+        if (request == NULL)
+            break;              //  Worker was interrupted
+        reply = request;        //  Echo is complex... <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+    }
+    mdwrk_destroy (&amp;session);
+    return 0;
+
+
+I'm not quite sure how to model the "reply = request" chunk - I have
+this:
+
+
+module Majordomo
+  extend FFI::Library
+  ffi_lib 'lib0mq_majordomo'
+
+  attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+  attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+  attach_function :mdwrk_destroy, [:pointer], :void
+  class Worker &lt; FFI::ManagedStruct
+    def initialize(host, service, verbose=false)
+      @session = Majordomo.mdwrk_new host, service, verbose
+    end
+
+    # this is a bit ugly, but the C expects to be in a run loop
+    # and therefore makes mdwrk_recv do two things...
+    def once
+      raise "Worker needs a responder block" unless block_given?
+
+      ptr = FFI::MemoryPointer.new(:pointer)
+      while true
+        puts "calling receive"
+        request = Majordomo.mdwrk_recv @session, ptr
+        puts "worker interrupted" unless request
+
+        ptr = yield request
+      end
+    end
+  end
+end
+
+calling it as
+
+  while true
+    worker.once {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>x<span class="moz-txt-tag">|</span></code> x}
+  end
+
+to test. The first run goes through ok, but the "ptr = yield request"
+is clearly bogus: it should really be one layer of indirection out.
+
+I can't see how to model this, even after going through the out
+parameter section in the wiki. Could you help?
+
+cheers
+Mark
+</pre></div></body>
+</html>
+</table></div>

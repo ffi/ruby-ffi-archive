@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/3/09 12:46 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/11/4 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I  have applied both, and I have gotten past the earlier issue (Thank you!).
+<span class="moz-txt-citetags">&gt; </span>I am now seeing different errors on ppc and ppc64. On the ppc build [1] I
+<span class="moz-txt-citetags">&gt; </span>build and get a couple of unit test failures.. On the ppc64 build [2] I see
+<span class="moz-txt-citetags">&gt; </span>a wierd error about wrong number of arguments.
+</pre></blockquote><pre wrap>
+
+I'm not surprised.  You're probably the first person on the planet to
+try ruby-ffi on either ppc-linux or ppc64-linux.
+
+You have two choices:
+1) Cut your losses and declare the package usable for i386 and x86_64
+only.  This is probably the easiest path, and given how obsolete ppc
+machines are, probably not a huge loss.
+
+2) Learn enough details about the ppc32 and ppc64 abi, and debug
+ruby-ffi.  It will probably turn out to be something simple, but it
+could take a lot of tears and pain to track down.  The upside is that
+this will help knock out any bugs for other arches like arm.
+
+Naturally, I advocate option #1.
+</pre></div></body>
+</html>
+</table></div>

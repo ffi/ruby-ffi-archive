@@ -1,0 +1,99 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs16127ane;
+        Tue, 5 Jan 2010 07:11:49 -0800 (PST)
+Received: by 10.150.25.30 with SMTP id 30mr20661053yby.83.1262704309135;
+        Tue, 05 Jan 2010 07:11:49 -0800 (PST)
+Return-Path: <3slZDSwsJCJcD15C.GI9D5K7D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com>
+Received: from mail-yx0-f149.google.com (mail-yx0-f149.google.com [209.85.210.149])
+        by mx.google.com with ESMTP id 6si278215yxe.75.2010.01.05.07.11.48;
+        Tue, 05 Jan 2010 07:11:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3slZDSwsJCJcD15C.GI9D5K7D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com designates 209.85.210.149 as permitted sender) client-ip=209.85.210.149;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3slZDSwsJCJcD15C.GI9D5K7D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com designates 209.85.210.149 as permitted sender) smtp.mail=3slZDSwsJCJcD15C.GI9D5K7D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe13 with SMTP id 13sf41044329yxe.23
+        for <headius@headius.com>; Tue, 05 Jan 2010 07:11:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        bh=FBaKVYqZ3Oexga1Tx4YAfub7enjZ/jAAhS48q5Qnz4A=;
+        b=W2KSZn9Brv113Pg7LMe0kepOyLiSOO3FO29HBFpdAVP9GZFSRUQbXjQOP9bwIsDg3t
+         zTD1FtcUn94h2b7WhcD7PEEzXp0Mx/h8OO9Q2srpSpBlE5y28C+VV1a41JR8Nk5duaNj
+         flX0FaAbbBEmjToKoMzhB4VFIGBjUP2HLBaic=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        b=Egc15nakWwf+m7zZKzVZJoazkEe0qKY2OmSvi1Yv3fUnHLga0RCeuR8hobXh9uxf3y
+         z8FToqqwniDN7T3b2lUJkHSEqXzcef8uxRh2l+Z1kMicmF0rCKyOiA/bRJWg5/3sj86f
+         Jbt52xoFlCNjFd3WA60zLCfMV93wEK5EjbQHE=
+Received: by 10.150.20.20 with SMTP id 20mr2014450ybt.54.1262704306902;
+        Tue, 05 Jan 2010 07:11:46 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.59.36 with SMTP id h36ls149535aga.3.p; Tue, 05 Jan 2010 
+	07:11:46 -0800 (PST)
+Received: by 10.91.160.22 with SMTP id m22mr4674920ago.6.1262704304801;
+        Tue, 05 Jan 2010 07:11:44 -0800 (PST)
+Received: by 10.91.160.22 with SMTP id m22mr4674917ago.6.1262704304775;
+        Tue, 05 Jan 2010 07:11:44 -0800 (PST)
+Return-Path: <mael.primet@gmail.com>
+Received: from mail-yw0-f163.google.com (mail-yw0-f163.google.com [209.85.211.163])
+        by gmr-mx.google.com with ESMTP id 19si2333994yxe.2.2010.01.05.07.11.44;
+        Tue, 05 Jan 2010 07:11:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of mael.primet@gmail.com designates 209.85.211.163 as permitted sender) client-ip=209.85.211.163;
+Received: by mail-yw0-f163.google.com with SMTP id 35so23868705ywh.8
+        for <ruby-ffi@googlegroups.com>; Tue, 05 Jan 2010 07:11:44 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.108.15 with SMTP id k15mr500744anm.16.1262704304712; Tue, 
+	05 Jan 2010 07:11:44 -0800 (PST)
+Date: Tue, 5 Jan 2010 07:11:44 -0800 (PST)
+In-Reply-To: <618c07251001050423v20a01f8q7c06aa0bc0d5bd70@mail.gmail.com>
+X-IP: 82.225.240.30
+References: <b3eee08a-c965-41c1-9d26-aff6a7c6759d@c3g2000yqd.googlegroups.com> 
+	<26ba0cab-c658-46f1-ad1d-7fc371077866@26g2000yqo.googlegroups.com> 
+	<618c07251001050423v20a01f8q7c06aa0bc0d5bd70@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.6) 
+	Gecko/20091215 Ubuntu/9.10 (karmic) Firefox/3.5.6 GTB6,gzip(gfe),gzip(gfe)
+Message-ID: <d943f727-8f00-4892-bb96-42b4df6865f3@c3g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Problem with a double** array
+From: mael <mael.primet@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of mael.primet@gmail.com designates 209.85.211.163 as permitted 
+	sender) smtp.mail=mael.primet@gmail.com
+X-Original-Sender: mael.primet@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/d68f3a23d1d202c4
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/94fd4eeeb5b288e6
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Well, my complete example is in the previous post,
+how can I ensure my MemoryPointer don't get garbage collected in a
+neat way? (not using some crappy global variable?)
+
+And by the way, what is the most easy way to deallocate some memory
+that was allocated by the native code (like code returning a pointer
+to a malloc),
+should I link the libc free function, or is it already somewhere in
+FFI?

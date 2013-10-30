@@ -1,0 +1,141 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.148.3 with SMTP id to3csp48026lab;
+        Thu, 28 Mar 2013 23:15:14 -0700 (PDT)
+X-Received: by 10.68.179.67 with SMTP id de3mr2035396pbc.130.1364537713024;
+        Thu, 28 Mar 2013 23:15:13 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB37C2SFAKGQEXXXXMNI@googlegroups.com>
+Received: from mail-pa0-f60.google.com (mail-pa0-f60.google.com [209.85.220.60])
+        by mx.google.com with ESMTPS id iw4si2433702pac.95.2013.03.28.23.15.12
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 28 Mar 2013 23:15:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB37C2SFAKGQEXXXXMNI@googlegroups.com designates 209.85.220.60 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB37C2SFAKGQEXXXXMNI@googlegroups.com designates 209.85.220.60 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB37C2SFAKGQEXXXXMNI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pa0-f60.google.com with SMTP id bi5sf123985pad.15
+        for <headius@headius.com>; Thu, 28 Mar 2013 23:15:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=dCCG2hh8iytaCBEk48/5PWDHMfIfWEMwcg+6JpbF3A8=;
+        b=J6/QhnYUHPSVa0Nod5uexfUID3mpOBFa+DmaFcNkXScPR5rVuDuYKAAfcZaTpe+Cpk
+         b/XzDT8ius0Ja/i+ZmFxkiIr+tnLVllpuy2wur6dVBIa5GvGzYt1Pb4OZO/Ypfx/eBfG
+         qqlpqMuTs97UXD258jfj62uuOn94/L2bRnuiukiO+lHqaJB1g0+WmKffx3NO7YtFsMYo
+         4+nEV65KzS1axLwVZ6rrgwu1pxrTwwyjy0Js4qi2xbx+GmW1jzHVCdhRnfQHH7weupPq
+         om95PSYbzfWT6Q0JUPn1X00gU85HF62sH9a/jsmHO+8b5PbLrKVxegVGWJsNRu29MVc5
+         6nbg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=dCCG2hh8iytaCBEk48/5PWDHMfIfWEMwcg+6JpbF3A8=;
+        b=ZwRuYDUn2Bs5NPd6bhJ817YK39EOLttcBBneN23Ei8S4QeBufKR8uUlVmZdEGA7g+j
+         TDK8xZ8I0X91n2RXxYkY+p8oL4hAHMS/ao814ouHUWU6PWFqrxmkE5ZGzdPWo3pGitEK
+         R5gBCM7S8A7JuslIAD7BEUdmnaYzSsRt/eegdcAwQD7DC7ZfVQqniL0IiQCnmq3G5LdB
+         iFgCs/VShB1SMSPj6m0BaRNTPqHlU5oXLTjD9W7Uq9uuLIlEQDqQUpGRbW4LI6rUt0cm
+         qLZtt8Pme2FenIBREgBPc4TCRhV6OqibxmHmjoGsJmELbfejEqLzwlaaCtRHwo36goxF
+         rVLA==
+X-Received: by 10.50.40.103 with SMTP id w7mr2412894igk.11.1364537712066;
+        Thu, 28 Mar 2013 23:15:12 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.182.136 with SMTP id ee8ls2055112igc.2.canary; Thu, 28 Mar
+ 2013 23:15:11 -0700 (PDT)
+X-Received: by 10.50.178.244 with SMTP id db20mr2176738igc.12.1364537711692;
+        Thu, 28 Mar 2013 23:15:11 -0700 (PDT)
+Date: Thu, 28 Mar 2013 23:15:09 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <0e9dc948-711e-478a-b6a7-fb8b5be4a992@googlegroups.com>
+In-Reply-To: <CAFRaJGDhjha6_q4Tb1Z+hbstkcgz90xf8pNf=yy2arAwrGU78w@mail.gmail.com>
+References: <CAFRaJGDhjha6_q4Tb1Z+hbstkcgz90xf8pNf=yy2arAwrGU78w@mail.gmail.com>
+Subject: [ruby-ffi] Re: I wrote on advanced FFI usage
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_364_12722852.1364537709938"
+
+------=_Part_364_12722852.1364537709938
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Thats pretty cool!
+
+(so now I know the story behind all those issues you raised against JRuby)
+
+On Friday, 29 March 2013 04:34:14 UTC+10, Kim Burgestrand wrote:
+>
+> Might be interesting to you since you are subscribed to the FFI mailing=
+=20
+> list. The article is here:=20
+> http://www.elabs.se/blog/61-advanced-topics-in-ruby-ffi
+>
+> If you have any reactions to what I've written I'd love to hear them.
+>
+>
+>
+> --=20
+> =97 Kim Burgestrand
+>
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_364_12722852.1364537709938
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Thats pretty cool!<div><br></div><div>(so now I know the story behind all t=
+hose issues you raised against JRuby)<br><br>On Friday, 29 March 2013 04:34=
+:14 UTC+10, Kim Burgestrand  wrote:<blockquote class=3D"gmail_quote" style=
+=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: =
+1ex;">Might be interesting to you since you are subscribed to the FFI maili=
+ng list. The article is here:&nbsp;<a href=3D"http://www.elabs.se/blog/61-a=
+dvanced-topics-in-ruby-ffi" target=3D"_blank">http://www.elabs.se/<wbr>blog=
+/61-advanced-topics-in-<wbr>ruby-ffi</a><div>
+<br></div><div>If you have any reactions to what I've written I'd love to h=
+ear them.<span></span></div><div><br></div><br><br>-- <br>=97 Kim Burgestra=
+nd<br>
+</blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_364_12722852.1364537709938--

@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] is the 0.6.0 gem ready to release?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] is the 0.6.0 gem ready to release?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/25/10 2:43 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2010/1/25 Mike Dalessio <a class="moz-txt-link-rfc2396E" href="mailto:mike.dalessio@gmail.com">&lt;mike.dalessio@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Mon, Jan 25, 2010 at 1:35 AM, Stephen Bannasch
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-rfc2396E" href="mailto:stephen.bannasch@deanbrook.org">&lt;stephen.bannasch@deanbrook.org&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Some of the new functionality in v0.6.0 is quite useful -- for example the
+<span class="moz-txt-citetags">&gt;&gt; </span>ability to look for multiple alternate libraries.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>But to get this version it needs to be built and installed from source.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> $ gem list ffi -r
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> *** REMOTE GEMS ***
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> ffi (0.5.4)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Is v0.6.0 ready to release?  If not what else needs to be done to get it
+<span class="moz-txt-citetags">&gt;&gt; </span>ready?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>FWIW, Nokogiri 1.4.1 is green on FFI 0.6.0.
+</pre></blockquote><pre wrap>
+
+Is it green on both FFI 0.6.0 and JRuby 1.4?  I mainly want to be sure
+that the changes to ffi_lib behaviour are both forward and backward
+compatible (or can be made to work), so gems work on both 0.6.0 and
+older JRuby releases.
+
+Other than that, it probably needs to be checked that everything works
+fine on at least:
+- i386-Linux, x86_64-Linux;  at least on RHEL and Ubuntu
+- i386-Darwin, x86_64-Darwin;  10.6.2 works for me, but no idea if it
+works on 10.5 or 10.4
+- win32 (mainly using the rubyinstaller ruby builds, but also I guess
+the older VC compiled ones)
+- esoteric things like ppc-linux, whatever-*BSD and solaris
+</pre></div></body>
+</html>
+</table></div>

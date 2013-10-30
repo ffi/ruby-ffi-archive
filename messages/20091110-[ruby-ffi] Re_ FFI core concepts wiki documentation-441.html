@@ -1,0 +1,75 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/10/09 12:32 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>On 11/10/2009 12:19 PM, Jon wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br><blockquote type=cite style="color: #000000;">For me, it is about the examples. I would suggest adding some better
+<br>doco around passing items by reference and arrays. I admit I am weak at
+<br>C, so making the jump between a char*** and an array of strings was not
+<br>intuitive. The JNA website [1]&nbsp; gives in doco examples to explain the
+<br>
+<br>[1] <a class="moz-txt-link-freetext" href="https://jna.dev.java.net/#pointers">https://jna.dev.java.net/#pointers</a>
+<br></blockquote>
+<br>Agreed on the need for more examples.&nbsp; It would be great if you could summarize your recent augeas char** and char*** discussions into an example and update the wiki.
+<br></blockquote>
+<br>
+<br>Let me write up what I did, and if it is the best practice I will be 
+happy to add to the wiki. These examples are from the augeas.h file 
+which can be seen at [1]
+<br>
+<br>
+<br>Passing a Single String by Reference
+<br>-------------------------------------
+<br>
+<br>Assume the method:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;int aug_get(const augeas *aug, const char *path, const char **value);
+<br>
+<br>Where value is a a pointer to a String which is returned. This was 
+mapped using the following:
+<br>
+<br>attach_function :aug_get, [:pointer, :string, :pointer], :int
+<br>
+<br>And the code which uses this function is shown below:
+<br>
+<br>&nbsp;&nbsp; def get(path)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr = FFI::MemoryPointer.new(:pointer, 1)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AugeasLib.aug_get(@aug, path, ptr)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr = ptr.read_pointer()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return strPtr.null? ? nil : strPtr.read_string()
+<br>&nbsp;&nbsp;&nbsp; end
+<br>
+<br>Passing an Array of Strings back by Reference
+<br>----------------------------------------------
+<br>
+<br>int aug_match(const augeas *aug, const char *path, char ***matches);
+<br>
+<br>Where matches is an array of strings returned by reference, and the 
+return code of the method is the length of the array. This is mapped to 
+ffi using:
+<br>
+<br>&nbsp; attach_function :aug_match, [:pointer, :string, :pointer], :int
+<br>
+<br>And the code which calls this function is:
+<br>
+<br>&nbsp;&nbsp;&nbsp; def match(path)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; check()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ptr = FFI::MemoryPointer.new(:pointer, 1)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; len = AugeasLib.aug_match(@aug, path, ptr)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (len &lt; 0)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; raise SystemCallError.new("Matching path expression 
+'#{path}' failed")
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr = ptr.read_pointer()
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strPtr.null? ? [] : strPtr.get_array_of_string(0, len).compact
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end
+<br>&nbsp;&nbsp;&nbsp; end
+<br>
+<br>[1] <a class="moz-txt-link-freetext" href="http://bit.ly/iT6uY">http://bit.ly/iT6uY</a>
+<br></div></body>
+</html>
+</table></div>

@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Initialize FFI::Pointer in C?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Initialize FFI::Pointer in C?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Simon Chiang <simon.a.chiang@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 12:09 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm building a callback to ruby from an extension and I would like to
+pass back pointers much like an attached function that returns
+a :pointer.  Basically something like this:
+
+  int RubyCallback(void *thing)
+  {
+    VALUE ffi_pointer = rbffi_Pointer_NewInstance(thing);
+    VALUE ruby_module = rb_const_get(rb_cObject, rb_intern
+("SomeModule"));
+    VALUE ruby_result = rb_funcall(ruby_module, rb_intern("callback"),
+1, ffi_pointer);
+
+    long result = FIX2INT(ruby_result);
+    return(result);
+  }
+
+And then in ruby:
+
+  module SomeModule
+    module_function
+
+    def callback(ptr)
+       ptr.inspect         # =&gt; shows this to be an FFI::Pointer
+    end
+  end
+
+A method like this works on OS X with ffi-0.5.0 (pre snow-lepoard,
+I'll get the version if necessary) but results in a segfault on snow
+leopard 10.6.2.  The segfault is triggered upon inspect.  I don't know
+how FFI works... I really only got this working by taking a guess at
+what rbffi_Pointer_NewInstance does.  Any ideas what's going wrong on
+10.6.2 and/or how I can do this better?
+</pre></div></body>
+</html>
+</table></div>

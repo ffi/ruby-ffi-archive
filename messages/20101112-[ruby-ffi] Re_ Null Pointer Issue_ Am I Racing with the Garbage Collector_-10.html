@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Scott Gonyea <gonyea@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/12/10 1:01 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Strange.  I replied in my e-mail, but it didn't post.  Hoping it
+wasn't plugged up in Google somewhere.  Here's what I wrote:
+
+I'm pretty sure it does.  I ran into another issue, while using the
+FFI from Github:
+
+<a class="moz-txt-link-freetext" href="https://gist.github.com/673816">https://gist.github.com/673816</a>
+
+I'm checking the values, all along the way, and I'm not handing it any
+nils, but it won't believe me. The ffi 0.6.3 gem won't complain about
+this (but it will blow up at a few spots).
+
+Sigh <span class="moz-smiley-s2" title=":("><span>:(</span></span>  Thank you very much, for your help.
+
+Scott
+
+On Nov 11, 10:21 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Thats interesting.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Does curl use threads internally?  If so, build the ffi gem from
+<span class="moz-txt-citetags">&gt; </span>github and try that.  Earlier versions don't deal well with callbacks
+<span class="moz-txt-citetags">&gt; </span>coming from non-ruby threads.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Also try running it with JRuby.  It handles threads a lot better.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 12 November 2010 15:25, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gon...@gmail.com">&lt;gon...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://gist.github.com/673753">https://gist.github.com/673753</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>That will show you the script I'm running, the gdb backtrace, and ruby-
+<span class="moz-txt-citetags">&gt; &gt; </span>prof (if that helps at all).  I basically was benchmarking my library
+<span class="moz-txt-citetags">&gt; &gt; </span>with the one I started branching from.  It's all good, until I start
+<span class="moz-txt-citetags">&gt; &gt; </span>running a whole lot of iterations.  I made some changes, which seems
+<span class="moz-txt-citetags">&gt; &gt; </span>to have made it less frequent... until I up the number of iterations.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c23">https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c23</a>...
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>That was the one fix.  This GSolr junk of mine uses StreamlyFFI and
+<span class="moz-txt-citetags">&gt; &gt; </span>CurlFFI:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>StreamlyFFI:<a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi">https://github.com/aitrus/streamly_ffi</a>
+<span class="moz-txt-citetags">&gt; &gt; </span>CurlFFI:<a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi">https://github.com/aitrus/curl_ffi</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Scott
+</pre></div></body>
+</html>
+</table></div>

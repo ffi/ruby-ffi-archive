@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: What constitutes a sane building environment?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: What constitutes a sane building environment?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>James <james.b.thompson@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/30/10 1:09 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Well I've been installing a bunch of other things in the mean time and
+amazingly enough ffi 0.6.3 has managed to successfully install iteslf
+somewhere along the way!
+
+I have no idea what has changed, but at least it is working now <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Thanks for your help!
+
+On Nov 29, 9:05 pm, Mike Dalessio <a class="moz-txt-link-rfc2396E" href="mailto:mike.dales...@gmail.com">&lt;mike.dales...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Sat, Nov 27, 2010 at 5:18 AM, James <a class="moz-txt-link-rfc2396E" href="mailto:james.b.thomp...@gmail.com">&lt;james.b.thomp...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hey Mike - thanks for giving me a hand.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>So I installed the libffi-devel package and then got past the initial
+<span class="moz-txt-citetags">&gt; &gt; </span>error that I had and on to a new one. I have managed to install
+<span class="moz-txt-citetags">&gt; &gt; </span>version 0.6.2, but I am getting the following errors for 0.6.3...
+<span class="moz-txt-citetags">&gt; &gt; </span>(sorry about the massive copy-paste)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>gem_make.out: ==================================
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>&lt;snip&gt;
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+<span class="moz-txt-citetags">&gt; &gt; </span>\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+<span class="moz-txt-citetags">&gt; &gt; </span>fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+<span class="moz-txt-citetags">&gt; &gt; </span>mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+<span class="moz-txt-citetags">&gt; &gt; </span>include    -c MappedType.c
+<span class="moz-txt-citetags">&gt; &gt; </span>MappedType.c: In function ‘mapped_allocate’:
+<span class="moz-txt-citetags">&gt; &gt; </span>MappedType.c:54:26: error: ‘NATIVE_MAPPED’ undeclared (first use in
+<span class="moz-txt-citetags">&gt; &gt; </span>this function)
+<span class="moz-txt-citetags">&gt; &gt; </span>MappedType.c:54:26: note: each undeclared identifier is reported only
+<span class="moz-txt-citetags">&gt; &gt; </span>once for each function it appears in
+<span class="moz-txt-citetags">&gt; &gt; </span>MappedType.c: In function ‘mapped_initialize’:
+<span class="moz-txt-citetags">&gt; &gt; </span>MappedType.c:64:11: warning: unused variable ‘t’
+<span class="moz-txt-citetags">&gt; &gt; </span>make: *** [MappedType.o] Error 1
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I don't think this is an environment issue. NATIVE_MAPPED is defined in
+<span class="moz-txt-citetags">&gt; </span>Types.h, which is included by Type.h, which is included by MappedType.c on
+<span class="moz-txt-citetags">&gt; </span>line 33. So I'm at a loss to explain what's going on.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Perhaps if you included some information about your platform - what distro,
+<span class="moz-txt-citetags">&gt; </span>version of GCC, etc., someone might have deeper insight than I do.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Good luck,
+<span class="moz-txt-citetags">&gt; </span>-mike
+</pre></div></body>
+</html>
+</table></div>

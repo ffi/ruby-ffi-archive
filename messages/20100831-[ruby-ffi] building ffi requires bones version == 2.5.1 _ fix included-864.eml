@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.239.152.76 with SMTP id u12cs153678hbb;
+        Tue, 31 Aug 2010 13:11:11 -0700 (PDT)
+Received: by 10.114.46.20 with SMTP id t20mr7589224wat.181.1283285470088;
+        Tue, 31 Aug 2010 13:11:10 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCM2i09LAAhDbw_XjBBoER-bUew@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTP id w27si22433097wah.65.2010.08.31.13.11.08;
+        Tue, 31 Aug 2010 13:11:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM2i09LAAhDbw_XjBBoER-bUew@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM2i09LAAhDbw_XjBBoER-bUew@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCM2i09LAAhDbw_XjBBoER-bUew@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj9 with SMTP id 9sf808139pwj.7
+        for <headius@headius.com>; Tue, 31 Aug 2010 13:11:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:message-id:date:to:from
+         :subject:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=s8/avQU8E40vT72iE5LanA1lbLl2G4cKlUJtvg47fX4=;
+        b=44ke7KlHswDinDjIj6G5iG0aZgZo/uZyzd1bajoqhO7tJyqjltsMGi1Af1ixHGAfJz
+         NrUZ7hBoEqh0BgWzVX93L0i7KWSXjkvlvOLO09JTIfzPSZ+Q0ZcEYeOKUBbaTZ0Rx7KE
+         +KS1p0OD3nFrlngFnyfNR0tV6VgoKOtXV2GIM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:message-id:date:to:from
+         :subject:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=G0rdi2N5J2N5iKvZDFjJkrH6iQQ5XRLSrh6cO4BrgFjACimaTn7csszfdZRidZskW+
+         Jz8A7LiBxkbznACB+6N0veeNAOsOaCFuy+RXsAcYA34dYp68EX8yZJwnA3hrP4Euxrfr
+         BAL3D/9sQoBHIoHAiKC/daKcxWADrdcT1ar9A=
+Received: by 10.142.104.9 with SMTP id b9mr273696wfc.22.1283285467852;
+        Tue, 31 Aug 2010 13:11:07 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.248.40 with SMTP id v40ls7192546wfh.1.p; Tue, 31 Aug 2010
+ 13:11:07 -0700 (PDT)
+Received: by 10.142.70.8 with SMTP id s8mr1571132wfa.39.1283285467392;
+        Tue, 31 Aug 2010 13:11:07 -0700 (PDT)
+Received: by 10.142.70.8 with SMTP id s8mr1571131wfa.39.1283285467363;
+        Tue, 31 Aug 2010 13:11:07 -0700 (PDT)
+Received: from deanbrook.org (deanbrook.org [72.52.70.192])
+        by gmr-mx.google.com with SMTP id h18si11632164wfg.6.2010.08.31.13.11.07;
+        Tue, 31 Aug 2010 13:11:07 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of stephen.bannasch@deanbrook.org designates 72.52.70.192 as permitted sender) client-ip=72.52.70.192;
+Received: from ::ffff:71.161.160.195 ([71.161.160.195]) by deanbrook.org for <ruby-ffi@googlegroups.com>; Tue, 31 Aug 2010 13:11:04 -0700
+Mime-Version: 1.0
+Message-Id: <p06240827c8a311491bef@[192.168.1.122]>
+Date: Tue, 31 Aug 2010 16:11:00 -0400
+To: ruby-ffi@googlegroups.com
+From: Stephen Bannasch <stephen.bannasch@deanbrook.org>
+Subject: [ruby-ffi] building ffi requires bones version == 2.5.1 , fix included
+X-Original-Sender: stephen.bannasch@deanbrook.org
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ best guess record for domain of stephen.bannasch@deanbrook.org designates
+ 72.52.70.192 as permitted sender) smtp.mail=stephen.bannasch@deanbrook.org
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset="us-ascii" ; format="flowed"
+
+Building ffi requires bones version == 2.5.1. Rake tasks won't work if newer versions of Bones are installed.
+
+I've got a very simple patch here:
+http://github.com/stepheneb/ffi/compare/master...fix-bones
+
+Which is referenced in this issue
+http://github.com/ffi/ffi/issues#issue/29

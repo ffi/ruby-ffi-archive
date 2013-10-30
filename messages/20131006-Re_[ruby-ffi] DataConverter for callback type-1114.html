@@ -1,0 +1,130 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] DataConverter for callback type</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] DataConverter for callback type</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/6/13 8:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr"><div><br></div>Can you file an issue on github for that, so I don't forget?<div><br></div><div><br>On Saturday, 5 October 2013 16:18:26 UTC+10, Matijs van Zuijlen  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi Wayne,
+<br>
+<br>Thanks for your response. Based on your example I got things working. I was
+<br>indeed trying to use Type::Function as the native type, and experiencing crashes
+<br>because of it (although that actually worked on JRuby!).
+<br>
+<br>Regards,
+<br>Matijs
+<br>
+<br>On 01/10/13 06:20, Wayne Meissner wrote:
+<br>&gt; Hmm. &nbsp;There are a couple of ways of doing it:
+<br>&gt; - making a DataConverter that has a native_type of a Type::Function actually
+<br>&gt; *work* instead of crashing the VM (or failing with an error on JRuby)
+<br>&gt; - allowing FFI::Function.new() to take a call context and a function
+<br>&gt; pointer/proc/block instead of a separate rtype and param_type array for efficiency.
+<br>&gt; 
+<br>&gt; In the meantime, you can probably achieve what you want.
+<br>&gt; e.g.
+<br>&gt; 
+<br>&gt; module QSort
+<br>&gt; &nbsp; extend FFI::Library
+<br>&gt; &nbsp; ffi_lib 'c'
+<br>&gt; 
+<br>&gt; &nbsp; module Comparator
+<br>&gt; &nbsp; &nbsp; RTYPE = FFI::Type::SINT
+<br>&gt; &nbsp; &nbsp; PARAM_TYPES = &nbsp;[ FFI::Type::POINTER, FFI::Type::POINTER ].freeze
+<br>&gt; &nbsp; &nbsp; extend FFI::DataConverter
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; def self.native_type
+<br>&gt; &nbsp; &nbsp; &nbsp; FFI::Type::POINTER
+<br>&gt; &nbsp; &nbsp; end
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; def self.to_native(value, ctx)
+<br>&gt; &nbsp; &nbsp; &nbsp; FFI::Function.new(RTYPE, PARAM_TYPES, value)
+<br>&gt; &nbsp; &nbsp; end
+<br>&gt; &nbsp; end
+<br>&gt; &nbsp; attach_function :qsort, [ :pointer, :size_t, :size_t, Comparator ], :void
+<br>&gt; end
+<br>&gt; 
+<br>&gt; ptr = FFI::MemoryPointer.new(:int, 2)
+<br>&gt; ptr[0].write_int(2)
+<br>&gt; ptr[1].write_int(1)
+<br>&gt; puts "unsorted=#{ptr.get_array_of_<wbr>int(0, 2)}"
+<br>&gt; QSort.qsort(ptr, 2, 4, -&gt;(p1, p2) { i1, i2 = p1.read_int, p2.read_int; &nbsp;i1 &lt; i2
+<br>&gt; ? -1 : i1 &gt; i2 ? 1 : 0 })
+<br>&gt; puts "sorted=#{ptr.get_array_of_<wbr>int(0, 2)}"
+<br>&gt; 
+<br>&gt; 
+<br>&gt; On Monday, 23 September 2013 05:37:23 UTC+10, Matijs van Zuijlen wrote:
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; I've been digging a little further, and it seems that the
+<br>&gt; &nbsp; &nbsp; rbffi_Function_ForProc
+<br>&gt; &nbsp; &nbsp; function defined in Function.c does exactly what I want, since I have a
+<br>&gt; &nbsp; &nbsp; FFI::FunctionType (i.e., self::Callback), and a Proc (the value argument of
+<br>&gt; &nbsp; &nbsp; #to_native), and I would like to turn this into a FFI::Function.
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; Would it be possible to expose this function to Ruby?
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; On 22/09/13 13:05, Matijs van Zuijlen wrote:
+<br>&gt; &nbsp; &nbsp; &gt; Hello,
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; I'm trying to create a DataConverter that represents a callback function. The
+<br>&gt; &nbsp; &nbsp; &gt; code basically boils down to this:
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; module Lib
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; include FFI::Library
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; ffi_lib 'some-library'
+<br>&gt; &nbsp; &nbsp; &gt; end
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; class Foo &lt; Proc
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; extend FFI::DataConverter
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; Callback = Lib.callback ... # usual call to FFI::Library.callback
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; def self.native_type
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; &nbsp; self::Callback
+<br>&gt; &nbsp; &nbsp; &gt; &nbsp; end
+<br>&gt; &nbsp; &nbsp; &gt; end
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; [The reason I'm doing this is that I want to wrap procs passed from ruby
+<br>&gt; &nbsp; &nbsp; in some
+<br>&gt; &nbsp; &nbsp; &gt; argument conversion code using a method defined on, in this case, Foo]
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; Now, I'm unable to figure out what the definition of Foo.to_native should be.
+<br>&gt; &nbsp; &nbsp; &gt; Foo::Callback is of type FFI::FunctionType, which doesn't have a to_native
+<br>&gt; &nbsp; &nbsp; method.
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; Any ideas?
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; &nbsp; &nbsp; &gt; Thanks and regards,
+<br>&gt; &nbsp; &nbsp; &gt;
+<br>&gt; 
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; -- 
+<br>&gt; &nbsp; &nbsp; Matijs
+<br>&gt; 
+<br>&gt; -- 
+<br>&gt; &nbsp;
+<br>&gt; ---
+<br>&gt; You received this message because you are subscribed to the Google Groups
+<br>&gt; "ruby-ffi" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, send an email
+<br>&gt; to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="C6JGOMyRONcJ">ruby-ffi+u...@<wbr>googlegroups.com</a>.
+<br>&gt; For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<wbr>groups/opt_out</a>.
+<br>
+<br>
+<br>-- 
+<br>Matijs
+<br>
+<br></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Link to non-windows dlls</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Link to non-windows dlls</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/23/10 10:25 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Sat, Oct 23, 2010 at 12:18 PM, kvberge <a class="moz-txt-link-rfc2396E" href="mailto:kvandenberge@gmail.com">&lt;kvandenberge@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I can provide the c declarations to the functions I am attempting to
+<span class="moz-txt-citetags">&gt; </span>wrap, but I cannot provide the dll because it is a dll for the company
+<span class="moz-txt-citetags">&gt; </span>I work for and I am not allowed to supply the dll.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Since I can't test it, why are you sending a :pointer instead of :string?
+
+In the C definition Send expects a string, but you're using a pointer
+and not using FFI MemoryPointers to handle it.
+
+Also, will be great to know in which Ruby line the project segfault,
+guess could be based on what I'm saying above.
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: How to declare (int *argc, char *argv)?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: How to declare (int *argc, char *argv)?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/21/11 1:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Hi przemo_li,
+<br>
+<br>First, did you take a look at <a class="moz-txt-link-freetext" href="https://github.com/remogatto/ffi-opengl">https://github.com/remogatto/ffi-opengl</a>? Perhaps 
+you can fork it and go from there?
+<br>
+<br>On 08/20/2011 03:00 PM, przemo_li wrote:
+<br><blockquote type=cite style="color: #000000;">I've read that :pointer can be used as output array of strings.
+<br>(int * argc, char ** argv)
+<br>
+<br>Can I use :int, as output int parameter?
+<br>[:int, :pointer]
+<br></blockquote>
+<br>No, both parameters need to be pointers.
+<br>
+<br><blockquote type=cite style="color: #000000;">So resulats (if I can use :int)
+<br>attache_function :glutInit, [:int, :pointer], :void
+<br>
+<br>Then how to change ARGV (array of strings) so it can be passed
+<br>as :pointer?
+<br></blockquote>
+<br>For an example of processing ARGC and ARGV, see:
+<br>
+<br><a class="moz-txt-link-freetext" href="https://github.com/mvz/ruby-gir-ffi/blob/master/examples/hard_coded.rb">https://github.com/mvz/ruby-gir-ffi/blob/master/examples/hard_coded.rb</a>
+<br>
+<br>(Oh, and note that ARGV on ruby doesn't include the name of the executable, but 
+C functions generally expect that it does).
+<br>
+<br>HTH,
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs372121qaj;
+        Tue, 15 Sep 2009 19:15:32 -0700 (PDT)
+Received: by 10.114.237.19 with SMTP id k19mr15086116wah.69.1253067331862;
+        Tue, 15 Sep 2009 19:15:31 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f150.google.com (mail-pz0-f150.google.com [209.85.222.150])
+        by mx.google.com with ESMTP id 27si34190062pzk.43.2009.09.15.19.15.30;
+        Tue, 15 Sep 2009 19:15:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.150 as permitted sender) client-ip=209.85.222.150;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.150 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk14 with SMTP id 14so2800198pzk.11
+        for <headius@headius.com>; Tue, 15 Sep 2009 19:15:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type:reply-to:sender
+         :precedence:x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=rGgebhGtzcqiPiy0BV8OQt2mpXt/VpFZaG2ldPDUoBs=;
+        b=zGQDEQPOcpfObd5FnSbsn6KvFbDsmNMZBBYVvdrPZAtQPIzDlHYNzw3zX43aRqe9JS
+         TdMWpq0lvmhseaLxpa5SnxXqt1VntNxYuqKERsdongB1FiGByh/mQxbvF8ea3R605Gv8
+         60D7Cc5nijh/K0MsiCOe9gRfxE5+El0JNYn90=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=g1fYWpS/aSQlhLd9lAqLIrka9Tt3DD74RUqv8M5PiaVu4DmHDjwBRkbOyWRMxwQ+bJ
+         aY39GlKhY9dWn3Fbs8L9q0MdFhARSxNMKj8eJnDcJwKUJL55oDU9/BdT0iF+qNKHcmRh
+         RAUFQf8OuJlr0FadKDR06wrfuSE1Wf2DJFjyw=
+Received: by 10.140.136.15 with SMTP id j15mr538519rvd.11.1253067328974;
+        Tue, 15 Sep 2009 19:15:28 -0700 (PDT)
+Received: by 10.106.203.33 with SMTP id a33gr31prg.0;
+	Tue, 15 Sep 2009 19:15:28 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.141.36.17 with SMTP id o17mr3881473rvj.9.1253067328006; Tue, 15 Sep 2009 19:15:28 -0700 (PDT)
+Received: by 10.141.36.17 with SMTP id o17mr3881472rvj.9.1253067327985; Tue, 15 Sep 2009 19:15:27 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f174.google.com (mail-px0-f174.google.com [209.85.216.174]) by gmr-mx.google.com with ESMTP id 25si1958708pzk.15.2009.09.15.19.15.26; Tue, 15 Sep 2009 19:15:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.174 as permitted sender) client-ip=209.85.216.174;
+Received: by pxi4 with SMTP id 4so3509808pxi.23 for <ruby-ffi@googlegroups.com>; Tue, 15 Sep 2009 19:15:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type; bh=zp2IBuGaFqv5KO1Wrq1yGuJ5UZuHCo6sfznlUIOaiwU=; b=YOJ2u3DD14ywx4DboUDErpUZ8I64AeDJ5LxQEM6jdztLMU7THFtPT8dUDWIYYzyOJ1 8lcG5+/7cwvFbm9/DMm8+a44gyZa5Llo9WS5pMU+nrNl9kGrPxF1U9gFETWCKZGfqu+8 khikAyZMcLp6G/b6RNbR1or0SDG8SCHCyZQvQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type; b=vJ2vAo9SjrdbkRAUivZqmTmvMeCuIsbSc6Iwl7KHPPYM5IsKIHJ1egedkk5AlJdM+m Cwsz4B9IsicxBEniYQcO4TIh01OfM/6zWevsU/RC3A+vMi8Pi5KhX/l+J18U+WXsLrqw mt/3wdzezMhXI8hVmhcjE2outXGw8gFoURIEA=
+MIME-Version: 1.0
+Received: by 10.140.192.19 with SMTP id p19mr1046813rvf.256.1253067326916;  Tue, 15 Sep 2009 19:15:26 -0700 (PDT)
+In-Reply-To: <6bb207cb-68d9-463c-b451-e340565aceb3@f10g2000vbf.googlegroups.com>
+References: <375f210e-392d-4156-bd7f-70d8588735d8@31g2000vbf.googlegroups.com> <4ccee320909151623yfb08bf4mda131cf0c9adc00a@mail.gmail.com> <6bb207cb-68d9-463c-b451-e340565aceb3@f10g2000vbf.googlegroups.com>
+Date: Wed, 16 Sep 2009 12:15:26 +1000
+Message-ID: <4ccee320909151915ma7bf87ap393663b6895ef65b@mail.gmail.com>
+Subject: [ruby-ffi] Re: What is the best way to convert a Fixnum to a 
+ :pointer?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+A MemoryPointer is an allocated Pointer.
+
+i.e. it handles allocation and deallocation of the memory.
+FFI::MemoryPointer.new(x) tries to allocate x bytes.
+
+FFI::Pointer.new on the other hand, just wraps whatever you give it in
+a Pointer instance
+
+btw, you should be checking for Integer in your code, not Fixnum.  A
+Fixnum in MRI cannot hold all the bits in a pointer.
+
+e.g. on 32bit:
+a = 0xfee1dead # this is a valid 32bit address
+puts "a.is_a?(Fixnum)=#{a.is_a?(Fixnum)}"
+# => false
+puts "a.is_a?(Integer)=#{a.is_a?(Integer)}"
+# => true
+
+Or the better way is to do:
+
+pointer = address.is_a?(FFI::Pointer) ? address : FFI::Pointer.new(address)
+
+Or you could always just wrap it using FFI::Pointer.new(address),
+since FFI::Pointer.new can take pointer arguments as well as Integer
+arguments
+
+2009/9/16 Brett Blackham <brett.blackham@gmail.com>:
+>
+> Ah ha! Thanks.
+>
+> pointer = FFI::Pointer.new(address) # Works
+> pointer = FFI::MemoryPointer.new(address) # Fails.
+>
+> Thanks again!
+>
+> Now I am curious what is the difference between a Pointer and
+> MemoryPointer. It was my understanding that a pointer is a pointer.
+>

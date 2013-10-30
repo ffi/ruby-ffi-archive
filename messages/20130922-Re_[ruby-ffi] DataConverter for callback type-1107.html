@@ -1,0 +1,56 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] DataConverter for callback type</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] DataConverter for callback type</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/22/13 2:37 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I've been digging a little further, and it seems that the rbffi_Function_ForProc
+function defined in Function.c does exactly what I want, since I have a
+FFI::FunctionType (i.e., self::Callback), and a Proc (the value argument of
+#to_native), and I would like to turn this into a FFI::Function.
+
+Would it be possible to expose this function to Ruby?
+
+On 22/09/13 13:05, Matijs van Zuijlen wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to create a DataConverter that represents a callback function. The
+<span class="moz-txt-citetags">&gt; </span>code basically boils down to this:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>module Lib
+<span class="moz-txt-citetags">&gt; </span>  include FFI::Library
+<span class="moz-txt-citetags">&gt; </span>  ffi_lib 'some-library'
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>class Foo &lt; Proc
+<span class="moz-txt-citetags">&gt; </span>  extend FFI::DataConverter
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  Callback = Lib.callback ... # usual call to FFI::Library.callback
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  def self.native_type
+<span class="moz-txt-citetags">&gt; </span>    self::Callback
+<span class="moz-txt-citetags">&gt; </span>  end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>[The reason I'm doing this is that I want to wrap procs passed from ruby in some
+<span class="moz-txt-citetags">&gt; </span>argument conversion code using a method defined on, in this case, Foo]
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Now, I'm unable to figure out what the definition of Foo.to_native should be.
+<span class="moz-txt-citetags">&gt; </span>Foo::Callback is of type FFI::FunctionType, which doesn't have a to_native method.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Any ideas?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks and regards,
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+
+<div class="moz-txt-sig">-- 
+Matijs
+
+</div></pre></div></body>
+</html>
+</table></div>

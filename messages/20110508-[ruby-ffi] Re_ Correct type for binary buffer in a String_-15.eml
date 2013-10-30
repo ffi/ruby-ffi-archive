@@ -1,0 +1,74 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs37154agb;
+        Sun, 8 May 2011 02:29:37 -0700 (PDT)
+Received: by 10.220.65.89 with SMTP id h25mr1220693vci.273.1304846976765;
+        Sun, 08 May 2011 02:29:36 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRD5xJnuBBoEEXh_tw@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id d9si4516993vcs.3.2011.05.08.02.29.35
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 08 May 2011 02:29:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD5xJnuBBoEEXh_tw@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD5xJnuBBoEEXh_tw@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRD5xJnuBBoEEXh_tw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf16414689qwj.7
+        for <headius@headius.com>; Sun, 08 May 2011 02:29:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=C9+ZaxYNwo36qhyc5bVSsEO3yeI2zYONy+p5IIUoZGo=;
+        b=Ty31wUPnlba3oT0lLKmYuUm++sdILmuO7uQUpevgkh0BGrS89a7jYbWNgY0/f0G1TM
+         esCCQ7lw6ZvVOEOx32NbsRcUR0ilybNwlgC+z1CR3pzp5FAAEYUPynG/qvcnJtOVVOhj
+         zdLbyk15TOGL4llDysxHNY09WASvel8qxGN8U=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=ISiXCT7EUoKNA4N+9+cY4nAADufEmqkWyJVlZ0S7v2fw0Oq4vcACblg2eT8ZLyBWY5
+         gC02Ko923ZJas+IM0L1Wch2rHqxRR0jqLznn1Dzxi1+Et2GmKxixZZ4qg9JQc2AjyO4K
+         adGXM3Ogm8A7F030fR+yZuZKdFsnBAs5mDP5k=
+Received: by 10.224.27.137 with SMTP id i9mr731443qac.43.1304846969969;
+        Sun, 08 May 2011 02:29:29 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.135.76 with SMTP id m12ls932741qat.0.gmail; Sun, 08 May
+ 2011 02:29:29 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.63.227 with SMTP id c35mr711369qai.45.1304846969656; Sun,
+ 08 May 2011 02:29:29 -0700 (PDT)
+Received: by cu4g2000vbb.googlegroups.com with HTTP; Sun, 8 May 2011 02:29:29
+ -0700 (PDT)
+Date: Sun, 8 May 2011 02:29:29 -0700 (PDT)
+In-Reply-To: <3425738.3079.1304825416812.JavaMail.geo-discussion-forums@prhu33>
+X-IP: 87.114.253.239
+References: <3425738.3079.1304825416812.JavaMail.geo-discussion-forums@prhu33>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.65 Safari/534.24,gzip(gfe)
+Message-ID: <21b39caf-e235-44ca-8288-0551f7379969@cu4g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Re: Correct type for binary buffer in a String?
+From: candlerb <bcandler100@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: bcandler100@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Issue for MRI raised: https://github.com/ffi/ffi/issues/108
+
+I don't have Java on my systems, so can't test with JRuby.

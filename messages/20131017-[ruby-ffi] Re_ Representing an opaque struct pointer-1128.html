@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Representing an opaque struct pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Representing an opaque struct pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/17/13 8:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Try this:<div><br></div><div>pptr = FFI::MemoryPointer.new(:pointer)</div><div>gme_open_file(path, pptr, 44100)</div><div>emu = pptr.read_pointer</div><div>gme_start_track(emu, 0)</div><div><br></div><div>That would be the equivalent of the following C</div><div><br></div><div>Music_Emu** pptr = (Music_Emu&nbsp;**) malloc(sizeof(Music_Emu&nbsp;*));</div><div>gme_open_file(path, pptr, 44100);</div><div>Music_Emu* emu = *pptr;</div><div>free(pptr);</div><div>gme_start_track(emu, 0);</div><div><br></div><div>which is the same as:</div><div><br></div><div>Music_Emu* emu;</div><div>gme_open_file(path, &amp;emu, 44100);<br></div><div>gme_start_track(emu, 0);<br></div><div><br></div><div>... just using malloc+free instead of the stack to manage the memory for the pointer to the Music_Emu pointer.</div><div><br></div><div><br><br>On Friday, 18 October 2013 07:41:15 UTC+11, Misty De Meo  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr">I realized after the fact that #get_pointer isn't doing what I expected; unfortunately I'm running into a different problem when creating a pointer from it via FFI::Pointer. My program segfaults when calling gme_start_track() immediately afterwards with the pointer from the first example.<br><br>gme_open_file(path, FFI::Pointer.new(ptr), 44100)<br>gme_start_track(ptr, 0)<br><br>Where gme_start_track() is defined as:<br><br>gme_err_t gme_start_track( Music_Emu*, int index );<br>attach_function :gme_start_track, [ :pointer, :int ], :gme_err_t<br><br>At a glance I'm not sure what's wrong here - it seems equivalent to the C sample I posted earlier.<br><br>On Thursday, October 17, 2013 12:14:59 AM UTC-7, Misty De Meo wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir="ltr">To answer my own question...<br><br>The opaque pointer is passed just by creating a new FFI::MemoryPointer of type pointer, like so:<br><br>ptr = FFI::MemoryPointer.new(:<wbr>pointer)<br>gme_open_file(path, ptr.get_pointer(0), 44100)<br><br>That said, I'm having a little difficulty wrapping this particular function - I'm sure I'm just passing one of the arguments wrong, but I'm not quite sure what I'm doing wrong.<br><br>I have the specific gme_open_file() function wrapped like this:<br><br>attach_function :gme_open_file, [ :string, :pointer, :int ], :gme_err_t<br><br>And called like above, where `path` is any string. It exits instantly with a failed assert from the gme library, `require(path &amp;&amp; out)` - suggesting to me I'm passing one of the first two arguments incorrectly. My test C program (<a href="https://gist.github.com/mistydemeo/f6e0c6e716b3e8a57939" target="_blank">https://gist.github.com/<wbr>mistydemeo/<wbr>f6e0c6e716b3e8a57939</a>) using the same function works fine.<br><br>On Wednesday, October 16, 2013 8:57:42 PM UTC-7, Misty De Meo wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">Apologies if this has been asked before - couldn't find it on the list
+<br>archives or the wiki.
+<br>
+<br>A library I'm using has an opaque struct (actually a pointer to a C++
+<br>object usable in pure C code), which is used in most of the functions
+<br>in the public C API. How should I represent this in ffi?
+<br>
+<br>For example, the definition and a function using it:
+<br>
+<br>typedef struct Music_Emu Music_Emu;
+<br>
+<br>gme_err_t gme_open_file( const char path [], Music_Emu** out, int sample_rate );
+<br>
+<br>Thanks,
+<br>Misty
+<br></blockquote></div></blockquote></div></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

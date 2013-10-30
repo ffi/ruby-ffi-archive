@@ -1,0 +1,56 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] gem install ffi fails to build native extensions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] gem install ffi fails to build native extensions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/11 4:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On May 11, 2011, at 11:01 AM, lil'b wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Good morning everyone,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>When I try to install the FFI gem on my engineyard instance, I get the
+<span class="moz-txt-citetags">&gt; </span>following failure:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>&lt;snip&gt;
+<span class="moz-txt-citetags">&gt; </span>i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+<span class="moz-txt-citetags">&gt; </span>include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+<span class="moz-txt-citetags">&gt; </span>lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+<span class="moz-txt-citetags">&gt; </span>DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+<span class="moz-txt-citetags">&gt; </span>march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+<span class="moz-txt-citetags">&gt; </span>fPIC -Wno-declaration-after-statement   -o Types.o -c Types.c
+<span class="moz-txt-citetags">&gt; </span>i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+<span class="moz-txt-citetags">&gt; </span>include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+<span class="moz-txt-citetags">&gt; </span>lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+<span class="moz-txt-citetags">&gt; </span>DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+<span class="moz-txt-citetags">&gt; </span>march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+<span class="moz-txt-citetags">&gt; </span>fPIC -Wno-declaration-after-statement   -o LastError.o -c LastError.c
+<span class="moz-txt-citetags">&gt; </span>i686-pc-linux-gnu-gcc -shared -o ffi_c.so ClosurePool.o
+<span class="moz-txt-citetags">&gt; </span>DynamicLibrary.o Platform.o ffi.o Thread.o MethodHandle.o
+<span class="moz-txt-citetags">&gt; </span>StructLayout.o FunctionInfo.o Buffer.o StructByValue.o Variadic.o
+<span class="moz-txt-citetags">&gt; </span>DataConverter.o ArrayType.o MappedType.o Struct.o Function.o Pointer.o
+<span class="moz-txt-citetags">&gt; </span>Type.o Call.o MemoryPointer.o StructByReference.o AbstractMemory.o
+<span class="moz-txt-citetags">&gt; </span>Types.o LastError.o -L. -L/usr/lib -Wl,-R/usr/lib -L. -Wl,-O1,--hash-
+<span class="moz-txt-citetags">&gt; </span>style=gnu -rdynamic -Wl,-export-dynamic -Wl,--no-undefined   <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/.libs/
+<span class="moz-txt-citetags">&gt; </span>libffi_convenience.a -Wl,-R -Wl,/usr/lib -L/usr/lib -lruby19  -
+<span class="moz-txt-citetags">&gt; </span>lpthread -lrt -ldl -lcrypt -lm   -lc
+<span class="moz-txt-citetags">&gt; </span>AbstractMemory.o: In function `memory_get_array_of_ulong':
+<span class="moz-txt-citetags">&gt; </span>AbstractMemory.c:(.text+0x40c9): undefined reference to
+<span class="moz-txt-citetags">&gt; </span>`__builtin_bswap32'
+<span class="moz-txt-citetags">&gt; </span>AbstractMemory.o: In function `memory_put_array_of_ulong':
+<span class="moz-txt-citetags">&gt; </span>AbstractMemory.c:(.text+0x425c): undefined reference to
+<span class="moz-txt-citetags">&gt; </span>`__builtin_bswap32'
+<span class="moz-txt-citetags">&gt; </span>&lt;snip&gt;
+</pre></blockquote><pre wrap>
+
+You are probably best off contacting engineyard support for help.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

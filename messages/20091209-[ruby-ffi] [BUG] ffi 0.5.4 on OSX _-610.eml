@@ -1,0 +1,126 @@
+Delivered-To: headius@headius.com
+Received: by 10.114.184.4 with SMTP id h4cs746425waf;
+        Wed, 9 Dec 2009 21:01:39 -0800 (PST)
+Received: by 10.101.7.23 with SMTP id k23mr1464973ani.11.1260421295732;
+        Wed, 09 Dec 2009 21:01:35 -0800 (PST)
+Return-Path: <3roAgSwYPCJoD8L8GSBCH8A4L7H8L.ILALO5S-99CAIIAF8ALIOJM.6IG@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 10si607331ywh.5.2009.12.09.21.01.35;
+        Wed, 09 Dec 2009 21:01:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3roAgSwYPCJoD8L8GSBCH8A4L7H8L.ILALO5S-99CAIIAF8ALIOJM.6IG@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3roAgSwYPCJoD8L8GSBCH8A4L7H8L.ILALO5S-99CAIIAF8ALIOJM.6IG@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3roAgSwYPCJoD8L8GSBCH8A4L7H8L.ILALO5S-99CAIIAF8ALIOJM.6IG@listserv.bounces.google.com
+Received: by yxe6 with SMTP id 6sf11405990yxe.13
+        for <headius@headius.com>; Wed, 09 Dec 2009 21:01:35 -0800 (PST)
+Received: by 10.90.60.2 with SMTP id i2mr1278735aga.36.1260421294457;
+        Wed, 09 Dec 2009 21:01:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.42.78 with SMTP id r14ls20142ibe.2.p; Wed, 09 Dec 2009 
+	21:01:33 -0800 (PST)
+Received: by 10.231.166.142 with SMTP id m14mr527747iby.24.1260421293138;
+        Wed, 09 Dec 2009 21:01:33 -0800 (PST)
+Received: by 10.231.166.142 with SMTP id m14mr527746iby.24.1260421293109;
+        Wed, 09 Dec 2009 21:01:33 -0800 (PST)
+Return-Path: <jeremy@hinegardner.org>
+Received: from planchet.hinegardner.org (hinegardner.org [216.17.180.14])
+        by gmr-mx.google.com with ESMTP id 18si40608iwn.5.2009.12.09.21.01.32;
+        Wed, 09 Dec 2009 21:01:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of jeremy@hinegardner.org designates 216.17.180.14 as permitted sender) client-ip=216.17.180.14;
+Received: by planchet.hinegardner.org (Postfix, from userid 1000)
+	id F10B51599EC8; Wed,  9 Dec 2009 22:01:31 -0700 (MST)
+Date: Wed, 9 Dec 2009 22:01:31 -0700
+From: Jeremy Hinegardner <jeremy@hinegardner.org>
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] [BUG] ffi 0.5.4 on OSX ?
+Message-ID: <20091210050131.GF18652@hinegardner.org>
+Reply-To: ruby-ffi@googlegroups.com
+Mail-Followup-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+User-Agent: Mutt/1.5.16 (2007-06-09)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jeremy@hinegardner.org designates 216.17.180.14 as permitted 
+	sender) smtp.mail=jeremy@hinegardner.org
+X-Original-Sender: jeremy@hinegardner.org
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/e9a24d52f776ab04
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/72afe345584a5849
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/mixed; boundary="tThc/1wpZn/ma/RB"
+
+--tThc/1wpZn/ma/RB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+I just tried updating to 0.5.4 and ended up with this:
+
+    http://pastie.org/736768
+
+Doing some digging into the code reveals that in the extconf.rb it fails
+to find the 'ffi.h' header, but the link tests for ffi_call and
+ffi_prep_closure succeed so libffi_ok is true in extconf.rb.
+When the extension builds, it fails because ffi.h is not in the include
+path.
+
+It looks to me as if ffi already exits on my OSX
+(/usr/include/ffi/ffi.h), but but it is version 2.1 instead of the
+shipped version 3.0.6 of ffi with gem version 0.5.4
+
+    % grep VERSION /usr/include/ffi/ffi*
+    /usr/include/ffi/fficonfig.h:#define PACKAGE_VERSION "2.1"
+    /usr/include/ffi/fficonfig.h:#define VERSION "2.1-pyobjc"
+
+Adding "/usr/include/ffi" to the find_header() call results in conflicts
+on the PACKAGE_BUGREPORT, PACKAGE_NAME, PACKAGE_STRING, PACKAGE_TARNAME,
+and PACKAGE_VERSION declarations.
+
+I was able to work around the issue for me with the attached patch, but
+it is probably not the correct way to deal with this issue.
+
+enjoy,
+
+-jeremy
+
+-- 
+========================================================================
+ Jeremy Hinegardner                              jeremy@hinegardner.org 
+
+
+--tThc/1wpZn/ma/RB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="header-detection-0.5.4.patch"
+
+diff --git a/ext/ffi_c/extconf.rb b/ext/ffi_c/extconf.rb
+index 08ef0b4..3786ad3 100644
+--- a/ext/ffi_c/extconf.rb
++++ b/ext/ffi_c/extconf.rb
+@@ -4,12 +4,13 @@ require 'rbconfig'
+ dir_config("ffi_c")
+ 
+ unless Config::CONFIG['host_os'] =~ /mswin32|mingw32/
+-  pkg_config("libffi") || find_header("ffi.h", "/usr/local/include", "/opt/local/include")
+-  have_ffi_call = have_library("ffi", "ffi_call", [ "ffi.h" ])
+-  have_prep_closure = have_func("ffi_prep_closure")
+-  libffi_ok = have_ffi_call && have_prep_closure
+-  $defs << "-DHAVE_LIBFFI" if libffi_ok
+-  $defs << "-DHAVE_RAW_API" if have_func("ffi_raw_call") && have_func("ffi_prep_raw_closure")
++  if pkg_config("libffi") || find_header("ffi.h", "/usr/local/include", "/opt/local/include") then
++    have_ffi_call = have_library("ffi", "ffi_call", [ "ffi.h" ])
++    have_prep_closure = have_func("ffi_prep_closure")
++    libffi_ok = have_ffi_call && have_prep_closure
++    $defs << "-DHAVE_LIBFFI" if libffi_ok
++    $defs << "-DHAVE_RAW_API" if have_func("ffi_raw_call") && have_func("ffi_prep_raw_closure")
++  end
+ end
+ have_func('rb_thread_blocking_region')
+ 
+
+--tThc/1wpZn/ma/RB--

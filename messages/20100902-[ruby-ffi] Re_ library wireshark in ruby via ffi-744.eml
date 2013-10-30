@@ -1,0 +1,100 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.51.207 with SMTP id e15cs51313bkg;
+        Thu, 2 Sep 2010 04:02:40 -0700 (PDT)
+Received: by 10.150.225.2 with SMTP id x2mr49056ybg.407.1283425359470;
+        Thu, 02 Sep 2010 04:02:39 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNq_4qXQCRDNiP7jBBoELS7MiA@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id a6si4534872ybo.70.2010.09.02.04.02.38;
+        Thu, 02 Sep 2010 04:02:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNq_4qXQCRDNiP7jBBoELS7MiA@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNq_4qXQCRDNiP7jBBoELS7MiA@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCNq_4qXQCRDNiP7jBBoELS7MiA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb15 with SMTP id 15sf686012gwb.7
+        for <headius@headius.com>; Thu, 02 Sep 2010 04:02:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-via:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=cvjJd7mQ3DBnQdk96vFM6pAJHAWFHp8J86J+L0VVpCQ=;
+        b=PZf38fgYJhgOAaoLLSPziSVygcOUKnGTo0u4LOV/Ex8JMuNJFlZ+09VlhkAYGG0vsW
+         XbFfVadRgX5YVdBiEj9iBhT+kHklEwezfK8UnU2z9COMb5r4frRl/SXLpDQcG5Tjzh0D
+         OuPftvOI0y53gv989YvFxV/kgrfz3Yi0qaKgc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-via:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=vH9Hsx7RwCVB2OsgRMve6IGKMEDnNVRBkASFceqGvnjNx8xDZUfCMoTyZCdDjkOTn2
+         JRc6WU7kh1T3gichbmOSE7DZhdvyUi0L0qNYx8Vz+QNCNMX2FozfnpaV6AN/kzKkRK1W
+         o/XoXe17ROG36RDM340GChWrhdFjoJbvHJBuI=
+Received: by 10.101.8.33 with SMTP id l33mr542575ani.64.1283425357343;
+        Thu, 02 Sep 2010 04:02:37 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.49.22 with SMTP id w22ls162618anw.2.p; Thu, 02 Sep 2010
+ 04:02:37 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.236.40 with SMTP id j40mr732855anh.5.1283425356994; Thu,
+ 02 Sep 2010 04:02:36 -0700 (PDT)
+Received: by e14g2000yqe.googlegroups.com with HTTP; Thu, 2 Sep 2010 04:02:36
+ -0700 (PDT)
+Date: Thu, 2 Sep 2010 04:02:36 -0700 (PDT)
+In-Reply-To: <4C7F81D9.2060009@matijs.net>
+X-IP: 193.49.124.107
+References: <cc48d801-bfd2-4824-93d2-983b5221ba55@y11g2000yqm.googlegroups.com>
+ <4C7F81D9.2060009@matijs.net>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 goodway (NetCache NetApp/6.1.1), 1.1 goodway (NetCache
+ NetApp/6.1.1), 1.1 goodway (NetCache NetApp/6.1.1)
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.2.8)
+ Gecko/20100723 Ubuntu/10.04 (lucid) Firefox/3.6.8,gzip(gfe)
+Message-ID: <38251e87-80e1-4ef0-8cd0-845e4774678a@e14g2000yqe.googlegroups.com>
+Subject: [ruby-ffi] Re: library wireshark in ruby via ffi
+From: akdrim13 <rimkadiouf@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rimkadiouf@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thanks for answer, i look for that
+
+On 2 sep, 12:52, Matijs van Zuijlen <mat...@matijs.net> wrote:
+> Hi,
+>
+> On 1/9/2010 9:52 AM, akdrim13 wrote:
+>
+> > I'm doing my project of 4th year of university and the theme of this
+> > project is to realize a network analyser with web interface close to
+> > what wireshark proposes. So its necessary to mapper the wireshark
+> > library in the ruby language, that will allow me after to dissector
+> > the packets captured via ffi
+>
+> > I have been looking for some manual or documentation about the library
+> > on the net but no success. Afetr all i decided to join the developpers
+> > mailing list to post the question and learn about development of ffi.
+> > Is there any manuel or documentation =A0and any ideas are welecome.
+>
+> Did you take a look at the Wiki? It's at:
+>
+> =A0 =A0http://wiki.github.com/ffi/ffi/
+>
+> You can always ask the list if you have specific questions.
+>
+> Regards,
+> Matijs.

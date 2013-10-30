@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] callback from native thread</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] callback from native thread</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/11 5:55 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Dec 19, 2011, at 11:32 AM, JackNorris wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I am looking to write an asynchronous ICMP/Ping library to use with
+<span class="moz-txt-citetags">&gt; </span>Ruby + FFI.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I've not really started writing anything yet I am just curious if FFI
+<span class="moz-txt-citetags">&gt; </span>can handle callbacks from threads that were not created by Ruby. My
+<span class="moz-txt-citetags">&gt; </span>plan is to create a new thread running a libevent loop and call back
+<span class="moz-txt-citetags">&gt; </span>to Ruby when an event occurs (ie a ping response). This leaves the
+<span class="moz-txt-citetags">&gt; </span>ruby thread open to control libevent.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>It would appreciated if anyone could advise me on this, specifically
+<span class="moz-txt-citetags">&gt; </span>if calling back in such a way will work.
+<span class="moz-txt-citetags">&gt; </span>Maybe I am just going about the whole thing the wrong way! <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+</pre></blockquote><pre wrap>
+
+I would highly suggest thinking of a different mechanism for this. It's unlikely something like this would ever be supported across all Ruby runtimes, particularly those that have already removed their GIL.
+
+Why not have that libevent loop just push the event onto a queue that Ruby can see?
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,97 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI wiki code review request</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI wiki code review request</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/1/09 5:37 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/2 Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>KEY QUESTIONS
+<span class="moz-txt-citetags">&gt; </span>=============
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>1) It appears all FFI objects created in Ruby code live in the heap.  Is this correct?  If yes, I've tried to highlight this in the C code by use of calloc/free.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2) There's no way to create FFI objects on the stack?
+</pre></blockquote><pre wrap>
+
+There is no concept of a C stack in FFI, so yes, everything lives on
+the heap - either the C heap (MemoryPointer, other Pointer instances),
+or the ruby heap (everything else).
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>3) In the "Enumerate Top Level Windows" example, should I use an FFI::MemoryPointer or an FFI::Buffer with :buffer_out in the :get_window_text signature?  Both work in this specific example.  The underyling question really is, "When should I use an FFI::MemoryPointer and when should I use an FFI::Buffer?"
+</pre></blockquote><pre wrap>
+
+Short answer: use MemoryPointer unless you're optimizing, and know
+what you're doing.
+
+Long answer: On some ruby VMs (such as jvm, clr), which use a
+copying/moving GC, there are two types of heap memory - the ruby heap
+and the native heap.
+
+The ruby heap is managed by the GC, and is very fast to allocate,
+access (get/put data) from ruby code, and release.  To pass data from
+the ruby heap to/from native code, the data must be copied.
+
+The native heap is slower to allocate, slower to access from ruby
+code, and has significant management overhead for the VM.  Since the
+memory is already on the native heap, it can be passed directly to
+native code without any additional copying.
+
+The heuristic on which one to use, is when the data is small and of a
+fixed size (e.g. a reference to an int that will be filled in by
+native code), use a Buffer, since the cost of the copy is small.  For
+these small allocations, the MemoryPointer management overhead
+massively exceeds the copy cost.
+
+
+
+Simplified example:
+
+void get_path(char* path, int* lenp) {
+  strlcpy(path, "foo", *lenp);
+  *lenp = 3;
+}
+
+To call the above in C, you would do something like:
+  char buf[512];
+  int len = sizeof(buf);
+  get_path(buf, &amp;len);
+
+To call it from FFI, you since the lenp param is small and fixed size,
+you could use a Buffer.
+
+module Foo
+  attach_function :get_path, [ :buffer_out, :buffer_inout ], :void
+end
+
+# Use MemoryPointer for the path buf, since it is large-ish
+pathbuf = MemoryPointer.new :char, 512
+
+# Use Buffer for the int reference, since it is small and fixed size
+lenp = Buffer.new :int
+Foo.get_path(pathbuf, lenp)
+
+# read out only len bytes as the path
+len = lenp.get_int(0)
+path = pathbuf.get_bytes(0, len)
+
+# lessen the load on the GC by freeing the path memory when no longer needed
+pathbuf.free
+
+
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>4) In the "Enumerate Top Level Windows" example, should I zero out the title buffer via "title.clear" similar to the C memset?
+</pre></blockquote><pre wrap>
+
+Yes.  MemoryPointer and Buffer by default zero out the contents when
+allocated, but if you re-use them you will need to call clear.
+</pre></div></body>
+</html>
+</table></div>

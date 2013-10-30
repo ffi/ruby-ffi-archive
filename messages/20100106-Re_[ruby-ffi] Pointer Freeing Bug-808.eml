@@ -1,0 +1,218 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs90676ane;
+        Wed, 6 Jan 2010 11:12:10 -0800 (PST)
+Received: by 10.220.125.106 with SMTP id x42mr3213820vcr.44.1262805129824;
+        Wed, 06 Jan 2010 11:12:09 -0800 (PST)
+Return-Path: <3h-BESw0JCPclhjd.cZkdrrhnflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com>
+Received: from mail-qy0-f160.google.com (mail-qy0-f160.google.com [209.85.221.160])
+        by mx.google.com with ESMTP id 38si61096888vws.71.2010.01.06.11.12.08;
+        Wed, 06 Jan 2010 11:12:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3h-BESw0JCPclhjd.cZkdrrhnflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com designates 209.85.221.160 as permitted sender) client-ip=209.85.221.160;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3h-BESw0JCPclhjd.cZkdrrhnflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com designates 209.85.221.160 as permitted sender) smtp.mail=3h-BESw0JCPclhjd.cZkdrrhnflZhk.bnlqtax-eehfnnfkdfqntor.bnl@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk32 with SMTP id 32sf36228881qyk.23
+        for <headius@headius.com>; Wed, 06 Jan 2010 11:12:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=cNhLXvPTDvuTMfpxHa6TlBTTGUwcogc5kcaOXE13deQ=;
+        b=w2h7UCX3fACqJeoKBTA+gHtni0VzgdTLzu9EPez4WDskrXT0gIa+7I8m+DJWiTyLR1
+         yk7xz22n2ZiDSjO2Fm8WbwmM3lIKjnkPEFMdk/brTwC9bKo02eyc6vhCmalaVHNK7sGd
+         exw2r4qnQiG5MjaGK9oSkFQK0HmB7XgTYju+I=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=MqHIGY8pl19KsPKEvE0sx6Q4aEvaulGRD8VLew7Txuv+TTHONTnBxAsVkS2BCS0SK8
+         ULYlfZD87zTdQl3lrXpI4dGIw1oiQtCnqrv2I462aZ6wGqui90HGWWlkQdWPn1CvLo8w
+         2ai4/XdBvQP3Sx7z1fORVpF972MwNqeMX9tQ4=
+Received: by 10.229.17.12 with SMTP id q12mr1108070qca.20.1262805127629;
+        Wed, 06 Jan 2010 11:12:07 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.100.199 with SMTP id z7ls21687qcn.0.p; Wed, 06 Jan 2010 
+	11:12:06 -0800 (PST)
+Received: by 10.229.50.70 with SMTP id y6mr4804299qcf.5.1262805126448;
+        Wed, 06 Jan 2010 11:12:06 -0800 (PST)
+Received: by 10.229.50.70 with SMTP id y6mr4804298qcf.5.1262805126389;
+        Wed, 06 Jan 2010 11:12:06 -0800 (PST)
+Return-Path: <mike.dalessio@gmail.com>
+Received: from qw-out-2122.google.com (qw-out-2122.google.com [74.125.92.27])
+        by gmr-mx.google.com with ESMTP id 25si6791835qyk.7.2010.01.06.11.12.05;
+        Wed, 06 Jan 2010 11:12:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of mike.dalessio@gmail.com designates 74.125.92.27 as permitted sender) client-ip=74.125.92.27;
+Received: by qw-out-2122.google.com with SMTP id 8so2470675qwh.65
+        for <ruby-ffi@googlegroups.com>; Wed, 06 Jan 2010 11:12:05 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.13.20 with SMTP id z20mr1170495qcz.83.1262805124668; Wed, 
+	06 Jan 2010 11:12:04 -0800 (PST)
+In-Reply-To: <71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com>
+References: <bd5613e0-04a8-45d5-8fd1-e6550cf11dd7@q4g2000yqm.googlegroups.com>
+	 <71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com>
+Date: Wed, 6 Jan 2010 14:12:04 -0500
+Message-ID: <618c07251001061112g7b60513eofb93558ba081d87c@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer Freeing Bug
+From: Mike Dalessio <mike.dalessio@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of mike.dalessio@gmail.com designates 74.125.92.27 as permitted 
+	sender) smtp.mail=mike.dalessio@gmail.com; dkim=pass (test mode) 
+	header.i=@gmail.com
+X-Original-Sender: mike.dalessio@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9f891a35886cb969
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/9a9053afc829f60a
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016363ba00ee05ddb047c83baa6
+
+--0016363ba00ee05ddb047c83baa6
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Jan 6, 2010 at 1:38 PM, Luis Lavena <luislavena@gmail.com> wrote:
+
+> On Wed, Jan 6, 2010 at 2:41 PM, JEG2 <james@graysoftinc.com> wrote:
+> > [...]
+> >
+> > I'm pretty sure I'm looking at a bug that's triggered during GC here.
+> >
+> > I thought the "ruby malloc" was a sign that Ruby is freeing up memory
+> > before it allocates more.
+> >
+> > Also, as I said, all of my tests work fine when run alone.  It's not
+> > until they are combined that the problem surfaces.  I assume it's the
+> > longer run triggering GC.
+>
+
+Yes, the nature of memory issues is that you may not necessarily trigger a
+segfault. Longer running code will, on average, tend to crash more often if
+there are memory issues.
+
+I would advise you to try running your code under valgrind. If you're using
+hoe, you can install the hoe-debugging plugin to get easy-to-use rake tasks
+for this. Otherwise, you could check out my blog post on the subject:
+
+http://flavoriffic.blogspot.com/2009/06/easily-valgrind-gdb-your-ruby-c.htm=
+l
+
+
+
+
+> >
+> > Is this sounding right?
+> >
+> > I assume it almost has to be an FFI object being freed.  I mean, Ruby
+> > wouldn't try to free some memory allocated by Tokyo Cabinet, right?
+> > Are there FFI objects that try to free something as they are GCed?
+> >
+> > Any tips for the best way to isolate this issue are greatly
+> > appreciated.
+> >
+>
+> What about forcing the garbage collect process on each spec?
+>
+> That, in combination with running the specs in a verbose mode may
+> provide any indication of a individual test that is storing the
+> pointer in a variable that gets collected before it's time.
+>
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry
+>
+
+
+
+--=20
+mike dalessio
+mike@csa.net
+
+--0016363ba00ee05ddb047c83baa6
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<br><div class=3D"gmail_quote">On Wed, Jan 6, 2010 at 1:38 PM, Luis Lavena =
+<span dir=3D"ltr">&lt;<a href=3D"mailto:luislavena@gmail.com">luislavena@gm=
+ail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D=
+"border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padd=
+ing-left: 1ex;">
+On Wed, Jan 6, 2010 at 2:41 PM, JEG2 &lt;<a href=3D"mailto:james@graysoftin=
+c.com">james@graysoftinc.com</a>&gt; wrote:<br>
+&gt; [...]<br>
+<div class=3D"im">&gt;<br>
+&gt; I&#39;m pretty sure I&#39;m looking at a bug that&#39;s triggered duri=
+ng GC here.<br>
+&gt;<br>
+&gt; I thought the &quot;ruby malloc&quot; was a sign that Ruby is freeing =
+up memory<br>
+&gt; before it allocates more.<br>
+&gt;<br>
+&gt; Also, as I said, all of my tests work fine when run alone. =A0It&#39;s=
+ not<br>
+&gt; until they are combined that the problem surfaces. =A0I assume it&#39;=
+s the<br>
+&gt; longer run triggering GC.<br></div></blockquote><div><br>Yes, the natu=
+re of memory issues is that you may not necessarily trigger a segfault. Lon=
+ger running code will, on average, tend to crash more often if there are me=
+mory issues.<br>
+<br>I would advise you to try running your code under valgrind. If you&#39;=
+re using hoe, you can install the hoe-debugging plugin to get easy-to-use r=
+ake tasks for this. Otherwise, you could check out my blog post on the subj=
+ect: <br>
+<br><div style=3D"margin-left: 40px;"><a href=3D"http://flavoriffic.blogspo=
+t.com/2009/06/easily-valgrind-gdb-your-ruby-c.html">http://flavoriffic.blog=
+spot.com/2009/06/easily-valgrind-gdb-your-ruby-c.html</a><br></div><br><br>
+=A0</div><blockquote class=3D"gmail_quote" style=3D"border-left: 1px solid =
+rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;"><div cla=
+ss=3D"im">
+&gt;<br>
+&gt; Is this sounding right?<br>
+&gt;<br>
+&gt; I assume it almost has to be an FFI object being freed. =A0I mean, Rub=
+y<br>
+&gt; wouldn&#39;t try to free some memory allocated by Tokyo Cabinet, right=
+?<br>
+&gt; Are there FFI objects that try to free something as they are GCed?<br>
+&gt;<br>
+&gt; Any tips for the best way to isolate this issue are greatly<br>
+&gt; appreciated.<br>
+&gt;<br>
+<br>
+</div>What about forcing the garbage collect process on each spec?<br>
+<br>
+That, in combination with running the specs in a verbose mode may<br>
+provide any indication of a individual test that is storing the<br>
+pointer in a variable that gets collected before it&#39;s time.<br>
+<font color=3D"#888888"><br>
+--<br>
+Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exup=E9ry<br>
+</font></blockquote></div><br><br clear=3D"all"><br>-- <br>mike dalessio<br=
+><a href=3D"mailto:mike@csa.net">mike@csa.net</a><br><br>
+
+--0016363ba00ee05ddb047c83baa6--

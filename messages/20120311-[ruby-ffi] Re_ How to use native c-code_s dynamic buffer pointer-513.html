@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: How to use native c-code&#39;s dynamic buffer pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: How to use native c-code&#39;s dynamic buffer pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/11/12 5:59 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">I posted an answer on stackoverflow, but I'll repaste it here:<div><div><br></div><div>edit_db() takes a pointer to a pointer as its parameter, so you need something like:</div><div><br></div><div>db = LibDB.new_db()</div><div><br></div><div># pack the 'db' pointer into a temporary bit of memory</div><div>dbp = FFI::MemoryPointer.new(:pointer)</div><div>dbp.write_pointer(db)</div><div><br></div><div># equivalent of edit_db(&amp;db);</div><div>LibDB.edit_db(dbp)</div><div><br></div><div># read the 'db' pointer back out in case edit_db altered the actual pointer value</div><div>db = dbp.read_pointer</div><div><br></div><div><br>On Sunday, 11 March 2012 08:14:44 UTC+10, MJoutsi  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi,
+<br>
+<br>On c-code side it goes:
+<br>
+<br>/* Declarations */
+<br>DATABLOCK *new_db ();
+<br>edit_db(DATABLOCK **db);
+<br>
+<br>/* Usage */
+<br>db = new_db();
+<br>edit_db(&amp;db);
+<br>
+<br>How this goes on Ruby? <a href="https://github.com/ffi/ffi/wiki/Examples" target="_blank">https://github.com/ffi/ffi/<wbr>wiki/Examples</a>
+<br>mentions about MemoryPointer but on my case I already have that buffer
+<br>(created by new_db()), so how to pass reference to buffer for
+<br>edit_db() or how it should go?
+<br></blockquote></div></div>
+</div></body>
+</html>
+</table></div>

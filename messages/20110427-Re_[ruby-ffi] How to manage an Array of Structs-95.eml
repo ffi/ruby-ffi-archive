@@ -1,0 +1,314 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs288839agb;
+        Wed, 27 Apr 2011 17:41:28 -0700 (PDT)
+Received: by 10.204.42.76 with SMTP id r12mr2553677bke.154.1303951287204;
+        Wed, 27 Apr 2011 17:41:27 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPWhsY2GBBCx7-LtBBoEh21gVA@googlegroups.com>
+Received: from mail-fx0-f62.google.com (mail-fx0-f62.google.com [209.85.161.62])
+        by mx.google.com with ESMTPS id e2si5251674bka.9.2011.04.27.17.41.26
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 27 Apr 2011 17:41:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCx7-LtBBoEh21gVA@googlegroups.com designates 209.85.161.62 as permitted sender) client-ip=209.85.161.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCx7-LtBBoEh21gVA@googlegroups.com designates 209.85.161.62 as permitted sender) smtp.mail=ruby-ffi+bncCPWhsY2GBBCx7-LtBBoEh21gVA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by fxm17 with SMTP id 17sf3548132fxm.7
+        for <headius@headius.com>; Wed, 27 Apr 2011 17:41:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=ObKWAPjil1GsZWxxhfuMuzGoXODOsfUx7a+uT0EdbeI=;
+        b=kR1zq4mDhr0+soKezaIk2FPIFnS44fKmCLP8rXH6YSooelqdnVYJoYsOL9Pdw0Gimv
+         MLHvgKV1jxU8zOrTCeaaLqY3sl+/2QlAYaeC0WWJj2XUu5Z5BFJ2izGNvpe00hVqdOoA
+         paskDHRwRZB62/NnDW8qI8T3pSVysEBfPxaxo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=WMsMopT27rEW/A5Vz7T8ZSV/zlImq89FYK2mw91WOEkDzeQNTSWnbqwkIlax5JtO+V
+         JMLx2HpftbCCDi3ZoCWf5Vrc0rUUUHdni1EyvRtLW7qUB3K7PFem3Nv23iv0QGHyocmO
+         ICsPfsuY76UKNaWuAQxoGaWdNZg8Y62B2wJ1s=
+Received: by 10.223.30.147 with SMTP id u19mr627110fac.36.1303951281215;
+        Wed, 27 Apr 2011 17:41:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.35.21 with SMTP id n21ls435447bkd.1.gmail; Wed, 27 Apr
+ 2011 17:41:20 -0700 (PDT)
+Received: by 10.204.10.86 with SMTP id o22mr263028bko.18.1303951280507;
+        Wed, 27 Apr 2011 17:41:20 -0700 (PDT)
+Received: by 10.204.10.86 with SMTP id o22mr263027bko.18.1303951280477;
+        Wed, 27 Apr 2011 17:41:20 -0700 (PDT)
+Received: from mail-fx0-f52.google.com (mail-fx0-f52.google.com [209.85.161.52])
+        by gmr-mx.google.com with ESMTPS id e15si226950bke.5.2011.04.27.17.41.20
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 27 Apr 2011 17:41:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 209.85.161.52 as permitted sender) client-ip=209.85.161.52;
+Received: by fxm6 with SMTP id 6so1537454fxm.25
+        for <ruby-ffi@googlegroups.com>; Wed, 27 Apr 2011 17:41:20 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.28.19 with SMTP id k19mr3013695fac.139.1303951280125; Wed,
+ 27 Apr 2011 17:41:20 -0700 (PDT)
+Received: by 10.223.55.152 with HTTP; Wed, 27 Apr 2011 17:41:20 -0700 (PDT)
+In-Reply-To: <BANLkTi=4g0tiHyy6AyyyzzpB6iRtjNxpsw@mail.gmail.com>
+References: <2952a6dd-e006-41f6-9e07-64681f010c4a@z27g2000prz.googlegroups.com>
+	<BANLkTi=4g0tiHyy6AyyyzzpB6iRtjNxpsw@mail.gmail.com>
+Date: Wed, 27 Apr 2011 19:41:20 -0500
+Message-ID: <BANLkTi=QAcmE0G-po8S1guCYf=rz5-OfzQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] How to manage an Array of Structs
+From: Charles Strahan <charles.c.strahan@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: charles.c.strahan@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of charles.c.strahan@gmail.com designates 209.85.161.52 as permitted
+ sender) smtp.mail=charles.c.strahan@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00151747c5a6db35cb04a1efd0e8
+
+--00151747c5a6db35cb04a1efd0e8
+Content-Type: text/plain; charset=ISO-8859-1
+
+Woops!
+
+To get the bytes from the struct, you would want to do something like this:
+
+  # Call Struct#pointer, and then Pointer#get_bytes
+  struct_bytes = op.pointer.get_bytes(0, Sembuf.size) # (offset, length)
+
+-Charles
+
+
+On Wed, Apr 27, 2011 at 7:37 PM, Charles Strahan <
+charles.c.strahan@gmail.com> wrote:
+
+> Hi P,
+>
+> Just FYI, the first parameter to MemoryPointer.new is the type_size, and
+> the second parameter is count - so you probably wanted to do something like
+> this (for an array consisting of a single Sembuf):
+>
+>   ops = FFI::MemoryPointer.new(Shared::Sembuf) # count defaults to 1
+>
+> Now then, there's probably a better way to do this, but this should work:
+>
+>   sembuf_count = ... # however many Sembufs you want to write
+>   ops = FFI::MemoryPointer.new(Shared::Sembuf, sembuf_count)
+>
+>   # get the bytes
+>   struct_bytes = op.get_bytes(0, Sembuf.size) # (offset, length)
+>
+>   # Pointer#[n] returns a new pointer with the address incremented by (n *
+> Pointer#type_size) - just like a C array
+>   ops[0].put_bytes(0, struct_bytes) # (offset, byte_string)
+>
+>   # now you repeat with ops[1], ops[2], ops[n-1]
+>   ops[1].put_bytes ..
+>   ...
+>
+> Again, there might be a better way to do this. I figured that Pointer#[]=
+> would do the trick, but I guess not.
+>
+> HTH,
+>
+> Charles
+>
+>
+> On Wed, Apr 27, 2011 at 11:58 AM, P4010 <paolo.bosetti@gmail.com> wrote:
+>
+>> Hi all,
+>> I am writing an FFI interface to IP shared memory and semaphores. I
+>> wonder if someone here can give me advice on how to manage an Array of
+>> Structs.
+>>
+>> I am mapping the semop() function in FFI. It has the following
+>> signature:
+>>
+>> #include <sys/sem.h>
+>> int
+>> semop(int semid, struct sembuf *sops, size_t nsops);
+>>
+>> I wrote something like:
+>>
+>> module Shared
+>>  extend FFI::Library
+>>  ffi_lib FFI::Library::LIBC
+>>
+>>  class Sembuf < FFI::Struct
+>>    layout :sem_num, :ushort,
+>>      :sem_op, :short,
+>>      :sem_flg, :short
+>>  end
+>>
+>>  attach_function :semop,  [:int, :pointer, :size_t], :int
+>>
+>> end
+>>
+>> Now the Shared#semop wants a pointer to an array of Shared::Sembuf
+>> structs. How can I build such a pointer? I guess I should start with
+>>
+>> op = Shared::Sembuf.new
+>> op[:sem_num] = 0
+>> op[:sem_op] = -1
+>> op[:sem_flg] = 0
+>>
+>> ops = FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)
+>>
+>> But then I could not find how to add the op instance to the array
+>> pointed to by ops...
+>>
+>> I'll appreciate any suggestion...
+>>
+>> Cheers,
+>> -P.
+>
+>
+>
+
+--00151747c5a6db35cb04a1efd0e8
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Woops!<div><br></div><div>To get the bytes from the struct, you would want =
+to do something like this:</div><div><br></div><div><span class=3D"Apple-st=
+yle-span" style=3D"border-collapse: collapse; font-family: arial, sans-seri=
+f; font-size: 13px; "><div>
+<font face=3D"arial, sans-serif"><span style=3D"border-collapse: collapse; =
+">=A0=A0# Call Struct#pointer, and then Pointer#get_bytes</span></font></di=
+v><div><font face=3D"arial, sans-serif"><span style=3D"border-collapse: col=
+lapse; ">=A0=A0struct_bytes =3D op.pointer.get_bytes(0, Sembuf.size) # (off=
+set, length)</span></font></div>
+</span><div><br></div><div>-Charles</div><div><br></div><div><br><div class=
+=3D"gmail_quote">On Wed, Apr 27, 2011 at 7:37 PM, Charles Strahan <span dir=
+=3D"ltr">&lt;<a href=3D"mailto:charles.c.strahan@gmail.com">charles.c.strah=
+an@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">Hi P,<div><br></div><div>Just FYI, the firs=
+t parameter to MemoryPointer.new is the type_size, and the second parameter=
+ is count - so you probably wanted to do something like this (for an array =
+consisting of a single Sembuf):</div>
+
+<div><br></div><div><span style=3D"border-collapse:collapse;font-family:ari=
+al, sans-serif;font-size:13px">=A0=A0ops =3D FFI::MemoryPointer.new(Shared:=
+:Sembuf) # count defaults to 1</span></div><div>
+<span style=3D"border-collapse:collapse;font-family:arial, sans-serif;font-=
+size:13px"><br></span></div><div><font face=3D"arial, sans-serif"><span sty=
+le=3D"border-collapse:collapse">Now then, there&#39;s probably a better way=
+ to do this, but this should work:</span></font></div>
+
+<div><font face=3D"arial, sans-serif"><span style=3D"border-collapse:collap=
+se"><br></span></font></div><div><font face=3D"arial, sans-serif"><span sty=
+le=3D"border-collapse:collapse">=A0=A0sembuf_count =3D ... # however many S=
+embufs you want to write</span></font></div>
+
+<div><font face=3D"arial, sans-serif"><span style=3D"border-collapse:collap=
+se"><span style=3D"font-size:13px">=A0=A0ops =3D FFI::MemoryPointer.new(Sha=
+red::Sembuf, sembuf_count)</span></span></font></div>
+<div><font face=3D"arial, sans-serif"><span style=3D"border-collapse:collap=
+se"><br></span></font></div><div><font face=3D"arial, sans-serif"><span sty=
+le=3D"border-collapse:collapse">=A0=A0# get the bytes</span></font></div>
+<div><font face=3D"arial, sans-serif"><span style=3D"border-collapse:collap=
+se">=A0=A0struct_bytes =3D op.get_bytes(0, Sembuf.size) # (offset, length)<=
+/span></font></div><div><font face=3D"arial, sans-serif"><span style=3D"bor=
+der-collapse:collapse"><br>
+
+</span></font></div><div><font face=3D"arial, sans-serif"><span style=3D"bo=
+rder-collapse:collapse">=A0=A0# Pointer#[n] returns a new pointer with the =
+address incremented by (n * Pointer#type_size) - just like a C array</span>=
+</font></div>
+
+<div><font face=3D"arial, sans-serif"><span style=3D"border-collapse:collap=
+se">=A0=A0ops[0].put_bytes(0, struct_bytes) # (offset, byte_string)</span><=
+/font></div><div><font face=3D"arial, sans-serif"><span style=3D"border-col=
+lapse:collapse"><br>
+
+</span></font></div><div><font face=3D"arial, sans-serif"><span style=3D"bo=
+rder-collapse:collapse">=A0=A0# now you repeat with ops[1], ops[2], ops[n-1=
+]</span></font></div><div><font face=3D"arial, sans-serif"><span style=3D"b=
+order-collapse:collapse">=A0=A0</span></font><span style=3D"border-collapse=
+:collapse;font-family:arial, sans-serif">ops[1].put_bytes ..</span></div>
+
+<div><span style=3D"border-collapse:collapse;font-family:arial, sans-serif"=
+>=A0=A0...</span></div><div><span style=3D"border-collapse:collapse;font-fa=
+mily:arial, sans-serif;font-size:13px"><br>
+</span></div><div><span style=3D"border-collapse:collapse;font-family:arial=
+, sans-serif;font-size:13px">Again, there might be a better way to do this.=
+ I figured that Pointer#[]=3D would do the trick, but I guess not.</span></=
+div>
+
+<div><span style=3D"border-collapse:collapse;font-family:arial, sans-serif;=
+font-size:13px"><br></span></div><div><span style=3D"border-collapse:collap=
+se;font-family:arial, sans-serif;font-size:13px">HTH,</span></div>
+<div><span style=3D"border-collapse:collapse;font-family:arial, sans-serif;=
+font-size:13px"><br></span></div><font color=3D"#888888"><div><span style=
+=3D"border-collapse:collapse;font-family:arial, sans-serif;font-size:13px">=
+Charles</span></div>
+</font><div><div></div><div class=3D"h5">
+<div><br><br><div class=3D"gmail_quote">On Wed, Apr 27, 2011 at 11:58 AM, P=
+4010 <span dir=3D"ltr">&lt;<a href=3D"mailto:paolo.bosetti@gmail.com" targe=
+t=3D"_blank">paolo.bosetti@gmail.com</a>&gt;</span> wrote:<br><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;=
+padding-left:1ex">
+
+Hi all,<br>
+I am writing an FFI interface to IP shared memory and semaphores. I<br>
+wonder if someone here can give me advice on how to manage an Array of<br>
+Structs.<br>
+<br>
+I am mapping the semop() function in FFI. It has the following<br>
+signature:<br>
+<br>
+#include &lt;sys/sem.h&gt;<br>
+int<br>
+semop(int semid, struct sembuf *sops, size_t nsops);<br>
+<br>
+I wrote something like:<br>
+<br>
+module Shared<br>
+ =A0extend FFI::Library<br>
+ =A0ffi_lib FFI::Library::LIBC<br>
+<br>
+ =A0class Sembuf &lt; FFI::Struct<br>
+ =A0 =A0layout :sem_num, :ushort,<br>
+ =A0 =A0 =A0:sem_op, :short,<br>
+ =A0 =A0 =A0:sem_flg, :short<br>
+ =A0end<br>
+<br>
+ =A0attach_function :semop, =A0[:int, :pointer, :size_t], :int<br>
+<br>
+end<br>
+<br>
+Now the Shared#semop wants a pointer to an array of Shared::Sembuf<br>
+structs. How can I build such a pointer? I guess I should start with<br>
+<br>
+op =3D Shared::Sembuf.new<br>
+op[:sem_num] =3D 0<br>
+op[:sem_op] =3D -1<br>
+op[:sem_flg] =3D 0<br>
+<br>
+ops =3D FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)<br>
+<br>
+But then I could not find how to add the op instance to the array<br>
+pointed to by ops...<br>
+<br>
+I&#39;ll appreciate any suggestion...<br>
+<br>
+Cheers,<br>
+<font color=3D"#888888">-P.</font></blockquote></div><br></div>
+</div></div></blockquote></div><br></div></div>
+
+--00151747c5a6db35cb04a1efd0e8--

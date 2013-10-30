@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] A really simple example: Segmentation fault</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] A really simple example: Segmentation fault</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/31/10 6:33 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 1 February 2010 05:39, Jesús GS <a class="moz-txt-link-rfc2396E" href="mailto:blaxter@gmail.com">&lt;blaxter@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>$ more example.rb
+<span class="moz-txt-citetags">&gt; </span>require 'rubygems'
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+</pre></blockquote><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>ffi_lib './libsample.so'
+<span class="moz-txt-citetags">&gt; </span>attach_function :foo, :foo, [:int], :int
+</pre></blockquote><pre wrap>
+
+
+You need to enclose the above in a module.
+e.g.
+module LibSample
+  extend FFI::Library
+  fi_lib './libsample.so'
+  attach_function :foo, :foo, [:int], :int
+end
+
+And call it as
+LibSample.foo(1)
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp38129laa;
+        Tue, 10 Sep 2013 10:53:30 -0700 (PDT)
+X-Received: by 10.236.25.38 with SMTP id y26mr1808938yhy.141.1378835609107;
+        Tue, 10 Sep 2013 10:53:29 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDN2RDFE5IIBBFVZXWIQKGQEZGWKUVA@googlegroups.com>
+Received: from mail-ie0-x23d.google.com (mail-ie0-x23d.google.com [2607:f8b0:4001:c03::23d])
+        by mx.google.com with ESMTPS id g21si7038492yhc.235.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 10 Sep 2013 10:53:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDN2RDFE5IIBBFVZXWIQKGQEZGWKUVA@googlegroups.com designates 2607:f8b0:4001:c03::23d as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDN2RDFE5IIBBFVZXWIQKGQEZGWKUVA@googlegroups.com designates 2607:f8b0:4001:c03::23d as permitted sender) smtp.mail=ruby-ffi+bncBDN2RDFE5IIBBFVZXWIQKGQEZGWKUVA@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) d=gmail.com
+Received: by mail-ie0-f189.google.com with SMTP id 9sf292551iec.26
+        for <headius@headius.com>; Tue, 10 Sep 2013 10:53:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=gToQec+DNiCQR0WK6DXGmBM1DPapvR6Ph1pTfTNq8c4=;
+        b=ssQlvNDYtZVsgN+v2eu67tuRzK8lkq934H2xuzMfldFB1TaHRc+hHkqfQsMR4Xj+3M
+         +s8M96LqlSwaxBFPf5OPJGGKRDggBftKcPTZWnGSCF/BDNlHZcU6F5ed2F6IgTswKyRF
+         A/QA5j+MuVaFEZQQw5IMFBQkI1r+E3jNZTo73WKg76wITo4mphr0d+chepRAJjRZU+r/
+         Ylt+8HUzS/vUIPBR2rJHiRv9IZf7RnJiHtnvnHv2PTvH4YZrj9K150ZDOA7KuXnwU/7Z
+         8ip0VSogsu3Oc8HSmrHEX6IMabAjULNTlTfF47fl0H10KD/Jcn4lCn9UN+6bsxB8/Ru8
+         k1MQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=gToQec+DNiCQR0WK6DXGmBM1DPapvR6Ph1pTfTNq8c4=;
+        b=tj7v5v1Gue9+9kxCnxsmCNORHGFqRnOxkE0HDfr8bj+TVLr32mwG78149PhFSLO8pk
+         Uc35RnNAEBfj2Y+D9VB/h1gvUFDSEGH71KBgnG09pv/aMd2ha8TvKZoq/m47ujShRINf
+         REx+LUfcuyscjCNWkZvBOvrnE1vXQ5Z+fZPm9T5JEzgoeU0sc34kDIwiE58hRMq5OoPp
+         C09K1w11/DFuC9SRB+BD6+d+hFCahBSi3dbnZrWc+vTVrhdFoFuQnNYkNUJJa1otNJO2
+         M1IsRBJ02fgrzexq2EDWIVqZv+x8btOXBnITEakBMAVvCmJRVZM+h8LWjD86poyrJJJU
+         bboA==
+X-Received: by 10.50.83.6 with SMTP id m6mr633445igy.1.1378835607084;
+        Tue, 10 Sep 2013 10:53:27 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.30.170 with SMTP id t10ls1132503igh.9.gmail; Tue, 10 Sep
+ 2013 10:53:26 -0700 (PDT)
+X-Received: by 10.50.109.165 with SMTP id ht5mr681841igb.11.1378835606618;
+        Tue, 10 Sep 2013 10:53:26 -0700 (PDT)
+Date: Tue, 10 Sep 2013 10:53:25 -0700 (PDT)
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <ea29e6e2-86ed-4c92-b5b7-26f6164e3b6a@googlegroups.com>
+Subject: [ruby-ffi] windows hooking "in a dll"
+MIME-Version: 1.0
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1134_32928194.1378835605686"
+
+------=_Part_1134_32928194.1378835605686
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello all.
+I was trying to figure out how to use ruby ffi + SetWindowsHookEx
+which "apparently" needs to be part of a dll, so that it can hook into all 
+running processes on a machine.
+
+Has anybody tried this before?  Any tips/pointers you may know of in this 
+regard?
+Thank you.
+-roger-
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_1134_32928194.1378835605686
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello all.<div>I was trying to figure out how to use ruby =
+ffi + SetWindowsHookEx</div><div>which "apparently" needs to be part of a d=
+ll, so that it can hook into all running processes on a machine.</div><div>=
+<br></div><div>Has anybody tried this before? &nbsp;Any tips/pointers you m=
+ay know of in this regard?</div><div>Thank you.</div><div>-roger-</div></di=
+v>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_1134_32928194.1378835605686--

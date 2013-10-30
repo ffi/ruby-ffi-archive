@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 5:47 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/22 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I should have added a footnote that just because it <b class="moz-txt-star"><span class="moz-txt-tag">*</span>can<span class="moz-txt-tag">*</span></b> be
+<span class="moz-txt-citetags">&gt;&gt; </span>collected, there is in fact no guarantee that objects are in fact ever
+<span class="moz-txt-citetags">&gt;&gt; </span>collected by the GC.  Depending on the implementation, there might not
+<span class="moz-txt-citetags">&gt;&gt; </span>be sufficient ruby/java memory pressure to cause a GC event, so the
+<span class="moz-txt-citetags">&gt;&gt; </span>objects are not collected, and the native memory is never freed.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is there a #destroy method?
+</pre></blockquote><pre wrap>
+
+There is a #free method on both AutoPointer and MemoryPointer to
+explicitly free them.
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Also a question.
+<span class="moz-txt-citetags">&gt; </span>In the old dl world there was dl/win32 which was a dl implementation
+<span class="moz-txt-citetags">&gt; </span>of Win32API.  Would there be any interest in seeing an FFI port of the
+<span class="moz-txt-citetags">&gt; </span>same?
+</pre></blockquote><pre wrap>
+
+You mean, like this?
+<a class="moz-txt-link-freetext" href="http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32API.rb?rev=498a8743a12ed64e3fa6f994318caf62dfa73aa5">http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32API.rb?rev=498a8743a12ed64e3fa6f994318caf62dfa73aa5</a>
+</pre></div></body>
+</html>
+</table></div>

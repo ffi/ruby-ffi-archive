@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs157271agb;
+        Mon, 25 Apr 2011 12:58:46 -0700 (PDT)
+Received: by 10.142.204.20 with SMTP id b20mr2612332wfg.217.1303761057710;
+        Mon, 25 Apr 2011 12:50:57 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhCbodftBBoEifkNBA@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id m10si10923105wfl.140.2011.04.25.12.50.57
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 25 Apr 2011 12:50:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCbodftBBoEifkNBA@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCbodftBBoEifkNBA@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhCbodftBBoEifkNBA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf2064483pwj.7
+        for <headius@headius.com>; Mon, 25 Apr 2011 12:50:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :x-proofpoint-virus-version:x-proofpoint-spam-details:from:subject
+         :date:message-id:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=NWEqse/1ELhfGuu24G2dc30eA+OnRKGQKR1g9eekM0o=;
+        b=3aEyvkgqPu/Q43DehyxsPyF8s9qIzHe2Cd1xSO4iVgDNJCsinxsujGztqV/Kf5KXx8
+         LIHuxqfdSyPPTH/64DB39bwPDxdeFzu1b/Kuq5m07CNQBNNPdjNQbw9Ua+RaIJN8Wvap
+         ZFn5wVsBo0n1ICE3KTPluIwdSmQzlYaBKp1mo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-virus-version
+         :x-proofpoint-spam-details:from:subject:date:message-id:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-transfer-encoding:content-type;
+        b=Z19XCOqJyENjz77niLuPtxu5bpOw7A1CUlh6MGJzp3evm9akooW+6CCvHjoT8LttU8
+         85CPwTDaQ/GcDqqELgPW6XDg28Edp0JpEh+G6xuWm+oN3En3f94fR6Y7P9aPNRSxa3y7
+         D/epKFjYBCezDs68K0tF771ptBeW6y+bJM0F0=
+Received: by 10.68.27.201 with SMTP id v9mr433921pbg.31.1303761051881;
+        Mon, 25 Apr 2011 12:50:51 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.36.67 with SMTP id o3ls8134222pbj.0.gmail; Mon, 25 Apr 2011
+ 12:50:50 -0700 (PDT)
+Received: by 10.68.33.67 with SMTP id p3mr893101pbi.25.1303761050708;
+        Mon, 25 Apr 2011 12:50:50 -0700 (PDT)
+Received: by 10.68.33.67 with SMTP id p3mr893100pbi.25.1303761050699;
+        Mon, 25 Apr 2011 12:50:50 -0700 (PDT)
+Received: from asmtpout018.mac.com (asmtpout018.mac.com [17.148.16.93])
+        by gmr-mx.google.com with ESMTP id o5si2652794pbb.3.2011.04.25.12.50.50;
+        Mon, 25 Apr 2011 12:50:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.93 as permitted sender) client-ip=17.148.16.93;
+MIME-version: 1.0
+Received: from [192.168.0.101] (unknown [76.8.86.186])
+ by asmtp018.mac.com (Oracle Communications Messaging Exchange Server 7u4-20.01
+ 64bit (built Nov 21 2010)) with ESMTPSA id <0LK80086L4GABD80@asmtp018.mac.com>
+ for ruby-ffi@googlegroups.com; Mon, 25 Apr 2011 12:50:35 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2011-04-25_05:2011-04-25,2011-04-25,1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1012030000 definitions=main-1104250116
+From: Chuck Remes <cremes.devlist@mac.com>
+Subject: [ruby-ffi] need help loading a library
+Date: Mon, 25 Apr 2011 14:50:24 -0500
+Message-id: <86A00FC7-FC17-4340-91D9-AC489F8651A1@mac.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.93 as permitted sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+
+I'm trying to get my ffi-rzmq gem running on Windows (Windows 7 x64). Using DevKit from the RubyInstaller project I was able to successfully build a 32-bit version of the zeromq library. I created a /c/usr/local path and installed the library to that location. Additionally, I installed the ffi gem with 'ruby -S gem install ffi --platform=ruby' where ruby is 1.9.1-p430 so that it would be built using DevKit.
+
+When I tried to require the ffi-rzmq gem, it failed on the call to #ffi_lib. The errors are listed in the pastie.
+
+https://gist.github.com/941051
+
+At /usr/local/lib there is a file named libzmq.dll.a and libzmq.la. I tried copying the *dll* file to the local working directory and trying again. It didn't work and complained about not being able to find the file.
+
+On a lark I renamed libzmq.dll.a to libzmq.dll and tried again. This time it found the library file but Windows throws up a dialog box with the following text:
+
+> z:\mygit\ffi-rzmq\examples\libzmq.DLL is either not designed to run on Windows or it contains an error. Try installing the program again using the original installation media or contact your system administrator or the software vendor for support.
+
+
+
+I also tried it with JRuby 1.5.5. It's output is here at https://gist.github.com/941074
+
+I tried it with libzmq.dll.a and renamed to libzmq.dll. It didn't work either way but it also did not throw up the warning box like MRI did.
+
+What am I doing wrong here? Any suggestions for further troubleshooting this issue?
+
+cr

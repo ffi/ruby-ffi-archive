@@ -1,0 +1,86 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs2452igc;
+        Sat, 29 Oct 2011 04:51:21 -0700 (PDT)
+Received: by 10.68.6.229 with SMTP id e5mr10248573pba.21.1319889080053;
+        Sat, 29 Oct 2011 04:51:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCz0a_1BBoEA-8oVQ@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id d4si12551283pbq.233.2011.10.29.04.51.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 29 Oct 2011 04:51:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCz0a_1BBoEA-8oVQ@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCz0a_1BBoEA-8oVQ@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCz0a_1BBoEA-8oVQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk37 with SMTP id 37sf8140001pzk.7
+        for <headius@headius.com>; Sat, 29 Oct 2011 04:51:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=SSp5q+ahcleQR7WX12At05y6PdbTXBcSjVJcg9r7oQc=;
+        b=tbX4PlrX+V3v6MfeCzhizlhGkFb4a+Rtf+GHfrkcu9fDvB9Uv9xT8hCA609KcbcxwF
+         Axkamyw714BK/uV2mhDz+FMdNuXDo/3gqbaZCi1SErcn1Td8nbIX2+KAV3G2AilJg/sj
+         aqXvZv1+Y/IicoIicmrFL6GkQyw2pujouAwhw=
+Received: by 10.68.39.74 with SMTP id n10mr545620pbk.8.1319889075812;
+        Sat, 29 Oct 2011 04:51:15 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.119.115 with SMTP id kt19ls10337900pbb.4.gmail; Sat, 29 Oct
+ 2011 04:51:15 -0700 (PDT)
+Received: by 10.68.22.69 with SMTP id b5mr816889pbf.11.1319889075601;
+        Sat, 29 Oct 2011 04:51:15 -0700 (PDT)
+Date: Sat, 29 Oct 2011 04:51:15 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <21677020.728.1319889075142.JavaMail.geo-discussion-forums@prep8>
+In-Reply-To: <72a98c73-69ba-492a-a523-ff0356ca72e5@h39g2000prh.googlegroups.com>
+References: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+ <72a98c73-69ba-492a-a523-ff0356ca72e5@h39g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: How to copy a struct?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_727_25896253.1319889075141"
+
+------=_Part_727_25896253.1319889075141
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Or you could use Struct#dup.
+
+e.g.  
+
+$ ruby -rrubygems -e 'require "ffi"; class S < FFI::Struct; layout :a, 
+:int; end; s1 = S.new; s1[:a] = 1234; s2 = s1.dup; puts 
+"s1=#{s1.pointer.address}, s2=#{s2.pointer.address} s1[:a]=#{s1[:a]}, 
+s2[:a]=#{s2[:a]}"'
+
+s1=4311971984, s2=4312277120 s1[:a]=1234, s2[:a]=1234
+
+Different memory addresses, same contents.
+
+
+
+------=_Part_727_25896253.1319889075141
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Or you could use Struct#dup.<div><br></div><div>e.g. &nbsp;</div><div><br></div><div>$ ruby -rrubygems -e 'require "ffi"; class S &lt; FFI::Struct; layout :a, :int; end; s1 = S.new; s1[:a] = 1234; s2 = s1.dup; puts "s1=#{s1.pointer.address}, s2=#{s2.pointer.address} s1[:a]=#{s1[:a]}, s2[:a]=#{s2[:a]}"'</div><div><br></div><div>s1=4311971984, s2=4312277120 s1[:a]=1234, s2[:a]=1234</div><div><br></div><div>Different memory addresses, same contents.</div><div><br></div><div><br></div>
+------=_Part_727_25896253.1319889075141--

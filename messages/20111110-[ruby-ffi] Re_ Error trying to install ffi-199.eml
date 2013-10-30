@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.196.201 with SMTP id io9cs28373igc;
+        Thu, 10 Nov 2011 16:16:56 -0800 (PST)
+Received: by 10.42.72.135 with SMTP id o7mr10184035icj.45.1320970615711;
+        Thu, 10 Nov 2011 16:16:55 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOvxyeiUAxDz0vH1BBoESxk0AA@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id bp3si5149833icb.153.2011.11.10.16.16.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 10 Nov 2011 16:16:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOvxyeiUAxDz0vH1BBoESxk0AA@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOvxyeiUAxDz0vH1BBoESxk0AA@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCOvxyeiUAxDz0vH1BBoESxk0AA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by iakl21 with SMTP id l21sf1220276iak.7
+        for <headius@headius.com>; Thu, 10 Nov 2011 16:16:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=OvrWnhOZXCBMTKjgCIiFvZzARCr4lesENk6OyzfFHGg=;
+        b=Y4ggPjvfzDvRdnA6rVzEEvex/chpF0/HQ7t5BCGST92B8S4oPLgAc8m8KVgOENhyQI
+         g2gaLREdY4bU73JJsBRUyBu8X4Q7t7VjREmSgStrd96Rkuy+KMoUyGfswFmEmDnZh1Yv
+         dWUeoxTT2HJ261aculSEfr3j8WDnWBjRc++jU=
+Received: by 10.50.6.200 with SMTP id d8mr1017681iga.0.1320970611671;
+        Thu, 10 Nov 2011 16:16:51 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.65.66 with SMTP id h2ls4593115ibi.2.gmail; Thu, 10 Nov
+ 2011 16:16:51 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.50.149.234 with SMTP id ud10mr1105684igb.1.1320970611201; Thu,
+ 10 Nov 2011 16:16:51 -0800 (PST)
+Received: by m13g2000prl.googlegroups.com with HTTP; Thu, 10 Nov 2011 16:16:51
+ -0800 (PST)
+Date: Thu, 10 Nov 2011 16:16:51 -0800 (PST)
+In-Reply-To: <29349448.161.1320950614353.JavaMail.geo-discussion-forums@prlm15>
+References: <29349448.161.1320950614353.JavaMail.geo-discussion-forums@prlm15>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/534.51.22 (KHTML, like Gecko) Version/5.1.1 Safari/534.51.22,gzip(gfe)
+Message-ID: <3c3497c0-884f-4163-a090-7d8722ce25ab@m13g2000prl.googlegroups.com>
+Subject: [ruby-ffi] Re: Error trying to install ffi
+From: Michael Cohen <michael.lee.cohen@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: michael.lee.cohen@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ michael.lee.cohen@gmail.com designates internal as permitted sender)
+ smtp.mail=michael.lee.cohen@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Okay, I found the problem and it has to do with Ruby's mkmf gem. The
+issue
+is when you try to build a C extension. The mkmf generates a Makefile
+to confirm a clean compile, such as the following:
+
+"/usr/bin/gcc-4.2 -o conftest -I/Users/fc/.rvm/rubies/ruby-1.9.2-
+p290/
+include/ruby-1.9.1/x86_64-darwin11.0.0 -I/Users/fc/.rvm/rubies/
+ruby-1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/Users/fc/.rvm/
+rubies/ruby-1.9.2-p290/include/ruby-1.9.1 -I. -D_XOPEN_SOURCE -
+D_DARWIN_C_SOURCE    -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-
+parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-
+initializers -Wshorten-64-to-32 -Wno-long-long  -fno-common -pipe
+conftest.c  -L. -L/Users/fc/.rvm/rubies/ruby-1.9.2-p290/lib -L.
+-
+lruby.1.9.1-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2:
+3: int main() {return 0;}
+/* end */
+
+The problem is that it's trying to make use of gcc-4.2. However, if
+you have xcode 4.2 installed there is no gcc-4.2. Rather you have
+llvm-
+gcc-4.2 installed in the /usr/bin directory. The moment you change
+gcc-4.2 to llvm-gcc-4.2 everything works. This will have to be
+brought
+up with the core Ruby team. If you have xcode 4.1 installed prior and
+did not uninstall it then you will also have gcc-4.2 installed.
+
+In any case, you can quickly resolve the problem by simply creating a
+symbolic link to llvm-gcc-4.2 to be gcc-4.2 in the /usr/bin
+directory.
+Then when you go ruby extconf.rb the ffi C extension will compile
+cleanly.
+
+-Mike
+
+On Nov 10, 10:43=A0am, Michael Cohen <michael.lee.co...@gmail.com>
+wrote:
+> Hi,
+>
+> I'm trying to install the ffi gem but when I run the gem install command =
+I
+> get the following error message:
+>
+> Building native extensions. =A0This could take a while...
+> ERROR: =A0Error installing ffi:
+> ERROR: Failed to build gem native extension.
+>
+> =A0 =A0 =A0 =A0 /Users/frozencanuck/.rvm/rubies/ruby-1.9.2-p290/bin/ruby =
+extconf.rb
+> checking for ffi.h... *** extconf.rb failed ***
+> Could not create Makefile due to some reason, probably lack of
+> necessary libraries and/or headers. =A0Check the mkmf.log file for more
+> details. =A0You may need configuration options.
+>
+> Any idea what is going on? I've tried to explicitly download v1.0.10 but =
+I
+> get the same error message.
+>
+> I'm using Ruby v1.9.2-p290 running on Mac OS X 10.7.2. I also have xcode
+> 4.2 installed. Any meaningful thoughts on this would be appreciated.
+>
+> -Mike

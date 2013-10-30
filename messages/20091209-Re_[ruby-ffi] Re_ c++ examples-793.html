@@ -1,0 +1,52 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: c++ examples</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: c++ examples</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 2:54 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/10 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I do not recommend this at all. Using finalizers to release external resources is a very easy way to cause memory leaks and latent bugs.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Anybody know if collection at finalize time what the following code
+<span class="moz-txt-citetags">&gt; </span>(from the tutorial) does by default?
+</pre></blockquote><pre wrap>
+
+When the SomeObject instance is garbage collected, the 'release'
+method is called on the class, passing in the pointer used as the
+memory for the struct.
+
+The problem, is, that in a garbage collected environment, garbage
+collection is not a deterministic event.
+
+i.e.  it doesn't happen the instant the last reference to the
+SomeObject instance goes out of scope, it may be quite some time
+later, or never, if there is no memory pressure from ruby objects
+allocations.
+
+You can use finalizers as a last-resort cleanup mechanism, but you
+also want to have a mechanism to cleanup/dispose the underlying native
+object explicitly during normal operation.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module MyLibrary
+<span class="moz-txt-citetags">&gt; </span> class SomeObject &lt; FFI::ManagedStruct
+<span class="moz-txt-citetags">&gt; </span>   layout :next,  :pointer,
+<span class="moz-txt-citetags">&gt; </span>          :name,  :string,
+<span class="moz-txt-citetags">&gt; </span>          :value, :double,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   def self.release(ptr)
+<span class="moz-txt-citetags">&gt; </span>     MyLibrary.free_object(ptr)
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>Thanks.
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

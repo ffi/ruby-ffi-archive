@@ -1,0 +1,99 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs411154anc;
+        Tue, 19 Jan 2010 15:15:30 -0800 (PST)
+Received: by 10.150.174.5 with SMTP id w5mr3084492ybe.337.1263942930032;
+        Tue, 19 Jan 2010 15:15:30 -0800 (PST)
+Return-Path: <3Dz1WSwoJCO0gdVTgSePRZVbPXa.RdbgjQn-UUXVddVaTVgdjeh.Rdb@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 10si8933362ywh.5.2010.01.19.15.15.28;
+        Tue, 19 Jan 2010 15:15:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3Dz1WSwoJCO0gdVTgSePRZVbPXa.RdbgjQn-UUXVddVaTVgdjeh.Rdb@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3Dz1WSwoJCO0gdVTgSePRZVbPXa.RdbgjQn-UUXVddVaTVgdjeh.Rdb@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3Dz1WSwoJCO0gdVTgSePRZVbPXa.RdbgjQn-UUXVddVaTVgdjeh.Rdb@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf9598626yxe.13
+        for <headius@headius.com>; Tue, 19 Jan 2010 15:15:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        bh=KG++5TgrcWXeK5t/IiWogMJia8Gd4ZNm9DFqYYi41XI=;
+        b=u4amSJnd+/cJG9FEGdtzXzqufhaxoC60iKsKDF++yMjyGVXWCIpzn/V+YBJAZAFDUy
+         Y6iUUCU7CkVNt4PNuI0PMkkp9ERicBbNOtUiwroXnqNB5DjMShNf9iogRKF2kXDj1i1L
+         em0MFGbe/ckBh7lL0HAGIh3ItBfVwz5YkV3Fg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        b=GtoEhd4w1VxMcu0HWWkpyO6gH5Lj7PfI78N8WuGGdNOO/ADUQvQSOzVcIgAXQNUkGo
+         yZ1bPyeJGl01v5SvPvkSjsm2UyhWAuQQEsELsFH0C5/0ZZ8psCoEMWx8CpairJgyIwWM
+         cvS5gvkId3fYOLRbnzrkOcqHbWSk7+dp/nJGc=
+Received: by 10.100.201.1 with SMTP id y1mr604472anf.4.1263942927842;
+        Tue, 19 Jan 2010 15:15:27 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.26.32 with SMTP id d32ls447311agj.1.p; Tue, 19 Jan 2010 
+	15:15:26 -0800 (PST)
+Received: by 10.91.77.8 with SMTP id e8mr4079193agl.5.1263942926488;
+        Tue, 19 Jan 2010 15:15:26 -0800 (PST)
+Received: by 10.91.77.8 with SMTP id e8mr4079192agl.5.1263942926469;
+        Tue, 19 Jan 2010 15:15:26 -0800 (PST)
+Return-Path: <rogerdpack@gmail.com>
+Received: from mail-yw0-f152.google.com (mail-yw0-f152.google.com [209.85.211.152])
+        by gmr-mx.google.com with ESMTP id 17si658544gxk.8.2010.01.19.15.15.26;
+        Tue, 19 Jan 2010 15:15:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerdpack@gmail.com designates 209.85.211.152 as permitted sender) client-ip=209.85.211.152;
+Received: by ywh16 with SMTP id 16so10810301ywh.25
+        for <ruby-ffi@googlegroups.com>; Tue, 19 Jan 2010 15:15:26 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.1.1 with SMTP id d1mr148742ybi.7.1263942926411; Tue, 19 
+	Jan 2010 15:15:26 -0800 (PST)
+Date: Tue, 19 Jan 2010 15:15:26 -0800 (PST)
+In-Reply-To: <cb6e0c5b-e6a9-4446-be71-2fbc5f18e9ab@a32g2000yqm.googlegroups.com>
+X-IP: 216.49.181.254
+References: <9ef47d23-21f0-4657-ac94-3cf8d7725016@a32g2000yqm.googlegroups.com> 
+	<73fa7380-222e-42b8-8704-06b79c70337a@l30g2000yqb.googlegroups.com> 
+	<cb6e0c5b-e6a9-4446-be71-2fbc5f18e9ab@a32g2000yqm.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.7) 
+	Gecko/20091221 Firefox/3.5.7 GTB6 GTBA,gzip(gfe),gzip(gfe)
+Message-ID: <5d11ba78-c3eb-46e8-b871-df382ca859cd@b2g2000yqi.googlegroups.com>
+Subject: [ruby-ffi] Re: Using Windows Unicode functions
+From: rogerdpack <rogerdpack@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerdpack@gmail.com designates 209.85.211.152 as permitted sender) 
+	smtp.mail=rogerdpack@gmail.com
+X-Original-Sender: rogerdpack@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ada0ea99600b7fa1
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/c547c9274e9550e
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> I think you're refering to these lines?
+> -----------------------------------
+> buffer.force_encoding("UTF-16LE")
+> puts buffer.encode("ISO-8859-1").rstrip #Everything displayed correct
+> -----------------------------------
+
+I was thinking more of commenting out the line that throws the
+exception "string contains null byte"
+-r

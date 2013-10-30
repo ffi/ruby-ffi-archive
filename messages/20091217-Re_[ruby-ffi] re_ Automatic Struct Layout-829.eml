@@ -1,0 +1,110 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs337412and;
+        Thu, 17 Dec 2009 16:41:44 -0800 (PST)
+Received: by 10.115.100.30 with SMTP id c30mr2123040wam.211.1261096904116;
+        Thu, 17 Dec 2009 16:41:44 -0800 (PST)
+Return-Path: <3xc8qSwkJCAs7xpt33yp2rxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 13si3906575pzk.59.2009.12.17.16.41.42;
+        Thu, 17 Dec 2009 16:41:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3xc8qSwkJCAs7xpt33yp2rxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3xc8qSwkJCAs7xpt33yp2rxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) smtp.mail=3xc8qSwkJCAs7xpt33yp2rxltw.nzx25m9-qqtrzzrwpr2z503.nzx@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12sf1106157pzk.13
+        for <headius@headius.com>; Thu, 17 Dec 2009 16:41:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=hErzHyzleY/dqzkdLtfID0E1twi1EW2q72M7NyiRXhc=;
+        b=57zpehZv8m1ADWJsbiFk1JnXqLaIqniQnDip002W3W7iM5zKbHlDDYAXgLW5b3Sv4T
+         szINHSwdSrdRk2k8Nn2nSuSbZwYRKoC0q2gfxYe4C95WT5LYsC+SXB2HD+PC9siiAAtW
+         B70qBQR7Oa5crMEaM7PqgLTVuoYfg/IHwdQAc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=Of29UyHqnMb1vu0JOEVH4nYc2ItnzGV8d9B2V+iSocfQ0/mth74XLDDeDmX0JmolK/
+         05UbieZGDfjyVox7wa0OBOikRTTO5ckdwhjnlkd4jVtZV6Fj4pbRaWZm7IOPXeA3Z6UM
+         MpO3SOgguCjIbhuPt2WyyQ7FiQV9SvUgFCenk=
+Received: by 10.142.2.4 with SMTP id 4mr289452wfb.25.1261096901635;
+        Thu, 17 Dec 2009 16:41:41 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.151.29 with SMTP id y29ls349687wfd.1.p; Thu, 17 Dec 2009 
+	16:41:40 -0800 (PST)
+Received: by 10.143.20.37 with SMTP id x37mr601715wfi.22.1261096900636;
+        Thu, 17 Dec 2009 16:41:40 -0800 (PST)
+Received: by 10.143.20.37 with SMTP id x37mr601714wfi.22.1261096900618;
+        Thu, 17 Dec 2009 16:41:40 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f189.google.com (mail-pz0-f189.google.com [209.85.222.189])
+        by gmr-mx.google.com with ESMTP id 38si647030pxi.3.2009.12.17.16.41.39;
+        Thu, 17 Dec 2009 16:41:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.189 as permitted sender) client-ip=209.85.222.189;
+Received: by pzk27 with SMTP id 27so1826989pzk.12
+        for <ruby-ffi@googlegroups.com>; Thu, 17 Dec 2009 16:41:39 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.187.19 with SMTP id o19mr2242048rvp.134.1261096899506; 
+	Thu, 17 Dec 2009 16:41:39 -0800 (PST)
+In-Reply-To: <1b8c6f0c-e50e-4ffa-9299-8ed6bda540fe@26g2000yqo.googlegroups.com>
+References: <1b8c6f0c-e50e-4ffa-9299-8ed6bda540fe@26g2000yqo.googlegroups.com>
+Date: Fri, 18 Dec 2009 10:41:39 +1000
+Message-ID: <4ccee320912171641q65258b4fmce2cd864b231c5f1@mail.gmail.com>
+Subject: Re: [ruby-ffi] re: Automatic Struct Layout
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.189 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/2294588e96c46a8c
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/198156c4bb3d2ef0
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+2009/12/18 rogerdpack <rogerpack2005@gmail.com>:
+> Question.
+> Shouldn't ffi be calculating the offsets automagically for us, since
+> all that is distributed is ruby code, and "automatic struct layout"
+> thence not be necessary? =A0I would have expected that...
+
+
+It does, the wiki just hasn't been updated ... in about a year - so
+feel free to fix it up.
+
+Basically, to have FFI calculate offsets for you, you drop off the
+offset out of the triplet.
+
+i.e. instead of
+class Foo < FFI::Struct
+  layout :a, :long, 0, :b, :int, 4
+end
+
+You would use:
+class Foo < FFI::Struct
+  layout :a, :long, :b, :int
+end
+
+That will calculate the offset of :b automatically for you, and take
+into account 32bit vs 64bit, minimum alignments, tail padding, etc.

@@ -1,0 +1,72 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Gem fails to install on OS X 10.5.8</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Gem fails to install on OS X 10.5.8</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Donald <donald.ball@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/15/09 6:32 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>donald-balls-macbook-pro:serp dball$ sudo gem install ffi
+</pre></blockquote></blockquote><pre wrap>
+Password:
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+/opt/local/bin/ruby extconf.rb
+checking for ffi.h in /usr/local/include,/opt/local/include... no
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... no
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+/usr/bin/gcc-4.0 -I. -I. -I/opt/local/lib/ruby/1.8/i686-darwin9 -I. -
+DRUBY_EXTCONF_H=\"extconf.h\" -I/opt/local/include -D_XOPEN_SOURCE -
+D_DARWIN_C_SOURCE  -I/opt/local/include -fno-common -O2  -fno-common -
+pipe -fno-common  -Werror -Wunused -Wformat -Wimplicit -Wreturn-type
+-c AbstractMemory.c
+In file included from AbstractMemory.h:37,
+                 from AbstractMemory.c:36:
+Types.h:74:17: error: ffi.h: No such file or directory
+In file included from Types.h:75,
+                 from AbstractMemory.h:37,
+                 from AbstractMemory.c:36:
+Type.h:44: error: syntax error before ‘ffi_type’
+cc1: warnings being treated as errors
+Type.h:44: warning: no semicolon at end of struct or union
+In file included from AbstractMemory.c:36:
+AbstractMemory.h: In function ‘memory_get_op’:
+AbstractMemory.h:115: error: dereferencing pointer to incomplete type
+In file included from AbstractMemory.c:38:
+Function.h: At top level:
+Function.h:45: error: field ‘type’ has incomplete type
+Function.h:52: error: syntax error before ‘ffi_type’
+Function.h:52: warning: no semicolon at end of struct or union
+Function.h:53: warning: type defaults to ‘int’ in declaration of
+‘ffiParameterTypes’
+Function.h:53: warning: data definition has no type or storage class
+Function.h:54: error: syntax error before ‘ffi_cif’
+Function.h:54: warning: type defaults to ‘int’ in declaration of
+‘ffi_cif’
+Function.h:54: warning: data definition has no type or storage class
+Function.h:59: error: syntax error before ‘abi’
+Function.h:59: warning: type defaults to ‘int’ in declaration of ‘abi’
+Function.h:59: warning: data definition has no type or storage class
+Function.h:66: error: syntax error before ‘}’ token
+make: *** [AbstractMemory.o] Error 1
+
+
+Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/local/lib/ruby/gems/1.8/gems<span class="moz-txt-tag">/</span></i>
+ffi-0.5.4 for inspection.
+Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/local/lib/ruby/gems/1.8/gems/ffi-0.5.4/ext<span class="moz-txt-tag">/</span></i>
+ffi_c/gem_make.out
+
+donald-balls-macbook-pro:serp dball$ ruby -v
+ruby 1.8.7 (2008-08-11 patchlevel 72) [i686-darwin9]
+</pre></div></body>
+</html>
+</table></div>

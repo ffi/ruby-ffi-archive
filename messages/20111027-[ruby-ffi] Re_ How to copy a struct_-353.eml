@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.55.233 with SMTP id v9cs16108obp;
+        Thu, 27 Oct 2011 08:45:07 -0700 (PDT)
+Received: by 10.227.198.141 with SMTP id eo13mr6314251wbb.19.1319730306640;
+        Thu, 27 Oct 2011 08:45:06 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCM-78_jqChCA-aX1BBoEq2tbUw@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTPS id ge19si4463656wbb.49.2011.10.27.08.45.06
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 27 Oct 2011 08:45:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM-78_jqChCA-aX1BBoEq2tbUw@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM-78_jqChCA-aX1BBoEq2tbUw@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCM-78_jqChCA-aX1BBoEq2tbUw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwf10 with SMTP id 10sf12348227wwf.7
+        for <headius@headius.com>; Thu, 27 Oct 2011 08:45:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=P/cVEweJklcfSgkcAYwK100L23fJ9H9Z0/qy2jor7eU=;
+        b=TMwrB5ED8DOh9+BPtU2S54QhYGDnDXoykEeRIEWCCZurmpVPgMNqwEinxVWb00rgHj
+         aexN52IMa1If8WChpXaNEUJgvjD1WSUXBBtiF+cPGatNFQsvt/1ifHI6XhEC0twXxScy
+         QxI8TPPv7zzXQpLcKvIWpBNc+eXYvMcOMcRUY=
+Received: by 10.216.136.28 with SMTP id v28mr112195wei.80.1319730304935;
+        Thu, 27 Oct 2011 08:45:04 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.19.131 with SMTP id f3ls5354403pbe.5.gmail; Thu, 27 Oct
+ 2011 08:45:04 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.14.161 with SMTP id q1mr325160pbc.16.1319730303927; Thu, 27
+ Oct 2011 08:45:03 -0700 (PDT)
+Received: by h39g2000prh.googlegroups.com with HTTP; Thu, 27 Oct 2011 08:45:03
+ -0700 (PDT)
+Date: Thu, 27 Oct 2011 08:45:03 -0700 (PDT)
+In-Reply-To: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+References: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0,gzip(gfe)
+Message-ID: <72a98c73-69ba-492a-a523-ff0356ca72e5@h39g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: How to copy a struct?
+From: cootcraig <craig@coot.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: craig@coot.net
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ craig@coot.net designates internal as permitted sender)
+ smtp.mail=craig@coot.net; dkim=pass
+ header.i=@coot.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I think this will work for me.  I use a similar Raw class as buffer
+for my DLL call.  I then cast the Raw instance to an appropriate
+struct.
+
+
+#============================= copy_test.rb
+require 'ffi'
+class Raw < FFI::Struct
+  layout :data, [:uchar, 3*4]
+  def copy
+    r2 = self.class.new
+    (0...(self.size)).each {|i| r2[:data][i] = self[:data][i]}
+    r2
+  end
+end
+class Ints < FFI::Struct
+  layout :f1, :int, :f2, :int, :f3, :int
+end
+
+i1 = Ints.new
+i1[:f1] = 97
+i1[:f2] = 98
+i1[:f3] = 99
+r1 = Raw.new i1.to_ptr
+r2 = r1.copy
+i2 = Ints.new r2.to_ptr
+puts "#{i2[:f1]} #{i2[:f2]} #{i2[:f3]}"
+#=> 97 98 99
+puts "i1.to_ptr #{i1.to_ptr} i2.to_ptr #{i2.to_ptr}"
+#=> i1.to_ptr #<FFI::MemoryPointer address=0x62e688 size=12> i2.to_ptr
+#<FFI::MemoryPointer address=0x62e670 size=12>

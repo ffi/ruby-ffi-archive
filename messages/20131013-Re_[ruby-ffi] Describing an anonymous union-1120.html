@@ -1,0 +1,80 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Describing an anonymous union</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Describing an anonymous union</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/13/13 7:43 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Yep, that should work. &nbsp;Can even leave off the class_eval -&nbsp;<div><br></div><div>Class.new(FFI::Union) do</div><div>&nbsp; layout :msg, :pointer,&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :song_end, UadeNotificationSongEnd</div><div>end</div><div><br></div><div>The only things that won't work are typedefs/aliases - they use a hacky way to find the enclosing module (which contains the typedef table), which won't work with anon classes.</div><div><br></div><div>Lexically scoped things will work fine though (and the built in FFI types)<br><br>On Sunday, 13 October 2013 10:23:08 UTC+11, Postmodern  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+  
+    
+  
+  <div bgcolor="#FFFFFF" text="#000000">
+    <div>
+      <p style="margin:1.2em 0px!important">Usually I just come up
+        with some name for anonymous structs/unions. However, I wonder
+        if you could do</p>
+      <pre style="font-size:0.85em;font-family:Consolas,Inconsolata,Courier,monospace;font-size:1em;line-height:1.2em;margin:1.2em 0px"><code style="font-size:0.85em;font-family:Consolas,Inconsolata,Courier,monospace;margin:0px 0.15em;padding:0px 0.3em;white-space:pre-wrap;border:1px solid rgb(234,234,234);background-color:rgb(248,248,248);border-radius:3px 3px 3px 3px;display:inline;white-space:pre;overflow:auto;border-radius:3px 3px 3px 3px;border:1px solid rgb(204,204,204);padding:0.5em 0.7em;display:block;padding:0.5em;background:none repeat scroll 0% 0% rgb(0,0,0);color:rgb(248,248,248)">layout :type, :uade_notification_type,
+       :union, Class.new(FFI::Union).class_<wbr>eval do
+                 ...
+               end</code></pre>
+      <p style="margin:1.2em 0px!important">or something similar?</p>
+      <p style="margin:1.2em 0px!important">On 10/12/2013 04:44 AM,
+        Misty De Meo wrote:</p>
+      <p style="margin:1.2em 0px!important"></p>
+      <div>
+        <p></p>
+        <blockquote type="cite">
+          <div dir="ltr">How can I represent an anonymous union in FFI?<br>
+            <br>
+            A struct I'm wrapping has the following structure:<br>
+            <br>
+            struct uade_notification {<br>
+            &nbsp;&nbsp;&nbsp; enum uade_notification_type type;<br>
+            &nbsp;&nbsp;&nbsp; union {<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; char *msg;<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; struct uade_notification_song_end song_end;<br>
+            &nbsp;&nbsp;&nbsp; };<br>
+            };<br>
+            <br>
+            I can create a union using FFI::Union of course, but I'm not
+            sure how to represent that in a struct layout. Is assigning
+            it an arbitrary name the right way to go?<br>
+            <br>
+            Best,<br>
+            Misty<br>
+          </div>
+          -- <br>
+          &nbsp;<br>
+          --- <br>
+          You received this message because you are subscribed to the
+          Google Groups "ruby-ffi" group.<br>
+          To unsubscribe from this group and stop receiving emails from
+          it, send an email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="ERtlpK47n9gJ">ruby-ffi+u...@<wbr>googlegroups.com</a>.<br>
+          For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<wbr>groups/opt_out</a>.<br>
+        </blockquote>
+        <p></p>
+      </div>
+      <p style="margin:1.2em 0px!important"></p>
+    </div>
+    <pre cols="72">-- 
+Blog: <a href="http://postmodern.github.com/" target="_blank">http://postmodern.github.com/</a>
+GitHub: <a href="https://github.com/postmodern" target="_blank">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+  </div>
+
+</blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

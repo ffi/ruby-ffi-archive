@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: calling internal ruby functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: calling internal ruby functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>mixtli <ronmcclain75@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/30/11 1:42 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+That all worked great.  Thanks for the help.
+
+One quick suggestion/request..  what is your opinion of altering the
+library so that it just issues a warning
+instead of failing if attach_function fails due to a missing system
+call?  It's easy enough to just copy/paste
+the stuff I need from ffi-libc, but it'd be nice not to have to.
+Probably would have to be added to add_variable as
+well for consistency.  Stinks having the whole library not load
+because of one or two syscalls I'll never use.
+
+I can fork/patch if you like.
+
+
+On Apr 29, 5:31 pm, mixtli <a class="moz-txt-link-rfc2396E" href="mailto:ronmcclai...@gmail.com">&lt;ronmcclai...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Thanks for the info.  I was using select before, but or course  it
+<span class="moz-txt-citetags">&gt; </span>would block
+<span class="moz-txt-citetags">&gt; </span>the whole vm.  Didn't know about the @blocking thing.  I'll give that
+<span class="moz-txt-citetags">&gt; </span>a try.
+</pre></div></body>
+</html>
+</table></div>

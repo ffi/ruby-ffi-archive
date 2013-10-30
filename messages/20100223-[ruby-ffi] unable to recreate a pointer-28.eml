@@ -1,0 +1,95 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.159.147 with SMTP id j19cs1036vcx;
+        Tue, 23 Feb 2010 13:49:25 -0800 (PST)
+Received: by 10.100.246.15 with SMTP id t15mr1929083anh.177.1266961765382;
+        Tue, 23 Feb 2010 13:49:25 -0800 (PST)
+Return-Path: <3Yk2ESwoJCH8urjhugsdfnjpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com>
+Received: from mail-gx0-f189.google.com (mail-gx0-f189.google.com [209.85.217.189])
+        by mx.google.com with ESMTP id 38si7739031ywh.104.2010.02.23.13.49.24;
+        Tue, 23 Feb 2010 13:49:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3Yk2ESwoJCH8urjhugsdfnjpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com designates 209.85.217.189 as permitted sender) client-ip=209.85.217.189;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3Yk2ESwoJCH8urjhugsdfnjpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com designates 209.85.217.189 as permitted sender) smtp.mail=3Yk2ESwoJCH8urjhugsdfnjpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk5 with SMTP id 5sf16935070gxk.14
+        for <headius@headius.com>; Tue, 23 Feb 2010 13:49:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date:x-ip
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=d2lrnc7b/cz/gdCusJn/TRP442sNIFoA6X36ITsChOY=;
+        b=uV0YDMzQQ0C5qysqL9k87kivjeJJH8Ag2B1MJvEHrKbfK5slcazpgDxdET+d/wcoD6
+         RhfeecPjTjZWQeubA2aoZKdqr5VAOl5tH23p4mbmqQhcDSlxe1UY7nbGFJH56eZAPXzh
+         1jRw+kUfbDKYctxXHpRLGfh3AF7Edo0P4JZow=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=X9nHe1xDIY408YHdsHdpkrtm9PRfDlrsy3GTn+NTb5zQcBqKJW3TXFx34MtePmyGkv
+         FMfi7WFqb3sZsILT6M4b91hNIM49zeyhdeYwMdKKsW24AbPGG6kH6hkXgoLTsEoRNC0o
+         ndApANpSpZauukyl3hR/gPj8HWvkbdfMp05J4=
+Received: by 10.151.115.18 with SMTP id s18mr27418ybm.9.1266961762693;
+        Tue, 23 Feb 2010 13:49:22 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.4.27 with SMTP id 27ls2983055ybd.2.p; Tue, 23 Feb 2010 
+	13:49:22 -0800 (PST)
+Received: by 10.150.127.10 with SMTP id z10mr22393161ybc.11.1266961762092;
+        Tue, 23 Feb 2010 13:49:22 -0800 (PST)
+Received: by 10.150.127.10 with SMTP id z10mr22393160ybc.11.1266961762061;
+        Tue, 23 Feb 2010 13:49:22 -0800 (PST)
+Return-Path: <rogerdpack@gmail.com>
+Received: from mail-yx0-f167.google.com (mail-yx0-f167.google.com [209.85.210.167])
+        by gmr-mx.google.com with ESMTP id 19si101317yxe.7.2010.02.23.13.49.22;
+        Tue, 23 Feb 2010 13:49:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerdpack@gmail.com designates 209.85.210.167 as permitted sender) client-ip=209.85.210.167;
+Received: by mail-yx0-f167.google.com with SMTP id 39so1427093yxe.4
+        for <ruby-ffi@googlegroups.com>; Tue, 23 Feb 2010 13:49:22 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.137.22 with SMTP id p22mr18557ann.0.1266961762004; Tue, 23 
+	Feb 2010 13:49:22 -0800 (PST)
+Date: Tue, 23 Feb 2010 13:49:21 -0800 (PST)
+X-IP: 216.49.181.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) 
+	Gecko/20100115 Firefox/3.6 (.NET CLR 3.5.30729),gzip(gfe),gzip(gfe)
+Message-ID: <bea769bd-cdc1-458e-a3ff-6a43bf6f2e4d@m35g2000prh.googlegroups.com>
+Subject: [ruby-ffi] unable to recreate a pointer
+From: rogerdpack <rogerdpack@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerdpack@gmail.com designates 209.85.210.167 as permitted sender) 
+	smtp.mail=rogerdpack@gmail.com
+X-Original-Sender: rogerdpack@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ff20fdb3ec612585
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/41ac7799bbbed57e
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+In this code:
+
+http://pastie.org/839395
+
+I read in an HWND, attempt to copy it, and use the copy.  However, the
+copy doesn't seem to work.
+Anyone have any insights here?
+Thanks.
+-rp

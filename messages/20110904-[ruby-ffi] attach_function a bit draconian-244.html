@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] attach_function a bit draconian</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] attach_function a bit draconian</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>cfis <cfis@savagexi.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/4/11 4:19 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I've written a ffi wrapper for the free image library, which is here:
+
+<a class="moz-txt-link-freetext" href="http://cfis.github.com/free-image-ruby/">http://cfis.github.com/free-image-ruby/</a>
+
+The problem is that I've coded against the latest version of
+FreeImage, and most linux distributions have older versions
+installed.  Thus when I try to load the gem it fails since
+attach_function throws an error because the older versions don't have
+all the functions.
+
+This isn't what I want - the older versions work perfectly fine, they
+just don't include as much functionality.  So instead of blowing up, I
+would prefer if FFI throw a warning message but continue loading the
+library.
+
+If a user does call one of these unimplemented functions, then FFI
+should throw an error and allows the wrapping library to customize
+that message to say something useful (sorry, to use this function you
+need to upgrade to a newer version of freeimage).
+
+I can think of lots of ways of doing this, here is one possibility:
+
+* If a function is not implemented, instead of throwing an error, wrap
+it with a NotImplemented function (to go along with Function and
+Variadic).
+
+* When a NotImplemented function is called, throw an error.  This
+could:
+    - Just hard-code an error, not allow customization
+    - Call a method on library, not_implemented, that developers could
+override
+    - Call a proc which would be passed to attach_function which would
+be called
+
+I lean towards the 2nd choice, but don't feel very strongly about it.
+
+Does this sound like an idea that could be accepted to FFI?  If so,
+I'll code up a patch for review.
+
+Thanks - Charlie
+</pre></div></body>
+</html>
+</table></div>

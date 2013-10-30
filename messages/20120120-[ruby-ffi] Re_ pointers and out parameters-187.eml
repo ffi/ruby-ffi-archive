@@ -1,0 +1,251 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.37.130 with SMTP id x2cs91118ibd;
+        Fri, 20 Jan 2012 04:02:11 -0800 (PST)
+Received: by 10.68.191.41 with SMTP id gv9mr33366048pbc.32.1327060929849;
+        Fri, 20 Jan 2012 04:02:09 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC9r-X4BBoE1fNVkg@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id e8si4315922pbw.197.2012.01.20.04.02.09
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 20 Jan 2012 04:02:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC9r-X4BBoE1fNVkg@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC9r-X4BBoE1fNVkg@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBC9r-X4BBoE1fNVkg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pbaa13 with SMTP id a13sf627622pba.7
+        for <headius@headius.com>; Fri, 20 Jan 2012 04:02:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=OJdlY/ELgTbAOJNWwXtbhmqVbuEifBFFbD2OsdL8C3U=;
+        b=vftm6bYIOnPt2DRwK4wXqb47uqMn+LdXV0+w38KO8MzNdaQqhcfXf69AAmHfr5Ho3z
+         5XzAmi3DM//wsTb2jpu2ikmVaoUu3KgMJ7RBE6HDeoAd3aHc1Xt8fKgQKG8z8Lq0ruBy
+         jBl8TRGERD8oQvJcoFjrgLI7VSGRY73+PjKZ8=
+Received: by 10.68.197.170 with SMTP id iv10mr1349996pbc.3.1327060925790;
+        Fri, 20 Jan 2012 04:02:05 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.51.72 with SMTP id i8ls3871863pbo.5.gmail; Fri, 20 Jan 2012
+ 04:02:05 -0800 (PST)
+Received: by 10.68.194.202 with SMTP id hy10mr187879pbc.7.1327060925082;
+        Fri, 20 Jan 2012 04:02:05 -0800 (PST)
+Date: Fri, 20 Jan 2012 04:02:04 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <8659966.3451.1327060924081.JavaMail.geo-discussion-forums@prcu6>
+In-Reply-To: <6f5c513f-9a39-4b8d-b72f-09325e094391@y5g2000pbk.googlegroups.com>
+References: <6f5c513f-9a39-4b8d-b72f-09325e094391@y5g2000pbk.googlegroups.com>
+Subject: [ruby-ffi] Re: pointers and out parameters
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3450_21408510.1327060924080"
+
+------=_Part_3450_21408510.1327060924080
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+It looks like you need to pass the address of a zmsg_t pointer, so you need 
+to use Pointer#write_pointer()
+i.e. I think something like this might work:
+
+  def once 
+      raise "Worker needs a responder block" unless block_given? 
+
+      ptr = FFI::MemoryPointer.new(:pointer) 
+      reply = nil
+      while true
+        puts "calling receive" 
+        request = Majordomo.mdwrk_recv @session, ptr 
+        puts "worker interrupted" unless request 
+
+        reply = yield request 
+        # The block returned a zmsg_t pointer
+        ptr.write_pointer(reply)
+      end 
+    end 
+
+On Thursday, 19 January 2012 17:40:01 UTC+10, Mark Wotton wrote:
+>
+> Hi all, 
+>
+> I'm trying to move some code from C to Ruby using FFI. 
+>
+>   The problematic chunk looks like this: 
+>
+>   int verbose = (argc > 1 && streq (argv [1], "-v")); 
+>     mdwrk_t *session = mdwrk_new ( 
+>         "tcp://localhost:5555", "echo", verbose); 
+>
+>     zmsg_t *reply = NULL; 
+>     while (1) { 
+>         zmsg_t *request = mdwrk_recv (session, &reply); 
+>         if (request == NULL) 
+>             break;              //  Worker was interrupted 
+>         reply = request;        //  Echo is complex... :-) 
+>     } 
+>     mdwrk_destroy (&session); 
+>     return 0; 
+>
+>
+> I'm not quite sure how to model the "reply = request" chunk - I have 
+> this: 
+>
+>
+> module Majordomo 
+>   extend FFI::Library 
+>   ffi_lib 'lib0mq_majordomo' 
+>
+>   attach_function :mdwrk_new, [:string, :string, :bool], :pointer 
+>   attach_function :mdwrk_recv, [:pointer, :pointer], :pointer 
+>   attach_function :mdwrk_destroy, [:pointer], :void 
+>   class Worker < FFI::ManagedStruct 
+>     def initialize(host, service, verbose=false) 
+>       @session = Majordomo.mdwrk_new host, service, verbose 
+>     end 
+>
+>     # this is a bit ugly, but the C expects to be in a run loop 
+>     # and therefore makes mdwrk_recv do two things... 
+>     def once 
+>       raise "Worker needs a responder block" unless block_given? 
+>
+>       ptr = FFI::MemoryPointer.new(:pointer) 
+>       while true 
+>         puts "calling receive" 
+>         request = Majordomo.mdwrk_recv @session, ptr 
+>         puts "worker interrupted" unless request 
+>
+>         ptr = yield request 
+>       end 
+>     end 
+>   end 
+> end 
+>
+> calling it as 
+>
+>   while true 
+>     worker.once {|x| x} 
+>   end 
+>
+> to test. The first run goes through ok, but the "ptr = yield request" 
+> is clearly bogus: it should really be one layer of indirection out. 
+>
+> I can't see how to model this, even after going through the out 
+> parameter section in the wiki. Could you help? 
+>
+> cheers 
+> Mark
+
+
+------=_Part_3450_21408510.1327060924080
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+It looks like you need to pass the address of a zmsg_t pointer, so you need=
+ to use Pointer#write_pointer()<div>i.e. I think something like this might =
+work:</div><div><br></div><div>&nbsp; def once&nbsp;<br>&nbsp; &nbsp; &nbsp=
+; raise "Worker needs a responder block" unless block_given?&nbsp;<br><br>&=
+nbsp; &nbsp; &nbsp; ptr =3D FFI::MemoryPointer.new(:<wbr>pointer)&nbsp;</di=
+v><div>&nbsp; &nbsp; &nbsp; reply =3D nil<br>&nbsp; &nbsp; &nbsp; while tru=
+e</div><div>&nbsp; &nbsp; &nbsp; &nbsp; puts "calling receive"&nbsp;<br>&nb=
+sp; &nbsp; &nbsp; &nbsp; request =3D Majordomo.mdwrk_recv @session, ptr&nbs=
+p;<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "worker interrupted" unless request&=
+nbsp;<br><br>&nbsp; &nbsp; &nbsp; &nbsp; reply =3D yield request&nbsp;</div=
+><div>&nbsp; &nbsp; &nbsp; &nbsp; # The block returned a zmsg_t pointer</di=
+v><div>&nbsp; &nbsp; &nbsp; &nbsp; ptr.write_pointer(reply)<br></div><div>&=
+nbsp; &nbsp; &nbsp; end&nbsp;<br>&nbsp; &nbsp; end&nbsp;<br><div><br>On Thu=
+rsday, 19 January 2012 17:40:01 UTC+10, Mark  Wotton  wrote:<blockquote cla=
+ss=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #=
+ccc solid;padding-left: 1ex;">Hi all,
+<br>
+<br>I'm trying to move some code from C to Ruby using FFI.
+<br>
+<br>&nbsp; The problematic chunk looks like this:
+<br>
+<br>&nbsp; int verbose =3D (argc &gt; 1 &amp;&amp; streq (argv [1], "-v"));
+<br>&nbsp; &nbsp; mdwrk_t *session =3D mdwrk_new (
+<br>&nbsp; &nbsp; &nbsp; &nbsp; "tcp://localhost:5555", "echo", verbose);
+<br>
+<br>&nbsp; &nbsp; zmsg_t *reply =3D NULL;
+<br>&nbsp; &nbsp; while (1) {
+<br>&nbsp; &nbsp; &nbsp; &nbsp; zmsg_t *request =3D mdwrk_recv (session, &a=
+mp;reply);
+<br>&nbsp; &nbsp; &nbsp; &nbsp; if (request =3D=3D NULL)
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;// &nbsp;Worker was interrupted
+<br>&nbsp; &nbsp; &nbsp; &nbsp; reply =3D request; &nbsp; &nbsp; &nbsp; &nb=
+sp;// &nbsp;Echo is complex... :-)
+<br>&nbsp; &nbsp; }
+<br>&nbsp; &nbsp; mdwrk_destroy (&amp;session);
+<br>&nbsp; &nbsp; return 0;
+<br>
+<br>
+<br>I'm not quite sure how to model the "reply =3D request" chunk - I have
+<br>this:
+<br>
+<br>
+<br>module Majordomo
+<br>&nbsp; extend FFI::Library
+<br>&nbsp; ffi_lib 'lib0mq_majordomo'
+<br>
+<br>&nbsp; attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+<br>&nbsp; attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+<br>&nbsp; attach_function :mdwrk_destroy, [:pointer], :void
+<br>&nbsp; class Worker &lt; FFI::ManagedStruct
+<br>&nbsp; &nbsp; def initialize(host, service, verbose=3Dfalse)
+<br>&nbsp; &nbsp; &nbsp; @session =3D Majordomo.mdwrk_new host, service, ve=
+rbose
+<br>&nbsp; &nbsp; end
+<br>
+<br>&nbsp; &nbsp; # this is a bit ugly, but the C expects to be in a run lo=
+op
+<br>&nbsp; &nbsp; # and therefore makes mdwrk_recv do two things...
+<br>&nbsp; &nbsp; def once
+<br>&nbsp; &nbsp; &nbsp; raise "Worker needs a responder block" unless bloc=
+k_given?
+<br>
+<br>&nbsp; &nbsp; &nbsp; ptr =3D FFI::MemoryPointer.new(:<wbr>pointer)
+<br>&nbsp; &nbsp; &nbsp; while true
+<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "calling receive"
+<br>&nbsp; &nbsp; &nbsp; &nbsp; request =3D Majordomo.mdwrk_recv @session, =
+ptr
+<br>&nbsp; &nbsp; &nbsp; &nbsp; puts "worker interrupted" unless request
+<br>
+<br>&nbsp; &nbsp; &nbsp; &nbsp; ptr =3D yield request
+<br>&nbsp; &nbsp; &nbsp; end
+<br>&nbsp; &nbsp; end
+<br>&nbsp; end
+<br>end
+<br>
+<br>calling it as
+<br>
+<br>&nbsp; while true
+<br>&nbsp; &nbsp; worker.once {|x| x}
+<br>&nbsp; end
+<br>
+<br>to test. The first run goes through ok, but the "ptr =3D yield request"
+<br>is clearly bogus: it should really be one layer of indirection out.
+<br>
+<br>I can't see how to model this, even after going through the out
+<br>parameter section in the wiki. Could you help?
+<br>
+<br>cheers
+<br>Mark</blockquote></div></div>
+------=_Part_3450_21408510.1327060924080--

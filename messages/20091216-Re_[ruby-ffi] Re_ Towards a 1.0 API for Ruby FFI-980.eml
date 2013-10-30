@@ -1,0 +1,120 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs218831and;
+        Tue, 15 Dec 2009 22:50:22 -0800 (PST)
+Received: by 10.142.196.1 with SMTP id t1mr442776wff.71.1260946221641;
+        Tue, 15 Dec 2009 22:50:21 -0800 (PST)
+Return-Path: <3K4MoSwoJCCIJSGQJ8TCL8EK8GJ.AMKPS9W-DDGEMMEJCEPMSNQ.AMK@listserv.bounces.google.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 28si1517206pzk.95.2009.12.15.22.50.20;
+        Tue, 15 Dec 2009 22:50:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3K4MoSwoJCCIJSGQJ8TCL8EK8GJ.AMKPS9W-DDGEMMEJCEPMSNQ.AMK@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3K4MoSwoJCCIJSGQJ8TCL8EK8GJ.AMKPS9W-DDGEMMEJCEPMSNQ.AMK@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) smtp.mail=3K4MoSwoJCCIJSGQJ8TCL8EK8GJ.AMKPS9W-DDGEMMEJCEPMSNQ.AMK@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj20 with SMTP id 20sf307175pwj.27
+        for <headius@headius.com>; Tue, 15 Dec 2009 22:50:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=HvECqUr8MI9cofndyXxz8txV17vf53phV8zpwTbhl+8=;
+        b=GTxNFksEizO99+0FVLUG3ofMO52y8r+dhJCdUbnU7JUu5JBW1SLZBAU0CJmOVFSlhN
+         zespCoOrMqPkQ+CWypTH254x2AKzRESs/kxukM+c/D/kug26aj4zFDcfPsgJ8SzCEgOj
+         Czl0L0e8N/A1sX+9oTdOWv+op6Y3zOSShoM4Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=pM5P7SCRaltyuK9qMngKjB146LryueSDD5a9Wd/mh1CB4hwlPeXAI1eaMZbryfIuhI
+         iC8qQAx5SQnQWHzUa9H20udsizbiTAi9TcPp+3wfnKDPke1EoJ3whfeit6M9b7eb/ANd
+         iz7HXeIRMfz+jsUzLYAuKKxqpbJgj96Ee4d/0=
+Received: by 10.115.100.14 with SMTP id c14mr77086wam.23.1260946219220;
+        Tue, 15 Dec 2009 22:50:19 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.187.1 with SMTP id k1ls142406waf.0.p; Tue, 15 Dec 2009 
+	22:50:18 -0800 (PST)
+Received: by 10.115.148.3 with SMTP id a3mr123110wao.20.1260946218437;
+        Tue, 15 Dec 2009 22:50:18 -0800 (PST)
+Received: by 10.115.148.3 with SMTP id a3mr123109wao.20.1260946218412;
+        Tue, 15 Dec 2009 22:50:18 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f223.google.com (mail-fx0-f223.google.com [209.85.220.223])
+        by gmr-mx.google.com with ESMTP id 18si150976pzk.5.2009.12.15.22.50.16;
+        Tue, 15 Dec 2009 22:50:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.223 as permitted sender) client-ip=209.85.220.223;
+Received: by fxm23 with SMTP id 23so704442fxm.18
+        for <ruby-ffi@googlegroups.com>; Tue, 15 Dec 2009 22:50:16 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.179.91 with SMTP id c27mr63010hbg.51.1260946216113; Tue, 
+	15 Dec 2009 22:50:16 -0800 (PST)
+In-Reply-To: <7121ea06-d828-4eff-97d8-111fabb604fb@e7g2000vbi.googlegroups.com>
+References: <E1011BFF-3DCA-4782-B3D9-2E795ECB0914@gmail.com> 
+	<7121ea06-d828-4eff-97d8-111fabb604fb@e7g2000vbi.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 16 Dec 2009 03:49:56 -0300
+Message-ID: <71166b3b0912152249g510e2f17x19107caeb98020e@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.223 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ccf77d629a0be537
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/9b489527edec980c
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Dec 16, 2009 at 3:21 AM, Victor Costan <costan@gmail.com> wrote:
+> Is it feasible to make "FFI.add_sys_types" available on all platforms
+> if it's implemented at runtime?
+>
+
+You just made me discard my previous message. I was going to ask
+exactly the same thing.
+
+I believe these values should be computed at build time and not at
+runtime. runtime calculation and shelling out is a hidden requirement
+and add complexity to debug it.
+
+Even you put guards to avoid errors, expect bug reports about these
+sys types being missing from people not having the development tools
+for their platforms at hand.
+
+> I'm thinking ideally the ffi gem will come prebuilt, at least for OSX
+> and Windows, so users might not have Xcode / mingw / Vistual Studio.
+> To me, the biggest advantage of using ffi is not having to deal with
+> all the extension building stuff on a per-gem basis.
+>
+
+On this field, I'm working on adding an option to rake-compiler to use
+and abuse of RVM and Pik to build fat binaries on all the platforms,
+for anyone that cares.
+
+Cheers,
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

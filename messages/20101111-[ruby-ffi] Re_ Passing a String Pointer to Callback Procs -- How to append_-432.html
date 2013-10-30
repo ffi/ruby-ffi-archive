@@ -1,0 +1,113 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Passing a String Pointer to Callback Procs -- How to append?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Passing a String Pointer to Callback Procs -- How to append?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Scott Gonyea <gonyea@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/10 11:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thank you, Wayne.  Evan actually gave me some helpful info, as well,
+along similar lines (just a little bit before you replied).  The fix
+was to, basically, not make the Proc a constant (first).  Then, inside
+the proc, I would simply append the "stream" variables data to an
+instance variable.
+
+This was then replaced by something NoKarma used (and I stole), which
+was to pass a FFI::Function, which calls an instance method (which
+then appends to an instance variable).
+
+You can see my code in its current state, which seems to be largely
+good / stable / etc.  There's another issue, which I'm going to post
+about separately.
+
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi/blob/master/lib/streamly_ffi/base.rb#L120">https://github.com/aitrus/streamly_ffi/blob/master/lib/streamly_ffi/base.rb#L120</a>
+
+Scott
+
+On Nov 9, 5:56 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>You can't pass ruby objects through C callbacks with FFI, so any
+<span class="moz-txt-citetags">&gt; </span>variables you want to access from the callback have to be visible to
+<span class="moz-txt-citetags">&gt; </span>the Proc when you create it.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You seem to be mostly doing it correct with your data_handler() method
+<span class="moz-txt-citetags">&gt; </span>- i.e. the _string parameter to data_handler() will be visible inside
+<span class="moz-txt-citetags">&gt; </span>the proc callback, and you can just append the data to it.  The
+<span class="moz-txt-citetags">&gt; </span>handler parameter to the callback will not be used (and is most likely
+<span class="moz-txt-citetags">&gt; </span>nil anyway).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I would change the first parameter (stream) of the curl handler to be
+<span class="moz-txt-citetags">&gt; </span>of type pointer though, and get the data out like so:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   _string &lt;&lt; stream.get_string(0, size)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm not sure if curl guarantees that the buffer is NUL terminated, but
+<span class="moz-txt-citetags">&gt; </span>I suspect not, since it is binary data, so you only want to copy out
+<span class="moz-txt-citetags">&gt; </span>as many bytes as curl indicates are ready (the size param).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>One <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>VERY<span class="moz-txt-tag">_</span></span> important thing to remember, always keep a reference to the
+<span class="moz-txt-citetags">&gt; </span>proc returned by data_handler somewhere - e.g. as an @variable in each
+<span class="moz-txt-citetags">&gt; </span>Request instance.  FFI dynamically generates native code for the
+<span class="moz-txt-citetags">&gt; </span>callback, and you need to keep a strong reference to it to avoid it
+<span class="moz-txt-citetags">&gt; </span>being prematurely collected, and crashing the VM.  Stashing the proc
+<span class="moz-txt-citetags">&gt; </span>somewhere for the lifetime of the Request instance should suffice.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 9 November 2010 10:30, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gon...@gmail.com">&lt;gon...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm having a really painful time figuring this out.  I jumped onto
+<span class="moz-txt-citetags">&gt; &gt; </span>what NoKarma had already begun, with his curl-ffi library, and started
+<span class="moz-txt-citetags">&gt; &gt; </span>running with it.  I'm trying to emulate the ruby extension layers used
+<span class="moz-txt-citetags">&gt; &gt; </span>in some different Curl gems (Streamly and Patron, atm).
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Curl wants you to pass a method reference, which it will then
+<span class="moz-txt-citetags">&gt; &gt; </span>callback.  You can see examples used in Streamly and Patron:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Streamly, lines 29-83:
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29">https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Patron, lines 59-75 (Much simpler):
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c">https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c</a>...
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Basically, they're allocating a buffer and providing a callback + that
+<span class="moz-txt-citetags">&gt; &gt; </span>buffer, which is sent to the callback. I've added this callback to
+<span class="moz-txt-citetags">&gt; &gt; </span>CurlFFI and I have the Proc working, etc... But I cannot seem to get
+<span class="moz-txt-citetags">&gt; &gt; </span>it to append to the string.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Callback Additions to CurlFFI:
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923</a>
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I'll delete 926, as it's not necessary (I think).
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Procs that get called:
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/lib/streamly/request.r">https://github.com/aitrus/streamly/blob/master/lib/streamly/request.r</a>...
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I suppose the last resort can be to call C libraries, allocating /
+<span class="moz-txt-citetags">&gt; &gt; </span>freeing a string.  But that makes me think I'm doing it wrong.  I
+<span class="moz-txt-citetags">&gt; &gt; </span>can't imagine that I'm doing anything overly interesting with my code.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Scott
+</pre></div></body>
+</html>
+</table></div>

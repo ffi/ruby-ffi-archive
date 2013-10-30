@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.244.3 with SMTP id lo3csp97979ibb;
+        Sun, 3 Jun 2012 15:05:44 -0700 (PDT)
+Received: by 10.182.164.69 with SMTP id yo5mr9896555obb.17.1338761144584;
+        Sun, 03 Jun 2012 15:05:44 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOH9l8qeHBC3v6_-BBoE07_ccw@googlegroups.com>
+Received: from mail-ob0-f190.google.com (mail-ob0-f190.google.com [209.85.214.190])
+        by mx.google.com with ESMTPS id dd7si5598873obc.111.2012.06.03.15.05.43
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 03 Jun 2012 15:05:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOH9l8qeHBC3v6_-BBoE07_ccw@googlegroups.com designates 209.85.214.190 as permitted sender) client-ip=209.85.214.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOH9l8qeHBC3v6_-BBoE07_ccw@googlegroups.com designates 209.85.214.190 as permitted sender) smtp.mail=ruby-ffi+bncCOH9l8qeHBC3v6_-BBoE07_ccw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by obqv19 with SMTP id v19sf10728565obq.7
+        for <headius@headius.com>; Sun, 03 Jun 2012 15:05:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=dQ8CpXS2ZkKZ7Q3LeItPRPB60oMZIthtybjP7fFrYzk=;
+        b=Elgm7Cj9ai/Bgb/j2TgjFcbbOhCr0cBTs0tCCMuSm0h62Xl8ZhFij6Ymth+mZZKLTU
+         FwSVievJDV0blee8r2I3l+/o8mQ+56hEBB1tLTKliBKGrMgXMCcEWujEeR9j48d2IgLH
+         LSM++wi6efdtnMexPb2PlwL8wJhA83LcRlwOQ=
+Received: by 10.224.117.82 with SMTP id p18mr798682qaq.3.1338761143048;
+        Sun, 03 Jun 2012 15:05:43 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.0.200 with SMTP id 8ls3798652qac.1.gmail; Sun, 03 Jun 2012
+ 15:05:42 -0700 (PDT)
+Received: by 10.224.177.202 with SMTP id bj10mr6070742qab.7.1338761142275;
+        Sun, 03 Jun 2012 15:05:42 -0700 (PDT)
+Received: by 10.224.101.138 with SMTP id c10msqao;
+        Sun, 3 Jun 2012 14:35:18 -0700 (PDT)
+Received: by 10.52.19.110 with SMTP id d14mr486330vde.10.1338759318639;
+        Sun, 03 Jun 2012 14:35:18 -0700 (PDT)
+Date: Sun, 3 Jun 2012 14:35:18 -0700 (PDT)
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-Id: <d6534baa-a9b4-40fb-a281-293f51067067@googlegroups.com>
+Subject: [ruby-ffi] What is the context parameter when defining a custom type
+ with DataConverter?
+MIME-Version: 1.0
+X-Original-Sender: kim@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_963_2014800.1338759318153"
+
+------=_Part_963_2014800.1338759318153
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Looking at an old issue=20
+(https://github.com/ffi/ffi/issues/114#issuecomment-1246483) where a custom=
+=20
+Bool type is defined, .to_native and .from_native both accept a second=20
+=E2=80=9Cctx=E2=80=9D parameter. What is this? How should it be used, if at=
+ all?
+
+The reason I ask is that I=E2=80=99ve written my own converter for making s=
+ure=20
+input and output strings are always in UTF-8 encoding, and I=E2=80=99d like=
+ to do=20
+it=20
+properly: https://github.com/Burgestrand/libspotify-ruby/blob/35c32461d7576=
+49297e3592b80b4937e35e3a1f8/lib/spotify/utf8_string.rb
+
+------=_Part_963_2014800.1338759318153
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Looking at an old issue (https://github.com/ffi/ffi/issues/114#issuecomment=
+-1246483) where a custom Bool type is defined, .to_native and .from_native =
+both accept a second =E2=80=9Cctx=E2=80=9D parameter. What is this? How sho=
+uld it be used, if at all?<div><br></div><div>The reason I ask is that I=E2=
+=80=99ve written my own converter for making sure input and output strings =
+are always in UTF-8 encoding, and I=E2=80=99d like to do it properly:&nbsp;=
+https://github.com/Burgestrand/libspotify-ruby/blob/35c32461d757649297e3592=
+b80b4937e35e3a1f8/lib/spotify/utf8_string.rb</div>
+------=_Part_963_2014800.1338759318153--

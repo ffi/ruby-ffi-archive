@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: struct questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: struct questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/09 10:34 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/20 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>When I first started using FFI::Struct's
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I anticipated being able to call methods, like
+<span class="moz-txt-citetags">&gt; </span>a = Struct.new
+<span class="moz-txt-citetags">&gt; </span>a.name = "hello there"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>(since that's how you access them in C, and they are certainly not
+<span class="moz-txt-citetags">&gt; </span>hashes).  Would a patch for such be acceptable?
+</pre></blockquote><pre wrap>
+
+I considered this at one point, but it leads to name clashes with
+other methods you might want to call on a Struct instance - so you
+have a namespace issue.
+
+e.g.
+
+class S &lt; FFI::Struct
+  layout :size, :int
+end
+
+s = S.new
+
+What does s.size return?  The size of the struct, or the contents of
+the native field called size?
+
+Using the [] method to access struct fields neatly avoids it.
+
+If you really want it, ffi-swig-generator generates accessor methods
+like that for every field, but it should not be a part of ffi itself.
+</pre></div></body>
+</html>
+</table></div>

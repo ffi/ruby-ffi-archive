@@ -1,0 +1,124 @@
+Delivered-To: headius@headius.com
+Received: by 10.151.141.21 with SMTP id t21cs73225ybn;
+        Mon, 29 Mar 2010 12:10:17 -0700 (PDT)
+Received: by 10.114.250.35 with SMTP id x35mr1901910wah.221.1269889816759;
+        Mon, 29 Mar 2010 12:10:16 -0700 (PDT)
+Return-Path: <3FfuwSwkJCA09zrv550r4tznvy.p1z47oB-ssvt11tyrt41725.p1z@groups.bounces.google.com>
+Received: from mail-gx0-f189.google.com (mail-gx0-f189.google.com [209.85.217.189])
+        by mx.google.com with ESMTP id dx28si10048292ibb.23.2010.03.29.12.10.14;
+        Mon, 29 Mar 2010 12:10:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3FfuwSwkJCA09zrv550r4tznvy.p1z47oB-ssvt11tyrt41725.p1z@groups.bounces.google.com designates 209.85.217.189 as permitted sender) client-ip=209.85.217.189;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3FfuwSwkJCA09zrv550r4tznvy.p1z47oB-ssvt11tyrt41725.p1z@groups.bounces.google.com designates 209.85.217.189 as permitted sender) smtp.mail=3FfuwSwkJCA09zrv550r4tznvy.p1z47oB-ssvt11tyrt41725.p1z@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk5 with SMTP id 5sf17705495gxk.14
+        for <headius@headius.com>; Mon, 29 Mar 2010 12:10:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:received:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=FXoPVhht20uZpYKzObeHZ3ZFV562XoCYbJskeqUCdv0=;
+        b=GU+9pS99mGYQNLeFHqBxmb0kKgz74EGwjil5xcflwDbij2IVNlUmjd3dC2hnP8hqSo
+         bJWh3VQ/lC02f2OiinLbI9jACyoN2g3s+YVMr6r/KWh6UOJqw/LbyM+MnUcKE8afrycx
+         KRXrdl5ZouON6VhBS25Jm75i/VeHxcX+T0Nt8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=x6uiuNQXHAf5aYpauTHn3egTVu0ZKF5IVxlo7uUk/gpYdHYjFaCrFRwX2uGiwv97Lo
+         kOFrn9RqymtB/jn9kNJtwORjKQoxSmPPoDbAhlmS2QY24kFRYPC0wPZURlaS9Hyp8cC+
+         H2G2LrnokGQBMsDtl/r8ke+lzgQT4iJ7VeesY=
+Received: by 10.101.152.10 with SMTP id e10mr105969ano.62.1269889813397;
+        Mon, 29 Mar 2010 12:10:13 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.122.100 with SMTP id k36ls522866ibr.0.p; Mon, 29 Mar 2010 
+	12:10:12 -0700 (PDT)
+Received: by 10.231.176.11 with SMTP id bc11mr341673ibb.12.1269889811501;
+        Mon, 29 Mar 2010 12:10:11 -0700 (PDT)
+Received: by 10.231.176.11 with SMTP id bc11mr341672ibb.12.1269889811475;
+        Mon, 29 Mar 2010 12:10:11 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pw0-f52.google.com (mail-pw0-f52.google.com [209.85.160.52])
+        by gmr-mx.google.com with ESMTP id 18si581185iwn.7.2010.03.29.12.10.10;
+        Mon, 29 Mar 2010 12:10:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.160.52 as permitted sender) client-ip=209.85.160.52;
+Received: by mail-pw0-f52.google.com with SMTP id 9so8292127pwj.11
+        for <ruby-ffi@googlegroups.com>; Mon, 29 Mar 2010 12:10:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.140.125.16 with HTTP; Mon, 29 Mar 2010 12:10:09 -0700 (PDT)
+In-Reply-To: <20100325104510.7039ec15.ksmakoto@dd.iij4u.or.jp>
+References: <20100325104510.7039ec15.ksmakoto@dd.iij4u.or.jp>
+Date: Tue, 30 Mar 2010 05:10:09 +1000
+Received: by 10.140.56.16 with SMTP id e16mr5013355rva.143.1269889809929; Mon, 
+	29 Mar 2010 12:10:09 -0700 (PDT)
+Message-ID: <4ccee321003291210x7c224511mb9946ca0aaff48cd@mail.gmail.com>
+Subject: Re: [ruby-ffi] SYNOPSIS' code of http://github.com/ffi/ffi
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.160.52 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/17b369e611ff132f
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/1a5990fc79352e38
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+The code was broken - you do in fact need the ffi_lib 'c' line now.
+
+Thanks for pointing it out.
+
+
+On 25 March 2010 11:45, KISHIMOTO, Makoto <ksmakoto@dd.iij4u.or.jp> wrote:
+> Hello,
+>
+> I've tried SYNOPSIS' code of http://github.com/ffi/ffi .
+>
+> #=3D=3D=3D=3D
+> require 'ffi'
+>
+> module MyLib
+> =A0extend FFI::Library
+> =A0ffi_lib 'c' =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0# insert this line
+> =A0attach_function :puts, [ :string ], :int
+> end
+>
+> MyLib.puts 'Hello boys using libc!'
+> #=3D=3D=3D=3D
+>
+> Without "ffi_lib 'c'", following error occured.
+>
+> /usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:79:in `f=
+fi_libraries': no library specified (LoadError)
+> =A0 =A0 =A0 =A0from /usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi=
+/library.rb:106:in `attach_function'
+>
+> The SYNOPSIS' code correct?
+>
+> To unsubscribe from this group, send email to ruby-ffi+unsubscribegoogleg=
+roups.com or reply to this email with the words "REMOVE ME" as the subject.
+>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words "REMOVE ME" as the subject.

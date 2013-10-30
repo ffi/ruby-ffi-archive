@@ -1,0 +1,158 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs440091and;
+        Sat, 19 Dec 2009 15:54:40 -0800 (PST)
+Received: by 10.114.4.10 with SMTP id 10mr3735559wad.89.1261266880089;
+        Sat, 19 Dec 2009 15:54:40 -0800 (PST)
+Return-Path: <3vWctSwkJCJ0TJBFPPKBODJ7FI.9LJOR8V-CCFDLLDIBDOLRMP.9LJ@listserv.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 7si13124046pwi.24.2009.12.19.15.54.38;
+        Sat, 19 Dec 2009 15:54:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3vWctSwkJCJ0TJBFPPKBODJ7FI.9LJOR8V-CCFDLLDIBDOLRMP.9LJ@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3vWctSwkJCJ0TJBFPPKBODJ7FI.9LJOR8V-CCFDLLDIBDOLRMP.9LJ@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=3vWctSwkJCJ0TJBFPPKBODJ7FI.9LJOR8V-CCFDLLDIBDOLRMP.9LJ@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi41 with SMTP id 41sf1671979pxi.23
+        for <headius@headius.com>; Sat, 19 Dec 2009 15:54:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=i2kf+N9Z3ZH3nRuDG0UJLCHIkGLjoHaiyHU3jc1naHE=;
+        b=D31IvqnyENx8flg4+EguTDxAmRrRTDz2r9IJ6H6PLPCScz7PRQEjP6UhuzHuDFjJTZ
+         G1lmkuC+m8FQDpNOLTT7QhOC8QzFxYg3WcRjBhgYb7VY7+QLksTG0UFpa1P1clc1sfpb
+         iFxiwlt6x/aBiWJIIYDsYDBWRy+gJCemXiiq4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=hEh8mWR9LaO4+k/mBpuGQSzOzzNWVhg4C96TCZMLxjAQpr6YZ8G4v4ARThAi8kVeRe
+         NZh/jtzoAgYiAJRj3FykIfii/DLuVkFnM5y4t1mYAMMRwA3oIND86vAqey6SZpUF/AQ+
+         On++uLLVxSv67ko1PBamDc9rNCdmRyRqZyh4A=
+Received: by 10.115.39.9 with SMTP id r9mr676797waj.4.1261266877720;
+        Sat, 19 Dec 2009 15:54:37 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.188.15 with SMTP id l15ls199776waf.3.p; Sat, 19 Dec 2009 
+	15:54:36 -0800 (PST)
+Received: by 10.115.84.28 with SMTP id m28mr1223647wal.29.1261266876894;
+        Sat, 19 Dec 2009 15:54:36 -0800 (PST)
+Received: by 10.115.84.28 with SMTP id m28mr1223646wal.29.1261266876873;
+        Sat, 19 Dec 2009 15:54:36 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f200.google.com (mail-pz0-f200.google.com [209.85.222.200])
+        by gmr-mx.google.com with ESMTP id 24si1011890pzk.2.2009.12.19.15.54.35;
+        Sat, 19 Dec 2009 15:54:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.200 as permitted sender) client-ip=209.85.222.200;
+Received: by pzk38 with SMTP id 38so3024146pzk.9
+        for <ruby-ffi@googlegroups.com>; Sat, 19 Dec 2009 15:54:35 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.90.1 with SMTP id s1mr3878476rvl.194.1261266875711; Sat, 
+	19 Dec 2009 15:54:35 -0800 (PST)
+In-Reply-To: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com>
+References: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com>
+Date: Sun, 20 Dec 2009 09:54:35 +1000
+Message-ID: <4ccee320912191554x79d00ecqbca293555561b09d@mail.gmail.com>
+Subject: Re: [ruby-ffi] struct questions
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.200 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/109da9d55f08ceaf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/7d718109512375a3
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+2009/12/19 rogerdpack <rogerpack2005@gmail.com>:
+
+> With char arrays, it seems "difficult" to insert a string
+>
+> (rdb:1) ss[:title] = "abc"
+> ArgumentError Exception: put not supported for
+> FFI::StructLayout::Array
+>
+> is there an easier way than ss[:title][0] = 33; ss[:title][1] = 34; //
+> one at a time?
+
+
+Assuming you mean an array like this:
+class S < FFI::Struct
+  layout :title, [ :char, 20 ]
+end
+
+Then currently the only easy way to fill it is:
+
+s[:title].to_ptr.put_string(0, "foo")
+
+Thats kinda ugly, so we should have an easier syntax.
+
+I have patches that make the following work for :char/:uchar arrays:
+
+s[:title] = "foo"
+s[:title] = [ 'f'.ord, 'o'.ord, 'o'.ord ]
+s[:title] = [ 1, 2, 3]
+
+The second form also works for all other array element types.
+
+The inverse also works for :char/:uchar arrays:
+
+s[:title].to_s # => "foo"
+
+
+There are a couple of corner cases that need to be figured out though.
+1) What to do when a string + nul byte is larger than the array size
+  a) raise an error
+  b) do not terminate the string with a nul byte
+  c) truncate the string and terminate with a nul byte
+
+Currently (a) is the preferred way (makes it consistent with put_string()
+
+e.g.
+class S < FFI::Struct
+  layout :title, [ :char, 4 ]
+end
+
+s = S.new
+s[:title] = "abc"  # works
+s[:title] = "test" # raises IndexError
+
+
+
+2) Should array assignments be zero padded?
+i.e.
+class S < FFI::Struct
+  layout :i, [ :int, 100 ]
+end
+
+s = S.new
+s[:i] = [ 1, 2, 3]
+
+Currently it zero pads the array if the source is smaller than the
+array field size.
+
+3) Should over-sized array assignments raise an error or truncate?
+class S < FFI::Struct
+  layout :i, [ :int, 2 ]
+end
+s = S.new
+s[:i] = [ 1, 2, 3]
+
+This currently raises an IndexError

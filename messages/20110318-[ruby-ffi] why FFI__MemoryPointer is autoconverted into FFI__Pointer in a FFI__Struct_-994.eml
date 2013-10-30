@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs7323faj;
+        Fri, 18 Mar 2011 03:02:32 -0700 (PDT)
+Received: by 10.52.98.197 with SMTP id ek5mr1125094vdb.262.1300442551133;
+        Fri, 18 Mar 2011 03:02:31 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMDx14LjCxCw24zsBBoEz20DjA@googlegroups.com>
+Received: from mail-vx0-f190.google.com ([209.85.220.190])
+        by mx.google.com with ESMTPS id i16si3137982vbs.10.2011.03.18.03.02.29
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 18 Mar 2011 03:02:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMDx14LjCxCw24zsBBoEz20DjA@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMDx14LjCxCw24zsBBoEz20DjA@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCMDx14LjCxCw24zsBBoEz20DjA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vxb40 with SMTP id 40sf1455895vxb.7
+        for <headius@headius.com>; Fri, 18 Mar 2011 03:02:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=hdzNrsNCnWSwod3+dp3fodZ29teR5d27bZ3oRzDNY1c=;
+        b=CEZGD3dXN6N/5iRtIkOBreDsQnCfPN+vu/VoAsOVv/TqSU3pZhWexQ7VHOMD5pQokr
+         yeZXtJ9IZEdfwjER88NN4vfNNICcmju9YX532vWk2+8pbBXaUrpFobb+euj3z/OLB7Tp
+         mVF1gu9xocy8TNf8NnoxoxyUKLrsvoxAD3vPg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=Ay9bzT9A/9jIwH6U7AKVll1wID4IBY9r7yIM0DtIFW6KbWCgYKHG8cilcQXFjYikDp
+         y5WFBLXQpR9aGomqbB27tx+YQazoSZWc2XTnEe8MWBdmZFis0dlxMJCf32ehVNMKG0+6
+         jg1b604G327/35BIgjOkz/x17RmxBtfS/YVkY=
+Received: by 10.220.123.76 with SMTP id o12mr69209vcr.53.1300442544887;
+        Fri, 18 Mar 2011 03:02:24 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.192.205 with SMTP id dr13ls1372952vcb.1.p; Fri, 18 Mar
+ 2011 03:02:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.101.20 with SMTP id a20mr69718vco.55.1300442544053; Fri,
+ 18 Mar 2011 03:02:24 -0700 (PDT)
+Received: by k38g2000vbn.googlegroups.com with HTTP; Fri, 18 Mar 2011 03:02:24
+ -0700 (PDT)
+Date: Fri, 18 Mar 2011 03:02:24 -0700 (PDT)
+X-IP: 83.33.124.192
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; es-AR; rv:1.9.2.15)
+ Gecko/20110303 Ubuntu/10.10 (maverick) Firefox/3.6.15 GTB7.1,gzip(gfe)
+Message-ID: <21f36109-51c4-4c2a-9793-ef98e4b47d8f@k38g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] why FFI::MemoryPointer is autoconverted into FFI::Pointer
+ in a FFI::Struct?
+From: =?ISO-8859-1?Q?Jes=FAs_GS?= <blaxter@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: blaxter@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+I'm really confuse with this behaviour. I think I'm missing some
+concept of memory management of ffi.
+
+Let's imagine a C library with something like:
+
+struct foo
+{
+    void *p;
+};
+void some_function( struct foo * in_parameter );
+
+ From ruby we are gonna create that struct before call the function,
+with something similar to:
+>> require 'ffi'
+=> true
+>> class Foo < FFI::Struct; layout :p, :pointer; end
+=> #<FFI::StructLayout:0x1f0f0c8>
+>> foo = Foo.new
+=> #<Foo:0x1a15597>
+>> foo[:p] = my_pointer = FFI::MemoryPointer.new(:int, 100)
+=> #<MemoryPointer address=0xb3c06380 size=400>
+>> foo[:p]
+=> #<Pointer address=0xb3c06380>
+>> my_pointer
+=> #<MemoryPointer address=0xb3c06380 size=400>
+
+
+I cannot free a Pointer (only MemoryPointer), so what should I do?
+Create a free_struct_foo( void * p ); function in C? Ignore it because
+I don't need to free that allocated memory or just hope no memory
+leaks will happen?.
+
+Regards.

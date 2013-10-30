@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: puts example fails in doze</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: puts example fails in doze</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 5:31 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 11, 2009 at 8:27 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>2009/12/12 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>in windows, this code fails:
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>module Hello
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>  extend FFI::Library
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>  attach_function 'puts', [:string], :int
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Hello.puts("Hello, World")
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>appears it needed an extra
+<span class="moz-txt-citetags">&gt;&gt; </span>ffi_lib 'crtdll'
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I just updated the samples to use FFI::Library::LIBC as the library.
+<span class="moz-txt-citetags">&gt; </span>That resolves to 'libc.so.6' on linux, and 'msvcrt.dll' on windows.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Can someone verify that blindly using msvcrt.dll like that won't cause
+<span class="moz-txt-citetags">&gt; </span>problems on windows?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+It will only affect Ruby compiled with Visual Studio, since they link
+to msvcr80 or msvcr90.
+
+For the time being, that would work, but maybe an alternative can be cooked.
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

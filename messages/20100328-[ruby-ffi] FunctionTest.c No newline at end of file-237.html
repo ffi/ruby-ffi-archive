@@ -1,0 +1,28 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FunctionTest.c No newline at end of file</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FunctionTest.c No newline at end of file</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;KISHIMOTO, Makoto&quot; &lt;ksmakoto@dd.iij4u.or.jp&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/28/10 8:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+At FreeBSD gcc 4.2.1, no newline at end of file causes error.
+
+diff --git a/libtest/FunctionTest.c b/libtest/FunctionTest.c
+index 32d613f..20780c7 100644
+--- a/libtest/FunctionTest.c
++++ b/libtest/FunctionTest.c
+@@ -77,4 +77,4 @@ void testAsyncCallback(void (*fn)(int), int value)
+ #else
+     (*fn)(value);
+ #endif
+-}
+\ No newline at end of file
++}
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

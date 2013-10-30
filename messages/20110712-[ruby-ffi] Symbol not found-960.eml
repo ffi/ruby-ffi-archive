@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.116.4 with SMTP id o4cs22212agc;
+        Tue, 12 Jul 2011 13:38:37 -0700 (PDT)
+Received: by 10.229.40.139 with SMTP id k11mr362977qce.135.1310503117607;
+        Tue, 12 Jul 2011 13:38:37 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCM61-6qgExDH4fLwBBoE8kvmIA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id i7si687047qcb.165.2011.07.12.13.38.37
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 12 Jul 2011 13:38:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM61-6qgExDH4fLwBBoE8kvmIA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM61-6qgExDH4fLwBBoE8kvmIA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCM61-6qgExDH4fLwBBoE8kvmIA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk38 with SMTP id 38sf6672259qyk.7
+        for <headius@headius.com>; Tue, 12 Jul 2011 13:38:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=LkikdiMqqak0rUrexG2HgEcE+36+64THNdCImX7nDTg=;
+        b=xGIJ4DoPlw1rjhHm62h9CsxCKSOEoqu/zlPaagqQQic7BeYP33TANk46qtynTq1t61
+         OZ9vUjjygUuiuKG1evBKmIdzeYbRcoGQnMdBHS/3aPmV0bf8bnUfeqlyZH+ANh2IUHwq
+         GRuvh7IufbuJZFl9Fmrcd631NnX974A5/9Tlg=
+Received: by 10.224.216.195 with SMTP id hj3mr75707qab.27.1310503111886;
+        Tue, 12 Jul 2011 13:38:31 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.181.73 with SMTP id bx9ls146881qab.6.gmail; Tue, 12 Jul
+ 2011 13:38:31 -0700 (PDT)
+Received: by 10.224.33.76 with SMTP id g12mr411412qad.21.1310503084974;
+        Tue, 12 Jul 2011 13:38:04 -0700 (PDT)
+Received: by 10.224.204.8 with SMTP id fk8msqab;
+        Tue, 12 Jul 2011 07:55:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.186.16 with SMTP id cq16mr8292qab.19.1310482536797; Tue,
+ 12 Jul 2011 07:55:36 -0700 (PDT)
+Received: by bl1g2000vbb.googlegroups.com with HTTP; Tue, 12 Jul 2011 07:55:36
+ -0700 (PDT)
+Date: Tue, 12 Jul 2011 07:55:36 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)
+ AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.112 Safari/534.30,gzip(gfe)
+Message-ID: <8552e40e-d6c9-4078-81b1-fc2c4b29bfc2@bl1g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Symbol not found
+From: Ian <ian.asaff@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: ian.asaff@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+i'm trying to wrap giflib and am encountering the following error when
+i try to make a wrapped method call from ruby:
+
+dyld: lazy symbol binding failed: Symbol not found:
+_DGifOpenFileHandle Referenced from: /usr/local/Cellar/giflib/4.1.6/
+lib/libgif.4.1.6.dylib Expected in: flat namespace
+
+dyld: Symbol not found: _DGifOpenFileHandle Referenced from: /usr/
+local/Cellar/giflib/4.1.6/lib/libgif.4.1.6.dylib Expected in: flat
+namespace
+
+
+however, when i use nm to look for that symbol, it seems like it's
+there.
+
+ruby-1.9.2@ian:s8-e1$ nm /usr/local/Cellar/giflib/4.1.6/lib/libgif.
+4.1.6.dylib | grep
+
+DGifOpenFileHandle 0000000000002750 T DGifOpenFileHandle
+
+any thoughts?
+
+--Ian

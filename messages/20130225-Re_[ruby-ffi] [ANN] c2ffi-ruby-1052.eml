@@ -1,0 +1,124 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp97193laf;
+        Mon, 25 Feb 2013 10:16:06 -0800 (PST)
+X-Received: by 10.194.108.101 with SMTP id hj5mr21177950wjb.6.1361816166553;
+        Mon, 25 Feb 2013 10:16:06 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDT3F4XIUMJRBZOUV2EQKGQE7IN6N6A@googlegroups.com>
+Received: from mail-we0-x23d.google.com ([2a00:1450:400c:c03::23d])
+        by mx.google.com with ESMTPS id dc5si3810514wib.106.2013.02.25.10.16.06
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 25 Feb 2013 10:16:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDT3F4XIUMJRBZOUV2EQKGQE7IN6N6A@googlegroups.com designates 2a00:1450:400c:c03::23d as permitted sender) client-ip=2a00:1450:400c:c03::23d;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDT3F4XIUMJRBZOUV2EQKGQE7IN6N6A@googlegroups.com designates 2a00:1450:400c:c03::23d as permitted sender) smtp.mail=ruby-ffi+bncBDT3F4XIUMJRBZOUV2EQKGQE7IN6N6A@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-we0-f189.google.com with SMTP id r6sf1276321wey.26
+        for <headius@headius.com>; Mon, 25 Feb 2013 10:16:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:mime-version:in-reply-to:references:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=E8S50ExDp/E+xjQfrbO+oh7o4VReOjJMGHXjj+hjzKo=;
+        b=to9gFdwH4oLXBNsqo7m3sF2VX7wHyditMwmo6PGEQ6/u/LR5CeFZwrQk6EffWC9Qdk
+         V7Qe/uhgJwhZ+Ob+n34r9bAfrP+SIEwEexW8jk0rU+FqYSsstxx1xfYOEKGR0U32b+RT
+         RebX3KqEcPi+/7qq5TtDur+G59woNj2RzsL6Ivl5+Hi7uoBO4UFluCaMTEAo19Bw8Oow
+         Qx91MmenEwm+ZVUBvEkD6GGCD3nIOZStgboDHYfjUPZ4+XGtuBHAJ6yq7Qp1P9Y3mWWJ
+         jTfXLbraxwyH2UjqzjsxGCWLhbIt97CikeWJ+D5cyVCSg8GbBEDB4hta/TRIiruYcLfu
+         r4Lg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:mime-version:in-reply-to:references:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=E8S50ExDp/E+xjQfrbO+oh7o4VReOjJMGHXjj+hjzKo=;
+        b=ERRRaRq6MW16nlM2RDp0lkf4fw1dvDNmcKL9EHe9a1cXlsXxf2WDsi6qonT3zKs/lk
+         F1XeY8+kCfBSZMd7j6BviMcPypWutehODRwj0jhGFhgiWT0Hmw/VCVsspIbdWidSMhJM
+         VkBF2qvCNyRgZ1sjxyO0/kKfesMfhFMIdVoefOH29WIUsjhSY2P9cNLuW11TvaHYzU7k
+         jqjy4XM4RICLztU38Qypqu3FxuSgko7RX5r71veraBHLgmU1MCMjIXFmphwQ0nWsahle
+         ERQwEp1T4f92Oe27DCj+E/I/BPWuSxbUXwmgtswjRlNgvcnXr6J9NlZe64M5DkWCLzGM
+         ORDA==
+X-Received: by 10.180.100.4 with SMTP id eu4mr1056281wib.1.1361816166053;
+        Mon, 25 Feb 2013 10:16:06 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.108.105 with SMTP id hj9ls739373wib.18.gmail; Mon, 25 Feb
+ 2013 10:16:05 -0800 (PST)
+X-Received: by 10.14.149.138 with SMTP id x10mr12881903eej.5.1361816165474;
+        Mon, 25 Feb 2013 10:16:05 -0800 (PST)
+X-Received: by 10.14.149.138 with SMTP id x10mr12881902eej.5.1361816165439;
+        Mon, 25 Feb 2013 10:16:05 -0800 (PST)
+Received: from mail-ee0-f41.google.com (mail-ee0-f41.google.com [74.125.83.41])
+        by gmr-mx.google.com with ESMTPS id 6si3673014eej.0.2013.02.25.10.16.05
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 25 Feb 2013 10:16:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of rpavlik@gmail.com designates 74.125.83.41 as permitted sender) client-ip=74.125.83.41;
+Received: by mail-ee0-f41.google.com with SMTP id c13so1611509eek.0
+        for <ruby-ffi@googlegroups.com>; Mon, 25 Feb 2013 10:16:05 -0800 (PST)
+X-Received: by 10.14.193.134 with SMTP id k6mr41412529een.37.1361816165282;
+ Mon, 25 Feb 2013 10:16:05 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.14.225.196 with HTTP; Mon, 25 Feb 2013 10:15:45 -0800 (PST)
+In-Reply-To: <CADgS1nkb5ocxJxzJx+eDjbH6NvTfbNyrrBTWPgY9qgivJbE7zw@mail.gmail.com>
+References: <a4541c97-3fae-42a9-9397-25f61657bb2a@googlegroups.com> <CADgS1nkb5ocxJxzJx+eDjbH6NvTfbNyrrBTWPgY9qgivJbE7zw@mail.gmail.com>
+From: Ryan Pavlik <rpavlik@gmail.com>
+Date: Mon, 25 Feb 2013 12:15:45 -0600
+Message-ID: <CAFYWPBjDj8jFqY-jyf5kGqvi-H3-Vj5DPq45VUP+e1PfaAaVOw@mail.gmail.com>
+Subject: Re: [ruby-ffi] [ANN] c2ffi-ruby
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: rpavlik@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of rpavlik@gmail.com designates 74.125.83.41 as permitted
+ sender) smtp.mail=rpavlik@gmail.com;       dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Feb 25, 2013 at 11:24 AM, Jeremy Voorhis <jvoorhis@gmail.com> wrote=
+:
+> Hi Ryan,
+>
+> This looks great. I'd like to use the opportunity to point out ffi-gen, a
+> similar project which grew out of the ruby-llvm project, and is used to
+> generate the LLVM ffi for ruby-llvm. Its test cases include Cairo, Clang
+> itself, OpenGL, Sqlite3 and others.
+>
+> These projects seem subtly different in scope=96ffi-gen implements Clang
+> bindings itself and only has a Ruby backend, but there may be some
+> opportunity to share code or techniques.
+
+Sure.  This was mostly an afternoon project to test the feasibility of
+c2ffi for another platform, and ruby was easy.  If anyone wants to
+integrate/take over(/ignore ;) the c2ffi-ruby let me know.  It looks
+like ffi-gen is pretty nice.
+
+--=20
+Ryan Pavlik <rpavlik@gmail.com> | https://github.com/rpav
+425.220.9585
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+

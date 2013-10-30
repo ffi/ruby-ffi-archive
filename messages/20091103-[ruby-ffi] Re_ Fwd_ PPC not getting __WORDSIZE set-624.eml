@@ -1,0 +1,112 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.234.7 with SMTP id g7cs22971wfh;
+        Tue, 3 Nov 2009 07:00:16 -0800 (PST)
+Received: by 10.150.45.18 with SMTP id s18mr405150ybs.20.1257260416145;
+        Tue, 03 Nov 2009 07:00:16 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 20si586133gxk.73.2009.11.03.07.00.14;
+        Tue, 03 Nov 2009 07:00:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so9350456yxe.13
+        for <headius@headius.com>; Tue, 03 Nov 2009 07:00:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:received:received
+         :message-id:date:from:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding:x-scanned-by
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=ZNi+eQHxo6gF7SmFJ09c0qbR1Wn+Bl4n4L0Gy9LsQOM=;
+        b=p/BpMb6Q/eMsq6Fwx7Ii0yXJ1kRl+LtXgbis/pKlkAhzFPwXD5aDXrR8jNgbyShPrt
+         fNG8bkL3i8GtoO+/Dkn3Gm3megKG0EvBZUlI0RzR8k95dhlrG1a8kDhYtW9HO6L57c/V
+         QPDbIEgR3VPVrKQoR6a8k6XsBYEnZFlMaTu24=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :message-id:date:from:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:content-transfer-encoding:x-scanned-by
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=ruQAMZp41mcpLzpd6sUlLj9M0N7pOszOQBBTc/vV9A2JgDHeSdL4MOEev0AITYoOO4
+         b10L/aKKHCsTO0/1v9nuy+RP+uVuTnkGO6cjgJjbshm7/P6KMS8kUau3rDnNeeIwsxun
+         pm70MDSGRrHybURbQyR06Klgv+gK+40TXmksk=
+Received: by 10.150.88.9 with SMTP id l9mr34535ybb.15.1257260412901;
+        Tue, 03 Nov 2009 07:00:12 -0800 (PST)
+Received: by 10.177.108.35 with SMTP id k35gr87yqm.0;
+	Tue, 03 Nov 2009 07:00:12 -0800 (PST)
+X-Sender: bkearney@redhat.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.224.116.5 with SMTP id k5mr5952qaq.19.1257260412424; Tue, 03 Nov 2009 07:00:12 -0800 (PST)
+Received: by 10.224.116.5 with SMTP id k5mr5950qaq.19.1257260412401; Tue, 03 Nov 2009 07:00:12 -0800 (PST)
+Return-Path: <bkearney@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28]) by gmr-mx.google.com with ESMTP id 18si685514qyk.13.2009.11.03.07.00.12; Tue, 03 Nov 2009 07:00:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of bkearney@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11]) by mx1.redhat.com (8.13.8/8.13.8) with ESMTP id nA3F0BYu030361 for <ruby-ffi@googlegroups.com>; Tue, 3 Nov 2009 10:00:11 -0500
+Received: from ns3.rdu.redhat.com (ns3.rdu.redhat.com [10.11.255.199]) by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP id nA3F0B9i003861 for <ruby-ffi@googlegroups.com>; Tue, 3 Nov 2009 10:00:11 -0500
+Received: from localhost.localdomain (dhcp231-81.rdu.redhat.com [10.11.231.81]) by ns3.rdu.redhat.com (8.13.8/8.13.8) with ESMTP id nA3F0AvL022261 for <ruby-ffi@googlegroups.com>; Tue, 3 Nov 2009 10:00:10 -0500
+Message-ID: <4AF044FC.5020001@redhat.com>
+Date: Tue, 03 Nov 2009 09:58:04 -0500
+From: Bryan Kearney <bkearney@redhat.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.4pre) Gecko/20091014 Fedora/3.0-2.8.b4.fc11 Thunderbird/3.0b4
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set
+References: <4AEF7919.7050408@redhat.com> <4ccee320911021703k6f38d32fnd3d0d041beaa21d3@mail.gmail.com>
+In-Reply-To: <4ccee320911021703k6f38d32fnd3d0d041beaa21d3@mail.gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+On 11/02/2009 08:03 PM, Wayne Meissner wrote:
+>
+> That does look a bit suspicious.
+>
+> Given you're packaging for fedora, and fedora has a recent version of
+> libffi installed (or can be added as a dependency), you could try
+> creating a patch using changeset
+> 8cbc3f54a875a61e1fb67ac88a25b71940a3ed91
+>
+> That allows ruby-ffi to build against the system libffi.  Technically
+> it always allowed this, but ruby-ffi was a bit overly picky about what
+> it wanted from libffi.
+>
+> You may find you don't even need that patch.  Just having the proper
+> libffi-dev packages installed/as dependencies might allow extconf.rb
+> to pick it up.
+>
+> You might also need 1d50e0647ac55e15222f9a6a9d163d7a68022186 to
+> properly detect&  pass powerpc64 into libtest/GNUmakefile, so it
+> builds for the correct arch.
+>
+I  have applied both, and I have gotten past the earlier issue (Thank 
+you!). I am now seeing different errors on ppc and ppc64. On the ppc 
+build [1] I build and get a couple of unit test failures.. On the ppc64 
+build [2] I see a wierd error about wrong number of arguments.
+
+I apologize, I am not strong in C and did not see anything obvious jump 
+out at me on these.
+
+-- bk
+
+
+[1] PPC Build Log: 
+http://koji.fedoraproject.org/koji/getfile?taskID=1785189&name=build.log
+[2] PPC64 Build Log: 
+http://koji.fedoraproject.org/koji/getfile?taskID=1785192&name=build.log

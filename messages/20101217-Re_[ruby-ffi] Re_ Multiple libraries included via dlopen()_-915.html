@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Multiple libraries included via dlopen()?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Multiple libraries included via dlopen()?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Michael MacDonald <mjmac42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/17/10 10:44 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">On Thu, Dec 16, 2010 at 10:46 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br><div class="gmail_quote"><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+<div class="im">You probably don&#39;t need to backport all the machinery in ffi_lib_flags</div>
+and ffi_lib, you can might get away with using something like:<br>
+<br>
+GlobalSlurm = DynamicLibrary.open(FFI.map_library_name(&#39;slurm&#39;),<br>
+FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_GLOBAL)<br>
+<br>
+That should re-open the library as global.  (storing it in a constant<br>
+just keeps the library handle alive, and hence from being closed when<br>
+GC is performed).<br>
+</blockquote></div><br><div>Wow!  Yet again, thanks for the expert advice.  Just confirmed that this approach seems to work fine with an unmodified 0.6.3.</div><div><br></div><div>Do you see any downside to using this approach regardless of the FFI gem version?  Aside from uglyness, that is.  I could probably implement something which uses ffi_lib_flags for 1.0.0+, but I&#39;m not sure if there&#39;s any benefit other than aesthetics.</div>
+<div><br></div><div>Mike</div>
+
+</div></body>
+</html>
+</table></div>

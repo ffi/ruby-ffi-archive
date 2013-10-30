@@ -1,0 +1,161 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.89.9 with SMTP id c9cs31017qam;
+        Mon, 16 Aug 2010 13:50:03 -0700 (PDT)
+Received: by 10.227.151.195 with SMTP id d3mr4775096wbw.170.1281991803026;
+        Mon, 16 Aug 2010 13:50:03 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBD5yKbjBBoEMeRcQw@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id u1si9064980wbc.78.2010.08.16.13.50.01;
+        Mon, 16 Aug 2010 13:50:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD5yKbjBBoEMeRcQw@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD5yKbjBBoEMeRcQw@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBD5yKbjBBoEMeRcQw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyb34 with SMTP id 34sf1809255wyb.7
+        for <headius@headius.com>; Mon, 16 Aug 2010 13:50:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=aS/oh+uvdhpCwO5KCSkJS3apg2WKcu69s8cqpsAyBJk=;
+        b=hsMPuRDeyYrsFT8DKTS8D3nBB4WM8XMYWItlc/kafbuLk6QTqn43kXLk30Wg8mxV5P
+         ymmz7lh4WsURQZ6bYBvjH5DQjLGjacjN2ldx4O6uxCk60Mg3aneh/2AhKmiSGWiSxmoW
+         hcegc6P9Z8+EEf7/EfknRPEyHUU/Fk9Nnailo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=HNAiPTAs96t+M6OisO+B1amH10F5lKBHCQS/eBd/mu7ob75/A31lgeIuVzhczmTndo
+         JIK7Q9sbzem3ZM0N17D2xEvFFTodvHxSgdz2h9u0oKUWB/LmE75xrnM221kt8VWOX3F0
+         MRmg3LmO0lNL4xZt/TKkygb7HRt8zVWJ+pu2M=
+Received: by 10.216.144.38 with SMTP id m38mr1436953wej.14.1281991801315;
+        Mon, 16 Aug 2010 13:50:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.237.134 with SMTP id y6ls1781482weq.2.p; Mon, 16 Aug 2010
+ 13:50:00 -0700 (PDT)
+Received: by 10.216.27.135 with SMTP id e7mr158526wea.9.1281991800227;
+        Mon, 16 Aug 2010 13:50:00 -0700 (PDT)
+Received: by 10.216.27.135 with SMTP id e7mr158525wea.9.1281991800200;
+        Mon, 16 Aug 2010 13:50:00 -0700 (PDT)
+Received: from mail-wy0-f174.google.com (mail-wy0-f174.google.com [74.125.82.174])
+        by gmr-mx.google.com with ESMTP id x37si2286247weq.0.2010.08.16.13.49.59;
+        Mon, 16 Aug 2010 13:49:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.82.174 as permitted sender) client-ip=74.125.82.174;
+Received: by wyb32 with SMTP id 32so6126604wyb.19
+        for <ruby-ffi@googlegroups.com>; Mon, 16 Aug 2010 13:49:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.227.37.164 with SMTP id x36mr4954563wbd.138.1281991798412;
+ Mon, 16 Aug 2010 13:49:58 -0700 (PDT)
+Received: by 10.216.12.9 with HTTP; Mon, 16 Aug 2010 13:49:58 -0700 (PDT)
+In-Reply-To: <A608A709-547F-4D3C-99E2-6B95191854B3@mac.com>
+References: <A608A709-547F-4D3C-99E2-6B95191854B3@mac.com>
+Date: Tue, 17 Aug 2010 06:49:58 +1000
+Message-ID: <AANLkTik5XWgWX=+wns9pJhECCL0paL0SoWcMXZ+adWTa@mail.gmail.com>
+Subject: Re: [ruby-ffi] am I misusing :pointer in a FFI::Struct?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 74.125.82.174 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thats a bug in FFI::Pointer#inspect ... or more to the point, it
+probably does not define it (whereas JRuby does) - so you're getting
+the default ruby behaviour which is to print out the object's type and
+the object's address (which is not the pointer address, but ruby's
+internal address of the object itself).
+
+If you print out foo[:ptr].address it should all look the same.
+
+Can you file a bug in ruby-ffi's tracker, so this gets fixed?
+
+
+On 17 August 2010 04:26, Chuck Remes <cremes.devlist@mac.com> wrote:
+> I have an FFI::Struct that contains a field of type :pointer. When I assi=
+gn an FFI::Pointer to that field, I get very different behavior from MRI ve=
+rsus JRuby. A small script shows what I mean.
+>
+> Note that under 1.9.1 and 1.9.2, the value of foo[:ptr] changes each time=
+ it is accessed. Under JRuby it reports the correct pointer value every tim=
+e.
+>
+> The 'ffi' gem was built from git master.
+>
+> Am I just using it wrong or is this a bug in the C extension for MRI?
+>
+> cr
+>
+>
+> cremes$ cat u.rb
+> require 'ffi'
+>
+> class Foo < FFI::Struct
+> =A0layout :ptr, =A0:pointer
+> end
+>
+> class Bar < FFI::Struct
+> =A0layout :value, :short
+> end
+>
+> foo =3D Foo.new
+> bar =3D Bar.new
+> bar[:value] =3D 23
+> puts "bar.to_ptr #{bar.to_ptr}"
+> a =3D bar.to_ptr
+> puts "a #{a}"
+> foo[:ptr] =3D bar.to_ptr
+>
+> puts "ptr #{foo[:ptr]}, #{foo[:ptr]}, #{foo[:ptr]}"
+>
+>
+> OUTPUT
+>
+> Mac-Pro:tmp cremes$ ruby -v
+> ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+> Mac-Pro:tmp cremes$ ruby u.rb
+> bar.to_ptr #<FFI::MemoryPointer:0x000001018d8c00>
+> a #<FFI::MemoryPointer:0x000001018d8c00>
+> ptr #<FFI::Pointer:0x000001018d8ab0>, #<FFI::Pointer:0x000001018d8a08>, #=
+<FFI::Pointer:0x000001018d8960>
+> Mac-Pro:tmp cremes$ rvm use 1.9.2-head
+>
+> info: Using ruby 1.9.2 head
+> Mac-Pro:tmp cremes$ ruby u.rb
+> bar.to_ptr #<FFI::MemoryPointer:0x0000010101d900>
+> a #<FFI::MemoryPointer:0x0000010101d900>
+> ptr #<FFI::Pointer:0x0000010101d7c0>, #<FFI::Pointer:0x0000010101d748>, #=
+<FFI::Pointer:0x0000010101d6d0>
+> Mac-Pro:tmp cremes$ rvm use jruby
+>
+> info: Using jruby 1.5.1
+> Mac-Pro:tmp cremes$ ruby u.rb
+> bar.to_ptr #<MemoryPointer address=3D0x10220dc20 size=3D2>
+> a #<MemoryPointer address=3D0x10220dc20 size=3D2>
+> ptr Pointer [address=3D10220dc20], Pointer [address=3D10220dc20], Pointer=
+ [address=3D10220dc20]
+>
+>
+>
+>
+>
+>
+>

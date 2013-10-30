@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.251.145 with SMTP id ms17cs123311qcb;
+        Tue, 13 Jul 2010 17:04:51 -0700 (PDT)
+Received: by 10.224.28.211 with SMTP id n19mr9224140qac.258.1279065891369;
+        Tue, 13 Jul 2010 17:04:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCh_vPhBBoEpNDrGA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTP id b11si8252878qco.23.2010.07.13.17.04.50;
+        Tue, 13 Jul 2010 17:04:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCh_vPhBBoEpNDrGA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCh_vPhBBoEpNDrGA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCh_vPhBBoEpNDrGA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk34 with SMTP id 34sf573413qyk.7
+        for <headius@headius.com>; Tue, 13 Jul 2010 17:04:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=MGd1j7YB0RxpwJUh0fW3QNulDAS303bcfhngit27ulk=;
+        b=mmR1zRPCLG1U1S2YwvJhRDuAqWkR/WOucYFFt268JDBj+Gjp+wkmLmuhhVycdNRoOg
+         JKvcsGyK3OF68ikv96v3bS1fdSPlPcVaI6f3kXb7Qi8+ELW6kYdmSmO6Ze1bJrn2f73a
+         e9VfIBuadJdDNmcFECx0A7OizYagsP6J7tuKA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=OZCCZuchj02QfrHhc5G8AlOKA/wOwN/2sAuFzz41ItCRt09+TJXvCYf3QEEsEwNRCq
+         3wJzWnnf6QYPTTshPUxmyKecewW2wNZ3GtTizwCBC27VsYnOX5Eeqr9bXDKMs28SfBYw
+         /ruijgVmeQAJzgtZQqU3eBcIh80k883pNHpgQ=
+Received: by 10.224.75.75 with SMTP id x11mr357821qaj.49.1279065889748;
+        Tue, 13 Jul 2010 17:04:49 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.96.204 with SMTP id i12ls603145qan.6.p; Tue, 13 Jul 2010 
+	17:04:46 -0700 (PDT)
+Received: by 10.224.72.84 with SMTP id l20mr394067qaj.8.1279065886495;
+        Tue, 13 Jul 2010 17:04:46 -0700 (PDT)
+Received: by 10.224.72.84 with SMTP id l20mr394066qaj.8.1279065886471;
+        Tue, 13 Jul 2010 17:04:46 -0700 (PDT)
+Received: from mail-vw0-f47.google.com (mail-vw0-f47.google.com [209.85.212.47])
+        by gmr-mx.google.com with ESMTP id j8si3645021qcu.14.2010.07.13.17.04.45;
+        Tue, 13 Jul 2010 17:04:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.212.47 as permitted sender) client-ip=209.85.212.47;
+Received: by vws3 with SMTP id 3so6610936vws.20
+        for <ruby-ffi@googlegroups.com>; Tue, 13 Jul 2010 17:04:45 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.73.144 with SMTP id q16mr2402462vcj.265.1279065885004; 
+	Tue, 13 Jul 2010 17:04:45 -0700 (PDT)
+Received: by 10.220.178.71 with HTTP; Tue, 13 Jul 2010 17:04:44 -0700 (PDT)
+In-Reply-To: <13a9edbf-6659-46a6-92e1-b06cf1e76c13@x2g2000prk.googlegroups.com>
+References: <13a9edbf-6659-46a6-92e1-b06cf1e76c13@x2g2000prk.googlegroups.com>
+Date: Wed, 14 Jul 2010 10:04:44 +1000
+Message-ID: <AANLkTimGx-IVBSKQ9_Sjhp3oKhv1bp7gcjvVo1H9xEBp@mail.gmail.com>
+Subject: Re: [ruby-ffi] char <= 256?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.212.47 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+File an issue for it.  I was going to remove the checks on integers
+and just silently slice them to the appropriate size, but haven't
+gotten around to doing so.
+
+You could also work around that one by changing the parameter type for
+that function to :uchar (or :ushort, :uint, :ulong - they all get
+passed the same on win32).
+
+
+
+On 14 July 2010 09:50, rogerdpack <rogerpack2005@gmail.com> wrote:
+> Hi all. =A0Got this recently.
+>
+>
+> C:\dev\ruby\universal-scene-skipper\lib>ruby mute.rb
+> mute.rb:32:in `keybd_event': Value 173 outside char range (RangeError)
+> =A0 =A0 =A0 =A0from mute.rb:32:in `<module:Win>'
+> =A0 =A0 =A0 =A0from mute.rb:19:in `<main>'
+>
+> a bit surprising, since char types in C are quite happy to accept such
+> numbers. =A0So is this a bug because of such? It appears that's it's
+> ambiguous [1] so could go either way.
+> Thanks!
+> -r
+> [1] http://en.wikipedia.org/wiki/C_syntax#Primitive_data_types

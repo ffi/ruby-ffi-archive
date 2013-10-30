@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ffi_libraries: no library specified (LoadError)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ffi_libraries: no library specified (LoadError)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Usman Hussain <usmanhhussain@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/17/10 8:59 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Guys,
+
+This may not be the correct place to post this but i thought it is
+worth a try.
+
+I am having a problem trying to run a rufus-lua example and am getting
+this error:
+
+gl01231m:rubyluabridge usman.hussain$ ruby rubylua.rb
+/Library/Ruby/Gems/1.8/gems/ffi-1.0.0/lib/ffi/library.rb:93:in
+`ffi_libraries': no library specified (LoadError)
+	from /Library/Ruby/Gems/1.8/gems/ffi-1.0.0/lib/ffi/library.rb:129:in
+`attach_function'
+	from /Library/Ruby/Gems/1.8/gems/rufus-lua-1.1.0/lib/rufus/lua/lib.rb:
+62
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from /Library/Ruby/Gems/1.8/gems/rufus-lua-1.1.0/lib/rufus/lua.rb:25
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in
+`gem_original_require'
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in
+`require'
+	from rubylua.rb:4
+
+I am using a MAC.
+Ruby Version is: ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-
+darwin10.0]
+My Script looks something like this:
+require 'rubygems'
+require 'rufus/lua'
+
+  s = Rufus::Lua::State.new
+
+  puts s.eval("return table.concat({ 'hello', 'from', 'Lua' }, ' ')")
+    #
+    # =&gt; "Hello from Lua"
+
+  s.close
+
+When i run the script im getting the error above.
+
+Does anyone know why im getting it?
+
+Kind regards,
+Usman Hussain
+</pre></div></body>
+</html>
+</table></div>

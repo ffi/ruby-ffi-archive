@@ -1,0 +1,100 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs62502bkj;
+        Wed, 3 Nov 2010 23:54:08 -0700 (PDT)
+Received: by 10.100.140.1 with SMTP id n1mr315546and.4.1288853646893;
+        Wed, 03 Nov 2010 23:54:06 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCMscnmBBoEqM72xw@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTP id 19si13219099anx.199.2010.11.03.23.54.05;
+        Wed, 03 Nov 2010 23:54:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCMscnmBBoEqM72xw@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCMscnmBBoEqM72xw@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCMscnmBBoEqM72xw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywp6 with SMTP id 6sf2496272ywp.7
+        for <headius@headius.com>; Wed, 03 Nov 2010 23:54:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=SI7GN1HrkHisLJanDUuahzXgCqokdhnTbTqt5Zd0tW4=;
+        b=r99Kb4xAx/2MxKC3EoJX9wSzzwUSReROxlQqObCfHAkMi54FaPLMSuuWjVK+kWg9VI
+         hZdbpf2TmtqsrdEMe0p7PlK4574vvAa4bFIUDYTmBYkQcLfyEr1hRSHLwGVzcpa4d59s
+         riKoVxOp7WjnYyOSyOM0gAeZQn6fAHqqpDTlI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=i0VrUpN1m/YuJB2lEp13Zt7MKYDderQ1CMJvHW20vV80hEuGhoe2zc28CsN5pWFsIY
+         dQ+2kt9sLAQ7Cjek8K8u/oWhTpQDLUTCtMzC2FiAxq10wY+gWM5LwPCDQv4jCC04UuHa
+         qqR7+iVThcZFWHDMvW6qHCzYQSzJfx6w4vKzo=
+Received: by 10.151.68.12 with SMTP id v12mr39351ybk.48.1288853644065;
+        Wed, 03 Nov 2010 23:54:04 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.234.10 with SMTP id g10ls1072782ybh.4.p; Wed, 03 Nov 2010
+ 23:54:03 -0700 (PDT)
+Received: by 10.151.111.18 with SMTP id o18mr126747ybm.40.1288853643737;
+        Wed, 03 Nov 2010 23:54:03 -0700 (PDT)
+Received: by 10.151.111.18 with SMTP id o18mr126746ybm.40.1288853643708;
+        Wed, 03 Nov 2010 23:54:03 -0700 (PDT)
+Received: from mail-qw0-f42.google.com (mail-qw0-f42.google.com [209.85.216.42])
+        by gmr-mx.google.com with ESMTP id g34si3463916ybc.11.2010.11.03.23.54.02;
+        Wed, 03 Nov 2010 23:54:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.42 as permitted sender) client-ip=209.85.216.42;
+Received: by mail-qw0-f42.google.com with SMTP id 8so948581qwj.29
+        for <ruby-ffi@googlegroups.com>; Wed, 03 Nov 2010 23:54:02 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.229.236.14 with SMTP id ki14mr312909qcb.78.1288853642512; Wed,
+ 03 Nov 2010 23:54:02 -0700 (PDT)
+Received: by 10.229.251.143 with HTTP; Wed, 3 Nov 2010 23:54:02 -0700 (PDT)
+In-Reply-To: <ab019af7-a986-4708-a58a-e65dc6811589@s12g2000prs.googlegroups.com>
+References: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+	<a4dd5c61-5fc2-49eb-9997-7b78214d726d@n32g2000prc.googlegroups.com>
+	<AANLkTik6JNXjHV6CZYk=oWSSTCRm-mGVMJwKsxHzBJ=h@mail.gmail.com>
+	<ab019af7-a986-4708-a58a-e65dc6811589@s12g2000prs.googlegroups.com>
+Date: Thu, 4 Nov 2010 16:54:02 +1000
+Message-ID: <AANLkTi=xLiXN-2E8K54-wNk=t9hr4eHa4mf5wUQiw0AL@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Having trouble with a struct
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.42 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 4 November 2010 10:24, Qwerty <qwerty123451910@hotmail.com> wrote:
+> 1. Open suse 11.3 kernel: 2.6.34.7-0.5-desktop #1 SMP PREEMPT.
+> Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+
+Is your ruby running as 32bit or 64bit?
+
+>
+> 2. I tried it with JRuby 1.5.2 and got an error about pack being
+> undefined. I tried the alias packed with no luck. The JRuby ffi gem
+> directory only has 1 file ffi-0.6.3-java/lib/ffi.rb. Are the other
+> files outside this directory? The docs only show the 3 methods defined
+> in that file(Pointer), yet is doesn't complain about FFI::Struct.
+
+All of FFI for JRuby is contained in JRuby itself - the ffi gem is
+just a shim to satisfy gem dependencies (and occasionally used to
+patch the API post release).
+
+At least this bug is easily reproducable, so shouldn't be too hard to
+track down where in StructLayoutBuilder the problem is.

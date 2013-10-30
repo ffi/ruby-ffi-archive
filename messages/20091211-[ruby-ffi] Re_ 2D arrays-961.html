@@ -1,0 +1,94 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: 2D arrays</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: 2D arrays</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>galdor <khaelin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 1:42 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thank you for your answer&gt;
+I filled an issue here on <a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues/#issue/18">http://github.com/ffi/ffi/issues/#issue/18</a>.
+
+Regards,
+
+Nicolas Martyanoff
+
+On Dec 11, 4:30 am, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>There is currently no way to declare 2D arrays.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>One work around for a small struct like that is to declare 4 arrays.
+<span class="moz-txt-citetags">&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class ALLEGRO_TRANSFORM &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout :m0, [:float, 4], :m1, [:float, 4], :m2, [:float, 4], :m3, [:float, 4]
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Then instead of accessing the second element of the first array as
+<span class="moz-txt-citetags">&gt; </span>[:m][0][1], it would be [:m0][1]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Kinda messy, but its what you will have to do for now.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Please file an issue athttp://github.com/ffi/ffi/issuesso this will
+<span class="moz-txt-citetags">&gt; </span>can get implemented at some stage.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/12/11 galdor <a class="moz-txt-link-rfc2396E" href="mailto:khae...@gmail.com">&lt;khae...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hi,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm trying to bind the following structure:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>struct ALLEGRO_TRANSFORM {
+<span class="moz-txt-citetags">&gt; &gt; </span>  float m[4][4];
+<span class="moz-txt-citetags">&gt; &gt; </span>};
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>But with the following FFI declaration:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>class ALLEGRO_TRANSFORM &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; </span>   layout :m, [[:float, 4], 4]
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I get the following error:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>/usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi/struct.rb:177:in
+<span class="moz-txt-citetags">&gt; &gt; </span>`add_array': undefined method `alignment' for [:float, 4]:Array
+<span class="moz-txt-citetags">&gt; &gt; </span>(NoMethodError)
+<span class="moz-txt-citetags">&gt; &gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>struct.rb:177:in `array_layout'
+<span class="moz-txt-citetags">&gt; &gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>struct.rb:106:in `layout'
+<span class="moz-txt-citetags">&gt; &gt; </span>       from lib/allegro/ffi_allegro.rb:558:in
+<span class="moz-txt-citetags">&gt; &gt; </span>`&lt;class:ALLEGRO_TRANSFORM&gt;'
+<span class="moz-txt-citetags">&gt; &gt; </span>       from lib/allegro/ffi_allegro.rb:557:in `&lt;module:Allegro&gt;'
+<span class="moz-txt-citetags">&gt; &gt; </span>       from lib/allegro/ffi_allegro.rb:4:in `&lt;main&gt;'
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Is there a specific syntax for 2D arrays ?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Regards,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Nicolas Martyanoff
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

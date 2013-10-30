@@ -1,0 +1,65 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] need help loading a library</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] need help loading a library</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/11 12:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On May 4, 2011, at 8:00 PM, Luis Lavena wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Wed, May 4, 2011 at 9:30 PM, Dominic Sisneros <a class="moz-txt-link-rfc2396E" href="mailto:dsisnero@gmail.com">&lt;dsisnero@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Can someone write up the steps needed to get 0mq working on windows?
+<span class="moz-txt-citetags">&gt;&gt; </span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Steps are easy:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>1) You need RubyInstaller and it's DevKit, instructions for that are
+<span class="moz-txt-citetags">&gt; </span>in RubyInstaller website:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://rubyinstaller.org/downloads">http://rubyinstaller.org/downloads</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2) Start a command prompt and invoke devkitvars.bat found inside the
+<span class="moz-txt-citetags">&gt; </span>folder you installed DevKit, this will give you access to MinGW tools.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>3) Download 0mq source somewhere and extract (eg C:\src\zeromq)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>4) compile it using the following commands:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>C:\&gt; cd C:\src\zeromq
+<span class="moz-txt-citetags">&gt; </span>C:\&gt; sh configure --prefix=C:/zeromq
+<span class="moz-txt-citetags">&gt; </span>C:\&gt; make
+<span class="moz-txt-citetags">&gt; </span>C:\&gt; make install
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Note the use of forwardslash in the second command. The above commands
+<span class="moz-txt-citetags">&gt; </span>will take a long time to complete, but once its done, you will find
+<span class="moz-txt-citetags">&gt; </span>inside C:\zeromq folder the binaries (bin, lib, include).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>5) Copy the result binaries
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Now you can copy the DLL from inside bin into a directory in your PATH
+<span class="moz-txt-citetags">&gt; </span>and use it.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>6) Don't forget the additional dependencies
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Don't forge to copy libstdc++-6.dll and libgcc_s_sjlj-1.dll from
+<span class="moz-txt-citetags">&gt; </span>DevKit MinGW into the same folder you copied  libzmq.dll.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>To know where these DLLs are, you can use where, eg:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>C:\&gt; where libstdc++-6.dll
+<span class="moz-txt-citetags">&gt; </span>C:\Users\Luis\Tools\DevKit\4.5.1\mingw\bin\libstdc++-6.dll
+</pre></blockquote><pre wrap>
+
+Luis, I'm adding this write-up to the 0mq FAQ. Thanks for the write-up!
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

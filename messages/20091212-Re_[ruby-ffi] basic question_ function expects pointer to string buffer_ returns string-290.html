@@ -1,0 +1,47 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] basic question: function expects pointer to string  buffer, returns string</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] basic question: function expects pointer to string  buffer, returns string</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Shawn Anderson <shawn42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 10:02 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">rdocs can be located here:<br><a href="http://rdoc.info/projects/ffi/ffi">http://rdoc.info/projects/ffi/ffi</a><br><br>/Shawn<br><br><div class="gmail_quote">On Sat, Dec 12, 2009 at 8:08 PM, Stephen Bannasch <span dir="ltr">&lt;<a href="mailto:stephen.bannasch@deanbrook.org">stephen.bannasch@deanbrook.org</a>&gt;</span> wrote:<br>
+
+<blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;"><div class="im">&gt;I&#39;ve started working on a Ruby FFI interface to the Vernier GoIO sensor interface products.<br>
+
+
+&gt;<br>
+&gt;See:<br>
+&gt;<br>
+&gt;  <a href="http://www.vernier.com/go/" target="_blank">http://www.vernier.com/go/</a><br>
+&gt;  <a href="http://www.vernier.com/downloads/gosdk.html" target="_blank">http://www.vernier.com/downloads/gosdk.html</a>   *the SDK is public domain<br>
+&gt;<br>
+&gt;I&#39;ve got a very basic question FFI question.<br>
+&gt;<br>
+&gt;I have a C++ function that expects a pointer to a string buffer and a int32 specifying the size of the buffer.<br>
+&gt;<br>
+&gt;The result of calling the function is a name of a connected device in the string buffer.<br>
+&gt;<br>
+&gt;How should the call be setup and then processed on return to generate a Ruby string.<br>
+&gt;<br>
+&gt;Here&#39;s the state of the code so far:  <a href="http://gist.github.com/254981" target="_blank">http://gist.github.com/254981</a><br>
+<br>
+</div>Here&#39;s a simplification of how I solved the problem:<br>
+<br>
+I create a MemoryPointer pointing to a 256 byte buffer:<br>
+<br>
+  name = FFI::MemoryPointer.new(256)<br>
+<br>
+then call my function (also telling the function to limit the returned string to 255 chars):<br>
+<br>
+  GetDeviceName(name, 255)<br>
+<br>
+and print the returned string:<br>
+<br>
+  puts name.get_string(0)<br>
+<br>
+</blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

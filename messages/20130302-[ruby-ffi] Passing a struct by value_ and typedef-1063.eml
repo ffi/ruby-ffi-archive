@@ -1,0 +1,302 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp1472laf;
+        Sat, 2 Mar 2013 18:06:58 -0800 (PST)
+X-Received: by 10.236.133.147 with SMTP id q19mr10847839yhi.41.1362276417953;
+        Sat, 02 Mar 2013 18:06:57 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDF6F5MASYDRBQHAZKEQKGQEFNOV2HQ@googlegroups.com>
+Received: from mail-gg0-x23c.google.com (mail-gg0-x23c.google.com [2607:f8b0:4002:c02::23c])
+        by mx.google.com with ESMTPS id k68si12199051yhm.147.2013.03.02.18.06.57
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 02 Mar 2013 18:06:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBQHAZKEQKGQEFNOV2HQ@googlegroups.com designates 2607:f8b0:4002:c02::23c as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBQHAZKEQKGQEFNOV2HQ@googlegroups.com designates 2607:f8b0:4002:c02::23c as permitted sender) smtp.mail=ruby-ffi+bncBDF6F5MASYDRBQHAZKEQKGQEFNOV2HQ@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-gg0-f188.google.com with SMTP id i2sf2002705ggk.5
+        for <headius@headius.com>; Sat, 02 Mar 2013 18:06:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=DKhGe/j6z78XJONwpiSb8+qdr/y79J5H8Ca9ElUZQZk=;
+        b=IMAGRfNluXCbFonAZN3x4capFjCH7CiSJVz0aGlDTOTbt5GWUkwkvtNn2nkO2sc4yV
+         cD9hjaAVTHHeTBVXcB/7H1UUjEQw1hozzpIxHrV8vuupBmhdYbHFG2Iqznt5bWvKAhhI
+         3fqK5tbcRR2X7heUGRy8VjiNti1K311s700oeDOs4OnXD4dmYv8EpflNukMvnSLs+g4H
+         MMGITKc1WOwoKwMRsCSbCDZb2ZeAdhypxWY79RdHxu4eSY/1Vt2Uyc+cQ/HmKZOKku0p
+         qSqWedhpyaowPdQ6+HG1Qk/SckC2Yga0F1WQHSqGpPyrCndMKIjcfox6RkZp7FXKJai2
+         cPcw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=DKhGe/j6z78XJONwpiSb8+qdr/y79J5H8Ca9ElUZQZk=;
+        b=GfDSB4hCxqkYBM2hbf0uaCHkmc+JatitqPeDdc6qsMdAmIne6Vud3H0wticm+iVrGb
+         67yf1RHk8wzwnI8w7b/3+Rtpf8mRYaZUKKkGKu/OgTs+/urPePpqmvQJimqyJRf0jkA0
+         AI1a52SDBGW7zKdrL1eT2emgEqoA6KtPk5qmE9I+nMy5zMf0oTmsLgUVFKFUKUaIhvbf
+         f4GysNP3nH5IolKI6a/kqiMBW+S51CQNhXU+VySaKt7iQfpuKHpJSmxgnvNgm2u+iXrk
+         BznQ+N4mEDsx8mib47xMI11pb8z5Em0ZQnN1V71q5VImbm3fUOhweug7bihwklXzwpjF
+         Hasw==
+X-Received: by 10.49.27.71 with SMTP id r7mr1665814qeg.13.1362276417190;
+        Sat, 02 Mar 2013 18:06:57 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.83.42 with SMTP id n10ls1576907qey.25.gmail; Sat, 02 Mar
+ 2013 18:06:55 -0800 (PST)
+X-Received: by 10.49.24.109 with SMTP id t13mr1715732qef.19.1362276415939;
+        Sat, 02 Mar 2013 18:06:55 -0800 (PST)
+Date: Sat, 2 Mar 2013 18:06:55 -0800 (PST)
+From: Maurizio De Santis <desantis.maurizio@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <4a4d0927-7aea-4469-aa6f-d7763c7a2610@googlegroups.com>
+Subject: [ruby-ffi] Passing a struct by value, and typedef
+MIME-Version: 1.0
+X-Original-Sender: desantis.maurizio@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_741_21498103.1362276415615"
+
+------=_Part_741_21498103.1362276415615
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am writing a libgtop2 wrapper using ffi in order to learn how to use ffi; 
+I am new to ffi, so I have a lot of doubts.
+
+libgtop2 lets get system and processes informations (cpu usage, memory 
+usage, ...).
+
+Here some informations about glibtop_get_cpu:
+
+Library function `glibtop_get_cpu':
+
+     void glibtop_get_cpu (glibtop_cpu *buf);
+     void glibtop_get_cpu_l (glibtop *server, glibtop_cpu *buf);
+
+   Declaration of `glibtop_cpu' in `<glibtop/cpu.h>':
+
+     typedef struct _glibtop_cpu     glibtop_cpu;
+
+     struct _glibtop_cpu
+     {
+         guint64   flags,
+             total,
+             user,
+             nice,
+             sys,
+             idle,
+             iowait,
+             irq,
+             softirq,
+             frequency,
+             xcpu_total [GLIBTOP_NCPU],
+             xcpu_user [GLIBTOP_NCPU],
+             xcpu_nice [GLIBTOP_NCPU],
+             xcpu_sys  [GLIBTOP_NCPU],
+             xcpu_idle [GLIBTOP_NCPU],
+             xcpu_iowait [GLIBTOP_NCPU],
+             xcpu_irq [GLIBTOP_NCPU],
+             xcpu_softirq [GLIBTOP_NCPU],
+             xcpu_flags;
+     };
+
+...
+
+
+Here is what I wrote:
+
+require 'ffi'
+
+class GlibtopCpu < FFI::Struct
+  layout :flags,        :guint64,
+         :total,        :guint64,
+         :user,         :guint64,
+         :nice,         :guint64,
+         :sys,          :guint64,
+         :idle,         :guint64,
+         :iowait,       :guint64,
+         :irq,          :guint64,
+         :softirq,      :guint64,
+         :frequency,    :guint64,
+         :xcpu_total,   :guint64,
+         :xcpu_user,    :guint64,
+         :xcpu_nice,    :guint64,
+         :xcpu_sys,     :guint64,
+         :xcpu_idle,    :guint64,
+         :xcpu_iowait,  :guint64,
+         :xcpu_irq,     :guint64,
+         :xcpu_softirq, :guint64,
+         :xcpu_flags,   :guint64
+end
+
+module LibGtop
+  
+  extend FFI::Library
+  ffi_lib 'libgtop-2.0'
+  attach_function :glibtop_get_cpu, [:pointer], :void
+
+end
+
+# taken from https://github.com/ffi/ffi/wiki/Structs
+pointer = FFI::MemoryPointer.new :byte, GlibtopCpu.size, false
+a = GlibtopCpu.new pointer
+p LibGtop.glibtop_get_cpu(a)
+
+Executing this gives (unsurprisingly) an error:
+
+$ ruby lib/lib_gtop.rb 
+/home/izietto/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/ffi-1.4.0/lib/ffi/types.rb:57:in 
+`find_type': unable to resolve type 'guint64' (TypeError)
+    from 
+/home/izietto/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/ffi-1.4.0/lib/ffi/struct.rb:316:in 
+`find_type'
+    from 
+/home/izietto/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/ffi-1.4.0/lib/ffi/struct.rb:309:in 
+`find_field_type'
+    from 
+/home/izietto/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/ffi-1.4.0/lib/ffi/struct.rb:351:in 
+`array_layout'
+    from 
+/home/izietto/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/ffi-1.4.0/lib/ffi/struct.rb:261:in 
+`layout'
+    from lib/lib_gtop.rb:4:in `<class:GlibtopCpu>'
+    from lib/lib_gtop.rb:3:in `<main>'
+
+It doesn't find the guint64 type; how should I declare it?
+
+Also: xcpu_total, xcpu_user are arrays... how should I declare them?
+
+Finally... if someone could give me an explanation and an example of how to 
+implement the bind to glibtop_get_cpu, I would appreciate it very much :)
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_741_21498103.1362276415615
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I am writing a libgtop2 wrapper using ffi in order to learn how to use ffi;=
+ I am new to ffi, so I have a lot of doubts.<br><br>libgtop2 lets get syste=
+m and processes informations (cpu usage, memory usage, ...).<br><br>Here so=
+me informations about <span style=3D"font-family:courier new,monospace">gli=
+btop_get_cpu</span>:<br><br><span style=3D"font-family:courier new,monospac=
+e">Library function `glibtop_get_cpu':<br><br>&nbsp;&nbsp;&nbsp;&nbsp; void=
+ glibtop_get_cpu (glibtop_cpu *buf);<br>&nbsp;&nbsp;&nbsp;&nbsp; void glibt=
+op_get_cpu_l (glibtop *server, glibtop_cpu *buf);<br><br>&nbsp;&nbsp; Decla=
+ration of `glibtop_cpu' in `&lt;glibtop/cpu.h&gt;':<br><br>&nbsp;&nbsp;&nbs=
+p;&nbsp; typedef struct _glibtop_cpu&nbsp;&nbsp;&nbsp;&nbsp; glibtop_cpu;<b=
+r><br>&nbsp;&nbsp;&nbsp;&nbsp; struct _glibtop_cpu<br>&nbsp;&nbsp;&nbsp;&nb=
+sp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; guint64&nbsp;&nbs=
+p; flags,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp; total,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp; user,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp; nice,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sys,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idle,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iowait,<br>&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; irq,<br>&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; softirq,<br>&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; freq=
+uency,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp; xcpu_total [GLIBTOP_NCPU],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcpu_user [GLIBTOP_NCPU],<br>&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcpu_nice [G=
+LIBTOP_NCPU],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; xcpu_sys&nbsp; [GLIBTOP_NCPU],<br>&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcpu_idle [GLIBTOP_NCPU],<br=
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x=
+cpu_iowait [GLIBTOP_NCPU],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; xcpu_irq [GLIBTOP_NCPU],<br>&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xcpu_softirq [GLIBTOP=
+_NCPU],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp; xcpu_flags;<br>&nbsp;&nbsp;&nbsp;&nbsp; };<br><br>...</span><br><b=
+r><br>Here is what I wrote:<br><span style=3D"font-family:courier new,monos=
+pace"><br>require 'ffi'<br><br>class GlibtopCpu &lt; FFI::Struct<br>&nbsp; =
+layout :flags,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :total,&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; :user,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :nice,&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; :sys,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+:guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :idle,&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp; :iowait,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :=
+guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :irq,&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :softirq,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :g=
+uint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :frequency,&nbs=
+p;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+; :xcpu_total,&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp; :xcpu_user,&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :xcpu_nice,&nbsp;&nbsp;&nbsp; :guint64,<br>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :xcpu_sys,&nbsp;&nbsp;&nbsp=
+;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :xcpu=
+_idle,&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp; :xcpu_iowait,&nbsp; :guint64,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp; :xcpu_irq,&nbsp;&nbsp;&nbsp;&nbsp; :guint64,<br>&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :xcpu_softirq, :guint64,<br>&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :xcpu_flags,&nbsp;&nbsp; :guint6=
+4<br>end<br><br>module LibGtop<br>&nbsp; <br>&nbsp; extend FFI::Library<br>=
+&nbsp; ffi_lib 'libgtop-2.0'<br>&nbsp; attach_function :glibtop_get_cpu, [:=
+pointer], :void<br><br>end<br><br># taken from <a href=3D"https://github.co=
+m/ffi/ffi/wiki/Structs" target=3D"_blank">https://github.com/ffi/ffi/<wbr>w=
+iki/Structs</a><br>pointer =3D FFI::MemoryPointer.new :byte, GlibtopCpu.siz=
+e, false<br>a =3D GlibtopCpu.new pointer<br>p LibGtop.glibtop_get_cpu(a)</s=
+pan><br><br>Executing this gives (unsurprisingly) an error:<br><br><span st=
+yle=3D"font-family:courier new,monospace">$ ruby lib/lib_gtop.rb <br>/home/=
+izietto/.rbenv/versions/<wbr>2.0.0-p0/lib/ruby/gems/2.0.0/<wbr>gems/ffi-1.4=
+.0/lib/ffi/types.<wbr>rb:57:in `find_type': unable to resolve type 'guint64=
+' (TypeError)<br>&nbsp;&nbsp;&nbsp; from /home/izietto/.rbenv/versions/<wbr=
+>2.0.0-p0/lib/ruby/gems/2.0.0/<wbr>gems/ffi-1.4.0/lib/ffi/struct.<wbr>rb:31=
+6:in `find_type'<br>&nbsp;&nbsp;&nbsp; from /home/izietto/.rbenv/versions/<=
+wbr>2.0.0-p0/lib/ruby/gems/2.0.0/<wbr>gems/ffi-1.4.0/lib/ffi/struct.<wbr>rb=
+:309:in `find_field_type'<br>&nbsp;&nbsp;&nbsp; from /home/izietto/.rbenv/v=
+ersions/<wbr>2.0.0-p0/lib/ruby/gems/2.0.0/<wbr>gems/ffi-1.4.0/lib/ffi/struc=
+t.<wbr>rb:351:in `array_layout'<br>&nbsp;&nbsp;&nbsp; from /home/izietto/.r=
+benv/versions/<wbr>2.0.0-p0/lib/ruby/gems/2.0.0/<wbr>gems/ffi-1.4.0/lib/ffi=
+/struct.<wbr>rb:261:in `layout'<br>&nbsp;&nbsp;&nbsp; from lib/lib_gtop.rb:=
+4:in `&lt;class:GlibtopCpu&gt;'<br>&nbsp;&nbsp;&nbsp; from lib/lib_gtop.rb:=
+3:in `&lt;main&gt;'</span><br><br>It doesn't find the <span style=3D"font-f=
+amily:courier new,monospace">guint64</span> type; how should I declare it?<=
+br><br>Also: <span style=3D"font-family:courier new,monospace">xcpu_total, =
+xcpu_user<span style=3D"font-family:arial,sans-serif"> are arrays... how sh=
+ould I declare them?<br><br>Finally...
+ if someone could give me an explanation and an example of how to=20
+implement the bind to glibtop_get_cpu, I would appreciate it very much=20
+:)</span></span>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_741_21498103.1362276415615--

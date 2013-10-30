@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Burgestrand <kim@burgestrand.se></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/28/13 2:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">
+                <div><span style="color: rgb(160, 160, 168); ">On Thursday, 28 February 2013 at 21:41, Wayne Meissner wrote:</span></div><blockquote type="cite" style="border-left-style:solid;border-width:1px;margin-left:0px;padding-left:10px;">
+                    <span><div><div>On Thursday, 28 February 2013 16:57:04 UTC+10, Kim Burgestrand  wrote:<blockquote type="cite"><div><div>Thanks Wayne; the problem existing because of stack/heap memory was not something that could have</div><div>occurred to me.</div></div></blockquote><div><br></div><div>Technically, the problem still exists in both cases, it just shows up when using malloc, because of the way most memory allocators work. &nbsp;It looks like libspotify is stomping over memory it shouldn't - with stack allocated, that doesn't get detected, but it is still happening.</div><div><br></div><div>What made me suspect libspotify was a quick google - there are a few bug reports for libspotify on android (i.e. arm) where it is crashing on otherwise valid code.</div></div></div></span></blockquote><div>Ah, I understand. Too bad I don’t expect the library authors will fix and update their library any time soon. Hm. Oh well,</div><div>I’m happy that I’ve managed to reproduce it in C, and it not technically it being a fault of the ruby code. Now I could try</div><div>to find a workaround, but I can’t say I have my hopes up!</div><div><br></div><div><div>— Kim</div></div>
+            
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

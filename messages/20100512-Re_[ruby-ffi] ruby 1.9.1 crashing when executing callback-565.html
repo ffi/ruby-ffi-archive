@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] ruby 1.9.1 crashing when executing callback</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] ruby 1.9.1 crashing when executing callback</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/12/10 6:29 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Can you build ffi from github and retry it on 1.9?  I added special
+support for callbacks from non-ruby threads (only works on 1.9 though
+- 1.8 is completely screwed in that situation).
+
+JRuby has no problem, because upcalls from C -&gt; java always check &amp;
+attach a JVM context, and jruby automagically adopts threads it does
+not know about.
+
+
+On 13 May 2010 05:53, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm starting to work with callbacks and have run into a consistent crasher. Take a look at the trace here:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://gist.github.com/398987">http://gist.github.com/398987</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I downloaded the ruby-1.9.1 source and poked through vm_eval.c which contains the vm_call0() function. There is a big switch statement in there that falls through to calling rb_bug().
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This all occurs <b class="moz-txt-star"><span class="moz-txt-tag">*</span>only<span class="moz-txt-tag">*</span></b> when invoking the callback. The stack trace clearly shows it is invoking a block (rb_funcall2) from the FFI library. It crashes regardless of the contents of the block (empty, puts, nil, etc.).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>In 1.8.7 it crashes with a LocalJumpError somewhere else.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>When I disable the callback, there are no crashes under either MRI.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Under JRuby, everything works fine. The callback is invoked successfully.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm wondering if this is failing because the callback may be invoked by another native thread. The library being wrapped by FFI spawns many threads that do various background tasks; one of them is likely the invocation of the cleanup callback that is causing the crash.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Are there any known issues with MRI, FFI and callbacks?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

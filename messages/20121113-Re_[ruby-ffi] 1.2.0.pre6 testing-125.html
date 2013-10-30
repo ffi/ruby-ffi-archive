@@ -1,0 +1,81 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 1.2.0.pre6 testing</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 1.2.0.pre6 testing</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/13/12 10:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I want to push out 1.2.0 this weekend, so if people can test the latest 
+<span class="moz-txt-citetags">&gt; </span>1.2.0.pre6 and give me feedback on it, I would appreciate it.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Hopefully, it resolves any installation problems on various rubies (e.g. 
+<span class="moz-txt-citetags">&gt; </span>2.0.0-preview1, jruby+bundler).
+</pre></blockquote><pre wrap>
+
+Build, install, and simple smoke tests look good on the following:
+
+# Win7 32bit w/MRI trunk
+C:\Users\Jon&gt;ruby -v -e "p Gem::Specification.find_by_name('ffi').version.version"
+ruby 2.0.0dev (2012-11-14 trunk 37650) [i386-mingw32]
+"1.2.0.pre6"
+
+C:\Users\Jon&gt;ruby -rffi -e "%w[OS ADDRESS_SIZE LIBC].each { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code> puts '%s = %s' % [i,FFI::Platform.const_get(i)] }"
+OS = windows
+ADDRESS_SIZE = 32
+LIBC = msvcrt.dll
+
+
+# Arch 32bit w/MRI trunk
+[jon@archee ~]$ uname -a
+Linux archee 3.6.6-1-ARCH #1 SMP PREEMPT Mon Nov 5 13:14:42 CET 2012 i686 GNU/Linux
+
+[jon@archee ~]$ /lib/libc.so.6
+GNU C Library stable release version 2.16, by Roland McGrath et al.
+
+[jon@archee ~]$ ruby -v -e "p Gem::Specification.find_by_name('ffi').version.version"
+ruby 2.0.0dev (2012-11-14 trunk 37650) [i686-linux]
+"1.2.0.pre6"
+
+[jon@archee ~]$ ruby -rffi -e "%w[OS ADDRESS_SIZE LIBC].each { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code> puts '%s = %s' % [i,FFI::Platform.const_get(i)] }"
+OS = linux
+ADDRESS_SIZE = 32
+LIBC = libc.so.6
+
+
+While I never install ffi this way, jruby+bundler on Win7 32bit with JRuby 1.7.0 ended up in Wile E. flames trying to build the C ext due to my scheming:
+
+C:\Users\Jon\Downloads\temp\ffi-java&gt;type Gemfile
+source :rubygems
+gem 'ffi', '1.2.0.pre6', :platforms =&gt; :jruby
+
+C:\Users\Jon\Downloads\temp\ffi-java&gt;bundle install
+Fetching gem metadata from <a class="moz-txt-link-freetext" href="http://rubygems.org/">http://rubygems.org/</a>...........
+Fetching gem metadata from <a class="moz-txt-link-freetext" href="http://rubygems.org/">http://rubygems.org/</a>..
+Installing ffi (1.2.0.pre6) with native extensions
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+...
+
+
+But as this works fine, I'm now curious as the the correct way to install ffi with bundler:
+
+C:\Users\Jon\Documents\RubyDev\ffi-git&gt;rake java:gem
+
+C:\Users\Jon\Documents\RubyDev\ffi-git&gt;gem i pkg\ffi-1.2.0.pre6-java.gem
+Successfully installed ffi-1.2.0.pre6-java
+1 gem installed
+
+C:\Users\Jon\Documents\RubyDev\ffi-git&gt;jruby -v -e "p Gem::Specification.find_by_name('ffi').version.version"
+jruby 1.7.0 (1.9.3p203) 2012-10-22 ff1ebbe on Java HotSpot(TM) Client VM 1.7.0_09-b05 +indy [Windows 7-x86]
+"1.2.0.pre6"
+
+C:\Users\Jon&gt;jruby -rffi -e "%w[OS ADDRESS_SIZE LIBC].each { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code> puts '%s = %s' % [i,FFI::Platform.const_get(i)] }"
+OS = windows
+ADDRESS_SIZE = 32
+LIBC = msvcrt.dll
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

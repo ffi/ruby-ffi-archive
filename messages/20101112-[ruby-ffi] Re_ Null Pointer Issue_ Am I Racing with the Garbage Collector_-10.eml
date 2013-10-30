@@ -1,0 +1,118 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs1442faj;
+        Thu, 11 Nov 2010 23:01:14 -0800 (PST)
+Received: by 10.150.96.9 with SMTP id t9mr3343198ybb.4.1289545273494;
+        Thu, 11 Nov 2010 23:01:13 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLjW6djlEBC3zPPmBBoEDfotdg@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id i61si6959633yha.54.2010.11.11.23.01.12;
+        Thu, 11 Nov 2010 23:01:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLjW6djlEBC3zPPmBBoEDfotdg@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLjW6djlEBC3zPPmBBoEDfotdg@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCLjW6djlEBC3zPPmBBoEDfotdg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxi11 with SMTP id 11sf3384304yxi.7
+        for <headius@headius.com>; Thu, 11 Nov 2010 23:01:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=9QLzt8A9ji0131DHBH7B0/52AQ5p1o1JplIBaGzsi9U=;
+        b=tLjHTMRrxlKN5Mz4x0ATONditmImGSwrnjEJm0ICbHiOf+UAbtkIgdZ23GxOXq4Iq+
+         6yXqM1aXiDs5lovMo52jk8g5I9RXHAdKKGQPC95yyaUMMkVrW2JR45Xlx9x6qiO6dR0p
+         dy88SOdJ7SqhD/fFSyli07/NRKE1lJQV8ADkQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=jyXV58KI4D8UWZf7qsTtcJqfBwoZNtuuSNmvbpCZVihKfSElC3bSb6SNoMlh9z3o5X
+         LrkuSpaw4jcWO8I68sg8emMGLW2nTnQ7/fFE57pCWlbaPgtDdOWKFFMCpiBoukUTVzZ/
+         8YiWoQ8rIY2ZMYZZABJmP6GCYnsMQM6Ih+Zrw=
+Received: by 10.90.100.2 with SMTP id x2mr166555agb.45.1289545271748;
+        Thu, 11 Nov 2010 23:01:11 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.181.16 with SMTP id d16ls616123agf.3.p; Thu, 11 Nov 2010
+ 23:01:10 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.91.16.6 with SMTP id t6mr172189agi.11.1289545270958; Thu, 11
+ Nov 2010 23:01:10 -0800 (PST)
+Received: by r31g2000prg.googlegroups.com with HTTP; Thu, 11 Nov 2010 23:01:10
+ -0800 (PST)
+Date: Thu, 11 Nov 2010 23:01:10 -0800 (PST)
+In-Reply-To: <AANLkTi=QKpR7DBOYT8-Dk+cTXTg5Gj01PuzzzJej92Y+@mail.gmail.com>
+X-IP: 76.87.42.32
+References: <3c238cf2-a6e6-48fd-99f5-2fc686518e48@u25g2000pra.googlegroups.com>
+ <AANLkTi=QKpR7DBOYT8-Dk+cTXTg5Gj01PuzzzJej92Y+@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5,gzip(gfe)
+Message-ID: <0e6f7cdc-ebad-4462-868f-dd03a9d5399a@r31g2000prg.googlegroups.com>
+Subject: [ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?
+From: Scott Gonyea <gonyea@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: gonyea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Strange.  I replied in my e-mail, but it didn't post.  Hoping it
+wasn't plugged up in Google somewhere.  Here's what I wrote:
+
+I'm pretty sure it does.  I ran into another issue, while using the
+FFI from Github:
+
+https://gist.github.com/673816
+
+I'm checking the values, all along the way, and I'm not handing it any
+nils, but it won't believe me. The ffi 0.6.3 gem won't complain about
+this (but it will blow up at a few spots).
+
+Sigh :(  Thank you very much, for your help.
+
+Scott
+
+On Nov 11, 10:21=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Thats interesting.
+>
+> Does curl use threads internally? =A0If so, build the ffi gem from
+> github and try that. =A0Earlier versions don't deal well with callbacks
+> coming from non-ruby threads.
+>
+> Also try running it with JRuby. =A0It handles threads a lot better.
+>
+> On 12 November 2010 15:25, Scott Gonyea <gon...@gmail.com> wrote:
+>
+>
+>
+> >https://gist.github.com/673753
+>
+> > That will show you the script I'm running, the gdb backtrace, and ruby-
+> > prof (if that helps at all). =A0I basically was benchmarking my library
+> > with the one I started branching from. =A0It's all good, until I start
+> > running a whole lot of iterations. =A0I made some changes, which seems
+> > to have made it less frequent... until I up the number of iterations.
+>
+> >https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c23...
+>
+> > That was the one fix. =A0This GSolr junk of mine uses StreamlyFFI and
+> > CurlFFI:
+>
+> > StreamlyFFI:https://github.com/aitrus/streamly_ffi
+> > CurlFFI:https://github.com/aitrus/curl_ffi
+>
+> > Scott

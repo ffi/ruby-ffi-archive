@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] using C macros</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] using C macros</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Shawn Anderson <shawn42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 8:33 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">You could also ask the library maintainer to &quot;publish&quot; those static inline methods. Chipmunk did that and chipmunk-ffi attaches the function as data:<br><br><a href="http://code.google.com/p/chipmunk-physics/source/browse/trunk/include/chipmunk/chipmunk_ffi.h">http://code.google.com/p/chipmunk-physics/source/browse/trunk/include/chipmunk/chipmunk_ffi.h</a><br>
+
+<a href="http://github.com/shawn42/chipmunk-ffi/blob/master/lib/chipmunk-ffi.rb#L27-L40">http://github.com/shawn42/chipmunk-ffi/blob/master/lib/chipmunk-ffi.rb#L27-L40</a><br><br>Of course this only works if you have a library maintainer that&#39;s willing to play nicely.<br>
+
+<br>/Shawn<br><br><div class="gmail_quote">On Thu, May 20, 2010 at 8:02 PM, Jeremy Voorhis <span dir="ltr">&lt;<a href="mailto:jvoorhis@gmail.com">jvoorhis@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin: 0pt 0pt 0pt 0.8ex; border-left: 1px solid rgb(204, 204, 204); padding-left: 1ex;">
+
+The same explanation also holds for static inline functions, which are more frustrating since they are often less trivial than macros. For non-trivial code, creating a support library in C and linking it with FFI has been a good approach for me.<div>
+
+
+<br></div><div>Best,</div><div><br></div><div><font color="#888888">Jeremy</font><div><div></div><div class="h5"><br><br><div class="gmail_quote">On Thu, May 20, 2010 at 4:57 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+
+
+<blockquote class="gmail_quote" style="margin: 0pt 0pt 0pt 0.8ex; border-left: 1px solid rgb(204, 204, 204); padding-left: 1ex;">No, C macros are not present in the library as code, since they are<br>
+handled by the  C pre-processor.<br>
+<br>
+You could just implement ruby versions of those macros (they should be<br>
+pretty simple).<br>
+<div><div></div><div><br>
+On 21 May 2010 01:22, mixtli &lt;<a href="mailto:ronmcclain75@gmail.com" target="_blank">ronmcclain75@gmail.com</a>&gt; wrote:<br>
+&gt; Is it possible to access macros such as FD_SET and FD_ZERO?  I&#39;m<br>
+&gt; trying to wrap net-snmp, specifically the snmp_select_info function<br>
+&gt; which is called in C like so:<br>
+&gt;<br>
+&gt;  int fds = 0, block = 1;<br>
+&gt;  fd_set fdset;<br>
+&gt;  struct timeval timeout;<br>
+&gt;  FD_ZERO(&amp;fdset);<br>
+&gt;  snmp_select_info(&amp;fds, &amp;fdset, &amp;timeout, &amp;block);<br>
+&gt;  fds = select(fds, &amp;fdset, 0,0, block ? 0 : &amp;timeout);<br>
+&gt;  if(fds) { snmp_read(&amp;fdset); } else { snmp_timeout(); }<br>
+&gt;<br>
+&gt;<br>
+&gt; I&#39;ve been trying to do it with ffi-inliner, but haven&#39;t had much<br>
+&gt; luck.  Any pointers would be appreciated.<br>
+&gt;<br>
+&gt;<br>
+</div></div></blockquote></div><br></div></div></div>
+</blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

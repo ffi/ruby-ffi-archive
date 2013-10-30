@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [Q] search paths for loading libraries</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [Q] search paths for loading libraries</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/10 5:31 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">I&#39;ve also found, on my mac, that setting LD_LIBRARY_PATH works. This isn&#39;t ideal for distributing code.<div><br></div><div>Wayne,</div><div>Is it only possible to specify complete, absolute paths to libraries for ffi_lib? An api similar to Ruby&#39;s $: would be convenient for adding directories to the load path, like FFI.load_paths &lt;&lt; &#39;/usr/local/lib&#39;.</div>
+<div><br></div><div>Best,</div><div><br></div><div>Jeremy</div><div><br><div class="gmail_quote">On Thu, May 6, 2010 at 3:26 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">ffi_lib searches in the standard locations that dlopen() would look<br>
+for the library - usually /usr/lib.  For everything else, you need to<br>
+specify by absolute path.<br>
+<br>
+You can specify both &quot;search the default paths&quot; and &quot;use this specific<br>
+path&quot; like so:<br>
+<br>
+module FooLib<br>
+  ffi_lib [ &quot;foo&quot;, &quot;/usr/local/libfoo.so&quot;, &quot;/opt/local/libfoo.dylib&quot; ]<br>
+end<br>
+<br>
+That will try to load each of the members of the array in turn, and<br>
+stop once it has loaded once successfully.<br>
+<div><div></div><div class="h5"><br>
+<br>
+<br>
+On 7 May 2010 07:35, Chuck Remes &lt;<a href="mailto:cremes.devlist@mac.com">cremes.devlist@mac.com</a>&gt; wrote:<br>
+&gt; I&#39;m working on providing a set of FFI bindings for the zeromq (<a href="http://zeromq.com" target="_blank">zeromq.com</a>) message queuing library. It is typically installed in /usr/local/lib.<br>
+&gt;<br>
+&gt; The ruby bindings that it currently has builds a C extension which it stashes in ruby/lib/ruby/site_ruby/1.9.1/ for the correct platform. Presumably FFI would find a library installed here, but I&#39;m hoping it will also find a library stored at the traditional /usr/local/lib location. Will it? Any way to give it a hint (aside from providing an absolute path)?<br>
+
+&gt;<br>
+&gt; cr<br>
+&gt;<br>
+&gt;<br>
+</div></div></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

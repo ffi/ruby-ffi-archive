@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs81987agb;
+        Fri, 6 May 2011 01:09:46 -0700 (PDT)
+Received: by 10.151.123.20 with SMTP id a20mr2974778ybn.157.1304669386092;
+        Fri, 06 May 2011 01:09:46 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRDE2Y7uBBoEqrPcew@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id v19si1079067ybd.78.2011.05.06.01.09.46
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 06 May 2011 01:09:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRDE2Y7uBBoEqrPcew@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRDE2Y7uBBoEqrPcew@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRDE2Y7uBBoEqrPcew@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywj3 with SMTP id 3sf6571856ywj.7
+        for <headius@headius.com>; Fri, 06 May 2011 01:09:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=HKsWU96xjTUFTBaGcAAuGy7CPl8XYkbeUdauL43rhG4=;
+        b=u5iJO21t4kUhjd+XfOBtf7XTeGDKVFc4Z2zuFGuw3nXAzDuMkJa89PLMXHojosNwXf
+         ajTPyFe5Eg01uXBeUF6ubvE7OwhBJY1z+ifc8YofKtES8O2pRUZUqG+LAdORwfLz3DnI
+         cT7wobxGsiNIlbLbEduqUrRHikhn4uvC6461U=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=rMl6BFfffzC7A7SNYt39HaF7szXEjJzXzlw1XtlUNmV+oQ1aeEGYsA3TsqMlw7pzdX
+         lNmrj3OkEqEg0N9M8qqztdnfd0UHHz6qz6FvuPssFBZLdFDCSY5+uDZii2X0FWBMA1Wy
+         ar+ZBlU309lhOnJfvvDLTeSkqga/LZCTOCiOw=
+Received: by 10.91.195.35 with SMTP id x35mr368583agp.27.1304669380516;
+        Fri, 06 May 2011 01:09:40 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.64.4 with SMTP id r4ls152306agk.6.gmail; Fri, 06 May 2011
+ 01:09:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.12.11 with SMTP id p11mr375028agi.0.1304669380070; Fri, 06
+ May 2011 01:09:40 -0700 (PDT)
+Received: by s2g2000yql.googlegroups.com with HTTP; Fri, 6 May 2011 01:09:40
+ -0700 (PDT)
+Date: Fri, 6 May 2011 01:09:40 -0700 (PDT)
+In-Reply-To: <2aaf2ff3-2aee-48e5-8f5e-73761774f74c@28g2000yqu.googlegroups.com>
+X-IP: 87.114.253.239
+References: <2aaf2ff3-2aee-48e5-8f5e-73761774f74c@28g2000yqu.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.57 Safari/534.24,gzip(gfe)
+Message-ID: <9ed18284-bba2-4319-b85d-f7298d2add79@s2g2000yql.googlegroups.com>
+Subject: [ruby-ffi] Re: Correct type for binary buffer in a String?
+From: candlerb <bcandler100@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: bcandler100@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+OK, I was being stupid. The last arg to getsockopt is a *pointer* to
+the buflen. Here is a working version using FFI::Buffer:
+
+-------------------------------------
+require 'ffi'
+
+module Foo
+  extend FFI::Library
+  ffi_lib FFI::Library::LIBC
+  attach_function :getsockopt,
+[:int, :int, :int, :buffer_inout, :buffer_inout], :int
+end
+
+require 'socket'
+s = Socket.new(Socket::AF_INET, Socket::SOCK_DGRAM, 0)
+
+buf = FFI::Buffer.new :int
+buflen = FFI::Buffer.new :socklen_t
+buflen.put_int(0, buf.total)
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buflen)
+p buf.get_int(0)
+-------------------------------------
+
+Now, I also tried it using plain String instead of FFI::Buffer, and it
+works. However if Ruby is sharing the underlying string storage
+between multiple strings (copy-on-write) then aliasing happens:
+
+str = "xxxx"
+buf = str.dup
+buflen = [buf.bytesize].pack("I")
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buflen)
+p buf  # "@\000\000\000"
+p str  # "@\000\000\000" as well!!
+
+Is that intentional? Perhaps if the argument is :buffer_inout then FFI
+should call rb_str_modify on the string first?
+
+Regards,
+
+Brian.

@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs170226agb;
+        Thu, 19 May 2011 21:20:45 -0700 (PDT)
+Received: by 10.150.94.6 with SMTP id r6mr107644ybb.387.1305865245635;
+        Thu, 19 May 2011 21:20:45 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMHqssvJERCW2NfuBBoErhWmTw@googlegroups.com>
+Received: from mail-yi0-f62.google.com (mail-yi0-f62.google.com [209.85.218.62])
+        by mx.google.com with ESMTPS id v21si46912ybd.73.2011.05.19.21.20.44
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 19 May 2011 21:20:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMHqssvJERCW2NfuBBoErhWmTw@googlegroups.com designates 209.85.218.62 as permitted sender) client-ip=209.85.218.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMHqssvJERCW2NfuBBoErhWmTw@googlegroups.com designates 209.85.218.62 as permitted sender) smtp.mail=ruby-ffi+bncCMHqssvJERCW2NfuBBoErhWmTw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yic15 with SMTP id 15sf6665581yic.7
+        for <headius@headius.com>; Thu, 19 May 2011 21:20:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=P0j7YOboDc7TmWBi1jehbbLtiRe+79q6Hl7fGltQA2A=;
+        b=VF9Jnhbzbe6aTH1bowKrJUeAODo4RGy5kyYbts/5qJJtsggqsPscTNdX4I3w9+QaWg
+         oGUUNOEsYaDnFHAWPr9uxRaPcASdi71/WFAwIiC3CxGFEC0+yMcLObJqdmc9b0D0JyQ9
+         LsGPWxEHg346O5L/qFYzJxANATpuWXNu+zm/I=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=zHZiHTOGydDEZm8wY5H/KEOLqpwm+RxgOUA+1Sp6LcVSnFeRt/WYXofWV8Z72Vsh4Z
+         W/QSl32MaUYjQ/iY8o74lGjiYVtoOqLS3jsLvbIzzlcwFjivjwjlUXYXRn6bcYYnfat3
+         5daI8zW1Clwx1/4RVhRkN/Nd8lIXD/NM2mZFs=
+Received: by 10.101.133.22 with SMTP id k22mr383904ann.25.1305865238689;
+        Thu, 19 May 2011 21:20:38 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.116.9 with SMTP id o9ls282841anc.7.gmail; Thu, 19 May 2011
+ 21:20:38 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.60.2 with SMTP id i2mr387610ana.13.1305865238243; Thu, 19
+ May 2011 21:20:38 -0700 (PDT)
+Received: by c1g2000yqe.googlegroups.com with HTTP; Thu, 19 May 2011 21:20:38
+ -0700 (PDT)
+Date: Thu, 19 May 2011 21:20:38 -0700 (PDT)
+In-Reply-To: <32034051.395.1305779839960.JavaMail.geo-discussion-forums@prat5>
+X-IP: 70.27.66.177
+References: <32034051.395.1305779839960.JavaMail.geo-discussion-forums@prat5>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1)
+ Gecko/20100101 Firefox/4.0.1,gzip(gfe)
+Message-ID: <a76542eb-e217-459f-b4db-fb4956f29b33@c1g2000yqe.googlegroups.com>
+Subject: [ruby-ffi] Re: AutoPointer#autorelease? and Releaser
+From: "dark.panda" <dark.panda@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: dark.panda@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On May 19, 12:37=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Can you raise an issue on github for this? =A0Not sure if it will make it=
+ for
+> 1.0.9, but I'll look at it as soon as I can.
+
+Done and done. The ticket has been filed at https://github.com/ffi/ffi/issu=
+es/112.
+
+Cheers

@@ -1,0 +1,156 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs109806faj;
+        Thu, 11 Nov 2010 21:20:21 -0800 (PST)
+Received: by 10.229.74.147 with SMTP id u19mr1541977qcj.214.1289539220460;
+        Thu, 11 Nov 2010 21:20:20 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLjW6djlEBCRnfPmBBoEtqNoww@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id my10si6709645qcb.33.2010.11.11.21.20.18;
+        Thu, 11 Nov 2010 21:20:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCRnfPmBBoEtqNoww@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCRnfPmBBoEtqNoww@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCLjW6djlEBCRnfPmBBoEtqNoww@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvh11 with SMTP id 11sf964087pvh.7
+        for <headius@headius.com>; Thu, 11 Nov 2010 21:20:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=TIMJYbB0QYsXLzNU89GPTwIwKnHH3Uc/53P/C9HMUG4=;
+        b=wpfGtYYwIKRcaVXCXdpwnkVXqAWCNc1XIdVpvfPe7bKDw5dIySitSPj1cwRBTTmubE
+         KC373oHXryTsXxLWIuvn60qjwJfvWj9HhLJmOwZu70vFAE8ol4fYHZ56x1vZjeUy+Mao
+         9WOhaIFfPYcKc0xPtMwkzer7idEQXNOuunyTw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=qJxOZnSUGc5kiYUe81QuQm4mZwdVRDJRbhKzHF+kDaGc5SgKIUODuvu2Kist6ZqheU
+         S2yW+R0k4RxVtJU2eTIdOVMtzKqV+VzK2DzpKjJVY2dk1uOy7wp2a65QMP9DZ3Vh+QBe
+         ddcSsX1AxO/EElkOfhUr8SucbtInW8SlzSyl4=
+Received: by 10.142.210.15 with SMTP id i15mr93786wfg.64.1289539217117;
+        Thu, 11 Nov 2010 21:20:17 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.249.41 with SMTP id w41ls3650204wfh.1.p; Thu, 11 Nov 2010
+ 21:20:16 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.142.248.35 with SMTP id v35mr99933wfh.69.1289539216721; Thu,
+ 11 Nov 2010 21:20:16 -0800 (PST)
+Received: by o23g2000prh.googlegroups.com with HTTP; Thu, 11 Nov 2010 21:20:16
+ -0800 (PST)
+Date: Thu, 11 Nov 2010 21:20:16 -0800 (PST)
+In-Reply-To: <AANLkTimOqwh_sjX2eis=e_=sekvu3ncu8mL3LKs9E8iN@mail.gmail.com>
+X-IP: 76.87.42.32
+References: <932132f1-bd9d-4f6b-b449-46132b0c6a4c@k14g2000pre.googlegroups.com>
+ <AANLkTimOqwh_sjX2eis=e_=sekvu3ncu8mL3LKs9E8iN@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5,gzip(gfe)
+Message-ID: <a474ebf5-b437-46d3-9825-c218e6ff8ca3@o23g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: Passing a String Pointer to Callback Procs -- How to append?
+From: Scott Gonyea <gonyea@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: gonyea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thank you, Wayne.  Evan actually gave me some helpful info, as well,
+along similar lines (just a little bit before you replied).  The fix
+was to, basically, not make the Proc a constant (first).  Then, inside
+the proc, I would simply append the "stream" variables data to an
+instance variable.
+
+This was then replaced by something NoKarma used (and I stole), which
+was to pass a FFI::Function, which calls an instance method (which
+then appends to an instance variable).
+
+You can see my code in its current state, which seems to be largely
+good / stable / etc.  There's another issue, which I'm going to post
+about separately.
+
+https://github.com/aitrus/streamly_ffi/blob/master/lib/streamly_ffi/base.rb=
+#L120
+
+Scott
+
+On Nov 9, 5:56=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> You can't pass ruby objects through C callbacks with FFI, so any
+> variables you want to access from the callback have to be visible to
+> the Proc when you create it.
+>
+> You seem to be mostly doing it correct with your data_handler() method
+> - i.e. the _string parameter to data_handler() will be visible inside
+> the proc callback, and you can just append the data to it. =A0The
+> handler parameter to the callback will not be used (and is most likely
+> nil anyway).
+>
+> I would change the first parameter (stream) of the curl handler to be
+> of type pointer though, and get the data out like so:
+>
+> =A0 =A0_string << stream.get_string(0, size)
+>
+> I'm not sure if curl guarantees that the buffer is NUL terminated, but
+> I suspect not, since it is binary data, so you only want to copy out
+> as many bytes as curl indicates are ready (the size param).
+>
+> One _VERY_ important thing to remember, always keep a reference to the
+> proc returned by data_handler somewhere - e.g. as an @variable in each
+> Request instance. =A0FFI dynamically generates native code for the
+> callback, and you need to keep a strong reference to it to avoid it
+> being prematurely collected, and crashing the VM. =A0Stashing the proc
+> somewhere for the lifetime of the Request instance should suffice.
+>
+> On 9 November 2010 10:30, Scott Gonyea <gon...@gmail.com> wrote:
+>
+>
+>
+> > I'm having a really painful time figuring this out. =A0I jumped onto
+> > what NoKarma had already begun, with his curl-ffi library, and started
+> > running with it. =A0I'm trying to emulate the ruby extension layers use=
+d
+> > in some different Curl gems (Streamly and Patron, atm).
+>
+> > Curl wants you to pass a method reference, which it will then
+> > callback. =A0You can see examples used in Streamly and Patron:
+>
+> > Streamly, lines 29-83:
+> >https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29
+>
+> > Patron, lines 59-75 (Much simpler):
+> >https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c...
+>
+> > Basically, they're allocating a buffer and providing a callback + that
+> > buffer, which is sent to the callback. I've added this callback to
+> > CurlFFI and I have the Proc working, etc... But I cannot seem to get
+> > it to append to the string.
+>
+> > Callback Additions to CurlFFI:
+> >https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923
+> >https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926
+>
+> > I'll delete 926, as it's not necessary (I think).
+>
+> > Procs that get called:
+> >https://github.com/aitrus/streamly/blob/master/lib/streamly/request.r...
+>
+> > I suppose the last resort can be to call C libraries, allocating /
+> > freeing a string. =A0But that makes me think I'm doing it wrong. =A0I
+> > can't imagine that I'm doing anything overly interesting with my code.
+>
+> > Scott

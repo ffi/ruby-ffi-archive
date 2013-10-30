@@ -1,0 +1,61 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI 1.0.6 fails to compile</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI 1.0.6 fails to compile</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/9/11 3:24 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm really sorry for replying <b class="moz-txt-star"><span class="moz-txt-tag">*</span>that<span class="moz-txt-tag">*</span></b> late, but I had much to do after
+I posted here and then forgot totally about this posting. Today I ran
+gem update and saw compiling ffi was failing again, which remembered
+me of this post. Sorry again.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Does arch linux split libraries into 'binary' and 'dev' versions like
+<span class="moz-txt-citetags">&gt; </span>Debian?  if so, you'll want to install the 'dev' version of libffi.
+</pre></blockquote><pre wrap>
+
+No, it doesn't.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>You'll also want to check that libffi is registered properly with pkg-config
+<span class="moz-txt-citetags">&gt; </span>by e.g.  running "pkg-config libffi --cflags"
+</pre></blockquote><pre wrap>
+
+This says this:
+$ pkg-config libffi --cflags
+-I/usr/lib/libffi-3.0.9/include
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Have you tried an uninstall/install cycle rather than update?
+</pre></blockquote><pre wrap>
+I did, and it didn't work.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Does a --user-install work?
+</pre></blockquote><pre wrap>
+No, it doesn't.
+
+All the other C extension gems I'm working with (nokogiri, RedCloth,
+etc.) install just fine, so it shouldn't be a bug in mkmf. I even
+tried editing mkmf to always make it detect a compilier (by returning
+true in have_devel), but then the command failed it couldn't find the
+ffi library.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>That's odd as I'm running Arch 32-bit (via VirtualBox on Win7 32-bit) and the ffi-1.0.6 gem builds and installs fine
+</pre></blockquote><pre wrap>
+
+My other computer runs 64bit Arch Linux and ffi installs fine on it.
+On the original computer I can't even reinstall the ffi gem that was
+previously installed. I think I'm going to try to build ffi directly
+from the sources, bypassing RubyGems...
+
+I really have no clue what's going on here. I appreciate any ideas.
+
+Valete,
+Quintus
+</pre></div></body>
+</html>
+</table></div>

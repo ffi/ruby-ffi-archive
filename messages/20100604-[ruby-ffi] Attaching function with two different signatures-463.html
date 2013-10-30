@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Attaching function with two different signatures</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Attaching function with two different signatures</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Arvicco <arvitallian@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/4/10 12:18 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Sorry to post amateurish question, but I have really hard time
+figuring out how to attach a function that has 2 different signatures.
+For example, last argument in SendMessage from Win32 API can be
+either :long or :pointer:
+
+attach_function :SendMessage, [:ulong, :uint, :uint, :long], :int
+ attach_function :SendMessage,
+[:ulong, :uint, :uint, :pointer], :int
+
+ I need to be able to call this function with any type, but it seems
+that it is only possible to  attach a function with one signature. I
+honestly tried to find the way on FFI wiki and rdoc pages, but wasn't
+able to figure out how to go about it. <span class="moz-smiley-s2" title=":("><span>:(</span></span> Any hints or pointers will
+be much appreciated...
+
+Regards, Arvicco
+</pre></div></body>
+</html>
+</table></div>

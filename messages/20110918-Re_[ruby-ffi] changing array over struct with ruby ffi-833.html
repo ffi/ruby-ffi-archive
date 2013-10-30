@@ -1,0 +1,78 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] changing array over struct with ruby ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] changing array over struct with ruby ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/18/11 12:49 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Hi Dor,
+<br>
+<br>My advice would be to first get things working using the struct classes you 
+defined directly, so something like
+<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;result = foo(your_list)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;size = your_list[:size]
+<br>&nbsp;&nbsp;&nbsp;&nbsp;...
+<br>
+<br>(It seems your layout for NodeList is not correct in the code below, by the 
+way). This will look more like C than Ruby, I suppose.
+<br>
+<br>Once you get that working, you can think about wrapping that code in some 
+wrapper classes so you can present a Ruby-like interface to the rest of the program.
+<br>
+<br>Regards,
+<br>Matijs.
+<br>
+<br>On 09/05/2011 06:04 PM, Dor Kalev wrote:
+<br><blockquote type=cite style="color: #000000;">Hi there!
+<br>I have this data
+<br>
+<br>typedef struct {
+<br>&nbsp;&nbsp; unsigned int size;
+<br>&nbsp;&nbsp; unsigned int e[8];
+<br>} SmallAry;
+<br>
+<br>typedef struct {
+<br>&nbsp;&nbsp; unsigned int title;
+<br>&nbsp;&nbsp; SmallAry form;
+<br>} Node;
+<br>
+<br>typedef struct {
+<br>&nbsp;&nbsp; Node * e;
+<br>&nbsp;&nbsp; unsigned int size;
+<br>} NodeList;
+<br>
+<br>int foo(NodeList * states);
+<br>
+<br>
+<br>module Foon
+<br>&nbsp;&nbsp; class SAry&lt;&nbsp; FFI::Struct
+<br>&nbsp;&nbsp;&nbsp;&nbsp; layout :size,&nbsp; :pointer,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :e,&nbsp;&nbsp;&nbsp;&nbsp; :pointer
+<br>&nbsp;&nbsp; end
+<br>&nbsp;&nbsp; class Node&lt;&nbsp; FFI::Struct
+<br>&nbsp;&nbsp;&nbsp;&nbsp; layout :title,&nbsp; :int,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :e,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SAry
+<br>&nbsp;&nbsp; end
+<br>&nbsp;&nbsp; class NodeList&lt;&nbsp; FFI::Struct
+<br>&nbsp;&nbsp;&nbsp;&nbsp; layout :title,&nbsp; :int,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :e,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :pointer
+<br>&nbsp;&nbsp; end
+<br>&nbsp;&nbsp; extend FFI::Library
+<br>&nbsp;&nbsp; ffi_lib "foon.so"
+<br>&nbsp;&nbsp; attach_function :create_object, [], :pointer
+<br>&nbsp;&nbsp; attach_function :foo, [ :pointer ], :int
+<br>end
+<br>
+<br>I need foo to update the NodeList it gets and return it to Ruby so I
+<br>can use it,
+<br>help will be much appreciated.
+<br>
+<br>thanks,
+<br>DK
+<br></blockquote>
+<br>
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

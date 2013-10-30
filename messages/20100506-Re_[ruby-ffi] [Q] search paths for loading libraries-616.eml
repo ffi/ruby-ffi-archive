@@ -1,0 +1,95 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.226.5 with SMTP id y5cs57290ybg;
+        Thu, 6 May 2010 15:39:07 -0700 (PDT)
+Received: by 10.142.10.21 with SMTP id 21mr11372591wfj.233.1273185541952;
+        Thu, 06 May 2010 15:39:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCCio3fBBoEVrVIuQ@googlegroups.com>
+Received: from mail-pz0-f168.google.com (mail-pz0-f168.google.com [209.85.222.168])
+        by mx.google.com with ESMTP id 31si2274732pzk.94.2010.05.06.15.39.00;
+        Thu, 06 May 2010 15:39:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCCio3fBBoEVrVIuQ@googlegroups.com designates 209.85.222.168 as permitted sender) client-ip=209.85.222.168;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCCio3fBBoEVrVIuQ@googlegroups.com designates 209.85.222.168 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCCio3fBBoEVrVIuQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk40 with SMTP id 40sf94798pzk.22
+        for <headius@headius.com>; Thu, 06 May 2010 15:39:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=GUSAxFJBD59UxRtea+9+D6xBJVTVmhkk8SihPQDo8Gc=;
+        b=ixGHjmPGp2dZ8jj9yp/pBFNWFFw1ux53HU2Y5RI23WGfGJhsnDPektAMXrgv1TZ/9W
+         zoccJvqTEJm5a9JRTwIBPX0j9clf5k5WRFgKMLlu4ZiLWOOklNYFz6Q1+46sqrqphgUE
+         ud+qjZAfwoCAPdgEbo104aetn9ZiziM85OJh0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=4T8hqlAAwc0Ci3UOCaMT0GgVtoyD416xx3o8qyYKicPpsCYA+XxqJH/RbfNhykHANd
+         KIjy0EhB3e9x3Bi/8L7ZvJu2Vg8ZSRuu4EaiiBpP1AQbrOkHn9s3Q6JcC87eP+oiCpSy
+         uhhcgaWpj4kqM1ZdcaUO3ePWmAZ6AJlueCdGc=
+Received: by 10.115.101.15 with SMTP id d15mr3263800wam.25.1273185538626;
+        Thu, 06 May 2010 15:38:58 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.250.36 with SMTP id x36ls7228349wfh.2.p; Thu, 06 May 2010 
+	15:38:58 -0700 (PDT)
+Received: by 10.142.55.19 with SMTP id d19mr3771927wfa.6.1273185538051;
+        Thu, 06 May 2010 15:38:58 -0700 (PDT)
+Received: by 10.142.55.19 with SMTP id d19mr3771926wfa.6.1273185538025;
+        Thu, 06 May 2010 15:38:58 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pv0-f172.google.com (mail-pv0-f172.google.com [74.125.83.172])
+        by gmr-mx.google.com with ESMTP id r3si1112583waj.3.2010.05.06.15.38.57;
+        Thu, 06 May 2010 15:38:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.83.172 as permitted sender) client-ip=74.125.83.172;
+Received: by mail-pv0-f172.google.com with SMTP id 13so196254pvg.17
+        for <ruby-ffi@googlegroups.com>; Thu, 06 May 2010 15:38:57 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.141.107.15 with SMTP id j15mr7203081rvm.288.1273185536855; 
+	Thu, 06 May 2010 15:38:56 -0700 (PDT)
+Received: by 10.141.51.6 with HTTP; Thu, 6 May 2010 15:38:56 -0700 (PDT)
+In-Reply-To: <x2o94e476fd1005061531ye84e474fgaef7777d7ef48536@mail.gmail.com>
+References: <F00D5192-ED75-4A6A-BE66-A8B203915C08@mac.com>
+	 <o2i4ccee321005061526w3b872f1dyce9dc561f693b257@mail.gmail.com>
+	 <x2o94e476fd1005061531ye84e474fgaef7777d7ef48536@mail.gmail.com>
+Date: Fri, 7 May 2010 08:38:56 +1000
+Message-ID: <t2k4ccee321005061538o8cc73453y27220017514cee1a@mail.gmail.com>
+Subject: Re: [ruby-ffi] [Q] search paths for loading libraries
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 74.125.83.172 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 7 May 2010 08:31, Jeremy Voorhis <jvoorhis@gmail.com> wrote:
+> Is it only possible to specify complete, absolute paths to libraries for
+> ffi_lib? An api similar to Ruby's $: would be convenient for adding
+> directories to the load path, like FFI.load_paths << '/usr/local/lib'.
+
+It would be fairly trivial to add ffi_library_path on a per-module
+basis.  I'm not sure whether adding it globally is such a good idea -
+one library can potentially screw another one over that way.
+
+If anyone wants to hack on it, look in lib/ffi/library.rb in the
+ffi_lib method.  Both ruby-ffi and JRuby use the same code for that
+section, so a patch for one should apply to the other.

@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: attach_function a bit draconian</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: attach_function a bit draconian</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>cfis <cfis@savagexi.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/4/11 6:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thinking about this a bit more, maybe a better approach it to
+explicitly support versions?  Something like:
+
+attach_function(:fancy_new_function, [], :int, :version =&gt; '1.1.0')
+
+module FFI
+  module Library
+    def lib_version
+      raise(RuntimeError, "You must implement #lib_version to support
+function versioning")
+    end
+  end
+end
+
+Then modify attach_function to see check the passed in options for a
+version, and if so, compare the specified version against the loaded
+library version (via #lib_version).
+
+The problem with this is FFI supports loading multiple libraries, so
+the approach above is too simplistic since you would have need to
+specify the version of which library in both #lib_version and in
+#attach_fuction.
+
+Charlie
+
+
+On Sep 4, 3:19 pm, cfis <a class="moz-txt-link-rfc2396E" href="mailto:c...@savagexi.com">&lt;c...@savagexi.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I've written a ffi wrapper for the free image library, which is here:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://cfis.github.com/free-image-ruby/">http://cfis.github.com/free-image-ruby/</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The problem is that I've coded against the latest version of
+<span class="moz-txt-citetags">&gt; </span>FreeImage, and most linux distributions have older versions
+<span class="moz-txt-citetags">&gt; </span>installed.  Thus when I try to load the gem it fails since
+<span class="moz-txt-citetags">&gt; </span>attach_function throws an error because the older versions don't have
+<span class="moz-txt-citetags">&gt; </span>all the functions.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This isn't what I want - the older versions work perfectly fine, they
+<span class="moz-txt-citetags">&gt; </span>just don't include as much functionality.  So instead of blowing up, I
+<span class="moz-txt-citetags">&gt; </span>would prefer if FFI throw a warning message but continue loading the
+<span class="moz-txt-citetags">&gt; </span>library.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If a user does call one of these unimplemented functions, then FFI
+<span class="moz-txt-citetags">&gt; </span>should throw an error and allows the wrapping library to customize
+<span class="moz-txt-citetags">&gt; </span>that message to say something useful (sorry, to use this function you
+<span class="moz-txt-citetags">&gt; </span>need to upgrade to a newer version of freeimage).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I can think of lots of ways of doing this, here is one possibility:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>* If a function is not implemented, instead of throwing an error, wrap
+<span class="moz-txt-citetags">&gt; </span>it with a NotImplemented function (to go along with Function and
+<span class="moz-txt-citetags">&gt; </span>Variadic).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>* When a NotImplemented function is called, throw an error.  This
+<span class="moz-txt-citetags">&gt; </span>could:
+<span class="moz-txt-citetags">&gt; </span>    - Just hard-code an error, not allow customization
+<span class="moz-txt-citetags">&gt; </span>    - Call a method on library, not_implemented, that developers could
+<span class="moz-txt-citetags">&gt; </span>override
+<span class="moz-txt-citetags">&gt; </span>    - Call a proc which would be passed to attach_function which would
+<span class="moz-txt-citetags">&gt; </span>be called
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I lean towards the 2nd choice, but don't feel very strongly about it.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Does this sound like an idea that could be accepted to FFI?  If so,
+<span class="moz-txt-citetags">&gt; </span>I'll code up a patch for review.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks - Charlie
+</pre></div></body>
+</html>
+</table></div>

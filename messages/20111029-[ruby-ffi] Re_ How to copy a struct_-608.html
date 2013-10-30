@@ -1,0 +1,15 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: How to copy a struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: How to copy a struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/29/11 6:57 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br><br>On Sunday, 30 October 2011 02:31:12 UTC+10, cootcraig  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>For this task I plan to have multiple threads, each reading from a
+<br>network socket. &nbsp;I will struct.new a buffer for each thread, the dll
+<br>call reads into the struct, the struct is used read only in any
+<br>threads that reference it. No need for dup with this approach.
+<br><br></blockquote><div><br></div><div>Yep, that will work fine. &nbsp;As long as only one thread mutates a struct at a time, &nbsp;they should be safe to share between threads in that manner.</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

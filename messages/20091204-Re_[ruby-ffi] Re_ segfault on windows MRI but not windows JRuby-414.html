@@ -1,0 +1,55 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/4/09 1:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 4, 2009 at 3:49 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>2009/12/5 Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Which versions of packages for mingw32 do you have installed?
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>luis@seyori ~$ port installed | grep "mingw32"
+<span class="moz-txt-citetags">&gt;&gt; </span> i386-mingw32-binutils @2.19.1_0 (active)
+<span class="moz-txt-citetags">&gt;&gt; </span> i386-mingw32-gcc @3.4.5-20060117-2_0 (active)
+<span class="moz-txt-citetags">&gt;&gt; </span> i386-mingw32-runtime @3.15.2_0 (active)
+<span class="moz-txt-citetags">&gt;&gt; </span> i386-mingw32-w32api @3.13_0 (active)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thats a good question.  I built the cross compiler from source using
+<span class="moz-txt-citetags">&gt; </span>the x86-mingw32-build.sh-0.0-20061107-1 build script from the mingw
+<span class="moz-txt-citetags">&gt; </span>site.  By default it downloads the following versions, so that <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>could<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>be what was used.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>gcc-core-3.4.5-20060117-1-src.tar.gz
+<span class="moz-txt-citetags">&gt; </span>binutils-2.17.50-20060716-1-src.tar.gz
+<span class="moz-txt-citetags">&gt; </span>mingw-runtime-3.10-20060909-1-src.tar.gz
+<span class="moz-txt-citetags">&gt; </span>w32api-3.7-src.tar.gz
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I re-installed that machine last weekend, so I am just assuming those
+<span class="moz-txt-citetags">&gt; </span>are the versions that were used (and that I didn't download later
+<span class="moz-txt-citetags">&gt; </span>versions for it to use).
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Hmn, trying to create a gem here with OSX (Leopard) and got this:
+
+<a class="moz-txt-link-freetext" href="http://gist.github.com/249257">http://gist.github.com/249257</a>
+
+Which may indicate that using the macport version of mingw32 is not
+playing so well with cross compiling, and <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>could<span class="moz-txt-tag">/</span></i> be related to the
+issue we are seeing.
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

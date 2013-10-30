@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs16309faj;
+        Sat, 20 Nov 2010 14:01:42 -0800 (PST)
+Received: by 10.151.10.12 with SMTP id n12mr207595ybi.318.1290290501817;
+        Sat, 20 Nov 2010 14:01:41 -0800 (PST)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhDDiqHnBBoEv5cLOw@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTP id t16si7889495ybe.53.2010.11.20.14.01.40;
+        Sat, 20 Nov 2010 14:01:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDDiqHnBBoEv5cLOw@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDDiqHnBBoEv5cLOw@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhDDiqHnBBoEv5cLOw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj7 with SMTP id 7sf520948pwj.7
+        for <headius@headius.com>; Sat, 20 Nov 2010 14:01:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=jdMReQpgZC7J/j28b/snWHGfVsg1t/LLqz8oOxms9ao=;
+        b=we8MtCsXjmViQmp3f4SjjezyIJcFih7xEGPXtGPQyMps5Kxtxt+NiTR77ZXSyRb3Qw
+         OIHDpjzMtOk87FWGPauXU+CTV9zWjumOh9pwj+sbU+/QQkpLdpop7igH9nCn+rEfSyO9
+         UBIQJG3lwmaQq9kqkBhqNOgyN7zPyho2Ni8fQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=dRk3Ske6Y5v3m/94dzZ8+z+SrntAfvc0RMxnqTF3lUaPsFMz5DINmLre8MVRrqVqPF
+         bROIUbOD2IfpSEJ7/J8XKU/MmopOpmjhQmjUHcivmxXNXu/DfdSt8+Idr8lKzQFC9PMq
+         Mu9scz61C+NzjUgWoYAMkq2d232KQlGEwYjvM=
+Received: by 10.142.152.26 with SMTP id z26mr167143wfd.48.1290290499041;
+        Sat, 20 Nov 2010 14:01:39 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.2.41 with SMTP id 41ls1710945wfb.0.p; Sat, 20 Nov 2010
+ 14:01:34 -0800 (PST)
+Received: by 10.142.49.8 with SMTP id w8mr1170040wfw.12.1290290494472;
+        Sat, 20 Nov 2010 14:01:34 -0800 (PST)
+Received: by 10.142.49.8 with SMTP id w8mr1170038wfw.12.1290290494448;
+        Sat, 20 Nov 2010 14:01:34 -0800 (PST)
+Received: from asmtpout030.mac.com (asmtpout030.mac.com [17.148.16.105])
+        by gmr-mx.google.com with ESMTP id n6si4728675wfl.3.2010.11.20.14.01.34;
+        Sat, 20 Nov 2010 14:01:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted sender) client-ip=17.148.16.105;
+MIME-version: 1.0
+Received: from [192.168.1.100]
+ (adsl-75-21-65-69.dsl.chcgil.sbcglobal.net [75.21.65.69])
+ by asmtp030.mac.com (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec
+ 16 2008; 32bit)) with ESMTPSA id <0LC700FA1EI83A60@asmtp030.mac.com> for
+ ruby-ffi@googlegroups.com; Sat, 20 Nov 2010 14:01:21 -0800 (PST)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1010190000 definitions=main-1011200147
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2010-11-20_05:2010-11-19,2010-11-20,1970-01-01 signatures=0
+Subject: Re: [ruby-ffi] Load same library multiple times?
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <162bae32-81fe-4be0-aeb9-b1e4f69c8c7c@t35g2000yqj.googlegroups.com>
+Date: Sat, 20 Nov 2010 16:01:19 -0600
+Message-id: <34B66746-DD97-4FB8-BEBF-433D96227691@mac.com>
+References: <162bae32-81fe-4be0-aeb9-b1e4f69c8c7c@t35g2000yqj.googlegroups.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.105 as permitted
+ sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+
+On Nov 20, 2010, at 10:04 AM, Kim.Toms wrote:
+
+> I'd like to load the same library multiple times, so that the global
+> variables in my C program are complete separate.  This would allow me
+> to run multiple simulations of objects that arre connected.  The
+> objects are all communicating with each other, and I'd like to track
+> the communication.  I've posted a simple example in the issues at
+> https://github.com/ffi/ffi/issues/#issue/65
+
+I don't think this is possible. When you load a library, it is mapped into the same address space as the interpreter (MRI, JRuby, Rubinius, etc.). If your library is using global variables in a global namespace, then it isn't re-entrant either.
+
+I recommend modifying the library so it is re-entrant. Then you can load the library *once* but call into it from multiple threads safely.
+
+cr
+

@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.49.2 with SMTP id t2csp60982bkf;
+        Sat, 15 Sep 2012 15:20:46 -0700 (PDT)
+Received: by 10.50.186.131 with SMTP id fk3mr3003856igc.3.1347747645324;
+        Sat, 15 Sep 2012 15:20:45 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBC3ZHK4B2AFBBO762OBAKGQEEI6URPI@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id zz5si7929224icb.47.2012.09.15.15.20.44
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 15 Sep 2012 15:20:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBC3ZHK4B2AFBBO762OBAKGQEEI6URPI@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBC3ZHK4B2AFBBO762OBAKGQEEI6URPI@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncBC3ZHK4B2AFBBO762OBAKGQEEI6URPI@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by iajr24 with SMTP id r24sf6299345iaj.7
+        for <headius@headius.com>; Sat, 15 Sep 2012 15:20:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=PbuAoLdkVjKUth4fwuPq6vC7AXKHWPMNQ1cfx7b37qo=;
+        b=rf46ySuO0uXy/vCMFZQl32bzHOfhbkgY8vJT3NNuKbr4SDzhsYF6JiiWGbXPjcJPHS
+         JXY7KOoc11xWfGMJLZhZKpo6Y+2dhbOETTEDNmMBL4q2KQf66XgzpvsUjXjEXY1Dwq5V
+         Lf8KBCMX8i+h0KGU5LNsDXlBXnTGisZmMN8cJk06B42qS+XWGL6HPRPsNzd+sECxaYcH
+         Y0dORAkhBxhMjOBK82SkbHcxiCKAoTmscVMgokYHNCin3pGwXJqAlvFcBY88ELVkdBxs
+         oL+yKiUBzkZcz6DpM2SX2SHCBMDC4FKFSEvAfK/b0myFMewgPxcq5C2eGuaQbjyPxH+r
+         hKZQ==
+Received: by 10.236.109.233 with SMTP id s69mr1175259yhg.11.1347747644191;
+        Sat, 15 Sep 2012 15:20:44 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.236.149.34 with SMTP id w22ls1609868yhj.8.gmail; Sat, 15 Sep
+ 2012 15:20:43 -0700 (PDT)
+Received: by 10.236.139.196 with SMTP id c44mr1182534yhj.17.1347747643708;
+        Sat, 15 Sep 2012 15:20:43 -0700 (PDT)
+Date: Sat, 15 Sep 2012 15:20:43 -0700 (PDT)
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <3fe96ecd-565f-4d3b-89b7-46117f0056e7@googlegroups.com>
+In-Reply-To: <90ccdfbb-d520-4d54-87ed-8005260675d3@googlegroups.com>
+References: <CAANDx0MJUQ=v87BRkBXvV6v_aoXb-r8Hd50M7w4r61w3wsErZg@mail.gmail.com>
+ <90ccdfbb-d520-4d54-87ed-8005260675d3@googlegroups.com>
+Subject: [ruby-ffi] Re: [mingw] 1.1.6.pre1 install fail on Win7
+MIME-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ jon.forums@gmail.com designates internal as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_382_30018082.1347747643187"
+
+------=_Part_382_30018082.1347747643187
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Both 1.1.6.pre2 and 1.2.0.pre1 look good on my Win7 Ultimate 32bit system. 
+Will look at Arch tomorrow.
+
+Using `rake compile native gem` in both of these toolchain+ruby environments
+
+  mingw 4.6.2: ruby 1.9.3p269 (2012-09-09 revision 36939) [i386-mingw32]
+  mingw-w64 4.7.1: ruby 2.0.0dev (2012-09-15 trunk 36975) [i386-mingw32]
+
+...all combinations pass the following quicktest with similar results.
+
+http://pastie.org/4727908
+
+
+
+On Saturday, September 15, 2012 6:01:50 AM UTC-7, Wayne Meissner wrote:
+>
+> How about now, with 1.1.6.pre2 and 1.2.0.pre1?
+>
+> On Thursday, 30 August 2012 10:58:10 UTC+10, Jon wrote:
+>>
+>> On both trunk@36849 and ruby_1_9_3@36834 during a gem install, 
+>> 1.1.6.pre1 fails to build on Win7 32bit using mingw.org gcc 4.6.2 due 
+>> to missing `rbConventionStr` declaration in 
+>> `ext/ffi_c/Variadic.c:variadic_initialize`. 
+>>
+>> Adding a non-ifdef'd `VALUE rbConventionStr = Qnil;` makes everything 
+>> sublime. 
+>>
+>> Jon 
+>>
+>
+------=_Part_382_30018082.1347747643187
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Both 1.1.6.pre2 and 1.2.0.pre1 look good on my Win7 Ultimate 32bit system. Will look at Arch tomorrow.<br><br>Using `rake compile native gem` in both of these toolchain+ruby environments<br><br>&nbsp; mingw 4.6.2: ruby 1.9.3p269 (2012-09-09 revision 36939) [i386-mingw32]<br>&nbsp; mingw-w64 4.7.1: ruby 2.0.0dev (2012-09-15 trunk 36975) [i386-mingw32]<br><br>...all combinations pass the following quicktest with similar results.<br><br>http://pastie.org/4727908<br><br><br><br>On Saturday, September 15, 2012 6:01:50 AM UTC-7, Wayne Meissner wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">How about now, with 1.1.6.pre2 and 1.2.0.pre1?<div><br>On Thursday, 30 August 2012 10:58:10 UTC+10, Jon  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">On both trunk@36849 and ruby_1_9_3@36834 during a gem install,
+<br>1.1.6.pre1 fails to build on Win7 32bit using <a href="http://mingw.org" target="_blank">mingw.org</a> gcc 4.6.2 due
+<br>to missing `rbConventionStr` declaration in
+<br>`ext/ffi_c/Variadic.c:<wbr>variadic_initialize`.
+<br>
+<br>Adding a non-ifdef'd `VALUE rbConventionStr = Qnil;` makes everything sublime.
+<br>
+<br>Jon
+<br></blockquote></div></blockquote>
+------=_Part_382_30018082.1347747643187--

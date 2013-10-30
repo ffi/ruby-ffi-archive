@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.197.132 with SMTP id iu4cs35900igc;
+        Tue, 25 Oct 2011 14:55:09 -0700 (PDT)
+Received: by 10.150.190.10 with SMTP id n10mr8062543ybf.70.1319579709215;
+        Tue, 25 Oct 2011 14:55:09 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIbJ28XKARC54Jz1BBoEuL6r3A@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id d8si1952ybl.11.2011.10.25.14.55.09
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 25 Oct 2011 14:55:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIbJ28XKARC54Jz1BBoEuL6r3A@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIbJ28XKARC54Jz1BBoEuL6r3A@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCIbJ28XKARC54Jz1BBoEuL6r3A@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd5 with SMTP id 5sf3422683gyd.7
+        for <headius@headius.com>; Tue, 25 Oct 2011 14:55:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=nQJgDrgvFgwIIgTnmTYY4+OSaSxSqd7kckKoaf0LT/s=;
+        b=JK06f5JQsGJcQke6ZXFcck8DqEARhWs0yflpIUoZQmvrw1ErLQ9u41ny9mKXb8cpR8
+         9WnKlzG2vMqx+V8s2BAr5t9RysgCMkr3b4zrXXbiT0yA7PRVxgRS3vIom10URISrClAa
+         rwqT5YefRI36balN6lvZTHLdsRI3BlkeRJmso=
+Received: by 10.101.193.19 with SMTP id v19mr238606anp.25.1319579705161;
+        Tue, 25 Oct 2011 14:55:05 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.237.8 with SMTP id k8ls16293658anh.2.gmail; Tue, 25 Oct
+ 2011 14:55:03 -0700 (PDT)
+Received: by 10.236.170.198 with SMTP id p46mr28650712yhl.8.1319579703450;
+        Tue, 25 Oct 2011 14:55:03 -0700 (PDT)
+Received: by 10.150.69.1 with SMTP id r1msyba;
+        Tue, 25 Oct 2011 13:51:27 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.29.104 with SMTP id j8mr3296561pbh.11.1319575887423; Tue,
+ 25 Oct 2011 13:51:27 -0700 (PDT)
+Received: by m5g2000prg.googlegroups.com with HTTP; Tue, 25 Oct 2011 13:51:27
+ -0700 (PDT)
+Date: Tue, 25 Oct 2011 13:51:27 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1 (KHTML, like
+ Gecko) Chrome/14.0.835.202 Safari/535.1,gzip(gfe)
+Message-ID: <c0c0aee2-bedc-4f90-b94b-523c31981d8d@m5g2000prg.googlegroups.com>
+Subject: [ruby-ffi] Array of Ints
+From: John Lee <jiujitsu1985@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jiujitsu1985@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am  using Ruby 192
+
+I have the following c function:
+
+int function1(int *dataArray, int value1 , int value2)
+The first argument is an array of ints
+
+
+Here is my FFI code:
+attach_function :function1, [:pointer, :int, :int], :int
+ruby_array =  FFI::MemoryPointer.new(:int,4)
+ruby_array.write_array_of_int(1000,2000,3000,4000])
+
+...
+function1(ruby_array, 1, 2)
+
+But that produces an error message that function1 is an  undefined
+method.
+
+I've tried to find documentation that explains how array works, but is
+unable to. How would arrays of ints be implemented?
+
+

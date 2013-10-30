@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Having trouble with a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Having trouble with a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/10 12:03 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">I finally had time to look at this again, and FFI is in fact packing everything correctly.<div><br></div><div>Just the IPv4 header alone packs correctly, but when you prepend the ethernet header to it, it causes FFI to place 2 bytes of padding after the checksum field, to align the src_addr field on a 4 byte boundary. &nbsp;Run&nbsp;https://gist.github.com/8171ff430dd66f3812da and you'll see what I mean.</div><div><br></div><div>There are 2 ways to work around it:</div><div>1) Use struct packing</div><div>2) Use separate ethernet and ipv4 headers structs, and access the ipv4 header something like:</div><div>&nbsp;&nbsp;</div><div>&nbsp;&nbsp;eth = ... # get pointer to ethernet packet and wrap in an ethernet struct</div><div>&nbsp;&nbsp;ipv4 = IPv4_header.new(eth.pointer + 14)</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

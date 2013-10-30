@@ -1,0 +1,125 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp26649laa;
+        Sat, 28 Sep 2013 13:47:14 -0700 (PDT)
+X-Received: by 10.224.98.200 with SMTP id r8mr23002102qan.26.1380401233510;
+        Sat, 28 Sep 2013 13:47:13 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBCJKBQX2REGRBUEATWJAKGQEBPGXVJA@googlegroups.com>
+Received: from mail-qe0-x23a.google.com (mail-qe0-x23a.google.com [2607:f8b0:400d:c02::23a])
+        by mx.google.com with ESMTPS id d6si2756626qco.90.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 28 Sep 2013 13:47:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBCJKBQX2REGRBUEATWJAKGQEBPGXVJA@googlegroups.com designates 2607:f8b0:400d:c02::23a as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBCJKBQX2REGRBUEATWJAKGQEBPGXVJA@googlegroups.com designates 2607:f8b0:400d:c02::23a as permitted sender) smtp.mail=ruby-ffi+bncBCJKBQX2REGRBUEATWJAKGQEBPGXVJA@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-qe0-f58.google.com with SMTP id a11sf843299qen.3
+        for <headius@headius.com>; Sat, 28 Sep 2013 13:47:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=WJKs4J0lJIlGMPOyDxWjNDMrZTNlcNnHh0YgRng6GAM=;
+        b=zUQRQu278oYmuWDQV96z7VbTpp7h2RcvcP+BlL14lEDGu483Xw9k3R6FzlpiVykk8Y
+         5nYMw1vF3Crv6eWpa8oMcX5DWt0M4bzJ023QvnCe07cQoij8FcLMcl9vJnGXVMLkCbEI
+         OR2ikXZ8wQXYo8i5Wn9MSfOE+/2b3WJhVU9KrUIuzmUp8Gy9Zrq8vCN3VOrb8nhL6ces
+         Bd1Ex51te+t35UvYI3yGulQIvYYhPxAqRDusWr+wirkmWcUBVg4ZA6+w21ut6fc8ael9
+         YesXPj5WS6UELL+6WeGCMRb4QgfED77qRa++Mj9GLNOmOd78b8madB6PDKsf17+1/lQe
+         Wu8g==
+X-Received: by 10.50.108.114 with SMTP id hj18mr283447igb.4.1380401232928;
+        Sat, 28 Sep 2013 13:47:12 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.112.71 with SMTP id io7ls1162335igb.18.gmail; Sat, 28 Sep
+ 2013 13:47:12 -0700 (PDT)
+X-Received: by 10.50.7.65 with SMTP id h1mr6826098iga.4.1380401232277;
+        Sat, 28 Sep 2013 13:47:12 -0700 (PDT)
+Received: by 10.50.42.138 with SMTP id o10msigl;
+        Sat, 28 Sep 2013 11:46:38 -0700 (PDT)
+X-Received: by 10.50.9.33 with SMTP id w1mr274174iga.12.1380393998469;
+        Sat, 28 Sep 2013 11:46:38 -0700 (PDT)
+Date: Sat, 28 Sep 2013 11:46:36 -0700 (PDT)
+From: bawng@intoxicated.co.za
+To: ruby-ffi@googlegroups.com
+Message-Id: <611ab497-78f1-4e8b-aeaa-0b552c354052@googlegroups.com>
+Subject: [ruby-ffi] Function 'LoadIconMetric' not found in [kernel32, user32,
+ gdi32, comctl32] (FFI::NotFoundError)
+MIME-Version: 1.0
+X-Original-Sender: bawng@intoxicated.co.za
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_122_13695928.1380393996953"
+
+------=_Part_122_13695928.1380393996953
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello ruby-ffi,
+
+I am attempting to attach to the LoadIconMetric Windows API function which 
+is part of comctl32. The function is not found and so can never be attached.
+
+The following 3 lines are taken from the top of one of the Microsoft VC++ 
+sample projects cpp files:
+
+> // we need commctrl v6 for LoadIconMetric()
+> #pragma comment(linker,"/manifestdependency:\"type='win32' 
+> name='Microsoft.Windows.Common-Controls' version='6.0.0.0' 
+> processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
+> #pragma comment(lib, "comctl32.lib")
+
+
+ This function is required in order to make use of the Windows system tray 
+icon API. I really hope there is a simple solution to this problem.
+
+Thanks,
+bawNg
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_122_13695928.1380393996953
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello ruby-ffi,<div><br></div><div>I am attempting to atta=
+ch to the&nbsp;LoadIconMetric Windows API function which is part of&nbsp;co=
+mctl32. The function is not found and so can never be attached.</div><div><=
+br></div><div>The following 3 lines are taken from the top of one of the Mi=
+crosoft VC++ sample projects cpp files:</div><div><blockquote class=3D"gmai=
+l_quote" style=3D"margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border=
+-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1e=
+x;">// we need commctrl v6 for LoadIconMetric()<br>#pragma comment(linker,"=
+/manifestdependency:\"type=3D'win32' name=3D'Microsoft.Windows.Common-Contr=
+ols' version=3D'6.0.0.0' processorArchitecture=3D'*' publicKeyToken=3D'6595=
+b64144ccf1df' language=3D'*'\"")<br>#pragma comment(lib, "comctl32.lib")</b=
+lockquote><div><br></div><div>&nbsp;This function is required in order to m=
+ake use of the Windows system tray icon API. I really hope there is a simpl=
+e solution to this problem.</div></div><div><br></div><div>Thanks,</div><di=
+v>bawNg</div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_122_13695928.1380393996953--

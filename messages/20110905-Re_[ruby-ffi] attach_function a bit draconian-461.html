@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] attach_function a bit draconian</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] attach_function a bit draconian</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Colby Gutierrez-Kraybill <colbygk@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/5/11 2:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Sep 5, 2011, at 12:10 AM, Matijs van Zuijlen wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi Charlie,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On 04/09/2011 23:19, cfis wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I've written a ffi wrapper for the free image library, which is here:
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://cfis.github.com/free-image-ruby/">http://cfis.github.com/free-image-ruby/</a>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>The problem is that I've coded against the latest version of
+<span class="moz-txt-citetags">&gt;&gt; </span>FreeImage, and most linux distributions have older versions
+<span class="moz-txt-citetags">&gt;&gt; </span>installed.  Thus when I try to load the gem it fails since
+<span class="moz-txt-citetags">&gt;&gt; </span>attach_function throws an error because the older versions don't have
+<span class="moz-txt-citetags">&gt;&gt; </span>all the functions.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>You can just wrap the call to attach_function in a begin-rescue-end construct. Then in the rescue block, you can do whatever you want. In your case, this would probably mean issuing a warning and then defining a stub function. You can even wrap that in a method, say, attach_function_safely.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Regards,
+<span class="moz-txt-citetags">&gt; </span>Matijs
+</pre></blockquote><pre wrap>
+
+this++
+
+I had a need to create convenience aliases for GSL routines and I created a new method that wrapped around attach_function as well as a side-along override of method_missing:
+
+By using method_missing, you could capture any calls that a developer expects to be in the library (a more current one) and do exactly what you need doing.
+
+See:
+
+attach_gsl_function,
+<a class="moz-txt-link-freetext" href="http://gsl4r.rubyforge.org/git?p=gsl4r.git;a=blob;f=lib/gsl4r/util.rb;h=3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=HEAD">http://gsl4r.rubyforge.org/git?p=gsl4r.git;a=blob;f=lib/gsl4r/util.rb;h=3c2ce22ac866b5053b8fed7a34058e299950eae5;hb=HEAD</a>
+
+and
+
+<a class="moz-txt-link-freetext" href="http://shrewdraven.org/content/automatically-generated-method-aliases-gsl4r">http://shrewdraven.org/content/automatically-generated-method-aliases-gsl4r</a></pre></div></body>
+</html>
+</table></div>

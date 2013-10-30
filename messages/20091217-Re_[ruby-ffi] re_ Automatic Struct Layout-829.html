@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] re: Automatic Struct Layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] re: Automatic Struct Layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/17/09 6:41 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/18 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Question.
+<span class="moz-txt-citetags">&gt; </span>Shouldn't ffi be calculating the offsets automagically for us, since
+<span class="moz-txt-citetags">&gt; </span>all that is distributed is ruby code, and "automatic struct layout"
+<span class="moz-txt-citetags">&gt; </span>thence not be necessary?  I would have expected that...
+</pre></blockquote><pre wrap>
+
+
+It does, the wiki just hasn't been updated ... in about a year - so
+feel free to fix it up.
+
+Basically, to have FFI calculate offsets for you, you drop off the
+offset out of the triplet.
+
+i.e. instead of
+class Foo &lt; FFI::Struct
+  layout :a, :long, 0, :b, :int, 4
+end
+
+You would use:
+class Foo &lt; FFI::Struct
+  layout :a, :long, :b, :int
+end
+
+That will calculate the offset of :b automatically for you, and take
+into account 32bit vs 64bit, minimum alignments, tail padding, etc.
+</pre></div></body>
+</html>
+</table></div>

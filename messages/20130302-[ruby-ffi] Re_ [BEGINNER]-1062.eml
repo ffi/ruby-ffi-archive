@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp1381laf;
+        Sat, 2 Mar 2013 18:02:23 -0800 (PST)
+X-Received: by 10.224.173.147 with SMTP id p19mr27300529qaz.78.1362276142778;
+        Sat, 02 Mar 2013 18:02:22 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDF6F5MASYDRBLO6ZKEQKGQE3G3MEEY@googlegroups.com>
+Received: from mail-qe0-f63.google.com (mail-qe0-f63.google.com [209.85.128.63])
+        by mx.google.com with ESMTPS id u17si7862593qct.65.2013.03.02.18.02.22
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 02 Mar 2013 18:02:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBLO6ZKEQKGQE3G3MEEY@googlegroups.com designates 209.85.128.63 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBLO6ZKEQKGQE3G3MEEY@googlegroups.com designates 209.85.128.63 as permitted sender) smtp.mail=ruby-ffi+bncBDF6F5MASYDRBLO6ZKEQKGQE3G3MEEY@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qe0-f63.google.com with SMTP id q19sf1997598qeb.8
+        for <headius@headius.com>; Sat, 02 Mar 2013 18:02:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=IoWpS5TwK69MQVCvr7Ri9a01wrwZ1VTNVWX3Vc4iZRI=;
+        b=mK6kGbwsEatQNeygJSWPGFI4TgkqLKx6rrDJzTU4KeVf+5b+Whc2CToQFnF32bpf7+
+         kt1o0pkyhDUQqcHeaeyZht5CF3EISf4HJ2iRyShjmK+3pDptGinEBb1KvJER8CafoPmr
+         sVUeA0V8GOV1cFzVG+UmkjRPTfrFyX9GnHJ1/Z6x9uyw1pkvRh82RPJypAmmaiyAHm0k
+         IuWj2em6b5hTDkATxeVIKVR/ReZwochtmni9XSPHxPRGeZfIiJGwE9EcMHsd+yxDthFy
+         yRJwiNlNNUCHvsR71OIzM8u91b5BBhZRq2HVEwSDOfSxoAK7LSpmg2B9TfHoDiuYFOiw
+         ps5g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=IoWpS5TwK69MQVCvr7Ri9a01wrwZ1VTNVWX3Vc4iZRI=;
+        b=UHmpKxtq+WqYqf8sX0T9J5g6Rq6gkHzrFgtMESacqKROwrEtBDkEHPeTZ6U7jyf4s5
+         RWkw6QEp5nW8wof7GQxYKz06JbBHxnMXUKoc/kdGZ8CVswV2o0m5jhbcbC3wDqCTPV37
+         PIuYlM67TExYnciqi2W5CEl5xgDNdAFMXCq/falNTwwY/Uf5dS22zcSOtUfxf1TWSHqK
+         3MgTY+OZAWyt7EpYyppkC5uqlz+Xdt/roPEArzdCFY4rRrfoce7ne5MuXCa9PAXxZaD8
+         j4r+/6cg+8WvoaLr5RmX0mGQT3qmxdK+lDb078kookeEE+4HqA5pbLhJVywCnBYqHOZG
+         8BKA==
+X-Received: by 10.49.97.104 with SMTP id dz8mr1697560qeb.16.1362276142215;
+        Sat, 02 Mar 2013 18:02:22 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.51.225 with SMTP id n1ls1498643qeo.13.gmail; Sat, 02 Mar
+ 2013 18:02:21 -0800 (PST)
+X-Received: by 10.49.30.100 with SMTP id r4mr1656638qeh.32.1362276141486;
+        Sat, 02 Mar 2013 18:02:21 -0800 (PST)
+Date: Sat, 2 Mar 2013 18:02:21 -0800 (PST)
+From: Maurizio De Santis <desantis.maurizio@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <bf320e51-5ee3-4b3c-b426-7353edc0848d@googlegroups.com>
+In-Reply-To: <0bf30bc2-b1fe-4c11-8dfd-e965733cb0c6@googlegroups.com>
+References: <0bf30bc2-b1fe-4c11-8dfd-e965733cb0c6@googlegroups.com>
+Subject: [ruby-ffi] Re: [BEGINNER]
+MIME-Version: 1.0
+X-Original-Sender: desantis.maurizio@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1230_6380622.1362276141233"
+
+------=_Part_1230_6380622.1362276141233
+Content-Type: text/plain; charset=ISO-8859-1
+
+Sorry for the title.... I clicked by mistake :-/
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_1230_6380622.1362276141233
+Content-Type: text/html; charset=ISO-8859-1
+
+Sorry for the title.... I clicked by mistake :-/<br>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_1230_6380622.1362276141233--

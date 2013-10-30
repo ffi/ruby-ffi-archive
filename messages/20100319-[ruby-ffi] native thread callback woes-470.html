@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] native thread callback woes</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] native thread callback woes</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Shawn Anderson <shawn42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/19/10 12:36 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div>I&#39;m trying to get allegro-ffi to work with the latest 4.9 branch of allegro in SVN.  Allegro has recently changed to run everything in a native callback.</div><div>ie..</div><div><br></div><div>... setup code ...</div>
+
+
+
+<div>al_run_main argc, argv, &amp;method(:run)</div><div>puts &quot;this code will never be called&quot;</div><div><br></div><div>running this in ruby 1.9.1 I see the error:</div><div><pre><div class="line" id="LC17">examples/simple_window.rb:13: [BUG] object allocation during garbage collection phase</div>
+
+<div class="line" id="LC18">ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]</div><div class="line" id="LC18"><br></div><div class="line" id="LC18">full trace here:</div><div class="line" id="LC18"><span class="Apple-style-span" style="font-family: arial; white-space: normal; "><a href="https://gist.github.com/95d3ccc14fd8fdc1febf">https://gist.github.com/95d3ccc14fd8fdc1febf</a></span></div>
+
+</pre></div><div><br></div><div>Allegro spins off a new native thread (os x only) and calls the callback from that native thread.  Apparently os x needs the main thread for its event stuff...</div><div>Is there anyway to let this new non-ruby native thread call back into ruby code?  </div>
+
+<div><br></div><div><br></div>
+
+<div><a href="http://github.com/shawn42/ffi-allegro" target="_blank">http://github.com/shawn42/ffi-allegro</a></div><div><a href="http://alleg.sourceforge.net/" target="_blank">http://alleg.sourceforge.net/</a></div><div>
+
+<br></div><div>/Shawn</div>
+
+<p></p>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words &quot;REMOVE ME&quot; as the subject.<br />
+
+</div></body>
+</html>
+</table></div>

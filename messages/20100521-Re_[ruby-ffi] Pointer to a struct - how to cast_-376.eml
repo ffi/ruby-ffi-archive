@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs463qcb;
+        Fri, 21 May 2010 06:10:32 -0700 (PDT)
+Received: by 10.100.243.17 with SMTP id q17mr2145192anh.87.1274447431426;
+        Fri, 21 May 2010 06:10:31 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJvd2ov6FxDEjNrfBBoEmRrnuw@googlegroups.com>
+Received: from mail-gx0-f203.google.com (mail-gx0-f203.google.com [209.85.217.203])
+        by mx.google.com with ESMTP id c5si2289797anl.64.2010.05.21.06.10.30;
+        Fri, 21 May 2010 06:10:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJvd2ov6FxDEjNrfBBoEmRrnuw@googlegroups.com designates 209.85.217.203 as permitted sender) client-ip=209.85.217.203;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJvd2ov6FxDEjNrfBBoEmRrnuw@googlegroups.com designates 209.85.217.203 as permitted sender) smtp.mail=ruby-ffi+bncCJvd2ov6FxDEjNrfBBoEmRrnuw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk27 with SMTP id 27sf1073292gxk.1
+        for <headius@headius.com>; Fri, 21 May 2010 06:10:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=e6GEm0cvn4j1PMtYq03W8m6GhNgR5TttVXIZ/X5ZVqw=;
+        b=iUG903GhDqY+vBWYPvs9eMHDXEDdYeEZNDWZsaI3fcHjHd/mfRvbPKSawrbAidnhvk
+         7fxGr5mJp48er7S3Eg++5NTENZ4ii1aqcE0vPzFKQdj39AuZgVrX1HdDrEtaV1bG9oob
+         k+iwblLlpv2dNvJ4PB21UH53A79QkZti5EgLA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=6R9Y2v77bK3xE8mCbp/mSC97J3RSvo5bwirf3+ZuRxC/dd9Tko20fW+0ml+xt832hq
+         ZFXbpCDf92iMnxTrmjQLT9BxjgxjdPEIhdvAHbxwchB0jDcJhTlyFNGmVBqNPN3tm0U1
+         hl1uXm/4nB0XVmWoDT86VKAWtTFR64lgDLD/c=
+Received: by 10.101.139.29 with SMTP id r29mr70530ann.50.1274447428503;
+        Fri, 21 May 2010 06:10:28 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.132.3 with SMTP id j3ls337972ann.3.p; Fri, 21 May 2010 
+	06:10:27 -0700 (PDT)
+Received: by 10.100.19.35 with SMTP id 35mr493021ans.27.1274447427359;
+        Fri, 21 May 2010 06:10:27 -0700 (PDT)
+Received: by 10.100.19.35 with SMTP id 35mr493019ans.27.1274447427334;
+        Fri, 21 May 2010 06:10:27 -0700 (PDT)
+Return-Path: <drew.avis@gmail.com>
+Received: from mail-gy0-f172.google.com (mail-gy0-f172.google.com [209.85.160.172])
+        by gmr-mx.google.com with ESMTP id 25si125800ywh.7.2010.05.21.06.10.26;
+        Fri, 21 May 2010 06:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drew.avis@gmail.com designates 209.85.160.172 as permitted sender) client-ip=209.85.160.172;
+Received: by mail-gy0-f172.google.com with SMTP id 4so479542gyh.17
+        for <ruby-ffi@googlegroups.com>; Fri, 21 May 2010 06:10:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.151.89.33 with SMTP id r33mr2840019ybl.160.1274447426083; Fri, 
+	21 May 2010 06:10:26 -0700 (PDT)
+Received: by 10.151.109.5 with HTTP; Fri, 21 May 2010 06:10:25 -0700 (PDT)
+In-Reply-To: <AANLkTikghgO1cZLeNR6mL2ySdYkM3WuerTAW3y86YOqg@mail.gmail.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+	 <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+	 <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+	 <AANLkTili1Czv42tlJoSK00kXSGDRXttq8pHB2TMWLle7@mail.gmail.com>
+	 <AANLkTilNtcrmZLxJCKbBd2hiP31LylEaGEweh4d98sju@mail.gmail.com>
+	 <6DCFD30D-74A0-4ECF-AEB0-179C0BE0945C@mac.com>
+	 <AANLkTinJsgojioh6loOgUkofD2_20mI3wYTl_3owC6nc@mail.gmail.com>
+	 <AANLkTikghgO1cZLeNR6mL2ySdYkM3WuerTAW3y86YOqg@mail.gmail.com>
+Date: Fri, 21 May 2010 09:10:25 -0400
+Message-ID: <AANLkTil0YCoNhdY0U-HoY-rEcza9vPpPBX6NYv1iTNA8@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: DA <drew.avis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of drew.avis@gmail.com designates 209.85.160.172 as permitted sender) 
+	smtp.mail=drew.avis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: drew.avis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 20, 2010 at 9:13 PM, Wayne Meissner <wmeissner@gmail.com> wrote=
+:
+> Try using FFI::Pointer#+
+>
+> e.g.
+> 0.upto(tis[:len]).each do |i|
+> =A0s =3D FM::FTexFtItemT.new(tis[:val] + (i * FM::FTexFtItemT.size))
+> =A0# do stuff with s here
+> end
+
+Hi Wayne, thanks a bunch, this works perfectly (minus the .each).
+
+Would this be a good example to add to the wiki, perhaps under
+"Structs > Array of Structs"?  I would be happy to add it.  (It also
+would illustrate using a union in a struct).
+
+Drew

@@ -1,0 +1,201 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.108.105 with SMTP id hj9csp74446obb;
+        Thu, 19 Apr 2012 15:34:07 -0700 (PDT)
+Received: by 10.236.78.74 with SMTP id f50mr3853872yhe.26.1334874846951;
+        Thu, 19 Apr 2012 15:34:06 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERDepcL8BBoEZorp4w@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id a5si3754253yhm.2.2012.04.19.15.34.06
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 19 Apr 2012 15:34:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERDepcL8BBoEZorp4w@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERDepcL8BBoEZorp4w@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERDepcL8BBoEZorp4w@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yenq10 with SMTP id q10sf16587991yen.7
+        for <headius@headius.com>; Thu, 19 Apr 2012 15:34:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:message-id:in-reply-to
+         :references:subject:x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=oxvrAsnHCxe0CCAleMpilyDFrsrZG70IifEdfy7hOMU=;
+        b=YhSiKwXM7lVfRIx7hgtMO+lM1+9HQxqb+Xv+dyFECkAmw7vLfCVI/eQT0+OEsK2mWu
+         0Q8c1E4sb3e5wqvxEu827BQqoPG7rhomdQnJAX3RUbABpgfDwxJ4YlqQnMKoe4+a2JLP
+         vJq56dlYjIPVyzepNy/Qp7lDx5nmEy09jVIC8=
+Received: by 10.68.218.233 with SMTP id pj9mr974881pbc.14.1334874846513;
+        Thu, 19 Apr 2012 15:34:06 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.116.169 with SMTP id jx9ls8086125pbb.5.gmail; Thu, 19 Apr
+ 2012 15:34:05 -0700 (PDT)
+Received: by 10.68.135.106 with SMTP id pr10mr3496903pbb.3.1334874845838;
+        Thu, 19 Apr 2012 15:34:05 -0700 (PDT)
+Received: by 10.68.135.106 with SMTP id pr10mr3496901pbb.3.1334874845823;
+        Thu, 19 Apr 2012 15:34:05 -0700 (PDT)
+Received: from mail-pb0-f47.google.com (mail-pb0-f47.google.com [209.85.160.47])
+        by gmr-mx.google.com with ESMTPS id rq3si4935477pbb.1.2012.04.19.15.34.05
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 19 Apr 2012 15:34:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 209.85.160.47 as permitted sender) client-ip=209.85.160.47;
+Received: by pbcum15 with SMTP id um15so357486pbc.34
+        for <ruby-ffi@googlegroups.com>; Thu, 19 Apr 2012 15:34:05 -0700 (PDT)
+Received: by 10.68.229.131 with SMTP id sq3mr7676626pbc.106.1334874845702;
+        Thu, 19 Apr 2012 15:34:05 -0700 (PDT)
+Received: from jvoorhis.local (c-76-115-189-121.hsd1.or.comcast.net. [76.115.189.121])
+        by mx.google.com with ESMTPS id a9sm3403139pbo.48.2012.04.19.15.34.02
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 19 Apr 2012 15:34:03 -0700 (PDT)
+Date: Thu, 19 Apr 2012 15:34:01 -0700
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <23B5148E20954296A8F06059403CC159@gmail.com>
+In-Reply-To: <20740276.737.1334865696631.JavaMail.geo-discussion-forums@pbcuv5>
+References: <08749d02-510a-41e6-8c44-f669940ffc20@fk25g2000vbb.googlegroups.com>
+ <E5E92CB0B26C422FAB6760E66BC6E914@gmail.com>
+ <62e63d33-88cc-42e3-bf22-98b84c3f3e8e@c1g2000vbw.googlegroups.com>
+ <20740276.737.1334865696631.JavaMail.geo-discussion-forums@pbcuv5>
+Subject: Re: [ruby-ffi] Re: distributing c with gem
+X-Mailer: sparrow 1.5 (build 1043.1)
+MIME-Version: 1.0
+X-Original-Sender: jvoorhis@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jvoorhis@gmail.com designates 209.85.160.47 as permitted sender)
+ smtp.mail=jvoorhis@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary="4f9092d9_79838cb2_127"
+
+--4f9092d9_79838cb2_127
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+In reply to mixtli, yes auto tools are really that difficult! 
+
+Since then, I merged a pull request from neelance for a new build system implemented with a Rakefile (https://github.com/jvoorhis/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile). This is added to the gemspec and everything Just Works. It's great to rely on FFI instead of the Ruby C API but still package library dependencies this way. Perhaps the boilerplate could be more streamlined...
+
+Cheers,
+
+Jeremy Voorhis 
+
+
+On Thursday, April 19, 2012 at 1:01 PM, Hampton Catlin wrote:
+
+> I'm also super interested in this. I have a small C library that I'd rather just
+> bundle in with the gem and allow local compilation.
+> 
+> What mixtli described is what I would assume would work... but I don't know 
+> how to actually make ffi see the code!
+> 
+> -hampton.
+> 
+> On Sunday, October 23, 2011 6:38:14 PM UTC-7, mixtli wrote:
+> > Wow, is it really that difficult?  I'd have thought it'd just be a 
+> > matter of setting up an extconf to build the extension and then 
+> > telling ffi somehow about the ext/foo directory as a library path. 
+> > 
+> > 
+> > On Oct 23, 1:52 pm, Jeremy Voorhis <jvoor...@gmail.com> wrote: 
+> > >  I've tried to crack this one as well. After learning that RubyGems will build extensions using configure-make-install in addition to extconf.rb, I have a branch of ruby-llvm that uses the autotools to build and manage a shared library, but unfortunately haven't released it yet because of incompatibilities between autoconf versions on Mac and Ubuntu. 
+> > > 
+> > > You can see my approach athttps://github.com/jvoorhis/ruby-llvm/tree/support-lib (http://github.com/jvoorhis/ruby-llvm/tree/support-lib). If anyone is an autotools pro, or has a better idea, please help! :) 
+> > > 
+> > > Jeremy 
+> > > 
+> > > 
+> > > 
+> > > 
+> > > 
+> > > 
+> > > 
+> > > On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote: 
+> > > >  I want to package up my c source with my gem, and call it from ffi. 
+> > > > How can I tell ffi to use a library packaged with the gem instead of 
+> > > > looking in the system libraries? 
+
+
+--4f9092d9_79838cb2_127
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+
+                <div>In reply to mixtli, yes auto tools are really that d=
+ifficult=21
+                </div><div><br></div><div>Since then, I merged a pull req=
+uest from neelance for a new build system implemented with a Rakefile (ht=
+tps://github.com/jvoorhis/ruby-llvm/blob/master/ext/ruby-llvm-support/Rak=
+efile). This is added to the gemspec and everything Just Works. It's grea=
+t to rely on =46=46I instead of the Ruby C API but still package library =
+dependencies this way. Perhaps the boilerplate could be more streamlined.=
+..</div><div><br></div><div>Cheers,</div><div><br></div><div>Jeremy Voorh=
+is</div>
+                <div></div>
+                =20
+                <p style=3D=22color: =23A0A0A8;=22>On Thursday, April 19,=
+ 2012 at 1:01 PM, Hampton Catlin wrote:</p>
+                <blockquote type=3D=22cite=22 style=3D=22border-left-styl=
+e:solid;border-width:1px;margin-left:0px;padding-left:10px;=22>
+                    <span><div><div>I'm also super interested in this. I =
+have a small C library that I'd rather just<div>bundle in with the gem an=
+d allow local compilation.</div><div><br></div><div>What mixtli described=
+ is what I would assume would work... but I don't know&nbsp;</div><div>ho=
+w to actually make ffi see the code=21</div><div><br></div><div>-hampton.=
+<br><br>On Sunday, October 23, 2011 6:38:14 PM UTC-7, mixtli wrote:<block=
+quote type=3D=22cite=22><div>Wow, is it really that difficult=3F &nbsp;I'=
+d have thought it'd just be a
+<br>matter of setting up an extconf to build the extension and then
+<br>telling ffi somehow about the ext/foo directory as a library path.
+<br>
+<br>
+<br>On Oct 23, 1:52&nbsp;pm, Jeremy Voorhis &lt;<a>jvoor...=40gmail.com</=
+a>&gt; wrote:
+<br>&gt; &nbsp;I've tried to crack this one as well. After learning that =
+RubyGems will build extensions using configure-make-install in addition t=
+o extconf.rb, I have a branch of ruby-llvm that uses the autotools to bui=
+ld and manage a shared library, but unfortunately haven't released it yet=
+ because of incompatibilities between autoconf versions on Mac and Ubuntu=
+.
+<br>&gt;
+<br>&gt; You can see my approach athttps://<a href=3D=22http://github.com=
+/jvoorhis/ruby-llvm/tree/support-lib=22 target=3D=22=5Fblank=22>github.co=
+m/jvoorhis/<wbr>ruby-llvm/tree/support-lib</a>. If anyone is an autotools=
+ pro, or has a better idea, please help=21 :)
+<br>&gt;
+<br>&gt; Jeremy
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote:
+<br>&gt; &gt; &nbsp;I want to package up my c source with my gem, and cal=
+l it from ffi.
+<br>&gt; &gt; How can I tell ffi to use a library packaged with the gem i=
+nstead of
+<br>&gt; &gt; looking in the system libraries=3F</div></blockquote></div>=
+</div></div></span>
+                =20
+                =20
+                =20
+                =20
+                </blockquote>
+                =20
+                <div>
+                    <br>
+                </div>
+            
+--4f9092d9_79838cb2_127--
+

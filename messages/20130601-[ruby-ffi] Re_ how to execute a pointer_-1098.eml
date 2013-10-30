@@ -1,0 +1,151 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.83.130 with SMTP id q2csp70939igy;
+        Fri, 31 May 2013 23:35:14 -0700 (PDT)
+X-Received: by 10.236.41.14 with SMTP id g14mr8957030yhb.69.1370068513819;
+        Fri, 31 May 2013 23:35:13 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBIFMU2GQKGQE6XIZVKY@googlegroups.com>
+Received: from mail-yh0-x23b.google.com (mail-yh0-x23b.google.com [2607:f8b0:4002:c01::23b])
+        by mx.google.com with ESMTPS id j50si19709714yhl.44.2013.05.31.23.35.13
+        for <headius@headius.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 31 May 2013 23:35:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBIFMU2GQKGQE6XIZVKY@googlegroups.com designates 2607:f8b0:4002:c01::23b as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBIFMU2GQKGQE6XIZVKY@googlegroups.com designates 2607:f8b0:4002:c01::23b as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBIFMU2GQKGQE6XIZVKY@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-yh0-f59.google.com with SMTP id f73sf655267yha.4
+        for <headius@headius.com>; Fri, 31 May 2013 23:35:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=C/uwjRGtAnx0FJ9q+wnwLmAUjv1e3b6gRxyZa8/QkkI=;
+        b=M3HyxPlg7GSQ/fYCktiJ5D9oGo2FURpYetRHq/KxyRBndYvy4pycZJruqlvbDB0k+7
+         gGqO1/rkif35vp5fk6M5/Oe5WrhW0lBue9mlLeqMIFGpJ7DdMTdh9Xbk08bxlD6nYxo9
+         0orVuNhBSaOwPtweyh6WyqgjCwFTvuteGpjHVn/C9ZqFH+rPGcWo2o762NVBnvYv+nKW
+         WZkUEZiiDTJN5Ob7pMAaRxFuUifE7F+mEjJ0E1VV7K2tK1HkcZidTKmHDKeTo/nDHfps
+         J3CgRiPmTG6gbyv67FAO/WFuSyOXAweAkxuK1TXwZ20GrFkLlnSQyyJFofQRXR4iWXcv
+         IPng==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=C/uwjRGtAnx0FJ9q+wnwLmAUjv1e3b6gRxyZa8/QkkI=;
+        b=A2woTeKRvsGhFBCqejp5+Mp8wp0wVLkHwTf2+1zp1opxjhpM+FIk6t2ZwPW5dGKw6h
+         HE1FtdrCOtSzkAaLiMmFb5q08/9JVkQNlgmxAo5GqiripGfC077mP9Rg5HqQzmEJVtpt
+         0jJ3q7ODtLll92embPQQwh4SOGXHdfZzENFFaQ8JBSpoDByBGX9L6yt9SJjukBAx8uUt
+         ggdk0ENb1FJta0PQ0JRnOAiWxddQl0lgEvTgfSroz9+q48XpypXyXkuZfLSCt8osLxs/
+         UzI/gzX1+nYiG1xP8PptYTvO4P/D6Mkq4gWM8MHF6OMubRnGrOX3ySTIXAT6zpvgaziJ
+         0UNw==
+X-Received: by 10.50.88.102 with SMTP id bf6mr748753igb.0.1370068513129;
+        Fri, 31 May 2013 23:35:13 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.154.5 with SMTP id vk5ls1024858igb.24.canary; Fri, 31 May
+ 2013 23:35:12 -0700 (PDT)
+X-Received: by 10.50.111.131 with SMTP id ii3mr815235igb.15.1370068512747;
+        Fri, 31 May 2013 23:35:12 -0700 (PDT)
+Date: Fri, 31 May 2013 23:35:12 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <06e2c0d1-616a-4a09-9a27-53bf43786ea5@googlegroups.com>
+In-Reply-To: <db2cca56-25c6-41e0-a110-397cbb3a7fe7@googlegroups.com>
+References: <db2cca56-25c6-41e0-a110-397cbb3a7fe7@googlegroups.com>
+Subject: [ruby-ffi] Re: how to execute a pointer?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1346_22264746.1370068512100"
+
+------=_Part_1346_22264746.1370068512100
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+You should be able to just declare the return type of the function to be an 
+appropriate callback type.
+
+e.g.
+  attach_function :function_that_returns_function, [ ], callback([], :int)
+
+fptr = function_that_returns_function()
+result = fptr.call()
+
+Or, you can wrap it up in a FFI::Function - 
+see http://ffi.github.io/api/FFI/Function.html
+
+e.g.
+ptr = function_that_returns_pointer
+fptr = FFI::Function.new(:int, [ ])
+result = fptr.call()
+
+
+On Wednesday, 29 May 2013 06:29:02 UTC+10, Jose Donizetti wrote:
+>
+> Hi all, 
+>
+> I mapped a function in ruby which returns a pointer to another function. 
+> How can I execute this pointer?
+>
+> Thanks,
+> Jose.
+>
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_1346_22264746.1370068512100
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div>You should be able to just declare the return type of t=
+he function to be an appropriate callback type.</div><div><br></div><div>e.=
+g.</div><div>&nbsp; attach_function :function_that_returns_function, [ ], c=
+allback([], :int)</div><div><br></div><div>fptr =3D function_that_returns_f=
+unction()</div><div>result =3D fptr.call()</div><div><br></div>Or, you can =
+wrap it up in a FFI::Function - see&nbsp;http://ffi.github.io/api/FFI/Funct=
+ion.html<div><br></div><div>e.g.</div><div>ptr =3D function_that_returns_po=
+inter</div><div>fptr =3D FFI::Function.new(:int, [ ])</div><div>result =3D =
+fptr.call()</div><div><br><br>On Wednesday, 29 May 2013 06:29:02 UTC+10, Jo=
+se Donizetti  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi all,&nb=
+sp;<div><br></div><div>I mapped a function in ruby which returns a pointer =
+to another function. How can I execute this pointer?</div><div><br></div><d=
+iv>Thanks,</div><div>Jose.</div><div><br></div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_1346_22264746.1370068512100--

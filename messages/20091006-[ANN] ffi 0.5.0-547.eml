@@ -1,0 +1,159 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs191773qaj;
+        Tue, 6 Oct 2009 13:48:30 -0700 (PDT)
+Received: by 10.115.113.7 with SMTP id q7mr3080791wam.145.1254862109435;
+        Tue, 06 Oct 2009 13:48:29 -0700 (PDT)
+Return-Path: <ruby-talk-admin@ruby-lang.org>
+Received: from carbon.ruby-lang.org (carbon.ruby-lang.org [221.186.184.68])
+        by mx.google.com with ESMTP id 28si25174678pzk.98.2009.10.06.13.48.28;
+        Tue, 06 Oct 2009 13:48:29 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of ruby-talk-admin@ruby-lang.org designates 221.186.184.68 as permitted sender) client-ip=221.186.184.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: best guess record for domain of ruby-talk-admin@ruby-lang.org designates 221.186.184.68 as permitted sender) smtp.mail=ruby-talk-admin@ruby-lang.org
+Received: from carbon.ruby-lang.org (beryllium.ruby-lang.org [127.0.0.1])
+	by carbon.ruby-lang.org (Postfix) with ESMTP id 15F0E3C22961A;
+	Wed,  7 Oct 2009 05:48:12 +0900 (JST)
+Received: from eq4.andreas-s.net (eq4.andreas-s.net [188.40.52.210])
+	by carbon.ruby-lang.org (Postfix) with ESMTP id 51C5F3C21E31E
+	for <ruby-talk@ruby-lang.org>; Wed,  7 Oct 2009 05:48:06 +0900 (JST)
+Received: from localhost (localhost [127.0.0.1])
+  (uid 1004)
+  by eq4.andreas-s.net with local; Tue, 06 Oct 2009 22:48:04 +0200
+  id 00000000005CE455.000000004ACBAD04.000061C2
+Delivered-To: ruby-talk@ruby-lang.org
+Date: Wed, 7 Oct 2009 05:48:06 +0900
+Posted: Tue, 6 Oct 2009 22:48:01 +0200
+From: Andrea Fazzi <andrea.fazzi@alcacoop.it>
+Reply-To: ruby-talk@ruby-lang.org
+Subject: [ANN] ffi 0.5.0
+Sender: andrea.fazzi@alcacoop.it
+To: ruby-talk@ruby-lang.org (ruby-talk ML)
+Message-Id: <4197d6df4c7be88a5907a6a01b1d7cc6@ruby-forum.com>
+X-ML-Name: ruby-talk
+X-Mail-Count: 347832
+X-MLServer: fml [fml 4.0.3 release (20011202/4.0.3)]; post only (only members can post)
+X-ML-Info: If you have a question, send e-mail with the body
+	"help" (without quotes) to the address ruby-talk-ctl@ruby-lang.org;
+	help=<mailto:ruby-talk-ctl@ruby-lang.org?body=help>
+X-Spam-Checker-Version: SpamAssassin 3.1.7-deb3 (2006-10-05) on 
+	carbon.ruby-lang.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-3.1 required=7.0 tests=BAYES_05,
+	CONTENT_TYPE_PRESENT,SAMEHELOBY2HOP autolearn=disabled 
+	version=3.1.7-deb3
+Old-Return-Path: <andrea.fazzi@alcacoop.it>
+Newsgroups: comp.lang.ruby
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Precedence: bulk
+Lines: 102
+List-Id: ruby-talk.ruby-lang.org
+List-Software: fml [fml 4.0.3 release (20011202/4.0.3)]
+List-Post: <mailto:ruby-talk@ruby-lang.org>
+List-Owner: <mailto:ruby-talk-admin@ruby-lang.org>
+List-Help: <mailto:ruby-talk-ctl@ruby-lang.org?body=help>
+List-Unsubscribe: <mailto:ruby-talk-ctl@ruby-lang.org?body=unsubscribe>
+
+ffi version 0.5.0
+    by Wayne Meissner
+    http://wiki.github.com/ffi/ffi
+
+== DESCRIPTION
+
+Ruby-FFI is a ruby extension for programmatically loading dynamic
+libraries, binding functions within them, and calling those functions
+from Ruby code. Moreover, a Ruby-FFI extension works without changes
+on Ruby and JRuby. Discover why should you write your next extension
+using Ruby-FFI here[http://wiki.github.com/ffi/ffi/why-use-ffi].
+
+== CHANGES
+
+* Major improvements
+  * New Function class
+  * Structs can be passed and returned by value
+  * Implement a custom trampoline for x86_64, resulting in roughly 30%
+speedup
+  * Improve dispatch of functions which take (0..6)
+char/short/int/long/pointer arguments by between 50% and 200% on x86_64
+  * Callbacks are now approximately 100% faster on x86_64
+* Minor improvements
+  * Add support for MacOSX Snow Leopard
+  * Improve support for Windows releasing fat binaries on rubyforge
+  * Better introspection in structs:
+    * Add StructLayout::Field#type, size, offset, alignment and name
+      methods
+    * Add StructLayout#fields which returns an array of
+      StructLayout::Field objects
+  * Add automagic deducing of library name from module name.
+    Idea and prototype implementation from Matt Hulse
+  * Callback fields in structs can now be both read and written
+  * Add a bunch of new benchmarks
+  * Lots of refactoring
+* Experimental features
+  * blocking functions (i.e. native code that blocks the thread) support
+* Bug fixes
+  * Fix RUBY-FFI_43 (rake gem dependency)
+
+== FEATURES
+
+* It has a very intuitive DSL
+* It supports all C native types
+* It supports C structs (also nested), enums and global variables
+* It supports callbacks
+* It has smart methods to handle memory management of pointers and
+structs
+
+== SYNOPSIS
+
+  require 'ffi'
+
+  module MyLib
+    extend FFI::Library
+    attach_function :puts, [ :string ], :int
+  end
+
+  MyLib.puts 'Hello boys using libc!'
+
+For less minimalistic and more sane examples you may look at:
+
+* the samples/ folder
+* the examples on the wiki[http://wiki.github.com/ffi/ffi]
+* the projects using FFI listed on this
+page[http://wiki.github.com/ffi/ffi/projects-using-ffi]
+
+== REQUIREMENTS
+
+* You need a sane building environment in order to compile the
+extension.
+
+== DOWNLOAD/INSTALL
+
+ From rubyforge:
+
+  [sudo] gem install ffi
+
+or from the git repository on github:
+
+  git clone git://github.com/ffi/ffi.git
+  cd ffi
+  rake gem:install
+
+== CREDITS
+
+Special thanks to:
+
+* Yehuda Katz
+* Luc Heinrich
+* Andrea Fazzi
+* Mike Dalessio
+* Hongli Lai
+* Evan Phoenix
+* Aman Gupta
+* Beoran
+
+== LICENSE
+
+See LICENSE file.
+-- 
+Posted via http://www.ruby-forum.com/.
+

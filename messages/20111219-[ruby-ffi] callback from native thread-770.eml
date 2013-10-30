@@ -1,0 +1,87 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.36.74 with SMTP id s10cs21672ibd;
+        Mon, 19 Dec 2011 15:04:41 -0800 (PST)
+Received: by 10.229.106.151 with SMTP id x23mr6466276qco.111.1324335879655;
+        Mon, 19 Dec 2011 15:04:39 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPL3wrb_BBCDhr_3BBoEjh-HJA@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id g15si5090355qct.124.2011.12.19.15.04.39
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 19 Dec 2011 15:04:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPL3wrb_BBCDhr_3BBoEjh-HJA@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPL3wrb_BBCDhr_3BBoEjh-HJA@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCPL3wrb_BBCDhr_3BBoEjh-HJA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qadb12 with SMTP id b12sf14963607qad.7
+        for <headius@headius.com>; Mon, 19 Dec 2011 15:04:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=xg8vT4j1We7E3gNU3GdeSGK6EG4lsNOWlSdZWRMBZiI=;
+        b=NWqBsEfbw0SW9Wn+FJN389la+eP52aP78UOEVloMt9xYB3Zh274ZbjzAFRXwyi1k47
+         TvSkvozS/7Bfd5UStoOmMCBt81IO+wwwjEVH0kV09JtTIGVoL3GPet4snaPFmZFTGiFo
+         LrrUcB2KpdMhl9+Wj809mLP8okM1JWfB7cnHE=
+Received: by 10.224.18.210 with SMTP id x18mr3030410qaa.11.1324335875786;
+        Mon, 19 Dec 2011 15:04:35 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.166.138 with SMTP id m10ls4861725qcy.3.gmail; Mon, 19 Dec
+ 2011 15:04:35 -0800 (PST)
+Received: by 10.224.188.203 with SMTP id db11mr41742741qab.4.1324335875492;
+        Mon, 19 Dec 2011 15:04:35 -0800 (PST)
+Received: by 10.224.176.134 with SMTP id be6msqab;
+        Mon, 19 Dec 2011 09:32:35 -0800 (PST)
+Received: by 10.52.77.97 with SMTP id r1mr15461782vdw.4.1324315955249;
+        Mon, 19 Dec 2011 09:32:35 -0800 (PST)
+Received: by 10.52.77.97 with SMTP id r1mr15461780vdw.4.1324315955241;
+        Mon, 19 Dec 2011 09:32:35 -0800 (PST)
+Received: from mail-vx0-f192.google.com (mail-vx0-f192.google.com [209.85.220.192])
+        by gmr-mx.google.com with ESMTPS id jz14si6196302vdb.1.2011.12.19.09.32.35
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 19 Dec 2011 09:32:35 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.192 is neither permitted nor denied by best guess record for domain of matthew@jacknorris.net) client-ip=209.85.220.192;
+Received: by vcbfk1 with SMTP id fk1so3486644vcb.19
+        for <ruby-ffi@googlegroups.com>; Mon, 19 Dec 2011 09:32:34 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.52.173.110 with SMTP id bj14mr2536430vdc.3.1324315954979; Mon,
+ 19 Dec 2011 09:32:34 -0800 (PST)
+Received: by q11g2000vbq.googlegroups.com with HTTP; Mon, 19 Dec 2011 09:32:34
+ -0800 (PST)
+Date: Mon, 19 Dec 2011 09:32:34 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0,gzip(gfe)
+Message-ID: <5acad385-f876-460a-8426-519fa654b9f9@q11g2000vbq.googlegroups.com>
+Subject: [ruby-ffi] callback from native thread
+From: JackNorris <matthew@jacknorris.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: matthew@jacknorris.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 209.85.220.192 is neither permitted nor denied by best guess record for
+ domain of matthew@jacknorris.net) smtp.mail=matthew@jacknorris.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am looking to write an asynchronous ICMP/Ping library to use with
+Ruby + FFI.
+
+I've not really started writing anything yet I am just curious if FFI
+can handle callbacks from threads that were not created by Ruby. My
+plan is to create a new thread running a libevent loop and call back
+to Ruby when an event occurs (ie a ping response). This leaves the
+ruby thread open to control libevent.
+
+It would appreciated if anyone could advise me on this, specifically
+if calling back in such a way will work.
+Maybe I am just going about the whole thing the wrong way! :-)

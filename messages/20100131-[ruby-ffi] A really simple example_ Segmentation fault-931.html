@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] A really simple example: Segmentation fault</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] A really simple example: Segmentation fault</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jesús GS &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/31/10 1:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+In a karmic machine, I've tried this really simple example, but with
+ruby fails though running it with jruby 1.4 works as expected.
+
+$ more example.rb
+require 'rubygems'
+require 'ffi'
+extend FFI::Library
+ffi_lib './libsample.so'
+attach_function :foo, :foo, [:int], :int
+
+$ more foo.c
+int foo(int a){ return a*2; }
+
+$ gcc -c foo.c
+$ gcc -shared -o libsample.so foo.o
+$ ruby example.rb
+/usr/lib/ruby/gems/1.8/gems/ffi-0.5.4/lib/ffi/library.rb:93: [BUG]
+Segmentation fault
+ruby 1.8.7 (2009-06-12 patchlevel 174) [i486-linux]
+
+Canceled
+$ jruby example.rb
+4
+</pre></div></body>
+</html>
+</table></div>

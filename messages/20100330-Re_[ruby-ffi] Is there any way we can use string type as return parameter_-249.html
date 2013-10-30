@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Is there any way we can use string type as return  parameter?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Is there any way we can use string type as return  parameter?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jesús García Sáez &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/30/10 1:40 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Tue, Mar 30, 2010 at 06:45, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 30 March 2010 05:20, Evan Phoenix <a class="moz-txt-link-rfc2396E" href="mailto:evan@fallingsnow.net">&lt;evan@fallingsnow.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Does ruby-ffi not support the :strptr type? It's in the original FFI spec.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>No.  The most likely reason it was not included was because (at the
+<span class="moz-txt-citetags">&gt; </span>time) there was no code using it and no tests.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Its not hard to add - but any code using it will be incompatible with
+<span class="moz-txt-citetags">&gt; </span>jruby 1.5 and below, so people are going to have to declare the return
+<span class="moz-txt-citetags">&gt; </span>type as :pointer and extract the string anyway to be backwards
+<span class="moz-txt-citetags">&gt; </span>compatible.
+</pre></blockquote><pre wrap>
+
+Thanks both, though it's not already in ruby-ffi is good to know about
+strptr type. I was just confused that there was nothing like that (I
+mean, only a string type that normally you are not gonna use due to
+memory issues, it seem to me a bit weird).
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

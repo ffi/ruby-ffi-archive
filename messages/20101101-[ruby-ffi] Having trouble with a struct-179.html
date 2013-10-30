@@ -1,0 +1,46 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Having trouble with a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Having trouble with a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/1/10 9:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I am getting weird issues with a struct. The struct is the IPv4
+header. All but the last item(destination address) gives the correct
+data(after some endian manipulation.
+
+class IP4_header &lt; FFI::Struct
+    layout :eth_offset, :uchar,
+14],:version,:uchar,:tos,:uchar,:len,:ushort,:id,:ushort,:frag_offset,:ushort,:ttl,:uchar,:proto,:uchar,
+	:checksum,:ushort,:src_addr,:uint,:dest_addr,:uint
+    IP_RF=8
+    IP_DF=4
+    IP_MF=2
+    OFFMASK='ff1f'.to_i 16
+  end
+
+The first field eth_offset is just to get past the ethernet header,
+probably the wrong way to do that.
+
+src_addr returns 2831155968, which is the hex value A8C00300 which is
+correct, after an endian adjustment: 192.168.0.3. The actual value
+before the adjustment is 168.192.3.0.
+
+dest_addr returns 3636658432 which is the hex value D8C30100 which is
+completely incorrect. The next 4 bytes were expected to be read, but
+the two bytes right after src_addr were skipped. If that is not bad
+enough it is being read incorrectly. The returned value corresponds to
+216.195.1.0.
+
+The bytes, according to wireshark, right after src_addr is: C0 A8 00
+01 C3 D8.
+
+The first 4 bytes is the dest_addr and the last two are the first two
+bytes in the UDP header. So dest_addr is skipping two bytes AND
+reading it incorrectly. Given if it just skipped the two bytes, the
+read bytes should be 01 00 d8 c3.
+
+</pre></div></body>
+</html>
+</table></div>

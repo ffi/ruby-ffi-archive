@@ -1,0 +1,85 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs28226faj;
+        Fri, 18 Mar 2011 14:05:22 -0700 (PDT)
+Received: by 10.236.185.170 with SMTP id u30mr2252703yhm.63.1300482321694;
+        Fri, 18 Mar 2011 14:05:21 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCLko_sBBoETmY7DA@googlegroups.com>
+Received: from mail-yi0-f62.google.com (mail-yi0-f62.google.com [209.85.218.62])
+        by mx.google.com with ESMTPS id h4si8952307yha.36.2011.03.18.14.05.20
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 18 Mar 2011 14:05:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCLko_sBBoETmY7DA@googlegroups.com designates 209.85.218.62 as permitted sender) client-ip=209.85.218.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCLko_sBBoETmY7DA@googlegroups.com designates 209.85.218.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCLko_sBBoETmY7DA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yic15 with SMTP id 15sf6603292yic.7
+        for <headius@headius.com>; Fri, 18 Mar 2011 14:05:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=ILHH0YjeEojSYJ95aqadjoiR4JZXOfephRyinuCX8yw=;
+        b=ipTw16MNaO/iCpZB7XiqSzjnqhG3GcEx9wmpfzpX0faVxLtcPMvEgPeyg5XJry0suJ
+         x5KNplW86rgfCMIqgazg+cEQYTnE3GNg53ZnNrgIwLfgLcDuFM+14X7WdD9tnDezvqKs
+         azV3AL33tN70ltAe5NW2sli6UcbcuGe3hD980=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=4t+p7p5CH+EXk2p+ULqCC7CawyF4m8MSmzq8bJK2hRLrAI3f4UVgICeD5FqQHl/q92
+         MJW2hBvepodv6KIUVzU2QTcYrwiGTdI0SVdc672yQti6Vxpw4UyfxdomxuiVtA0ycxXq
+         nbTi8t+/myu/JDezXcrmbSjVwaVpC3s5tmY7U=
+Received: by 10.101.29.10 with SMTP id g10mr234017anj.16.1300482315424;
+        Fri, 18 Mar 2011 14:05:15 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.97.1 with SMTP id z1ls647897agl.6.p; Fri, 18 Mar 2011
+ 14:05:14 -0700 (PDT)
+Received: by 10.91.200.27 with SMTP id c27mr268992agq.22.1300482314838;
+        Fri, 18 Mar 2011 14:05:14 -0700 (PDT)
+Date: Fri, 18 Mar 2011 14:05:14 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <18377013.1006.1300482314102.JavaMail.geo-discussion-forums@prcm18>
+In-Reply-To: <21f36109-51c4-4c2a-9793-ef98e4b47d8f@k38g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] Re: why FFI::MemoryPointer is autoconverted into
+ FFI::Pointer in a FFI::Struct?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1005_24268705.1300482314099"
+
+------=_Part_1005_24268705.1300482314099
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+When in doubt, manage the memory yourself.
+
+e.g. use the ffi-libc gem (https://github.com/postmodern/ffi-libc) , and 
+then use FFI::LibC.malloc() to allocate the memory, and FFI::LibC.free() to 
+release it when the memory is no longer needed.
+
+Or, as chuck says, use attach_function to map in malloc and free yourself.
+
+
+
+------=_Part_1005_24268705.1300482314099
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<div><br></div>When in doubt, manage the memory yourself.<div><br></div><div>e.g. use the ffi-libc gem (https://github.com/postmodern/ffi-libc) , and then use FFI::LibC.malloc() to allocate the memory, and FFI::LibC.free() to release it when the memory is no longer needed.</div><div><br></div><div>Or, as chuck says, use attach_function to map in malloc and free yourself.</div><div><br></div><div><br></div>
+------=_Part_1005_24268705.1300482314099--

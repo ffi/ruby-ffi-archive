@@ -1,0 +1,227 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.85.195 with SMTP id p3cs119613fal;
+        Wed, 13 Apr 2011 23:06:23 -0700 (PDT)
+Received: by 10.227.21.145 with SMTP id j17mr390657wbb.33.1302761183232;
+        Wed, 13 Apr 2011 23:06:23 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPWhsY2GBBDZnZrtBBoEd8iYPQ@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTPS id k6si2311539wbc.123.2011.04.13.23.06.23
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 13 Apr 2011 23:06:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBDZnZrtBBoEd8iYPQ@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBDZnZrtBBoEd8iYPQ@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCPWhsY2GBBDZnZrtBBoEd8iYPQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyb40 with SMTP id 40sf1436877wyb.7
+        for <headius@headius.com>; Wed, 13 Apr 2011 23:06:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=SN832JF8k6rG+3HR3xtCEszNrhqXJX0pZPeYJy8oKzw=;
+        b=61B4H0G1bBEKnThB7WPbixek5yk48r4PgbKkc+OGKZvUbNLPqYgqJsc24ysaY/e3hR
+         vEMb0etLkMuWspNM7nDmaLGGEzzAQx9b8o6XmmxuiZ/9ikjDxFmfnUtvCn38AZx4a5/j
+         ZFaeqY7IpEUn/dmMoVYajHveE8QVK5OEv3bgk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:message-id:subject:from
+         :to:x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=g+Z8SYjEPtqUMwAfXFiM+eVwEOkUd4lBLuG89geKrtBbPkbjMQ02lAHLV6r6Tf3GIS
+         81/3tbDzIcvQhnK6D124z7vu2pb94VYvGS5a9VMgFrlOY99IsoJtw0jdfIMtOv6eqBtl
+         vy4IaBpTy/klAytUvibxk7r9UnUDihJHffwMY=
+Received: by 10.216.58.136 with SMTP id q8mr1395162wec.28.1302761177959;
+        Wed, 13 Apr 2011 23:06:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.121.138 with SMTP id r10ls2453455weh.3.p; Wed, 13 Apr 2011
+ 23:06:17 -0700 (PDT)
+Received: by 10.216.143.89 with SMTP id k67mr22747wej.6.1302761177443;
+        Wed, 13 Apr 2011 23:06:17 -0700 (PDT)
+Received: by 10.216.68.7 with SMTP id k7mswed;
+        Wed, 13 Apr 2011 21:27:27 -0700 (PDT)
+Received: by 10.204.180.5 with SMTP id bs5mr35904bkb.8.1302755246826;
+        Wed, 13 Apr 2011 21:27:26 -0700 (PDT)
+Received: by 10.204.180.5 with SMTP id bs5mr35903bkb.8.1302755246804;
+        Wed, 13 Apr 2011 21:27:26 -0700 (PDT)
+Received: from mail-fx0-f43.google.com (mail-fx0-f43.google.com [209.85.161.43])
+        by gmr-mx.google.com with ESMTPS id e15si212566bke.1.2011.04.13.21.27.25
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 13 Apr 2011 21:27:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 209.85.161.43 as permitted sender) client-ip=209.85.161.43;
+Received: by fxm3 with SMTP id 3so1038181fxm.30
+        for <ruby-ffi@googlegroups.com>; Wed, 13 Apr 2011 21:27:25 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.57.5 with SMTP id a5mr300687fah.90.1302755245456; Wed, 13
+ Apr 2011 21:27:25 -0700 (PDT)
+Received: by 10.223.121.195 with HTTP; Wed, 13 Apr 2011 21:27:25 -0700 (PDT)
+Date: Wed, 13 Apr 2011 23:27:25 -0500
+Message-ID: <BANLkTimT8_Yz498K67SLcTOS+C0XwyvonQ@mail.gmail.com>
+Subject: [ruby-ffi] checkBounds in Pointer#slice
+From: Charles Strahan <charles.c.strahan@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: charles.c.strahan@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of charles.c.strahan@gmail.com designates 209.85.161.43 as permitted
+ sender) smtp.mail=charles.c.strahan@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00151747b9a4a27dc804a0d95787
+
+--00151747b9a4a27dc804a0d95787
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello,
+
+I've found a potential problem with Pointer#slice:
+
+*irb(main):078:0> mem = FFI::MemoryPointer.new(1,8)*
+*=> #<FFI::MemoryPointer address=0x2e997d0 size=8>*
+*irb(main):079:0> mem.slice(0,9)*
+*=> #<FFI::Pointer address=0x2e997d0 size=9>*
+
+
+As you can see, it's possible to extend the size of the pointer. However,
+it's not possible to offset the pointer past the total original size:
+
+*irb(main):080:0> mem.slice(8,9)*
+*IndexError: Memory access offset=8 size=1 is out of bounds*
+*        from (irb):80:in `slice'*
+*        from (irb):80*
+*        from C:/Ruby192/bin/irb:12:in `<main>'*
+
+
+
+I see that Pointer#slice is defined as follows:
+
+*static VALUE*
+*slice(VALUE self, long offset, long size)*
+*{*
+*    AbstractMemory* ptr;*
+*    Pointer* p;*
+*    VALUE retval;*
+*    *
+*    Data_Get_Struct(self, AbstractMemory, ptr);*
+*    checkBounds(ptr, offset, 1);*
+*
+*
+*    retval = Data_Make_Struct(rbffi_PointerClass, Pointer, ptr_mark, -1,
+p);*
+*
+*
+*    p->memory.address = ptr->address + offset;*
+*    p->memory.size = size;*
+*    p->memory.flags = ptr->flags;*
+*    p->memory.typeSize = ptr->typeSize;*
+*    p->parent = self;*
+*
+*
+*    return retval;*
+*}*
+
+
+Perhaps `*checkBounds(ptr, offset, 1);'* should be replaced with something
+like the following?
+
+*checkBounds(ptr, offset, size == MAX_LONG ? 1 : size);*
+
+... or is the original behavior by design?
+
+
+-Charles
+
+--00151747b9a4a27dc804a0d95787
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+<div><br></div><div>I&#39;ve found a potential problem with Pointer#slice:<=
+/div><div><div><br></div><div><b><font class=3D"Apple-style-span" face=3D"&=
+#39;courier new&#39;, monospace">irb(main):078:0&gt; mem =3D FFI::MemoryPoi=
+nter.new(1,8)</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=3D&gt; #&lt;FFI::MemoryPointer address=3D0x2e997d0 size=3D8&gt;</f=
+ont></b></div><div><b><font class=3D"Apple-style-span" face=3D"&#39;courier=
+ new&#39;, monospace">irb(main):079:0&gt; mem.slice(0,9)</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=3D&gt; #&lt;FFI::Pointer address=3D0x2e997d0 size=3D9&gt;</font></=
+b></div></div><div><br></div><div><br></div><div>As you can see, it&#39;s p=
+ossible to extend the size of the pointer. However, it&#39;s not possible t=
+o offset the pointer past the total original size:</div>
+<div><br></div><div><div><b><font class=3D"Apple-style-span" face=3D"&#39;c=
+ourier new&#39;, monospace">irb(main):080:0&gt; mem.slice(8,9)</font></b></=
+div><div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;,=
+ monospace">IndexError: Memory access offset=3D8 size=3D1 is out of bounds<=
+/font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0 =A0 =A0from (irb):80:in `slice&#39;</font></b></div><div=
+><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospa=
+ce">=A0=A0 =A0 =A0 =A0from (irb):80</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0 =A0 =A0from C:/Ruby192/bin/irb:12:in `&lt;main&gt;&#39;<=
+/font></b></div></div><div><br></div><div><br></div><div><br></div><div>I s=
+ee that Pointer#slice is=A0defined=A0as follows:</div>
+<div><br></div><div><div><b><font class=3D"Apple-style-span" face=3D"&#39;c=
+ourier new&#39;, monospace">static VALUE</font></b></div><div><b><font clas=
+s=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospace">slice(VALU=
+E self, long offset, long size)</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">{</font></b></div><div><b><font class=3D"Apple-style-span" face=3D"=
+&#39;courier new&#39;, monospace">=A0=A0 =A0AbstractMemory* ptr;</font></b>=
+</div><div>
+<b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospac=
+e">=A0=A0 =A0Pointer* p;</font></b></div><div><b><font class=3D"Apple-style=
+-span" face=3D"&#39;courier new&#39;, monospace">=A0=A0 =A0VALUE retval;</f=
+ont></b></div><div>
+<b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospac=
+e">=A0=A0 =A0</font></b></div><div><b><font class=3D"Apple-style-span" face=
+=3D"&#39;courier new&#39;, monospace">=A0=A0 =A0Data_Get_Struct(self, Abstr=
+actMemory, ptr);</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0checkBounds(ptr, offset, 1);</font></b></div><div><b><fon=
+t class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospace"><br>=
+</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0retval =3D Data_Make_Struct(rbffi_PointerClass, Pointer, =
+ptr_mark, -1, p);</font></b></div><div><b><font class=3D"Apple-style-span" =
+face=3D"&#39;courier new&#39;, monospace"><br>
+</font></b></div><div><b><font class=3D"Apple-style-span" face=3D"&#39;cour=
+ier new&#39;, monospace">=A0=A0 =A0p-&gt;memory.address =3D ptr-&gt;address=
+ + offset;</font></b></div><div><b><font class=3D"Apple-style-span" face=3D=
+"&#39;courier new&#39;, monospace">=A0=A0 =A0p-&gt;memory.size =3D size;</f=
+ont></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0p-&gt;memory.flags =3D ptr-&gt;flags;</font></b></div><di=
+v><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monosp=
+ace">=A0=A0 =A0p-&gt;memory.typeSize =3D ptr-&gt;typeSize;</font></b></div>
+<div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, mon=
+ospace">=A0=A0 =A0p-&gt;parent =3D self;</font></b></div><div><b><font clas=
+s=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospace"><br></font=
+></b></div><div>
+<b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39;, monospac=
+e">=A0=A0 =A0return retval;</font></b></div><div><b><font class=3D"Apple-st=
+yle-span" face=3D"&#39;courier new&#39;, monospace">}</font></b></div></div=
+><div><br>
+</div><div><br></div><div>Perhaps `<b><font class=3D"Apple-style-span" face=
+=3D"&#39;courier new&#39;, monospace">checkBounds(ptr, offset, 1);&#39;</fo=
+nt></b>=A0should be replaced with something like the following?</div><div><=
+br>
+</div><div><b><font class=3D"Apple-style-span" face=3D"&#39;courier new&#39=
+;, monospace">checkBounds(ptr, offset, size =3D=3D MAX_LONG ? 1 : size);</f=
+ont></b>=A0=A0 =A0 =A0 =A0</div><div><br></div><div>... or is the original=
+=A0behavior by design?</div>
+<div><br></div><div><br></div><div>-Charles</div><div><br></div>
+
+--00151747b9a4a27dc804a0d95787--

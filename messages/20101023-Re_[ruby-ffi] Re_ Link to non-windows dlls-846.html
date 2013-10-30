@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Link to non-windows dlls</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Link to non-windows dlls</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kevin Vanden Berge <kvandenberge@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/23/10 10:33 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) in the test_usb.rb script.  Changing the Send parameter from :pointer to :string has no effect on the outcome.  As for why I did pointer instead of string, I have no good reason except that I saw an example of a wrapper to a C function that had a char* as parameter and it was done using :string and then another example showed it using :pointer another time.<br>
+<br><div class="gmail_quote">On Sat, Oct 23, 2010 at 11:25 AM, Luis Lavena <span dir="ltr">&lt;<a href="mailto:luislavena@gmail.com">luislavena@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+<div class="im">On Sat, Oct 23, 2010 at 12:18 PM, kvberge &lt;<a href="mailto:kvandenberge@gmail.com">kvandenberge@gmail.com</a>&gt; wrote:<br>
+&gt; I can provide the c declarations to the functions I am attempting to<br>
+&gt; wrap, but I cannot provide the dll because it is a dll for the company<br>
+&gt; I work for and I am not allowed to supply the dll.<br>
+&gt;<br>
+<br>
+</div>Since I can&#39;t test it, why are you sending a :pointer instead of :string?<br>
+<br>
+In the C definition Send expects a string, but you&#39;re using a pointer<br>
+and not using FFI MemoryPointers to handle it.<br>
+<br>
+Also, will be great to know in which Ruby line the project segfault,<br>
+guess could be based on what I&#39;m saying above.<br>
+<font color="#888888"><br>
+--<br>
+</font><div><div></div><div class="h5">Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exupéry<br>
+</div></div></blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

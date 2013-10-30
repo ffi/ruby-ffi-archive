@@ -1,0 +1,91 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Turning a Struct into its binary representation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Turning a Struct into its binary representation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>candlerb <bcandler100@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/11 8:39 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Given:
+
+class Foo &lt; FFI::Struct
+    layout :a, :int, :b, :int
+end
+f = Foo.new
+f[:a] = 1
+f[:b] = 2
+
+(1) What's the most direct way to get the binary representation of
+'f'? Eventually I found:
+
+    f.pointer.get_bytes(0, Foo.size)
+
+This was made a bit awkward because I was looking for 'read' methods,
+and there was no 'read_bytes'. It turns out there are a handful for
+methods which have "get" but no "read" equivalent:
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>f.pointer.methods.grep(<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>get<span class="moz-txt-tag">/</span></i>) - f.pointer.methods.grep(<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>read<span class="moz-txt-tag">/</span></i>).map { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>x<span class="moz-txt-tag">|</span></code> x.sub(/^read_/,'get_') }
+</pre></blockquote></blockquote><pre wrap>
+=&gt; ["get_array_of_float32", "get_bytes", "get_float32",
+"get_array_of_float64", "get_array_of_string", "get_float64",
+"instance_variable_get"]
+
+(2) Suppose I want to create a packed structure which is a contiguous
+array of Foos. I found an example for InlineArrayOfStructs, but not
+how to make an array of structs at the top level.
+
+So my noddy approach to packing an array of structs is as follows - is
+there a better way?
+
+   farr = [Foo.new, Foo.new]
+   m = FFI::MemoryPointer.new(Foo, farr.size)
+   farr.size.times { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code> m.put_bytes(i*Foo.size,
+farr[i].pointer.get_bytes(0, Foo.size)) }
+
+I note that the 'Struct' page in the ffi wiki shows how to take a
+pointer to such a structure and turn it into a collection of Foo
+objects, but not the other way round.
+
+(3) What's the difference between FFI::Pointer, FFI::MemoryPointer and
+FFI::Buffer?
+
+As far as I can tell:
+
+* FFI::Buffer is some malloc'd memory. It also supports simple slice
+with sharing of the underlying buffer (rbParent). The buffer is freed
+when the memory is GC'd. In this respect, it seems to be rather like a
+String.
+
+typedef struct Buffer {
+    AbstractMemory memory;
+    char* storage; /* start of malloc area */
+    VALUE rbParent;
+} Buffer;
+
+* FFI::Pointer has a similar structure, but it also has autorelease
+and allocated fields:
+
+typedef struct Pointer {
+    AbstractMemory memory;
+    VALUE rbParent;
+    char* storage; /* start of malloc area */
+    bool autorelease;
+    bool allocated;
+} Pointer;
+
+So I'm guessing that this can either point to someone else's storage,
+or to its own allocated buffer?
+
+* FFI::MemoryPointer is a subclass of FFI::Pointer... and it can
+allocate memory... but I can't see when you'd use a Buffer and when
+you'd use a MemoryPointer.
+
+Clues gratefully received <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+
+Regards,
+
+Brian.
+</pre></div></body>
+</html>
+</table></div>

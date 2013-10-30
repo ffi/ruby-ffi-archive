@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] how do I properly attach to this function?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] how do I properly attach to this function?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jason Toy <jasontoy@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/2/11 6:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I have a function  that is called like this in a c ++ app:
+   CompactLangDet::DetectLanguage( .....)
+
+I see that C++ symbols are not visible in C so I ran nm on the library
+to see the names of the functions:
+0000000000002820 T
+__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb
+00000000000028a0 T __ZN14CompactLangDet21DetectLanguageVersionEv
+0000000000004440 T
+__ZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15DetectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_Pb
+000000000013b180 s
+__ZZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15DetectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_PbE18default_cld_tables
+
+
+So I tried running:
+
+require 'ffi'
+module MyLib
+  extend FFI::Library
+  ffi_lib "#{Dir.pwd}/cld.so"
+   #attach_function "CompactLangDet::DetectLanguage",
+[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:double,:int,:bool ], :int
+   attach_function
+"__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb",
+[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:double,:int,:bool ], :int
+end
+
+
+but I still get an error:
+FFI::NotFoundError: Function
+'__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb'
+not found in [/Users/jtoy/sandbox/ccld/cld.so]
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/jtoy<span class="moz-txt-tag">/</span></i>.rbenv/versions/1.9.3-preview1/lib/ruby/gems/1.9.1/
+gems/ffi-1.0.10/lib/ffi/library.rb:247:in `attach_function'
+
+
+
+What is the correct way for me to reference this function?
+</pre></div></body>
+</html>
+</table></div>

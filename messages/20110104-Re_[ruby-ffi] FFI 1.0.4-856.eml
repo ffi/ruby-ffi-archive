@@ -1,0 +1,128 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs418451fam;
+        Tue, 4 Jan 2011 02:41:45 -0800 (PST)
+Received: by 10.227.129.76 with SMTP id n12mr12544750wbs.83.1294137705317;
+        Tue, 04 Jan 2011 02:41:45 -0800 (PST)
+Return-Path: <ruby-ffi+bncCP397LbnChDe8ovpBBoEYxGGPA@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id r3si27185290wbr.2.2011.01.04.02.41.44;
+        Tue, 04 Jan 2011 02:41:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCP397LbnChDe8ovpBBoEYxGGPA@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCP397LbnChDe8ovpBBoEYxGGPA@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCP397LbnChDe8ovpBBoEYxGGPA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyg36 with SMTP id 36sf22194623wyg.7
+        for <headius@headius.com>; Tue, 04 Jan 2011 02:41:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=a1LS5fm1RarVDVmyUS4IPDGvFLIVOCluVJdP7zwKP24=;
+        b=fTNZiEQlZxoGB1AdlyhVD0xfOtCQEoiUsyuSTSBb/xyUEfj/31q6QKk/lHUaiw5Usv
+         NmRErcZq9Sxq/mHfLnJEzwAMa0AOhTqH/Ka6+ASbVK3rISV/J9d04Ie7PHWn/zFFUsdB
+         K7c2IeIpKyIMQh/yegMowkYmv5evBQzcpzZ0M=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=DkLspquEtgT9y+SdypXP/Oy6B0fVMhENmNfW5Zvcj3vK+NL7JWR4u9yPkBFqSTPiRb
+         HUQAcGNvU6yiDtQVKoOMB3xWr/cmHmQ7+7SXnoGya2swMW2yrt2wiGUQZeVXoBPwqDvM
+         KmI84W1jUmZVBr9bOFNJfqaBqqxNBmWxeAhIw=
+Received: by 10.216.186.138 with SMTP id w10mr829524wem.15.1294137694237;
+        Tue, 04 Jan 2011 02:41:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.10.75 with SMTP id 51ls971424eeu.6.p; Tue, 04 Jan 2011
+ 02:41:33 -0800 (PST)
+Received: by 10.14.53.65 with SMTP id f41mr2564783eec.29.1294137693438;
+        Tue, 04 Jan 2011 02:41:33 -0800 (PST)
+Received: by 10.14.53.65 with SMTP id f41mr2564782eec.29.1294137693421;
+        Tue, 04 Jan 2011 02:41:33 -0800 (PST)
+Received: from smtp-vbr5.xs4all.nl (smtp-vbr5.xs4all.nl [194.109.24.25])
+        by gmr-mx.google.com with ESMTP id 41si5694416ees.1.2011.01.04.02.41.33;
+        Tue, 04 Jan 2011 02:41:33 -0800 (PST)
+Received-SPF: neutral (google.com: 194.109.24.25 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.25;
+Received: from [192.168.0.117] (53505096.static.ziggozakelijk.nl [83.80.80.150])
+	(authenticated bits=0)
+	by smtp-vbr5.xs4all.nl (8.13.8/8.13.8) with ESMTP id p04AfSaD087146
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Tue, 4 Jan 2011 11:41:33 +0100 (CET)
+	(envelope-from matijs@matijs.net)
+Message-ID: <4D22F959.5030506@matijs.net>
+Date: Tue, 04 Jan 2011 11:41:29 +0100
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101207 Lightning/1.0b2 Thunderbird/3.1.7
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] FFI 1.0.4
+References: <20147490.1386.1294123744080.JavaMail.geo-discussion-forums@prfr14>
+In-Reply-To: <20147490.1386.1294123744080.JavaMail.geo-discussion-forums@prfr14>
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 194.109.24.25 is neither permitted nor denied by best guess record for domain
+ of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+Are any other checks needed besides 'rake test' in order to deem the 
+code working on 1.8.x?
+
+Regards,
+Matijs
+
+On 4-1-2011 7:49, Wayne Meissner wrote:
+>
+> Awesome.
+>
+> You are henceforth anointed as the maintainer of 1.8.x support on all
+> platforms, including windows. Appropriate peons and delegate as required.
+>
+> On wait, not what you meant? Too bad :-P
+>
+>
+> On Tuesday, January 4, 2011 4:36:32 PM UTC+10, Charles Oliver Nutter wrote:
+>
+>     Thanks much for this Wayne. Please lean on anyone necessary (including
+>     me) to help keep ruby-ffi maintained.
+>
+>     On Tue, Dec 28, 2010 at 5:46 AM, Wayne Meissner <wmei...@gmail.com>
+>     wrote:
+>      >
+>      > I just pushed ffi-1.0.4.
+>      > This re-instates 1.8.7 support (not sure about earlier ruby
+>     versions). Both
+>      > blocking functions and non-ruby-thread callbacks should now
+>     behave similar
+>      > to 1.9, albiet slower. This means gems like ffi-zmq and curl-ffi are
+>      > somewhat likely to work properly on 1.8.x now. There is also a
+>     possibility
+>      > that they will crash ruby and make your computer catch on fire, so be
+>      > warned. Only supported on posix-thread systems - win32 users will
+>     have to
+>      > upgrade to ruby 1.9.2.
+>      >
+>      >
+>      >
+>      >
+>
+

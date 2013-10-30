@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs401235qaj;
+        Wed, 16 Sep 2009 07:32:41 -0700 (PDT)
+Received: by 10.114.164.4 with SMTP id m4mr16288081wae.172.1253111560553;
+        Wed, 16 Sep 2009 07:32:40 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f151.google.com (mail-pz0-f151.google.com [209.85.222.151])
+        by mx.google.com with ESMTP id 14si36629428pzk.113.2009.09.16.07.32.39;
+        Wed, 16 Sep 2009 07:32:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.151 as permitted sender) client-ip=209.85.222.151;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.151 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk15 with SMTP id 15so647945pzk.0
+        for <headius@headius.com>; Wed, 16 Sep 2009 07:32:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=F/xcznuhdEkZ1MbLoCc89/qY/X68NBn/+lchGyedG40=;
+        b=FvqaxI03GwQ2etrk3kJx8x6anjIKazgrsBKCjoR/m9ZEZs/ELvLnSgGvNC5UlrKohm
+         t54pvvM4cucd59sSkvsRjq3VvlGyAHQJzggiD9Xb4GIGH46iIDaDYr2vbClfpjxx6uHd
+         buJ+tnNBg0wun2xwqNcWmvaBV/DMybWE+Wl3Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=1B5xEfjwQJjAfwXA/m8BK0VDyiJFlNBvz4fzwhUSGAngP2zJsoNb5NRGADSjWYIa2u
+         sL2aOkID4wuI7tJoEOfFHDA7Lip1JfUBnS68my4l170VbVNR5Z+r23xJINsRz/S1oNB+
+         OZV5jlwI7g9ENvs9qXoB0Y9PitzOV/eS88KHk=
+Received: by 10.141.42.16 with SMTP id u16mr580917rvj.4.1253111557926;
+        Wed, 16 Sep 2009 07:32:37 -0700 (PDT)
+Received: by 10.106.99.27 with SMTP id w27gr34prb.0;
+	Wed, 16 Sep 2009 07:32:37 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.142.75.6 with SMTP id x6mr4068384wfa.8.1253111557067; Wed, 16 Sep 2009 07:32:37 -0700 (PDT)
+Received: by 10.142.75.6 with SMTP id x6mr4068383wfa.8.1253111557049; Wed, 16 Sep 2009 07:32:37 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f177.google.com (mail-px0-f177.google.com [209.85.216.177]) by gmr-mx.google.com with ESMTP id 19si2050082pzk.0.2009.09.16.07.32.36; Wed, 16 Sep 2009 07:32:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.177 as permitted sender) client-ip=209.85.216.177;
+Received: by pxi7 with SMTP id 7so3792857pxi.18 for <ruby-ffi@googlegroups.com>; Wed, 16 Sep 2009 07:32:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=eYPSKxqM8HfEEaY1AsoteSE8wE+xUVMKVgSxEvohSEE=; b=Zz+e51NwTlBhUY6eTkknldcPghZYktyYm8U+lPypxmrlbL1+qjdO6nI7qVkQVQIjGc zzRjg/bB4gwp9pvkkp8xv8GR8M9r+o3v6s5AS3uWkIazpcLQuKz6MaPeT2F5aMRlhOAu c8qUp9njD8YuTQO+dlWqV3RmxkQitWssEKIqc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=u6s4BmwDZVz9XN/diRCUNEaxjdOvScUMw/KtQjiWnDzc+jy2pBUtB4oBXKaY9fxbbK Mw1V7OHsR+cbb73gQryq5KAb5U3H9VLYHDGCqdWBymOtTsaYKk2J167x99+1RkydOdcN fMimg4GChSEFKmb0CcMaB8Y543jpC1ufu9XRA=
+MIME-Version: 1.0
+Received: by 10.140.143.7 with SMTP id q7mr1118183rvd.50.1253111555902; Wed,  16 Sep 2009 07:32:35 -0700 (PDT)
+In-Reply-To: <5ee84f7d-4552-4b7f-b600-0cf13841e329@n2g2000vba.googlegroups.com>
+References: <375f210e-392d-4156-bd7f-70d8588735d8@31g2000vbf.googlegroups.com> <4ccee320909151623yfb08bf4mda131cf0c9adc00a@mail.gmail.com> <6bb207cb-68d9-463c-b451-e340565aceb3@f10g2000vbf.googlegroups.com> <4ccee320909151915ma7bf87ap393663b6895ef65b@mail.gmail.com> <5ee84f7d-4552-4b7f-b600-0cf13841e329@n2g2000vba.googlegroups.com>
+Date: Thu, 17 Sep 2009 00:32:35 +1000
+Message-ID: <4ccee320909160732t209d651dr48d7a244f01771a0@mail.gmail.com>
+Subject: [ruby-ffi] Re: What is the best way to convert a Fixnum to a 
+ :pointer?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+2009/9/16 Brett Blackham <brett.blackham@gmail.com>:
+>
+>
+> So MemoryPointer is like calling malloc and returning a pointer to
+> it.
+
+Correct.  The native memory gets garbage collected for you when the
+MemoryPointer instance no longer has any hard references to it.
+
+
+> I had tried just sending address to Pointer.new in hopes that it could
+> handle an Int as well as an existing pointer. But it doesn't appear to
+> work.
+
+It works in master, so it must have been added after the 0.4.0 release.
+
+Just do the test in ruby land then, and only wrap the address if not
+already a pointer.
+
+>
+>>> require 'ffi'
+> =3D> true
+>>> address =3D FFI::Pointer.new(5)
+> =3D> #<Native Pointer address=3D0x5>
+>>> p =3D FFI::Pointer.new(address)
+> TypeError: can't convert FFI::Pointer into Integer
+> =A0 =A0 =A0 =A0from (irb):4:in `initialize'
+> =A0 =A0 =A0 =A0from (irb):4:in `new'
+> =A0 =A0 =A0 =A0from (irb):4
+>
+>>> address =3D FFI::MemoryPointer :pointer
+> NoMethodError: undefined method `MemoryPointer' for FFI:Module
+> =A0 =A0 =A0 =A0from (irb):5
+>>> address =3D FFI::MemoryPointer.new :pointer
+> =3D> #<MemoryPointer address=3D0x155f140 size=3D8>
+>>> p =3D FFI::Pointer.new(address)
+> TypeError: can't convert FFI::MemoryPointer into Integer
+> =A0 =A0 =A0 =A0from (irb):7:in `initialize'
+> =A0 =A0 =A0 =A0from (irb):7:in `new'
+> =A0 =A0 =A0 =A0from (irb):7
+>

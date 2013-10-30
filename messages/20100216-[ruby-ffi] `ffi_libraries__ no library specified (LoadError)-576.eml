@@ -1,0 +1,128 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.159.147 with SMTP id j19cs674vcx;
+        Thu, 18 Feb 2010 11:02:20 -0800 (PST)
+Received: by 10.101.2.4 with SMTP id e4mr200088ani.49.1266519740630;
+        Thu, 18 Feb 2010 11:02:20 -0800 (PST)
+Return-Path: <3uo59Sw4JCBIABwxs5.Auz40vBy4s03.u649CtG-xx0y66y3wy96C7A.u64@groups.bounces.google.com>
+Received: from mail-yw0-f155.google.com (mail-yw0-f155.google.com [209.85.211.155])
+        by mx.google.com with ESMTP id 2si7669133gxk.54.2010.02.18.11.02.19;
+        Thu, 18 Feb 2010 11:02:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3uo59Sw4JCBIABwxs5.Auz40vBy4s03.u649CtG-xx0y66y3wy96C7A.u64@groups.bounces.google.com designates 209.85.211.155 as permitted sender) client-ip=209.85.211.155;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3uo59Sw4JCBIABwxs5.Auz40vBy4s03.u649CtG-xx0y66y3wy96C7A.u64@groups.bounces.google.com designates 209.85.211.155 as permitted sender) smtp.mail=3uo59Sw4JCBIABwxs5.Auz40vBy4s03.u649CtG-xx0y66y3wy96C7A.u64@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh27 with SMTP id 27sf3174438ywh.22
+        for <headius@headius.com>; Thu, 18 Feb 2010 11:02:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=vhxyaz/lZVZy6Vd+GIRM1J6erNcWZ6uz1ji4OAFXNYw=;
+        b=H49pzhyGPWQoOtJaJR0TIPxc5JkutlE5q9f1BwXWuJxKhIS/p6eWUrG8APuTssJbJu
+         UHXgn3dnypn7LisniexBy4/yBa6oT8LdHFSiEvG/b278hfVtC09jd/5/lZt8/OubhlQK
+         NephVPRuiM6QegiDWXGBT3svPtME33QKb4lxA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=n+1p7aLdEd1sJEBPCJ+cYoAHaKJWvZ5r00RyONpWKHrURaQts1PKgKUbT5+7yAYbkf
+         YMF3wpTco5yajlE4eYDe4fr9Q50GRqNNjlbK2z/VS+8jN6P3gK4sprkXShF2YQn9t0p7
+         0pmo3j5qq6s59/ZR1jE92KX5ZjDwttQjRNyLc=
+Received: by 10.150.209.12 with SMTP id h12mr702399ybg.49.1266519738062;
+        Thu, 18 Feb 2010 11:02:18 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.16.12 with SMTP id t12ls955455ybi.1.p; Thu, 18 Feb 2010 
+	11:02:17 -0800 (PST)
+Received: by 10.150.246.7 with SMTP id t7mr13922148ybh.19.1266519737484;
+        Thu, 18 Feb 2010 11:02:17 -0800 (PST)
+Received: by 10.91.65.8 with SMTP id s8mr4510654agk.6.1266367965722;
+        Tue, 16 Feb 2010 16:52:45 -0800 (PST)
+Received: by 10.91.65.8 with SMTP id s8mr4510653agk.6.1266367965684;
+        Tue, 16 Feb 2010 16:52:45 -0800 (PST)
+Return-Path: <stefan.schmidt@gmail.com>
+Received: from mail-yx0-f147.google.com (mail-yx0-f147.google.com [209.85.210.147])
+        by gmr-mx.google.com with ESMTP id 25si898949ywh.12.2010.02.16.16.52.45;
+        Tue, 16 Feb 2010 16:52:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefan.schmidt@gmail.com designates 209.85.210.147 as permitted sender) client-ip=209.85.210.147;
+Received: by yxe11 with SMTP id 11so17029252yxe.15
+        for <ruby-ffi@googlegroups.com>; Tue, 16 Feb 2010 16:52:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.165.32 with SMTP id s32mr443844ano.8.1266367965636; Tue, 
+	16 Feb 2010 16:52:45 -0800 (PST)
+Date: Tue, 16 Feb 2010 16:52:45 -0800 (PST)
+X-IP: 82.113.121.223
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; de-de) 
+	AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0 Safari/528.17,gzip(gfe),gzip(gfe)
+Message-ID: <83894c84-c755-4770-8752-e9ffc73bbe14@y17g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] `ffi_libraries': no library specified (LoadError)
+From: Stefan Schmidt <stefan.schmidt@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of stefan.schmidt@gmail.com designates 209.85.210.147 as permitted 
+	sender) smtp.mail=stefan.schmidt@gmail.com
+X-Original-Sender: stefan.schmidt@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/660b682c154726cf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/238da60491fdfd27
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello,
+
+I just tried to run the hello world program of GitHub but encountered
+an error message on which I could not find any further information.
+Does anybody have a suggestion which actions to take?
+
+I am running Mac OS 10.5.8.
+
+Cheers, Stefan
+
+stefan@StefanMBP15:~/Desktop$ ruby -v
+ruby 1.8.7 (2010-01-10 patchlevel 249) [i686-darwin9]
+
+stefan@StefanMBP15:~/Desktop$ gem list
+
+*** LOCAL GEMS ***
+
+ffi (0.6.2)
+rake (0.8.7)
+rake-compiler (0.7.0)
+rb-kqueue (0.1.0)
+yard (0.5.3)
+
+stefan@StefanMBP15:~/Desktop$ cat helloworld.rb
+require 'rubygems'
+require 'ffi'
+
+ module MyLib
+   extend FFI::Library
+   attach_function :puts, [ :string ], :int
+ end
+
+ MyLib.puts 'Hello boys using libc!'
+
+stefan@StefanMBP15:~/Desktop$ ruby helloworld.rb
+/opt/local/lib/ruby/gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:79:in
+`ffi_libraries': no library specified (LoadError)
+	from /opt/local/lib/ruby/gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+106:in `attach_function'
+	from helloworld.rb:6

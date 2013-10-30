@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.246.38 with SMTP id xt6csp140905obc;
+        Thu, 24 May 2012 15:04:19 -0700 (PDT)
+Received: by 10.52.26.111 with SMTP id k15mr942874vdg.81.1337897059506;
+        Thu, 24 May 2012 15:04:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMDl4PyKDxDi4Pr9BBoEkmFWsg@googlegroups.com>
+Received: from mail-vb0-f62.google.com (mail-vb0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id ce2si470303vdc.52.2012.05.24.15.04.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 24 May 2012 15:04:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMDl4PyKDxDi4Pr9BBoEkmFWsg@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMDl4PyKDxDi4Pr9BBoEkmFWsg@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCMDl4PyKDxDi4Pr9BBoEkmFWsg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vbbfs19 with SMTP id fs19sf547923vbb.7
+        for <headius@headius.com>; Thu, 24 May 2012 15:04:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=CPildWrpQhoRzFhRMIPyIXL573YqgwVJOWyr9elIFqw=;
+        b=WbF/2CqK95YLqhPxV1Fbw028kVT7aWrR/qHtIHSfOR4SqR6rjZa/Fhj+ZUv9oJON0X
+         U3pyqz+/AFW8rZhB0rXD8X13goyx6lS/rEirdNa+YosL9LnHysLk3IjFFlC+1f53EyGw
+         gtexS6Mn3EkLyKAApvZY2kfBpX/0HvNNncNjY=
+Received: by 10.224.58.136 with SMTP id g8mr1128495qah.16.1337897058830;
+        Thu, 24 May 2012 15:04:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.59.68 with SMTP id k4ls3169126qah.4.gmail; Thu, 24 May
+ 2012 15:04:17 -0700 (PDT)
+Received: by 10.224.102.10 with SMTP id e10mr4886732qao.8.1337897057905;
+        Thu, 24 May 2012 15:04:17 -0700 (PDT)
+Received: by 10.224.101.138 with SMTP id c10msqao;
+        Thu, 24 May 2012 15:02:32 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.20.144 with SMTP id n16mr105516vde.12.1337896952335; Thu,
+ 24 May 2012 15:02:32 -0700 (PDT)
+Received: by n16g2000vbn.googlegroups.com with HTTP; Thu, 24 May 2012 15:02:32
+ -0700 (PDT)
+Date: Thu, 24 May 2012 15:02:32 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4)
+ AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5,gzip(gfe)
+Message-ID: <9d578d1d-38f1-4c78-b410-0143af8cff3e@n16g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] TravisCI build fails with uninitialized constant FFI (NameError)
+From: Hans Hasselberg <hans@hans.io>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: hans@hans.io
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of hans@hans.io designates internal as permitted sender) smtp.mail=hans@hans.io;
+ dkim=pass header.i=@hans.io
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+thank you very much for this gem!
+I have a problem: TravisCI fails, but I cannot reproduce this behavior
+locally [1]. I think [2] and [3] have the same problems, but I still
+don't know what to do about it.
+Every hint is appreciated.
+
+Thanks,
+Hans
+
+[1] http://travis-ci.org/#!/typhoeus/typhoeus/jobs/1425952
+[2] https://github.com/travis-ci/travis-ci/issues/555
+[3] https://github.com/travis-ci/travis-ci/issues/557

@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] access to constants defined in /usr/include/sys/errno.h</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] access to constants defined in /usr/include/sys/errno.h</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Aman Gupta <themastermind1@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/10 9:04 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+irb(main):015:0&gt; Errno::EWOULDBLOCK::Errno
+=&gt; 35
+
+
+On Thu, May 6, 2010 at 5:48 PM, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I need to check a result code from a C function call against some constants defined in /usr/include/sys/errno.h. I know I could define the constant in my ruby module, but I'm not certain that these constants have the same value across platforms.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Specifically, I need to check for EWOULDBLOCK and EAGAIN.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is there a way to load these constants during startup (or gem installation)?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

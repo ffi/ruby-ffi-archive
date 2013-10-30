@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/17/09 6:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Perhaps I'm missing something here...
+
+require 'ffi'
+
+module Hello
+  extend FFI::Library
+  ffi_lib 'user32'
+  attach_function 'FindWindow', [ :string, :string], :pointer # blows
+up
+end
+
+ref: <a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx">http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx</a>
+
+What might it be...?
+-r
+</pre></div></body>
+</html>
+</table></div>

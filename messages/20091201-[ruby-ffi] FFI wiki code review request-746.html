@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI wiki code review request</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI wiki code review request</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/1/09 9:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I've updated <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a> and would like for you to review the Ruby/FFI part of the code examples for "idiomatic FFI correctness" whatever that phrase means.
+
+Seriously, as these examples are meant to help jumpstart Windows users into becoming more comfortable and productive with FFI, I'd like to make sure they're high quality.  My FFI-fu is not yet that highly developed to ensure that the FFI examples are really what we want to show on the FFI project site.  If all appears to be on the right track, I plan to add more advanced examples.
+
+Don't let the fact that the C examples use the Windows API cause you to shy away from reviewing the FFI code.  I've tried to strip all of the distracting parts away (e.g. - generic ANSI/Unicode support, strsafe.h, etc) and focus on core concepts applicable to any native API while showing typical Win API usage.
+
+Thanks in advance for your time and feedback.
+
+Jon
+
+
+KEY QUESTIONS
+=============
+
+1) It appears all FFI objects created in Ruby code live in the heap.  Is this correct?  If yes, I've tried to highlight this in the C code by use of calloc/free.
+
+2) There's no way to create FFI objects on the stack?
+
+3) In the "Enumerate Top Level Windows" example, should I use an FFI::MemoryPointer or an FFI::Buffer with :buffer_out in the :get_window_text signature?  Both work in this specific example.  The underyling question really is, "When should I use an FFI::MemoryPointer and when should I use an FFI::Buffer?"
+
+4) In the "Enumerate Top Level Windows" example, should I zero out the title buffer via "title.clear" similar to the C memset?
+
+5) The FFI syntax for building up a nested struct is opposite from what you'd expect from a C PoV.  I now like the FFI syntax as shown in "Move the Mouse", but I'm wondering how best to explain it.
+
+In the C part of the example, you basically create a Thing and a ThingContainer, configure the Thing, put the Thing in the ThingContainer, and then finally call the function with a pointer to the ThingContainer.
+
+In FFI, it appears that once you create the ThingContainer, everything is already setup and you effectively do multiple levels of dereferencing to populate the Thing.  You don't create the Thing, populate it, and then stuff it in the ThingContainer.
+
+Is this correct, or is it only correct for structs with nested structs/unions but not structs with nested pointers to structs/unions?  How best to explain this?
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,209 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp211651laf;
+        Wed, 27 Feb 2013 14:46:54 -0800 (PST)
+X-Received: by 10.60.5.165 with SMTP id t5mr4058905oet.117.1362005213852;
+        Wed, 27 Feb 2013 14:46:53 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBXEZXKEQKGQEXCN3Y2Q@googlegroups.com>
+Received: from mail-oa0-f63.google.com (mail-oa0-f63.google.com [209.85.219.63])
+        by mx.google.com with ESMTPS id m1si7771215obw.87.2013.02.27.14.46.53
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 27 Feb 2013 14:46:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBXEZXKEQKGQEXCN3Y2Q@googlegroups.com designates 209.85.219.63 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBXEZXKEQKGQEXCN3Y2Q@googlegroups.com designates 209.85.219.63 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBXEZXKEQKGQEXCN3Y2Q@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-oa0-f63.google.com with SMTP id i18sf479434oag.18
+        for <headius@headius.com>; Wed, 27 Feb 2013 14:46:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=jkSFb4kdq+4FQ6Q8G5o0PcUbwsjJ0ARdXFL9uOu5GF8=;
+        b=t/2+p14NW0CEPh+HjJCfCz1RcguFd2arM6XFRAVdNuFC1Y4EJWnkD7p5V6djVtL/U/
+         GAL/rlR1Kievf6+SUbgmskZr7DtS8kZeWZWbMBj7g/JM6hh1K/Uwv0dNusYA8wmIfYhD
+         K7RtuAYyMNFH333xOiScp49dl/JErCel4hfYIgQlZZ72zPVD9866VcDFu1p8GYzRwufW
+         L9E2CEbto1SjgFP8hmVZgtaSqVXiQcwuNnuu33M3eQNqcb4qeR5aaRS8LZN/4A6csdaX
+         vZ08PA5lHGwlTfmkwfGCpRBgstGckEewY+mTWMfV/gIm38JgKIRnhOylXSLlvmB5IE+p
+         d/9Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=jkSFb4kdq+4FQ6Q8G5o0PcUbwsjJ0ARdXFL9uOu5GF8=;
+        b=DKNvT85d0ZkNtzpNRW0SNTKMO6zia2E6beeig/RxbiHOrUO7XpeNYnKpodZAF6S3Ii
+         c82wYVJcFY2QQIXkaF4gNPeQeoZUhtdLVd+wK2uC//SAJ4mPOjrejgYrQMKFbd5Q5T4O
+         NWoCqeYKpV4RGzt7F4godZyiIU+HzsPHBMmZEzwnDKFaMBOfuXt04ZgADaAJKoZTLNQx
+         ryDK3p9jmgq4rzOiXX4XA22Bct+7AyOosk5kKHAXqQ9QBsiILP7W5r/0YzSUoxRwGYwA
+         38uO1CwB9RF/EeVr3hMeewnfVIPl7up//Ai7NLmumibIC0CqZLImVNTnDUVajsgGfIZX
+         b54w==
+X-Received: by 10.50.12.227 with SMTP id b3mr58697igc.13.1362005213156;
+        Wed, 27 Feb 2013 14:46:53 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.169.3 with SMTP id aa3ls1578642igc.41.canary; Wed, 27 Feb
+ 2013 14:46:52 -0800 (PST)
+X-Received: by 10.50.135.41 with SMTP id pp9mr801048igb.2.1362005212234;
+        Wed, 27 Feb 2013 14:46:52 -0800 (PST)
+Date: Wed, 27 Feb 2013 14:46:51 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <1e9d3d82-66e3-420d-97fd-ef6c3d74fee2@googlegroups.com>
+In-Reply-To: <a8e170ae-23fd-4910-8bcd-413255591edd@googlegroups.com>
+References: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+ <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+ <a8e170ae-23fd-4910-8bcd-413255591edd@googlegroups.com>
+Subject: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor
+ (Raspberry PI)
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_41_15684597.1362005211794"
+
+------=_Part_41_15684597.1362005211794
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+The glibc error does tend to indicate memory corruption issues - given you=
+=20
+eliminated #1 and #3 as reasons, then its down to memory ownership, or=20
+inadequate allocation size.
+
+You did miss one autorelease - config.pointer.autorelease=3Dfalse
+
+Also, when you allocate a MemoryPointer with a block, it is always freed at=
+=20
+the end of the block, regardless of the autorelease setting - so you'll=20
+need to convert them to the non-block form.
+
+It is also possible there are bugs in libspotify itself - you could try=20
+converting your C example to use malloc() allocated memory instead of=20
+stack/global memory (i.e. emulate what FFI does), and see if it fails in=20
+the same way.
+
+
+On Thursday, 28 February 2013 07:12:29 UTC+10, Kim Burgestrand wrote:
+>
+> On Monday, February 25, 2013 10:49:54 PM UTC+1, Wayne Meissner wrote:
+>
+>>
+>> Off the top of my head, a couple of issues could be:
+>>
+>> 1) data sizes/layout.  Verify that the sizes of all your FFI structs=20
+>> match the C ones, and that the sizes & offsets of members match.
+>>
+> That=92s a good idea. I tried it, and they do match (was kind of hoping t=
+hey=20
+> didn=92t =97 updated the gist with the offset-checking code).
+> =20
+>
+>> 2) Given it only crashes on exit, it could be some sort of GC/finalizer=
+=20
+>> interaction.  Set all the MemoryPointer instances, including the ones=20
+>> backing the structs to autorelease=3Dfalse - this causes FFI to disown t=
+he=20
+>> memory, so it won't try to free it.
+>>
+> Hm, I=92ve updated the gist with these changes. Unfortunately the crashes=
+=20
+> still occur. I know how vague crash messages can be, but in case it might=
+=20
+> ring any bells: `*** glibc detected *** ruby: free(): invalid next size=
+=20
+> (fast): 0x01a3acf0 ***`
+>
+> 3) Endian-ness issues in ruby-ffi itself.  Is that arm arch big-endian or=
+=20
+>> little-endian?
+>>
+> From what I could gather from googling is that it=92s primarily=20
+> little-endian. By primarily is that it apparently has some big-endian=20
+> support if you do a little bit of hoop-jumping.
+>
+> Thanks for your time Wayne, I appreciate it.
+>
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_41_15684597.1362005211794
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+The glibc error does tend to indicate memory corruption issues - given you =
+eliminated #1 and #3 as reasons, then its down to memory ownership, or inad=
+equate allocation size.<div><br></div><div>You did miss one autorelease - c=
+onfig.pointer.autorelease=3Dfalse</div><div><br></div><div>Also, when you a=
+llocate a MemoryPointer with a block, it is always freed at the end of the =
+block, regardless of the autorelease setting - so you'll need to convert th=
+em to the non-block form.</div><div><br></div><div>It is also possible ther=
+e are bugs in libspotify itself - you could try converting your C example t=
+o use malloc() allocated memory instead of stack/global memory (i.e. emulat=
+e what FFI does), and see if it fails in the same way.</div><div><br><br>On=
+ Thursday, 28 February 2013 07:12:29 UTC+10, Kim Burgestrand  wrote:<blockq=
+uote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-lef=
+t: 1px #ccc solid;padding-left: 1ex;">On Monday, February 25, 2013 10:49:54=
+ PM UTC+1, Wayne Meissner wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"=
+><div><br></div>Off the top of my head, a couple of issues could be:<div><b=
+r></div><div>1) data sizes/layout. &nbsp;Verify that the sizes of all your =
+FFI structs match the C ones, and that the sizes &amp; offsets of members m=
+atch.</div></blockquote><div>That=92s a good idea. I tried it, and they do =
+match (was kind of hoping they didn=92t =97 updated the gist with the offse=
+t-checking code).</div><div>&nbsp;</div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:=
+1ex"><div>2) Given it only crashes on exit, it could be some sort of GC/fin=
+alizer interaction. &nbsp;Set all the MemoryPointer instances, including th=
+e ones backing the structs to autorelease=3Dfalse - this causes FFI to diso=
+wn the memory, so it won't try to free it.</div></blockquote><div>Hm, I=92v=
+e updated the gist with these changes. Unfortunately the crashes still occu=
+r. I know how vague crash messages can be, but in case it might ring any be=
+lls: `*** glibc detected *** ruby: free(): invalid next size (fast): 0x01a3=
+acf0 ***`</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div>=
+3) Endian-ness issues in ruby-ffi itself. &nbsp;Is that arm arch big-endian=
+ or little-endian?</div></blockquote><div>From what I could gather from goo=
+gling is that it=92s primarily little-endian. By primarily is that it appar=
+ently has some big-endian support if you do a little bit of hoop-jumping.</=
+div><div><br></div><div>Thanks for your time Wayne, I appreciate it.</div><=
+/blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_41_15684597.1362005211794--

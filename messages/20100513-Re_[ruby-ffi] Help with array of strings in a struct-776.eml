@@ -1,0 +1,162 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.186.206 with SMTP id ct14cs74813qcb;
+        Thu, 13 May 2010 20:28:00 -0700 (PDT)
+Received: by 10.140.248.20 with SMTP id v20mr330668rvh.235.1273807679713;
+        Thu, 13 May 2010 20:27:59 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhC8hrPfBBoEHJQBJw@googlegroups.com>
+Received: from mail-pz0-f168.google.com (mail-pz0-f168.google.com [209.85.222.168])
+        by mx.google.com with ESMTP id s9si4528060rvl.103.2010.05.13.20.27.58;
+        Thu, 13 May 2010 20:27:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC8hrPfBBoEHJQBJw@googlegroups.com designates 209.85.222.168 as permitted sender) client-ip=209.85.222.168;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC8hrPfBBoEHJQBJw@googlegroups.com designates 209.85.222.168 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhC8hrPfBBoEHJQBJw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk40 with SMTP id 40sf644816pzk.22
+        for <headius@headius.com>; Thu, 13 May 2010 20:27:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=vhrreyP0O3VXmdgPAytWv2K0qxl1FRVHjJlIHmOh+gY=;
+        b=zpsqcHjrpTphWXjvPSO0wRsyHjhT4k3d1lOdPi9yhNTNwEDWNmUmnrXNuEut6cPqA5
+         cZCtEBqYTwzrpSMF30PdN2WOXqxIWH9uUpw2fZXCN2ENOqjDqPOEEzjR5JfNmkh+9mZz
+         /Uvzb04/N3nVKJs2K8ozuh81ToMXt19g8d9RI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=lS+s6SIrqrApwP3oaJD2vchnQbRwvo8DEcnL7AQmg27DoeAA+Ne/KxCgSsKprP1SXP
+         9R6hgGPc491Ih/FcgGzKdPLqh80jLDBgMqVyYBlNGLJaiuYrSDPpcIbdTFzRcLuDpyL9
+         /IZiNY/ZYUd7VFFEipCNqpYe3HVxaZUFloBZg=
+Received: by 10.142.247.8 with SMTP id u8mr17658wfh.13.1273807676378;
+        Thu, 13 May 2010 20:27:56 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.250.36 with SMTP id x36ls1251276wfh.2.p; Thu, 13 May 2010 
+	20:27:55 -0700 (PDT)
+Received: by 10.143.27.38 with SMTP id e38mr119619wfj.43.1273807675710;
+        Thu, 13 May 2010 20:27:55 -0700 (PDT)
+Received: by 10.143.27.38 with SMTP id e38mr119618wfj.43.1273807675689;
+        Thu, 13 May 2010 20:27:55 -0700 (PDT)
+Return-Path: <cremes.devlist@mac.com>
+Received: from asmtpout025.mac.com (asmtpout025.mac.com [17.148.16.100])
+        by gmr-mx.google.com with ESMTP id 25si263977pzk.0.2010.05.13.20.27.55;
+        Thu, 13 May 2010 20:27:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.100 as permitted sender) client-ip=17.148.16.100;
+MIME-version: 1.0
+Received: from adsl-75-21-66-250.dsl.chcgil.sbcglobal.net
+ (adsl-75-21-66-250.dsl.chcgil.sbcglobal.net [75.21.66.250])
+ by asmtp025.mac.com
+ (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec 16 2008; 32bit))
+ with ESMTPSA id <0L2E000VR49Y7M00@asmtp025.mac.com> for
+ ruby-ffi@googlegroups.com; Thu, 13 May 2010 20:27:39 -0700 (PDT)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0
+ reason=mlx engine=6.0.2-1004200000 definitions=main-1005130184
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=1.12.8161:2.4.5,1.2.40,4.0.166
+ definitions=2010-05-13_03:2010-02-06,2010-05-13,2010-05-13 signatures=0
+Subject: Re: [ruby-ffi] Help with array of strings in a struct
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <0f4d1932-39c3-4b7c-b17b-98ac28b57c45@o14g2000yqb.googlegroups.com>
+Date: Thu, 13 May 2010 22:27:34 -0500
+Message-id: <42E4A971-75F4-4C2C-824F-B5D224E44962@mac.com>
+References: <0f4d1932-39c3-4b7c-b17b-98ac28b57c45@o14g2000yqb.googlegroups.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1078)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of cremes.devlist@mac.com designates 17.148.16.100 as permitted 
+	sender) smtp.mail=cremes.devlist@mac.com
+X-Original-Sender: cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+On May 13, 2010, at 8:14 AM, Drew wrote:
+
+> Hello, I'm trying to create an FFI wrapper for an Adobe Framemaker
+> automation library.  Here's the sample code in C that I'm trying to re-
+> create in Ruby:
+> 
+> 	IntT j = 0;
+> 	UIntT i;
+> 	F_IntsT attributes;
+> 	F_StringsT strings;
+> 
+> 	/* Get name of each FontFamily and display it based on whether it is
+> visible
+> 	 * in PGF Designer. */
+> 	strings = F_ApiGetStrings(0, FV_SessionId, FP_FontFamilyNames);
+> 	attributes = F_ApiGetInts(0, FV_SessionId, FP_FontFamilyAttributes);
+> 	for(i=0; i<attributes.len; i++){
+> 		j = attributes.val[i];
+> 		if(j & FV_FAMILY_VISIBLE)
+> 		F_Printf(NULL,"Family %s\n", strings.val[i]);
+> 	}
+> 
+> 
+> F_StringsT looks like this:
+> 
+> typedef struct {
+> 	UIntT len;
+> 	StringT *val;
+> } F_StringsT;
+> 
+> StringT is defined as unsigned char *, so I think I'm trying to read
+> an array of pointers to strings, or unsigned char **.
+> 
+> Right now I'm just trying to get the strings in Ruby:
+> 
+> # in my FFI module FM:
+> class FStringsT < FFI::Struct
+>    layout :len, :int,
+>      :val, :pointer
+>  end
+> 
+> attach_function :FApiGetStrings,[:int,:int,:int], FStringsT.by_value
+> 
+> # in my script:
+> strings = FM.FApiGetStrings(0, FM.FVSessionId, FM.FPFontFamilyNames)
+> attributes = FM.FApiGetInts(0, FM.FVSessionId,
+> FM.FPFontFamilyAttributes)
+> 
+> puts strings[:len], attributes[:len] # => 337
+> strptr = strings[:val].read_pointer()
+> if !( strptr.null? )
+>  puts strptr # =>  #<FFI::Pointer:0x3bd0e04>
+>  sa = strptr.get_array_of_string(0,strings[:len]).compact # => causes
+> seg fault
+>  puts sa
+> end
+
+Wow, lots of information here.
+
+Let's try to break it down a bit.
+
+Let's eliminate the #compact call. Without it, can you successfully read and access those members?
+
+Do you know that the read to strings[:len], attributes[:len] should output 337? Is that right or a guess?
+
+You have a lot going on here. Please simplify it or the diagnosis may be wrong.
+
+cr
+

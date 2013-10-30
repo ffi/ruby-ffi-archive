@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Bit-fields in automatic struct layout?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Bit-fields in automatic struct layout?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Simon Chiang <simon.a.chiang@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/2/09 12:07 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm trying to convert the following struct into an FFI::Struct using
+the struct generator:
+
+    struct symbolHashNode
+      {
+       struct symbolHashNode *next;
+       long count;
+       int depth;
+       unsigned int permanent : 1;
+       unsigned int markedEphemeral : 1;
+       unsigned int neededSymbol : 1;
+       unsigned int bucket : 29;
+       char *contents;
+      };
+
+My question is, how do I specify the bit-fields?  When I do the naive
+thing:
+
+    class SymbolHashNode &lt; FFI::Struct
+      @@@
+      struct do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code>
+        s.name 'struct symbolHashNode'
+        s.include 'symbol.h'
+
+        s.field :next, :symbolHashNode
+        s.field :count, :long
+        s.field :depth, :int
+        s.field :permanent, :uint
+        s.field :markedEphemeral, :uint
+        s.field :neededSymbol, :uint
+        s.field :bucket, :uint
+        s.field :contents, :string
+      end
+      @@@
+    end
+
+I get errors like:
+
+  attempt to take address of bit-field structure member ‘permanent’
+  ‘sizeof’ applied to a bit-field
+
+Thanks!
+</pre></div></body>
+</html>
+</table></div>

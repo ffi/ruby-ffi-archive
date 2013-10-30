@@ -1,0 +1,95 @@
+Delivered-To: headius@headius.com
+Received: by 10.216.232.164 with SMTP id n36cs82426weq;
+        Thu, 16 Dec 2010 15:07:46 -0800 (PST)
+Received: by 10.150.143.2 with SMTP id q2mr1855943ybd.46.1292540864895;
+        Thu, 16 Dec 2010 15:07:44 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOWH2tyCExC_t6roBBoERAfXrQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id f3si6907619ybi.37.2010.12.16.15.07.43;
+        Thu, 16 Dec 2010 15:07:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOWH2tyCExC_t6roBBoERAfXrQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOWH2tyCExC_t6roBBoERAfXrQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCOWH2tyCExC_t6roBBoERAfXrQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyh4 with SMTP id 4sf79433gyh.7
+        for <headius@headius.com>; Thu, 16 Dec 2010 15:07:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=rZJp0dUxrlqKfUvgdxc5mFXDGtc+6OknabAUQtRkaw4=;
+        b=S3hUgd2zpnwHHD72qgfHAEJBbEG7o4WW+hZFTqpmLumj/0Tzg8MQcPDKZG5wbkkRz1
+         LVQZ84HN2RZhz2xvCfibzSrZQQvefn4pNNCMD3RTikQwZw3Bh8GDR5WUs4aU7bjselj4
+         CiNaqUck8RNskYMD1NK4E2SIeRDHBaXRDjsiQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=KhrIQi2KDKaFnGDF8Pb+Lpn8Rs8KrRVo7NLnA5mcUqZLSMeix7jMpUu8ak18gFwdCB
+         IRHDDvhvnKqD5hKIuA0cIttvfG1nT+OpWDLkNMPO3xSLW6YpIxgv+cc8wVtvQ/JwjHMf
+         xHci5pRw0fXoHJWO1UEa4XwNHmM7kaTTl1lOQ=
+Received: by 10.90.4.21 with SMTP id 21mr23033agd.33.1292540863259;
+        Thu, 16 Dec 2010 15:07:43 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.55.28 with SMTP id d28ls537341ana.6.p; Thu, 16 Dec 2010
+ 15:07:42 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.100.152.3 with SMTP id z3mr14625and.11.1292540862741; Thu, 16
+ Dec 2010 15:07:42 -0800 (PST)
+Received: by 29g2000yqq.googlegroups.com with HTTP; Thu, 16 Dec 2010 15:07:42
+ -0800 (PST)
+Date: Thu, 16 Dec 2010 15:07:42 -0800 (PST)
+In-Reply-To: <22182623.107.1292526062588.JavaMail.geo-discussion-forums@vbyc22>
+X-IP: 74.78.44.136
+References: <22182623.107.1292526062588.JavaMail.geo-discussion-forums@vbyc22>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US)
+ AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.224 Safari/534.10,gzip(gfe)
+Message-ID: <55bffc22-64df-4ddd-87cc-52ec62083369@29g2000yqq.googlegroups.com>
+Subject: [ruby-ffi] Re: Multiple libraries included via dlopen()?
+From: mjmac <mjmac42@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mjmac42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+More details, perhaps useful...  I'm in over my head, but trying to
+understand the various moving parts.  Thought I'd give LD_DEBUG a try.
+
+I decided to use attach_function on the "missing" function to see if
+that might force it to be available to the plugin.  No dice:
+
+LD_DEBUG=all ./test.rb 2>&1 | grep slurm_auth_get_arg_desc
+     20022:	symbol=slurm_auth_get_arg_desc;  lookup in file=/usr/lib64/
+libslurm.so [0]
+     20022:	binding file /usr/lib64/libslurm.so [0] to /usr/lib64/
+libslurm.so [0]: normal symbol `slurm_auth_get_arg_desc'
+...
+     20030:     opening file=/usr/lib64/slurm/auth_munge.so [0];
+direct_opencount=1
+...
+     20022:	/usr/lib64/slurm/auth_munge.so: error: symbol lookup
+error: undefined symbol: slurm_auth_get_arg_desc (fatal)
+ruby: symbol lookup error: /usr/lib64/slurm/auth_munge.so: undefined
+symbol: slurm_auth_get_arg_desc
+
+So, it looks like the attach_function finds the symbol in libslurm.so
+OK, but this doesn't help with loading auth_munge.so.  Is this a
+namespace problem of some sort?  I'm shaky on the details of what's
+going on at this level, so I could be on the wrong track.
+
+TIA for any advice.

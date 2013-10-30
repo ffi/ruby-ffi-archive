@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.159.147 with SMTP id j19cs468vcx;
+        Mon, 22 Feb 2010 09:01:02 -0800 (PST)
+Received: by 10.150.170.15 with SMTP id s15mr1584865ybe.2.1266858054256;
+        Mon, 22 Feb 2010 09:00:54 -0800 (PST)
+Return-Path: <3QriCSwoJCMgz8w6zo9s1ou0owz.q2058pC-ttwu22uzsu52836.q20@groups.bounces.google.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id 33si12716930yxe.104.2010.02.22.09.00.53;
+        Mon, 22 Feb 2010 09:00:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3QriCSwoJCMgz8w6zo9s1ou0owz.q2058pC-ttwu22uzsu52836.q20@groups.bounces.google.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3QriCSwoJCMgz8w6zo9s1ou0owz.q2058pC-ttwu22uzsu52836.q20@groups.bounces.google.com designates 209.85.160.190 as permitted sender) smtp.mail=3QriCSwoJCMgz8w6zo9s1ou0owz.q2058pC-ttwu22uzsu52836.q20@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd5 with SMTP id 5sf691890gyd.7
+        for <headius@headius.com>; Mon, 22 Feb 2010 09:00:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=GV22r+Bcm7zLvYNnEKgjUCwlPZ7I7iSmndkbS+gucuU=;
+        b=YV6DFEUsIRerYFe09rqxZ8fyE5PRTpN3BO2ElKksX8b0Jh/pYeYKjK2QSHkuPAdAOP
+         Rp2/Ikz2qZsfU7twbP+Nd8l5irNqOZMGFQVsr1gxQhywaSY4OXsmQ9OAitHWLmywZzLb
+         zJAYxHQfUU7ODKxx8Nhj+LYx+R4pKOJYapFcQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=e0AA0zdwjNjLkhMeTvm2JyM7aq6b5+pUXew9JeKjZJPtU/1cNY46Ydd+QuGOnCBM+B
+         nQQBS3EoXZL8y6snRaipx4fl+5gUQa74pZ//DXeZ9VEjhpKuMjmgWGgRDEnALMsM30Tx
+         89ddg4sK6guUwVAc1cWtKbNa9noI1CXP8TXXw=
+Received: by 10.91.151.17 with SMTP id d17mr70438ago.0.1266858050866;
+        Mon, 22 Feb 2010 09:00:50 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.150.83 with SMTP id x19ls215500fav.0.p; Mon, 22 Feb 2010 
+	09:00:49 -0800 (PST)
+Received: by 10.223.15.23 with SMTP id i23mr606362faa.7.1266858049580;
+        Mon, 22 Feb 2010 09:00:49 -0800 (PST)
+Received: by 10.223.15.23 with SMTP id i23mr606361faa.7.1266858049556;
+        Mon, 22 Feb 2010 09:00:49 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-bw0-f217.google.com (mail-bw0-f217.google.com [209.85.218.217])
+        by gmr-mx.google.com with ESMTP id 18si433793fxm.13.2010.02.22.09.00.48;
+        Mon, 22 Feb 2010 09:00:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.218.217 as permitted sender) client-ip=209.85.218.217;
+Received: by mail-bw0-f217.google.com with SMTP id 9so1804520bwz.5
+        for <ruby-ffi@googlegroups.com>; Mon, 22 Feb 2010 09:00:48 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.181.71 with SMTP id l7mr416288hbg.172.1266858048165; Mon, 
+	22 Feb 2010 09:00:48 -0800 (PST)
+In-Reply-To: <2c0671441002220659t41ae7a9bj95fc49db96dccc0f@mail.gmail.com>
+References: <4B8298FB.8030707@redhat.com> <71166b3b1002220649h619b092an2c9ffd5f88b82f62@mail.gmail.com> 
+	<2c0671441002220659t41ae7a9bj95fc49db96dccc0f@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Mon, 22 Feb 2010 18:00:28 +0100
+Message-ID: <71166b3b1002220900u110db1dy7e1716c2f8a565e2@mail.gmail.com>
+Subject: Re: [ruby-ffi] rubygem-ffi pushed into Fedora
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.218.217 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/d2c25b758bf7348d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/c91eef51a78ad3d4
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Feb 22, 2010 at 3:59 PM, Bosko Ivanisevic
+<bosko.ivanisevic@gmail.com> wrote:
+>
+> I just tried to install ffi and it cleanly installs on Windows (Ruby 1.8.=
+6)
+> with DevKit. Installed version is 0.6.2. Do you want to make Windows
+> binaries so users do not need DevKit or there are some other issues with
+> Windows and FFI?
+
+There were some issues with Snow Leopard and mingw32 cross compilation
+combined with libffi update.
+
+Wow, mouthful combination of pieces to check which one is giving problems ;=
+-)
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

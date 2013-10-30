@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.49.2 with SMTP id t2csp333018bkf;
+        Tue, 25 Sep 2012 02:11:53 -0700 (PDT)
+Received: by 10.60.154.198 with SMTP id vq6mr12277032oeb.20.1348564312874;
+        Tue, 25 Sep 2012 02:11:52 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDQLRQXVSEGBBV7KQWBQKGQEM3FLGTI@googlegroups.com>
+Received: from mail-oa0-f62.google.com (mail-oa0-f62.google.com [209.85.219.62])
+        by mx.google.com with ESMTPS id tg7si17073469obb.60.2012.09.25.02.11.51
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 25 Sep 2012 02:11:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQLRQXVSEGBBV7KQWBQKGQEM3FLGTI@googlegroups.com designates 209.85.219.62 as permitted sender) client-ip=209.85.219.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBDQLRQXVSEGBBV7KQWBQKGQEM3FLGTI@googlegroups.com designates 209.85.219.62 as permitted sender) smtp.mail=ruby-ffi+bncBDQLRQXVSEGBBV7KQWBQKGQEM3FLGTI@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by oagh2 with SMTP id h2sf2440537oag.7
+        for <headius@headius.com>; Tue, 25 Sep 2012 02:11:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=y8GhyupsDGMVMSf43Z+edrQfjCgpKb8hPHkbf3wPWOU=;
+        b=oKngF3Kk68HsyisH/L7YNO1Ye4XyDwN1/wg0ZZ86Emd80jxMaq6JtpUPhVcNP9xRDw
+         eZqy0aKZSGxgkOJRDw9wZEL9rAdyezFjt7tY7sxLM1WxxbxtefpkfzPAic+1bmPzaDJ8
+         AndZpYw3byMfN0q1i9AUJT6dZF50a+BtXcGOAXn/lIClvcG1OM53oYokOiEEbtgJyNhR
+         1jAofrnieUhwduhlQWu5zRsq6GuoOnXxQ5dykYuGM0UAAqbovar+Yqzp/UEHUu30zY8b
+         mhJspF2oPgyWXGSvX3LzPpETQbbLZngkxWcTioNUdrG8JphSv+QNcKSqTlF9bhkVyXiP
+         ieTQ==
+Received: by 10.224.217.68 with SMTP id hl4mr3881535qab.9.1348564311267;
+        Tue, 25 Sep 2012 02:11:51 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.178.19 with SMTP id bk19ls9425740qcb.0.gmail; Tue, 25 Sep
+ 2012 02:11:51 -0700 (PDT)
+Received: by 10.224.181.83 with SMTP id bx19mr9252186qab.1.1348564311050;
+        Tue, 25 Sep 2012 02:11:51 -0700 (PDT)
+Received: by 10.224.184.14 with SMTP id ci14msqab;
+        Tue, 25 Sep 2012 01:00:05 -0700 (PDT)
+Received: by 10.224.214.201 with SMTP id hb9mr3819957qab.11.1348560005178;
+        Tue, 25 Sep 2012 01:00:05 -0700 (PDT)
+Date: Tue, 25 Sep 2012 01:00:04 -0700 (PDT)
+From: subsonnic <davidspautz@googlemail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <b1bc2ef6-0ef7-4fd8-b68f-30473e081e72@googlegroups.com>
+Subject: [ruby-ffi] LibC.malloc buffer
+MIME-Version: 1.0
+X-Original-Sender: davidspautz@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_844_4437268.1348560004801"
+
+------=_Part_844_4437268.1348560004801
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+when i create a FFI::Pointer object by *LibC.malloc(8096)* i get
+
+*/usr/local/lib/ruby/gems/1.9.1/gems/rsml-0.1/lib/rsml/sml_file.rb:54: 
+[BUG] Segmentation fault
+ruby 1.9.3p125 (2012-02-16 revision 34643) [x86_64-linux]*
+
+Then i checked the buffer size.
+
+*p "buffer size: #{buffer.size}"             =====>            "buffer 
+size: 9223372036854775807"*
+
+Why the buffer size is so big? How i can get a buffer width length of 8096 
+bytes?
+
+I will rewrite 
+unsigned char buffer[8096];
+
+Thanks for help
+
+------=_Part_844_4437268.1348560004801
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hi,<br><br>when i create a FFI::Pointer object by <i>LibC.malloc(8096)</i> i get<br><br><b>/usr/local/lib/ruby/gems/1.9.1/gems/rsml-0.1/lib/rsml/sml_file.rb:54: [BUG] Segmentation fault<br>ruby 1.9.3p125 (2012-02-16 revision 34643) [x86_64-linux]</b><br><br>Then i checked the buffer size.<br><br><b>p "buffer size: #{buffer.size}"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =====&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "buffer size: 9223372036854775807"</b><br><br>Why the buffer size is so big? How i can get a buffer width length of 8096 bytes?<br><br>I will rewrite <br><span style="font-family: courier new,monospace;">unsigned char buffer[8096];</span><br><br>Thanks for help<br>
+------=_Part_844_4437268.1348560004801--

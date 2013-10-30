@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.212.6 with SMTP id k6cs56792wfg;
+        Fri, 21 Aug 2009 16:01:59 -0700 (PDT)
+Received: by 10.101.33.8 with SMTP id l8mr1809259anj.167.1250895719185;
+        Fri, 21 Aug 2009 16:01:59 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yw0-f161.google.com (mail-yw0-f161.google.com [209.85.211.161])
+        by mx.google.com with ESMTP id 42si3406356yxe.39.2009.08.21.16.01.57;
+        Fri, 21 Aug 2009 16:01:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.161 as permitted sender) client-ip=209.85.211.161;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.161 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh33 with SMTP id 33so2681422ywh.3
+        for <headius@headius.com>; Fri, 21 Aug 2009 16:01:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:content-transfer-encoding
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=ggfwUT3GxOZJj2r2b0Br2k7DL6TTRi5rNt9W/sgVZ+Y=;
+        b=IH08BcmMreGj6cEHkxTLFHTc5HxUPwq5JVnTIN4PUT6XuJXFeC7iqNx9e2HtqcT060
+         BQIKItZ3TXitmwlfE+epPi5vIQTtxC5eN4BShYeum3WDKB236+pDebXZoF3aLtiWhsQA
+         MP0pJUUYBRkn1YTvyIvD2S6+e5wpjcx8CVpBw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=hWeWo2nDlyMS6a78XkdP4whpmRiyajCyyC33C5gm+Bjh/okw31yunicGImkqF17cC8
+         6Jmo3h9U/ijBnizis8WfF+B/YFPr1v34AH+ajC+U27fyOxdW428VpHKOVUyXO33ahEmA
+         Slg0TJpTEhYne1q2yTSknzAIFqKjF95kzd49s=
+Received: by 10.100.200.15 with SMTP id x15mr761255anf.12.1250895717616;
+        Fri, 21 Aug 2009 16:01:57 -0700 (PDT)
+Received: by 10.176.241.13 with SMTP id o13gr11yqh.0;
+	Fri, 21 Aug 2009 16:01:57 -0700 (PDT)
+X-Sender: jan.berkel@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.101.113.2 with SMTP id q2mr765822anm.17.1250895716900; Fri, 21  Aug 2009 16:01:56 -0700 (PDT)
+Date: Fri, 21 Aug 2009 16:01:56 -0700 (PDT)
+X-IP: 78.86.2.19
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us)  AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9,gzip(gfe),gzip(gfe)
+Message-ID: <2a41a5bb-7107-4a41-8d6d-3cb7f1ec4057@32g2000yqj.googlegroups.com>
+Subject: [ruby-ffi] initialize :strings in structs
+From: Jan <jan.berkel@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+hey all,
+
+is it possible (with NiceFFI) to initialize strings inside a struct?
+e.g.
+
+class Config < NiceFFI::Struct
+    layout(:api_version, :int,
+      :cache_location, :string
+      :settings_location, :string
+   )
+
+Config.new(:api_version=>1, :cache_location=>"/tmp")
+
+I get
+
+/Library/Ruby/Gems/1.8/gems/nice-ffi-0.1/lib/nice-ffi/nicestruct.rb:
+380:in `[]=': Cannot set :string fields (ArgumentError)
+
+is this a problem with FFI in general or could support for this added?
+
+ thanks,
+
+   jan

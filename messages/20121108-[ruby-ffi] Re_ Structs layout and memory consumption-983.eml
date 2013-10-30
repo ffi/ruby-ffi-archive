@@ -1,0 +1,161 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.81.161 with SMTP id b1csp190456lby;
+        Thu, 8 Nov 2012 13:06:04 -0800 (PST)
+Received: by 10.68.222.37 with SMTP id qj5mr27065344pbc.132.1352408763492;
+        Thu, 08 Nov 2012 13:06:03 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBOV56CCAKGQE6JN7PQI@googlegroups.com>
+Received: from mail-da0-f57.google.com (mail-da0-f57.google.com [209.85.210.57])
+        by mx.google.com with ESMTPS id bf10si36721126pab.340.2012.11.08.13.06.02
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 08 Nov 2012 13:06:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBOV56CCAKGQE6JN7PQI@googlegroups.com designates 209.85.210.57 as permitted sender)
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBOV56CCAKGQE6JN7PQI@googlegroups.com designates 209.85.210.57 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBOV56CCAKGQE6JN7PQI@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by mail-da0-f57.google.com with SMTP id v40sf2480744dad.2
+        for <headius@headius.com>; Thu, 08 Nov 2012 13:06:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=AzcROGcnpX9gvEAom79lkjp+KIdP4Kh0sLXjubjcmhA=;
+        b=d55Xgf6BK/jKbQZD1t3L/fDYFZsPrk1RbT2ryT43eS4iu8eGd5F2aL4eVqED4ThQs4
+         XuLiXmSHWwYIGWHKRlDEu+VKtAzkJY9IzkG+2i4wCja3upvzcYsWP6605kfss3UnGkSf
+         h3dFx6Ks58gU1Jdz7DFiEs9O5Wp/GX81t3zlVXFIbSjBG4yKKoUX2x/+QF05zZ62MDTt
+         oG1HB+h2X+5kZkEiE0hDdztvyr9n/qenW5pN+c5WGdGaG9gkyOePsEXMyY/gcmopR2BZ
+         SJ66iiW3fbuvKD+koNJbZkOGtClkE+z/ogCXrxbS+bD4Z+01gaGaa1gVrPuwnFWYiXyI
+         0KwA==
+Received: by 10.68.242.74 with SMTP id wo10mr3289408pbc.9.1352408762393;
+        Thu, 08 Nov 2012 13:06:02 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.141.79 with SMTP id rm15ls13211849pbb.1.gmail; Thu, 08 Nov
+ 2012 13:06:02 -0800 (PST)
+Received: by 10.68.242.74 with SMTP id wo10mr3289401pbc.9.1352408762225;
+        Thu, 08 Nov 2012 13:06:02 -0800 (PST)
+Date: Thu, 8 Nov 2012 13:06:01 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <f89a755e-9e50-4216-984b-e5dafa3fd1b6@googlegroups.com>
+In-Reply-To: <51d877a7-2028-4780-8535-e9f3c7e53ab5@googlegroups.com>
+References: <51d877a7-2028-4780-8535-e9f3c7e53ab5@googlegroups.com>
+Subject: [ruby-ffi] Re: Structs layout and memory consumption
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_30_8420672.1352408761675"
+
+------=_Part_30_8420672.1352408761675
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The first definition is mostly correct, apart from the FD_SETSIZE defintion 
+(its way too large for the default value on any platform).
+
+Have a look at the getdtablesize() function in libc, and use that to set 
+the FD_SETSIZE constant, since that will always return the *actual* open 
+file limit for the process.
+
+As to why you get segfaults with your new definition, is due to what FDSet 
+(aka fd_set in C) is supposed to represent.  Its a bitset that has a bit 
+representing each file descriptor that select(3) is supposed to monitor. 
+ Your new definition has only enough space for 32 file descriptors (on a 
+32bit system), so when you perform an operation that tries to read/write 
+file descriptor 32 or above in that bitset, it will segfault.
+
+
+On Friday, 9 November 2012 05:45:58 UTC+10, Hans Hasselberg wrote:
+>
+> Hello!
+>
+> Thank you very much for this library!
+> I stumbled over a problem with code I 'inherited', it is a gem which wraps 
+> libcurl.
+> This code works, but consumes too much memory for my taste and looks 
+> suspicious!
+>
+> https://github.com/typhoeus/ethon/blob/master/lib/ethon/curls/classes.rb:
+>
+> class FDSet < FFI::Struct
+>   FD_SETSIZE = 524288
+>   layout :fds_bits, [:long, FD_SETSIZE / FFI::Type::LONG.size]
+> end
+>
+>
+> I can change that code to:
+>
+> class FDSet < FFI::Struct
+>   layout :fds_bits, :long
+> end
+>
+>
+> Instances of FDSet do not consume so much memory any more, but I get 
+> segfaults on a regular basis. It seems to me, that fds_bits is just a 
+> memory placeholder.
+> The ffi code in that particular project looks quite understandable except 
+> for that FDSet. 
+>
+> Could you explain to me, why my code segfaults with the changed code and 
+> if FDSet is correct specified? I bet you need more information, but I don't 
+> know which, so feel free to ask!
+>
+>
+> Cheers,
+> Hans
+>
+
+------=_Part_30_8420672.1352408761675
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+The first definition is mostly correct, apart from the FD_SETSIZE defintion=
+ (its way too large for the default value on any platform).<div><br></div><=
+div>Have a look at the&nbsp;getdtablesize() function in libc, and use that =
+to set the FD_SETSIZE constant, since that will always return the *actual* =
+open file limit for the process.</div><div><br></div><div>As to why you get=
+ segfaults with your new definition, is due to what FDSet (aka fd_set in C)=
+ is supposed to represent. &nbsp;Its a bitset that has a bit representing e=
+ach file descriptor that select(3) is supposed to monitor. &nbsp;Your new d=
+efinition has only enough space for 32 file descriptors (on a 32bit system)=
+, so when you perform an operation that tries to read/write file descriptor=
+ 32 or above in that bitset, it will segfault.</div><div><br></div><div><br=
+>On Friday, 9 November 2012 05:45:58 UTC+10, Hans Hasselberg  wrote:<blockq=
+uote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-lef=
+t: 1px #ccc solid;padding-left: 1ex;">Hello!<div><br></div><div>Thank you v=
+ery much for this library!</div><div>I stumbled over a problem with code I =
+'inherited', it is a gem which wraps libcurl.</div><div>This code works, bu=
+t consumes too much memory for my taste and looks suspicious!</div><div><br=
+></div><div><a href=3D"https://github.com/typhoeus/ethon/blob/master/lib/et=
+hon/curls/classes.rb" target=3D"_blank">https://github.com/typhoeus/<wbr>et=
+hon/blob/master/lib/ethon/<wbr>curls/classes.rb</a>:<br></div><div><br></di=
+v><blockquote style=3D"margin:0 0 0 40px;border:none;padding:0px"><div><fon=
+t face=3D"courier new, monospace">class FDSet &lt; FFI::Struct</font></div>=
+<div><font face=3D"courier new, monospace">&nbsp; FD_SETSIZE =3D 524288</fo=
+nt></div><div><font face=3D"courier new, monospace">&nbsp; layout :fds_bits=
+, [:long, FD_SETSIZE / FFI::Type::LONG.size]</font></div><div><font face=3D=
+"courier new, monospace">end</font></div></blockquote><div><br></div><div>I=
+ can change that code to:</div><div><br></div><blockquote style=3D"margin:0=
+ 0 0 40px;border:none;padding:0px"><div><span style=3D"font-family:'courier=
+ new',monospace">class FDSet &lt; FFI::Struct</span></div><div><span style=
+=3D"font-family:'courier new',monospace">&nbsp; layout :fds_bits, :long</sp=
+an><br></div><div><font face=3D"courier new, monospace">end</font></div></b=
+lockquote><div><br></div><div>Instances of FDSet do not consume so much mem=
+ory any more, but I get segfaults on a regular basis. It seems to me, that =
+fds_bits is just a memory placeholder.</div><div>The ffi code in that parti=
+cular project looks quite understandable except for that FDSet.&nbsp;</div>=
+<div><br></div><div>Could you explain to me, why my code segfaults with the=
+ changed code and if FDSet is correct specified? I bet you need more inform=
+ation, but I don't know which, so feel free to ask!</div><div><br></div><di=
+v><br></div><div>Cheers,</div><div>Hans</div></blockquote></div>
+------=_Part_30_8420672.1352408761675--

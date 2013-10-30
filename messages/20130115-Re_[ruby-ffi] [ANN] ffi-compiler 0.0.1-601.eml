@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.44.67 with SMTP id c3csp143969lbm;
+        Tue, 15 Jan 2013 14:58:08 -0800 (PST)
+X-Received: by 10.60.169.205 with SMTP id ag13mr56884996oec.40.1358290687701;
+        Tue, 15 Jan 2013 14:58:07 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB7V526DQKGQEVVNEEWI@googlegroups.com>
+Received: from mail-oa0-f59.google.com (mail-oa0-f59.google.com [209.85.219.59])
+        by mx.google.com with ESMTPS id m7si18568442oeb.25.2013.01.15.14.58.07
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 15 Jan 2013 14:58:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7V526DQKGQEVVNEEWI@googlegroups.com designates 209.85.219.59 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7V526DQKGQEVVNEEWI@googlegroups.com designates 209.85.219.59 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB7V526DQKGQEVVNEEWI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-oa0-f59.google.com with SMTP id k1sf410049oag.4
+        for <headius@headius.com>; Tue, 15 Jan 2013 14:58:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=4VR9IYK/yHHKjtt2TPc8Uk0GpsJZKyDeFLKnR8wjSDE=;
+        b=VeDvtgynpHZCc3QlvRVtXY/rRPkdeH9384mgsOsHv3M5VGpoZhC7BUZfRFO8j4LN+g
+         1MeKQJWbIDe7Q8JhdPATsLVa02UABKPkKHxkuCv8I9gYWYEzIccLkMpsC6XEO+qhUJ5d
+         rqZ15jdwG10+3hNrpF2Malc1uIls/SE1IICxNa9K/gtB61Mmoxs0WgabBhR7Kol8icLA
+         sWncQwEC9KoIFoI/ScdvdvAwafqMxVDHT+IcUGVPdPz9SDuH/SYecLidhnIm+CGuJMr4
+         dACRrvBJxQH5L/BKPF26WqFEjgcyVp45VR7OmWPJWtZbyml1T5/1TsVNRr+gIzbmo29e
+         Tk7A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=4VR9IYK/yHHKjtt2TPc8Uk0GpsJZKyDeFLKnR8wjSDE=;
+        b=jMRa+DSZvgLLP0MYp+mMWNP8jclZwfShNouPlOIXZjWpbHQ3Qh53XXT7S0genBX6jW
+         a+hxdu0eQis9PmTe1GyVX5rUKJIM3f1vIjFRmJkG5jEUuFAxEctx9IA3llXOyfsXQJRO
+         4RurF8z9+AT0UtYwiuYJAnfHc2bLHo0zJui7iqQRTrN72t3FG/jvYY7+VUhQB8HTbQlW
+         IO5TrdZ48Xaz+/8G/nBA4iI3zBlBUvzlEdWDceKacVGMJ2tvcHFgb56hfdGiY/gRgoZB
+         No0O0y66//5iFvg4sCc06Qx8wZHS2n8mU6qD9SBYJIwqqJtBjIOYDDK5SGaivhk7gipw
+         Y4Zg==
+X-Received: by 10.50.108.174 with SMTP id hl14mr1270052igb.5.1358290686757;
+        Tue, 15 Jan 2013 14:58:06 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.184.134 with SMTP id eu6ls2900280igc.0.canary; Tue, 15 Jan
+ 2013 14:58:06 -0800 (PST)
+X-Received: by 10.50.34.167 with SMTP id a7mr1280908igj.5.1358290686327;
+        Tue, 15 Jan 2013 14:58:06 -0800 (PST)
+Date: Tue, 15 Jan 2013 14:58:05 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <1f5d123c-c110-439a-b0f5-5657e5392aaa@googlegroups.com>
+In-Reply-To: <CADgS1nmFr5c9BrinMCZcX3_-0oMjokD7C5POr9FM=eGTzjh_yw@mail.gmail.com>
+References: <826e1999-3748-4f19-a833-6e47d7b5e37f@googlegroups.com>
+ <CADgS1nmFr5c9BrinMCZcX3_-0oMjokD7C5POr9FM=eGTzjh_yw@mail.gmail.com>
+Subject: Re: [ruby-ffi] [ANN] ffi-compiler 0.0.1
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1367_1024338.1358290685791"
+
+------=_Part_1367_1024338.1358290685791
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Yep - its aimed at that type of scenario.  Implementing it yourself isn't 
+rocket science, but its another speed bump for people who just want to 
+write some C or C++ code and call it from ruby.  The very last thing we 
+want is them using the legacy cext interface because its easier - 
+especially since it is unsupported in JRuby.
+
+On Wednesday, 16 January 2013 08:34:52 UTC+11, Jeremy wrote:
+>
+> This looks promising. The ruby-llvm project already does something 
+> similar, but with a custom Rakefile[1].
+>
+> [1] 
+> https://github.com/ruby-llvm/ruby-llvm/tree/master/ext/ruby-llvm-support
+>
+>
+> On Tue, Jan 15, 2013 at 1:04 PM, Wayne Meissner <wmei...@gmail.com<javascript:>
+> > wrote:
+>
+>>
+>> I have released a new gem - ffi-compiler (
+>> https://github.com/ffi/ffi-compiler) - to help people who need to need 
+>> to write custom C code (e.g. for C++ shims), but don't want to get bogged 
+>> down with figuring out how to compile that into a shared library and have 
+>> everything install & load correctly when their gem is installed.
+>>
+>>
+>>
+>
+------=_Part_1367_1024338.1358290685791
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<div><br></div>Yep - its aimed at that type of scenario. &nbsp;Implementing it yourself isn't rocket science, but its another speed bump for people who just want to write some C or C++ code and call it from ruby. &nbsp;The very last thing we want is them using the legacy cext interface because its easier - especially since it is unsupported in JRuby.<br><br>On Wednesday, 16 January 2013 08:34:52 UTC+11, Jeremy  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr">This looks promising. The ruby-llvm project already does something similar, but with a custom Rakefile[1].<div><br></div><div>[1]&nbsp;<a href="https://github.com/ruby-llvm/ruby-llvm/tree/master/ext/ruby-llvm-support" target="_blank">https://github.com/ruby-<wbr>llvm/ruby-llvm/tree/master/<wbr>ext/ruby-llvm-support</a></div>
+</div><div><br><br><div class="gmail_quote">On Tue, Jan 15, 2013 at 1:04 PM, Wayne Meissner <span dir="ltr">&lt;<a href="javascript:" target="_blank" gdf-obfuscated-mailto="jWQOPlQWEiYJ">wmei...@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br><div>I have released a new gem - ffi-compiler (<a href="https://github.com/ffi/ffi-compiler" target="_blank">https://github.com/ffi/ffi-<wbr>compiler</a>) - to help people who need to need to write custom C code (e.g. for C++ shims), but don't want to get bogged down with figuring out how to compile that into a shared library and have everything install &amp; load correctly when their gem is installed.</div>
+<div><br></div><div><br></div></blockquote></div><br></div>
+</blockquote>
+------=_Part_1367_1024338.1358290685791--

@@ -1,0 +1,176 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp97116laf;
+        Fri, 1 Mar 2013 14:03:35 -0800 (PST)
+X-Received: by 10.204.145.145 with SMTP id d17mr4559084bkv.31.1362175414348;
+        Fri, 01 Mar 2013 14:03:34 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDQ73F6KTYOBBNGLYSEQKGQEKZ4S5SI@googlegroups.com>
+Received: from mail-bk0-f60.google.com (mail-bk0-f60.google.com [209.85.214.60])
+        by mx.google.com with ESMTPS id gg17si3469373bkc.235.2013.03.01.14.03.34
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 01 Mar 2013 14:03:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBNGLYSEQKGQEKZ4S5SI@googlegroups.com designates 209.85.217.176 as permitted sender) client-ip=209.85.217.176;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBNGLYSEQKGQEKZ4S5SI@googlegroups.com designates 209.85.217.176 as permitted sender) smtp.mail=ruby-ffi+bncBDQ73F6KTYOBBNGLYSEQKGQEKZ4S5SI@googlegroups.com;
+       dkim=pass header.i=@burgestrand.se
+Received: by mail-bk0-f60.google.com with SMTP id ik5sf1232761bkc.25
+        for <headius@headius.com>; Fri, 01 Mar 2013 14:03:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=Cq25j/Og1jEQQHPC3RcEgtOgsfuZLq89VrP7F/T+ZuM=;
+        b=zXKJ4lViPHTzf+2xgnEwhpo/w2+uKFAj5cQf05yyucTs7QkoG8imrblxtD4m4AR8AG
+         uvKuaYaAsebF/qe+hoyKExuNvpdqD0MFIzASuRHNbUysn0tH0cjfqsGThewF2K21ezNe
+         gi7KXfYl7IuNjJMg0q1gmNMKk63PMaKBogO1/1e826SlqTPWYkUA8reLwAcMQ4Ai1dQM
+         e5lls7SZilmrUQp3kMt05/1xHmYyUSNehMa2pw95mps1edOThzGa1I7Cmy6/KdCtMFb6
+         JaVISR43TOb4bwq5jKRovkBQz3JlrkN1vfkRpzldu0yKHHVcEVG/OXdpsRtGyOCzASXd
+         cexQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=burgestrand.se; s=google-dkim;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=Cq25j/Og1jEQQHPC3RcEgtOgsfuZLq89VrP7F/T+ZuM=;
+        b=IgjaLG1Q74P9J58olNTpdtDjzbFJBXJzs9n36sKDipC3fNhrI4r4hfXPEyb6ZJqUKZ
+         cslXe8kIBUfT7bgrnjunkpptVHhg7fqKu6za9lBkzDm9J2PonBC3n8CMZFIFfnGj0GFZ
+         YllN475Z4/FSfYSIt9p03S2nVOYUywvvt0iM0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-gm-message-state:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=Cq25j/Og1jEQQHPC3RcEgtOgsfuZLq89VrP7F/T+ZuM=;
+        b=LmjX1SLcAC3Td3pjPNeU6i3vSbLfVz98ZS3ZJ/LedaZsi/njG4YiRjCzcw3ukmwFGa
+         /JpKbkUcpFkGKBeKoua1yZWDZ6RTSNw4s6n5HWg5hCv8+NAJWQkFLjM83Yw6AFjkzcll
+         waDjKLO5u4zzg48miDCy2hEiVQfrxcbuu9xk9wiToKJNT4oJ64e38oD6eWKwIJjNlDeP
+         gbFhw0VRxy+RV5kXVwdAOpDJdkhnffM7hTBi0D7UnCdFNbq6lKGMmc36beNrylriUW6Q
+         w0w88OQknc4/KJ++6stOfePTMC8Yp81qbdE/Sa7p3aSfcPnz7xH7b/dEdqaxSUanV8Z3
+         toAg==
+X-Received: by 10.180.14.34 with SMTP id m2mr60735wic.6.1362175413769;
+        Fri, 01 Mar 2013 14:03:33 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.88.234 with SMTP id bj10ls319854wib.48.canary; Fri, 01 Mar
+ 2013 14:03:32 -0800 (PST)
+X-Received: by 10.204.5.206 with SMTP id 14mr486492bkw.3.1362175412174;
+        Fri, 01 Mar 2013 14:03:32 -0800 (PST)
+X-Received: by 10.204.5.206 with SMTP id 14mr486491bkw.3.1362175412153;
+        Fri, 01 Mar 2013 14:03:32 -0800 (PST)
+Received: from mail-lb0-f176.google.com (mail-lb0-f176.google.com [209.85.217.176])
+        by gmr-mx.google.com with ESMTPS id 14si866675bky.0.2013.03.01.14.03.31
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 01 Mar 2013 14:03:32 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.217.176 is neither permitted nor denied by best guess record for domain of kim@burgestrand.se) client-ip=209.85.217.176;
+Received: by mail-lb0-f176.google.com with SMTP id s4so2564239lbc.21
+        for <ruby-ffi@googlegroups.com>; Fri, 01 Mar 2013 14:03:31 -0800 (PST)
+X-Received: by 10.152.133.52 with SMTP id oz20mr10466272lab.30.1362175411358;
+        Fri, 01 Mar 2013 14:03:31 -0800 (PST)
+Received: from [192.168.0.19] (c83-254-37-119.bredband.comhem.se. [83.254.37.119])
+        by mx.google.com with ESMTPS id b13sm4561598lbd.10.2013.03.01.14.03.29
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Fri, 01 Mar 2013 14:03:30 -0800 (PST)
+Date: Fri, 1 Mar 2013 23:03:28 +0100
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-ID: <822B3CA6B16E435688710F07217AF6AF@burgestrand.se>
+In-Reply-To: <F07FF21AEC1D4B1A98605EE522DC7745@burgestrand.se>
+References: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+ <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+ <a8e170ae-23fd-4910-8bcd-413255591edd@googlegroups.com>
+ <1e9d3d82-66e3-420d-97fd-ef6c3d74fee2@googlegroups.com>
+ <A7223EBD5D53431F9BB55BBCABA9478E@burgestrand.se>
+ <61b0625e-a877-4df9-b3f4-61843dd70ce2@googlegroups.com>
+ <F07FF21AEC1D4B1A98605EE522DC7745@burgestrand.se>
+Subject: Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor
+ (Raspberry PI)
+X-Mailer: sparrow 1.6.4 (build 1178)
+MIME-Version: 1.0
+X-Gm-Message-State: ALoCoQmRJjxwbdr4KVg8mExGAZlS214W01MMiS/6/vo4GpiuWIMLsbIYnjWvwUkWGj7H3ApbpbJw
+X-Original-Sender: kim@burgestrand.se
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 209.85.217.176 is neither permitted nor denied by best guess
+ record for domain of kim@burgestrand.se) smtp.mail=kim@burgestrand.se;
+       dkim=pass header.i=@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary="513125b0_1c7e3c01_ec"
+
+--513125b0_1c7e3c01_ec
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+Hm. Used another release of libspotify on the ARM (compiled for armv5, inst=
+ead of armv6, supposedly), =20
+and the basic C example no longer segfaults (ran it successfully 300 times,=
+ no segfaults), whereas the
+ruby version of the library still does (maybe once in every 15 runs). *grum=
+ble*
+
+Any other ideas on where the two implementations may differ? :) =20
+
+=97 Kim
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+--513125b0_1c7e3c01_ec
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+
+                <div>
+                    Hm. Used another release of libspotify on the ARM (comp=
+iled for armv5, instead of armv6, supposedly),
+                </div><div>and the basic C example no longer segfaults (ran=
+ it successfully 300 times, no segfaults), whereas the</div><div>ruby versi=
+on of the library still does (maybe once in every 15 runs).&nbsp;*grumble*<=
+/div><div><br></div><div>Any other ideas on where the two implementations m=
+ay differ? :)</div>
+                <div><div><br></div>=97 Kim</div>
+           =20
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+--513125b0_1c7e3c01_ec--
+

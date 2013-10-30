@@ -1,0 +1,78 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs9471igc;
+        Sat, 29 Oct 2011 17:52:59 -0700 (PDT)
+Received: by 10.68.73.6 with SMTP id h6mr13501675pbv.41.1319935978544;
+        Sat, 29 Oct 2011 17:52:58 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDmv7L1BBoE37YTWw@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id t8si14237634pba.4.2011.10.29.17.52.58
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 29 Oct 2011 17:52:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDmv7L1BBoE37YTWw@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDmv7L1BBoE37YTWw@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDmv7L1BBoE37YTWw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk37 with SMTP id 37sf8835405pzk.7
+        for <headius@headius.com>; Sat, 29 Oct 2011 17:52:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=WN6t0bsQePECq1V9wMwAl5uUWBD2Hoil6oOESPqtlT0=;
+        b=pBDz+xadP09Oefnf2FFWtz/P5sXI2ajQ4s22axs7uZn9/Vl/lGgEfIJUTFPpk1HXKG
+         UtO2CzWiCKZoJqXNCxaiXSACjmWwn5D/M8fA9zaC4PKURF1ytALTXP3eS7Z5VaAaqqG2
+         9ukarkQjgxEM9QeUaMdAN2CHh496b+/5CEHqc=
+Received: by 10.68.12.36 with SMTP id v4mr805456pbb.4.1319935974279;
+        Sat, 29 Oct 2011 17:52:54 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.12.106 with SMTP id x10ls11315480pbb.3.gmail; Sat, 29 Oct
+ 2011 17:52:54 -0700 (PDT)
+Received: by 10.68.75.230 with SMTP id f6mr935352pbw.12.1319935974019;
+        Sat, 29 Oct 2011 17:52:54 -0700 (PDT)
+Date: Sat, 29 Oct 2011 17:52:53 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <18721055.73.1319935973565.JavaMail.geo-discussion-forums@pref15>
+In-Reply-To: <CAANDx0PfZp8qu5TYVvyx4FejgcY4PuBgKdVGbdzEb8mR=o4VjQ@mail.gmail.com>
+References: <CAANDx0PfZp8qu5TYVvyx4FejgcY4PuBgKdVGbdzEb8mR=o4VjQ@mail.gmail.com>
+Subject: [ruby-ffi] Re: mingw 1.0.10 install failure...x86-mingw32 binary gem?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_72_24627395.1319935973562"
+
+------=_Part_72_24627395.1319935973562
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Sorry for the delay, but I finally fixed cross-compilation again and pushed 
+a binary gem.
+
+Compiling directly using the devkit on win32 should hopefully work again 
+too - it'll build and use the bundled libffi.
+
+
+
+------=_Part_72_24627395.1319935973562
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Sorry for the delay, but I finally fixed cross-compilation again and pushed a binary gem.<div><br></div><div>Compiling directly using the devkit on win32 should hopefully work again too - it'll build and use the bundled libffi.</div><div><br></div><div><br></div>
+------=_Part_72_24627395.1319935973562--

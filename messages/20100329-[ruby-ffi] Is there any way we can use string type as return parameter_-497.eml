@@ -1,0 +1,131 @@
+Delivered-To: headius@headius.com
+Received: by 10.151.141.21 with SMTP id t21cs65089ybn;
+        Mon, 29 Mar 2010 10:23:34 -0700 (PDT)
+Received: by 10.140.247.19 with SMTP id u19mr2114729rvh.226.1269883413624;
+        Mon, 29 Mar 2010 10:23:33 -0700 (PDT)
+Return-Path: <3EuKwSwcJCPATdSplWjYeSad.UgejmTq-XXaYggYdWYjgmhk.Uge@groups.bounces.google.com>
+Received: from mail-yx0-f157.google.com (mail-yx0-f157.google.com [209.85.210.157])
+        by mx.google.com with ESMTP id 3si2804649ywh.57.2010.03.29.10.23.32;
+        Mon, 29 Mar 2010 10:23:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3EuKwSwcJCPATdSplWjYeSad.UgejmTq-XXaYggYdWYjgmhk.Uge@groups.bounces.google.com designates 209.85.210.157 as permitted sender) client-ip=209.85.210.157;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3EuKwSwcJCPATdSplWjYeSad.UgejmTq-XXaYggYdWYjgmhk.Uge@groups.bounces.google.com designates 209.85.210.157 as permitted sender) smtp.mail=3EuKwSwcJCPATdSplWjYeSad.UgejmTq-XXaYggYdWYjgmhk.Uge@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe29 with SMTP id 29sf968719yxe.3
+        for <headius@headius.com>; Mon, 29 Mar 2010 10:23:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:from:date
+         :received:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=HNa+F8Ap/9sZNng3FSICEDnSRxcZkRrf9yz7LYm6pLs=;
+        b=TTC5QhAhDEtHR5zZ9Mrleq1OcBNY2SX80cjGkl4A9I1hd35gubya7qv9381NePCjFk
+         R9hXE25zTrdxG7jIW9W+RVvxscctxqHfuKh15ZdlO1nfjAAUbRf3nbdBaQ65uuS3kzam
+         qunrYgcFtaXAnHIkM/v1A+4dvPDujGYG2q29A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:date:message-id:subject
+         :to:x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=ErcneFpdE1p6RRR/RZUbkpif0XzBYkfY4P0yPNNg+XimQUICAz3Of/tF5VZWjMWmoX
+         d0hmuOsigbMIULO5Yp0yISl6d/tcGnR4ucqt16O2EQ53EpaQs3L1E9JwLPAk8SwwgStt
+         X32mAwAlTXB/5/kn6EOsUPku4DQBtwBfwfPfw=
+Received: by 10.91.91.7 with SMTP id t7mr146310agl.15.1269883410735;
+        Mon, 29 Mar 2010 10:23:30 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.5.195 with SMTP id 3ls4861011bkw.3.p; Mon, 29 Mar 2010 
+	10:23:28 -0700 (PDT)
+Received: by 10.204.7.220 with SMTP id e28mr323850bke.27.1269883408317;
+        Mon, 29 Mar 2010 10:23:28 -0700 (PDT)
+Received: by 10.204.7.220 with SMTP id e28mr323849bke.27.1269883408282;
+        Mon, 29 Mar 2010 10:23:28 -0700 (PDT)
+Return-Path: <blaxter@gmail.com>
+Received: from mail-ww0-f43.google.com (mail-ww0-f43.google.com [74.125.82.43])
+        by gmr-mx.google.com with ESMTP id v26si4322445bkt.7.2010.03.29.10.23.27;
+        Mon, 29 Mar 2010 10:23:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of blaxter@gmail.com designates 74.125.82.43 as permitted sender) client-ip=74.125.82.43;
+Received: by mail-ww0-f43.google.com with SMTP id 26so1593117wwf.30
+        for <ruby-ffi@googlegroups.com>; Mon, 29 Mar 2010 10:23:27 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.216.21.71 with HTTP; Mon, 29 Mar 2010 10:23:06 -0700 (PDT)
+From: =?ISO-8859-1?Q?Jes=FAs_Garc=EDa_S=E1ez?= <blaxter@gmail.com>
+Date: Mon, 29 Mar 2010 19:23:06 +0200
+Received: by 10.216.173.74 with SMTP id u52mr264913wel.204.1269883406896; Mon, 
+	29 Mar 2010 10:23:26 -0700 (PDT)
+Message-ID: <1a2dd4711003291023i3fcd1b0bl847da833aeb6f3ae@mail.gmail.com>
+Subject: [ruby-ffi] Is there any way we can use string type as return 
+	parameter?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of blaxter@gmail.com designates 74.125.82.43 as permitted sender) 
+	smtp.mail=blaxter@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: blaxter@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/54f8558cb8661a3b
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/361b01fb0a1c315
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=001636416f815fcef40482f3c519
+
+--001636416f815fcef40482f3c519
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+when is it posible to define a "string" type safely? I think, the only
+situation is for const char * input parameter. Because otherwise we are
+gonna have memory leaks.
+
+For example, for a function like:
+
+char *foo();
+
+if we attach it with:
+
+attach_function :foo, :foo, [], :string
+
+We are gonna have a nice memory leak because nobody is gonna release that
+string. When we call "foo" method in ruby, we get a String object, we cannot
+(or I don't know how) get the actual char pointer to release it (either from
+ruby or with another attached function where we pass the pointer and that
+function calls free, delete o whatever is necessary).
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+
+--001636416f815fcef40482f3c519
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi,<br><br>when is it posible to define a &quot;string&quot; type safely? I=
+ think, the only situation is for const char * input parameter. Because oth=
+erwise we are gonna have memory leaks.<br><br>For example, for a function l=
+ike:<br>
+
+<br>char *foo();<br><br>if we attach it with:<br><br>attach_function :foo, =
+:foo, [], :string<br><br>We are gonna have a nice memory leak because nobod=
+y is gonna release that string. When we call &quot;foo&quot; method in ruby=
+, we get a String object, we cannot (or I don&#39;t know how) get the actua=
+l char pointer to release it (either from ruby or with another attached fun=
+ction where we pass the pointer and that function calls free, delete o what=
+ever is necessary).<br>
+
+<p></p>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words &quot;REMOVE ME&quot; as the =
+subject.<br />
+
+--001636416f815fcef40482f3c519--

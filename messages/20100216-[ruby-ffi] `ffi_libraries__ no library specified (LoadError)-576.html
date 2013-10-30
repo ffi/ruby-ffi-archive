@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] `ffi_libraries&#39;: no library specified (LoadError)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] `ffi_libraries&#39;: no library specified (LoadError)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stefan Schmidt <stefan.schmidt@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/16/10 6:52 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I just tried to run the hello world program of GitHub but encountered
+an error message on which I could not find any further information.
+Does anybody have a suggestion which actions to take?
+
+I am running Mac OS 10.5.8.
+
+Cheers, Stefan
+
+stefan@StefanMBP15:~/Desktop$ ruby -v
+ruby 1.8.7 (2010-01-10 patchlevel 249) [i686-darwin9]
+
+stefan@StefanMBP15:~/Desktop$ gem list
+
+*** LOCAL GEMS ***
+
+ffi (0.6.2)
+rake (0.8.7)
+rake-compiler (0.7.0)
+rb-kqueue (0.1.0)
+yard (0.5.3)
+
+stefan@StefanMBP15:~/Desktop$ cat helloworld.rb
+require 'rubygems'
+require 'ffi'
+
+ module MyLib
+   extend FFI::Library
+   attach_function :puts, [ :string ], :int
+ end
+
+ MyLib.puts 'Hello boys using libc!'
+
+stefan@StefanMBP15:~/Desktop$ ruby helloworld.rb
+/opt/local/lib/ruby/gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:79:in
+`ffi_libraries': no library specified (LoadError)
+	from /opt/local/lib/ruby/gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+106:in `attach_function'
+	from helloworld.rb:6
+</pre></div></body>
+</html>
+</table></div>

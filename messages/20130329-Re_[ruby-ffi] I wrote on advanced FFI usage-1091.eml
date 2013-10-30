@@ -1,0 +1,304 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.148.3 with SMTP id to3csp7555lab;
+        Fri, 29 Mar 2013 16:53:51 -0700 (PDT)
+X-Received: by 10.182.3.196 with SMTP id e4mr1421544obe.36.1364601230690;
+        Fri, 29 Mar 2013 16:53:50 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBDOT3CFAKGQE7M2S4MI@googlegroups.com>
+Received: from mail-ob0-x23a.google.com (mail-ob0-x23a.google.com [2607:f8b0:4003:c01::23a])
+        by mx.google.com with ESMTPS id lg7si1418044obb.0.2013.03.29.16.53.50
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 29 Mar 2013 16:53:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBDOT3CFAKGQE7M2S4MI@googlegroups.com designates 2607:f8b0:4003:c01::23a as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBDOT3CFAKGQE7M2S4MI@googlegroups.com designates 2607:f8b0:4003:c01::23a as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBDOT3CFAKGQE7M2S4MI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ob0-f186.google.com with SMTP id gq1sf310725obb.3
+        for <headius@headius.com>; Fri, 29 Mar 2013 16:53:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=7vx4kEN+c1C4yxsbUY4g2owZdNDlKYv4SucG4p2eZ0k=;
+        b=w0NE2f4bT1yLjrh8nMaO6yGxUUoJmvR9bZzV8NT8VxPxVN66QWYzVca6q8KvRDw7+C
+         RTA0boouvfwbIEqY+4mKuTq54oM2JsV2S0XM8cmfura+bvgZQ+K8sbEP3qCBnMoem2Fh
+         IqPdeA+VzaUGCTQKpO7neJFLLN3wm7RL460ruQm/i8wbcHYZA0BPhH4dQS0B0xM3Nc1s
+         SSU9zscL3LmsoaLvKWoqTJ3JybySARv3NpYjvJX1IUTIl6WM+spCq0Z0CqB0opv4ufIc
+         l2jrit75/76AmEes2LElI9xSfhLCaxy+mqzygvYw1bx5KiN6wd8l3EZpCsfe11/nMY4R
+         qP9Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=7vx4kEN+c1C4yxsbUY4g2owZdNDlKYv4SucG4p2eZ0k=;
+        b=avPY7uEJwWbl1hTHjk7SyR0cMEyOtKz8jU6m7CwTgfX04yVZ65BN6JRWjRUBnFKwEX
+         ABrPU4sw0uVXcllYxyQgINywRy7DquJ1Q2j36juTPyhgL3RoAP7FscMv1BPIcSwqmcqz
+         EktF148GleAK1Gzvix0aXaj7t/XTe+pJiwbQh5+6QNwr5iV0/JlSwQUyvCOMzM7kK2Xj
+         /7CUeSOAxIyygGkPhQp6kmp61XbO9PaGkQtk966pL0LX8ypU7RBBSwHr1RvLsv5FSyNg
+         DGCRISlw3ymFjhmV/2/CaU6vIKbLuiff6ykkcJNIRGi7RBytc6+5jMaoT6W7r8P3nmKZ
+         i2Jg==
+X-Received: by 10.50.160.132 with SMTP id xk4mr63936igb.7.1364601229953;
+        Fri, 29 Mar 2013 16:53:49 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.11.20 with SMTP id m20ls86046igb.40.canary; Fri, 29 Mar
+ 2013 16:53:49 -0700 (PDT)
+X-Received: by 10.50.135.10 with SMTP id po10mr96430igb.4.1364601229511;
+        Fri, 29 Mar 2013 16:53:49 -0700 (PDT)
+Date: Fri, 29 Mar 2013 16:53:48 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <9b3c9efc-ee78-4107-a715-45b37457cacd@googlegroups.com>
+In-Reply-To: <5156194D.4000100@gmail.com>
+References: <CAFRaJGDhjha6_q4Tb1Z+hbstkcgz90xf8pNf=yy2arAwrGU78w@mail.gmail.com>
+ <5156194D.4000100@gmail.com>
+Subject: Re: [ruby-ffi] I wrote on advanced FFI usage
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_984_3326462.1364601228404"
+
+------=_Part_984_3326462.1364601228404
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+There are a few other tricks you can do:
+
+1) Use as a result filter to automagically turn errno values into=20
+exceptions (not that I recommend exceptions-as-flow-control)
+e.g.
+    module PosixResult
+      extend FFI::DataConverter
+      native_type FFI::Type::INT
+
+      def self.from_native(value, ctx)
+        if value !=3D -1
+          value
+        else
+          raise SystemCallError.new("native error", FFI.errno)
+        end
+      end
+    end
+
+    attach_function :some_function_that_can_fail, [  ], PosixResult
+
+2) Automagically convert and free pointer results. =20
+e.g. lets say you have a function that returns an allocated C string, and=
+=20
+you need to free it yourself.  You /could/ use an AutoPointer, but to be=20
+kinder to the GC, you want to copy the string immediately to a GC managed=
+=20
+object, and free the underlying C string.
+
+    class AllocatedStringResult
+      extend FFI::DataConverter
+      native_type FFI::Type::POINTER
+
+      def self.from_native(val, ctx)
+        if val.null?
+          nil
+        else=20
+          str =3D val.get_string(0)
+          LibC.free(val)
+          str
+        end
+      end
+  end
+
+3) Any subclass of FFI::AutoPointer can be used as a function result, and=
+=20
+it automatically wraps the result of the function in that AutoPointer=20
+subclass.=20
+
+You could also make something like this work:
+
+    attach_function :some_function, [], Device.managed
+
+that way, Device is a regular non-autopointer, except in those cases where=
+=20
+you need it to be.  Look at Struct.auto_ptr for ideas on how to implement=
+=20
+Device.managed.
+
+4) Completely replace the FFI api with your own concoction.  Using=20
+FFI::DynamicLibrary, FFI::Function, and FFI::DataConverter, you can write=
+=20
+your own API for mapping C libraries into ruby.  Thats how JRuby implements=
+=20
+legacy interfaces like dl and Win32API.
+
+
+On Saturday, 30 March 2013 08:44:29 UTC+10, Postmodern wrote:
+>
+> Thank you for putting this together. I was meaning to write a more=20
+> details overview of FFI; all of the other blog posts only cover loading=
+=20
+> a library and attaching some functions. I never knew about by_ref and=20
+> extending FFI::Pointer is brilliant.=20
+>
+> On 03/28/2013 11:34 AM, Kim Burgestrand wrote:=20
+> > Might be interesting to you since you are subscribed to the FFI=20
+> > mailing list. The article is=20
+> > here: http://www.elabs.se/blog/61-advanced-topics-in-ruby-ffi=20
+> >=20
+> > If you have any reactions to what I've written I'd love to hear them.=
+=20
+> >=20
+> >=20
+> >=20
+> > --=20
+> > =97 Kim Burgestrand=20
+> > --=20
+> >  =20
+> > ---=20
+> > You received this message because you are subscribed to the Google=20
+> > Groups "ruby-ffi" group.=20
+> > To unsubscribe from this group and stop receiving emails from it, send=
+=20
+> > an email to ruby-ffi+u...@googlegroups.com <javascript:>.=20
+> > For more options, visit https://groups.google.com/groups/opt_out.=20
+> >  =20
+> >  =20
+>
+>
+> --=20
+> Blog: http://postmodern.github.com/=20
+> GitHub: https://github.com/postmodern=20
+> Twitter: @postmodern_mod3=20
+> PGP: 0xB9515E77=20
+>
+>
+>
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_984_3326462.1364601228404
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+There are a few other tricks you can do:<div><br></div><div>1) Use as a res=
+ult filter to automagically turn errno values into exceptions (not that I r=
+ecommend exceptions-as-flow-control)</div><div>e.g.</div><div>&nbsp; &nbsp;=
+ module PosixResult</div><div>&nbsp; &nbsp; &nbsp; extend FFI::DataConverte=
+r</div><div>&nbsp; &nbsp; &nbsp; native_type FFI::Type::INT</div><div><br><=
+/div><div>&nbsp; &nbsp; &nbsp; def self.from_native(value, ctx)</div><div>&=
+nbsp; &nbsp; &nbsp; &nbsp; if value !=3D -1</div><div>&nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; value</div><div>&nbsp; &nbsp; &nbsp; &nbsp; else</div><div>&n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; raise SystemCallError.new("native error", =
+FFI.errno)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; end</div><div>&nbsp; &nbsp=
+; &nbsp; end</div><div>&nbsp; &nbsp; end</div><div><br></div><div>&nbsp; &n=
+bsp; attach_function :some_function_that_can_fail, [ &nbsp;], PosixResult</=
+div><div><br></div><div>2) Automagically convert and free pointer results. =
+&nbsp;</div><div>e.g. lets say you have a function that returns an allocate=
+d C string, and you need to free it yourself. &nbsp;You /could/ use an Auto=
+Pointer, but to be kinder to the GC, you want to copy the string immediatel=
+y to a GC managed object, and free the underlying C string.</div><div><br><=
+/div><div>&nbsp; &nbsp; class AllocatedStringResult</div><div><div>&nbsp; &=
+nbsp; &nbsp; extend FFI::DataConverter</div><div>&nbsp; &nbsp; &nbsp; nativ=
+e_type FFI::Type::POINTER</div><div><br></div><div>&nbsp; &nbsp; &nbsp; def=
+ self.from_native(val, ctx)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if val.nu=
+ll?</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nil</div><div>&nbsp; &nbsp=
+; &nbsp; &nbsp; else&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; str=
+ =3D val.get_string(0)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LibC.fr=
+ee(val)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; str</div><div>&nbsp; &=
+nbsp; &nbsp; &nbsp; end</div><div>&nbsp; &nbsp; &nbsp; end</div><div>&nbsp;=
+ end</div></div><div><br></div><div>3) Any subclass of FFI::AutoPointer can=
+ be used as a function result, and it automatically wraps the result of the=
+ function in that AutoPointer subclass.&nbsp;</div><div><br></div><div>You =
+could also make something like this work:</div><div><br></div><div>&nbsp; &=
+nbsp; attach_function :some_function, [], Device.managed</div><div><br></di=
+v><div>that way, Device is a regular non-autopointer, except in those cases=
+ where you need it to be. &nbsp;Look at Struct.auto_ptr for ideas on how to=
+ implement Device.managed.</div><div><br>4) Completely replace the FFI api =
+with your own concoction. &nbsp;Using FFI::DynamicLibrary, FFI::Function, a=
+nd FFI::DataConverter, you can write your own API for mapping C libraries i=
+nto ruby. &nbsp;Thats how JRuby implements legacy interfaces like dl and Wi=
+n32API.</div><div><br></div><div><br>On Saturday, 30 March 2013 08:44:29 UT=
+C+10, Postmodern  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: =
+0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Thank =
+you for putting this together. I was meaning to write a more
+<br>details overview of FFI; all of the other blog posts only cover loading
+<br>a library and attaching some functions. I never knew about by_ref and
+<br>extending FFI::Pointer is brilliant.
+<br>
+<br>On 03/28/2013 11:34 AM, Kim Burgestrand wrote:
+<br>&gt; Might be interesting to you since you are subscribed to the FFI
+<br>&gt; mailing list. The article is
+<br>&gt; here: <a href=3D"http://www.elabs.se/blog/61-advanced-topics-in-ru=
+by-ffi" target=3D"_blank">http://www.elabs.se/blog/61-<wbr>advanced-topics-=
+in-ruby-ffi</a>
+<br>&gt;
+<br>&gt; If you have any reactions to what I've written I'd love to hear th=
+em.
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; --=20
+<br>&gt; =97 Kim Burgestrand
+<br>&gt; --=20
+<br>&gt; &nbsp;
+<br>&gt; ---
+<br>&gt; You received this message because you are subscribed to the Google
+<br>&gt; Groups "ruby-ffi" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, =
+send
+<br>&gt; an email to <a href=3D"javascript:" target=3D"_blank" gdf-obfuscat=
+ed-mailto=3D"msW7g22ENmgJ">ruby-ffi+u...@<wbr>googlegroups.com</a>.
+<br>&gt; For more options, visit <a href=3D"https://groups.google.com/group=
+s/opt_out" target=3D"_blank">https://groups.google.com/<wbr>groups/opt_out<=
+/a>.
+<br>&gt; &nbsp;
+<br>&gt; &nbsp;
+<br>
+<br>
+<br>--=20
+<br>Blog: <a href=3D"http://postmodern.github.com/" target=3D"_blank">http:=
+//postmodern.github.com/</a>
+<br>GitHub: <a href=3D"https://github.com/postmodern" target=3D"_blank">htt=
+ps://github.com/postmodern</a>
+<br>Twitter: @postmodern_mod3
+<br>PGP: 0xB9515E77
+<br>
+<br>
+<br></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_984_3326462.1364601228404--

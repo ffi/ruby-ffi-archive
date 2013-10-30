@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/3/10 4:57 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 2 December 2010 11:04, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Wayne, sorry for top posting, using a limited device.
+</pre></blockquote><pre wrap>
+
+top-post, bottom-post, smoke signal, anything that gets the message
+through is fine.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If FFI is aiming 1.9.2 or bigger, then the rubygem spec needs to be
+<span class="moz-txt-citetags">&gt; </span>tweaked to reflect that. I'm not against of ditching 1.8.x support,
+<span class="moz-txt-citetags">&gt; </span>but just want to reduce painful support issues for users still using
+<span class="moz-txt-citetags">&gt; </span>1.8.x
+</pre></blockquote><pre wrap>
+
+Agreed, and I just pushed a change the restricts it to &gt;= 1.9.2
+
+I'm not against it still working on 1.8.7 - I'm just against:
+
+a) doing the work to make it work, and
+b) dealing with issues when people try to run code that either
+requires blocking threads, or non-ruby threads calling back into ruby.
+
+btw, I <b class="moz-txt-star"><span class="moz-txt-tag">*</span>think<span class="moz-txt-tag">*</span></b> I fixed up the win32 build.  I couldn't test it, since
+I'm having issues getting rake-compiler to build a cross-ruby on my
+machine ... and I have no win32 vm to run it in anyway.  But, if
+anyone wants to try building out of master for win32 and letting me
+know if it all works, that would be nice.
+</pre></div></body>
+</html>
+</table></div>

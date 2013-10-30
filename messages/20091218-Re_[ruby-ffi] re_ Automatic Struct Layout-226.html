@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] re: Automatic Struct Layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] re: Automatic Struct Layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 8:13 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, 18 Dec 2009 10:41:39 +1000
+Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>2009/12/18 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Question.
+<span class="moz-txt-citetags">&gt; &gt; </span>Shouldn't ffi be calculating the offsets automagically for us, since
+<span class="moz-txt-citetags">&gt; &gt; </span>all that is distributed is ruby code, and "automatic struct layout"
+<span class="moz-txt-citetags">&gt; &gt; </span>thence not be necessary?  I would have expected that...
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>It does, the wiki just hasn't been updated ... in about a year - so
+<span class="moz-txt-citetags">&gt; </span>feel free to fix it up.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Basically, to have FFI calculate offsets for you, you drop off the
+<span class="moz-txt-citetags">&gt; </span>offset out of the triplet.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>i.e. instead of
+<span class="moz-txt-citetags">&gt; </span>class Foo &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>  layout :a, :long, 0, :b, :int, 4
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>You would use:
+<span class="moz-txt-citetags">&gt; </span>class Foo &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>  layout :a, :long, :b, :int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>That will calculate the offset of :b automatically for you, and take
+<span class="moz-txt-citetags">&gt; </span>into account 32bit vs 64bit, minimum alignments, tail padding, etc.
+</pre></blockquote><pre wrap>
+
+We need a Struct wiki page similar to what jacius did for Enums anyway.
+
+Is there any reason why Wayne shouldn't just delete the automatic struct layout page once the struct page exists?
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

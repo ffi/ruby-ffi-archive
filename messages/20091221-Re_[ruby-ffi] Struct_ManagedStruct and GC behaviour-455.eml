@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs525586and;
+        Mon, 21 Dec 2009 13:21:07 -0800 (PST)
+Received: by 10.150.208.10 with SMTP id f10mr12158418ybg.55.1261430465065;
+        Mon, 21 Dec 2009 13:21:05 -0800 (PST)
+Return-Path: <3vuYvSwoJCCAFKJ.BKNQIOCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 9si7359783ywh.85.2009.12.21.13.21.03;
+        Mon, 21 Dec 2009 13:21:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3vuYvSwoJCCAFKJ.BKNQIOCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3vuYvSwoJCCAFKJ.BKNQIOCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3vuYvSwoJCCAFKJ.BKNQIOCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf16051503ywh.3
+        for <headius@headius.com>; Mon, 21 Dec 2009 13:21:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=o+Kvbbsyo5/SXt6FMK5nFjnQF24d94Ob5ewmTziuTRA=;
+        b=7ImnIAzRh4Dv7bro0tDcU12T1NlfkUeytoz8IVJbttSgBRxAgovcmWJEypxw52T4tX
+         HkG/9AGVB/iFQtvbaqaAnjlKOlqvqV5DNKI0rZyR0Xj+YiXQ6cZ05cQlKQ2/kKUaL0sK
+         xWrs2lrBRSPZJfmpDLtzgyCo8efbYujjpMb+s=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=Qo2jQVSwgjucEXWknmq5JsR/9D725VPYyP6xuTQPRJOMHDmV5PwAxStT+4BqeBqOeL
+         4bJsXn6sPMPpsgCtJIEs2up1L5PYMt99YdLfVu0wDX0/kU1GX0df+zKukssQGYN37nsp
+         GgLyKlqShO7SjrNbPqEbg21s5wwaLvmDNBJXg=
+Received: by 10.101.180.3 with SMTP id h3mr566642anp.52.1261430462974;
+        Mon, 21 Dec 2009 13:21:02 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.214.12 with SMTP id r12ls1143391anq.0.p; Mon, 21 Dec 2009 
+	13:21:02 -0800 (PST)
+Received: by 10.101.65.1 with SMTP id s1mr5468888ank.13.1261430461866;
+        Mon, 21 Dec 2009 13:21:01 -0800 (PST)
+Received: by 10.101.65.1 with SMTP id s1mr5468887ank.13.1261430461845;
+        Mon, 21 Dec 2009 13:21:01 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-yx0-f197.google.com (mail-yx0-f197.google.com [209.85.210.197])
+        by gmr-mx.google.com with ESMTP id 19si749263yxe.6.2009.12.21.13.21.00;
+        Mon, 21 Dec 2009 13:21:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.210.197 as permitted sender) client-ip=209.85.210.197;
+Received: by mail-yx0-f197.google.com with SMTP id 35so5068432yxe.2
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 13:21:00 -0800 (PST)
+Received: by 10.101.165.16 with SMTP id s16mr12338584ano.60.1261430460587;
+        Mon, 21 Dec 2009 13:21:00 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from SQUEAK (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 23sm4962879iwn.3.2009.12.21.13.20.58
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Mon, 21 Dec 2009 13:20:59 -0800 (PST)
+Date: Mon, 21 Dec 2009 16:21:06 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour
+Message-Id: <20091221162106.9ffa1f6f.jon.forums@gmail.com>
+In-Reply-To: <80BBF3AC-C15C-4844-A6DD-34A3B9218A35@fallingsnow.net>
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+	<80BBF3AC-C15C-4844-A6DD-34A3B9218A35@fallingsnow.net>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.210.197 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/9067ed9709e547a8
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> I'll address the biggest hole in this here. FFI::MemoryPointer, FFI::Struct, and FFI::ManagedStruct are all proxy objects. Nothing they reference lives in the ruby heap.
+
+While these proxy objects live in the ruby heap and are subject to the will of the specific ruby impls gc, the real goodies are always in the native heap.  Got it, thanks.
+
+
+> When a ruby GC detects that an FFI::Struct is garbage, the memory that the FFI::Struct references is acted upon at all. This is because FFI::Struct is just a proxy for some unmanaged memory.
+
+You mean the unmanaged mem is *not* acted upon at all (typo) right?
+
+Are you also saying that if the proxy object is ruby GC'd the unmanaged mem is (currently) never freed by any of the impls?
+
+So while we should never see the dangling pointer class of issues, do you see real-world potential for writing ruby ffi code that can easily leak memory?  For example, if I'm creating/destroying FFI::Struct proxies in a callback in some long-lived process, the ruby heap will be cleaned but the underlying unmanaged mem in the native heap would not be?
+
+Jon

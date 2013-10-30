@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs150862bkj;
+        Mon, 8 Nov 2010 16:49:57 -0800 (PST)
+Received: by 10.150.53.9 with SMTP id b9mr9647025yba.280.1289263796218;
+        Mon, 08 Nov 2010 16:49:56 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLjW6djlEBCyteLmBBoEE_QJgQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id z5si12083103yhz.139.2010.11.08.16.49.54;
+        Mon, 08 Nov 2010 16:49:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCyteLmBBoEE_QJgQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCyteLmBBoEE_QJgQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCLjW6djlEBCyteLmBBoEE_QJgQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg10 with SMTP id 10sf8887882gyg.7
+        for <headius@headius.com>; Mon, 08 Nov 2010 16:49:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=8jCIM6fxnI1NzJb1yr/Ohv2j5Du4Sr42Cq3xTmdx/bQ=;
+        b=xtJMQQ8VPXXu+Y/2PDl67It6Vr52T7kZJ0Xig1hDPOGUZMpHpKN4azEpm7E0W4ltGb
+         Z7nyX8o8ajO2IMwcDVCNDDQiPTz130bcfNw4qf7Ixrlv10v8c45pSLR4n8HCzffVWIrf
+         LplGvOh1QNnWBxGjI1LQIxsiaGt34VjUZ0rKc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=TCwUS1ryKsWBc1LkFh6kfSVZ1jbJBPuDoXd0FIVP+3PKW9R9RITfoMy9pPF9C5tjw7
+         UeP68Bwj/hxfxTtt6uSo/iIDfUTJsaGo78ooPXkMQ8hv2JakbAnbMJAAKSaKDfXn6LMW
+         +NJZDJ4aREooetwTP7cJWMOCNqtNTXM1attyY=
+Received: by 10.150.174.42 with SMTP id w42mr645477ybe.59.1289263794168;
+        Mon, 08 Nov 2010 16:49:54 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.102.24 with SMTP id z24ls3416208ybb.3.p; Mon, 08 Nov 2010
+ 16:49:53 -0800 (PST)
+Received: by 10.150.92.19 with SMTP id p19mr260989ybb.56.1289263793891;
+        Mon, 08 Nov 2010 16:49:53 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.142.65.4 with SMTP id n4mr356627wfa.19.1289262623169; Mon, 08
+ Nov 2010 16:30:23 -0800 (PST)
+Received: by k14g2000pre.googlegroups.com with HTTP; Mon, 8 Nov 2010 16:30:23
+ -0800 (PST)
+Date: Mon, 8 Nov 2010 16:30:23 -0800 (PST)
+X-IP: 208.236.105.27
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5,gzip(gfe)
+Message-ID: <932132f1-bd9d-4f6b-b449-46132b0c6a4c@k14g2000pre.googlegroups.com>
+Subject: [ruby-ffi] Passing a String Pointer to Callback Procs -- How to append?
+From: Scott Gonyea <gonyea@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: gonyea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm having a really painful time figuring this out.  I jumped onto
+what NoKarma had already begun, with his curl-ffi library, and started
+running with it.  I'm trying to emulate the ruby extension layers used
+in some different Curl gems (Streamly and Patron, atm).
+
+Curl wants you to pass a method reference, which it will then
+callback.  You can see examples used in Streamly and Patron:
+
+Streamly, lines 29-83:
+https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29
+
+Patron, lines 59-75 (Much simpler):
+https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c#L59
+
+Basically, they're allocating a buffer and providing a callback + that
+buffer, which is sent to the callback. I've added this callback to
+CurlFFI and I have the Proc working, etc... But I cannot seem to get
+it to append to the string.
+
+Callback Additions to CurlFFI:
+https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923
+https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926
+
+I'll delete 926, as it's not necessary (I think).
+
+Procs that get called:
+https://github.com/aitrus/streamly/blob/master/lib/streamly/request.rb#L11
+
+I suppose the last resort can be to call C libraries, allocating /
+freeing a string.  But that makes me think I'm doing it wrong.  I
+can't imagine that I'm doing anything overly interesting with my code.
+
+Scott

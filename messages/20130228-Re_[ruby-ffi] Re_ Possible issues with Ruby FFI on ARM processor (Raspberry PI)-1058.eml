@@ -1,0 +1,200 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp35159laf;
+        Thu, 28 Feb 2013 12:58:48 -0800 (PST)
+X-Received: by 10.112.14.14 with SMTP id l14mr4136883lbc.110.1362085127902;
+        Thu, 28 Feb 2013 12:58:47 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDQ73F6KTYOBBBUKX6EQKGQEL5AFPLQ@googlegroups.com>
+Received: from mail-lb0-f186.google.com (mail-lb0-f186.google.com [209.85.217.186])
+        by mx.google.com with ESMTPS id s4si4015337lbh.27.2013.02.28.12.58.47
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 28 Feb 2013 12:58:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBBUKX6EQKGQEL5AFPLQ@googlegroups.com designates 209.85.217.186 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBBUKX6EQKGQEL5AFPLQ@googlegroups.com designates 209.85.217.186 as permitted sender) smtp.mail=ruby-ffi+bncBDQ73F6KTYOBBBUKX6EQKGQEL5AFPLQ@googlegroups.com;
+       dkim=pass header.i=@burgestrand.se
+Received: by mail-lb0-f186.google.com with SMTP id n8sf896274lbj.13
+        for <headius@headius.com>; Thu, 28 Feb 2013 12:58:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=XKmwpk8j2tZINS9bgaae04yNKAGW3dcfeQMrd+nWspg=;
+        b=pU2CQqJq2H63Edyt+ch/mwkV4BnHf+vzzDYLY0FuUZ/jPgWhiofcMNiqvHugO3pRsf
+         8wl7v9MRQIsCN/eYP/NVdk3bLITds2pKcsOG+moahWCs7UfObUe1TUXOwaxY42jI2ZcX
+         6U2eb12yehod0Kakobh5v0YEdbfNPGCTguPN6u343DVw4wIlOnj0k/ymmGmdm8+35EWX
+         +sOA12Y2oX8UFYsZNnW+31W09/vAMEsCLCxkUfziHYUcqci/KW4brtxMILXOC+ZZyh+d
+         iT5uBuR9qHPHxqBxWMXC3VXqnJDt5Y+wBpf+Fmdss7Nwpb7vFizLqpwBWhMXSAOpBSpG
+         aVEw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=burgestrand.se; s=google-dkim;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=XKmwpk8j2tZINS9bgaae04yNKAGW3dcfeQMrd+nWspg=;
+        b=I3qV00L8SdObb0cOk6cVgEQfU2gFSxTTypYHkfSn65auKaT2pXMhSOkyg27SsV9VUh
+         YT8RPeyeZaRojOTISJHOdyBb+bpbvaNSeIEZ9FGPqcuAQbtL44NKiKK9nRWCTt7JBuRw
+         r2MNCL5AG/XX05H4An2KqGc+tAESn+9pN7LcM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:message-id:in-reply-to:references:subject
+         :x-mailer:mime-version:x-gm-message-state:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=XKmwpk8j2tZINS9bgaae04yNKAGW3dcfeQMrd+nWspg=;
+        b=hnrnxcNTfTI8nijur5rLUJLyosauseYnIAbkoJGoQVgPiRoQcCDFwBKE/8mK4lIjvA
+         Nrk1ZrW/RUl8357RLZ9+MZY6HWgaT8uIsGUgJTzQHgnJ+ThnwRlb48YjfuerxO8Jbgzd
+         Sqq3FMU/6wJWZcW+YVKKy6JjDQ/IqU9ckZbdMfW4m00vM1VXZA2Rv/O8cD1opU8sr+2G
+         Cn9LophNXefVdfZi89P4lgOtHWqGgIbiy90Hsl9+gFMFEnpWGOdsOqxkuoxAHQCjKZBz
+         EfPYpduF1EMmwUBn2faIb0qJGsGMrFu+hM9KlYz43xpNYr0Ov1rLb/rcrtNLCgqNsnm0
+         y7GQ==
+X-Received: by 10.180.88.68 with SMTP id be4mr2803633wib.21.1362085127288;
+        Thu, 28 Feb 2013 12:58:47 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.95.226 with SMTP id dn2ls1155515wib.51.canary; Thu, 28 Feb
+ 2013 12:58:46 -0800 (PST)
+X-Received: by 10.204.146.77 with SMTP id g13mr323377bkv.5.1362085126408;
+        Thu, 28 Feb 2013 12:58:46 -0800 (PST)
+X-Received: by 10.204.146.77 with SMTP id g13mr323376bkv.5.1362085126384;
+        Thu, 28 Feb 2013 12:58:46 -0800 (PST)
+Received: from mail-la0-x22e.google.com ([2a00:1450:4010:c03::22e])
+        by gmr-mx.google.com with ESMTPS id i9si568278bki.2.2013.02.28.12.58.46
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 28 Feb 2013 12:58:46 -0800 (PST)
+Received-SPF: neutral (google.com: 2a00:1450:4010:c03::22e is neither permitted nor denied by best guess record for domain of kim@burgestrand.se) client-ip=2a00:1450:4010:c03::22e;
+Received: by mail-la0-x22e.google.com with SMTP id fq12so2257658lab.33
+        for <ruby-ffi@googlegroups.com>; Thu, 28 Feb 2013 12:58:46 -0800 (PST)
+X-Received: by 10.152.111.5 with SMTP id ie5mr6851743lab.31.1362085126044;
+        Thu, 28 Feb 2013 12:58:46 -0800 (PST)
+Received: from [192.168.0.19] (c83-254-37-119.bredband.comhem.se. [83.254.37.119])
+        by mx.google.com with ESMTPS id v7sm3349668lbg.13.2013.02.28.12.58.44
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 28 Feb 2013 12:58:44 -0800 (PST)
+Date: Thu, 28 Feb 2013 21:58:42 +0100
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-ID: <F07FF21AEC1D4B1A98605EE522DC7745@burgestrand.se>
+In-Reply-To: <61b0625e-a877-4df9-b3f4-61843dd70ce2@googlegroups.com>
+References: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+ <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+ <a8e170ae-23fd-4910-8bcd-413255591edd@googlegroups.com>
+ <1e9d3d82-66e3-420d-97fd-ef6c3d74fee2@googlegroups.com>
+ <A7223EBD5D53431F9BB55BBCABA9478E@burgestrand.se>
+ <61b0625e-a877-4df9-b3f4-61843dd70ce2@googlegroups.com>
+Subject: Re: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor
+ (Raspberry PI)
+X-Mailer: sparrow 1.6.4 (build 1178)
+MIME-Version: 1.0
+X-Gm-Message-State: ALoCoQm+hHBdZZ2AqXRcS82r1K3xkv6C0aww3yJhzg5YwJY3Gm/JyH31VvdJchglGE/ilyYbgUvV
+X-Original-Sender: kim@burgestrand.se
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 2a00:1450:4010:c03::22e is neither permitted nor denied by best
+ guess record for domain of kim@burgestrand.se) smtp.mail=kim@burgestrand.se;
+       dkim=pass header.i=@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary="512fc502_38a5d054_ec"
+
+--512fc502_38a5d054_ec
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+On Thursday, 28 February 2013 at 21:41, Wayne Meissner wrote:
+> On Thursday, 28 February 2013 16:57:04 UTC+10, Kim Burgestrand wrote:
+> > Thanks Wayne; the problem existing because of stack/heap memory was not=
+ something that could have
+> > occurred to me.
+> > =20
+> =20
+> =20
+> Technically, the problem still exists in both cases, it just shows up whe=
+n using malloc, because of the way most memory allocators work.  It looks l=
+ike libspotify is stomping over memory it shouldn't - with stack allocated,=
+ that doesn't get detected, but it is still happening.
+> =20
+> What made me suspect libspotify was a quick google - there are a few bug =
+reports for libspotify on android (i.e. arm) where it is crashing on otherw=
+ise valid code.
+Ah, I understand. Too bad I don=92t expect the library authors will fix and=
+ update their library any time soon. Hm. Oh well,
+I=92m happy that I=92ve managed to reproduce it in C, and it not technicall=
+y it being a fault of the ruby code. Now I could try
+to find a workaround, but I can=92t say I have my hopes up!
+
+=97 Kim
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+--512fc502_38a5d054_ec
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+
+                <div><span style=3D"color: rgb(160, 160, 168); ">On Thursda=
+y, 28 February 2013 at 21:41, Wayne Meissner wrote:</span></div><blockquote=
+ type=3D"cite" style=3D"border-left-style:solid;border-width:1px;margin-lef=
+t:0px;padding-left:10px;">
+                    <span><div><div>On Thursday, 28 February 2013 16:57:04 =
+UTC+10, Kim Burgestrand  wrote:<blockquote type=3D"cite"><div><div>Thanks W=
+ayne; the problem existing because of stack/heap memory was not something t=
+hat could have</div><div>occurred to me.</div></div></blockquote><div><br><=
+/div><div>Technically, the problem still exists in both cases, it just show=
+s up when using malloc, because of the way most memory allocators work. &nb=
+sp;It looks like libspotify is stomping over memory it shouldn't - with sta=
+ck allocated, that doesn't get detected, but it is still happening.</div><d=
+iv><br></div><div>What made me suspect libspotify was a quick google - ther=
+e are a few bug reports for libspotify on android (i.e. arm) where it is cr=
+ashing on otherwise valid code.</div></div></div></span></blockquote><div>A=
+h, I understand. Too bad I don=92t expect the library authors will fix and =
+update their library any time soon. Hm. Oh well,</div><div>I=92m happy that=
+ I=92ve managed to reproduce it in C, and it not technically it being a fau=
+lt of the ruby code. Now I could try</div><div>to find a workaround, but I =
+can=92t say I have my hopes up!</div><div><br></div><div><div>=97 Kim</div>=
+</div>
+           =20
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+--512fc502_38a5d054_ec--
+

@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.111.6 with SMTP id ie6csp130045lab;
+        Tue, 28 May 2013 15:56:39 -0700 (PDT)
+X-Received: by 10.229.25.5 with SMTP id x5mr16661qcb.35.1369781798263;
+        Tue, 28 May 2013 15:56:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDN2LI534YNBBJHMSSGQKGQEXFL547Y@googlegroups.com>
+Received: from mail-qa0-x23a.google.com (mail-qa0-x23a.google.com [2607:f8b0:400d:c00::23a])
+        by mx.google.com with ESMTPS id q3si7496755qeb.7.2013.05.28.15.56.36
+        for <headius@headius.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 28 May 2013 15:56:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDN2LI534YNBBJHMSSGQKGQEXFL547Y@googlegroups.com designates 2607:f8b0:400d:c00::23a as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDN2LI534YNBBJHMSSGQKGQEXFL547Y@googlegroups.com designates 2607:f8b0:400d:c00::23a as permitted sender) smtp.mail=ruby-ffi+bncBDN2LI534YNBBJHMSSGQKGQEXFL547Y@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qa0-f58.google.com with SMTP id j8sf1202975qah.23
+        for <headius@headius.com>; Tue, 28 May 2013 15:56:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=gMRjTXPtBvyWBXt+MfakEOLYbuxxWRW3tmFGmkja/jE=;
+        b=CXmy5RcrZLR9P96tk75joMa92qToZ/mHw1HxIUL9s1zlKhJ4UMtQU17vbAafhwA9bE
+         UHNqs4QsKngwQL6Kq5bYESfDJDHdffsWE/LS3oZvOQH9bX+eKgCDefeITvA0fu2tMRW6
+         MhN40ShXCEb/nv84kHMxPC0naFh1UwraIJWstYv+R/XKoQmzi+qOA4hv9W7Ea5WQIR8m
+         dqFIgkyDiIK0G/DzVoxZBpvlb+xY8WConRHLLFAYVMuSVTzwZywh0/fof2Y2lwsbwTt4
+         E6TqG3JD1uVwigKpyfcd4xJdKV/sTXdpTv6qMFzRkS5rP4oHTDWWQmwMNHy4BL2cMrbR
+         Mwhw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=gMRjTXPtBvyWBXt+MfakEOLYbuxxWRW3tmFGmkja/jE=;
+        b=dDE0VRCjSGFCjTm6EkBi3LRHtPdn4IM16TDwCaWpebIjzO0LjdwMVdtTvFcccrpos+
+         GfqD0ac1xDFSL2aPhGjlbBFSX6TUDyoUSO9lduPWv2o0Tg/Xo+eyaGgtOzRHKggy7wBZ
+         63YaxK4c1uwaZszD90xSUN4cUPmVXMMlAE1FLlbB05l5/ar9NOJx3GV8QTtRVOjKyfJm
+         RezdAWcvjbc1t1UnHlto0dQQRJvjKi87Q/cc5k4e4NLF2pybRdc7z/z2hEHbbnfvHo6M
+         ynM7jr9MSFrdllLf5/SVJ3OO4vF3EnKrNzgQkhtnV5wfu5+7Dq/O+e28ZZtOVh4qcDiX
+         gIBw==
+X-Received: by 10.49.61.137 with SMTP id p9mr2629526qer.40.1369781796533;
+        Tue, 28 May 2013 15:56:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.119.1 with SMTP id kq1ls890273qeb.26.gmail; Tue, 28 May
+ 2013 15:56:36 -0700 (PDT)
+X-Received: by 10.224.53.198 with SMTP id n6mr315985qag.2.1369781796117;
+        Tue, 28 May 2013 15:56:36 -0700 (PDT)
+Received: by 10.224.181.200 with SMTP id bz8msqab;
+        Tue, 28 May 2013 13:29:03 -0700 (PDT)
+X-Received: by 10.49.96.8 with SMTP id do8mr2633367qeb.30.1369772943132;
+        Tue, 28 May 2013 13:29:03 -0700 (PDT)
+Date: Tue, 28 May 2013 13:29:02 -0700 (PDT)
+From: Jose Donizetti <jdbjunior@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <db2cca56-25c6-41e0-a110-397cbb3a7fe7@googlegroups.com>
+Subject: [ruby-ffi] how to execute a pointer?
+MIME-Version: 1.0
+X-Original-Sender: jdbjunior@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5095_27275213.1369772942737"
+
+------=_Part_5095_27275213.1369772942737
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all, 
+
+I mapped a function in ruby which returns a pointer to another function. 
+How can I execute this pointer?
+
+Thanks,
+Jose.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_5095_27275213.1369772942737
+Content-Type: text/html; charset=ISO-8859-1
+
+Hi all,&nbsp;<div><br></div><div>I mapped a function in ruby which returns a pointer to another function. How can I execute this pointer?</div><div><br></div><div>Thanks,</div><div>Jose.</div><div><br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_5095_27275213.1369772942737--

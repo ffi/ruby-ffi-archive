@@ -1,0 +1,19 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: [mingw] 1.1.6.pre1 install fail on Win7</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: [mingw] 1.1.6.pre1 install fail on Win7</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/15/12 5:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Both 1.1.6.pre2 and 1.2.0.pre1 look good on my Win7 Ultimate 32bit system. Will look at Arch tomorrow.<br><br>Using `rake compile native gem` in both of these toolchain+ruby environments<br><br>&nbsp; mingw 4.6.2: ruby 1.9.3p269 (2012-09-09 revision 36939) [i386-mingw32]<br>&nbsp; mingw-w64 4.7.1: ruby 2.0.0dev (2012-09-15 trunk 36975) [i386-mingw32]<br><br>...all combinations pass the following quicktest with similar results.<br><br>http://pastie.org/4727908<br><br><br><br>On Saturday, September 15, 2012 6:01:50 AM UTC-7, Wayne Meissner wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">How about now, with 1.1.6.pre2 and 1.2.0.pre1?<div><br>On Thursday, 30 August 2012 10:58:10 UTC+10, Jon  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">On both trunk@36849 and ruby_1_9_3@36834 during a gem install,
+<br>1.1.6.pre1 fails to build on Win7 32bit using <a href="http://mingw.org" target="_blank">mingw.org</a> gcc 4.6.2 due
+<br>to missing `rbConventionStr` declaration in
+<br>`ext/ffi_c/Variadic.c:<wbr>variadic_initialize`.
+<br>
+<br>Adding a non-ifdef'd `VALUE rbConventionStr = Qnil;` makes everything sublime.
+<br>
+<br>Jon
+<br></blockquote></div></blockquote>
+</div></body>
+</html>
+</table></div>

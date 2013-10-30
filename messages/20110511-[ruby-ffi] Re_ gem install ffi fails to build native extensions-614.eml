@@ -1,0 +1,81 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs184895agb;
+        Wed, 11 May 2011 15:38:57 -0700 (PDT)
+Received: by 10.68.17.136 with SMTP id o8mr13843371pbd.185.1305153536482;
+        Wed, 11 May 2011 15:38:56 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBD5n6zuBBoE0j76Wg@googlegroups.com>
+Received: from mail-px0-f184.google.com (mail-px0-f184.google.com [209.85.212.184])
+        by mx.google.com with ESMTPS id f9si1084757pbr.3.2011.05.11.15.38.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 11 May 2011 15:38:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD5n6zuBBoE0j76Wg@googlegroups.com designates 209.85.212.184 as permitted sender) client-ip=209.85.212.184;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBD5n6zuBBoE0j76Wg@googlegroups.com designates 209.85.212.184 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBD5n6zuBBoE0j76Wg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi4 with SMTP id 4sf900547pxi.21
+        for <headius@headius.com>; Wed, 11 May 2011 15:38:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=Sq8rNzWQVEDpRUdu2dPg47b0HNMIBTQolVDSRSS9DXg=;
+        b=OGFPSFQUX44766e6/b4kPuEViBcS1lwNmwq2JqinSYd40c0BEhd/tDyNeY5P6Zh9mp
+         GScP51mFuZ6hTyfejoaodxOnKGA0JTpKbhOaMsRhVLFOktOWkU2R1iolDTcvHs5ULlby
+         HuXV8vR8Q+1+d6I5AeSY9i+jCBMzhQN1GsAyg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=fw9yCFwfvByclW4FhHzqrPv4NquGTHMMvt5355b+0Tr5V3a37aivQ8+9QD00BAYwww
+         XFIAFluMirw/ULDWjQ7KNuiaVYYBl5XSPMiXlR3NQrrwo8IpA+hxz1ELYvQOQLkBYQZT
+         cn/zhRKMDxfxndT/94DlN8ksJVXubNBBnZFuQ=
+Received: by 10.68.49.199 with SMTP id w7mr1141102pbn.35.1305153529124;
+        Wed, 11 May 2011 15:38:49 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.36.67 with SMTP id o3ls774758pbj.0.gmail; Wed, 11 May 2011
+ 15:38:48 -0700 (PDT)
+Received: by 10.68.37.37 with SMTP id v5mr574706pbj.58.1305153528500;
+        Wed, 11 May 2011 15:38:48 -0700 (PDT)
+Date: Wed, 11 May 2011 15:38:48 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <23448419.839.1305153528071.JavaMail.geo-discussion-forums@prok25>
+In-Reply-To: <af55c6c5-c584-4ad2-a109-facb362992be@k3g2000prl.googlegroups.com>
+Subject: [ruby-ffi] Re: gem install ffi fails to build native extensions
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_838_15629650.1305153528070"
+
+------=_Part_838_15629650.1305153528070
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Please checkout the source from github.com/ffi/ffi first and try that. 
+ There were compilation bugs related to older versions of gcc that were 
+fixed.
+
+Or upgrade to gcc-4.3+
+
+
+------=_Part_838_15629650.1305153528070
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>Please checkout the source from github.com/ffi/ffi first and try that. &nbsp;There were compilation bugs related to older versions of gcc that were fixed.</div><div><br></div><div>Or upgrade to gcc-4.3+</div><div><br></div>
+------=_Part_838_15629650.1305153528070--

@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.89.9 with SMTP id c9cs31737qam;
+        Mon, 16 Aug 2010 14:34:57 -0700 (PDT)
+Received: by 10.142.140.19 with SMTP id n19mr5021380wfd.224.1281994497147;
+        Mon, 16 Aug 2010 14:34:57 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhD_3abjBBoEfDpOyw@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTP id w36si16125099wfh.100.2010.08.16.14.34.55;
+        Mon, 16 Aug 2010 14:34:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD_3abjBBoEfDpOyw@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD_3abjBBoEfDpOyw@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhD_3abjBBoEfDpOyw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi9 with SMTP id 9sf756062pxi.7
+        for <headius@headius.com>; Mon, 16 Aug 2010 14:34:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=GbgYSu1uWdWjK2zgAQlWszoTeiHkzb5k61wSTcu6Xyc=;
+        b=gTZqyeEX5WCzYuITjpCZogEMDkAjCeJcq1c1c8CwDBgmEhsxKu08eb6tEFS80Dtp46
+         XjlrpLlPJHwJM1KstzqHFn2aibfkZk+jwpo5WgTuhjiWYm2rZpAb+uMnuJQk3KXYHt0F
+         70pQGlz3TS1X4ihMO1pKM5myf/D0KSXNZy+9w=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=WzzroyxNG1qc0RsVy3cvpCy7IQZGxJ5XKP2QPqlJ0rkIkkUAHNeTMSnqmAJIM3HBiq
+         hksw7j+6bk7yODnZ/QAufxit6juVx6qY+Np6gm50cgKELq8LSdTR84QvNgVhQzzqgLzi
+         /2v+k1csNZjKxRhzxsomItjAeHeUVTJLa6QMw=
+Received: by 10.142.134.13 with SMTP id h13mr212381wfd.37.1281994495261;
+        Mon, 16 Aug 2010 14:34:55 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.21.16 with SMTP id y16ls5150032wfi.0.p; Mon, 16 Aug 2010
+ 14:34:54 -0700 (PDT)
+Received: by 10.142.163.9 with SMTP id l9mr1568333wfe.28.1281994494743;
+        Mon, 16 Aug 2010 14:34:54 -0700 (PDT)
+Received: by 10.142.163.9 with SMTP id l9mr1568332wfe.28.1281994494717;
+        Mon, 16 Aug 2010 14:34:54 -0700 (PDT)
+Received: from asmtpout026.mac.com (asmtpout026.mac.com [17.148.16.101])
+        by gmr-mx.google.com with ESMTP id y16si9024001wff.7.2010.08.16.14.34.54;
+        Mon, 16 Aug 2010 14:34:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted sender) client-ip=17.148.16.101;
+MIME-version: 1.0
+Received: from [192.168.0.101] ([76.8.86.186])
+ by asmtp026.mac.com (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec
+ 16 2008; 32bit)) with ESMTPSA id <0L7900MI1L9W7D90@asmtp026.mac.com> for
+ ruby-ffi@googlegroups.com; Mon, 16 Aug 2010 14:34:47 -0700 (PDT)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0
+ reason=mlx engine=6.0.2-1004200000 definitions=main-1008160184
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.0.10011,1.0.148,0.0.0000
+ definitions=2010-08-16_07:2010-08-16,2010-08-16,1970-01-01 signatures=0
+Subject: Re: [ruby-ffi] am I misusing :pointer in a FFI::Struct?
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <AANLkTik5XWgWX=+wns9pJhECCL0paL0SoWcMXZ+adWTa@mail.gmail.com>
+Date: Mon, 16 Aug 2010 16:34:38 -0500
+Message-id: <433BFCC1-C612-424A-BF66-2944D72E04E4@mac.com>
+References: <A608A709-547F-4D3C-99E2-6B95191854B3@mac.com>
+ <AANLkTik5XWgWX=+wns9pJhECCL0paL0SoWcMXZ+adWTa@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1081)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted
+ sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+Done.
+
+cr
+
+On Aug 16, 2010, at 3:49 PM, Wayne Meissner wrote:
+
+> Thats a bug in FFI::Pointer#inspect ... or more to the point, it
+> probably does not define it (whereas JRuby does) - so you're getting
+> the default ruby behaviour which is to print out the object's type and
+> the object's address (which is not the pointer address, but ruby's
+> internal address of the object itself).
+> 
+> If you print out foo[:ptr].address it should all look the same.
+> 
+> Can you file a bug in ruby-ffi's tracker, so this gets fixed?
+

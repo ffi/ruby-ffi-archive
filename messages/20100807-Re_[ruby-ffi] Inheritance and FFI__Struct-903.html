@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Inheritance and FFI::Struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Inheritance and FFI::Struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/7/10 2:10 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">I would try using composition instead of inheritance in this situation. Class Bar could descend directly from FFI::Struct instead and have its own layout. You could use the Forwardable mixin to declare delegate methods that rely on Bar#p.<div>
+<br></div><div>Best</div><div><br></div><div>Jeremy<br><br><div class="gmail_quote">On Sat, Aug 7, 2010 at 6:10 AM, Matijs van Zuijlen <span dir="ltr">&lt;<a href="mailto:matijs@matijs.net">matijs@matijs.net</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">Hello all,<br>
+<br>
+I&#39;m trying to set up an inheritance chain that ultimately inherits from FFI::Struct. However, the derived classes have a different layouts. This results in warnings about class variables being overridden.<br>
+<br>
+The following code demonstrates the problem when run with ruby -w:<br>
+<br>
+  require &#39;ffi&#39;<br>
+<br>
+  class Foo &lt; FFI::Struct<br>
+    layout :a, :int, :b, :int<br>
+  end<br>
+<br>
+  class Bar &lt; Foo<br>
+    layout :p, Foo, :c, :int<br>
+  end<br>
+<br>
+  bar = Bar.new<br>
+<br>
+I could set up separate Foo::Struct and Bar::Struct classes to avoid this problem, but I&#39;d rather not, as it introduces a lot of extra complexity.<br>
+<br>
+Any thoughts?<br>
+<br>
+Regards,<br>
+-- <br><font color="#888888">
+Matijs<br>
+</font></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

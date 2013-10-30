@@ -1,0 +1,46 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Unable to load .so file - any ideas?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Unable to load .so file - any ideas?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/6/12 2:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Mar 6, 2012, at 9:10 AM, Tony Summerville wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'd really appreciate any help or thoughts on this issue.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to wrap a simple shared library in a Ruby Gem. The .so file was precompiled by a 3rd-party vendor and I don't have access to the C source files.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I've installed FFI gem v1.0.11 and am able to get the basic "getpid" example working perfectly, but when I try to load the .so file I get the following error:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>ruby-1.9.2-p180 :001 &gt; require "prova-vhm-raw2xml"
+<span class="moz-txt-citetags">&gt; </span>LoadError: Could not open library '<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/tsummerville<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so': dlopen(<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/tsummerville<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so, 5): no suitable image found.  Did find:
+<span class="moz-txt-citetags">&gt; </span>	<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/tsummerville<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so: unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x00
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Other potentially relevant notes:
+<span class="moz-txt-citetags">&gt; </span>- I'm on Mac OSX with 64 bit processor
+<span class="moz-txt-citetags">&gt; </span>- The libZVLParser64.so was compiled for 64 bit architecture
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Anything obvious that I'm missing? I'm new to FFI and wrapping C libs with Ruby in general, so I'm just not quite sure what I'm doing wrong. I've read through all the documentation and looked through the Google Group but can't figure out what the problem is.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks again for any help or insight you can provide!
+</pre></blockquote><pre wrap>
+
+
+What is the output of:
+
+  file <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/tsummerville<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so
+
+It sounds like there is an architecture mismatch, so the output from that should hopefully shed some light on the problem.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

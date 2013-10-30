@@ -1,0 +1,86 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] am I misusing :pointer in a FFI::Struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] am I misusing :pointer in a FFI::Struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/16/10 3:49 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thats a bug in FFI::Pointer#inspect ... or more to the point, it
+probably does not define it (whereas JRuby does) - so you're getting
+the default ruby behaviour which is to print out the object's type and
+the object's address (which is not the pointer address, but ruby's
+internal address of the object itself).
+
+If you print out foo[:ptr].address it should all look the same.
+
+Can you file a bug in ruby-ffi's tracker, so this gets fixed?
+
+
+On 17 August 2010 04:26, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I have an FFI::Struct that contains a field of type :pointer. When I assign an FFI::Pointer to that field, I get very different behavior from MRI versus JRuby. A small script shows what I mean.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Note that under 1.9.1 and 1.9.2, the value of foo[:ptr] changes each time it is accessed. Under JRuby it reports the correct pointer value every time.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The 'ffi' gem was built from git master.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Am I just using it wrong or is this a bug in the C extension for MRI?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cremes$ cat u.rb
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class Foo &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout :ptr,  :pointer
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class Bar &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout :value, :short
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>foo = Foo.new
+<span class="moz-txt-citetags">&gt; </span>bar = Bar.new
+<span class="moz-txt-citetags">&gt; </span>bar[:value] = 23
+<span class="moz-txt-citetags">&gt; </span>puts "bar.to_ptr #{bar.to_ptr}"
+<span class="moz-txt-citetags">&gt; </span>a = bar.to_ptr
+<span class="moz-txt-citetags">&gt; </span>puts "a #{a}"
+<span class="moz-txt-citetags">&gt; </span>foo[:ptr] = bar.to_ptr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>puts "ptr #{foo[:ptr]}, #{foo[:ptr]}, #{foo[:ptr]}"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>OUTPUT
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ ruby -v
+<span class="moz-txt-citetags">&gt; </span>ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ ruby u.rb
+<span class="moz-txt-citetags">&gt; </span>bar.to_ptr #&lt;FFI::MemoryPointer:0x000001018d8c00&gt;
+<span class="moz-txt-citetags">&gt; </span>a #&lt;FFI::MemoryPointer:0x000001018d8c00&gt;
+<span class="moz-txt-citetags">&gt; </span>ptr #&lt;FFI::Pointer:0x000001018d8ab0&gt;, #&lt;FFI::Pointer:0x000001018d8a08&gt;, #&lt;FFI::Pointer:0x000001018d8960&gt;
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ rvm use 1.9.2-head
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>info: Using ruby 1.9.2 head
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ ruby u.rb
+<span class="moz-txt-citetags">&gt; </span>bar.to_ptr #&lt;FFI::MemoryPointer:0x0000010101d900&gt;
+<span class="moz-txt-citetags">&gt; </span>a #&lt;FFI::MemoryPointer:0x0000010101d900&gt;
+<span class="moz-txt-citetags">&gt; </span>ptr #&lt;FFI::Pointer:0x0000010101d7c0&gt;, #&lt;FFI::Pointer:0x0000010101d748&gt;, #&lt;FFI::Pointer:0x0000010101d6d0&gt;
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ rvm use jruby
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>info: Using jruby 1.5.1
+<span class="moz-txt-citetags">&gt; </span>Mac-Pro:tmp cremes$ ruby u.rb
+<span class="moz-txt-citetags">&gt; </span>bar.to_ptr #&lt;MemoryPointer address=0x10220dc20 size=2&gt;
+<span class="moz-txt-citetags">&gt; </span>a #&lt;MemoryPointer address=0x10220dc20 size=2&gt;
+<span class="moz-txt-citetags">&gt; </span>ptr Pointer [address=10220dc20], Pointer [address=10220dc20], Pointer [address=10220dc20]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs51262bkh;
+        Tue, 19 Oct 2010 18:34:20 -0700 (PDT)
+Received: by 10.220.185.78 with SMTP id cn14mr637973vcb.260.1287538459063;
+        Tue, 19 Oct 2010 18:34:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCYjvnlBBoE9oN4SA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTP id t19si8838274vcr.179.2010.10.19.18.34.17;
+        Tue, 19 Oct 2010 18:34:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCYjvnlBBoE9oN4SA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCYjvnlBBoE9oN4SA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCYjvnlBBoE9oN4SA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk9 with SMTP id 9sf3680749qyk.7
+        for <headius@headius.com>; Tue, 19 Oct 2010 18:34:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=t+suAisUf+EBV4W26DaWp/7A0F+d5uL5xi/D2PXwwKs=;
+        b=2Czm4Y+ARrpgW7G3NNQy5lK2yknWLwTbRk3Ns25lfKBnIzAidhiARNlZ5NJRX/uQWK
+         scAO/cb37KNpAhEuPLNLFOf6/T3hS5PB42viWXXwQJxKC5YIqW5WwoaCA7u5PeGJQUR7
+         ty2cTAGyZtE/tTNlH3Py94Nma+UzhaQ0Ij544=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=VP05GXyhPUUzTLyNFAKvM02607n2crmeCalI3o+LCSm02C2wA4uDusemuWOiSnxmpv
+         /grvpKfg/m5gZuV6vxeBJ7QlNzW3JE5vDo9G/dX67ixicvaXXXbbSIoPawWX7765E9C1
+         NfwmDIZhaikQWEOzTr9ktVbGUoRN4hTB85UFI=
+Received: by 10.229.130.170 with SMTP id t42mr458342qcs.3.1287538456902;
+        Tue, 19 Oct 2010 18:34:16 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.253.200 with SMTP id nb8ls336382qcb.2.p; Tue, 19 Oct 2010
+ 18:34:16 -0700 (PDT)
+Received: by 10.229.223.130 with SMTP id ik2mr845618qcb.21.1287538456494;
+        Tue, 19 Oct 2010 18:34:16 -0700 (PDT)
+Received: by 10.229.223.130 with SMTP id ik2mr845617qcb.21.1287538456466;
+        Tue, 19 Oct 2010 18:34:16 -0700 (PDT)
+Received: from mail-qw0-f50.google.com (mail-qw0-f50.google.com [209.85.216.50])
+        by gmr-mx.google.com with ESMTP id m5si9430184qcu.0.2010.10.19.18.34.15;
+        Tue, 19 Oct 2010 18:34:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.50 as permitted sender) client-ip=209.85.216.50;
+Received: by mail-qw0-f50.google.com with SMTP id 2so1886907qwi.23
+        for <ruby-ffi@googlegroups.com>; Tue, 19 Oct 2010 18:34:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.229.185.208 with SMTP id cp16mr94708qcb.213.1287538453706;
+ Tue, 19 Oct 2010 18:34:13 -0700 (PDT)
+Received: by 10.229.241.205 with HTTP; Tue, 19 Oct 2010 18:34:13 -0700 (PDT)
+In-Reply-To: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+References: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+Date: Wed, 20 Oct 2010 11:34:13 +1000
+Message-ID: <AANLkTik783R+H+quONriDia62AS6WRdtzwLEasEEW2Ym@mail.gmail.com>
+Subject: Re: [ruby-ffi] Linked list of structs
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.50 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 20 October 2010 03:31, Qwerty <qwerty123451910@hotmail.com> wrote:
+
+
+>
+> How do you iterate over the linked list using FFI?
+
+How about something like this:
+
+ptr = Pcap.find_devs
+until ptr.null?
+  devs = Pcap::Pcap_if_t.new ptr
+  puts devs[:name]
+  ptr=devs[:next]
+end
+
+> Also is it true that FFI can not handle a multidimensional array? The
+
+You should be able to fix this one as follows:
+
+ppdev = FFI::MemoryPointer.new :pointer
+errbuf = FFI::MemoryPointer.new :char, Pcap::PCAP_ERRBUF_SIZE
+res = Pcap.pcap_findalldevs(ppdev, errbuf)
+# ... check res for error conditions
+
+# now get the first device pointer
+ptr = ppdev.read_pointer
+
+# now loop over them all as above
+until ptr.null?
+  devs = Pcap::Pcap_if_t.new ptr
+  puts devs[:name]
+  ptr=devs[:next]
+end

@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs28292faj;
+        Fri, 18 Mar 2011 14:08:06 -0700 (PDT)
+Received: by 10.43.131.7 with SMTP id ho7mr2263211icc.171.1300482485788;
+        Fri, 18 Mar 2011 14:08:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCuk4_sBBoEgUhosQ@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTPS id v20si6772235ibi.116.2011.03.18.14.08.04
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 18 Mar 2011 14:08:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuk4_sBBoEgUhosQ@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuk4_sBBoEgUhosQ@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCuk4_sBBoEgUhosQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi10 with SMTP id 10sf873146pxi.7
+        for <headius@headius.com>; Fri, 18 Mar 2011 14:08:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=kPRgcjaXtPgx6peynERjLJIXJNfPRjsV8J1nh2uynoM=;
+        b=QVsHnsi5+pDRkKRnFGj2ewIWtEoZfHtIOhb3TnNvdCBSx5frgON2I4z2tdyKING0wR
+         ICvaSRC5Se1TMMMX/w/L160t9K+/8bGlXqOnmGPiKMA3S49WnDgoElvYTnYiSwBtDDfD
+         ePs5VpgtOr1sAu47V/UupxyyCjw+9wn4vubWA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=a36yeYMJkQpAAB0onB962ipsd1M9/hXJzHC/jnGeKBlXwZl5vzz4w1kqFO+L5Olhxp
+         kG9tlmtTO6fc2WJPmzjwYsJbNRtJO1TnJ4VmdOGe4i/bEfYv668KGSAxy/+CoUqXgWzC
+         16yDvHDUmPgl/pZFPypoR3cviLyPbYQkahNno=
+Received: by 10.142.65.28 with SMTP id n28mr51252wfa.52.1300482478627;
+        Fri, 18 Mar 2011 14:07:58 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.87.9 with SMTP id p9ls297241wfl.1.p; Fri, 18 Mar 2011
+ 14:07:57 -0700 (PDT)
+Received: by 10.142.62.31 with SMTP id k31mr51018wfa.50.1300482477932;
+        Fri, 18 Mar 2011 14:07:57 -0700 (PDT)
+Date: Fri, 18 Mar 2011 14:07:57 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <5348591.86.1300482477050.JavaMail.geo-discussion-forums@prc35>
+In-Reply-To: <665c401b-c17e-4f01-a338-7e25a228bbfa@k9g2000yqi.googlegroups.com>
+Subject: [ruby-ffi] Re: Array of double as an input argument of a function
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_85_30189930.1300482477047"
+
+------=_Part_85_30189930.1300482477047
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+You need to declare it as a :pointer, or :buffer_in argument, and then 
+allocate some temporary memory yourself.
+
+e.g.
+
+module Foo
+...
+   attach_function :my_func, [ :pointer ], :void
+end
+
+ary = FFI::MemoryPointer.new(:double, 3)
+
+# Fill the array with values
+ary.write_array_of_double([ 0.1, 0.2, 0.3 ])
+
+# pass it to the function
+Foo.my_func(ary)
+
+
+
+------=_Part_85_30189930.1300482477047
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>You need to declare it as a :pointer, or :buffer_in argument, and then allocate some temporary memory yourself.</div><div><br></div><div>e.g.</div><div><br></div><div>module Foo</div><div>...</div><div>&nbsp;&nbsp; attach_function :my_func, [ :pointer ], :void</div><div>end</div><div><br></div><div>ary = FFI::MemoryPointer.new(:double, 3)</div><div><br></div><div># Fill the array with values</div><div>ary.write_array_of_double([ 0.1, 0.2, 0.3 ])</div><div><br></div><div># pass it to the function</div><div>Foo.my_func(ary)</div><div><br></div><div><br></div>
+------=_Part_85_30189930.1300482477047--

@@ -1,0 +1,107 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] SystemStackError of callback</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] SystemStackError of callback</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>tlayboy <tlayboy@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>7/1/10 9:40 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+
+I am in troble with SystemStackError of callback.
+Does anyone know why this error is occured?
+
+My code is like this.
+
+############################
+C library
+############################
+typedef void (*callback)(int, void *);
+pthread_t thread;
+struct cb_info info;
+
+struct cb_info {
+	callback cb;
+	int data;
+	void *p;
+};
+
+void *call(void *data)
+{
+	struct cb_info *info = (struct cb_info *)data;
+	info-&gt;cb(info-&gt;data, info-&gt;p);
+}
+
+void async_call(callback cb, unsigned int data, void *p)
+{
+	int ret;
+
+	info.cb = rcb;
+	info.data = data;
+	info.p = p;
+
+	if ((ret = pthread_create(&amp;thread, NULL, call, (void *)&amp;info)) != 0)
+{
+		perror("ptherad_create");
+		exit(EXIT_FAILURE);
+	}
+}
+
+############################
+Ruby Code
+############################
+p = FFI::MemoryPointer.new(:int)
+p.write_int(2)
+
+async_call(1, p) do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>a, b<span class="moz-txt-tag">|</span></code>
+	100.times do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>d<span class="moz-txt-tag">|</span></code>
+		puts a, b.read_int
+	end
+end
+
+############################
+Output
+############################
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+/usr/lib/ruby/1.8/pp.rb:133:in `pp': stack level too deep
+(SystemStackError)
+	from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:119:in `guard_inspect_key'
+	from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:60:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:59:in `each'
+	from /usr/lib/ruby/1.8/pp.rb:59:in `pp'
+	from libcb.rb:35
+	from (eval):6:in `call'
+	from (eval):6:in `async_call'
+	from libcb.rb:34
+	from libcb.rb:33:in `times'
+	from libcb.rb:33
+
+thank you,
+</pre></div></body>
+</html>
+</table></div>

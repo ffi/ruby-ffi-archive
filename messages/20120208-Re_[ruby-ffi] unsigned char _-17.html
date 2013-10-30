@@ -1,0 +1,59 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] unsigned char *</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] unsigned char *</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeffrey Jones <jjones@toppan-f.co.jp></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/8/12 12:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode">Hello Chuck,
+<br>
+<br>Well that is embarrassing, it has been a decade since I have done any 
+real C stuff and that was at university so the semantics have been 
+rather lost on me.
+<br>
+<br>I shall gives this a go and see how things pan out.
+<br>
+<br>Thanks for the pointer (Ba-dump-tsh!)
+<br>
+<br>Jeff
+<br>
+<br>On 08/02/12 15:13, Chuck Remes wrote:
+<br><blockquote type=cite style="color: #000000;">On Feb 6, 2012, at 3:15 AM, Jeffrey Jones wrote:
+<br>
+<br><blockquote type=cite style="color: #000000;">Hello all,
+<br>
+<br>I am in the early stages of investigating ruby FFI for use with a
+<br>particular third party library.
+<br>
+<br>This library makes use of a few functions with the following
+<br>signature.
+<br>
+<br>struct * function (unsigned char*, unsigned int)
+<br>
+<br>These functions are basically used for reading data in from various
+<br>places (fread for example) so it is the data itself and the data size.
+<br>
+<br>Looking at all the various documentation and examples and code, I
+<br>cannot actually see what I need to do in ruby to match the signature.
+<br>
+<br>module Foo
+<br>&nbsp; attach_function :function, [:uchar, :uint], :pointer
+<br>end
+<br>
+<br>Doesn't work because it isn't expecting a single char but a char*.
+<br>
+<br>Does anyone know what I need to do? (If it is even possible?)
+<br></blockquote>A "char *" is a pointer. You almost had the answer on your own.
+<br>
+<br>module Foo
+<br>&nbsp;&nbsp; attach_function :function, [:pointer, :uint], :pointer
+<br>end
+<br>
+<br>Try that.
+<br>
+<br>cr
+<br>
+<br>
+<br></blockquote></div></body>
+</html>
+</table></div>

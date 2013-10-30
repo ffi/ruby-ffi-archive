@@ -1,0 +1,28 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/14/09 10:33 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, 11 Dec 2009 14:25:30 -0800 (PST)
+neetpgr <a class="moz-txt-link-rfc2396E" href="mailto:neetpgr@gmail.com">&lt;neetpgr@gmail.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>lib/ffi/library.rb in gem is old, so every callback's convention
+<span class="moz-txt-citetags">&gt; </span>is :default.
+</pre></blockquote><pre wrap>
+
+Where do you see this in the 0.5.4 library.rb code?
+
+On line 64, shouldn't this code
+
+  options[:convention] = defined?(@ffi_convention) ? @ffi_convention : :default
+
+take care of the calling convention (even for callbacks) as long as you've explicity called ffi_convention before attach_function?
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

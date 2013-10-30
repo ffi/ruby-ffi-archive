@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.147.137.3 with SMTP id p3csp205641yan;
+        Thu, 5 Apr 2012 07:54:00 -0700 (PDT)
+Received: by 10.236.200.199 with SMTP id z47mr2603879yhn.8.1333637640203;
+        Thu, 05 Apr 2012 07:54:00 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLeTq4HQChCD5Pb7BBoEdXIi3w@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id l24si4141994yhk.145.2012.04.05.07.54.00
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 07:54:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCD5Pb7BBoEdXIi3w@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCD5Pb7BBoEdXIi3w@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCLeTq4HQChCD5Pb7BBoEdXIi3w@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yenq10 with SMTP id q10sf2508858yen.7
+        for <headius@headius.com>; Thu, 05 Apr 2012 07:54:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=icIy7GMTjcHRKc7YnzEhyF5xyjO3fZwJY7UJQVq3nZ0=;
+        b=gTzEH7AvkYH5eO08l+E7NL/pz9pNsznQHXftEBOJoZVHdWL36j/dyGBHmQPoI9ghff
+         KVYlE+eXTnOln6gajCGyzkFsGsgLd6ZoJbyda8dn17d2b1oTbu3Lhgwp75A+BN1Dghoc
+         05G3nehIDx2S+rrHMGJCoB6EhUsIS9tMAf+0c=
+Received: by 10.229.135.3 with SMTP id l3mr57514qct.10.1333637635691;
+        Thu, 05 Apr 2012 07:53:55 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.166.138 with SMTP id m10ls1256500qcy.3.gmail; Thu, 05 Apr
+ 2012 07:53:55 -0700 (PDT)
+Received: by 10.224.72.211 with SMTP id n19mr1723720qaj.7.1333637635100;
+        Thu, 05 Apr 2012 07:53:55 -0700 (PDT)
+Received: by 10.224.72.211 with SMTP id n19mr1723718qaj.7.1333637635090;
+        Thu, 05 Apr 2012 07:53:55 -0700 (PDT)
+Received: from mail-qc0-f178.google.com (mail-qc0-f178.google.com [209.85.216.178])
+        by gmr-mx.google.com with ESMTPS id a39si1057038qch.0.2012.04.05.07.53.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 07:53:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.216.178 as permitted sender) client-ip=209.85.216.178;
+Received: by qcse14 with SMTP id e14so912874qcs.9
+        for <ruby-ffi@googlegroups.com>; Thu, 05 Apr 2012 07:53:55 -0700 (PDT)
+Received: by 10.229.136.83 with SMTP id q19mr1158392qct.34.1333637634924;
+        Thu, 05 Apr 2012 07:53:54 -0700 (PDT)
+Received: from Red (rrcs-98-102-103-102.central.biz.rr.com. [98.102.103.102])
+        by mx.google.com with ESMTPS id df8sm6436699qab.6.2012.04.05.07.53.53
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 07:53:53 -0700 (PDT)
+Date: Thu, 5 Apr 2012 10:54:00 -0400
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] 1.1.0.rc2
+Message-Id: <20120405105400.1db8391163802994cde189f9@gmail.com>
+In-Reply-To: <32140448.796.1333611663823.JavaMail.geo-discussion-forums@pbctx1>
+References: <32140448.796.1333611663823.JavaMail.geo-discussion-forums@pbctx1>
+X-Mailer: Sylpheed 3.2.0beta6 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jon.forums@gmail.com designates 209.85.216.178 as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> I just pushed 1.1.0.rc2 to rubygems.  Please try it out and report any 
+> installation problems on your favourite platform.
+
+uname -rsm
+Linux 3.2.13-1-ARCH i686
+
+ruby --version
+ruby 2.0.0dev (2012-04-05 trunk 35241) [i686-linux]
+
+gcc --version
+gcc (GCC) 4.7.0 20120324 (prerelease)
+
+gem install ffi --pre --user-install
+Fetching: ffi-1.1.0.rc2.gem (100%)
+Building native extensions.  This could take a while...
+Successfully installed ffi-1.1.0.rc2
+1 gem installed
+
+ripl -r ffi
+>> FFI::Platform::IS_LINUX
+=> true
+>> FFI::Platform::IS_WINDOWS
+=> false
+
+=============================
+
+# Win7 Ultimate 32bit
+ruby --version
+ruby 1.9.3p174 (2012-04-03 revision 35222) [i386-mingw32]
+
+gcc --version
+gcc (GCC) 4.6.2
+
+gem install ffi --pre
+Fetching: ffi-1.1.0.rc2-x86-mingw32.gem (100%)
+Successfully installed ffi-1.1.0.rc2-x86-mingw32
+1 gem installed
+
+ripl -r ffi
+>> FFI::Platform::IS_LINUX
+=> false
+>> FFI::Platform::IS_WINDOWS
+=> true
+
+
+Jon
+
+---
+Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+http://thecodeshop.github.com | http://jonforums.github.com/
+twitter: @jonforums

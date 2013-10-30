@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Null Pointer Issue? Am I Racing with the Garbage Collector?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Null Pointer Issue? Am I Racing with the Garbage Collector?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/12/10 12:21 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thats interesting.
+
+Does curl use threads internally?  If so, build the ffi gem from
+github and try that.  Earlier versions don't deal well with callbacks
+coming from non-ruby threads.
+
+Also try running it with JRuby.  It handles threads a lot better.
+
+
+On 12 November 2010 15:25, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gonyea@gmail.com">&lt;gonyea@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://gist.github.com/673753">https://gist.github.com/673753</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>That will show you the script I'm running, the gdb backtrace, and ruby-
+<span class="moz-txt-citetags">&gt; </span>prof (if that helps at all).  I basically was benchmarking my library
+<span class="moz-txt-citetags">&gt; </span>with the one I started branching from.  It's all good, until I start
+<span class="moz-txt-citetags">&gt; </span>running a whole lot of iterations.  I made some changes, which seems
+<span class="moz-txt-citetags">&gt; </span>to have made it less frequent... until I up the number of iterations.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c2337b1adff21d00#comments">https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c2337b1adff21d00#comments</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>That was the one fix.  This GSolr junk of mine uses StreamlyFFI and
+<span class="moz-txt-citetags">&gt; </span>CurlFFI:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>StreamlyFFI: <a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi">https://github.com/aitrus/streamly_ffi</a>
+<span class="moz-txt-citetags">&gt; </span>CurlFFI: <a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi">https://github.com/aitrus/curl_ffi</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Scott
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

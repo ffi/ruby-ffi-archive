@@ -1,0 +1,116 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs20344wfg;
+        Tue, 10 Nov 2009 21:10:30 -0800 (PST)
+Received: by 10.114.186.37 with SMTP id j37mr2237321waf.36.1257916230745;
+        Tue, 10 Nov 2009 21:10:30 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-px0-f159.google.com (mail-px0-f159.google.com [209.85.216.159])
+        by mx.google.com with ESMTP id 13si3775245pzk.93.2009.11.10.21.10.29;
+        Tue, 10 Nov 2009 21:10:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.159 as permitted sender) client-ip=209.85.216.159;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.159 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi31 with SMTP id 31so92764pxi.27
+        for <headius@headius.com>; Tue, 10 Nov 2009 21:10:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=lLQPD6ZMUowJJ0dv2VFNalTxQBZmAM3g7m3v/g45fYQ=;
+        b=a6SDUK0ILkXRohTe8cG2YGXuYR7P0/0/fz0ONBK5wWErKQqswGAyxyDwydsKv/BG69
+         B9+lRKKh3XHbn9WjOgZJ61Gabmz0oSnUgmvmtxoa3LlCL0+udRigzc1KhqWD8FJP/eKe
+         4SsdnGwRDE3CNintaFypT9eEiFu17f/lr4f9Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=2zr9drPMifgKn6ygM8T7up6Nzi0JCISsiiB0M63gYeE3p69TvNcxOSGRun+3ggLIye
+         TSLqWkKuHCJIHI7Kxjw3lN8quGaElF0QRxFJuEWk345Yr1rVpcr1Zcu3L0wJ0z8LOCor
+         g8g2hsP6IuMuOkkgVkixVPu3Pg3lY3ncA1M3E=
+Received: by 10.115.66.13 with SMTP id t13mr32557wak.18.1257916227683;
+        Tue, 10 Nov 2009 21:10:27 -0800 (PST)
+Received: by 10.106.139.12 with SMTP id m12gr106prd.0;
+	Tue, 10 Nov 2009 21:10:27 -0800 (PST)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.143.21.37 with SMTP id y37mr135958wfi.29.1257916226404; Tue, 10 Nov 2009 21:10:26 -0800 (PST)
+Received: by 10.143.21.37 with SMTP id y37mr135957wfi.29.1257916226383; Tue, 10 Nov 2009 21:10:26 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f184.google.com (mail-pz0-f184.google.com [209.85.222.184]) by gmr-mx.google.com with ESMTP id 24si186734pzk.14.2009.11.10.21.10.25; Tue, 10 Nov 2009 21:10:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.184 as permitted sender) client-ip=209.85.222.184;
+Received: by mail-pz0-f184.google.com with SMTP id 14so532228pzk.23 for <ruby-ffi@googlegroups.com>; Tue, 10 Nov 2009 21:10:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=bLlGsK/OUG7X0MIckn9/vYytfHUgieC6nq0YOD8rWSE=; b=Fj35HOHg350iji18d0LD3WMhu0cEt8hhG3PzHyAjb+9zOWA4sfs48G+mbqSIqhAN1b OIR+euCq60o04V9vlovHJ4AavXAUtjbqKhrJxz5mY6Qvf2aulJLNji+7mkHqnM4bPepm Blt/96RPGJON1QtqQchnR7EnW+MgCboMePgVs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=oaqEbcC7EC+nstB6h8eACZkrDIWpg2p5SXn/TRVp8tuLxWEcFAJZHURw+KCK/UEByV e/btSLxD0NpfEsjkk6uiPHZy1q93JKaCYHGOD4a9S4WMxML0ztTZGYsrqmogzfQvpTPR bvjdl1x3fgeE7PRSvC29LrCyDx4YaGpD8/wsg=
+MIME-Version: 1.0
+Received: by 10.140.158.8 with SMTP id g8mr59644rve.157.1257916225250; Tue, 10  Nov 2009 21:10:25 -0800 (PST)
+In-Reply-To: <4AF9B1B5.8030408@redhat.com>
+References: <20091107162455.ca8a2cd5.jon.forums@gmail.com> <4AF988AD.8010401@redhat.com> <20091110121928.e7219040.jon.forums@gmail.com> <4AF9B1B5.8030408@redhat.com>
+Date: Wed, 11 Nov 2009 15:10:25 +1000
+Message-ID: <4ccee320911102110u99c484bn8ae6527fc7edd061@mail.gmail.com>
+Subject: [ruby-ffi] Re: FFI core concepts wiki documentation
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+2009/11/11 Bryan Kearney <bkearney@redhat.com>:
+> Passing a Single String by Reference
+> -------------------------------------
+>
+> Assume the method:
+> =A0 =A0 =A0 =A0int aug_get(const augeas *aug, const char *path, const cha=
+r **value);
+
+[...]
+> Passing an Array of Strings back by Reference
+> ----------------------------------------------
+>
+> int aug_match(const augeas *aug, const char *path, char ***matches);
+
+Since these are pretty common things in C (well, in those types of
+apis), I've been wondering if adding a higher-level wrapper would make
+it easier to read/less confusing to write.
+
+e.g.
+  ref =3D FFI::Reference.new :string
+  AugeasLib.aug_get("foo", "/bar", ref)
+  str =3D ref.get  # returns a string, or nil for null
+  # do stuff with str as you would expect
+
+and
+  ref =3D FFI::Reference.new :string_array # or maybe Reference.new [ :stri=
+ng ]
+  AugeasLib.aug_match("foo", "/bar", ref)
+  str_ary =3D ref.get  # pulls out all the strings and puts them in an
+array, stopping at first null
+  str_ary.each { |s| # do stuff with each string }
+
+I think this adds a bit of clarity when reading, since it is easy to
+spot that you're just passing in a reference that you expect the C
+code to fill out, and not for some more generic pointer/memory use.
+
+This could all be implemented in a third-party gem, e.g. NiceFFI,
+which would be preferable to putting it in ruby-ffi itself, since that
+way it can evolve faster, and be used across both CRuby and JRuby.

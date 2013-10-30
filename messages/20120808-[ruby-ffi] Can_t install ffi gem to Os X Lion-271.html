@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Can&#39;t install ffi gem to Os X Lion</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Can&#39;t install ffi gem to Os X Lion</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Dávid Kovács &lt;davidkovaccs@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/8/12 10:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+It gives me the following error:
+
+libs/closures.o src/x86/.libs/ffi.o src/x86/.libs/darwin.o src/x86/.libs/ffi64.o src/x86/.libs/darwin64.o    -arch x86_64 -arch x86_64   -install_name  /usr/local/lib/libffi.5.dylib -compatibility_version 6 -current_version 6.10 -Wl,-single_module
+ld: warning: could not create compact unwind for _ffi_call_unix64: does not use RBP or RSP based frame
+libtool: link: (cd ".libs" &amp;&amp; rm -f "libffi.dylib" &amp;&amp; ln -s "libffi.5.dylib" "libffi.dylib")
+libtool: link: ( cd ".libs" &amp;&amp; rm -f "libffi.la" &amp;&amp; ln -s "../libffi.la" "libffi.la" )
+/bin/sh ./libtool --tag=CC   --mode=link gcc -g  -arch x86_64  -Wall -fexceptions  -arch x86_64 -o libffi_convenience.la  src/debug.lo src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo      src/x86/ffi.lo src/x86/darwin.lo src/x86/ffi64.lo src/x86/darwin64.lo                      
+libtool: link: ar cru .libs/libffi_convenience.a src/.libs/debug.o src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi.o src/x86/.libs/darwin.o src/x86/.libs/ffi64.o src/x86/.libs/darwin64.o 
+/usr/bin/ranlib: file: .libs/libffi_convenience.a(ffi.o) has no symbols
+/usr/bin/ranlib: file: .libs/libffi_convenience.a(darwin.o) has no symbols
+libtool: link: ranlib .libs/libffi_convenience.a
+ranlib: file: .libs/libffi_convenience.a(ffi.o) has no symbols
+ranlib: file: .libs/libffi_convenience.a(darwin.o) has no symbols
+libtool: link: ( cd ".libs" &amp;&amp; rm -f "libffi_convenience.la" &amp;&amp; ln -s "../libffi_convenience.la" "libffi_convenience.la" )
+# Assemble into a FAT (x86_64, i386, ppc) library
+/usr/bin/libtool -static -o "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0"/.libs/libffi_convenience.a \
+	    "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c"/libffi-i386/.libs/libffi_convenience.a "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c"/libffi-x86_64/.libs/libffi_convenience.a
+/usr/bin/libtool: for architecture: i386 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-i386/.libs/libffi_convenience.a(ffi64.o) has no symbols
+/usr/bin/libtool: for architecture: i386 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-i386/.libs/libffi_convenience.a(darwin64.o) has no symbols
+/usr/bin/libtool: for architecture: x86_64 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-x86_64/.libs/libffi_convenience.a(ffi.o) has no symbols
+/usr/bin/libtool: for architecture: x86_64 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-x86_64/.libs/libffi_convenience.a(darwin.o) has no symbols
+/usr/bin/libtool: can't create output file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0/.libs/libffi_convenience.a (No such file or directory)
+make: *** ["/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0"/.libs/libffi_convenience.a] Error 1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/ffi-1.1.4 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/gem_make.out
+An error occured while installing ffi (1.1.4), and Bundler cannot continue.
+Make sure that `gem install ffi -v '1.1.4'` succeeds before bundling.
+</pre></div></body>
+</html>
+</table></div>

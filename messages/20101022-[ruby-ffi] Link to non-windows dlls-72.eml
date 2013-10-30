@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs55077bkh;
+        Sat, 23 Oct 2010 02:24:26 -0700 (PDT)
+Received: by 10.101.166.37 with SMTP id t37mr3152295ano.122.1287825866083;
+        Sat, 23 Oct 2010 02:24:26 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICH0uSrDRDH04rmBBoEbg3emg@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id x31si9309167ana.174.2010.10.23.02.24.24;
+        Sat, 23 Oct 2010 02:24:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDH04rmBBoEbg3emg@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDH04rmBBoEbg3emg@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCICH0uSrDRDH04rmBBoEbg3emg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj16 with SMTP id 16sf3380011gwj.7
+        for <headius@headius.com>; Sat, 23 Oct 2010 02:24:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=KkRnfZVYgVyWBMOM1ju8Rw6Tr0CbmBU3Wfy6hnRcrAg=;
+        b=YVLEISjzYBKU4f064T+9Qom24ZY+DEBrSGo/e7WUK9Kk4Y4KisfObYCdFA8UwZNV96
+         U4I4XPjqLftwFkStzaHsiSjQub5ZF1Fy1Ml1jQBFXQ6pjg0dsP2SU2v8yiD3OXVODuD4
+         fmfm1Ymk1HwJPvEokfkIuL9ZpLmb6NnYhzODg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=hsnbKIs0A2B5+Mtda9MfDazsMV5rYhtKyd4rUjsO4IcTkR5nTDmTHfX8OVQW/0vIhh
+         XGRua+CHG4aIKGIGntkNujw6PHcXa6Q6yjHJ/mEIwMH3xWvvaafkp5kbGNzUAyKDtH+H
+         StUTtAC+IJ4O6LVtNvDxGoZ4iHIPeKZd9D0Sc=
+Received: by 10.151.62.41 with SMTP id p41mr642797ybk.14.1287825863531;
+        Sat, 23 Oct 2010 02:24:23 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.102.24 with SMTP id z24ls2473941ybb.3.p; Sat, 23 Oct 2010
+ 02:24:23 -0700 (PDT)
+Received: by 10.150.198.17 with SMTP id v17mr1189266ybf.57.1287825863199;
+        Sat, 23 Oct 2010 02:24:23 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.206.26 with SMTP id i26mr157093anq.12.1287790406193; Fri,
+ 22 Oct 2010 16:33:26 -0700 (PDT)
+Received: by j18g2000yqd.googlegroups.com with HTTP; Fri, 22 Oct 2010 16:33:26
+ -0700 (PDT)
+Date: Fri, 22 Oct 2010 16:33:26 -0700 (PDT)
+X-IP: 71.205.17.111
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US)
+ AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.41 Safari/534.7,gzip(gfe)
+Message-ID: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Link to non-windows dlls
+From: kvberge <kvandenberge@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: kvandenberge@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Is there a trick to using FFI and the non-windows api dll's?  I am
+attempting to link to a custom usb dll that is known to work
+(currently using wrapper created from swig and using ruby 1.8.6).  I
+am now attempting to run ruby 1.9.2 and FFI seemed like a simpler
+solution than worrying about using swig.  I should also note that I am
+on windows 7 and ran the ruby one click installer for windows.  When
+running the script I get this error:
+
+
+C:/projects/FFI/test_usb.rb:6: [BUG] Segmentation fault
+ruby 1.9.2p0 (2010-08-18) [i386-mingw32]
+
+-- control frame ----------
+c:0004 p:---- s:0014 b:0014 l:000013 d:000013 CFUNC  :Receive
+c:0003 p:0081 s:0009 b:0008 l:0013f4 d:001074 EVAL   C:/projects/FFI/
+test_usb.rb:6
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0013f4 d:0013f4 TOP
+---------------------------
+-- Ruby level backtrace information
+----------------------------------------
+C:/projects/FFI/test_usb.rb:6:in `<main>'
+C:/projects/FFI/test_usb.rb:6:in `Receive'
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension
+libraries.
+Bug reports are welcome.
+For details: http://www.ruby-lang.org/bugreport.html
+
+
+This application has requested the Runtime to terminate it in an
+unusual way.
+Please contact the application's support team for more information.
+
+Any advice?
+If you need more information let me know.
+
+Thanks

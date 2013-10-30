@@ -1,0 +1,100 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs49655bkj;
+        Wed, 3 Nov 2010 17:24:33 -0700 (PDT)
+Received: by 10.151.42.15 with SMTP id u15mr108340ybj.222.1288830272578;
+        Wed, 03 Nov 2010 17:24:32 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRC--sfmBBoEsV6-vw@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id c7si21710925yha.95.2010.11.03.17.24.31;
+        Wed, 03 Nov 2010 17:24:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRC--sfmBBoEsV6-vw@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRC--sfmBBoEsV6-vw@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRC--sfmBBoEsV6-vw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk26 with SMTP id 26sf1998610gxk.7
+        for <headius@headius.com>; Wed, 03 Nov 2010 17:24:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=a7mvDGhn0q9kvKDFU9x/N1NlWG48TsVHL+2YeLXWnyY=;
+        b=DtNXcazH9Nt7YkGqumM20cCR9o3RMGmMMJjpHMaX0mvvcbWLbs5hx+Ng6k77rOcLc7
+         4iaBrr9WHez5WvLN0wAgnXPyMhu3Wr3E48N1PlT3CILdqEDdxUKgsucbs7Xh/9Ef603C
+         tuI2PwewO5DPS1VEEolUXn488ehvItIFRxNmc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=GbSXlGM+IcUsnkUTAomSTDKpDDdeI6aMMkJkVxMQR1l11RCJXbgcHrv/wHNnnEhlHr
+         q83YEmbY8BPF+B8VisINEu3lRqlAJacB21ndZMuFwQOZDx7Mr48csBnsSeqepC0R738Y
+         byOHhJdOq//hIm8gBPJraK6vEauciC1lEhbY0=
+Received: by 10.91.45.6 with SMTP id x6mr26240agj.38.1288830270732;
+        Wed, 03 Nov 2010 17:24:30 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.183.1 with SMTP id g1ls242156agf.7.p; Wed, 03 Nov 2010
+ 17:24:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.78.4 with SMTP id a4mr24589agb.26.1288830270366; Wed, 03
+ Nov 2010 17:24:30 -0700 (PDT)
+Received: by s12g2000prs.googlegroups.com with HTTP; Wed, 3 Nov 2010 17:24:30
+ -0700 (PDT)
+Date: Wed, 3 Nov 2010 17:24:30 -0700 (PDT)
+In-Reply-To: <AANLkTik6JNXjHV6CZYk=oWSSTCRm-mGVMJwKsxHzBJ=h@mail.gmail.com>
+X-IP: 71.37.141.51
+References: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+ <a4dd5c61-5fc2-49eb-9997-7b78214d726d@n32g2000prc.googlegroups.com> <AANLkTik6JNXjHV6CZYk=oWSSTCRm-mGVMJwKsxHzBJ=h@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.12)
+ Gecko/20101026 SUSE/3.6.12-0.7.1 Firefox/3.6.12,gzip(gfe)
+Message-ID: <ab019af7-a986-4708-a58a-e65dc6811589@s12g2000prs.googlegroups.com>
+Subject: [ruby-ffi] Re: Having trouble with a struct
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thank you for your reply.
+
+1. Open suse 11.3 kernel: 2.6.34.7-0.5-desktop #1 SMP PREEMPT.
+Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+
+2. I tried it with JRuby 1.5.2 and got an error about pack being
+undefined. I tried the alias packed with no luck. The JRuby ffi gem
+directory only has 1 file ffi-0.6.3-java/lib/ffi.rb. Are the other
+files outside this directory? The docs only show the 3 methods defined
+in that file(Pointer), yet is doesn't complain about FFI::Struct.
+
+3. I would need to do some more testing but that seems to work.
+
+On Nov 3, 4:32=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Indeed, looks like a bug. =A0That should not be neccessary at all - that
+> struct should pack naturally.
+>
+> A couple of things:
+>
+> 1) What OS/cpu is this on?
+> 2) Can you try it on JRuby?
+> 3) Can you try adding 'pack 1' before the layout line?
+>
+> On 4 November 2010 08:08, Qwerty <qwerty123451...@hotmail.com> wrote:
+>
+> > I found a way around the problems I was having. Any field bigger than
+> > 8 bits I declare as [:uchar,x bytes]. Feels like an ugly hack to get
+> > around what seems to be a pretty nasty bug

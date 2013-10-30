@@ -1,0 +1,76 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.228.137 with SMTP id je9cs190356qcb;
+        Fri, 11 Jun 2010 09:17:04 -0700 (PDT)
+Received: by 10.150.237.21 with SMTP id k21mr3970804ybh.104.1276273023854;
+        Fri, 11 Jun 2010 09:17:03 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNuojKTqEBD9wsngBBoE_lq9Eg@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id d3si4446906ybi.107.2010.06.11.09.17.02;
+        Fri, 11 Jun 2010 09:17:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNuojKTqEBD9wsngBBoE_lq9Eg@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNuojKTqEBD9wsngBBoE_lq9Eg@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCNuojKTqEBD9wsngBBoE_lq9Eg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj15 with SMTP id 15sf1321970gwj.7
+        for <headius@headius.com>; Fri, 11 Jun 2010 09:17:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=lvEojhi1IbdzhyKE0eub73UmdLWDIXwPeDRpL9DNpNI=;
+        b=lYtRZIi//B2hoWxhMzgXEcogwTWPk8+m6WfW4DEC2+qjv3yuGI4U9eUwEoEVcCetMl
+         0tCVuCU0qjv8t3EOrhgr4BYghvIu4+hyJDQnz37PfdZ42yuUBQDXe3O5b7TpXRUuUg3f
+         ojs+pAwgzCB/SQGtoyIRHDQo4x/CAngqruBdo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=StMjXjEnlKKUNU1fCI12hs+oKlAuR4MQMQsFA+MQw2pw5GoXaHwH7V0eXTQn8ptpec
+         sZL7g+fiJ1N6VjxdQX3RVa8ETpMAYF7vbcCCY2kgPA0/3IEs6Bm3TwTLZn1IaS/Tn8Gn
+         ZT01dbXoZbFHFNBfLy83K5gLohRnXh5lWE5jc=
+Received: by 10.101.152.22 with SMTP id e22mr158585ano.20.1276273021932;
+        Fri, 11 Jun 2010 09:17:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.177.32 with SMTP id e32ls4188128anp.5.p; Fri, 11 Jun 2010 
+	09:17:00 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.142.34 with SMTP id u34mr155180ann.17.1276273019931; Fri, 
+	11 Jun 2010 09:16:59 -0700 (PDT)
+Received: by g39g2000pri.googlegroups.com with HTTP; Fri, 11 Jun 2010 09:16:59 
+	-0700 (PDT)
+Date: Fri, 11 Jun 2010 09:16:59 -0700 (PDT)
+X-IP: 216.49.181.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) 
+	AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.70 Safari/533.4,gzip(gfe)
+Message-ID: <e7927406-ff8d-44d1-981a-2008fc6956a9@g39g2000pri.googlegroups.com>
+Subject: [ruby-ffi] default to :stdcall on windows?
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm not sure if this is necessary, but I recently saw a bug report
+that, for one user, the fact that they weren't using stdcall for their
+method declarations was causing a memory leak.  Maybe it should
+default to stdcall on windows since that's what dll's default to,
+isn't it?
+
+Thoughts? Or maybe I'm repeating myself here.
+Thanks!
+-rp

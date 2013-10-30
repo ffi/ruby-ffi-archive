@@ -1,0 +1,171 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.47.194 with SMTP id f2csp37573obn;
+        Thu, 5 Apr 2012 16:31:48 -0700 (PDT)
+Received: by 10.50.242.5 with SMTP id wm5mr3664009igc.40.1333668708039;
+        Thu, 05 Apr 2012 16:31:48 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDf1vj7BBoEilW22Q@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id wp8si372203igc.31.2012.04.05.16.31.47
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 16:31:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDf1vj7BBoEilW22Q@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDf1vj7BBoEilW22Q@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDf1vj7BBoEilW22Q@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by iage36 with SMTP id e36sf4095403iag.7
+        for <headius@headius.com>; Thu, 05 Apr 2012 16:31:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=xObnpCaBmmpW8fczSsqimHTgf2ajGG2xFCRw6RsM4BI=;
+        b=yb31AfI+SN0FH+yXN2vpAF5vYGdiejl5CEJTk1PMm01LIBt2VzAOVItxcR08OQQarS
+         zM+0CULQ6rnxbVxz84lciR4nlddT+mxSMLNKS+dhIwpIBdE99IRySlPIdqLh0kFpv+vT
+         F2BsmJAF0WhNKjJUg2Zyc4u7QW2+3LWc2uDbE=
+Received: by 10.68.201.164 with SMTP id kb4mr1245881pbc.12.1333668703199;
+        Thu, 05 Apr 2012 16:31:43 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.134.39 with SMTP id ph7ls7811026pbb.4.gmail; Thu, 05 Apr
+ 2012 16:31:43 -0700 (PDT)
+Received: by 10.68.216.130 with SMTP id oq2mr1255002pbc.6.1333668702963;
+        Thu, 05 Apr 2012 16:31:42 -0700 (PDT)
+Date: Thu, 5 Apr 2012 16:31:42 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <27277479.32.1333668702207.JavaMail.geo-discussion-forums@pbcoy7>
+In-Reply-To: <14fe67cd-34b3-400f-aaf1-e1ef26d76661@vy8g2000pbc.googlegroups.com>
+References: <14fe67cd-34b3-400f-aaf1-e1ef26d76661@vy8g2000pbc.googlegroups.com>
+Subject: [ruby-ffi] Re: Ruby FFI to C to Ruby FFI to C
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_31_8580393.1333668702206"
+
+------=_Part_31_8580393.1333668702206
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+ From a quick look, it looks like a struct-by-value problem.
+
+i.e. uv_buf_init() returns a uv_buf_t by value, but you declare it to 
+return a :pointer.
+
+You'll need to find the layout of uv_buf_t and recreate it in FFI, then use 
+it as the return value.
+e.g.
+
+if FFI::Platform.windows?
+ # win32 has a different uv_buf_t layout to everything else.
+  class UvBuf < FFI::Struct
+    layout :len, :ulong, :base, :pointer
+  end
+else 
+  class UvBuf < FFI::Struct
+    layout :base, :pointer, :len, :size_t
+  end
+end
+
+Then use UvBuf.by_value in place of uv_buf_t ... you can probably do that 
+with typedef like you've done everything else, since uv seems to only use 
+that struct by value (but you'll want to double check).
+
+typedef UvBuf.by_value, :uv_buf_t
+
+
+
+
+On Friday, April 6, 2012 7:50:55 AM UTC+10, avalanche123 wrote:
+>
+> Hello, 
+>
+> I'm working on libuv ffi bindings for Ruby and have an issue I can't 
+> understand 
+>
+> Libuv needs an allocated buffer it can write to, here is a gist of 
+> code https://gist.github.com/2313277 that has my ruby module and usage 
+> examples both in C and Ruby 
+> The C example works fine, while ruby makes Libuv raise EINVAL. I've 
+> used some basic debugging and figured out that the buffer len than 
+> comes from Ruby is 140735085305696 
+> instead of 128, as can be seen from shell outputs examples I've added 
+> to the gist. I've also added relevant pieces of Libuv to the gist, 
+> specifically uv_buf_init that is 
+> responsible for creating uv_buf_t and part of libuv's uv__read that is 
+> responsible for using it. 
+>
+> From my debugging it looks like a corrupted uv_buf_t memory comes back 
+> from Ruby, making libuv believe beffer's len attribute is 
+> 140735085305696 bytes long. 
+>
+> I will appreciate any feedback as I've been struggling with this for a 
+> while. 
+>
+> Best, 
+> Bulat
+
+
+------=_Part_31_8580393.1333668702206
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+ From a quick look, it looks like a struct-by-value problem.<div><br></div><=
+div>i.e. uv_buf_init() returns a uv_buf_t by value, but you declare it to r=
+eturn a :pointer.</div><div><br></div><div>You'll need to find the layout o=
+f uv_buf_t and recreate it in FFI, then use it as the return value.</div><d=
+iv>e.g.</div><div><br></div><div>if FFI::Platform.windows?</div><div>&nbsp;=
+# win32 has a different uv_buf_t layout to everything else.</div><div><div>=
+&nbsp; class UvBuf &lt; FFI::Struct</div><div>&nbsp; &nbsp; layout :len, :u=
+long, :base, :pointer</div><div>&nbsp; end</div></div><div>else&nbsp;</div>=
+<div>&nbsp; class UvBuf &lt; FFI::Struct</div><div>&nbsp; &nbsp; layout :ba=
+se, :pointer, :len, :size_t</div><div>&nbsp; end</div><div>end</div><div><b=
+r></div><div>Then use UvBuf.by_value in place of uv_buf_t ... you can proba=
+bly do that with typedef like you've done everything else, since uv seems t=
+o only use that struct by value (but you'll want to double check).</div><di=
+v><br></div><div>typedef UvBuf.by_value, :uv_buf_t</div><div><br></div><div=
+><br></div><div><br></div><div><br>On Friday, April 6, 2012 7:50:55 AM UTC+=
+10, avalanche123 wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0=
+;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hello,
+<br>
+<br>I'm working on libuv ffi bindings for Ruby and have an issue I can't
+<br>understand
+<br>
+<br>Libuv needs an allocated buffer it can write to, here is a gist of
+<br>code <a href=3D"https://gist.github.com/2313277" target=3D"_blank">http=
+s://gist.github.com/<wbr>2313277</a> that has my ruby module and usage
+<br>examples both in C and Ruby
+<br>The C example works fine, while ruby makes Libuv raise EINVAL. I've
+<br>used some basic debugging and figured out that the buffer len than
+<br>comes from Ruby is 140735085305696
+<br>instead of 128, as can be seen from shell outputs examples I've added
+<br>to the gist. I've also added relevant pieces of Libuv to the gist,
+<br>specifically uv_buf_init that is
+<br>responsible for creating uv_buf_t and part of libuv's uv__read that is
+<br>responsible for using it.
+<br>
+<br>From my debugging it looks like a corrupted uv_buf_t memory comes back
+<br>from Ruby, making libuv believe beffer's len attribute is
+<br>140735085305696 bytes long.
+<br>
+<br>I will appreciate any feedback as I've been struggling with this for a
+<br>while.
+<br>
+<br>Best,
+<br>Bulat</blockquote></div>
+------=_Part_31_8580393.1333668702206--

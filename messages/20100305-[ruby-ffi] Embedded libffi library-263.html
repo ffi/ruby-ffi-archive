@@ -1,0 +1,25 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Embedded libffi library</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Embedded libffi library</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>micah <micaho@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/5/10 5:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+In working on the Debian package, I found that the ffi ruby library
+embeds an entire code-copy of the upstream libffi C library. Embedding
+code is a bug in Debian if there is already an available library and
+headers that can be depended on and used instead... so I have taken
+the steps to repack the tarball to remove this embedded code-copy in
+the Debian package.
+
+However, I am curious to know if this is just a convenience copy, or
+if it has any modifications that I should be aware of?
+
+thanks,
+micah
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,316 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.18.161 with SMTP id x1csp42559lad;
+        Sun, 26 May 2013 13:41:02 -0700 (PDT)
+X-Received: by 10.220.83.138 with SMTP id f10mr13698348vcl.7.1369600861320;
+        Sun, 26 May 2013 13:41:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDFK5M4L5YIRBXHGRGGQKGQESQPKDOY@googlegroups.com>
+Received: from mail-vc0-f184.google.com (mail-vc0-f184.google.com [209.85.220.184])
+        by mx.google.com with ESMTPS id ra6si9608591vec.17.2013.05.26.13.41.00
+        for <headius@headius.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 26 May 2013 13:41:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDFK5M4L5YIRBXHGRGGQKGQESQPKDOY@googlegroups.com designates 209.85.220.184 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDFK5M4L5YIRBXHGRGGQKGQESQPKDOY@googlegroups.com designates 209.85.220.184 as permitted sender) smtp.mail=ruby-ffi+bncBDFK5M4L5YIRBXHGRGGQKGQESQPKDOY@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-vc0-f184.google.com with SMTP id gd11sf1965386vcb.1
+        for <headius@headius.com>; Sun, 26 May 2013 13:41:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=fDB+cwQSrfW2UEL6DbUcK0xsCkQMjTqIALHz7RIxfQE=;
+        b=DVf6tf21JaxjNIu2Fra5r/WETigf9GZOHUygW/yhXOjlBORGL+EuUaYkAAIMW5KiRR
+         Mk+YGMOaL4ZOg6KNhkPlHLwgPTnFUJx61c54LzJD2Ak7WPPzk25g1QnkJAlHjrPbiLl8
+         MNYD0dvXX10yHHVKekc3iNmmzAec1TGA6C9XrKjxZHlDBTpdQsjgU/fzIFQw5HOG4yzy
+         2kX++LJ19+yla7QoASTNgTPhYltPdIEkbjLgfwNtArKf1D8lFrhbek3/gO4A53KIS9V8
+         Fjiwxh+zJHOlked/gHkZAmtzHmp5IBrRT9/Im+xwVt4+VQm76mYeDiu5rxeY8SvxEg+E
+         e9QA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=fDB+cwQSrfW2UEL6DbUcK0xsCkQMjTqIALHz7RIxfQE=;
+        b=xgos2m0lyqpYbfBHeyglY15ZnU5mEQ18pcqbqZgI20X22aKVmNCQf2zpRV29exiCYF
+         rGNs7w3BotEzzZGgqgAOAgmNUspdFr2asVu2iWQcJTpQwhSzKqYIbOHgECdv8/PuFyF0
+         w6Kvhb1Ffkf7ASd1/vaS0LQA8cuHqTq/VgDWcy6omcFgCoedGdmPEg1jE/qKe8r6tWhU
+         Pi7vVgOtSIv93lslg/hZL1uKbqj/++r4oSzPhHU8id5B0D3N0xHtGsFwMXyOX24WHxOR
+         o8AI4ln3dlB8OhafXLTvVXaNqEcrQpQdJ2ph8Q7DQQlzOWNxkKRkFyn42hzVeZV0jdIn
+         ZKqw==
+X-Received: by 10.49.0.81 with SMTP id 17mr2132887qec.16.1369600860672;
+        Sun, 26 May 2013 13:41:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.74.105 with SMTP id s9ls2815716qev.0.gmail; Sun, 26 May
+ 2013 13:41:00 -0700 (PDT)
+X-Received: by 10.224.36.66 with SMTP id s2mr13716040qad.6.1369600860281;
+        Sun, 26 May 2013 13:41:00 -0700 (PDT)
+Received: by 10.224.181.75 with SMTP id bx11msqab;
+        Sun, 26 May 2013 13:09:45 -0700 (PDT)
+X-Received: by 10.49.12.7 with SMTP id u7mr2111097qeb.31.1369598985123;
+        Sun, 26 May 2013 13:09:45 -0700 (PDT)
+Date: Sun, 26 May 2013 13:09:44 -0700 (PDT)
+From: Anders Konring Olesen <anders.konring@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <4237452c-278e-41cc-97dd-aa778f8b04be@googlegroups.com>
+Subject: [ruby-ffi] libnfc example troubles
+MIME-Version: 1.0
+X-Original-Sender: anders.konring@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2953_19600677.1369598984826"
+
+------=_Part_2953_19600677.1369598984826
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi everyone. 
+
+i need some backup to get going with my project trying to make ruby-wrapper 
+for libnfc:
+
+Test program(trying to simulate this<http://nfc-tools.org/index.php?title=Libnfc:quick_start_example> c 
+example:):
+ 
+
+require 'ffi'
+load '~/Documents/nfc/nfc_library.rb'
+
+device_ptr = FFI::MemoryPointer.new :pointer
+context_ptr = FFI::MemoryPointer.new :pointer
+target = NfcLibrary::NfcTarget.new
+
+NfcLibrary::nfc_init(context_ptr)
+device_ptr = NfcLibrary::nfc_open(context_ptr.read_pointer, nil)
+
+
+NfcLibrary::nfc_initiator_init(device_ptr)
+    
+nmMifare = NfcLibrary::NfcModulation.new
+nmMifare[:nmt] = :NMT_ISO14443A
+nmMifare[:nbr] = :NBR_106
+
+device_name = NfcLibrary::nfc_device_get_name(device_ptr)
+
+puts device_name
+
+NfcLibrary::nfc_initiator_select_passive_target(device_ptr, nmMifare, nil, 
+0, target.pointer)
+
+
+Output of testprogram(connecting to nfc interface but will call the last 
+method with succes) :
+
+ACS / ACR122U PICC Interface
+-2
+
+
+My FFI library:
+
+module NfcLibrary
+  extend FFI::Library
+  ffi_lib '/usr/local/Cellar/libnfc/1.7.0-rc1/lib/libnfc.4.dylib'
+
+  typedef :pointer, :nfc_device
+  typedef :pointer, :nfc_context
+  enum :NfcModulationType,
+  [:NMT_ISO14443A, 1,
+   :NMT_JEWEL,
+  :NMT_ISO14443B,
+  :NMT_ISO14443BI, 
+  :NMT_ISO14443B2SR, 
+  :NMT_ISO14443B2CT, 
+  :NMT_FELICA,
+  :NMT_DEP]
+
+  enum :NfcBaudRate,
+  [:NBR_UNDEFINED, 0,
+  :NBR_106,
+  :NBR_212,
+  :NBR_424,
+  :NBR_847]
+
+  class NfcIso14443aInfo < FFI::Struct
+    layout :abtAtqa, :uint8, 2,
+    :btSak, :uint8, 
+    :szUidLen, :size_t,
+    :abtUid, :uint8, 10,
+    :szAtsLen, :size_t,
+    :abtAts, :uint8, 254
+  end
+
+
+
+  class NfcTargetInfo < FFI::Union
+    layout :nai, NfcLibrary::NfcIso14443aInfo
+    # :nfi, :nfc_felica_info,
+    # :nbi, :nfc_iso14443b_info,
+    # :nii, :nfc_iso14443bi_info,
+    # :nsi, :nfc_iso14443b2sr_info,
+    # :nci, :nfc_iso14443b2ct_info,
+    # :nji, :nfc_jewel_info,
+    #:ndi, :nfc_dep_info
+
+  end
+
+  class NfcModulation < FFI::Struct
+    layout :nmt, :NfcModulationType,
+    :nbr, :NfcBaudRate
+  end
+
+  class NfcTarget < FFI::Struct
+    layout :nfc_target_info, NfcLibrary::NfcTargetInfo,
+    :nfc_modulation, NfcLibrary::NfcModulation
+  end
+  
+  attach_function :nfc_init, [:pointer], :void
+  attach_function :nfc_target_init, [:pointer, :pointer, :pointer, :size_t, 
+:int], :int
+  attach_function :nfc_open, [:pointer, :string], :pointer
+  attach_function :nfc_close, [:pointer], :void
+  attach_function :nfc_list_devices, [:pointer, :string, :int], :int
+  attach_function :nfc_initiator_init, [:pointer], :int
+  attach_function :nfc_device_get_name, [:pointer], :string
+  attach_function :nfc_initiator_select_passive_target, [:pointer, 
+NfcLibrary::NfcModulation, :pointer, :size_t, :pointer], :int
+end
+
+
+Header function that i am trying to implement:
+
+  NFC_EXPORT int nfc_initiator_select_passive_target(nfc_device *pnd, const 
+nfc_modulation nm, const uint8_t *pbtInitData, const size_t szInitData, 
+nfc_target *pnt); 
+
+
+The c example program are running flawlessly and i am connecting to the nfc 
+interface, but somehow the last method is attached wrong but how?
+
+I have been stucked here for some days now trying to figure out why my rb 
+test program will not call the method properbly, when the c version works 
+great.
+
+Any help will be much appreciated.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_2953_19600677.1369598984826
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi everyone.&nbsp;<br><br>i need some backup to get going with my project t=
+rying to make ruby-wrapper for libnfc:<br><div><br></div><div>Test program(=
+trying to simulate<a href=3D"http://nfc-tools.org/index.php?title=3DLibnfc:=
+quick_start_example">&nbsp;this</a>&nbsp;c example:):</div><div>&nbsp;</div=
+><blockquote style=3D"margin: 0 0 0 40px; border: none; padding: 0px;"><div=
+>require 'ffi'</div><div>load '~/Documents/nfc/nfc_library.rb'</div><div><b=
+r></div><div>device_ptr =3D FFI::MemoryPointer.new :pointer</div><div>conte=
+xt_ptr =3D FFI::MemoryPointer.new :pointer</div><div>target =3D NfcLibrary:=
+:NfcTarget.new</div><div><br></div><div>NfcLibrary::nfc_init(context_ptr)</=
+div><div>device_ptr =3D NfcLibrary::nfc_open(context_ptr.read_pointer, nil)=
+</div><div><br></div><div><br></div><div>NfcLibrary::nfc_initiator_init(dev=
+ice_ptr)</div><div>&nbsp; &nbsp;&nbsp;</div><div>nmMifare =3D NfcLibrary::N=
+fcModulation.new</div><div>nmMifare[:nmt] =3D :NMT_ISO14443A</div><div>nmMi=
+fare[:nbr] =3D :NBR_106</div><div><br></div><div>device_name =3D NfcLibrary=
+::nfc_device_get_name(device_ptr)</div><div><br></div><div>puts device_name=
+</div><div><br></div><div>NfcLibrary::nfc_initiator_select_passive_target(d=
+evice_ptr, nmMifare, nil, 0, target.pointer)</div></blockquote><div><br></d=
+iv><div>Output of testprogram(connecting to nfc interface but will call the=
+ last method with succes) :</div><blockquote style=3D"margin: 0 0 0 40px; b=
+order: none; padding: 0px;"><div><div>ACS / ACR122U PICC Interface</div></d=
+iv><div><div>-2</div></div></blockquote><div><br></div><div>My FFI library:=
+</div><blockquote style=3D"margin: 0 0 0 40px; border: none; padding: 0px;"=
+><div><div>module NfcLibrary</div></div><div><div>&nbsp; extend FFI::Librar=
+y</div></div><div><div>&nbsp; ffi_lib '/usr/local/Cellar/libnfc/1.7.0-rc1/l=
+ib/libnfc.4.dylib'</div></div><div><div><br></div></div><div><div>&nbsp; ty=
+pedef :pointer, :nfc_device</div></div><div><div>&nbsp; typedef :pointer, :=
+nfc_context</div></div><div><div>&nbsp; enum :NfcModulationType,</div></div=
+><div><div>&nbsp; [:NMT_ISO14443A, 1,</div></div><div><div>&nbsp; &nbsp;:NM=
+T_JEWEL,</div></div><div><div>&nbsp; :NMT_ISO14443B,</div></div><div><div>&=
+nbsp; :NMT_ISO14443BI,&nbsp;</div></div><div><div>&nbsp; :NMT_ISO14443B2SR,=
+&nbsp;</div></div><div><div>&nbsp; :NMT_ISO14443B2CT,&nbsp;</div></div><div=
+><div>&nbsp; :NMT_FELICA,</div></div><div><div>&nbsp; :NMT_DEP]</div></div>=
+<div><div><br></div></div><div><div>&nbsp; enum :NfcBaudRate,</div></div><d=
+iv><div>&nbsp; [:NBR_UNDEFINED, 0,</div></div><div><div>&nbsp; :NBR_106,</d=
+iv></div><div><div>&nbsp; :NBR_212,</div></div><div><div>&nbsp; :NBR_424,</=
+div></div><div><div>&nbsp; :NBR_847]</div></div><div><div><br></div></div><=
+div><div>&nbsp; class NfcIso14443aInfo &lt; FFI::Struct</div></div><div><di=
+v>&nbsp; &nbsp; layout :abtAtqa, :uint8, 2,</div></div><div><div>&nbsp; &nb=
+sp; :btSak, :uint8,&nbsp;</div></div><div><div>&nbsp; &nbsp; :szUidLen, :si=
+ze_t,</div></div><div><div>&nbsp; &nbsp; :abtUid, :uint8, 10,</div></div><d=
+iv><div>&nbsp; &nbsp; :szAtsLen, :size_t,</div></div><div><div>&nbsp; &nbsp=
+; :abtAts, :uint8, 254</div></div><div><div>&nbsp; end</div></div><div><div=
+><br></div></div><div><div><br></div></div><div><div><br></div></div><div><=
+div>&nbsp; class NfcTargetInfo &lt; FFI::Union</div></div><div><div>&nbsp; =
+&nbsp; layout :nai, NfcLibrary::NfcIso14443aInfo</div></div><div><div>&nbsp=
+; &nbsp; # :nfi, :nfc_felica_info,</div></div><div><div>&nbsp; &nbsp; # :nb=
+i, :nfc_iso14443b_info,</div></div><div><div>&nbsp; &nbsp; # :nii, :nfc_iso=
+14443bi_info,</div></div><div><div>&nbsp; &nbsp; # :nsi, :nfc_iso14443b2sr_=
+info,</div></div><div><div>&nbsp; &nbsp; # :nci, :nfc_iso14443b2ct_info,</d=
+iv></div><div><div>&nbsp; &nbsp; # :nji, :nfc_jewel_info,</div></div><div><=
+div>&nbsp; &nbsp; #:ndi, :nfc_dep_info</div></div><div><div><br></div></div=
+><div><div>&nbsp; end</div></div><div><div><br></div></div><div><div>&nbsp;=
+ class NfcModulation &lt; FFI::Struct</div></div><div><div>&nbsp; &nbsp; la=
+yout :nmt, :NfcModulationType,</div></div><div><div>&nbsp; &nbsp; :nbr, :Nf=
+cBaudRate</div></div><div><div>&nbsp; end</div></div><div><div><br></div></=
+div><div><div>&nbsp; class NfcTarget &lt; FFI::Struct</div></div><div><div>=
+&nbsp; &nbsp; layout :nfc_target_info, NfcLibrary::NfcTargetInfo,</div></di=
+v><div><div>&nbsp; &nbsp; :nfc_modulation, NfcLibrary::NfcModulation</div><=
+/div><div><div>&nbsp; end</div></div><div><div>&nbsp;&nbsp;</div></div><div=
+><div>&nbsp; attach_function :nfc_init, [:pointer], :void</div></div><div><=
+div>&nbsp; attach_function :nfc_target_init, [:pointer, :pointer, :pointer,=
+ :size_t, :int], :int</div></div><div><div>&nbsp; attach_function :nfc_open=
+, [:pointer, :string], :pointer</div></div><div><div>&nbsp; attach_function=
+ :nfc_close, [:pointer], :void</div></div><div><div>&nbsp; attach_function =
+:nfc_list_devices, [:pointer, :string, :int], :int</div></div><div><div>&nb=
+sp; attach_function :nfc_initiator_init, [:pointer], :int</div></div><div><=
+div>&nbsp; attach_function :nfc_device_get_name, [:pointer], :string</div><=
+/div><div><div>&nbsp; attach_function :nfc_initiator_select_passive_target,=
+ [:pointer, NfcLibrary::NfcModulation, :pointer, :size_t, :pointer], :int</=
+div></div><div><div>end</div></div></blockquote><div><br></div><div>Header =
+function that i am trying to implement:</div><div><blockquote style=3D"marg=
+in: 0 0 0 40px; border: none; padding: 0px;"><div>&nbsp; NFC_EXPORT int nfc=
+_initiator_select_passive_target(nfc_device *pnd, const nfc_modulation nm, =
+const uint8_t *pbtInitData, const size_t szInitData, nfc_target *pnt);&nbsp=
+;</div></blockquote></div><div><br></div><div>The c example program are run=
+ning flawlessly and i am connecting to the nfc interface, but somehow the l=
+ast method is attached wrong but how?</div><div><br></div><div>I have been =
+stucked here for some days now trying to figure out why my rb test program =
+will not call the method properbly, when the c version works great.<br><br>=
+Any help will be much appreciated.</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_2953_19600677.1369598984826--

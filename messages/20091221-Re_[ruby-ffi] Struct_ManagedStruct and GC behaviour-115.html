@@ -1,0 +1,163 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 4:00 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/22 Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Before I add API-ish level doc to <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/structs">http://wiki.github.com/ffi/ffi/structs</a> please double check my FFI::Struct and FFI::ManagedStruct understanding.  Please ensure feedback is valid across the impl's.
+</pre></blockquote><pre wrap>
+
+A ManagedStruct is basically a normal Struct with an AutoPointer to
+manage the backing memory.
+e.g. it is equivalent to:
+
+class XmlSandwichAutoPointer &lt; FFI::AutoPointer
+  def self.release(ptr)
+    LibXml.xmlFreeSandwich(ptr);
+  end
+end
+
+class XmlSandwichStruct &lt; FFI::Struct
+  layout ...
+end
+
+s = XmlSandwichStruct.new(XmlSandwichAutoPointer.new(LibXml.makeMeASandwich)
+
+Since ManagedStruct is implemented purely in terms of other public FFI
+mechanisms, and it can be a bit confusing for people, it would be a
+prime candidate for being moved out of FFI core, to another library.
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>4) FFI::Struct and FFI::ManagedStruct instances live completely in Ruby heap memory.  Or are they effectively proxy objects in Ruby heap that interface and manage their underlying native heap-based structs? This one's likely too impl specific to put in the wiki docs, but I'm still curious <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+</pre></blockquote><pre wrap>
+
+Both FFI::Struct and FFI::ManagedStruct just hold ruby references to
+whatever memory object they wrap.  That memory object is the ruby
+proxy that manages the underlying native memory.  So yes, they are
+effectively proxies (via the memory object) to native heap-based
+structs.
+
+Since a Struct is holding a normal ruby reference to the memory proxy,
+then all the normal garbage collection semantics apply.  i.e. as long
+as there is at least one strong reference to the memory proxy, the
+native memory will not be freed.
+
+
+Some implementation level detail examples.
+
+Assume we have a mapping like:
+
+module LibXml
+  attach_function :xmlMakeMeASandwich [], :pointer
+  attach_function :xmlFreeSandwich [ :pointer ]
+end
+
+and we defined the XmlSandwichAutoPointer class as previously.
+
+Passive memory (not managed at all by ruby)
+
+  ptr = LibXml.makeMeASandwich
+  s = XmlSandwichStruct.new(ptr)
+  ptr = nil
+  s = nil
+
+  # s can now be collected, ptr can now be collected, but the native
+memory is not freed, since
+  # ptr was a purely passive pointer
+
+Actively managed memory (obtained from function call)
+
+  ptr = XmlSandwichStruct.new(LibXml.makeMeASandwich)
+  s = XmlSandwichStruct.new(XmlSandwichAutoPointer.new(ptr))
+  s = nil
+  # s can now be collected, the backing AutoPointer instance can be
+collected, which
+  # will call xmlFreeSandwich()
+
+
+Actively managed memory (allocated internally by FFI)
+
+  s = XmlSandwichStruct.new
+  s = nil
+  # s can now be collected, the backing memory proxy can be collected,
+which will free the
+  # allocated native memory.
+
+If you drill down further on this one, it is equivalent to:
+
+  ptr = MemoryPointer.new(XmlSandwichStruct.size)
+  # we have allocated some native memory that is managed by 'ptr'
+  s = XmlSandwichStruct.new(ptr)
+
+  ptr = nil
+  # s still has a ref to ptr, so the memory ptr manages will not be freed
+
+  s = nil
+  # s can now be collected, the backing memory proxy can be collected,
+which will free the
+  # allocated native memory.
+
+Since it all follows normal ruby GC semantics, stuff like this is valid:
+
+  ptr = MemoryPointer.new(XmlSandwichStruct.size)
+  # we have allocated some native memory that is managed by 'ptr'
+  s = XmlSandwichStruct.new(ptr)
+  ...
+  s = nil
+  # local frame still has a ref to ptr, therefore ptr will not be
+collected, and the
+  # memory ptr manages will not be freed yet
+
+  ptr.get_int(0)
+  # ... do other things using ptr
+
+  ptr = nil
+  # ptr can now be collected, enabling the native memory to be freed
+
+
+Or even this:
+  s = XmlSandwichStruct.new
+  ptr = s.pointer
+  s = nil
+  ptr.get_int(0)
+  ptr = nil
+  # ptr can now be collected, enabling the native memory to be freed
+
+
+Hopefully the above isn't even more confusing.
+
+Note: I purposely did not discuss using a FFI::Buffer as FFI::Struct
+memory, since that could have confused the explanation of the native
+memory management.  The same same ruby GC semantics apply, of course.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>3) Neither FFI::Struct nor FFI::ManagedStruct currently provide for deterministic GC-ing (is it valid to call FFI::MemoryPointer#free deterministic GC??)
+</pre></blockquote><pre wrap>
+
+That depends on the type of memory the Struct wraps.
+
+e.g. if it wraps either a MemoryPointer or an AutoPointer, then this
+is perfectly valid:
+
+ s.pointer.free
+
+Of course, once you do that, s is now wrapping a dangling pointer, and
+if you pass it to a native function that tries to access it, fun and
+excitement will ensue.
+
+If s.pointer refers to a non-managed pointer, then it has no way to
+manage the memory, so s.pointer.free will raise a ruby exception.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>2) FFI::ManagedStruct enables one to specify custom cleanup code via a required 'release(ptr)' class method that is guaranteed to be called only once when the instance is GC'd.
+</pre></blockquote><pre wrap>
+
+Correct.  AutoPointer#free will only call the release method once.
+</pre></div></body>
+</html>
+</table></div>

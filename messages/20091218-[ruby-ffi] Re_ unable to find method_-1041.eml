@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs384689and;
+        Fri, 18 Dec 2009 10:24:16 -0800 (PST)
+Received: by 10.150.235.5 with SMTP id i5mr6780658ybh.271.1261160656438;
+        Fri, 18 Dec 2009 10:24:16 -0800 (PST)
+Return-Path: <3zsgrSw0JCA452us53oqyGEEJu0owz.q2058pC-ttwu22uzsu52836.q20@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 17si6590793yxe.66.2009.12.18.10.24.15;
+        Fri, 18 Dec 2009 10:24:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3zsgrSw0JCA452us53oqyGEEJu0owz.q2058pC-ttwu22uzsu52836.q20@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3zsgrSw0JCA452us53oqyGEEJu0owz.q2058pC-ttwu22uzsu52836.q20@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3zsgrSw0JCA452us53oqyGEEJu0owz.q2058pC-ttwu22uzsu52836.q20@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf5697902yxe.13
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:24:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=h55UTdzebjgVpKEwppcNyjdS4DNE8rZ/W8zhPP/497k=;
+        b=Axebm2BMIBczgTTYNuyyQXHWFnQim401MasP0exoxK3gEG3EZrJ3ConkKUtoL3f3Z0
+         e6GR7Dfrmxtq6Py5dXMGyKSu3FBi3o2dnrvLu1/pHfKVF7Mfj2UQ1om0n6xqfutPqSgM
+         4kPUwteuiCsIGFSgxh85C1QWwzWHsYIIlMXHo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=qUJtoorw1y0iVWaa8bj/FFoc+OKbpTuxQjofwTwgl5UvvtBb57PfRvSwr/EkzwlZC1
+         fbfwFJ/HzUJTlpUNg9rgaFZflKkxG1M9dhQxvKdcyEjBgNad6nCX6SysM8wLlHFYn6ov
+         0ichIGrUctp+KyGcnXeUSc4Xc5pdC1nhUxaWE=
+Received: by 10.90.43.9 with SMTP id q9mr317831agq.25.1261160654235;
+        Fri, 18 Dec 2009 10:24:14 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.60.9 with SMTP id i9ls41803aga.0.p; Fri, 18 Dec 2009 
+	10:24:13 -0800 (PST)
+Received: by 10.91.135.9 with SMTP id m9mr1624977agn.14.1261160653431;
+        Fri, 18 Dec 2009 10:24:13 -0800 (PST)
+Received: by 10.91.135.9 with SMTP id m9mr1624976agn.14.1261160653411;
+        Fri, 18 Dec 2009 10:24:13 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f150.google.com (mail-yx0-f150.google.com [209.85.210.150])
+        by gmr-mx.google.com with ESMTP id 18si446880ywh.5.2009.12.18.10.24.13;
+        Fri, 18 Dec 2009 10:24:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.150 as permitted sender) client-ip=209.85.210.150;
+Received: by mail-yx0-f150.google.com with SMTP id 14so6055431yxe.4
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:24:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.91.28.5 with SMTP id f5mr519841agj.18.1261160653366; Fri, 18 
+	Dec 2009 10:24:13 -0800 (PST)
+Date: Fri, 18 Dec 2009 10:24:13 -0800 (PST)
+In-Reply-To: <3454c9680912180025s288a8e81gb89913c0ce304d7e@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com> 
+	<3454c9680912180025s288a8e81gb89913c0ce304d7e@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <80072eaf-1168-43a5-a9e8-3ab31432e0a7@c3g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: unable to find method?
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.150 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/9dc492eeec715072
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> I guess, you need to use FindWindowA/FindWindowW variants, no?
+
+Any guesses as to how I can reliably detect which one of those to use?
+[or is ruby always wanting A...? if so, is there even a way to use W?]
+Much thanks. Sorry for the flood.
+-r

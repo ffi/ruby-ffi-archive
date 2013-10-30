@@ -1,0 +1,80 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs9948eea;
+        Fri, 19 Aug 2011 06:38:41 -0700 (PDT)
+Received: by 10.224.197.202 with SMTP id el10mr2072764qab.24.1313761121263;
+        Fri, 19 Aug 2011 06:38:41 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCODBv_nyDBDbzrnyBBoEze6kSg@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id ew5si5729417qab.71.2011.08.19.06.38.40
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 19 Aug 2011 06:38:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCODBv_nyDBDbzrnyBBoEze6kSg@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCODBv_nyDBDbzrnyBBoEze6kSg@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCODBv_nyDBDbzrnyBBoEze6kSg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws7 with SMTP id 7sf3623225vws.7
+        for <headius@headius.com>; Fri, 19 Aug 2011 06:38:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=EP3GkFVQC/ns4w6oyK86SH1PImsWfwWLDXWmq3cFF+s=;
+        b=vX8SVLWJ25XS9lc1yfAE1a9BBhRCghXF5ybH9oEPIc7QU+ulHFlgoko6Rh7Uy5ymmB
+         /4KiN0cfMQh56E2aH9tpzHqUq+VEPBO0hucN1N/G5GBhzIcckpkW0Kxebc5U7UxmdYRv
+         giDugx165PTSLSdS/j+V+QdHIipjEQVTIhzK8=
+Received: by 10.220.116.3 with SMTP id k3mr485625vcq.11.1313761115872;
+        Fri, 19 Aug 2011 06:38:35 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.177.133 with SMTP id cq5ls5399464vdc.0.gmail; Fri, 19 Aug
+ 2011 06:38:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.83.138 with SMTP id f10mr614323vcl.32.1313761115558; Fri,
+ 19 Aug 2011 06:38:35 -0700 (PDT)
+Received: by l4g2000vbz.googlegroups.com with HTTP; Fri, 19 Aug 2011 06:38:35
+ -0700 (PDT)
+Date: Fri, 19 Aug 2011 06:38:35 -0700 (PDT)
+In-Reply-To: <7c04baf1-f660-480d-ad17-0df09d11e14c@z7g2000vbp.googlegroups.com>
+References: <7c04baf1-f660-480d-ad17-0df09d11e14c@z7g2000vbp.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <5889d909-2140-44fd-837c-2dacfc69fc84@l4g2000vbz.googlegroups.com>
+Subject: [ruby-ffi] Re: How to declare (int *argc, char *argv)?
+From: przemo_li <an.przemek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: an.przemek@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ an.przemek@gmail.com designates internal as permitted sender)
+ smtp.mail=an.przemek@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Oh
+FGAPI and FGAPIENTRY have no meaning on Linux and I care only about
+Linux support.
+
+/* Non-Windows definition of FGAPI and FGAPIENTRY */
+# define FGAPI
+# define FGAPIENTRY
+
+On Aug 19, 3:36=A0pm, przemo_li <an.prze...@gmail.com> wrote:
+> I'm trying to do my own bindings for freeGLUT, but fail at:
+>
+> FGAPI void FGAPIENTRY glutInit( int* pargc, char** argv )
+>
+> how to declare it with ruby ffi?
+> Then how to pass argc, argv? (ruby seam to have no such thing)

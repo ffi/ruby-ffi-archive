@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Problem with AutoPointer and ManagedStruct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Problem with AutoPointer and ManagedStruct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/10 2:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 10 December 2010 00:36, zenChild <a class="moz-txt-link-rfc2396E" href="mailto:dan.wanek@gmail.com">&lt;dan.wanek@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span># --------- Example One ---------
+<span class="moz-txt-citetags">&gt; </span>class GssBufferDesc &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout  :length =&gt; :size_t,
+<span class="moz-txt-citetags">&gt; </span>         :value  =&gt; :pointer # pointer of :void
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>output_token = FFI::MemoryPointer.new :pointer
+<span class="moz-txt-citetags">&gt; </span>maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+<span class="moz-txt-citetags">&gt; </span>LibGSSAPI::GssBufferT.new(output_token.get_pointer(0))
+</pre></blockquote><pre wrap>
+
+I suspect what you're passing in as output_token is the problem.  Do
+the same as you were in example One - allocate a GssBufferDesc and use
+it as output_token, then construct the AutoPointer using its :value
+field as the pointer.
+
+
+e.g.
+output_token = GssBufferDesc.new
+maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+LibGSSAPI::GssBufferT.new(output_token[:value])
+</pre></div></body>
+</html>
+</table></div>

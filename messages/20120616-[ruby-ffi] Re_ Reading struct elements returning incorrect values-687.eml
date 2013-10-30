@@ -1,0 +1,204 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.31.9 with SMTP id i9csp191320wfj;
+        Fri, 15 Jun 2012 23:27:51 -0700 (PDT)
+Received: by 10.52.68.165 with SMTP id x5mr3466914vdt.2.1339828071057;
+        Fri, 15 Jun 2012 23:27:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDmzvD-BBoEl0MSJw@googlegroups.com>
+Received: from mail-vb0-f62.google.com (mail-vb0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id ji8si2478985vcb.5.2012.06.15.23.27.50
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 15 Jun 2012 23:27:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDmzvD-BBoEl0MSJw@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDmzvD-BBoEl0MSJw@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDmzvD-BBoEl0MSJw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vbbfs19 with SMTP id fs19sf6353216vbb.7
+        for <headius@headius.com>; Fri, 15 Jun 2012 23:27:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=LjeQNnsUoqj9kQsgGGXk44iWmdRnUrZSuWS0ycbB460=;
+        b=cP7wTAby71te+yp4rrodwEYtuPjBmCuNoMYvAHpWH2KgajEAQNt15qytNhG1V4ZTvB
+         QSsgVoNTmY+vlp/fo4x0pAg3Hnc50DH10x7Hgb1dyv2+0H46Tz0lfmZnpxBBQK0WfmB9
+         ZRIC5JBbz7jihgA3GyOmAaf8gzXVfZrWqlQbo=
+Received: by 10.68.224.41 with SMTP id qz9mr252162pbc.0.1339828070373;
+        Fri, 15 Jun 2012 23:27:50 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.227.136 with SMTP id sa8ls7453301pbc.8.gmail; Fri, 15 Jun
+ 2012 23:27:50 -0700 (PDT)
+Received: by 10.68.237.67 with SMTP id va3mr275984pbc.9.1339828070136;
+        Fri, 15 Jun 2012 23:27:50 -0700 (PDT)
+Date: Fri, 15 Jun 2012 23:27:49 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <ad53d2ad-1c35-44e3-a7fb-6624d5799909@googlegroups.com>
+In-Reply-To: <1f091970-2c18-4f05-b8c8-9d887390d92c@googlegroups.com>
+References: <1f091970-2c18-4f05-b8c8-9d887390d92c@googlegroups.com>
+Subject: [ruby-ffi] Re: Reading struct elements returning incorrect values
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5_11644534.1339828069508"
+
+------=_Part_5_11644534.1339828069508
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Shouldn't this line:
+
+ item = VarnamLibrary::Token.new(ptr)
+
+be:
+
+ item = VarnamLibrary::Token.new(tok)
+
+i.e. cast the return value from varray_get() to a Token struct?
+
+As it stands, your code is casting the varray itself to a Token.
+
+On Friday, 15 June 2012 12:42:27 UTC+10, Navaneeth KN wrote:
+>
+> Hello,
+>
+> I have a C function like,
+>
+>    int varray_length (varray*)
+>    void* varray_get(int index)
+>
+> FFI mappings like,
+>
+>   attach_function :varray_get, [:pointer, :int], :pointer
+>   attach_function :varray_length, [:pointer], :int
+>
+> My C structure looks like,
+>
+> typedef struct token {
+>     int type, match_type;
+>     char tag[TOKEN_TAG_MAX];
+>     char pattern[SYMBOL_MAX];
+>     char value1[SYMBOL_MAX];
+>     char value2[SYMBOL_MAX];
+>     int children;
+> } vtoken;
+>
+> FFI struct like,
+>
+>   class Token < FFI::Struct
+>     layout :type, :int,
+>     :match_type, :int,
+>     :tag, [:char, TOKEN_TAG_MAX],
+>     :pattern, [:char, SYMBOL_MAX],
+>     :value1, [:char, SYMBOL_MAX],
+>     :value2, [:char, SYMBOL_MAX],
+>     :children, :int,
+>   end
+>
+> I am invoking a C function which has signature like,
+>
+>   int get_all_tokens(varnam*, int, varray **output)
+>
+> Invoiking this using FFI like,
+>
+>   token_ptr = FFI::MemoryPointer.new :pointer
+>   done = 
+> VarnamLibrary.varnam_get_all_tokens($varnam_handle.get_pointer(0), 
+> token_type, token_ptr);
+>
+> This call succedes and I get a varray instance assigned to token_ptr. All 
+> is good. Now when I try to read data from this pointer, I am getting empty 
+> values. I am doing it like,
+>
+>   size = VarnamLibrary.varray_length(token_ptr.get_pointer(0)) --- This 
+> works
+>   i = 0
+>   until i >= size
+>     tok = VarnamLibrary.varray_get(token_ptr.get_pointer(0), i)   - This 
+> succeds
+>     ptr = token_ptr.read_pointer
+>     item = VarnamLibrary::Token.new(ptr)      - This works, but all 
+> properties of item will be empty.
+>     varnam_token = VarnamToken.new(item[:type],
+>                                    ffito_string(item[:pattern]), 
+> ffito_string(item[:value1]),
+>                                    ffito_string(item[:value2]), 
+> item[:match_type])       - This gives me a token with empty values for 
+> strings and some random values for integers
+>     i += 1
+>   end
+>
+> I am wondering why this happens. Any help would be great. 
+>
+> Thanks
+> Navaneeth
+>
+
+------=_Part_5_11644534.1339828069508
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Shouldn't this line:<div><br><div>&nbsp;item =3D VarnamLibrary::Token.new(p=
+tr)</div><div><br></div><div>be:</div><div><br></div><div>&nbsp;item =3D Va=
+rnamLibrary::Token.new(tok)</div><div><br></div><div>i.e. cast the return v=
+alue from varray_get() to a Token struct?</div><div><br></div><div>As it st=
+ands, your code is casting the varray itself to a Token.<br><br>On Friday, =
+15 June 2012 12:42:27 UTC+10, Navaneeth KN  wrote:<blockquote class=3D"gmai=
+l_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;=
+padding-left: 1ex;">Hello,<br><br>I have a C function like,<br><br>&nbsp;&n=
+bsp; int varray_length (varray*)<br>&nbsp;&nbsp; void* varray_get(int index=
+)<br><br>FFI mappings like,<br><br>&nbsp; attach_function :varray_get, [:po=
+inter, :int], :pointer<br>&nbsp; attach_function :varray_length, [:pointer]=
+, :int<br><br>My C structure looks like,<br><br>typedef struct token {<br>&=
+nbsp;&nbsp;&nbsp; int type, match_type;<br>&nbsp;&nbsp;&nbsp; char tag[TOKE=
+N_TAG_MAX];<br>&nbsp;&nbsp;&nbsp; char pattern[SYMBOL_MAX];<br>&nbsp;&nbsp;=
+&nbsp; char value1[SYMBOL_MAX];<br>&nbsp;&nbsp;&nbsp; char value2[SYMBOL_MA=
+X];<br>&nbsp;&nbsp;&nbsp; int children;<br>} vtoken;<br><br>FFI struct like=
+,<br><br>&nbsp; class Token &lt; FFI::Struct<br>&nbsp;&nbsp;&nbsp; layout :=
+type, :int,<br>&nbsp;&nbsp;&nbsp; :match_type, :int,<br>&nbsp;&nbsp;&nbsp; =
+:tag, [:char, TOKEN_TAG_MAX],<br>&nbsp;&nbsp;&nbsp; :pattern, [:char, SYMBO=
+L_MAX],<br>&nbsp;&nbsp;&nbsp; :value1, [:char, SYMBOL_MAX],<br>&nbsp;&nbsp;=
+&nbsp; :value2, [:char, SYMBOL_MAX],<br>&nbsp;&nbsp;&nbsp; :children, :int,=
+<br>&nbsp; end<br><br>I am invoking a C function which has signature like,<=
+br><br>&nbsp; int get_all_tokens(varnam*, int, varray **output)<br><br>Invo=
+iking this using FFI like,<br><br>&nbsp; token_ptr =3D FFI::MemoryPointer.n=
+ew :pointer<br>&nbsp; done =3D VarnamLibrary.varnam_get_all_<wbr>tokens($va=
+rnam_handle.get_<wbr>pointer(0), token_type, token_ptr);<br><br>This call s=
+uccedes and I get a varray instance assigned to token_ptr. All is good. Now=
+ when I try to read data from this pointer, I am getting empty values. I am=
+ doing it like,<br><br>&nbsp; size =3D VarnamLibrary.varray_length(<wbr>tok=
+en_ptr.get_pointer(0)) --- This works<br>&nbsp; i =3D 0<br>&nbsp; until i &=
+gt;=3D size<br>&nbsp;&nbsp;&nbsp; tok =3D VarnamLibrary.varray_get(<wbr>tok=
+en_ptr.get_pointer(0), i)&nbsp;&nbsp; - This succeds<br>&nbsp;&nbsp;&nbsp; =
+ptr =3D token_ptr.read_pointer<br>&nbsp;&nbsp;&nbsp; item =3D VarnamLibrary=
+::Token.new(ptr)&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; - This works, but all p=
+roperties of item will be empty.<br>&nbsp;&nbsp;&nbsp; varnam_token =3D Var=
+namToken.new(item[:type],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp=
+;&nbsp;&nbsp; ffito_string(item[:pattern]), ffito_string(item[:value1]),<br=
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp; ffito_string(i=
+tem[:value2]), item[:match_type])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Thi=
+s gives me a token with empty values for strings and some random values for=
+ integers<br>&nbsp;&nbsp;&nbsp; i +=3D 1<br>&nbsp; end<br><br>I am wonderin=
+g why this happens. Any help would be great. <br><br>Thanks<br>Navaneeth<br=
+></blockquote></div></div>
+------=_Part_5_11644534.1339828069508--

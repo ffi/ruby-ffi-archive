@@ -1,0 +1,55 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Linked list of structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Linked list of structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/20/10 5:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thanks! That worked.
+
+Is the errbuff pointer necessary? A ruby string seems to work, are
+there any gotchas with that?
+
+On Oct 19, 6:34 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 20 October 2010 03:31, Qwerty <a class="moz-txt-link-rfc2396E" href="mailto:qwerty123451...@hotmail.com">&lt;qwerty123451...@hotmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>How do you iterate over the linked list using FFI?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>How about something like this:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ptr = Pcap.find_devs
+<span class="moz-txt-citetags">&gt; </span>until ptr.null?
+<span class="moz-txt-citetags">&gt; </span>  devs = Pcap::Pcap_if_t.new ptr
+<span class="moz-txt-citetags">&gt; </span>  puts devs[:name]
+<span class="moz-txt-citetags">&gt; </span>  ptr=devs[:next]
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Also is it true that FFI can not handle a multidimensional array? The
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You should be able to fix this one as follows:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ppdev = FFI::MemoryPointer.new :pointer
+<span class="moz-txt-citetags">&gt; </span>errbuf = FFI::MemoryPointer.new :char, Pcap::PCAP_ERRBUF_SIZE
+<span class="moz-txt-citetags">&gt; </span>res = Pcap.pcap_findalldevs(ppdev, errbuf)
+<span class="moz-txt-citetags">&gt; </span># ... check res for error conditions
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span># now get the first device pointer
+<span class="moz-txt-citetags">&gt; </span>ptr = ppdev.read_pointer
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span># now loop over them all as above
+<span class="moz-txt-citetags">&gt; </span>until ptr.null?
+<span class="moz-txt-citetags">&gt; </span>  devs = Pcap::Pcap_if_t.new ptr
+<span class="moz-txt-citetags">&gt; </span>  puts devs[:name]
+<span class="moz-txt-citetags">&gt; </span>  ptr=devs[:next]
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></div></body>
+</html>
+</table></div>

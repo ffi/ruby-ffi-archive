@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.23.226 with SMTP id p2cs21593laf;
+        Fri, 14 Oct 2011 12:16:18 -0700 (PDT)
+Received: by 10.229.251.73 with SMTP id mr9mr2140827qcb.264.1318619777139;
+        Fri, 14 Oct 2011 12:16:17 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOrjqZusDRD7lOL0BBoEy2VyyQ@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id y4si1234277qcs.171.2011.10.14.12.16.16
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 14 Oct 2011 12:16:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOrjqZusDRD7lOL0BBoEy2VyyQ@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOrjqZusDRD7lOL0BBoEy2VyyQ@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCOrjqZusDRD7lOL0BBoEy2VyyQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qabg14 with SMTP id g14sf1122706qab.7
+        for <headius@headius.com>; Fri, 14 Oct 2011 12:16:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=z2gG0/XiDWwHYFNGWOKbiDEqt8MWOLhH6aYhyx+8ezc=;
+        b=HNNZkoEt7J09dJhtB7Ntwd8Ts9FhoUmFtBGg7hZton9JlBWHIGSGHo3/dB+zEAkluF
+         Rnbs19rfOFGxO4nWazRcWGW1Oa5JA0WgG7yGRs1id+SdRh6fGAwgj2XsNFn8GBKpT36q
+         MHCgbFIUb5jCU6GiXSWGhncGTB7C3pUv08dcY=
+Received: by 10.224.200.136 with SMTP id ew8mr2170293qab.5.1318619771840;
+        Fri, 14 Oct 2011 12:16:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.188.201 with SMTP id db9ls7659266qab.7.gmail; Fri, 14 Oct
+ 2011 12:16:11 -0700 (PDT)
+Received: by 10.224.191.70 with SMTP id dl6mr6239521qab.1.1318619771556;
+        Fri, 14 Oct 2011 12:16:11 -0700 (PDT)
+Received: by 10.224.32.102 with SMTP id b38msqad;
+        Fri, 14 Oct 2011 10:05:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.208.199 with SMTP id gd7mr1948964qab.2.1318611923994; Fri,
+ 14 Oct 2011 10:05:23 -0700 (PDT)
+Received: by n18g2000vbv.googlegroups.com with HTTP; Fri, 14 Oct 2011 10:05:23
+ -0700 (PDT)
+Date: Fri, 14 Oct 2011 10:05:23 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)
+ AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1,gzip(gfe)
+Message-ID: <fb07792b-54c1-4461-b9c1-25d3a8989b9b@n18g2000vbv.googlegroups.com>
+Subject: [ruby-ffi] ffi not compiling on mac osx?!
+From: Noel Rocha <noelrocha@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: noelrocha@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi Guys,
+
+Im trying to install the ffi gem but it stop when bulding the native
+extensions. Im using Snow Leopard and ruby 1.9.2 with rvm.
+
+follow bellow the command and the error:
+
+
+$ gem install ffi
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+        /Users/noelrocha/.rvm/rubies/ruby-1.9.2-p180/bin/ruby
+extconf.rb
+checking for ffi.h in /usr/local/include... no
+checking for rb_thread_blocking_region()... yes
+checking for ruby_thread_has_gvl_p()... yes
+checking for ruby_native_thread_p()... yes
+checking for rb_thread_call_with_gvl()... yes
+creating extconf.h
+creating Makefile
+
+make
+/bin/sh: line 0: [: /Volumes/Macintosh: binary operator expected
+cd /Volumes/Macintosh HD/Users/noelrocha/.rvm/gems/ruby-1.9.2-p180/
+gems/ffi-1.0.9/ext/ffi_c/libffi && make
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** [HD/Users/noelrocha/.rvm/gems/ruby-1.9.2-p180/gems/ffi-1.0.9/
+ext/ffi_c/libffi/.libs/libffi_convenience.a] Error 2
+
+
+Gem files will remain installed in /Users/noelrocha/.rvm/gems/
+ruby-1.9.2-p180/gems/ffi-1.0.9 for inspection.
+Results logged to /Users/noelrocha/.rvm/gems/ruby-1.9.2-p180/gems/
+ffi-1.0.9/ext/ffi_c/gem_make.out
+
+
+
+Thanks in advance,
+
+--
+Noel Rocha

@@ -1,0 +1,28 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Unsure how to proceed using type defined in header</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Unsure how to proceed using type defined in header</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/21/12 6:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">The typedef should work fine. &nbsp;You may find though, that for some functions, you will need to pass the address of a pointer.<div>e.g. pam_start()</div><div><br></div><div>that would be attached as:</div><div>&nbsp; &nbsp; attach_function :pam_start, [ :string, :string, :pointer, :pointer ], :int</div><div><br></div><div>and called like so:</div><div><br></div><div>&nbsp; ppamh = FFI::MemoryPointer.new(:pointer)</div><div>&nbsp; LibPam.pam_start("my_service", "my_user", conv, ppamh)</div><div>&nbsp; pamh = ppamh.read_pointer</div><div><br></div><div>&nbsp; # Now use pamh as the pam_handle_t arg to any other pam function.</div><div><br></div><div><br></div><div>On Wednesday, February 22, 2012 9:59:19 AM UTC+10, jason wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div><div>Hi all,</div><div><br></div><div>I'm in the process of porting the rpam gem over to FFI (I ported the gem from 1.8 to 1.9 a while back, this seemed like the logical next step). One thing I'm having trouble finding documentation on is handling user-defined types from the header when the type being aliased is private to the library.&nbsp;</div>
+
+<div><br></div><div>So for instance, in security/pam_appl.h, we have:</div><div><br></div><div><br></div><div><font face="'courier new', monospace">/*</font></div><div><font face="'courier new', monospace">&nbsp;* This is a blind structure; users aren't allowed to see inside a</font></div>
+
+<div><font face="'courier new', monospace">&nbsp;* pam_handle_t, so we don't define struct _pam_handle here. &nbsp;This is</font></div><div><font face="'courier new', monospace">&nbsp;* defined in a file private to the PAM library. &nbsp;(i.e., it's private</font></div>
+
+<div><font face="'courier new', monospace">&nbsp;* to PAM service modules, too!)</font></div><div><font face="'courier new', monospace">&nbsp;*/</font></div><div><font face="'courier new', monospace">typedef struct _pam_handle pam_handle_t;</font></div>
+
+</div><div><font face="'courier new', monospace"><br></font></div><div><font face="arial, helvetica, sans-serif">My first guess is to define a class inheriting from FFI::Struct, but since I don't know its layout, I'm not sure how to proceed.</font></div>
+
+<div><font face="arial, helvetica, sans-serif"><br></font></div><div><font face="arial, helvetica, sans-serif">In the C version, it gets initialized as a null pointer, so I then thought I could do `typdef :pointer, :pam_handle_t`, but this also seems wrong.</font></div>
+
+<div><font face="arial, helvetica, sans-serif"><br></font></div><div><font face="arial, helvetica, sans-serif">Grateful for any suggestions.</font></div><div><font face="arial, helvetica, sans-serif"><br></font></div><div>
+
+<font face="arial, helvetica, sans-serif">Thanks,</font></div><br clear="all">Jason Lewis<br><br>Email&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="mailto:jasonlewis.x@gmail.com" target="_blank">jasonlewis.x@gmail.com</a>&nbsp; &nbsp;&nbsp;&nbsp;<div><br></div><div>Twitter &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://twitter.com/canweriotnow" target="_blank">@canweriotnow</a><br>
+
+<br>Blog &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="http://duckpunching.wordpress.com/" target="_blank">http://duckpunching.github.<wbr>com/</a></div><br>
+</blockquote></div>
+</div></body>
+</html>
+</table></div>

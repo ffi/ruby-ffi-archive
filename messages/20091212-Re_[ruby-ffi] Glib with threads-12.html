@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Glib with threads</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Glib with threads</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Hongli Lai <hongli@phusion.nl></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 8:35 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+On Sat, Dec 12, 2009 at 5:34 AM, Christoph Kappel <a class="moz-txt-link-rfc2396E" href="mailto:unexist@dorfelite.net">&lt;unexist@dorfelite.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>any idea why this doesn't work?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require "ffi"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module
+<span class="moz-txt-citetags">&gt; </span>Glib
+<span class="moz-txt-citetags">&gt; </span> extend
+<span class="moz-txt-citetags">&gt; </span>FFI::Library
+<span class="moz-txt-citetags">&gt; </span> ffi_lib "libglib-2.0"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> attach_function :thread_init, :g_thread_init,
+<span class="moz-txt-citetags">&gt; </span>[ :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I am getting following error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/usr/lib/ruby/gems/1.9.1/gems/ffi-0.4.0/lib/ffi/library.rb:62:in
+<span class="moz-txt-citetags">&gt; </span>`attach_function': Function 'g_thread_init' not found in
+<span class="moz-txt-citetags">&gt; </span>[libglib-2.0.so] (FFI::NotFoundError)
+<span class="moz-txt-citetags">&gt; </span>       from glib.rb:6:in `&lt;module:FFIGlib&gt;'
+<span class="moz-txt-citetags">&gt; </span>       from glib.rb:3:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I can use g_thread_init in a C program, I verified this before
+<span class="moz-txt-citetags">&gt; </span>posting. So this symbol exists in the glib lib.
+</pre></blockquote><pre wrap>
+
+I think it's defined in libgthread, not libglib.
+
+<div class="moz-txt-sig">-- 
+Phusion | The Computer Science Company
+
+Web: <a class="moz-txt-link-freetext" href="http://www.phusion.nl/">http://www.phusion.nl/</a>
+E-mail: <a class="moz-txt-link-abbreviated" href="mailto:info@phusion.nl">info@phusion.nl</a>
+Chamber of commerce no: 08173483 (The Netherlands)
+</div></pre></div></body>
+</html>
+</table></div>

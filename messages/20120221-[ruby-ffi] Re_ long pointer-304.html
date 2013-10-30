@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: long pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: long pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>mydoghasworms <mydoghasworms@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/21/12 6:58 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+My humble apologies. When I was writing this I was not thinking
+straight.
+
+What I actually meant was a long double, not a long pointer. So for
+something declared as
+
+long double ld;
+
+or
+
+void foo(long double);
+
+what is the corresponding type specification in FFI?
+
+On Feb 20, 12:46 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Do you mean, a C function with a signature something like:
+<span class="moz-txt-citetags">&gt; </span>    void foo(long *l):
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>In that case, the corresponding ruby-ffi would be:
+<span class="moz-txt-citetags">&gt; </span>module MyLib
+<span class="moz-txt-citetags">&gt; </span>    extend FFI::LIbrary
+<span class="moz-txt-citetags">&gt; </span>    ffi_lib 'mylib'
+<span class="moz-txt-citetags">&gt; </span>    attach_function :foo, [ :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and you would invoke it like so:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>    ptr = FFI::MemoryPointer.new(:long)
+<span class="moz-txt-citetags">&gt; </span>    ptr.write_long(0xdeadbeef)
+<span class="moz-txt-citetags">&gt; </span>    MyLib.foo(ptr);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>    # now extract the value the C code filled in
+<span class="moz-txt-citetags">&gt; </span>    l = ptr.read_long
+</pre></div></body>
+</html>
+</table></div>

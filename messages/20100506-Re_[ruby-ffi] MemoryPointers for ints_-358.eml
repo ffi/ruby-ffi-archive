@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.226.5 with SMTP id y5cs57142ybg;
+        Thu, 6 May 2010 15:33:16 -0700 (PDT)
+Received: by 10.216.185.143 with SMTP id u15mr1919105wem.185.1273185180094;
+        Thu, 06 May 2010 15:33:00 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRCYh43fBBoEDy0gkg@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id g4si2722265wej.67.2010.05.06.15.32.58;
+        Thu, 06 May 2010 15:32:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCYh43fBBoEDy0gkg@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCYh43fBBoEDy0gkg@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRCYh43fBBoEDy0gkg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyb39 with SMTP id 39sf209775wyb.7
+        for <headius@headius.com>; Thu, 06 May 2010 15:32:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=fM5g1qQYBASPmfewiYT2lqdWtZjjpbhKDFV3jsKsQyU=;
+        b=qYzO773iEPHmfip9T3yCGUPZ/tAY8R/fliWKg3BKn9lEQb908TOjsDKfFYaMGRToQB
+         6T45ZMvlk1naeJm/AAeGx/Kr7m4NW0Dbc604lkFOk6VQM/Be0tmFSavbYY53DFOHBODB
+         9SDmLFPevt6XQe56QjdENsIrPoximxi3xd+lw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=Kz6tW6RPQpfLmGy+ksO9Dqe62trM5SON7nCVFWCcbQwulERECBQo3vMWKQxYaXqOf8
+         auw4DWRqqZ0O70D8Eq1vM0r8/HY7HvrW4EKSciCm96hPXOvW7woqP7Kppv3AF6BNDfb3
+         nDXMosOkkEJ3D8M1rgubX8pTN8QjyKqyWaCIs=
+Received: by 10.223.64.206 with SMTP id f14mr4314758fai.49.1273185176715;
+        Thu, 06 May 2010 15:32:56 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.35.68 with SMTP id o4ls3190865bkd.1.p; Thu, 06 May 2010 
+	15:32:55 -0700 (PDT)
+Received: by 10.204.140.13 with SMTP id g13mr1067375bku.20.1273185175416;
+        Thu, 06 May 2010 15:32:55 -0700 (PDT)
+Received: by 10.204.140.13 with SMTP id g13mr1067374bku.20.1273185175397;
+        Thu, 06 May 2010 15:32:55 -0700 (PDT)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f44.google.com (mail-fx0-f44.google.com [209.85.161.44])
+        by gmr-mx.google.com with ESMTP id 18si214848bwz.12.2010.05.06.15.32.54;
+        Thu, 06 May 2010 15:32:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.161.44 as permitted sender) client-ip=209.85.161.44;
+Received: by mail-fx0-f44.google.com with SMTP id 4so374618fxm.3
+        for <ruby-ffi@googlegroups.com>; Thu, 06 May 2010 15:32:54 -0700 (PDT)
+Received: by 10.239.132.204 with SMTP id 12mr2029575hbs.128.1273185174121; 
+	Thu, 06 May 2010 15:32:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.239.164.207 with HTTP; Thu, 6 May 2010 15:32:34 -0700 (PDT)
+In-Reply-To: <h2g4ccee321005061528tfea44a5bj95a9666a74a9ea5a@mail.gmail.com>
+References: <58AC3CE2-F93D-4061-81B8-FE0F1FD0826C@mac.com> 
+	<BBDDDAA1-51AE-4192-8513-129369AFF52A@mac.com> <h2g4ccee321005061528tfea44a5bj95a9666a74a9ea5a@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Thu, 6 May 2010 19:32:34 -0300
+Message-ID: <h2m71166b3b1005061532jf3474af3l260e7e64b2ec3b3a@mail.gmail.com>
+Subject: Re: [ruby-ffi] MemoryPointers for ints?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.161.44 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 6, 2010 at 7:28 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+> On 7 May 2010 08:21, Chuck Remes <cremes.devlist@mac.com> wrote:
+>> Wow, it took 6 hours for these messages to show up. I have figured it ou=
+t in the meantime.
+>
+> Posts from people who haven't posted before are held for approval. =A0It
+> also seems that google is treating everyone as a first poster all over
+> again.
+>
+
+ From the admin interface you can mark a poster for "Always" approval.
+
+if the user posted in flood until you approved the first one, it will
+be held for second approval, but in the interface you can approve both
+and submit.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

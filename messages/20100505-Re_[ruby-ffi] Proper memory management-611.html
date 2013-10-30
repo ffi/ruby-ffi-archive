@@ -1,0 +1,122 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Proper memory management</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Proper memory management</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/10 10:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Well,
+&lt;hint&gt;
+There is a wiki over at <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/">http://wiki.github.com/ffi/ffi/</a> that could use
+an entry on FFI::AutoPointer, so next time someone needs the thing,
+they could find the info there.  You could put in your experiences
+with using it.
+
+&lt;/hint&gt;
+
+On 6 May 2010 12:25, v01d <a class="moz-txt-link-rfc2396E" href="mailto:phreakuencies@gmail.com">&lt;phreakuencies@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Ah, that's much better. I didn't know I could use it that way.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks!
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 05/05/2010 11:19 PM, Wayne Meissner wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Use FFI::AutoPointer - its there for exactly this reason (having one
+<span class="moz-txt-citetags">&gt;&gt; </span>implementation of the whole "clean up native memory when ruby object
+<span class="moz-txt-citetags">&gt;&gt; </span>instance is finalized" is better than having many, slightly broken
+<span class="moz-txt-citetags">&gt;&gt; </span>variants).
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::AutoPointer also has the advantage on JRuby of <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>not<span class="moz-txt-tag">_</span></span> using
+<span class="moz-txt-citetags">&gt;&gt; </span>ObjectSpace, so a) it will actually work in jruby-1.5.0 and later
+<span class="moz-txt-citetags">&gt;&gt; </span>where objectspace is not on by default, and b) is less overhead, since
+<span class="moz-txt-citetags">&gt;&gt; </span>its implemented via standard java PhantomReferences.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Use it something like this:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>class VectorPointer&lt;  FFI::AutoPointer
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>  def self.release(ptr)
+<span class="moz-txt-citetags">&gt;&gt; </span>   # ptr is the original pointer you passed in to create VectorPointer
+<span class="moz-txt-citetags">&gt;&gt; </span>    GSLng.backend.gsl_free_vector(ptr)
+<span class="moz-txt-citetags">&gt;&gt; </span>  end
+<span class="moz-txt-citetags">&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Then use it like thus:
+<span class="moz-txt-citetags">&gt;&gt; </span> ptr = VectorPointer.new(GSLng.backend.gsl_alloc_vector(n))
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>It is a FFI::Pointer subclass, so you can pass it wherever a :pointer
+<span class="moz-txt-citetags">&gt;&gt; </span>parameter is needed, or use it in a Struct :pointer field, etc.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>There is also AutoPointer#free() to free the memory earlier than the
+<span class="moz-txt-citetags">&gt;&gt; </span>GC cleanup (which is a good idea when you can use it), #autorelease=()
+<span class="moz-txt-citetags">&gt;&gt; </span>to toggle on/off the auto cleanup.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>On 6 May 2010 08:56, v01d<a class="moz-txt-link-rfc2396E" href="mailto:phreakuencies@gmail.com">&lt;phreakuencies@gmail.com&gt;</a>  wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>I'm in the process of developing a Ruby binding to the GSL numerical
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>library using FFI. Recently I stumbled upon a problematic issue
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>regarding memory management and finalizers.
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Since the GSL library allows creation and destruction of instances
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>like this:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>gsl_vector* ptr = gsl_alloc_vector(size_t n);
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>...
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>gsl_free_vector(ptr);
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Then, in Ruby I do something like this:
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>class Vector
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> def initialize(n)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>   @ptr = GSLng.backend.gsl_alloc_vector(n)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>   Vector.define_finalizer(self, @ptr)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> end
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> def Vector.define_finalizer(self, ptr)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>   ObjectSpace.define_finalizer(self, lambda {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>GSLng.backend.gsl_free_vector(ptr)})
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> end
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>The problem is that if later I instatiante a Vector inside a loop,
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>like:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> Vector.new(3)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>This obviously eats a lot of memory until GC runs. Now, if I do:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> Vector.new(3)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> GC.start
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>the memory that the Vector instances themselves occupy is freed but
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>the finalizer is not called (it is later called at program end),
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>therefore all of the memory allocated through gsl_alloc_vector() is
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>sitting there until program ends.
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>I know that Ruby doesn't guarantee that finalizers are called in any
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>particular moment (even after GC.start, which I thought would
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>suffice). So what I'm asking probably is not really related to FFI
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>itself, but I wanted to ask here since I imagined this would be a
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>common pattern among FFI users. The question is then: is there a
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>better way to manage this type of memory? I obviously cant use the
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>transaction-like pattern (like File.open) since for a Vector that
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>wouldn't make sense. It would be ideal to make the gsl_vector_free
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>call when the actual Vector class is free'd. Maybe I need to go to a
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>lower level for this and use the C api to register this call in the
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>"free" function for this class, but that would be overkill since I
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>wanted to avoid using C altogether.
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Thank you!
+<span class="moz-txt-citetags">&gt;&gt;&gt;</span>
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

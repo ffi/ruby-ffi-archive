@@ -1,0 +1,72 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Need help to understand FFI 1.4 installation failure</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Need help to understand FFI 1.4 installation failure</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>postmodern <postmodern.mod3@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/2/13 8:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+It appears you need to install the ruby-dev or ruby-devel package for
+the ruby/config.h header?
+
+On 03/02/2013 05:51 AM, <a class="moz-txt-link-abbreviated" href="mailto:codehacker@comcast.net">codehacker@comcast.net</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm a bit out of my depth here. Any insight would be appreciated.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Installing FFI 1.4 with bundler I see:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>** [out :: pa491.railsplayground.net]
+<span class="moz-txt-citetags">&gt; </span>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native
+<span class="moz-txt-citetags">&gt; </span>extension.
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] 
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] /usr/local/bin/ruby extconf.rb
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for ffi.h... no
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for ffi.h in
+<span class="moz-txt-citetags">&gt; </span>/usr/local/include,/usr/include/ffi... no
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for
+<span class="moz-txt-citetags">&gt; </span>rb_thread_blocking_region()... yes
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for
+<span class="moz-txt-citetags">&gt; </span>rb_thread_call_with_gvl()... yes
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for
+<span class="moz-txt-citetags">&gt; </span>rb_thread_call_without_gvl()... yes
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] checking for
+<span class="moz-txt-citetags">&gt; </span>ffi_prep_cif_var()... no
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] creating extconf.h
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] creating Makefile
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] 
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] make
+<span class="moz-txt-citetags">&gt; </span> ** [out :: pa491.railsplayground.net] make: *** No rule to make
+<span class="moz-txt-citetags">&gt; </span>target `/include/i686-linux/ruby/config.h', needed by
+<span class="moz-txt-citetags">&gt; </span>`MemoryPointer.o'.  Stop.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>any suggestions for how to proceed would be greatly appreciated
+<span class="moz-txt-citetags">&gt; </span>-- 
+<span class="moz-txt-citetags">&gt; </span> 
+<span class="moz-txt-citetags">&gt; </span>---
+<span class="moz-txt-citetags">&gt; </span>You received this message because you are subscribed to the Google
+<span class="moz-txt-citetags">&gt; </span>Groups "ruby-ffi" group.
+<span class="moz-txt-citetags">&gt; </span>To unsubscribe from this group and stop receiving emails from it, send
+<span class="moz-txt-citetags">&gt; </span>an email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+<span class="moz-txt-citetags">&gt; </span>For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+<span class="moz-txt-citetags">&gt; </span> 
+<span class="moz-txt-citetags">&gt; </span> 
+</pre></blockquote><pre wrap>
+
+
+<div class="moz-txt-sig">-- 
+Blog: <a class="moz-txt-link-freetext" href="http://postmodern.github.com/">http://postmodern.github.com/</a>
+GitHub: <a class="moz-txt-link-freetext" href="https://github.com/postmodern">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77
+
+<div class="moz-txt-sig">-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+
+
+</div></pre></div></body>
+</html>
+</table></div>

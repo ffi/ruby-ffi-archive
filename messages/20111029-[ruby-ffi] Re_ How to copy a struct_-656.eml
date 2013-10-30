@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs5888igc;
+        Sat, 29 Oct 2011 09:31:15 -0700 (PDT)
+Received: by 10.68.29.228 with SMTP id n4mr11371152pbh.23.1319905874511;
+        Sat, 29 Oct 2011 09:31:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCM-78_jqChDQ1LD1BBoEisbOTA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id y9si13185333pbi.203.2011.10.29.09.31.14
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 29 Oct 2011 09:31:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM-78_jqChDQ1LD1BBoEisbOTA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM-78_jqChDQ1LD1BBoEisbOTA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCM-78_jqChDQ1LD1BBoEisbOTA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk37 with SMTP id 37sf8386151pzk.7
+        for <headius@headius.com>; Sat, 29 Oct 2011 09:31:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=cYJrWc2FkTdJ3jMtZCSUwnl4USf7ABxGnE6sgmx48+0=;
+        b=FYxBANBE4+MVN+ZGMNmipTMzPEXn5VVDX+gLhYGIksrnHfVCal6lIExWq1ZPiEXw3G
+         V5nhnjHiYpkJnxhB5n59g2ZCVbYOPD7o7IfVEFvZV+2HO4NP3BZpbaq3UKPFX1Wpm8ml
+         FqomOY1uDKl/k6KvuHbyYyLlwq+rkjVbfAhxk=
+Received: by 10.68.16.71 with SMTP id e7mr882317pbd.17.1319905872649;
+        Sat, 29 Oct 2011 09:31:12 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.119.115 with SMTP id kt19ls10704331pbb.4.gmail; Sat, 29 Oct
+ 2011 09:31:12 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.39.74 with SMTP id n10mr607184pbk.8.1319905872384; Sat, 29
+ Oct 2011 09:31:12 -0700 (PDT)
+Received: by u10g2000prl.googlegroups.com with HTTP; Sat, 29 Oct 2011 09:31:12
+ -0700 (PDT)
+Date: Sat, 29 Oct 2011 09:31:12 -0700 (PDT)
+In-Reply-To: <21677020.728.1319889075142.JavaMail.geo-discussion-forums@prep8>
+References: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+ <72a98c73-69ba-492a-a523-ff0356ca72e5@h39g2000prh.googlegroups.com> <21677020.728.1319889075142.JavaMail.geo-discussion-forums@prep8>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0,gzip(gfe)
+Message-ID: <08154b43-68fb-49a5-9c3f-2669c2e45e4f@u10g2000prl.googlegroups.com>
+Subject: [ruby-ffi] Re: How to copy a struct?
+From: cootcraig <craig@coot.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: craig@coot.net
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ craig@coot.net designates internal as permitted sender)
+ smtp.mail=craig@coot.net; dkim=pass
+ header.i=@coot.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thanks.  I finally realized I was doing and wanted a shallow copy.
+I'm new enough to Ruby that I have trouble looking for information.
+
+For this task I plan to have multiple threads, each reading from a
+network socket.  I will struct.new a buffer for each thread, the dll
+call reads into the struct, the struct is used read only in any
+threads that reference it. No need for dup with this approach.
+
+By the way, my current project involves working with a Windows DLL
+(and no source), FFI has been a pleasure to use and very effective.
+Thanks for FFI.
+
+
+On Oct 29, 5:51=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Or you could use Struct#dup.
+>
+> e.g. =A0
+>
+> $ ruby -rrubygems -e 'require "ffi"; class S < FFI::Struct; layout :a,
+> :int; end; s1 =3D S.new; s1[:a] =3D 1234; s2 =3D s1.dup; puts
+> "s1=3D#{s1.pointer.address}, s2=3D#{s2.pointer.address} s1[:a]=3D#{s1[:a]=
+},
+> s2[:a]=3D#{s2[:a]}"'
+>
+> s1=3D4311971984, s2=3D4312277120 s1[:a]=3D1234, s2[:a]=3D1234
+>
+> Different memory addresses, same contents.

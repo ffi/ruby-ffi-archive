@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>DA <drew.avis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 1:00 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, May 20, 2010 at 1:19 PM, Jeremy Voorhis <a class="moz-txt-link-rfc2396E" href="mailto:jvoorhis@gmail.com">&lt;jvoorhis@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>The address is in the output of inspect (0x4145ec0). You can also use
+<span class="moz-txt-citetags">&gt; </span>Pointer#to_i.
+</pre></blockquote><pre wrap>
+
+Thanks Jeremy, so I'm getting some weird numbers for the addresses,
+which makes think they're not valid.  I have an array pointers to
+these structs:
+for p in parr
+  puts "p: #{p} inspect: #{p.inspect}"
+  i+= 1
+  break if i &gt; 10
+  if p.to_i &gt; 10
+    my_struct = FM::FTextItemT.new p
+    puts "test: #{my_struct[:dataType]}"
+  end
+end
+
+I'm getting:
+p: #&lt;FFI::Pointer:0x317a04&gt; inspect: #&lt;FFI::Pointer address=00000001&gt;
+p: #&lt;FFI::Pointer:0x3179dc&gt; inspect: #&lt;FFI::Pointer address=00000001&gt;
+p: #&lt;FFI::Pointer:0x3179b4&gt; inspect: #&lt;FFI::Pointer address=003F7330&gt;
+test: 7566450
+p: #&lt;FFI::Pointer:0x31798c&gt; inspect: #&lt;FFI::Pointer address=00000008&gt;
+p: #&lt;FFI::Pointer:0x317964&gt; inspect: #&lt;FFI::Pointer address=00000004&gt;
+p: #&lt;FFI::Pointer:0x3452c4&gt; inspect: #&lt;FFI::Pointer address=00000000&gt;
+p: #&lt;FFI::Pointer:0x317928&gt; inspect: #&lt;FFI::Pointer address=00000001&gt;
+p: #&lt;FFI::Pointer:0x317900&gt; inspect: #&lt;FFI::Pointer address=00000001&gt;
+p: #&lt;FFI::Pointer:0x3178d8&gt; inspect: #&lt;FFI::Pointer address=003F7368&gt;
+test: 1634615657
+p: #&lt;FFI::Pointer:0x3178b0&gt; inspect: #&lt;FFI::Pointer address=0000000F&gt;
+
+Here's how I'm getting the array:
+
+// c struct:
+typedef struct {
+	UIntT len;
+	F_TextItemT *val;
+} F_TextItemsT;
+
+// ruby def:
+class FTextItemsT &lt; FFI::Struct
+    layout :len, :uint,
+      :val, :pointer
+ end
+
+// ruby code:
+
+tis = FM.FApiGetText(docid, flowid, (FM.FTIString | FM.FTILineEnd));
+parr = tis[:val].read_array_of_pointer(tis[:len])
+puts "tis len: #{tis[:len]}"
+
+The tis[:len] gives me the same value as calling this code in c, so
+I'm pretty sure the FApiGetText call is working and I'm getting a
+valid struct returned. Am I using read_array_of_pointer wrong?
+
+Thanks,
+Drew
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,138 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: `ffi_libraries&#39;: no library specified (LoadError)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: `ffi_libraries&#39;: no library specified (LoadError)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>quanta <quanta.linux@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/29/11 12:28 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>Jesús García Sáez &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">CC: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+I got the same problem when install and run tyrantmanager:
+<a class="moz-txt-link-freetext" href="http://copiousfreetime.rubyforge.org/tyrantmanager/">http://copiousfreetime.rubyforge.org/tyrantmanager/</a>
+
+# tyrantmanager setup /data/tyrant
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/loquacious-1.6.4/lib/loquacious<span class="moz-txt-tag">/</span></i>
+undefined.rb:87: warning: parenthesize argument(s) for future version
+/usr/lib64/ruby/gems/1.8/gems/ffi-0.6.3/lib/ffi/library.rb:79:in
+`ffi_libraries': no library specified (LoadError)
+	from /usr/lib64/ruby/gems/1.8/gems/ffi-0.6.3/lib/ffi/library.rb:
+106:in `attfunc'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/rufus-tokyo-1.0.7/lib/rufus/tokyo<span class="moz-txt-tag">/</span></i>
+tyrant/lib.rb:59
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/rufus-tokyo-1.0.7/lib/rufus/tokyo<span class="moz-txt-tag">/</span></i>
+tyrant.rb:32
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/tyrantmanager-1.6.0/lib<span class="moz-txt-tag">/</span></i>
+tyrant_manager/tyrant_instance.rb:2
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/tyrantmanager-1.6.0/lib<span class="moz-txt-tag">/</span></i>
+tyrant_manager.rb:249
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /usr/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib64/ruby/gems/1.8/gems/tyrantmanager-1.6.0/bin<span class="moz-txt-tag">/</span></i>
+tyrantmanager:9
+	from /usr/bin/tyrantmanager:19:in `load'
+	from /usr/bin/tyrantmanager:19
+
+The content of library.rb from beginning to line 79:
+
+module FFI
+  CURRENT_PROCESS = USE_THIS_PROCESS_AS_LIBRARY = Object.new
+
+  module Library
+    CURRENT_PROCESS = FFI::CURRENT_PROCESS
+    LIBC = FFI::Platform::LIBC
+
+    def self.extended(mod)
+      raise RuntimeError.new("must only be extended by module") unless
+mod.kind_of?(Module)
+    end
+
+    def ffi_lib(*names)
+
+      ffi_libs = names.map do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>name<span class="moz-txt-tag">|</span></code>
+        if name == FFI::CURRENT_PROCESS
+          FFI::DynamicLibrary.open(nil, FFI::DynamicLibrary::RTLD_LAZY
+| FFI::DynamicLibrary::RTLD_LOCAL)
+        else
+          libnames = (name.is_a?(::Array) ? name : [ name ]).map { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>n<span class="moz-txt-tag">|</span></code>
+[ n, FFI.map_library_name(n) ].uniq }.flatten.compact
+          lib = nil
+          errors = {}
+
+          libnames.each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>libname<span class="moz-txt-tag">|</span></code>
+            begin
+              lib = FFI::DynamicLibrary.open(libname,
+FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_LOCAL)
+              break if lib
+
+            rescue Exception =&gt; ex
+              errors[libname] = ex
+            end
+          end
+
+          if lib.nil?
+            raise LoadError.new(errors.values.join('. '))
+          end
+
+          # return the found lib
+          lib
+        end
+      end
+
+      @ffi_libs = ffi_libs
+    end
+
+
+    def ffi_convention(convention)
+      @ffi_convention = convention
+    end
+
+
+    def ffi_libraries
+      raise LoadError.new("no library specified") if !defined?
+(@ffi_libs) || @ffi_libs.empty?
+      @ffi_libs
+    end
+
+I'm not familiar with Ruby. Where should I put "ffi_lib LIBC" in this
+file?
+
+On Feb 19 2010, 4:11 pm, Jesús García Sáez <a class="moz-txt-link-rfc2396E" href="mailto:blax...@gmail.com">&lt;blax...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Thu, Feb 18, 2010 at 20:45, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>2010/2/19 Jesús García Sáez <a class="moz-txt-link-rfc2396E" href="mailto:blax...@gmail.com">&lt;blax...@gmail.com&gt;</a>:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>Obviously it fails telling you there isnolibspecified, the hello
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>world I see in github is this [0], where did you get that example?
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Its probably in an example on the wiki somewhere.  Anyone who feels
+<span class="moz-txt-citetags">&gt; &gt; </span>like jumping in and fixing up the examples to specify a lib, feel
+<span class="moz-txt-citetags">&gt; &gt; </span>free.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You were right, I fixed it.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Stefan, just put "ffi_lib LIBC" (or FFI::Platform::LIBC in jruby,
+<span class="moz-txt-citetags">&gt; </span>'cause jruby's ffi is a bit outdated) and there you go.
+</pre></div></body>
+</html>
+</table></div>

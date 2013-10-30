@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jesús GS &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/18/11 5:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+I'm really confuse with this behaviour. I think I'm missing some
+concept of memory management of ffi.
+
+Let's imagine a C library with something like:
+
+struct foo
+{
+    void *p;
+};
+void some_function( struct foo * in_parameter );
+
+From ruby we are gonna create that struct before call the function,
+with something similar to:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>require 'ffi'
+</pre></blockquote></blockquote><pre wrap>
+=&gt; true
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>class Foo &lt; FFI::Struct; layout :p, :pointer; end
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;FFI::StructLayout:0x1f0f0c8&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>foo = Foo.new
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;Foo:0x1a15597&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>foo[:p] = my_pointer = FFI::MemoryPointer.new(:int, 100)
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;MemoryPointer address=0xb3c06380 size=400&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>foo[:p]
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;Pointer address=0xb3c06380&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>my_pointer
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;MemoryPointer address=0xb3c06380 size=400&gt;
+
+
+I cannot free a Pointer (only MemoryPointer), so what should I do?
+Create a free_struct_foo( void * p ); function in C? Ignore it because
+I don't need to free that allocated memory or just hope no memory
+leaks will happen?.
+
+Regards.
+</pre></div></body>
+</html>
+</table></div>

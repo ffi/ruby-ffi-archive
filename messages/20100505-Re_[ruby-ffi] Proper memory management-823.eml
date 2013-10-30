@@ -1,0 +1,184 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.226.5 with SMTP id y5cs12307ybg;
+        Wed, 5 May 2010 19:25:39 -0700 (PDT)
+Received: by 10.224.66.100 with SMTP id m36mr6385069qai.126.1273112738738;
+        Wed, 05 May 2010 19:25:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOeQwYraAhCf0YjfBBoESFn9lw@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTP id 5si880004qwh.15.2010.05.05.19.25.37;
+        Wed, 05 May 2010 19:25:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOeQwYraAhCf0YjfBBoESFn9lw@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOeQwYraAhCf0YjfBBoESFn9lw@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCOeQwYraAhCf0YjfBBoESFn9lw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws19 with SMTP id 19sf3084421vws.7
+        for <headius@headius.com>; Wed, 05 May 2010 19:25:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:message-id:date
+         :from:user-agent:mime-version:to:subject:references:in-reply-to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=XhB2QQPLDnDUi+pwgg+JL6HJDaCuBhxiEiWW6GQ5PVw=;
+        b=jZeEetcQIsrf2QC9fFbk7aT3wBaCO1nTPSL3iV2yVE4rtuguh6EdtLFTeQtzLyFlje
+         V4oIWjEhkN9/ZwwBEyE3WJsqzYTXbE5iCQ+MekXcUmsHXgwkmjKnaReqCDz08+D17LVD
+         Nu9BeA05BEBNzKfK8U9C8Kk/ciWLhh3aXJTMQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=65pY2QAONfLzQ5hYPgBQUNtJ0aAeP9kKjSrIBzqTMhGnMj/h2B4oAWNanqxP5L6n6j
+         rr2DcV3rCbO/yf0hlgeE+4Y1YFgnUxc7SjrYvTxqX9GR7AOfNf45bz5siOdkCoT1rh4r
+         J8YJZOzkHMtF2zM55YGOSSqxT3Pbs5pThdo94=
+Received: by 10.220.123.156 with SMTP id p28mr1513409vcr.29.1273112735541;
+        Wed, 05 May 2010 19:25:35 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.66.74 with SMTP id m10ls5247020vci.4.p; Wed, 05 May 2010 
+	19:25:35 -0700 (PDT)
+Received: by 10.100.22.14 with SMTP id 14mr5679999anv.34.1273112734732;
+        Wed, 05 May 2010 19:25:34 -0700 (PDT)
+Received: by 10.100.22.14 with SMTP id 14mr5679994anv.34.1273112734482;
+        Wed, 05 May 2010 19:25:34 -0700 (PDT)
+Return-Path: <phreakuencies@gmail.com>
+Received: from mail-gy0-f180.google.com (mail-gy0-f180.google.com [209.85.160.180])
+        by gmr-mx.google.com with ESMTP id 19si33877yxe.7.2010.05.05.19.25.33;
+        Wed, 05 May 2010 19:25:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of phreakuencies@gmail.com designates 209.85.160.180 as permitted sender) client-ip=209.85.160.180;
+Received: by gyb13 with SMTP id 13so2751577gyb.25
+        for <ruby-ffi@googlegroups.com>; Wed, 05 May 2010 19:25:33 -0700 (PDT)
+Received: by 10.101.151.13 with SMTP id d13mr7587935ano.252.1273112733295;
+        Wed, 05 May 2010 19:25:33 -0700 (PDT)
+Return-Path: <phreakuencies@gmail.com>
+Received: from [192.168.0.3] (200-55-101-109.dsl.prima.net.ar [200.55.101.109])
+        by mx.google.com with ESMTPS id y2sm4406242ani.4.2010.05.05.19.25.31
+        (version=SSLv3 cipher=RC4-MD5);
+        Wed, 05 May 2010 19:25:32 -0700 (PDT)
+Message-ID: <4BE228AA.7030500@gmail.com>
+Date: Wed, 05 May 2010 23:25:46 -0300
+From: v01d <phreakuencies@gmail.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.9) Gecko/20100330 Shredder/3.0.4
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Proper memory management
+References: <499b1ee0-00c4-4113-9b2e-70f50019d619@e2g2000yqn.googlegroups.com> <y2i4ccee321005051919w72c309c5w8a2ede28c7349b62@mail.gmail.com>
+In-Reply-To: <y2i4ccee321005051919w72c309c5w8a2ede28c7349b62@mail.gmail.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of phreakuencies@gmail.com designates 209.85.160.180 as permitted 
+	sender) smtp.mail=phreakuencies@gmail.com; dkim=pass (test mode) 
+	header.i=@gmail.com
+X-Original-Sender: phreakuencies@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Ah, that's much better. I didn't know I could use it that way.
+
+Thanks!
+
+On 05/05/2010 11:19 PM, Wayne Meissner wrote:
+> Use FFI::AutoPointer - its there for exactly this reason (having one
+> implementation of the whole "clean up native memory when ruby object
+> instance is finalized" is better than having many, slightly broken
+> variants).
+>
+> FFI::AutoPointer also has the advantage on JRuby of _not_ using
+> ObjectSpace, so a) it will actually work in jruby-1.5.0 and later
+> where objectspace is not on by default, and b) is less overhead, since
+> its implemented via standard java PhantomReferences.
+>
+> Use it something like this:
+>
+> class VectorPointer<  FFI::AutoPointer
+>
+>    def self.release(ptr)
+>     # ptr is the original pointer you passed in to create VectorPointer
+>      GSLng.backend.gsl_free_vector(ptr)
+>    end
+> end
+>
+> Then use it like thus:
+>   ptr = VectorPointer.new(GSLng.backend.gsl_alloc_vector(n))
+>
+> It is a FFI::Pointer subclass, so you can pass it wherever a :pointer
+> parameter is needed, or use it in a Struct :pointer field, etc.
+>
+> There is also AutoPointer#free() to free the memory earlier than the
+> GC cleanup (which is a good idea when you can use it), #autorelease=()
+> to toggle on/off the auto cleanup.
+>
+>
+> On 6 May 2010 08:56, v01d<phreakuencies@gmail.com>  wrote:
+>> Hi,
+>> I'm in the process of developing a Ruby binding to the GSL numerical
+>> library using FFI. Recently I stumbled upon a problematic issue
+>> regarding memory management and finalizers.
+>>
+>> Since the GSL library allows creation and destruction of instances
+>> like this:
+>> gsl_vector* ptr = gsl_alloc_vector(size_t n);
+>> ...
+>> gsl_free_vector(ptr);
+>>
+>> Then, in Ruby I do something like this:
+>>
+>> class Vector
+>>   def initialize(n)
+>>     @ptr = GSLng.backend.gsl_alloc_vector(n)
+>>     Vector.define_finalizer(self, @ptr)
+>>   end
+>>
+>>   def Vector.define_finalizer(self, ptr)
+>>     ObjectSpace.define_finalizer(self, lambda {|id|
+>> GSLng.backend.gsl_free_vector(ptr)})
+>>   end
+>> end
+>>
+>> The problem is that if later I instatiante a Vector inside a loop,
+>> like:
+>> 10000.times do
+>>   Vector.new(3)
+>> end
+>>
+>> This obviously eats a lot of memory until GC runs. Now, if I do:
+>> 10000.times do
+>>   Vector.new(3)
+>>   GC.start
+>> end
+>>
+>> the memory that the Vector instances themselves occupy is freed but
+>> the finalizer is not called (it is later called at program end),
+>> therefore all of the memory allocated through gsl_alloc_vector() is
+>> sitting there until program ends.
+>>
+>> I know that Ruby doesn't guarantee that finalizers are called in any
+>> particular moment (even after GC.start, which I thought would
+>> suffice). So what I'm asking probably is not really related to FFI
+>> itself, but I wanted to ask here since I imagined this would be a
+>> common pattern among FFI users. The question is then: is there a
+>> better way to manage this type of memory? I obviously cant use the
+>> transaction-like pattern (like File.open) since for a Vector that
+>> wouldn't make sense. It would be ideal to make the gsl_vector_free
+>> call when the actual Vector class is free'd. Maybe I need to go to a
+>> lower level for this and use the C api to register this call in the
+>> "free" function for this class, but that would be overkill since I
+>> wanted to avoid using C altogether.
+>>
+>> Thank you!
+>>

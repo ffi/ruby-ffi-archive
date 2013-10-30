@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: can&#39;t explain this behavior</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: can&#39;t explain this behavior</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Alexander Kabanov <shurikk@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/25/11 3:02 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+Thanks Wayne,
+
+you are correct, after doing what you just described everything works
+in both ruby 1.8.7 and 1.9.2
+
+best,
+
+--Alex
+
+On Wed, Apr 20, 2011 at 6:25 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I suspect the problem is this:
+<span class="moz-txt-citetags">&gt; </span>  - pointer to result size (int)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You should allocate it thusly:
+<span class="moz-txt-citetags">&gt; </span>    a3 = FFI::MemoryPointer.new(:int, 1, false)
+<span class="moz-txt-citetags">&gt; </span>    a3.write_int(a2.size)
+<span class="moz-txt-citetags">&gt; </span>If that C function is doing a conversion from an input string to an output
+<span class="moz-txt-citetags">&gt; </span>string, the 'result size' probably needs to be initialized to the maximum
+<span class="moz-txt-citetags">&gt; </span>size of the output string, and after the function is called, it will contain
+<span class="moz-txt-citetags">&gt; </span>the actual number of bytes used in the output buffer.  Thats a pretty common
+<span class="moz-txt-citetags">&gt; </span>idiom, and one of the most common things people get wrong.
+<span class="moz-txt-citetags">&gt; </span>The reason why it sometimes worked, and sometimes did not was because the
+<span class="moz-txt-citetags">&gt; </span>'output size' was full of random garbage, since you were not initializing
+<span class="moz-txt-citetags">&gt; </span>the a3 memory, so occasionally it would contain a positive integer value.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

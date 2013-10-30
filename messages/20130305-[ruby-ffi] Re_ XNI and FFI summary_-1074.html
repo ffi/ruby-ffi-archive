@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: XNI and FFI summary?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: XNI and FFI summary?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/5/13 12:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">On Tuesday, 5 March 2013 05:12:14 UTC+10, Jon  wrote:<br><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>When you get a free moment, please provide a quick summary of:
+<br>
+<br>&nbsp; * XNI's main reason(s) for being
+<br></blockquote><div><br></div><div>At the moment, its an experiment in native interface design. &nbsp;The aim is a stream-lined FFI+ffi-compiler combo, with some hard-coded conventions to make it easier to implement common patterns when writing extensions, whilst avoiding the "gigantic-ball-of-mud" that is the ruby C api. &nbsp;But, XNI does not try to do everything - since you don't get access to Ruby VM internals, you wouldn't use it for e.g. implementing a new data structure.</div><div><br></div><div>This is Jeremy's hitimes gem converted to use FFI+ffi-compiler:</div><div>https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b<br></div><div><br></div><div>and converted to use XNI:</div><div>https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5<br></div><div><br></div><div>The XNI one has a bit less ruby boilerplate (XNI has the concept of a DataObject, which can have instance methods that automagically pass in 'self' to native methods). &nbsp;On the other hand, XNI excises a few FFI concepts - there is no Struct that you can wrap around existing native memory, nor MemoryPointer for generic native memory allocations.</div><div><br></div><div>(as to why I used hitimes - its a fairly nicely written cext, it doesn't do anything super-complicated, but would be hard to implement in pure FFI due to the data structures and API calls it needs).</div><div><br></div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&nbsp; * when should one prefer XNI over FFI?
+<br></blockquote><div><br></div><div>That's a really good question - "when you're unhappy with FFI+ffi-compiler" would be the pithy answer. &nbsp;FFI isn't going away, so if people are happy with it, then I encourage them to keep using it. &nbsp;At this point, FFI is stable and works. &nbsp;On the other hand, if you're writing a gem from scratch, and you're going to end up writing a bunch of ruby boilerplate around a raw FFI api, and you'll need to use ffi-compiler to compile some native shims, then XNI might be worth a look. &nbsp;At least once it is a bit more stable.</div><div><br></div><div><br></div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&nbsp; * will XNI always utilize FFI?
+<br></blockquote><div><br></div><div>It will always utilize a ffi-like way of interfacing between the ruby VM and the native code (that is part of the design), but it won't always use the FFI gem. &nbsp;There is a native backend for JRuby-1.7+, and I am currently working on a native CRuby backend. &nbsp;There could also be a native backend for Topaz that uses ctypes (or whatever the RPython equivalent is).</div><div>&nbsp;</div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>Thanks.
+<br>
+<br>Jon
+<br>
+<br>---
+<br>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br><a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a>
+<br>twitter: @jonforums
+<br></blockquote>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

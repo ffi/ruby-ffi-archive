@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: c++ examples</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: c++ examples</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/7/09 12:14 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 7, 2009, at 9:55 AM, rogerdpack wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>In the end I think I'm going to end up having to write ruby containers
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>for c++ objects, so I'll probably end up having to write a "real"
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>extension after all.  Anybody know of a cross-VM compatible way to
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>wrap C objects and call their destructors, etc.?
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Thanks.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>You mean C++ objects and make them work with Ruby C API?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Good point. C++.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>It appears on closer inspection that you can call something like
+<span class="moz-txt-citetags">&gt; </span>MyClass.free_object
+<span class="moz-txt-citetags">&gt; </span>(<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/examples">http://wiki.github.com/ffi/ffi/examples</a>)
+<span class="moz-txt-citetags">&gt; </span>on objects, so perhaps I could register my C++ wrapped object using
+<span class="moz-txt-citetags">&gt; </span>ObjectSpace#define_finalizer and call a wrapper to the C++
+<span class="moz-txt-citetags">&gt; </span>destructor.  That might work.
+</pre></blockquote><pre wrap>
+
+I do not recommend this at all. Using finalizers to release external resources is a very easy way to cause memory leaks and latent bugs.
+
+If you need to call a destructor or cleanup function, you should explicitly call them when you know you no longer need the data.
+
+Adding the pointer to a cleanup list that can be processed at a common place is a simple solution. 
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

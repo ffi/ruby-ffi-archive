@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.80.134 with SMTP id t6cs515760qak;
+        Wed, 10 Mar 2010 07:13:21 -0800 (PST)
+Received: by 10.224.44.68 with SMTP id z4mr1078787qae.16.1268234001406;
+        Wed, 10 Mar 2010 07:13:21 -0800 (PST)
+Return-Path: <3DreXSwgKCKgJSMIZVMgZMLPIb.KWUZcJg-NNQOWWOTMOZWcXa.KWU@groups.bounces.google.com>
+Received: from mail-qy0-f137.google.com (mail-qy0-f137.google.com [209.85.221.137])
+        by mx.google.com with ESMTP id 7si11921891qyk.42.2010.03.10.07.13.20;
+        Wed, 10 Mar 2010 07:13:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3DreXSwgKCKgJSMIZVMgZMLPIb.KWUZcJg-NNQOWWOTMOZWcXa.KWU@groups.bounces.google.com designates 209.85.221.137 as permitted sender) client-ip=209.85.221.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3DreXSwgKCKgJSMIZVMgZMLPIb.KWUZcJg-NNQOWWOTMOZWcXa.KWU@groups.bounces.google.com designates 209.85.221.137 as permitted sender) smtp.mail=3DreXSwgKCKgJSMIZVMgZMLPIb.KWUZcJg-NNQOWWOTMOZWcXa.KWU@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk1 with SMTP id 1sf14032813qyk.0
+        for <headius@headius.com>; Wed, 10 Mar 2010 07:13:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:message-id:date
+         :from:user-agent:mime-version:to:subject:x-scanned-by
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=Ld++mI4/K6AAMVDqznG1HYMbANvZmnypBNwgHoaR9ZA=;
+        b=jwFe/G90+ePgFpLqXbczke7xSgN1K8jJ4ejjtFVS0GX2B59KCQ899y87sDHrqXgPVd
+         AmnlafzW+39SzJwdq3h+2jlFN72a0w0dAZPz+7WpPtoP9RLPoodVv/Lf4BOP4WSZALYP
+         nJe7Ne1w16Hi08h/lu6wdl9cdgvkLX5DfEErQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:x-scanned-by
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=sG4HcbdaGOp8hHN7Vm6uSAx7/OVwJeVFlHmuvoxPmDsyX8US8Tz8ej9YF8/vQBj4au
+         ifIMg+WcuWY5JzE8DPsrLblJMxj3c8ByOk3FeAf/bo9dFIny2bCjhUxihwA/gMq02lSx
+         Rm1o1KBc2PyivXxK1J38n78fL2NHmHEuZMTrA=
+Received: by 10.229.11.234 with SMTP id u42mr72202qcu.46.1268233998994;
+        Wed, 10 Mar 2010 07:13:18 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.111.87 with SMTP id r23ls1028204qcp.2.p; Wed, 10 Mar 2010 
+	07:13:17 -0800 (PST)
+Received: by 10.229.241.66 with SMTP id ld2mr213804qcb.19.1268233997520;
+        Wed, 10 Mar 2010 07:13:17 -0800 (PST)
+Received: by 10.229.241.66 with SMTP id ld2mr213800qcb.19.1268233996588;
+        Wed, 10 Mar 2010 07:13:16 -0800 (PST)
+Return-Path: <bkearney@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+        by gmr-mx.google.com with ESMTP id 18si1758244qyk.0.2010.03.10.07.13.16;
+        Wed, 10 Mar 2010 07:13:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of bkearney@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: from int-mx08.intmail.prod.int.phx2.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.21])
+	by mx1.redhat.com (8.13.8/8.13.8) with ESMTP id o2AFDFoi027287
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK)
+	for <ruby-ffi@googlegroups.com>; Wed, 10 Mar 2010 10:13:15 -0500
+Received: from ns3.rdu.redhat.com (ns3.rdu.redhat.com [10.11.255.199])
+	by int-mx08.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP id o2AFDFfc023414
+	for <ruby-ffi@googlegroups.com>; Wed, 10 Mar 2010 10:13:15 -0500
+Received: from localhost.localdomain (vpn-8-39.rdu.redhat.com [10.11.8.39])
+	by ns3.rdu.redhat.com (8.13.8/8.13.8) with ESMTP id o2AFDEPK001192
+	for <ruby-ffi@googlegroups.com>; Wed, 10 Mar 2010 10:13:14 -0500
+Message-ID: <4B97B791.1060406@redhat.com>
+Date: Wed, 10 Mar 2010 10:15:29 -0500
+From: Bryan Kearney <bkearney@redhat.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.7) Gecko/20100120 Fedora/3.0.1-1.fc12 Thunderbird/3.0.1
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] 0.6.3 Pushed to Fedora
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.21
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of bkearney@redhat.com designates 209.132.183.28 as permitted sender) 
+	smtp.mail=bkearney@redhat.com
+X-Original-Sender: bkearney@redhat.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/b4f28680cbfb139
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/ffe4030716f41ca3
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+The bug fixes for PPC which Wayne put in worked, so I have pushed 0.6.3 
+to Fedora. It is making its way through the build systems now. Karma is 
+appreciated.
+
+-- bk

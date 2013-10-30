@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs323314qaj;
+        Wed, 14 Oct 2009 10:14:05 -0700 (PDT)
+Received: by 10.150.61.20 with SMTP id j20mr15342354yba.42.1255540445054;
+        Wed, 14 Oct 2009 10:14:05 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yw0-f137.google.com (mail-yw0-f137.google.com [209.85.211.137])
+        by mx.google.com with ESMTP id 20si15855927gxk.33.2009.10.14.10.14.03;
+        Wed, 14 Oct 2009 10:14:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.137 as permitted sender) client-ip=209.85.211.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.137 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh1 with SMTP id 1so13120459ywh.22
+        for <headius@headius.com>; Wed, 14 Oct 2009 10:14:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:received:received:date:from:to:subject
+         :message-id:in-reply-to:references:x-mailer:mime-version
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=at9j4ySCrzB9gT3xpKawOFMxdP80L5dUmyTYbq79qUI=;
+        b=Uhf/L6lSJIebxjDr6BNYc55ddgMWsrBBnIlItyI0jtj5qz10Og7JhYoyU3mrbVbDAr
+         lJMsdxcm97lz7+sPtUtCWVUOdttKsVCtSIfxE5Y/9ZqRIKLJgd+MBPnp6P7kSaN2Ud+9
+         c1uOfLjZlK41eBwccN9V5fVhuwvHKlFDz6D64=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=llAYJz7wLo3cAc02FAn3TCTNO7h/vOE4eihao4HmBk0NqsplSTOABLazo+gZipvjKJ
+         bZQh0p/fOy0HSdnKYRlO10gknGgy7RCAmUnr/x93wLSRCvM4fnjScIwk97BlVBrGyA1A
+         8TtHY28Z3IbYeNO/E7xGv2Ag7Rk7/A7jUED3g=
+Received: by 10.150.45.42 with SMTP id s42mr1039431ybs.3.1255540442676;
+        Wed, 14 Oct 2009 10:14:02 -0700 (PDT)
+Received: by 10.176.58.28 with SMTP id g28gr55yqa.0;
+	Wed, 14 Oct 2009 10:14:02 -0700 (PDT)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.204.23.6 with SMTP id p6mr192974bkb.34.1255540442221; Wed, 14 Oct 2009 10:14:02 -0700 (PDT)
+Received: by 10.204.23.6 with SMTP id p6mr192973bkb.34.1255540442179; Wed, 14 Oct 2009 10:14:02 -0700 (PDT)
+Return-Path: <jon.forums@gmail.com>
+Received: from fg-out-1718.google.com (fg-out-1718.google.com [72.14.220.154]) by gmr-mx.google.com with ESMTP id 14si527898fxm.7.2009.10.14.10.14.01; Wed, 14 Oct 2009 10:14:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 72.14.220.154 as permitted sender) client-ip=72.14.220.154;
+Received: by fg-out-1718.google.com with SMTP id d23so1487856fga.1 for <ruby-ffi@googlegroups.com>; Wed, 14 Oct 2009 10:14:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:received:received:date:from:to:subject :message-id:in-reply-to:references:x-mailer:mime-version :content-type:content-transfer-encoding; bh=y/zznjxKQXYycoOUi4YMn8X5xYKQUcO8Hs0+CX5k3v0=; b=WGULbw5o6ALqF6hOSSFqRfTmPlN635/XD68C3FfxOLzVylyRr2I76wnZZ2a9TX+YXd +m+klu34v9P6c9Cw1AvyXuVd9RKDo85zjED/8FEuzEFnoCOeSFoK3mrujR5QbQEJII4H AGKR2tn+fsbBQxud18EruPO/0tTWTviE9LJE8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=date:from:to:subject:message-id:in-reply-to:references:x-mailer :mime-version:content-type:content-transfer-encoding; b=vXuwF612CCInQUzflu+gGp/q9VnIIL2cGHvsCzuWLM2O6G1qtRbo39wYHi/mv8uHzA fOvqKT9NaC5owATUN2Nx+Z4SjMi4hra4gPLv95SXeGynEvDrZ/1X3UIK6wSSUECRnfVe k+N+Pice23kZtl0+UUEkzk+wG224twv27cFIE=
+Received: by 10.86.232.5 with SMTP id e5mr7873200fgh.27.1255540440773; Wed, 14 Oct 2009 10:14:00 -0700 (PDT)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-96-11-69-141.central.biz.rr.com [96.11.69.141]) by mx.google.com with ESMTPS id 3sm129515fge.4.2009.10.14.10.13.59 (version=TLSv1/SSLv3 cipher=RC4-MD5); Wed, 14 Oct 2009 10:14:00 -0700 (PDT)
+Date: Wed, 14 Oct 2009 13:13:56 -0400
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] Re: extconf.rb typo?
+Message-Id: <20091014131356.e5892949.jon.forums@gmail.com>
+In-Reply-To: <20091014112458.66cb31e2.jon.forums@gmail.com>
+References: <20091014091420.5892955c.jon.forums@gmail.com> <71166b3b0910140654tced78eciaa2755236ffe1006@mail.gmail.com> <4ccee320910140756u5a30322h7047951c5d5338b8@mail.gmail.com> <71166b3b0910140759m32c16daev8d676463b46e210f@mail.gmail.com> <20091014112458.66cb31e2.jon.forums@gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+> > On Wed, Oct 14, 2009 at 11:56 AM, Wayne Meissner <wmeissner@gmail.com> wrote:
+> > >
+> > > Yep, should be changed, although in that specific case, it doesn't
+> > > matter, since we no longer use that part of libffi; ruby-ffi
+> > > implements its own closure allocator.
+> > 
+> > Yet still the condition in extconf is being used to define options for
+> > the build process, right?
+> > 
+> > As long that is true, the evaluation of the platform is still relevant
+> 
+> So far, extconf.rb was the only issue I saw.  The main Rakefile appears to be correct for platform evaluation.  Probably just a quick grep of host_os is need to verify.
+> 
+> Jon
+
+shouldn't cause issues, but lib/ffi/platform.rb line 17 inconsistently uses "when /win|mingw/"
+

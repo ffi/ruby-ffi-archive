@@ -1,0 +1,76 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Help for Beginner - Compiling C Extension on Windows</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Help for Beginner - Compiling C Extension on Windows</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/2/10 4:54 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, Sep 2, 2010 at 6:44 PM, Karl <a class="moz-txt-link-rfc2396E" href="mailto:threadhead@gmail.com">&lt;threadhead@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Completely removed c:\ruby197 and c:\devkit, also remove all reference
+<span class="moz-txt-citetags">&gt; </span>in system environment PATH.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Installed ruby 1.8.7 with rubyinstaller.org.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Installed devkit following the instruction on the wiki, to the letter.
+<span class="moz-txt-citetags">&gt; </span>Ran .\devkitvars.bat
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Did a 'gem install thin --platform=ruby' just to make sure things
+<span class="moz-txt-citetags">&gt; </span>compile... no errors.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Back my source directory: ruby extconf.rb (no errors)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Ran 'make' and I get the exact same error as above.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>BTW, I do have VS8 Express installed. Is that causing the issue?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+If is in the path and you can do "cl" and works, then could be.
+
+Please bring this conversation to RubyInstaller group.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Also, I did a system search for ruby.exe and only one in c:\ruby187 is
+<span class="moz-txt-citetags">&gt; </span>found.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+It is weird that you're having this problem, and the only possible
+root will be Visual C in the path, but that do not explain how thin
+installed without issues.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>And I checked my rbconfig.rb (I can past the entire content if that
+<span class="moz-txt-citetags">&gt; </span>helps), all the references I see are to i585-pc-mingw32, mingw32, gcc,
+<span class="moz-txt-citetags">&gt; </span>but
+<span class="moz-txt-citetags">&gt; </span>  CONFIG["RUBY_SO_NAME"] = "msvcrt-ruby18"
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+That is the shared library name, that is not an issue.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So, I'm still where I started.
+</pre></blockquote><pre wrap>
+
+Please bring this issue to RubyInstaller list where others using
+Windows might be able to help you diagnose the issue.
+
+So far, make triggering compilation issues could be associated with VC
+or something interfering with your environment.
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

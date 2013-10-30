@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI 1.0.6 fails to compile</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI 1.0.6 fails to compile</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Arthur Silva <awls99@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/3/12 11:50 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Any chance you can translate your solution for RedHat? &gt;_&gt;<div><br>On Saturday, April 9, 2011 5:39:59 PM UTC+1, Quintus wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">
+<br>
+<br>On 9 Apr., 18:30, Quintus &lt;<a>sutn...@gmx.net</a>&gt; wrote:
+<br>&gt; I fixed the problem by the following workaround:
+<br>&gt;
+<br>&gt; $ sudo ln -s /usr/src/linux-2.6.37-ARCH/<wbr>include/asm-generic/* /usr/
+<br>&gt; include/asm-generic/
+<br>&gt;
+<br>&gt; That's not really a solution, but at least it works. Until the next
+<br>&gt; kernel upgrade. :-(
+<br>&gt;
+<br>&gt; Valete,
+<br>&gt; Quintus
+<br>
+<br>YEAH, I now got it correctly. For whatever reason, the linux-api-
+<br>headers package wasn't installed correctly on my system. I did
+<br>$ sudo pacman -S linux-api-headers
+<br>$ cd
+<br>$ sudo su
+<br># pacman -S linux-api-headers
+<br>(the first one reported an error about the working directory and
+<br>crashed (I suppose because my working directory was /usr/include/asm-
+<br>generic), so I installed it a second time as pure root, without sudo.
+<br>And now ffi installs absolutely fine.
+<br>
+<br>Thanks for everybody trying to get this resolved.
+<br>ffi's great!
+<br>
+<br>Valete,
+<br>Quintus</blockquote></div>
+</div></body>
+</html>
+</table></div>

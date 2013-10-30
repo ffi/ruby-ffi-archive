@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Install ffi on Mac OS one a volume name with a space</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Install ffi on Mac OS one a volume name with a space</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>7/5/12 11:09 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br>Yes, I think libffi is the only bit now that doesn't work with spaces.<br><br>There are a couple of alternatives:<br>1) Install libffi via macports or brew - ruby-ffi should detect these when installing<br>2) I don't think there is anything in ruby-ffi that requires the latest libffi anymore ... its possible that it would work just fine with the ancient libffi that macosx ships with.<br><br><br><br>On Thursday, July 5, 2012 5:54:36 AM UTC+10, Zac Parker wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">This may be the way to go. I think first I might submit a pull request to libffi, as this shouldn't be particularly difficult to handle. If the path has a space, wrap the path in quotes. <br><br>Thanks, when I get time to make a bootable partition I will give this solution a try. Though I am hesitant after previous disasters that set me back weeks.<br><br>On Wednesday, July 4, 2012 10:32:13 AM UTC-7, Luis Lavena wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">On Wed, Jul 4, 2012 at 2:16 PM, Zac Parker wrote:
+<br>&gt; Unfortunately that is not an option. Since I have two HD's (Macintosh HD and
+<br>&gt; Macintosh SSD), my full pwd is "/Volumes/Macintosh HD/etcetera/etcetera" and
+<br>&gt; if I rename the folder Macintosh HD (I have tried this) the OS instantly
+<br>&gt; shuts down (doesn't know where it's files are!) and EVERYTHING is lost. So
+<br>&gt; while the error message may be clear, the solution is not.
+<br>&gt;
+<br>
+<br>Boot with OSX install disk, access disk utility, rename partition,
+<br>that worked for me.
+<br>
+<br>I used to have disk with spaces, now only use _ or no spaces at all :)
+<br>
+<br>-- 
+<br>Luis Lavena
+<br>AREA 17
+<br>-
+<br>Perfection in design is achieved not when there is nothing more to add,
+<br>but rather when there is nothing more to take away.
+<br>Antoine de Saint-Exupéry
+<br></blockquote></blockquote>
+</div></body>
+</html>
+</table></div>

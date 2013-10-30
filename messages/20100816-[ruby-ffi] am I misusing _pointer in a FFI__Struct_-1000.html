@@ -1,0 +1,72 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] am I misusing :pointer in a FFI::Struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] am I misusing :pointer in a FFI::Struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/16/10 1:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I have an FFI::Struct that contains a field of type :pointer. When I assign an FFI::Pointer to that field, I get very different behavior from MRI versus JRuby. A small script shows what I mean.
+
+Note that under 1.9.1 and 1.9.2, the value of foo[:ptr] changes each time it is accessed. Under JRuby it reports the correct pointer value every time.
+
+The 'ffi' gem was built from git master.
+
+Am I just using it wrong or is this a bug in the C extension for MRI?
+
+cr
+
+
+cremes$ cat u.rb
+require 'ffi'
+
+class Foo &lt; FFI::Struct
+  layout :ptr,  :pointer
+end
+
+class Bar &lt; FFI::Struct
+  layout :value, :short
+end
+
+foo = Foo.new
+bar = Bar.new
+bar[:value] = 23
+puts "bar.to_ptr #{bar.to_ptr}"
+a = bar.to_ptr
+puts "a #{a}"
+foo[:ptr] = bar.to_ptr
+
+puts "ptr #{foo[:ptr]}, #{foo[:ptr]}, #{foo[:ptr]}"
+
+
+OUTPUT
+
+Mac-Pro:tmp cremes$ ruby -v
+ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+Mac-Pro:tmp cremes$ ruby u.rb
+bar.to_ptr #&lt;FFI::MemoryPointer:0x000001018d8c00&gt;
+a #&lt;FFI::MemoryPointer:0x000001018d8c00&gt;
+ptr #&lt;FFI::Pointer:0x000001018d8ab0&gt;, #&lt;FFI::Pointer:0x000001018d8a08&gt;, #&lt;FFI::Pointer:0x000001018d8960&gt;
+Mac-Pro:tmp cremes$ rvm use 1.9.2-head
+
+info: Using ruby 1.9.2 head
+Mac-Pro:tmp cremes$ ruby u.rb
+bar.to_ptr #&lt;FFI::MemoryPointer:0x0000010101d900&gt;
+a #&lt;FFI::MemoryPointer:0x0000010101d900&gt;
+ptr #&lt;FFI::Pointer:0x0000010101d7c0&gt;, #&lt;FFI::Pointer:0x0000010101d748&gt;, #&lt;FFI::Pointer:0x0000010101d6d0&gt;
+Mac-Pro:tmp cremes$ rvm use jruby
+
+info: Using jruby 1.5.1
+Mac-Pro:tmp cremes$ ruby u.rb
+bar.to_ptr #&lt;MemoryPointer address=0x10220dc20 size=2&gt;
+a #&lt;MemoryPointer address=0x10220dc20 size=2&gt;
+ptr Pointer [address=10220dc20], Pointer [address=10220dc20], Pointer [address=10220dc20]
+
+
+
+
+
+
+</pre></div></body>
+</html>
+</table></div>

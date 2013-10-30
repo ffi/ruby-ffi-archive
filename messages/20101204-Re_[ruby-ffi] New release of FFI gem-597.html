@@ -1,0 +1,29 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/4/10 9:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div class="gmail_quote">On Fri, Dec 3, 2010 at 6:42 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+
+<div class="im">On 4 December 2010 00:20, Luis Lavena &lt;<a href="mailto:luislavena@gmail.com">luislavena@gmail.com</a>&gt; wrote:<br>
+&gt; I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now<br>
+&gt; getting this on the specs:<br>
+&gt;<br>
+&gt; <a href="https://gist.github.com/726989" target="_blank">https://gist.github.com/726989</a><br>
+&gt;<br>
+&gt; The problem is that is looking for strdup and not _strdup, perhaps the<br>
+&gt; problem is libffi?<br>
+<br>
+</div>Thats just a symbol lookup problem.  All the traditional libc symbols<br>
+in msvcrt.dll have an underscore prepended, so that test should have a<br>
+special case for win32 in it.<br>
+</blockquote></div><br>Sorry, been long time since I used libffi that mind is not the same as it used to be (and getting older is not helping either)<div><div><br></div><div>Will come up with a patch and let you know.</div>
+
+<div><br>-- <br>Luis Lavena<br>AREA 17<br>-<br>Perfection in design is achieved not when there is nothing more to add,<br>but rather when there is nothing more to take away.<br>Antoine de Saint-Exupéry<br>
+</div></div>
+
+</div></body>
+</html>
+</table></div>

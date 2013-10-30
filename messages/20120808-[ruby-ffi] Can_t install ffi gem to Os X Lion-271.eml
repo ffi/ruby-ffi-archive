@@ -1,0 +1,87 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.36.133 with SMTP id t5csp31817ibd;
+        Wed, 8 Aug 2012 14:00:12 -0700 (PDT)
+Received: by 10.52.70.163 with SMTP id n3mr13111678vdu.64.1344459611936;
+        Wed, 08 Aug 2012 14:00:11 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIOcgZS6BRDbpouBBRoEVtIhbA@googlegroups.com>
+Received: from mail-vc0-f190.google.com (mail-vc0-f190.google.com [209.85.220.190])
+        by mx.google.com with ESMTPS id fa5si17034701vdb.83.2012.08.08.14.00.11
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Aug 2012 14:00:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIOcgZS6BRDbpouBBRoEVtIhbA@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIOcgZS6BRDbpouBBRoEVtIhbA@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCIOcgZS6BRDbpouBBRoEVtIhbA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vcbfl15 with SMTP id fl15sf1766768vcb.7
+        for <headius@headius.com>; Wed, 08 Aug 2012 14:00:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=+OzM5GOzZi7AeKMG50IT2TlSERB+PC7Mat+Xu+4TjVU=;
+        b=mQP/HhtStGJr8iH+QrrZRC3fwo6eJtkpnKBAfTQ9D9e/MIGcCDaUHW8Ly72Tflphx9
+         yhBI1VlEE589SumLDOQ+O7VzCLrK3NOt60lBuK7yz6Pkq0R2jNuowbeGScPEi6IOLu7U
+         QeiufNyR7pgimjcYkOJvHp9BaIcjULeOi9brg=
+Received: by 10.50.187.198 with SMTP id fu6mr164934igc.1.1344459611075;
+        Wed, 08 Aug 2012 14:00:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.3.207 with SMTP id 15ls2359602ibo.2.gmail; Wed, 08 Aug
+ 2012 14:00:10 -0700 (PDT)
+Received: by 10.43.8.197 with SMTP id ot5mr650369icb.25.1344459610755;
+        Wed, 08 Aug 2012 14:00:10 -0700 (PDT)
+Received: by 10.50.100.229 with SMTP id fb5msigb;
+        Wed, 8 Aug 2012 08:02:47 -0700 (PDT)
+Received: by 10.68.202.36 with SMTP id kf4mr1733754pbc.10.1344438167571;
+        Wed, 08 Aug 2012 08:02:47 -0700 (PDT)
+Date: Wed, 8 Aug 2012 08:02:45 -0700 (PDT)
+From: =?UTF-8?Q?D=C3=A1vid_Kov=C3=A1cs?= <davidkovaccs@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <0aa0bfad-807f-4291-9f8f-5a89c75931d7@googlegroups.com>
+Subject: [ruby-ffi] Can't install ffi gem to Os X Lion
+MIME-Version: 1.0
+X-Original-Sender: davidkovaccs@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+It gives me the following error:
+
+libs/closures.o src/x86/.libs/ffi.o src/x86/.libs/darwin.o src/x86/.libs/ffi64.o src/x86/.libs/darwin64.o    -arch x86_64 -arch x86_64   -install_name  /usr/local/lib/libffi.5.dylib -compatibility_version 6 -current_version 6.10 -Wl,-single_module
+ld: warning: could not create compact unwind for _ffi_call_unix64: does not use RBP or RSP based frame
+libtool: link: (cd ".libs" && rm -f "libffi.dylib" && ln -s "libffi.5.dylib" "libffi.dylib")
+libtool: link: ( cd ".libs" && rm -f "libffi.la" && ln -s "../libffi.la" "libffi.la" )
+/bin/sh ./libtool --tag=CC   --mode=link gcc -g  -arch x86_64  -Wall -fexceptions  -arch x86_64 -o libffi_convenience.la  src/debug.lo src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo      src/x86/ffi.lo src/x86/darwin.lo src/x86/ffi64.lo src/x86/darwin64.lo                      
+libtool: link: ar cru .libs/libffi_convenience.a src/.libs/debug.o src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi.o src/x86/.libs/darwin.o src/x86/.libs/ffi64.o src/x86/.libs/darwin64.o 
+/usr/bin/ranlib: file: .libs/libffi_convenience.a(ffi.o) has no symbols
+/usr/bin/ranlib: file: .libs/libffi_convenience.a(darwin.o) has no symbols
+libtool: link: ranlib .libs/libffi_convenience.a
+ranlib: file: .libs/libffi_convenience.a(ffi.o) has no symbols
+ranlib: file: .libs/libffi_convenience.a(darwin.o) has no symbols
+libtool: link: ( cd ".libs" && rm -f "libffi_convenience.la" && ln -s "../libffi_convenience.la" "libffi_convenience.la" )
+# Assemble into a FAT (x86_64, i386, ppc) library
+/usr/bin/libtool -static -o "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0"/.libs/libffi_convenience.a \
+	    "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c"/libffi-i386/.libs/libffi_convenience.a "/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c"/libffi-x86_64/.libs/libffi_convenience.a
+/usr/bin/libtool: for architecture: i386 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-i386/.libs/libffi_convenience.a(ffi64.o) has no symbols
+/usr/bin/libtool: for architecture: i386 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-i386/.libs/libffi_convenience.a(darwin64.o) has no symbols
+/usr/bin/libtool: for architecture: x86_64 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-x86_64/.libs/libffi_convenience.a(ffi.o) has no symbols
+/usr/bin/libtool: for architecture: x86_64 file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-x86_64/.libs/libffi_convenience.a(darwin.o) has no symbols
+/usr/bin/libtool: can't create output file: /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0/.libs/libffi_convenience.a (No such file or directory)
+make: *** ["/Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/libffi-universal-darwin11.0"/.libs/libffi_convenience.a] Error 1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/ffi-1.1.4 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/ffi-1.1.4/ext/ffi_c/gem_make.out
+An error occured while installing ffi (1.1.4), and Bundler cannot continue.
+Make sure that `gem install ffi -v '1.1.4'` succeeds before bundling.

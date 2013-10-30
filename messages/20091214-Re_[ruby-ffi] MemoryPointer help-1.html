@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] MemoryPointer help</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] MemoryPointer help</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Croisant <jacius@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/14/09 2:47 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+On Mon, Dec 14, 2009 at 12:42 PM, Shawn Anderson <a class="moz-txt-link-rfc2396E" href="mailto:shawn42@gmail.com">&lt;shawn42@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I have a struct that has a void* data, I use MemoryPointer to alloc some mem
+<span class="moz-txt-citetags">&gt; </span>and assign:
+<span class="moz-txt-citetags">&gt; </span>mem = FFI::MemoryPointer.new(:long)
+<span class="moz-txt-citetags">&gt; </span>@struct.data = mem
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Struct says around in my app, but I was seeing strange GC behavior.  Is
+<span class="moz-txt-citetags">&gt; </span>assigning the mem pointer to the struct good enough to keep it around?
+<span class="moz-txt-citetags">&gt; </span>I was seeing my struct.data being corrupted over time.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>adding
+<span class="moz-txt-citetags">&gt; </span>@mem = mem
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>fixed the problem.  Am I using MemoryPointer correctly?
+</pre></blockquote><pre wrap>
+
+@struct.data = mem doesn't actually store the MemoryPointer instance
+in the struct, it just sets @struct.data to the pointer address. That
+means the MemoryPointer instance is being garbage collected after it
+goes out of scope, and the memory is freed when the MemoryPointer is
+garbage collected.
+
+So yes, you should do something like @mem = mem to keep the
+MemoryPointer alive until it is supposed be freed. <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+- John
+</pre></div></body>
+</html>
+</table></div>

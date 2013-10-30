@@ -1,0 +1,211 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp116835laf;
+        Tue, 5 Mar 2013 09:03:22 -0800 (PST)
+X-Received: by 10.68.11.135 with SMTP id q7mr38429991pbb.5.1362503001410;
+        Tue, 05 Mar 2013 09:03:21 -0800 (PST)
+Return-Path: <ruby-ffi+bncBC3ZHK4B2AFBBV6K3CEQKGQEHSATPAA@googlegroups.com>
+Received: from mail-pb0-f63.google.com (mail-pb0-f63.google.com [209.85.160.63])
+        by mx.google.com with ESMTPS id ox10si27995051pbb.331.2013.03.05.09.03.20
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 05 Mar 2013 09:03:21 -0800 (PST)
+Received-SPF: neutral (google.com: 208.54.40.135 is neither permitted nor denied by domain of ruby-ffi+bncBC3ZHK4B2AFBBV6K3CEQKGQEHSATPAA@googlegroups.com) client-ip=208.54.40.135;
+Authentication-Results: mx.google.com;
+       spf=neutral (google.com: 208.54.40.135 is neither permitted nor denied by domain of ruby-ffi+bncBC3ZHK4B2AFBBV6K3CEQKGQEHSATPAA@googlegroups.com) smtp.mail=ruby-ffi+bncBC3ZHK4B2AFBBV6K3CEQKGQEHSATPAA@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pb0-f63.google.com with SMTP id rp2sf3296675pbb.18
+        for <headius@headius.com>; Tue, 05 Mar 2013 09:03:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:subject:message-id:in-reply-to:references
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=iyULnvZJqjBBmrfVX3dtkbN7QCzcTMswvdj5ysQcF8k=;
+        b=a5080NUy4X8Hav919KEuZQ0cG4w/N+VhzeKktBiHwthjE5lFgG7BxqXsgDUf96kphZ
+         PX76RQ8IMFN3/YJO+LqUrG8VBuxiddfAvwINycnxq5ikBfGeGaFGEs1dHC5gisg2GsAk
+         u+c0ShQD9GruSgszFFBf4eLVFIT8khZyFeF9M/dvYq278sV9/IDVyzT/nbf6ArWHHnit
+         LIIhne759+ImiPT/UbpcLm2QkdXMBecDdI4PLZd+rnaIOdco4ZnxXYbNfRW0ECUw8F9R
+         Vbj4qX+okAHmgArGWmx3uXkkShOzYPut8zBePMtZ6YWxdWA60v8RdWPM/yg+7+5VLWFS
+         zP5g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :x-received:date:from:to:subject:message-id:in-reply-to:references
+         :x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=iyULnvZJqjBBmrfVX3dtkbN7QCzcTMswvdj5ysQcF8k=;
+        b=gZJr/6F40fdyklJWuBtPOjFIj3LQ+/c0bgL9kB0OvYfxl14v0KP3f7q91AVbKSx/1y
+         PPJRZlzjpCRmKXM5JRezpLrBW+twZUGx3YT9JgaGDjKw9DwE3VotqgW6BbTIyqMxW463
+         VDCI+JfyTp1hcrA9yhzxaKDXY8LJC9I4purx1+7ANHtdF83AlO2Atfn0h78QcYTGnsgr
+         /POrAVv5ciExDWE7e/6fUe4fda5/0CSgcrvVxANCpTIgs2dHKokmw8ekZ8QXuSovm2kZ
+         UU7cIBavaA2INrj8qVpzLPMvN+w557xLFFnmvAwqhPBdFEcaSY0rqYSCz9pXJOw5ErPg
+         6O2g==
+X-Received: by 10.50.236.101 with SMTP id ut5mr1311181igc.17.1362503000198;
+        Tue, 05 Mar 2013 09:03:20 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.158.231 with SMTP id wx7ls1398052igb.5.gmail; Tue, 05 Mar
+ 2013 09:03:19 -0800 (PST)
+X-Received: by 10.50.168.5 with SMTP id zs5mr7163734igb.2.1362502999753;
+        Tue, 05 Mar 2013 09:03:19 -0800 (PST)
+X-Received: by 10.50.168.5 with SMTP id zs5mr7163723igb.2.1362502999457;
+        Tue, 05 Mar 2013 09:03:19 -0800 (PST)
+Received: from mail-ie0-x229.google.com (mail-ie0-x229.google.com [2607:f8b0:4001:c03::229])
+        by gmr-mx.google.com with ESMTPS id dl10si1460870igb.0.2013.03.05.09.03.19
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 05 Mar 2013 09:03:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 2607:f8b0:4001:c03::229 as permitted sender) client-ip=2607:f8b0:4001:c03::229;
+Received: by mail-ie0-x229.google.com with SMTP id 13so8176039iea.28
+        for <ruby-ffi@googlegroups.com>; Tue, 05 Mar 2013 09:03:19 -0800 (PST)
+X-Received: by 10.50.13.175 with SMTP id i15mr6755277igc.105.1362502999324;
+        Tue, 05 Mar 2013 09:03:19 -0800 (PST)
+Received: from Red (m872836d0.tmodns.net. [208.54.40.135])
+        by mx.google.com with ESMTPS id wx2sm18345719igb.4.2013.03.05.09.03.08
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 05 Mar 2013 09:03:18 -0800 (PST)
+Date: Tue, 5 Mar 2013 12:03:02 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Re: XNI and FFI summary?
+Message-Id: <20130305120302.3159ff06e20770db8b06c157@gmail.com>
+In-Reply-To: <44565aa1-482b-46f0-82d0-54252070123f@googlegroups.com>
+References: <20130304141214.56d048f0ecfab670176be098@gmail.com>
+	<44565aa1-482b-46f0-82d0-54252070123f@googlegroups.com>
+X-Mailer: Sylpheed 3.4.0beta2 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of jon.forums@gmail.com designates 2607:f8b0:4001:c03::229
+ as permitted sender) smtp.mail=jon.forums@gmail.com;       dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> >
+> > When you get a free moment, please provide a quick summary of:=20
+> >
+> >   * XNI's main reason(s) for being=20
+> >
+>=20
+> At the moment, its an experiment in native interface design.  The aim is =
+a=20
+> stream-lined FFI+ffi-compiler combo, with some hard-coded conventions to=
+=20
+> make it easier to implement common patterns when writing extensions, whil=
+st=20
+> avoiding the "gigantic-ball-of-mud" that is the ruby C api.  But, XNI doe=
+s=20
+> not try to do everything - since you don't get access to Ruby VM internal=
+s,=20
+> you wouldn't use it for e.g. implementing a new data structure.
+>=20
+> This is Jeremy's hitimes gem converted to use FFI+ffi-compiler:
+> https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db92=
+30f68f93f7b
+>=20
+> and converted to use XNI:
+> https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba=
+4b11ff98ef5
+>=20
+> The XNI one has a bit less ruby boilerplate (XNI has the concept of a=20
+> DataObject, which can have instance methods that automagically pass in=20
+> 'self' to native methods).  On the other hand, XNI excises a few FFI=20
+> concepts - there is no Struct that you can wrap around existing native=20
+> memory, nor MemoryPointer for generic native memory allocations.
+>=20
+> (as to why I used hitimes - its a fairly nicely written cext, it doesn't =
+do=20
+> anything super-complicated, but would be hard to implement in pure FFI du=
+e=20
+> to the data structures and API calls it needs).
+>=20
+>   * when should one prefer XNI over FFI?=20
+> >
+>=20
+> That's a really good question - "when you're unhappy with FFI+ffi-compile=
+r"=20
+> would be the pithy answer.  FFI isn't going away, so if people are happy=
+=20
+> with it, then I encourage them to keep using it.  At this point, FFI is=
+=20
+> stable and works.  On the other hand, if you're writing a gem from scratc=
+h,=20
+> and you're going to end up writing a bunch of ruby boilerplate around a r=
+aw=20
+> FFI api, and you'll need to use ffi-compiler to compile some native shims=
+,=20
+> then XNI might be worth a look.  At least once it is a bit more stable.
+>=20
+>=20
+>   * will XNI always utilize FFI?=20
+> >
+>=20
+> It will always utilize a ffi-like way of interfacing between the ruby VM=
+=20
+> and the native code (that is part of the design), but it won't always use=
+=20
+> the FFI gem.  There is a native backend for JRuby-1.7+, and I am currentl=
+y=20
+> working on a native CRuby backend.  There could also be a native backend=
+=20
+> for Topaz that uses ctypes (or whatever the RPython equivalent is).
+
+Thanks. It sounds intruiging and I'm looking forward to digging into XNI an=
+d ffi-compiler.
+
+Awhile ago I'd looked into go's interop, python's cffi+libffi+pycparser+ply=
+, luajit's ffi, and powershell's ability to intfc to Win32 via .NET's inter=
+op magic. While I liked the idea of copy-n-pasting normal C declarations as=
+ in the luajit and cffi simple examples
+
+  # luajit
+  local ffi =3D require("ffi")
+  ffi.cdef[[
+  int printf(const char *fmt, ...);
+  ]]
+
+  # python cffi
+  from cffi import FFI
+  ffi =3D FFI()
+  ffi.cdef("""
+        int printf(const char *fmt, ...);
+  """)
+
+I had a gut feeling that the extra complexity of implementing/maintaining C=
+ declaration parsing code may not be worth it. Given the types of setup que=
+stions on this list, and the setup info on the FFI wiki pages, what's your =
+XNI perspective?
+
+Jon
+
+---
+Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+http://thecodeshop.github.com | http://jonforums.github.com/
+twitter: @jonforums
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+

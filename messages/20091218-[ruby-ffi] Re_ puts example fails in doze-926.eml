@@ -1,0 +1,99 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs385800and;
+        Fri, 18 Dec 2009 10:42:03 -0800 (PST)
+Received: by 10.150.87.4 with SMTP id k4mr6640092ybb.347.1261161722269;
+        Fri, 18 Dec 2009 10:42:02 -0800 (PST)
+Return-Path: <398wrSw0JCDsoldbomXZhzxx2djXfi.ZljorYv-ccfdlldibdolrmp.Zlj@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 1si4603898ywh.91.2009.12.18.10.42.01;
+        Fri, 18 Dec 2009 10:42:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of 398wrSw0JCDsoldbomXZhzxx2djXfi.ZljorYv-ccfdlldibdolrmp.Zlj@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 398wrSw0JCDsoldbomXZhzxx2djXfi.ZljorYv-ccfdlldibdolrmp.Zlj@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=398wrSw0JCDsoldbomXZhzxx2djXfi.ZljorYv-ccfdlldibdolrmp.Zlj@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf8160325ywh.3
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:42:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=UIR4y8FsnRgeGENFFcpOmlhWhHzudN2pVdsedeg8wEM=;
+        b=cP1t+YuEWn/UgZeZH6ogYUyggDkjVzN1Cgd2qDD5zGkUQaDZ2DUWKgUsn3aFfqV32B
+         E2PIMnaNqFfxsDoYBJuGnrCXisZKO9GcOXGs4Pi9bXr1ARBaNfD4DeqeWMh/l4uWP2M4
+         VXjxJIzVTjBJOU4o+aR95Hq/JKCRk5t1flXKo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=4thmIhllllLTbaGQjrLtdL4kkcanGpDVRyHS3U/OPx9UInwsVUJFGDR3+tT1X0Yvly
+         NZEYD7eBvGW5JcVMgm/Gu6/MWvafMqInazipTUddL+q+7lNPKqvaNRRx/umASf3yyJ5U
+         +x4AEFbZ/0iBAt6GTLwZmwO2sECZNrM3wOKL4=
+Received: by 10.91.21.5 with SMTP id y5mr720311agi.30.1261161719817;
+        Fri, 18 Dec 2009 10:41:59 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.244.1 with SMTP id r1ls39870agh.1.p; Fri, 18 Dec 2009 
+	10:41:58 -0800 (PST)
+Received: by 10.90.230.10 with SMTP id c10mr1646271agh.10.1261161718280;
+        Fri, 18 Dec 2009 10:41:58 -0800 (PST)
+Received: by 10.90.230.10 with SMTP id c10mr1646268agh.10.1261161718226;
+        Fri, 18 Dec 2009 10:41:58 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f149.google.com (mail-yx0-f149.google.com [209.85.210.149])
+        by gmr-mx.google.com with ESMTP id 19si441877ywh.14.2009.12.18.10.41.58;
+        Fri, 18 Dec 2009 10:41:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.149 as permitted sender) client-ip=209.85.210.149;
+Received: by yxe13 with SMTP id 13so5736265yxe.23
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:41:58 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.32.38 with SMTP id k38mr350168ybj.53.1261161718178; Fri, 
+	18 Dec 2009 10:41:58 -0800 (PST)
+Date: Fri, 18 Dec 2009 10:41:58 -0800 (PST)
+In-Reply-To: <71166b3b0912181031g240449a3x705d8f24024e7bdc@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <14840f0a-7d65-4897-b67f-5c3b488df81c@s20g2000yqd.googlegroups.com> 
+	<05bec24b-58dc-42c6-b9aa-0e33e1a0ca58@s31g2000yqs.googlegroups.com> 
+	<74375019-722d-46a4-819c-22bb3670f49d@b2g2000yqi.googlegroups.com> 
+	<71166b3b0912181031g240449a3x705d8f24024e7bdc@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <23c18508-d203-4902-8b1b-47d35693c7ce@q18g2000yqj.googlegroups.com>
+Subject: [ruby-ffi] Re: puts example fails in doze
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.149 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/dc9ffa7683d8d613
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/572bc7e90db25953
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> Mentioned in another thread about default library being used
+> automatically. I guess the gem didn't had the support baked in?
+
+Interesting.  So...probably it should be pre baked [and "ffi_lib
+FFI::Library::LIBC" not be necessary], I assume?
+-r

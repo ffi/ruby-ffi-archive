@@ -1,0 +1,95 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one  lib?)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Vladimir Sizikov <vsizikov@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/09 1:56 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Jon,
+
+If memory serves, Wayne tweaked ffi_lib behavior in such a way that:
+
+a) doing ffil_lib 'one', 'two', 'three' would load up all three
+libraries, or fail if any of them couldn't be found for some reason
+
+b) doing ffi_lib ['var1', 'var2', 'var3'] would load some variant of
+the same library
+
+c) doing ffi_lib 'lib1', 'lib2', ['lib3-1', 'lib3-2', 'lib3-3'] would
+load lib1, lib2 and one variant of lib3 from the array of
+alternatives.
+
+Thanks,
+  --Vladimir
+
+On Mon, Dec 21, 2009 at 11:49 PM, John Croisant <a class="moz-txt-link-rfc2396E" href="mailto:jacius@gmail.com">&lt;jacius@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Sat, Dec 19, 2009 at 6:35 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>You need to list them all on the same line.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>i.e.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> ffi_lib 'user32', 'msvcrt'
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I always thought that giving multiple args to ffi_lib was a way of
+<span class="moz-txt-citetags">&gt; </span>providing fallback libraries /alternate names in case the first one
+<span class="moz-txt-citetags">&gt; </span>failed. I guess I assumed that it didn't make sense (or wouldn't work)
+<span class="moz-txt-citetags">&gt; </span>to load more than one library into the same module, anyway. I'm not
+<span class="moz-txt-citetags">&gt; </span>sure why I assumed that, though.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Actually, looking at the code... it seems like it was written to
+<span class="moz-txt-citetags">&gt; </span>possibly expect to be given an Array (or even multiple Arrays), and
+<span class="moz-txt-citetags">&gt; </span>only to load the first library per array that succeeds. I guess that's
+<span class="moz-txt-citetags">&gt; </span>what confused me.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Simplified code to show what I mean:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>def ffi_lib(*names)
+<span class="moz-txt-citetags">&gt;&gt; </span>  ffi_libs = names.map do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>name<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt;&gt; </span>    libnames = (name.is_a?(::Array) ? name : [ name ]).map { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>n<span class="moz-txt-tag">|</span></code> [ n, FFI.map_library_name(n) ].uniq }.flatten.compact
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>    libnames.each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>libname<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt;&gt; </span>      lib = FFI::DynamicLibrary.open(libname, ...)
+<span class="moz-txt-citetags">&gt;&gt; </span>      break if lib
+<span class="moz-txt-citetags">&gt;&gt; </span>    end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>    # return the found lib
+<span class="moz-txt-citetags">&gt;&gt; </span>    lib
+<span class="moz-txt-citetags">&gt;&gt; </span>  end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>  @ffi_libs = ffi_libs
+<span class="moz-txt-citetags">&gt;&gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Digging through the commit history, it looks like this was carried
+<span class="moz-txt-citetags">&gt; </span>over from a time when ffi_lib expected an explicit array of library
+<span class="moz-txt-citetags">&gt; </span>names. Is the Array form still supported? If not, the ffi_lib function
+<span class="moz-txt-citetags">&gt; </span>can be simplified. If yes, there is a TypeError when passing an Array
+<span class="moz-txt-citetags">&gt; </span>that should be fixed:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>module SDL
+<span class="moz-txt-citetags">&gt;&gt; </span>  extend FFI::Library
+<span class="moz-txt-citetags">&gt;&gt; </span>  ffi_lib ["SDL"]
+<span class="moz-txt-citetags">&gt;&gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>TypeError: can't convert Array into String
+<span class="moz-txt-citetags">&gt;&gt; </span>      from /usr/lib/ruby19/gems/1.9.1/gems/ffi-0.5.4/lib/ffi/ffi.rb:61:in `basename'
+<span class="moz-txt-citetags">&gt;&gt; </span>      from /usr/lib/ruby19/gems/1.9.1/gems/ffi-0.5.4/lib/ffi/ffi.rb:61:in `map_library_name'
+<span class="moz-txt-citetags">&gt;&gt; </span>      from /usr/lib/ruby19/gems/1.9.1/gems/ffi-0.5.4/lib/ffi/library.rb:8:in `block in ffi_lib'
+<span class="moz-txt-citetags">&gt;&gt; </span>      from /usr/lib/ruby19/gems/1.9.1/gems/ffi-0.5.4/lib/ffi/library.rb:7:in `each'
+<span class="moz-txt-citetags">&gt;&gt; </span>      from /usr/lib/ruby19/gems/1.9.1/gems/ffi-0.5.4/lib/ffi/library.rb:7:in `ffi_lib'
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- John
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] need help loading a library</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] need help loading a library</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/30/11 4:36 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Mon, Apr 25, 2011 at 4:59 PM, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Fantastic.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>In the meantime I will continue working on figuring this out.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Hello Chuck, sorry took me some time to get back to you on this.
+
+I believe I found the root on why ffi is not able to load libzmq.dll,
+where you place libzmq.dll or your wrapper, the issue is associated
+with G++ and std C++ library dependency.
+
+zeromq uses C++ and libstdc++, which automatically triggers the
+dependency on libstdc++-6.dll and that dll depends on
+libgcc_s_sjlj-1.dll.
+
+Not having these DLLs in the PATH will trigger the module not being found:
+
+irb(main):004:0&gt; module ZeroZMQ
+irb(main):005:1&gt; extend FFI::Library
+irb(main):006:1&gt; ffi_lib "libzmq.dll"
+irb(main):007:1&gt; end
+LoadError: Could not open library 'libzmq.dll': The specified module
+could not be found.
+
+        from C:<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/Luis<span class="moz-txt-tag">/</span></i>.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-mingw32/lib/ffi/library.rb:75:in
+`block in ffi_lib'
+        from C:<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/Luis<span class="moz-txt-tag">/</span></i>.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-mingw32/lib/ffi/library.rb:54:in
+`map'
+        from C:<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/Luis<span class="moz-txt-tag">/</span></i>.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-mingw32/lib/ffi/library.rb:54:in
+`ffi_lib'
+        from (irb):6:in `&lt;module:ZeroZMQ&gt;'
+        from (irb):4
+        from C:/Users/Luis/Tools/Ruby/ruby-1.9.2-p180-i386-mingw32/bin/irb:12:in
+`&lt;main&gt;'
+irb(main):008:0&gt; exit
+
+Once I've added these libraries to the path (using devkitvars.bat) the
+module start to work.
+
+Now, use stdc++ as shared object is the default behavior of MinGW, and
+I believe other versions of GCC too.
+
+We found something similar with Gordon Thiesfeld when he was updating
+exerb-mingw for a newer version of Pik.
+
+He worked out adding -static-libgcc to g++ during compilation, but I'm
+not sure if you can add that to the configure process as CPPFLAGS:
+
+sh configure --prefix=C:/installed/zeromq CPPFLAGS=-static-libgcc
+
+I've just tested this and inspecting with Dependency Walker still
+makes the dependency on libstdc++-6.dll
+
+In the meantime, you can copy these dlls from DevKit's mingw/bin
+directory and place in zeromq bin one.
+
+Regards,
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

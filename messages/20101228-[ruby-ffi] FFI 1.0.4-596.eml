@@ -1,0 +1,85 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs226448fam;
+        Tue, 28 Dec 2010 03:46:11 -0800 (PST)
+Received: by 10.236.103.175 with SMTP id f35mr8569958yhg.27.1293536770271;
+        Tue, 28 Dec 2010 03:46:10 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCAnOfoBBoE7hjALg@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id c4si25605624yha.185.2010.12.28.03.46.08;
+        Tue, 28 Dec 2010 03:46:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCAnOfoBBoE7hjALg@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCAnOfoBBoE7hjALg@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCAnOfoBBoE7hjALg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk1 with SMTP id 1sf11036426gxk.7
+        for <headius@headius.com>; Tue, 28 Dec 2010 03:46:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:date
+         :from:reply-to:to:message-id:subject:mime-version:x-original-sender
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=xM/ccY6MqHE01j0QlZ49GDJc1qd46C3vzOyNgKe7FCc=;
+        b=MXJESwMgcCzEtAQYBpdGXHKfnzIxXn6AlE2cPpz7a39M19ajua/yp+cy4QAgxk+wWL
+         Po+X42O9AxNcGSEmVxVmmahLLmWlaXS/g7csTOQJ7QCjtlC2k/d8rFd0wcPTHomxqjk+
+         Iidf0i70mfbMgQfCzHXap46oTkY/vq6FWsfPo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=VmzpLXKNiP+xBMcY3cn8Hpt/JOf2E0mhjNFlV9q5q8K8e+txT/4sP6S59SQ7MRzaaG
+         4VksmlnoRGHk6Dd0C5fRuUO1QVSOQcti+ZlDEuji9b5XRTraISCwR9z6bWAma3LsKx+6
+         EcD5a2wEffYU/0zVWCMH9ZRXdLkYuNJ0YimTs=
+Received: by 10.236.110.164 with SMTP id u24mr459701yhg.18.1293536768698;
+        Tue, 28 Dec 2010 03:46:08 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.239.3 with SMTP id m3ls2109675anh.0.p; Tue, 28 Dec 2010
+ 03:46:08 -0800 (PST)
+Received: by 10.100.3.18 with SMTP id 18mr60246anc.79.1293536768377;
+        Tue, 28 Dec 2010 03:46:08 -0800 (PST)
+Date: Tue, 28 Dec 2010 03:46:08 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <8514898.97.1293536768022.JavaMail.geo-discussion-forums@prfn5>
+Subject: [ruby-ffi] FFI 1.0.4
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_96_20679795.1293536768018"
+
+------=_Part_96_20679795.1293536768018
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+I just pushed ffi-1.0.4.
+
+This re-instates 1.8.7 support (not sure about earlier ruby versions).  Both 
+blocking functions and non-ruby-thread callbacks should now behave similar 
+to 1.9, albiet slower.  This means gems like ffi-zmq and curl-ffi are 
+somewhat likely to work properly on 1.8.x now.  There is also a possibility 
+that they will crash ruby and make your computer catch on fire, so be 
+warned.   Only supported on posix-thread systems - win32 users will have to 
+upgrade to ruby 1.9.2.
+
+
+
+
+
+------=_Part_96_20679795.1293536768018
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>I just pushed ffi-1.0.4.</div><div><br></div><div>This re-instates 1.8.7 support (not sure about earlier ruby versions). &nbsp;Both blocking functions and non-ruby-thread callbacks should now behave similar to 1.9, albiet slower. &nbsp;This means gems like ffi-zmq and curl-ffi are somewhat likely to work properly on 1.8.x now. &nbsp;There is also a possibility that they will crash ruby and make your computer catch on fire, so be warned. &nbsp;&nbsp;Only supported on posix-thread systems - win32 users will have to upgrade to ruby 1.9.2.</div><div><br></div><div><br></div><meta charset="utf-8"><div><br></div><div><br></div>
+------=_Part_96_20679795.1293536768018--

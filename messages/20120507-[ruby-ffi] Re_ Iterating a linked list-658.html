@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Iterating a linked list</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Iterating a linked list</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Navaneeth KN <navaneethkn@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/7/12 11:48 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hello,<br><br>On Tuesday, 8 May 2012 03:56:20 UTC+5:30, Wayne Meissner  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">You've got it almost right - the problem is your mapping of the struct token string fields.<div><br></div><div>e.g.</div><div>&nbsp; char tag[TOKEN_TAG_MAX];<br></div><div><br></div><div>instead of</div><div>&nbsp; :tag, :string</div><div><br></div><div>it should be:</div><div><br></div><div>&nbsp; :tag, [ :char, TOKEN_TAG_MAX ]</div><div><br></div><div>Similar for pattern, value1, value2. &nbsp;Of course, you'll also need to define TOKEN_TAG_MAX and SYMBOL_MAX.<br></div></blockquote><div><br>Great. Works now. Thanks a lot for the help.<br><br>Navaneeth <br></div>
+</div></body>
+</html>
+</table></div>

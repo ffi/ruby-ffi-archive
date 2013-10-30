@@ -1,0 +1,61 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fun at Fedora 12</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fun at Fedora 12</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;Dmitry A. Ustalov&quot; &lt;eveeel@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/23/09 2:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+Wayne, git version works fine. Thanks!
+
+On 23 ноя, 10:06, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Can you clone the ffi repo from github and try building?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; </span>rake test
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>if that works, then do:
+<span class="moz-txt-citetags">&gt; </span>rake gem:package
+<span class="moz-txt-citetags">&gt; </span>gem install pkg/ffi-0.6.0.gem
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Let me know if the above works, and I'll roll 0.5.4.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/11/23 Dmitry A. Ustalov <a class="moz-txt-link-rfc2396E" href="mailto:eve...@gmail.com">&lt;eve...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hello! I'm trying to install ffi gem on my Fedora 12:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>eveel@notazik{~}% sudo gem install ffi
+<span class="moz-txt-citetags">&gt; &gt; </span>Building native extensions.  This could take a while...
+<span class="moz-txt-citetags">&gt; &gt; </span>ERROR:  Error installing ffi:
+<span class="moz-txt-citetags">&gt; &gt; </span>       ERROR: Failed to build gem native extension.
+<span class="moz-txt-citetags">&gt; &gt; </span>...
+<span class="moz-txt-citetags">&gt; &gt; </span>make
+<span class="moz-txt-citetags">&gt; &gt; </span>gcc -I. -I. -I/usr/lib/ruby/1.8/i386-linux -I. -I/usr/lib/ruby/gems/
+<span class="moz-txt-citetags">&gt; &gt; </span>1.8/gems/ffi-0.5.3/ext/ffi_c/libffi/include -DRUBY_EXTCONF_H=
+<span class="moz-txt-citetags">&gt; &gt; </span>\"extconf.h\"  -D_FILE_OFFSET_BITS=64 -fPIC -O2 -g -pipe -Wall -Wp,-
+<span class="moz-txt-citetags">&gt; &gt; </span>D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-
+<span class="moz-txt-citetags">&gt; &gt; </span>size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -fno-
+<span class="moz-txt-citetags">&gt; &gt; </span>strict-aliasing  -fPIC-Werror -Wunused -Wformat -Wimplicit -Wreturn-
+<span class="moz-txt-citetags">&gt; &gt; </span>type   -c Call.c
+<span class="moz-txt-citetags">&gt; &gt; </span>cc1: error: unrecognized command line option "-fPIC-Werror"
+<span class="moz-txt-citetags">&gt; &gt; </span>make: *** [Call.o] Error 1
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>It's really sad. Perhaps, trouble is in file ext/ffi_c/extconf.rb:
+<span class="moz-txt-citetags">&gt; &gt; </span>$CFLAGS &lt;&lt; "-mwin32 " if Config::CONFIG['host_os'] =~ <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>cygwin<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>$CFLAGS &lt;&lt; "-Werror -Wunused -Wformat -Wimplicit -Wreturn-type "
+<span class="moz-txt-citetags">&gt; &gt; </span>maybe we need put a space character before -Werror gcc key?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thanks.
+</pre></div></body>
+</html>
+</table></div>

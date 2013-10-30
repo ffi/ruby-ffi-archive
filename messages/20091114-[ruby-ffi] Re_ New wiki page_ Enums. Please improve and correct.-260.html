@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: New wiki page: Enums. Please improve and correct.</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: New wiki page: Enums. Please improve and correct.</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Croisant <jacius@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/14/09 3:30 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+
+On Fri, Nov 13, 2009 at 10:53 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I wouldn't call the first example (using constants), "BAD EXAMPLE",
+<span class="moz-txt-citetags">&gt; </span>since its still a valid way to do integer constants.  Its just not as
+<span class="moz-txt-citetags">&gt; </span>nice as the enum way.
+</pre></blockquote><pre wrap>
+
+Sure. Hopefully the advantages of the enum way will be clear enough
+that it's not really necessary to discourage the use of integer
+constants.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>2) Assign the new Enum type to a constant
+<span class="moz-txt-citetags">&gt; </span> MyEnum = enum(:a, :b, :c)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>[snip]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The second form however, is needed if you intend to use an enum as a
+<span class="moz-txt-citetags">&gt; </span>Struct field type, for the same reason you need to do that for e.g.
+<span class="moz-txt-citetags">&gt; </span>callbacks.  i.e. lexical scoping rules.
+</pre></blockquote><pre wrap>
+
+Okay, I've updated the page to mention the other forms.
+
+But, I thought you could use the enum name as a type, even in structs.
+I haven't tried it yet, but it certainly feels like that <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>should<span class="moz-txt-tag">_</span></span> be
+supported, from a library user's perspective. Even if that doesn't
+work yet, "enum_type(:my_enum)" would work, right?
+
+Or were you just showing how to use an <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>unnamed<span class="moz-txt-tag">_</span></span> enum in a struct?
+
+- John
+
+P.S. Does FFI enforce the validity of values used where a particular
+enum type is expected? In other words, if a function (or struct) is
+expecting an enum that can be only :a, :b, or :c, would passing :d
+cause it to raise an error?
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,96 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Functions returning structures</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Functions returning structures</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>galdor <khaelin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/14/09 3:42 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Thank you, it just works!
+I also had to use .by_value for parameters, of course.
+
+I'll notify the author of ffi-swig-generator about this, its tool
+doesn't produce these annotations.
+
+Regards,
+
+Nicolas Martyanoff
+
+On Dec 14, 10:33 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>You need to specify the return type as ALLEGRO_COLOR.by_value
+<span class="moz-txt-citetags">&gt; </span>(same for any struct-by-value parameters).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/12/15 galdor <a class="moz-txt-link-rfc2396E" href="mailto:khae...@gmail.com">&lt;khae...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hi,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Let's define a C function which returns a plain structure:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>   typedef struct {
+<span class="moz-txt-citetags">&gt; &gt; </span>       int r, g, b, a;
+<span class="moz-txt-citetags">&gt; &gt; </span>   } ALLEGRO_COLOR;
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>   ALLEGRO_COLOR al_map_rgb(unsigned char r, unsigned char g,
+<span class="moz-txt-citetags">&gt; &gt; </span>unsigned char b);
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Now we bind it:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>   class ALLEGRO_COLOR &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; </span>       layout :r, :float,
+<span class="moz-txt-citetags">&gt; &gt; </span>              :g, :float,
+<span class="moz-txt-citetags">&gt; &gt; </span>              :b, :float,
+<span class="moz-txt-citetags">&gt; &gt; </span>              :a, :float
+<span class="moz-txt-citetags">&gt; &gt; </span>   end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>   attach_function :al_map_rgb, [:uchar, :uchar, :uchar],
+<span class="moz-txt-citetags">&gt; &gt; </span>ALLEGRO_COLOR
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>But the following ruby code doesn't work:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>   bgcolor = al_map_rgb(20, 20, 20)
+<span class="moz-txt-citetags">&gt; &gt; </span>   fgcolor = al_map_rgb(20, 40, 80)
+<span class="moz-txt-citetags">&gt; &gt; </span>   al_clear_to_color(bgcolor)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>The screen is cleared with rgb(20, 40, 80), instead of rgb(20, 20,
+<span class="moz-txt-citetags">&gt; &gt; </span>20).
+<span class="moz-txt-citetags">&gt; &gt; </span>I don't know how stack allocation is performed, I must be doing
+<span class="moz-txt-citetags">&gt; &gt; </span>something wrong.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>How should I work with stack-allocated structures ?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Regards,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Nicolas Martyanoff
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

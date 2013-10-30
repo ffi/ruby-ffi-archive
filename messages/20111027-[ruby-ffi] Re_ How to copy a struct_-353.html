@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: How to copy a struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: How to copy a struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>cootcraig <craig@coot.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/27/11 10:45 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I think this will work for me.  I use a similar Raw class as buffer
+for my DLL call.  I then cast the Raw instance to an appropriate
+struct.
+
+
+#============================= copy_test.rb
+require 'ffi'
+class Raw &lt; FFI::Struct
+  layout :data, [:uchar, 3*4]
+  def copy
+    r2 = self.class.new
+    (0...(self.size)).each {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code> r2[:data][i] = self[:data][i]}
+    r2
+  end
+end
+class Ints &lt; FFI::Struct
+  layout :f1, :int, :f2, :int, :f3, :int
+end
+
+i1 = Ints.new
+i1[:f1] = 97
+i1[:f2] = 98
+i1[:f3] = 99
+r1 = Raw.new i1.to_ptr
+r2 = r1.copy
+i2 = Ints.new r2.to_ptr
+puts "#{i2[:f1]} #{i2[:f2]} #{i2[:f3]}"
+#=&gt; 97 98 99
+puts "i1.to_ptr #{i1.to_ptr} i2.to_ptr #{i2.to_ptr}"
+#=&gt; i1.to_ptr #&lt;FFI::MemoryPointer address=0x62e688 size=12&gt; i2.to_ptr
+#&lt;FFI::MemoryPointer address=0x62e670 size=12&gt;
+</pre></div></body>
+</html>
+</table></div>

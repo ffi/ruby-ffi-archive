@@ -1,0 +1,21 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Function &#39;LoadIconMetric&#39; not found in [kernel32, user32, gdi32, comctl32] (FFI::NotFoundError)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Function &#39;LoadIconMetric&#39; not found in [kernel32, user32, gdi32, comctl32] (FFI::NotFoundError)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>bawng@intoxicated.co.za</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/28/13 1:46 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Hello ruby-ffi,<div><br></div><div>I am attempting to attach to the&nbsp;LoadIconMetric Windows API function which is part of&nbsp;comctl32. The function is not found and so can never be attached.</div><div><br></div><div>The following 3 lines are taken from the top of one of the Microsoft VC++ sample projects cpp files:</div><div><blockquote class="gmail_quote" style="margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;">// we need commctrl v6 for LoadIconMetric()<br>#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")<br>#pragma comment(lib, "comctl32.lib")</blockquote><div><br></div><div>&nbsp;This function is required in order to make use of the Windows system tray icon API. I really hope there is a simple solution to this problem.</div></div><div><br></div><div>Thanks,</div><div>bawNg</div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,230 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.42.5 with SMTP id u5csp124170wfj;
+        Wed, 4 Jul 2012 03:26:32 -0700 (PDT)
+Received: by 10.220.142.9 with SMTP id o9mr10049264vcu.51.1341397592459;
+        Wed, 04 Jul 2012 03:26:32 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDYtND_BBoE6FROow@googlegroups.com>
+Received: from mail-vb0-f62.google.com (mail-vb0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id cd1si7948014vdc.86.2012.07.04.03.26.32
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 04 Jul 2012 03:26:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDYtND_BBoE6FROow@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDYtND_BBoE6FROow@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDYtND_BBoE6FROow@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vbbfs19 with SMTP id fs19sf13951461vbb.7
+        for <headius@headius.com>; Wed, 04 Jul 2012 03:26:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=SngwNw+NkEdWH53Yx2zw1s41Uxtuo8iUNR24I+dJbZc=;
+        b=WnOJXPK19Oer899+VBx0s7yh1Grk1KouKlT70+pMZqvHzuU9MhCpdMYvHJ7K5HIcoR
+         Tt1Yyanc1ROIc1jcMX0fXiKM/bVpmt358buRyk0tKAkN3eOrpC4bY+SstR2TzDU3UxBo
+         g3hRQzZkVB0lsG74/03SHIrnyewu1pMtuu4DM=
+Received: by 10.52.155.207 with SMTP id vy15mr1339725vdb.13.1341397592027;
+        Wed, 04 Jul 2012 03:26:32 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.92.3 with SMTP id ci3ls4316261vdb.9.gmail; Wed, 04 Jul 2012
+ 03:26:30 -0700 (PDT)
+Received: by 10.52.88.174 with SMTP id bh14mr16778068vdb.6.1341397590887;
+        Wed, 04 Jul 2012 03:26:30 -0700 (PDT)
+Received: by 10.52.88.174 with SMTP id bh14mr16778067vdb.6.1341397590873;
+        Wed, 04 Jul 2012 03:26:30 -0700 (PDT)
+Received: from mail-vc0-f182.google.com (mail-vc0-f182.google.com [209.85.220.182])
+        by gmr-mx.google.com with ESMTPS id y20si2696161vdd.0.2012.07.04.03.26.30
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 04 Jul 2012 03:26:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.182 as permitted sender) client-ip=209.85.220.182;
+Received: by vcbfy7 with SMTP id fy7so5080580vcb.41
+        for <ruby-ffi@googlegroups.com>; Wed, 04 Jul 2012 03:26:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.97.230 with SMTP id ed6mr8294025vdb.65.1341397590664; Wed,
+ 04 Jul 2012 03:26:30 -0700 (PDT)
+Received: by 10.52.106.198 with HTTP; Wed, 4 Jul 2012 03:26:30 -0700 (PDT)
+Received: by 10.52.106.198 with HTTP; Wed, 4 Jul 2012 03:26:30 -0700 (PDT)
+In-Reply-To: <6dfb84fc-6ea3-412b-8433-9613cf782278@googlegroups.com>
+References: <29aeeccc-330d-4451-b55e-0258467540d6@z12g2000yqm.googlegroups.com>
+	<6dfb84fc-6ea3-412b-8433-9613cf782278@googlegroups.com>
+Date: Wed, 4 Jul 2012 07:26:30 -0300
+Message-ID: <CAN_J9avtYOzJQz5DmQStdz9czSfh6NuMPXfbsCBuMGPnZ0cVJA@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Install ffi on Mac OS one a volume name with a space
+From: Luis Lavena <luislavena@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.220.182 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=20cf307ac437e4e75104c3fe7614
+
+--20cf307ac437e4e75104c3fe7614
+Content-Type: text/plain; charset=ISO-8859-1
+
+I think the error is clear:
+
+configure: WARNING: Libtool does not cope well with whitespace in `pwd`
+
+What you need to do is rename your volume, since pwd is being resolved /
+expanded so no matter how many Symlinks you create it will always resolve
+to the volume with spaces.
+
+Sorry for top posting. Sent from mobile.
+On Jul 4, 2012 6:57 AM, "Zac Parker" <zac.parker@gmail.com> wrote:
+
+> Anyone? I'm having the same issue. Any help is much appreciated.
+>
+> Thanks!
+>
+> On Thursday, December 15, 2011 2:40:26 PM UTC-8, Ross Rankin wrote:
+>>
+>> Is there a workaround to this bug?  Issue #87 talks about it but it
+>> looks like no one is responding to comments...  Anyway, I've tried all
+>> kinds of symlinks, parameters, and environment variables and yet its
+>> seems to pull the path /Volumes/Macintosh HD/ no mater what I do...
+>> I've tried manually installing via ./configure, make, make install
+>> still not love, even editing the build file by hand...  any ideas?
+>> Here's the error I get on bundle install:
+>> Gem::Installer::**ExtensionBuildError: ERROR: Failed to build gem native
+>> extension.
+>>
+>>         /Users/Ross/.rvm/rubies/ruby-**1.9.2-p180/bin/ruby extconf.rb
+>> checking for ffi.h... no
+>> checking for ffi.h in /usr/local/include... no
+>> checking for rb_thread_blocking_region()... yes
+>> checking for ruby_thread_has_gvl_p()... yes
+>> checking for ruby_native_thread_p()... yes
+>> checking for rb_thread_call_with_gvl()... yes
+>> creating extconf.h
+>> creating Makefile
+>>
+>> make
+>> Configuring libffi
+>> configure: WARNING: Libtool does not cope well with whitespace in
+>> `pwd`
+>> cd "/Volumes/Macintosh HD/Users/Ross/.rvm/gems/ruby-**1.9.2-p180@webapp/
+>> gems/ruby/1.9.1/gems/ffi-1.0.**11/ext/ffi_c/libffi" && make
+>> make "AR_FLAGS=" "CC_FOR_BUILD=" "CFLAGS=" "CXXFLAGS="
+>> "CFLAGS_FOR_BUILD=" "CFLAGS_FOR_TARGET=" "INSTALL=/usr/bin/install -c"
+>> "INSTALL_DATA=/usr/bin/install -c -m 644" "INSTALL_PROGRAM=/usr/bin/
+>> install -c" "INSTALL_SCRIPT=/usr/bin/**install -c" "JC1FLAGS="
+>> "LDFLAGS=" "LIBCFLAGS=" "LIBCFLAGS_FOR_TARGET=" "MAKE=make" "MAKEINFO=/
+>> bin/sh "/Volumes/Macintosh HD/Users/Ross/.rvm/gems/ruby-**1.9.2-
+>> p180@webapp/gems/ruby/1.9.1/**gems/ffi-1.0.11/ext/ffi_c/**libffi/missing"
+>> --run makeinfo " "PICFLAG=" "PICFLAG_FOR_TARGET=" "RUNTESTFLAGS="
+>> "SHELL=/bin/sh" "exec_prefix=/usr/local" "infodir=/usr/local/share/
+>> info" "libdir=/usr/local/lib" "prefix=/usr/local" "AR=ar" "AS=as"
+>> "CC=gcc" "CXX=g++" "LD=ld" "NM=/usr/bin/nm" "RANLIB=ranlib" "DESTDIR="
+>> all-recursive
+>> make[2]: *** No rule to make target `HD/Users/Ross/.rvm/gems/
+>> ruby-1.9.2-p180@webapp/gems/**ruby/1.9.1/gems/ffi-1.0.11/**ext/ffi_c/
+>> libffi/missing --run makeinfo '.  Stop.
+>> make[1]: *** [all] Error 2
+>> make: *** ["/Volumes/Macintosh] Error 2
+>>
+>>
+>> Gem files will remain installed in /Users/Ross/.rvm/gems/ruby-1.**9.2-
+>> p180@webapp/gems/ruby/1.9.1/**gems/ffi-1.0.11 for inspection.
+>> Results logged to /Users/Ross/.rvm/gems/ruby-1.**9.2-p180@webapp/gems/
+>> ruby/1.9.1/gems/ffi-1.0.11/**ext/ffi_c/gem_make.out
+>>
+>> Here's the error I get when I do the make install:
+>> ranlib: file: /usr/local/lib/libffi.a(ffi.o) has no symbols
+>> ranlib: file: /usr/local/lib/libffi.a(**darwin.o) has no symbols
+>> /Volumes/Macintosh: /Volumes/Macintosh: is a directory
+>> make[2]: *** [install-libLTLIBRARIES] Error 126
+>> make[1]: *** [install-am] Error 2
+>> make: *** [install-recursive] Error 1
+>>
+>> Out if ideas... anyone else have an idea on how to get past this?
+>>
+>>
+
+--20cf307ac437e4e75104c3fe7614
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<p>I think the error is clear:</p>
+<p>configure: WARNING: Libtool does not cope well with whitespace in `pwd`<=
+/p>
+<p>What you need to do is rename your volume, since pwd is being resolved /=
+ expanded so no matter how many Symlinks you create it will always resolve =
+to the volume with spaces. </p>
+<p>Sorry for top posting. Sent from mobile. </p>
+<div class=3D"gmail_quote">On Jul 4, 2012 6:57 AM, &quot;Zac Parker&quot; &=
+lt;<a href=3D"mailto:zac.parker@gmail.com">zac.parker@gmail.com</a>&gt; wro=
+te:<br type=3D"attribution"><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+Anyone? I&#39;m having the same issue. Any help is much appreciated. <br><b=
+r>Thanks!<br><br>On Thursday, December 15, 2011 2:40:26 PM UTC-8, Ross Rank=
+in wrote:<blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.=
+8ex;border-left:1px #ccc solid;padding-left:1ex">
+Is there a workaround to this bug? =A0Issue #87 talks about it but it<br>lo=
+oks like no one is responding to comments... =A0Anyway, I&#39;ve tried all<=
+br>kinds of symlinks, parameters, and environment variables and yet its<br>
+seems to pull the path /Volumes/Macintosh HD/ no mater what I do...<br>I&#3=
+9;ve tried manually installing via ./configure, make, make install<br>still=
+ not love, even editing the build file by hand... =A0any ideas?<br>Here&#39=
+;s the error I get on bundle install:<br>
+Gem::Installer::<u></u>ExtensionBuildError: ERROR: Failed to build gem nati=
+ve<br>extension.<p>=A0 =A0 =A0 =A0 /Users/Ross/.rvm/rubies/ruby-<u></u>1.9.=
+2-p180/bin/ruby extconf.rb<br>checking for ffi.h... no<br>checking for ffi.=
+h in /usr/local/include... no<br>
+checking for rb_thread_blocking_region()... yes<br>checking for ruby_thread=
+_has_gvl_p()... yes<br>checking for ruby_native_thread_p()... yes<br>checki=
+ng for rb_thread_call_with_gvl()... yes<br>creating extconf.h<br>creating M=
+akefile</p>
+<p>make<br>Configuring libffi<br>configure: WARNING: Libtool does not cope =
+well with whitespace in<br>`pwd`<br>cd &quot;/Volumes/Macintosh HD/Users/Ro=
+ss/.rvm/gems/ruby-<u></u>1.9.2-p180@webapp/<br>gems/ruby/1.9.1/gems/ffi-1.0=
+.<u></u>11/ext/ffi_c/libffi&quot; &amp;&amp; make<br>
+make &quot;AR_FLAGS=3D&quot; &quot;CC_FOR_BUILD=3D&quot; &quot;CFLAGS=3D&qu=
+ot; &quot;CXXFLAGS=3D&quot;<br>&quot;CFLAGS_FOR_BUILD=3D&quot; &quot;CFLAGS=
+_FOR_TARGET=3D&quot; &quot;INSTALL=3D/usr/bin/install -c&quot;<br>&quot;INS=
+TALL_DATA=3D/usr/bin/install -c -m 644&quot; &quot;INSTALL_PROGRAM=3D/usr/b=
+in/<br>
+install -c&quot; &quot;INSTALL_SCRIPT=3D/usr/bin/<u></u>install -c&quot; &q=
+uot;JC1FLAGS=3D&quot;<br>&quot;LDFLAGS=3D&quot; &quot;LIBCFLAGS=3D&quot; &q=
+uot;LIBCFLAGS_FOR_TARGET=3D&quot; &quot;MAKE=3Dmake&quot; &quot;MAKEINFO=3D=
+/<br>bin/sh &quot;/Volumes/Macintosh HD/Users/Ross/.rvm/gems/ruby-<u></u>1.=
+9.2-<br>
+p180@webapp/gems/ruby/1.9.1/<u></u>gems/ffi-1.0.11/ext/ffi_c/<u></u>libffi/=
+missing&quot;<br>--run makeinfo &quot; &quot;PICFLAG=3D&quot; &quot;PICFLAG=
+_FOR_TARGET=3D&quot; &quot;RUNTESTFLAGS=3D&quot;<br>&quot;SHELL=3D/bin/sh&q=
+uot; &quot;exec_prefix=3D/usr/local&quot; &quot;infodir=3D/usr/local/share/=
+<br>
+info&quot; &quot;libdir=3D/usr/local/lib&quot; &quot;prefix=3D/usr/local&qu=
+ot; &quot;AR=3Dar&quot; &quot;AS=3Das&quot;<br>&quot;CC=3Dgcc&quot; &quot;C=
+XX=3Dg++&quot; &quot;LD=3Dld&quot; &quot;NM=3D/usr/bin/nm&quot; &quot;RANLI=
+B=3Dranlib&quot; &quot;DESTDIR=3D&quot;<br>
+all-recursive<br>make[2]: *** No rule to make target `HD/Users/Ross/.rvm/ge=
+ms/<br>ruby-1.9.2-p180@webapp/gems/<u></u>ruby/1.9.1/gems/ffi-1.0.11/<u></u=
+>ext/ffi_c/<br>libffi/missing --run makeinfo &#39;. =A0Stop.<br>make[1]: **=
+* [all] Error 2<br>
+make: *** [&quot;/Volumes/Macintosh] Error 2</p><p><br>Gem files will remai=
+n installed in /Users/Ross/.rvm/gems/ruby-1.<u></u>9.2-<br>p180@webapp/gems=
+/ruby/1.9.1/<u></u>gems/ffi-1.0.11 for inspection.<br>Results logged to /Us=
+ers/Ross/.rvm/gems/ruby-1.<u></u>9.2-p180@webapp/gems/<br>
+ruby/1.9.1/gems/ffi-1.0.11/<u></u>ext/ffi_c/gem_make.out</p><p>Here&#39;s t=
+he error I get when I do the make install:<br>ranlib: file: /usr/local/lib/=
+libffi.a(ffi.o) has no symbols<br>ranlib: file: /usr/local/lib/libffi.a(<u>=
+</u>darwin.o) has no symbols<br>
+/Volumes/Macintosh: /Volumes/Macintosh: is a directory<br>make[2]: *** [ins=
+tall-libLTLIBRARIES] Error 126<br>make[1]: *** [install-am] Error 2<br>make=
+: *** [install-recursive] Error 1</p><p>Out if ideas... anyone else have an=
+ idea on how to get past this?<br>
+</p><p></p><p></p><p></p><p></p></blockquote></blockquote></div>
+
+--20cf307ac437e4e75104c3fe7614--

@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [OT] win32api question</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [OT] win32api question</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:52 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 18, 2009 at 3:47 PM, rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>A little off topic, but this code from
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://rubygems.rubyforge.org/svn/trunk/lib/rubygems/config_file.rb">http://rubygems.rubyforge.org/svn/trunk/lib/rubygems/config_file.rb</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>     if RUBY_VERSION &gt; '1.9' then
+<span class="moz-txt-citetags">&gt; </span>       SHGetFolderPath = Win32API.new 'shell32', 'SHGetFolderPath',
+<span class="moz-txt-citetags">&gt; </span>'PLPLP',
+<span class="moz-txt-citetags">&gt; </span>                                      'L', :stdcall
+<span class="moz-txt-citetags">&gt; </span>...
+<span class="moz-txt-citetags">&gt; </span>     else
+<span class="moz-txt-citetags">&gt; </span>       SHGetFolderPath = Win32API.new 'shell32', 'SHGetFolderPath',
+<span class="moz-txt-citetags">&gt; </span>'LLLLP',
+<span class="moz-txt-citetags">&gt; </span>                                      'L'
+<span class="moz-txt-citetags">&gt; </span>...
+<span class="moz-txt-citetags">&gt; </span>     end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Seems to show a difference in parameters between 1.9 and
+<span class="moz-txt-citetags">&gt; </span>1.8....anybody have any clue what is going on here?
+</pre></blockquote><pre wrap>
+
+Please, ask Ruby-core and the creator of Win32API
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

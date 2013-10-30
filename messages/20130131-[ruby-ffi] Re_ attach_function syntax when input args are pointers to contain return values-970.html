@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: attach_function syntax when input args are pointers to contain return values</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: attach_function syntax when input args are pointers to contain return values</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/31/13 5:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">I think you're getting confused between parameter types and instances.<div><br></div><div>your attach_function call should be:</div><div><br></div><div>&nbsp; &nbsp; attach_function :GetMyString, [ :long, :pointer, :pointer ], :void</div><div><br></div><div>And you would call it like:</div><div><br></div><div>&nbsp; &nbsp; buffer = FFI::MemoryPointer.new(:char, 256)</div><div>&nbsp; &nbsp; size_ref =&nbsp;FFI::MemoryPointer.new(:int, 1)</div><div><br></div><div>&nbsp; &nbsp; MyGetString(x, buffer, size_ref)</div><div><br></div><div>&nbsp; &nbsp; # in C: int size = *size_ref</div><div>&nbsp; &nbsp; size = size_ref.read_int</div><div>&nbsp; &nbsp; string = buffer.get_string(0, size)</div><div><br><br>On Friday, February 1, 2013 6:21:44 AM UTC+10, Rob Marshall wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi,<div><br></div><div>My guess is that this has been asked before, but I didn't find it...not exactly sure what to search for...</div><div><br></div><div>Anyway, I am trying to attach functions that return :void but use the input parameters to hold the return values. e.g. A function that gets a value and returns it as a string and length. So say my C-function declaration is:</div><div><br></div><div>void GetMyString(const long reference, char *buffer, int *size)</div><div><br></div><div>My guess, and I'm sure it doesn't work because I tried it, was to do:</div><div><br></div><div>buffer = FFI::MemoryPointer.new(:char, 256)</div><div>size = FFI::MemoryPointer.new(:int,1)</div><div>attach_function :GetMyString, [ :long, buffer, size ], :void</div><div><br></div><div>I got a "can't resolve type" error when I tried that.</div><div><br></div><div>What's the correct way to do it?</div><div><br></div><div>Thanks,</div><div><br></div><div>Rob</div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

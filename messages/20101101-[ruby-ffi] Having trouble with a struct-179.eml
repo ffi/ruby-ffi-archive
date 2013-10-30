@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs15668bkj;
+        Mon, 1 Nov 2010 19:01:06 -0700 (PDT)
+Received: by 10.151.98.15 with SMTP id a15mr29639876ybm.308.1288663265378;
+        Mon, 01 Nov 2010 19:01:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRDf4b3mBBoE85Mj7Q@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id y15si6676324anb.117.2010.11.01.19.01.03;
+        Mon, 01 Nov 2010 19:01:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRDf4b3mBBoE85Mj7Q@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRDf4b3mBBoE85Mj7Q@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRDf4b3mBBoE85Mj7Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxi11 with SMTP id 11sf11812192yxi.7
+        for <headius@headius.com>; Mon, 01 Nov 2010 19:01:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=w2LS//tDDeUfTtVYj2NairVB7xxSh9btGK/mUTvJitc=;
+        b=SyVcq/g1ltfs40+ImUceL5UBA5CtbLzkqHJMmI3OlAAOZ0gMerPuELEEruCimYPy9V
+         0vUrbEFfP/0AUJGaICJPnExbkFIArdFp5/VvqXgOM2F1i9Kv9tguvRdLNcH0bMJMWo3l
+         SNGFVCe3PaJvkhQwWBYp6Ihazvrb//dGHMOLo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=Y0ZvGWoUt8XuM3D4okf9s0ScrZGJzkfbmHYYWsdWj9Mm/3EoIWDZjA4mvpKJXJj9DY
+         A3lhUVX5WWZkLX0Lqo8gBipQDTqzqDpQloPvdenPFApxXMf1b5JAKicYlmuunjMREUEy
+         +d8tAh3qNVRiIIWsB1eYmVHRpb7yitM1+siV0=
+Received: by 10.150.162.2 with SMTP id k2mr2413078ybe.19.1288663263223;
+        Mon, 01 Nov 2010 19:01:03 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.28.24 with SMTP id f24ls1188256anj.0.p; Mon, 01 Nov 2010
+ 19:01:02 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.216.14 with SMTP id o14mr9008ang.24.1288663262831; Mon, 01
+ Nov 2010 19:01:02 -0700 (PDT)
+Received: by g25g2000yqn.googlegroups.com with HTTP; Mon, 1 Nov 2010 19:01:02
+ -0700 (PDT)
+Date: Mon, 1 Nov 2010 19:01:02 -0700 (PDT)
+X-IP: 71.37.141.51
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Having trouble with a struct
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am getting weird issues with a struct. The struct is the IPv4
+header. All but the last item(destination address) gives the correct
+data(after some endian manipulation.
+
+class IP4_header < FFI::Struct
+    layout :eth_offset, :uchar,
+14],:version,:uchar,:tos,:uchar,:len,:ushort,:id,:ushort,:frag_offset,:ushort,:ttl,:uchar,:proto,:uchar,
+	:checksum,:ushort,:src_addr,:uint,:dest_addr,:uint
+    IP_RF=8
+    IP_DF=4
+    IP_MF=2
+    OFFMASK='ff1f'.to_i 16
+  end
+
+The first field eth_offset is just to get past the ethernet header,
+probably the wrong way to do that.
+
+src_addr returns 2831155968, which is the hex value A8C00300 which is
+correct, after an endian adjustment: 192.168.0.3. The actual value
+before the adjustment is 168.192.3.0.
+
+dest_addr returns 3636658432 which is the hex value D8C30100 which is
+completely incorrect. The next 4 bytes were expected to be read, but
+the two bytes right after src_addr were skipped. If that is not bad
+enough it is being read incorrectly. The returned value corresponds to
+216.195.1.0.
+
+The bytes, according to wireshark, right after src_addr is: C0 A8 00
+01 C3 D8.
+
+The first 4 bytes is the dest_addr and the last two are the first two
+bytes in the UDP header. So dest_addr is skipping two bytes AND
+reading it incorrectly. Given if it just skipped the two bytes, the
+read bytes should be 01 00 d8 c3.
+

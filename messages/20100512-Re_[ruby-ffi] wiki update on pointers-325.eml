@@ -1,0 +1,194 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.186.206 with SMTP id ct14cs31967qcb;
+        Tue, 11 May 2010 23:31:07 -0700 (PDT)
+Received: by 10.141.214.20 with SMTP id r20mr4688060rvq.268.1273645863393;
+        Tue, 11 May 2010 23:31:03 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCjlqnfBBoEgOxxig@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id q20si15352149rvl.58.2010.05.11.23.31.01;
+        Tue, 11 May 2010 23:31:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCjlqnfBBoEgOxxig@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCjlqnfBBoEgOxxig@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCjlqnfBBoEgOxxig@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvc21 with SMTP id 21sf1162422pvc.7
+        for <headius@headius.com>; Tue, 11 May 2010 23:31:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=SqshhO1Xmat1WJPpIvn5vtW3gBG7YXgSyKyTn7v/B24=;
+        b=jiLaKlzg4UvbVMgUW7Q2vzYfm2kmAnvu3v7gcqzYdLXNoCKhY0W0O5fJgn9uuU02SW
+         a9cbzlgKyxgf4T28WQhlARCyWfRxGexXtq7Q+u9rHObabg7lrWyxcB8AAOpw9lzmfon4
+         FVd+L92xC8JGl4ECs0QHTlsDgiIDe/zjVrD4M=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=PBd7U5CzLs6VmAyvyQWxR131UC/g/tjziArNkjywIITuXeMaojH8aD60kX38c8fBXH
+         kJyi2y2QEeKc9W7V/lZ/FS5/wmSq4nf1+pdr2wFmTjY0RxdzfD+GeTawOD8SJkz3TE3B
+         xohneuyVF0dFOXR8BryO8OMJJFSCKfgd9h0nc=
+Received: by 10.115.81.10 with SMTP id i10mr936399wal.28.1273645859611;
+        Tue, 11 May 2010 23:30:59 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.115.135.31 with SMTP id m31ls26192270wan.1.p; Tue, 11 May 2010 
+	23:30:58 -0700 (PDT)
+Received: by 10.114.187.6 with SMTP id k6mr1728887waf.23.1273645858570;
+        Tue, 11 May 2010 23:30:58 -0700 (PDT)
+Received: by 10.114.187.6 with SMTP id k6mr1728886waf.23.1273645858541;
+        Tue, 11 May 2010 23:30:58 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pv0-f181.google.com (mail-pv0-f181.google.com [74.125.83.181])
+        by gmr-mx.google.com with ESMTP id r3si7240474waj.7.2010.05.11.23.30.57;
+        Tue, 11 May 2010 23:30:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.83.181 as permitted sender) client-ip=74.125.83.181;
+Received: by pvd12 with SMTP id 12so1441746pvd.26
+        for <ruby-ffi@googlegroups.com>; Tue, 11 May 2010 23:30:57 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.141.106.14 with SMTP id i14mr4658482rvm.259.1273645857315; 
+	Tue, 11 May 2010 23:30:57 -0700 (PDT)
+Received: by 10.141.51.6 with HTTP; Tue, 11 May 2010 23:30:57 -0700 (PDT)
+In-Reply-To: <F46E80B2-8931-40A3-AC77-05B989215D3A@mac.com>
+References: <383FE988-D919-4629-AD7C-E115AB5315CB@mac.com>
+	 <AANLkTimXt6BzR1H-xcRkr31EMs3YB2MldzKsmXgo46FJ@mail.gmail.com>
+	 <224206B2-6123-47C2-B82B-3EA6F0C7BCB6@mac.com>
+	 <AANLkTimj6wdQE7XlMqjyHnBp-Gk1wscD7oMfrO4jIgFK@mail.gmail.com>
+	 <F46E80B2-8931-40A3-AC77-05B989215D3A@mac.com>
+Date: Wed, 12 May 2010 16:30:57 +1000
+Message-ID: <AANLkTikClkoRCWFlPMkT0w0A_t-w_hWW26b170uw6f6y@mail.gmail.com>
+Subject: Re: [ruby-ffi] wiki update on pointers
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 74.125.83.181 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Whilst I'm not a big fan of rdoc, any doc would be better than none.
+At the very least, a lot of C functions need rdoc turned off for them.
+
+I did start using yardoc to build documentation for FFI, in a
+different tree; if you want to look at that, its over at
+http://github.com/ffi/ffi-yardoc
+
+I quite like yardoc, and I want the API doc to be implementation
+independent, which rdoc generated from a C extension is kind of not -
+it seems like the the C implementation details leak thru.
+
+
+
+On 12 May 2010 10:18, Chuck Remes <cremes.devlist@mac.com> wrote:
+> Way ahead of you, Wayne. You may recognize some of the text on that page.=
+..
+>
+> BTW, I would like to add some rdoc to the classes but I don't know how to=
+ do that for methods that are part of the C extension and have no ruby equi=
+valent. I'll look into the rdoc syntax and see if there's a way I can achie=
+ve that. Any problem with that?
+>
+> cr
+>
+> On May 11, 2010, at 6:09 PM, Wayne Meissner wrote:
+>
+>> Well, now that you are wise in the way of pointers, please go ahead
+>> and fix the damn page :-)
+>>
+>> If something on the wiki doesn't look right, fix it - its a wiki after
+>> all. =A0(and if your changes aren't right, in theory someone else will
+>> rip your stuff out ... ad infinitum).
+>>
+>>
+>>
+>> On 12 May 2010 08:59, Chuck Remes <cremes.devlist@mac.com> wrote:
+>>> I'll make the modifications for #1 and #2.
+>>>
+>>> The text at the top (#3) was put there by someone else. I just added to=
+ the page. It didn't look right to me, but it's been there for a while so I=
+ didn't touch it. :)
+>>>
+>>> cr
+>>>
+>>> On May 11, 2010, at 5:33 PM, Wayne Meissner wrote:
+>>>
+>>>> It looks pretty good.
+>>>>
+>>>> A couple of nits:
+>>>>
+>>>> 1) The LibC module can just use:
+>>>> =A0 ffi_lib FFI::Library::LIBC
+>>>>
+>>>> ffi knows that means "whatever the libc on this system is supposed to
+>>>> be", since its a pretty common library people want to map in, and the
+>>>> name differs across platforms (e.g. on linux, its libc.so.6, macos is
+>>>> libc.dylib, windows is msvcrt.dll, aix is something weird, etc.
+>>>>
+>>>> 2) The first arg to MemoryPointer.new can in fact be either a symbol,
+>>>> or anything that responds to #size.
+>>>> e.g.
+>>>> =A0class S < FFI::Struct
+>>>> =A0 =A0layout :i, :int
+>>>> =A0end
+>>>> =A0FFI::MemoryPointer.new(S, 1, false) =A0# Will allocate space for on=
+e
+>>>> instance of S, without clearing the memory first
+>>>>
+>>>> 3) The bit at the top about copying pointers is ... confusing. =A0A
+>>>> pointer is merely a Fixnum that holds a native memory address, so
+>>>> there is no need to do anything special to "copy" a pointer - just
+>>>> assign it to a like you would any other Fixnum. =A0Think of "Pointer" =
+as
+>>>> "fixnum with methods to read/write the native memory at the address".
+>>>>
+>>>> The example:
+>>>>
+>>>> b =3D MemoryPointer.new(:pointer).write_pointer(some_pointer.read_poin=
+ter)
+>>>>
+>>>> Doesn't do what you think. =A0It reads a pointer from the memory
+>>>> pointed-to by some_pointer, allocates a new chunk of memory, and
+>>>> writes that pointer value into that memory - it doesn't copy the value
+>>>> of some_pointer to a new pointer.
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> On 12 May 2010 02:02, Chuck Remes <cremes.devlist@mac.com> wrote:
+>>>>> I just wrote an update to the wiki page on pointers at http://wiki.gi=
+thub.com/ffi/ffi/pointers
+>>>>>
+>>>>> I'd appreciate it if someone more knowledgeable would check it over (=
+the bottom section under the sub-heading) and verify that what I wrote is c=
+orrect. It seems to be working for me but I've been wrong before! :)
+>>>>>
+>>>>> cr
+>>>>>
+>>>>>
+>>>
+>>>
+>
+>

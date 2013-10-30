@@ -1,0 +1,208 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs57424faj;
+        Sat, 13 Nov 2010 18:04:13 -0800 (PST)
+Received: by 10.151.9.9 with SMTP id m9mr6769047ybi.249.1289700252614;
+        Sat, 13 Nov 2010 18:04:12 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLjW6djlEBCah_3mBBoEP3YKtQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id w12si4551504ybe.94.2010.11.13.18.04.11;
+        Sat, 13 Nov 2010 18:04:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCah_3mBBoEP3YKtQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLjW6djlEBCah_3mBBoEP3YKtQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCLjW6djlEBCah_3mBBoEP3YKtQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg10 with SMTP id 10sf5264682gyg.7
+        for <headius@headius.com>; Sat, 13 Nov 2010 18:04:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=VP7W3cV73sPHvhVuVGe5j0piJwT/yjWqcN2mmtV8sSc=;
+        b=Ma0YV/wWLPBSTF4ARXoK3q8Sdk+CkVUmEnUvQUPDYzpXQXhzj9IIqd6tfjhjU73Fri
+         7eQabnC8WwhQsbJBHKhjq8T4tbMasLesuKYw+cOWaTLm+dW3l138GsE8lHhA57na+GsP
+         Mg1vtpesGSP4Cy8k7E6xAkeg5W/Al2+Dukw9A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=IAxpSI34Et68Pk9n1hAclVDY1edw+cRD2mY+oXyYm/VnQkZDxJ2hYw9PQqnyJjFLcG
+         3chv/wKFIg9mGRwxCXwJvS+zU1WJ/209iHjbCYXXp1kcmvU7NVVlWyETO69Ihkvug+AQ
+         WjprvixBYsXGgNT5TDBqzY0jUJzEO0QDPfEd0=
+Received: by 10.151.1.5 with SMTP id d5mr424803ybi.63.1289700250146;
+        Sat, 13 Nov 2010 18:04:10 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.9.34 with SMTP id 34ls981487agi.1.p; Sat, 13 Nov 2010
+ 18:04:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.90.6.27 with SMTP id 27mr316239agf.37.1289700249481; Sat, 13
+ Nov 2010 18:04:09 -0800 (PST)
+Received: by 29g2000prb.googlegroups.com with HTTP; Sat, 13 Nov 2010 18:04:09
+ -0800 (PST)
+Date: Sat, 13 Nov 2010 18:04:09 -0800 (PST)
+In-Reply-To: <AANLkTi=L+dTq7L-1D0UuJeQVYkcApD3UL4-38oqGDW_2@mail.gmail.com>
+X-IP: 76.87.42.32
+References: <3c238cf2-a6e6-48fd-99f5-2fc686518e48@u25g2000pra.googlegroups.com>
+ <AANLkTi=QKpR7DBOYT8-Dk+cTXTg5Gj01PuzzzJej92Y+@mail.gmail.com>
+ <0e6f7cdc-ebad-4462-868f-dd03a9d5399a@r31g2000prg.googlegroups.com>
+ <6fcfc91b-093d-425d-909d-203f478b3ac1@x4g2000pre.googlegroups.com>
+ <02acd100-b46e-4df3-b008-d715e62a6a47@x4g2000pre.googlegroups.com> <AANLkTi=L+dTq7L-1D0UuJeQVYkcApD3UL4-38oqGDW_2@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5,gzip(gfe)
+Message-ID: <a27f112e-64ae-4c5e-b647-c82c63c81c5e@29g2000prb.googlegroups.com>
+Subject: [ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?
+From: Scott Gonyea <gonyea@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: gonyea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+So it's still going to blow up in bizarre ways?  I'll try it out from
+the github master.  Thank you.
+
+On Nov 13, 5:09=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> I think those changes fixing things is purely coincidental.
+>
+> I think the reason why ffi from github was raising errors, was because
+> the enum parameter handling was slightly broken (it only accepted enum
+> constants, not ints), so update, re-install it and see if it works
+> now.
+>
+> On 13 November 2010 08:50, Scott Gonyea <gon...@gmail.com> wrote:
+>
+>
+>
+> > Well that's weird. =A0Now it's all working in MRI. =A0I'm not sure whic=
+h
+> > of my changes helped, or if I sleep-walked last night after one of my
+> > lobes declared a coup.
+>
+> > Here's what I did with CurlFFI:
+>
+> >https://github.com/aitrus/curl_ffi/commit/3e72173c9f60238f855c6e23f54...
+>
+> > And here's what I did in StreamlyFFI:
+>
+> >https://github.com/aitrus/streamly_ffi/commit/48568e7792cd7bc8a300d0f...
+>
+> > I need to go back and remove my frantic use of ".dup" and see what the
+> > effect is. =A0I should probably walk back my changes to see where it
+> > went right.
+>
+> > Scott
+>
+> > On Nov 11, 11:09=A0pm, Scott Gonyea <gon...@gmail.com> wrote:
+> >> Interesting. =A0I used JRuby (1.5.3) and the ffi gem (0.6.3 /
+> >> rubygems.org). =A0Works just peachy. =A0I ran it at 50 and then 100
+> >> iterations. =A0Everything seems to get along.
+>
+> >> sgonyea@skg:~/Sites/gsolr$ ruby bench.rbhttp://toddler.tomkittens.com:=
+8080/solr
+> >> "hi"
+> >> Rehearsal ------------------------------------
+> >> =A0GSolr
+> >> =A0 4.626000 =A0 0.000000 =A0 4.626000 ( =A04.626000)
+> >> =A0RSolr
+> >> =A0 9.435000 =A0 0.000000 =A0 9.435000 ( =A09.436000)
+> >> -------------------------- total: 14.061000sec
+>
+> >> =A0 =A0 =A0 =A0user =A0 =A0 system =A0 =A0 =A0total =A0 =A0 =A0 =A0rea=
+l
+> >> =A0GSolr
+> >> =A0 3.523000 =A0 0.000000 =A0 3.523000 ( =A03.523000)
+> >> =A0RSolr
+> >> =A0 8.903000 =A0 0.000000 =A0 8.903000 ( =A08.903000)
+> >> sgonyea@skg:~/Sites/gsolr$ ruby bench.rbhttp://toddler.tomkittens.com:=
+8080/solr
+> >> "hi"
+> >> Rehearsal ------------------------------------
+> >> =A0GSolr
+> >> =A0 8.134000 =A0 0.000000 =A0 8.134000 ( =A08.134000)
+> >> =A0RSolr
+> >> =A018.710000 =A0 0.000000 =A018.710000 ( 18.710000)
+> >> -------------------------- total: 26.844000sec
+>
+> >> =A0 =A0 =A0 =A0user =A0 =A0 system =A0 =A0 =A0total =A0 =A0 =A0 =A0rea=
+l
+> >> =A0GSolr
+> >> =A0 6.805000 =A0 0.000000 =A0 6.805000 ( =A06.805000)
+> >> =A0RSolr
+> >> =A017.557000 =A0 0.000000 =A017.557000 ( 17.557000)
+>
+> >> Scott
+>
+> >> On Nov 11, 11:01=A0pm, Scott Gonyea <gon...@gmail.com> wrote:
+>
+> >> > Strange. =A0I replied in my e-mail, but it didn't post. =A0Hoping it
+> >> > wasn't plugged up in Google somewhere. =A0Here's what I wrote:
+>
+> >> > I'm pretty sure it does. =A0I ran into another issue, while using th=
+e
+> >> > FFI from Github:
+>
+> >> >https://gist.github.com/673816
+>
+> >> > I'm checking the values, all along the way, and I'm not handing it a=
+ny
+> >> > nils, but it won't believe me. The ffi 0.6.3 gem won't complain abou=
+t
+> >> > this (but it will blow up at a few spots).
+>
+> >> > Sigh :( =A0Thank you very much, for your help.
+>
+> >> > Scott
+>
+> >> > On Nov 11, 10:21=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+>
+> >> > > Thats interesting.
+>
+> >> > > Does curl use threads internally? =A0If so, build the ffi gem from
+> >> > > github and try that. =A0Earlier versions don't deal well with call=
+backs
+> >> > > coming from non-ruby threads.
+>
+> >> > > Also try running it with JRuby. =A0It handles threads a lot better=
+.
+>
+> >> > > On 12 November 2010 15:25, Scott Gonyea <gon...@gmail.com> wrote:
+>
+> >> > > >https://gist.github.com/673753
+>
+> >> > > > That will show you the script I'm running, the gdb backtrace, an=
+d ruby-
+> >> > > > prof (if that helps at all). =A0I basically was benchmarking my =
+library
+> >> > > > with the one I started branching from. =A0It's all good, until I=
+ start
+> >> > > > running a whole lot of iterations. =A0I made some changes, which=
+ seems
+> >> > > > to have made it less frequent... until I up the number of iterat=
+ions.
+>
+> >> > > >https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa=
+5c23...
+>
+> >> > > > That was the one fix. =A0This GSolr junk of mine uses StreamlyFF=
+I and
+> >> > > > CurlFFI:
+>
+> >> > > > StreamlyFFI:https://github.com/aitrus/streamly_ffi
+> >> > > > CurlFFI:https://github.com/aitrus/curl_ffi
+>
+> >> > > > Scott

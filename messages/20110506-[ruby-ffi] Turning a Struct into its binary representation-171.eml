@@ -1,0 +1,146 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs92400agb;
+        Fri, 6 May 2011 06:39:16 -0700 (PDT)
+Received: by 10.236.32.132 with SMTP id o4mr4563084yha.252.1304689156313;
+        Fri, 06 May 2011 06:39:16 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRD-84_uBBoES5dK2g@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id m54si8933500yhg.244.2011.05.06.06.39.16
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 06 May 2011 06:39:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD-84_uBBoES5dK2g@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD-84_uBBoES5dK2g@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRD-84_uBBoES5dK2g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd10 with SMTP id 10sf7047168gyd.7
+        for <headius@headius.com>; Fri, 06 May 2011 06:39:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=aQDJP1ltcQistNDuqBgISmgd48OqdbmOLbemW7o5HwM=;
+        b=e+IF6tPXnVOy4mienyA+LLXRQ5ZR765bB+l2APYXnkrO6kytDMe21xBW9wY29hPp8V
+         qybN1xK6byuuG+zWOoK05l6N8vu1igFyzVDdBAq0ulFqoHKPQBktVgPGA3iFvIoGZVLM
+         s4KvQ9hNt14OVUlkEoZ2gl+gD8/r4CJvcI31E=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=DjopXbYP3A+U58iWDSeWi0fzV19IUhBh0qRG2KFgSwbnrJjWIhxwpHQs3N/T+R7pt+
+         7wMGauXpoWG9R4gj30VcA0ljmF2VmsmAKZYQ9PrlOsJzkmHbLfNJFamc6cjGyOJ/coXH
+         zbsAKdfJ4Pgc8nAOh7abcxqMsMJ0LqYWb3ccs=
+Received: by 10.91.21.40 with SMTP id y40mr387062agi.36.1304689150734;
+        Fri, 06 May 2011 06:39:10 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.88.13 with SMTP id q13ls63082agl.3.gmail; Fri, 06 May 2011
+ 06:39:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.4.27 with SMTP id g27mr395928agi.40.1304689149971; Fri, 06
+ May 2011 06:39:09 -0700 (PDT)
+Received: by k22g2000yqh.googlegroups.com with HTTP; Fri, 6 May 2011 06:39:09
+ -0700 (PDT)
+Date: Fri, 6 May 2011 06:39:09 -0700 (PDT)
+X-IP: 87.114.253.239
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.57 Safari/534.24,gzip(gfe)
+Message-ID: <3335346f-8b1f-4462-9222-f1e39612a634@k22g2000yqh.googlegroups.com>
+Subject: [ruby-ffi] Turning a Struct into its binary representation
+From: candlerb <bcandler100@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: bcandler100@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Given:
+
+class Foo < FFI::Struct
+    layout :a, :int, :b, :int
+end
+f = Foo.new
+f[:a] = 1
+f[:b] = 2
+
+(1) What's the most direct way to get the binary representation of
+'f'? Eventually I found:
+
+    f.pointer.get_bytes(0, Foo.size)
+
+This was made a bit awkward because I was looking for 'read' methods,
+and there was no 'read_bytes'. It turns out there are a handful for
+methods which have "get" but no "read" equivalent:
+
+>> f.pointer.methods.grep(/get/) - f.pointer.methods.grep(/read/).map { |x| x.sub(/^read_/,'get_') }
+=> ["get_array_of_float32", "get_bytes", "get_float32",
+"get_array_of_float64", "get_array_of_string", "get_float64",
+"instance_variable_get"]
+
+(2) Suppose I want to create a packed structure which is a contiguous
+array of Foos. I found an example for InlineArrayOfStructs, but not
+how to make an array of structs at the top level.
+
+So my noddy approach to packing an array of structs is as follows - is
+there a better way?
+
+   farr = [Foo.new, Foo.new]
+   m = FFI::MemoryPointer.new(Foo, farr.size)
+   farr.size.times { |i| m.put_bytes(i*Foo.size,
+farr[i].pointer.get_bytes(0, Foo.size)) }
+
+I note that the 'Struct' page in the ffi wiki shows how to take a
+pointer to such a structure and turn it into a collection of Foo
+objects, but not the other way round.
+
+(3) What's the difference between FFI::Pointer, FFI::MemoryPointer and
+FFI::Buffer?
+
+As far as I can tell:
+
+* FFI::Buffer is some malloc'd memory. It also supports simple slice
+with sharing of the underlying buffer (rbParent). The buffer is freed
+when the memory is GC'd. In this respect, it seems to be rather like a
+String.
+
+typedef struct Buffer {
+    AbstractMemory memory;
+    char* storage; /* start of malloc area */
+    VALUE rbParent;
+} Buffer;
+
+* FFI::Pointer has a similar structure, but it also has autorelease
+and allocated fields:
+
+typedef struct Pointer {
+    AbstractMemory memory;
+    VALUE rbParent;
+    char* storage; /* start of malloc area */
+    bool autorelease;
+    bool allocated;
+} Pointer;
+
+So I'm guessing that this can either point to someone else's storage,
+or to its own allocated buffer?
+
+* FFI::MemoryPointer is a subclass of FFI::Pointer... and it can
+allocate memory... but I can't see when you'd use a Buffer and when
+you'd use a MemoryPointer.
+
+Clues gratefully received :-)
+
+Regards,
+
+Brian.

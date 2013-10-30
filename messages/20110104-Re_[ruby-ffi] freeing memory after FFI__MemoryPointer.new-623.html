@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] freeing memory after FFI::MemoryPointer.new</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] freeing memory after FFI::MemoryPointer.new</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Alvaro <zevarito@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/4/11 2:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+2011/1/4 Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Jan 4, 2011, at 2:11 PM, Alvaro wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I wonder if there is something that needs to be done after call to
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::MemoryPointer.new
+<span class="moz-txt-citetags">&gt;&gt; </span>to free the memory, my extension has memory leaks and it only happens
+<span class="moz-txt-citetags">&gt;&gt; </span>with the binding
+<span class="moz-txt-citetags">&gt;&gt; </span>and not with the original C lib.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>When a MemoryPointer goes out of scope, the garbage collector will free the native memory. Therefore, you likely still have references to these pointers hanging around since they are not collected.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You may want to try running your extension under rubinius and/or jruby to see if the leaks persist in those environments. They may also give you more hints as to where the problem is.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If you are running on OSX, you may also want to try using the "leaks" program (command line) which will examine a program's heap and report on all leaks it finds.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+I will try other rubies to see what happen, thanks for your answer.
+
+<div class="moz-txt-sig">-- 
+Alvaro
+</div></pre></div></body>
+</html>
+</table></div>

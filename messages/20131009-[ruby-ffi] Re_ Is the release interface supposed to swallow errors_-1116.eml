@@ -1,0 +1,186 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp254400laa;
+        Wed, 9 Oct 2013 00:04:23 -0700 (PDT)
+X-Received: by 10.49.0.208 with SMTP id 16mr3736840qeg.25.1381302262537;
+        Wed, 09 Oct 2013 00:04:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB5P72OJAKGQEWST5B7Y@googlegroups.com>
+Received: from mail-qc0-x23f.google.com (mail-qc0-x23f.google.com [2607:f8b0:400d:c01::23f])
+        by mx.google.com with ESMTPS id o9si17368204qez.44.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 09 Oct 2013 00:04:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB5P72OJAKGQEWST5B7Y@googlegroups.com designates 2607:f8b0:400d:c01::23f as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB5P72OJAKGQEWST5B7Y@googlegroups.com designates 2607:f8b0:400d:c01::23f as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB5P72OJAKGQEWST5B7Y@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-f191.google.com with SMTP id x12sf86281qcv.18
+        for <headius@headius.com>; Wed, 09 Oct 2013 00:04:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=SM9F0F0pBK0PMrwi9LS+dOpwHXc5otPJYSfxrZLH0CA=;
+        b=fU/vXlD38W9jomAGaNwb8lGVbbfq6Ry7T1AlAVkq8U0FziyuMhSuw+vSHiOYrZwfDJ
+         BD/mdUVUo8xCX0Tj8sKY0zY2p+OIxfe/iyv1mg64zfkLVCJ3B/zeyxDejdktTZ8IZ9cV
+         e3sykRUdN2zrqnADRYyAMVy2p30Ahow2IaiFWdJkkqInu2Ii81DpngK5qp3y9Ls1DP4q
+         efd+SWhgqrOx6zhmWZVNxNj+MznXp/vQkmkrRPLoEcUuaY97ShQrV78dbzoZUnLj+89f
+         ErTMUpWLwMNpg7g9q5k9xKsLYmU21rLdg2/fWAC9lH6SzFghM/5cp7+Sns+5PKZXd1PM
+         ASWA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=SM9F0F0pBK0PMrwi9LS+dOpwHXc5otPJYSfxrZLH0CA=;
+        b=Dr2Qza/BOkoMywJZeNCbfoaUvB0G5wyQ+W6aw4zTIgKvFu0aGRq0MtaBxAFhHdq4bE
+         B5xReFXW5pF+1kLQiLjKZZm8m14YJGdyueIPFBYYtMRSiC7EmVHOs9BqV2J+SrFSnlGO
+         YLb9ZcGbLHFx46EDAsv9EK23J8fx/+/ul6MO14Ed2JbogBDjhdkdFcGS0P0Ke1wEeh4l
+         FKI60MzJMwM7UGX02ykB4N2Itjd9byZxrZprPNzblhG8CthfQPQCfhWUfXlQWLsoz+pb
+         m1cvj0tz2KZkwwUl3Nk+JBlJuSCLPFEyVSOyFtqrYmm3LfSRTebcvavDHRZ11w9Bt0PG
+         ui0Q==
+X-Received: by 10.50.36.67 with SMTP id o3mr34450igj.1.1381302261940;
+        Wed, 09 Oct 2013 00:04:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.22.99 with SMTP id c3ls4036163igf.7.canary; Wed, 09 Oct
+ 2013 00:04:21 -0700 (PDT)
+X-Received: by 10.50.73.39 with SMTP id i7mr34579igv.1.1381302261443;
+        Wed, 09 Oct 2013 00:04:21 -0700 (PDT)
+Date: Wed, 9 Oct 2013 00:04:20 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <f65f02d4-8c8e-45cd-b651-524df875c5c5@googlegroups.com>
+In-Reply-To: <1f5fd940-2980-46fd-a06d-27ab7929e1b2@googlegroups.com>
+References: <1f5fd940-2980-46fd-a06d-27ab7929e1b2@googlegroups.com>
+Subject: [ruby-ffi] Re: Is the release interface supposed to swallow errors?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_14_23598558.1381302260494"
+
+------=_Part_14_23598558.1381302260494
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+All errors from the release method are indeed swallowed - release is called 
+from a garbage collection thread, so it has to quash any exceptions.  
+
+If you explicitly call kptr.pointer.free(), it should propagate exceptions 
+from KStatCtl.release().
+
+On Wednesday, 9 October 2013 02:52:15 UTC+11, Daniel Berger wrote:
+>
+> Hi,
+>
+> ffi 1.9.0
+>
+> I noticed that if I declare a struct using .auto_ptr, that the 
+> corresponding release method seems to swallow errors.
+>
+> require 'ffi'
+>
+> class Solaris
+>   extend FFI::Library
+>   ffi_lib :kstat
+>
+>   class KstatCtl < FFI::Struct
+>     layout(:kc_chain_id, :int, :kc_chain, :pointer, :kc_kd, :int)
+>
+>     def self.release(pointer)
+>       puts "Releasing..." # Yep, I see this
+>       bogus # Shouldn't this raise an error? Instead, nothing happens.
+>     end
+>   end
+>
+>   attach_function :kstat_open, [], KstatCtl.auto_ptr
+>   attach_function :kstat_close, [KstatCtl], :int
+>
+>   def self.kstat
+>     kptr = kstat_open()
+>     kstat_close(kptr)
+>   end
+> end
+>
+> Solaris.kstat
+>
+> What I'm really trying to do is have the release method call kstat_close 
+> inside the KstatCtl's release method. It fails, but I can't tell -why- it 
+> fails since the error is getting swallowed.
+>
+> Help or advice appreciated.
+>
+> Regards,
+>
+> Dan
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_14_23598558.1381302260494
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><br></div>All errors from the release method are inde=
+ed swallowed - release is called from a garbage collection thread, so it ha=
+s to quash any exceptions. &nbsp;<div><br></div><div>If you explicitly call=
+ kptr.pointer.free(), it should propagate exceptions from KStatCtl.release(=
+).<br><br>On Wednesday, 9 October 2013 02:52:15 UTC+11, Daniel Berger  wrot=
+e:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;b=
+order-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">Hi,<div><br=
+></div><div>ffi 1.9.0</div><div><br></div><div>I noticed that if I declare =
+a struct using .auto_ptr, that the corresponding release method seems to sw=
+allow errors.</div><div><br></div><div><font size=3D"1" face=3D"times new r=
+oman, serif">require 'ffi'</font></div><font size=3D"1" face=3D"times new r=
+oman, serif"><br>class Solaris<br>&nbsp; extend FFI::Library<br>&nbsp; ffi_=
+lib :kstat<br><br>&nbsp; class KstatCtl &lt; FFI::Struct<br>&nbsp;&nbsp;&nb=
+sp; layout(:kc_chain_id, :int, :kc_chain, :pointer, :kc_kd, :int)<br><br>&n=
+bsp;&nbsp;&nbsp; def self.release(pointer)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+; puts "Releasing..." # Yep, I see this<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b=
+ogus # Shouldn't this raise an error? Instead, nothing happens.<br>&nbsp;&n=
+bsp;&nbsp; end<br>&nbsp; end<br><br>&nbsp; attach_function :kstat_open, [],=
+ KstatCtl.auto_ptr<br>&nbsp; attach_function :kstat_close, [KstatCtl], :int=
+<br><br>&nbsp; def self.kstat<br>&nbsp;&nbsp;&nbsp; kptr =3D kstat_open()<b=
+r>&nbsp;&nbsp;&nbsp; kstat_close(kptr)<br>&nbsp; end<br>end<br><br>Solaris.=
+kstat</font><div><font size=3D"1" face=3D"times new roman, serif"><br></fon=
+t></div><div><font size=3D"1" face=3D"times new roman, serif">What I'm real=
+ly trying to do is have the release method call kstat_close inside the Ksta=
+tCtl's release method. It fails, but I can't tell -why- it fails since the =
+error is getting swallowed.</font></div><div><font size=3D"1" face=3D"times=
+ new roman, serif"><br></font></div><div><font size=3D"1" face=3D"times new=
+ roman, serif">Help or advice appreciated.</font></div><div><font size=3D"1=
+" face=3D"times new roman, serif"><br></font></div><div><font size=3D"1" fa=
+ce=3D"times new roman, serif">Regards,</font></div><div><font size=3D"1" fa=
+ce=3D"times new roman, serif"><br></font></div><div><font size=3D"1" face=
+=3D"times new roman, serif">Dan</font></div></div></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_14_23598558.1381302260494--

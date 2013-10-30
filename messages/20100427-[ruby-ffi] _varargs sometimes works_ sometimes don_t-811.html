@@ -1,0 +1,171 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] :varargs sometimes works, sometimes don&#39;t</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] :varargs sometimes works, sometimes don&#39;t</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/27/10 12:19 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi there,
+
+I have two pieces of Ruby code, which do essentially the same. I
+created the first one during experimenting with the GTK dialog display
+functions, and the second was aimed on creating a Rubyish MessageBox
+object from it. The first works correctly and displays the message box
+- the second fails with a quite strange error message:
+--------------------------------------------------------------
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.9.1-p378/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi<span class="moz-txt-tag">/</span></i>
+types.rb:46:in `find_type': Unable to resolve type
+'string' (TypeError)
+	from /opt/rubies/ruby-1.9.1-p378/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/
+lib/ffi/variadic.rb:47:in `call'
+	from (eval):3:in `g_object_set'
+	from gtkbox.rb:66:in `show'
+	from gtkbox.rb:76:in `&lt;main&gt;'
+-------------------------------------------------------------
+
+What's the matter? As far as I know, :string as a regular type in
+FFI.
+
+Here's the (working) first attempt:
+-------------------------------------------------------------
+#!/usr/bin/env ruby
+#Encoding: UTF-8
+require "ffi"
+
+module GTK
+
+  extend FFI::Library
+
+  ffi_lib("gtk-x11-2.0.so")
+
+  attach_function(:gtk_init, [:pointer, :pointer], :void)
+  attach_function(:gtk_set_locale, [], :void)
+  attach_function(:gtk_message_dialog_new,
+[:pointer, :int, :int, :int, :string], :pointer)
+  attach_function(:g_object_set, [:pointer, :varargs], :void)
+  attach_function(:gtk_dialog_run, [:pointer], :int)
+  attach_function(:gtk_widget_destroy, [:pointer], :void)
+end
+
+GTK.gtk_init(nil, nil)
+GTK.gtk_set_locale()
+dialog = GTK.gtk_message_dialog_new(nil, 0, 0, 2, "title")
+GTK.g_object_set(dialog, :string, "secondary-text", :string,
+"text", :pointer, nil)
+GTK.gtk_dialog_run(dialog)
+GTK.gtk_widget_destroy(dialog)
+-------------------------------------------------------------
+
+And here's the (non-working) second:
+-------------------------------------------------------------
+#!/usr/bin/env ruby
+#Encoding: UTF-8
+require "ffi"
+module MessageBox
+
+  class GTKBox
+
+    module Functions
+      extend FFI::Library
+
+      @init = false
+
+      def self.init
+        return false if @init
+        begin
+          ffi_lib("gtk-x11-2.0.so")
+
+          enum :type, [ :gtk_message_info,
+                                :gtk_message_warning,
+                                :gtk_message_question,
+                                :gtk_message_error,
+                                :gtk_message_other
+                              ]
+
+          enum :buttons, [:gtk_buttons_none,
+                                    :gtk_button_ok,
+                                    :gtk_buttons_close,
+                                    :gtk_buttons_cancel,
+                                    :gtk_buttons_yes_no,
+                                    :gtk_buttons_ok_cancel
+                                    ]
+
+          attach_function(:gtk_init, [:pointer, :pointer], :void)
+          attach_function(:gtk_set_locale, [], :void)
+          attach_function(:gtk_message_dialog_new,
+[:pointer, :int, :type, :buttons, :string], :pointer)
+          attach_function(:g_object_set, [:pointer, :varargs], :void)
+          attach_function(:gtk_dialog_run, [:pointer], :int)
+          attach_function(:gtk_widget_destroy, [:pointer], :void)
+
+          #Initialize GTK and set it to the current locale.
+          gtk_init(nil, nil)
+          gtk_set_locale()
+
+          @init = true
+        rescue LoadError
+          raise(NotImplementedError, "GTK+ &gt;= 2.10 is not installed on
+your system.")
+        end #begin
+      end #init
+    end #Functions
+
+    attr_reader :title
+    attr_reader :text
+    attr_accessor :icon
+    attr_accessor :buttons
+
+    def initialize(title, text)
+      GTKBox::Functions.init
+      @title = title
+      @text = text
+      @icon = :gtk_message_info
+      @buttons = :gtk_button_ok
+    end
+
+    def show
+      dialog = Functions.gtk_message_dialog_new(nil, 0, @icon,
+@buttons, @title)
+      Functions.g_object_set(dialog, :string, "secondary-
+text", :string, @text, :pointer, nil)
+      Functions.gtk_dialog_run(dialog)
+      Functions.gtk_widget_destroy(dialog)
+    end
+
+  end
+
+end
+
+msgbox = MessageBox::GTKBox.new("title", "text")
+msgbox.show
+-------------------------------------------------------------
+
+In case if you wonder why I don't define the FFI methods in
+MessageBox::GTKBox::Functions directly, the answer is that I want to
+create a system-independant library of displaying message boxes. And
+if someone uses that library on Windows, FFI tries to load the GTK
+shared object file which results in a program crash since it isn't
+there. Now this is just the case if someone tries to display a GTK box
+on Windows (which would work if GTK is installed, I know, but that's
+for later).
+
+I also noticed that if I removed the call to the g_object_set()
+function, everything works fine, so I suppose there's something wrong
+when resolving :varargs.
+
+I'm using ruby 1.9.1p378 (2010-01-10 revision 26273) [x86_64-linux] on
+Ubuntu Karmic Koala. I think that code works for every Linux that has
+GTK+ installed, but if not, please correct me since I'm planning to
+make a Gem for those message dialog functions in GTK+, KDE, Windows...
+
+Any ideas?
+
+Marvin
+
+
+<div class="moz-txt-sig">-- 
+Subscription settings: <a class="moz-txt-link-freetext" href="http://groups.google.com/group/ruby-ffi/subscribe?hl=en">http://groups.google.com/group/ruby-ffi/subscribe?hl=en</a>
+</div></pre></div></body>
+</html>
+</table></div>

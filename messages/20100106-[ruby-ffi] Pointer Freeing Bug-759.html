@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Pointer Freeing Bug</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Pointer Freeing Bug</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>JEG2 <james@graysoftinc.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/6/10 11:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm working on a new FFI interface to Tokyo Cabinet and have run into
+a difficult to debug issue.  If I run individual files in my test
+suite, they pass just fine.  When I run them all together though, I
+have started seeing this issue:
+
+(in /Users/james/Documents/oklahoma_mixer)
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/local/bin/ruby -w -I"lib:test" "/usr/local/lib/ruby/gems/1.8/gems<span class="moz-txt-tag">/</span></i>
+rake-0.8.7/lib/rake/rake_test_loader.rb" "test/
+b_tree_binary_data_test.rb" "test/b_tree_tuning_test.rb" "test/
+binary_data_test.rb" "test/cursor_based_iteration_test.rb" "test/
+duplicate_storage_test.rb" "test/file_system_test.rb" "test/
+getting_and_setting_keys_test.rb" "test/iteration_test.rb" "test/
+key_range_test.rb" "test/order_test.rb" "test/
+top_level_interface_test.rb" "test/transactions_test.rb" "test/
+tuning_test.rb"
+Loaded suite <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/local/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake<span class="moz-txt-tag">/</span></i>
+rake_test_loader
+Started
+.......................................................................................................................................ruby
+(610) malloc: *** error for object 0x101c42060: pointer being freed
+was not allocated
+*** set a breakpoint in malloc_error_break to debug
+rake aborted!
+Command failed with status (): [/usr/local/bin/ruby -w -I"lib:test" "/
+usr/...]
+
+(See full trace by running task with --trace)
+
+I'm pretty sure I'm looking at a bug that's triggered during GC here.
+
+I thought the "ruby malloc" was a sign that Ruby is freeing up memory
+before it allocates more.
+
+Also, as I said, all of my tests work fine when run alone.  It's not
+until they are combined that the problem surfaces.  I assume it's the
+longer run triggering GC.
+
+Is this sounding right?
+
+I assume it almost has to be an FFI object being freed.  I mean, Ruby
+wouldn't try to free some memory allocated by Tokyo Cabinet, right?
+Are there FFI objects that try to free something as they are GCed?
+
+Any tips for the best way to isolate this issue are greatly
+appreciated.
+
+James Edward Gray II
+</pre></div></body>
+</html>
+</table></div>

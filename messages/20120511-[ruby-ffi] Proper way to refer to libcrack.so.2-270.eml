@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.227.9 with SMTP id rw9csp137208obc;
+        Thu, 10 May 2012 23:49:15 -0700 (PDT)
+Received: by 10.220.150.14 with SMTP id w14mr4404759vcv.59.1336718955138;
+        Thu, 10 May 2012 23:49:15 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNiN4_W9AhDq7LL9BBoEYiTj3Q@googlegroups.com>
+Received: from mail-vb0-f62.google.com (mail-vb0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id pi15si1935844vcb.75.2012.05.10.23.49.14
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 10 May 2012 23:49:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNiN4_W9AhDq7LL9BBoEYiTj3Q@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNiN4_W9AhDq7LL9BBoEYiTj3Q@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCNiN4_W9AhDq7LL9BBoEYiTj3Q@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vbbfs19 with SMTP id fs19sf5694151vbb.7
+        for <headius@headius.com>; Thu, 10 May 2012 23:49:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=uY4w5j5hAAJ+53U4/MsKpFV0zhnu0n6VbiOhIuVoVAs=;
+        b=uqBOyx0GF9AXKjY/hB2jG10s34fsbp0kmHa9LvXuvgW33w0tCnPqNTS/JOtTUIROv2
+         /+Qnbu2T6V8Os746CA38xijEcOe5g4ABR9iXEueSsSuWL1OBGtvvv9LlhvG48mTy03es
+         AyjQ1qhnMRq8cLaitnaO+lfrCw3PWJDT/MDqQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20120113;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type:x-gm-message-state;
+        bh=uY4w5j5hAAJ+53U4/MsKpFV0zhnu0n6VbiOhIuVoVAs=;
+        b=Up0p33LTHqG/MiUTApxegZrDkZGN7PuD3q/1HW//7DJ/u3xJx2ibn2VV3bcgLq6gXn
+         h0p0FqJpLn2AuJ1hODCrWgyhiKTnaECoFG+jbQ9xOnhHo1KCCO6KaWcfkrOs8dpO8x7z
+         XqpADB9lvKa2/m+Wcxp8JrBAPL2vve0uTB1C7bS4K7FgAZX4Oo7MRwm7JRsWsDWvgTho
+         0IheI4xeYI2cDRMMhhQsLwwG5XcKFxGvo1Azu93j+sk/ulyVhIuBFqzJDZrEHJR0fmIe
+         BR1+wQoL3xGTlvcKSLgLXjcd/6D4/kmKFsyXZywv/CqBWY3ltB9n9VssR3F71k62rj3A
+         SGLA==
+Received: by 10.50.173.70 with SMTP id bi6mr196826igc.6.1336718954750;
+        Thu, 10 May 2012 23:49:14 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.213.6 with SMTP id no6ls1060193igc.4.gmail; Thu, 10 May
+ 2012 23:49:14 -0700 (PDT)
+Received: by 10.50.40.230 with SMTP id a6mr1549610igl.2.1336718954351;
+        Thu, 10 May 2012 23:49:14 -0700 (PDT)
+Received: by 10.50.151.242 with SMTP id ut18msigb;
+        Thu, 10 May 2012 23:40:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.216.42 with SMTP id on10mr701834pbc.3.1336718458864; Thu,
+ 10 May 2012 23:40:58 -0700 (PDT)
+Received: by nl1g2000pbc.googlegroups.com with HTTP; Thu, 10 May 2012 23:40:58
+ -0700 (PDT)
+Date: Thu, 10 May 2012 23:40:58 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0)
+ Gecko/20100101 Firefox/12.0,gzip(gfe)
+Message-ID: <dc398b1e-c330-47ae-b824-6451109b6031@nl1g2000pbc.googlegroups.com>
+Subject: [ruby-ffi] Proper way to refer to libcrack.so.2
+From: broberts <broberts@mobileiron.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: broberts@mobileiron.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of broberts@mobileiron.com designates internal as permitted sender)
+ smtp.mail=broberts@mobileiron.com; dkim=pass header.i=@mobileiron.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Gm-Message-State: ALoCoQm3zjRnc/2NPoMzTUczNmY8jIHdCYcb2XSyUEA4817VXTpREnxzY7vaB1JIH4yZnLABzZBa
+
+On CentOS cracklib is deploy as libcrack.so.2 which is a symlink to
+libcrack.so.2.8.1. There is no libcrack.so. Referring to this library
+using:
+
+ffi_lib 'crack'
+
+fails with a file not found error. Referring to the library using:
+
+ffi_lib 'crack.so.2'
+
+succeeds. I assume that this is the expected behavior but I wanted to
+make sure before I get too far down the road.
+
+Thanks for any help.
+
+Baron

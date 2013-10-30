@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs19937fam;
+        Sat, 18 Dec 2010 22:03:28 -0800 (PST)
+Received: by 10.150.97.16 with SMTP id u16mr4885151ybb.185.1292738607353;
+        Sat, 18 Dec 2010 22:03:27 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCtwLboBBoEDBGG5w@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id w6si13215593ybe.60.2010.12.18.22.03.25;
+        Sat, 18 Dec 2010 22:03:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCtwLboBBoEDBGG5w@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCtwLboBBoEDBGG5w@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCtwLboBBoEDBGG5w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk1 with SMTP id 1sf1781683gxk.7
+        for <headius@headius.com>; Sat, 18 Dec 2010 22:03:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:date
+         :from:reply-to:to:message-id:in-reply-to:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=PnAn/azZnCc94Ya5q9FzjtyHDYEKpIl3LRbmtgRmOUY=;
+        b=JVt7NOogIAtSPBGzi4V4U+5xHnI+xGFHZZo28MzFlfkBkZzOtrBDdcRZfKVpqurvr+
+         MbvleLin8unpOz3KE+eQaXF9C6FpGD72eRkIuFHCbTCVPARCNgkTcPLGZZBqy/QTz+VE
+         m7xKRUR0x0h1PpkK43eu8L1a+3G6NQ7DUhgP0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=Yr8p5stN53og+tos72KblPqiOZny7c97Qxb1FSg+5qS+E3kI7siKFu6yZBkLZziIoP
+         UyKYPTi6vi5ZUX2fRriX92IfgRmYRikbls2hu9RNZcf23aWCQzg9+Y5ndWkoIlLktUQu
+         jYZgHLBRgcVQ0XhsPe+jFk8kQ1Wxv1Ss5jMb8=
+Received: by 10.90.78.4 with SMTP id a4mr132734agb.26.1292738605595;
+        Sat, 18 Dec 2010 22:03:25 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.138.2 with SMTP id l2ls837047agd.4.p; Sat, 18 Dec 2010
+ 22:03:25 -0800 (PST)
+Received: by 10.91.55.1 with SMTP id h1mr177413agk.44.1292738605195;
+        Sat, 18 Dec 2010 22:03:25 -0800 (PST)
+Date: Sat, 18 Dec 2010 22:03:24 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <1835890.83.1292738604470.JavaMail.geo-discussion-forums@prie35>
+In-Reply-To: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Re: Having trouble with a struct
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_82_8069783.1292738604468"
+
+------=_Part_82_8069783.1292738604468
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I finally had time to look at this again, and FFI is in fact packing 
+everything correctly.
+
+Just the IPv4 header alone packs correctly, but when you prepend the 
+ethernet header to it, it causes FFI to place 2 bytes of padding after the 
+checksum field, to align the src_addr field on a 4 byte boundary. 
+ Run https://gist.github.com/8171ff430dd66f3812da and you'll see what I 
+mean.
+
+There are 2 ways to work around it:
+1) Use struct packing
+2) Use separate ethernet and ipv4 headers structs, and access the ipv4 
+header something like:
+  
+  eth = ... # get pointer to ethernet packet and wrap in an ethernet struct
+  ipv4 = IPv4_header.new(eth.pointer + 14)
+
+
+
+------=_Part_82_8069783.1292738604468
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I finally had time to look at this again, and FFI is in fact packing everything correctly.<div><br></div><div>Just the IPv4 header alone packs correctly, but when you prepend the ethernet header to it, it causes FFI to place 2 bytes of padding after the checksum field, to align the src_addr field on a 4 byte boundary. &nbsp;Run&nbsp;https://gist.github.com/8171ff430dd66f3812da and you'll see what I mean.</div><div><br></div><div>There are 2 ways to work around it:</div><div>1) Use struct packing</div><div>2) Use separate ethernet and ipv4 headers structs, and access the ipv4 header something like:</div><div>&nbsp;&nbsp;</div><div>&nbsp;&nbsp;eth = ... # get pointer to ethernet packet and wrap in an ethernet struct</div><div>&nbsp;&nbsp;ipv4 = IPv4_header.new(eth.pointer + 14)</div><div><br></div><div><br></div>
+------=_Part_82_8069783.1292738604468--

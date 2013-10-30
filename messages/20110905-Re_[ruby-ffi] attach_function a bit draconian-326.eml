@@ -1,0 +1,95 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs45437lae;
+        Mon, 5 Sep 2011 00:10:14 -0700 (PDT)
+Received: by 10.216.229.88 with SMTP id g66mr431147weq.9.1315206614061;
+        Mon, 05 Sep 2011 00:10:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCP397LbnChDP65HzBBoElnXFag@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTPS id h8si4478469wee.3.2011.09.05.00.10.12
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 00:10:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCP397LbnChDP65HzBBoElnXFag@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCP397LbnChDP65HzBBoElnXFag@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCP397LbnChDP65HzBBoElnXFag@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyi11 with SMTP id 11sf7784201wyi.7
+        for <headius@headius.com>; Mon, 05 Sep 2011 00:10:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=xRzZqFDi6hTGseUGjpgNyEWz2U6vn/HAupjLGFcSjSE=;
+        b=zLvSi/hv2/1Hwb+2pexfWL9swTb16FoQQ8YwoXB2e4EH7e6TBVURDjBNlB1VI1gXbl
+         Dsz4RQpXH/NstKjoIUEpHACzjdiwUSTY9PyJvfQSQtQDL9UvGSTtnnebH1NvEJynpykZ
+         Rdvj68YbKiG9XxO2A03uUM5TgKRvqgfa+wpUI=
+Received: by 10.216.173.78 with SMTP id u56mr324608wel.15.1315206607937;
+        Mon, 05 Sep 2011 00:10:07 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.46.158 with SMTP id r30ls643989eeb.5.gmail; Mon, 05 Sep
+ 2011 00:10:07 -0700 (PDT)
+Received: by 10.14.11.135 with SMTP id 7mr670255eex.9.1315206607206;
+        Mon, 05 Sep 2011 00:10:07 -0700 (PDT)
+Received: by 10.14.11.135 with SMTP id 7mr670254eex.9.1315206607190;
+        Mon, 05 Sep 2011 00:10:07 -0700 (PDT)
+Received: from smtp-vbr4.xs4all.nl (smtp-vbr4.xs4all.nl [194.109.24.24])
+        by gmr-mx.google.com with ESMTP id x14si5954944eef.2.2011.09.05.00.10.05;
+        Mon, 05 Sep 2011 00:10:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 194.109.24.24 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.24;
+Received: from [10.0.0.22] (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr4.xs4all.nl (8.13.8/8.13.8) with ESMTP id p857A4Tf088993
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Mon, 5 Sep 2011 09:10:06 +0200 (CEST)
+	(envelope-from matijs@matijs.net)
+Message-ID: <4E6475CC.4040304@matijs.net>
+Date: Mon, 05 Sep 2011 09:10:04 +0200
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20110812 Thunderbird/6.0
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] attach_function a bit draconian
+References: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+In-Reply-To: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 194.109.24.24 is neither permitted nor denied by best guess record for domain
+ of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi Charlie,
+
+On 04/09/2011 23:19, cfis wrote:
+> I've written a ffi wrapper for the free image library, which is here:
+>
+> http://cfis.github.com/free-image-ruby/
+>
+> The problem is that I've coded against the latest version of
+> FreeImage, and most linux distributions have older versions
+> installed.  Thus when I try to load the gem it fails since
+> attach_function throws an error because the older versions don't have
+> all the functions.
+
+You can just wrap the call to attach_function in a begin-rescue-end 
+construct. Then in the rescue block, you can do whatever you want. In 
+your case, this would probably mean issuing a warning and then defining 
+a stub function. You can even wrap that in a method, say, 
+attach_function_safely.
+
+Regards,
+Matijs

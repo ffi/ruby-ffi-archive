@@ -1,0 +1,110 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.228.137 with SMTP id je9cs20829qcb;
+        Sat, 12 Jun 2010 14:07:06 -0700 (PDT)
+Received: by 10.227.145.144 with SMTP id d16mr3684418wbv.64.1276376825330;
+        Sat, 12 Jun 2010 14:07:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOjVsoe0GRD37c_gBBoEgUaqiw@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id 20si7675152wbk.100.2010.06.12.14.07.03;
+        Sat, 12 Jun 2010 14:07:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOjVsoe0GRD37c_gBBoEgUaqiw@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOjVsoe0GRD37c_gBBoEgUaqiw@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCOjVsoe0GRD37c_gBBoEgUaqiw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwd20 with SMTP id 20sf705424wwd.7
+        for <headius@headius.com>; Sat, 12 Jun 2010 14:07:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:x-authenticated
+         :x-provags-id:message-id:date:from:user-agent:mime-version:to:cc
+         :subject:references:in-reply-to:x-y-gmx-trusted
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=3h32J14FNkCnuEg+wvV8/U4d0MMPudK/wIUqkzDdnJE=;
+        b=fPYykqUArdhyluZ4RxAbKY+NTQaLziu0ZwMbZDWgVYZBEaV+fq4rV/0su/hT7eHspJ
+         XSuiaGEo3Ovv//cEVxvwITkS38Hf4eUHm0yKlvQiG6I5NgwN7BmYMwgWIq72ioI7Oj9h
+         pvw3V02mZwNZtb9y3PTU5ng35NUCjScLPHnh8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:x-authenticated:x-provags-id:message-id
+         :date:from:user-agent:mime-version:to:cc:subject:references
+         :in-reply-to:x-y-gmx-trusted:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=vC+GPAnq/UQFbZAN/70Gdxsk6wmziTH/ZKKnzdTGN1QkMVwG5HVGcOJiOz5hp/dnKl
+         mUV7xV3XgwoKWB76KhEpzliZvHFPMYS/+wbylfWV7pMLGGJXWluhCc4FduJ6xbmo5nvJ
+         D1N0EE5ktlSRHho40jxJgMgt5z+hY+yGU0ES0=
+Received: by 10.216.231.144 with SMTP id l16mr277350weq.7.1276376823640;
+        Sat, 12 Jun 2010 14:07:03 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.227.109.160 with SMTP id j32ls10712020wbp.0.p; Sat, 12 Jun 
+	2010 14:07:02 -0700 (PDT)
+Received: by 10.227.143.194 with SMTP id w2mr229158wbu.18.1276376822704;
+        Sat, 12 Jun 2010 14:07:02 -0700 (PDT)
+Received: by 10.227.143.194 with SMTP id w2mr229157wbu.18.1276376822663;
+        Sat, 12 Jun 2010 14:07:02 -0700 (PDT)
+Received: from mail.gmx.net (mail.gmx.net [213.165.64.20])
+        by gmr-mx.google.com with SMTP id h17si3199439wbh.1.2010.06.12.14.07.02;
+        Sat, 12 Jun 2010 14:07:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of stefan.schmidt@gmx.net designates 213.165.64.20 as permitted sender) client-ip=213.165.64.20;
+Received: (qmail invoked by alias); 12 Jun 2010 21:07:02 -0000
+Received: from e178015053.adsl.alicedsl.de (EHLO stefanmbp15.fritz.box) [85.178.15.53]
+  by mail.gmx.net (mp002) with SMTP; 12 Jun 2010 23:07:02 +0200
+X-Authenticated: #504945
+X-Provags-ID: V01U2FsdGVkX1+cIDkgzWucsMaCNK+5zyXDnfR/JsJ2Yo/69V2fd+
+	BJhhImWl2AEFLc
+Message-ID: <4C13F6F4.9040105@gmx.net>
+Date: Sat, 12 Jun 2010 23:07:00 +0200
+From: Stefan Schmidt <stefan.schmidt@gmx.net>
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; de; rv:1.9.1.9) Gecko/20100317 Thunderbird/3.0.4
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+CC: blaxter@gmail.com
+Subject: Re: [ruby-ffi] `ffi_libraries': no library specified (LoadError)
+References: <83894c84-c755-4770-8752-e9ffc73bbe14@y17g2000yqd.googlegroups.com> 	<1a2dd4711002181136i3705c00m6e6885efaf52acae@mail.gmail.com> 	<4ccee321002181145s59b66c34h8325b75bd10f5e8@mail.gmail.com> <1a2dd4711002190111u2b144de4ndaba8c40a4dfe8d8@mail.gmail.com>
+In-Reply-To: <1a2dd4711002190111u2b144de4ndaba8c40a4dfe8d8@mail.gmail.com>
+X-Y-GMX-Trusted: 0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of stefan.schmidt@gmx.net designates 213.165.64.20 as permitted 
+	sender) smtp.mail=stefan.schmidt@gmx.net
+X-Original-Sender: stefan.schmidt@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 8bit
+
+Got distracted by something else for a while. Just wanted to let you 
+know that your suggestion worked out. Thank you!
+
+Am 19.02.10 10:11, schrieb Jesús García Sáez:
+> On Thu, Feb 18, 2010 at 20:45, Wayne Meissner<wmeissner@gmail.com>  wrote:
+>    
+>> 2010/2/19 Jesús García Sáez<blaxter@gmail.com>:
+>>
+>>      
+>>> Obviously it fails telling you there is no lib specified, the hello
+>>> world I see in github is this [0], where did you get that example?
+>>>        
+>> Its probably in an example on the wiki somewhere.  Anyone who feels
+>> like jumping in and fixing up the examples to specify a lib, feel
+>> free.
+>>
+>>      
+> You were right, I fixed it.
+>
+> Stefan, just put "ffi_lib LIBC" (or FFI::Platform::LIBC in jruby,
+> 'cause jruby's ffi is a bit outdated) and there you go.
+>    

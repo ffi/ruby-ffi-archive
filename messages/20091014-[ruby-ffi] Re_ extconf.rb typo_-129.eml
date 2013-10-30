@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs316839qaj;
+        Wed, 14 Oct 2009 07:56:17 -0700 (PDT)
+Received: by 10.114.163.31 with SMTP id l31mr312795wae.67.1255532175968;
+        Wed, 14 Oct 2009 07:56:15 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-px0-f150.google.com (mail-px0-f150.google.com [209.85.216.150])
+        by mx.google.com with ESMTP id 36si4238051pxi.57.2009.10.14.07.56.14;
+        Wed, 14 Oct 2009 07:56:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.150 as permitted sender) client-ip=209.85.216.150;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.150 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi14 with SMTP id 14so274888pxi.3
+        for <headius@headius.com>; Wed, 14 Oct 2009 07:56:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=EOQNM0ja22HynPKMhbvhojPT7QhMBakKmiN0Ztbak1s=;
+        b=PtdBMcBiYOuAKNvvYWT/hUsu3Ygd1Idz0s2bWFk5w59MWuSFXCmJ8O+4Nw/WA0Gtbu
+         Q9nK3pjeHANDy9eieME9MaNeizcHENUTBYtl8zl+T3nCJqvF2HHu5SShyO/xOQxq55Xn
+         moSfSoIwP9JaBWCfWU51WEsfWbQkEFIiMxDq4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=j0mfbRFJ230tDuccsclYQfAzQcQKHsNAyfbMJqSAE+hSSkJe1aXdlarWabilXcgJ1e
+         btDtaBaocf1XBYzXonhRZLA8+rZBq5Huf20nIMim4Jhajvj0d/pSBd4JnWJv22+MlQM6
+         OnLUQu2ppzGyeigr4T7rW0vxDHa7gbJh40rWA=
+Received: by 10.142.2.25 with SMTP id 25mr171325wfb.4.1255532173180;
+        Wed, 14 Oct 2009 07:56:13 -0700 (PDT)
+Received: by 10.106.219.1 with SMTP id r1gr52prg.0;
+	Wed, 14 Oct 2009 07:56:13 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.141.19.10 with SMTP id w10mr1444674rvi.18.1255532172305; Wed, 14 Oct 2009 07:56:12 -0700 (PDT)
+Received: by 10.141.19.10 with SMTP id w10mr1444673rvi.18.1255532172286; Wed, 14 Oct 2009 07:56:12 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f178.google.com (mail-pz0-f178.google.com [209.85.222.178]) by gmr-mx.google.com with ESMTP id 4si1324308pxi.2.2009.10.14.07.56.11; Wed, 14 Oct 2009 07:56:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.178 as permitted sender) client-ip=209.85.222.178;
+Received: by pzk8 with SMTP id 8so3030289pzk.8 for <ruby-ffi@googlegroups.com>; Wed, 14 Oct 2009 07:56:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=2a7C+CCijwvPtsnF3tTjIVzcOgeMbY1MfiAMKw9fT9U=; b=ssIM4Y3a2Go6vltrJFixKgjBKBlEvCkgM7F2wz5yb/jptephLUtNnP2b6mlQR3eJ8c Gm8NagyIBcmfQrPa/O1mO+eW/8NMHKGcwJlNPR9m91HZvFHlxwezpmuyiuMuVdGmYBpT 4wRp9k7XABikzaUwO7qdAegzBrB7ZgbZvzPCQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=V5+r1xHgzBjtJk22E6HRoFsxx68YrVRr6G5TeSi6QchVbcAG7zkZJlwdPgb2q95O2k QPwyUzGWTbR3oMaSJZWC6gYbAgpIdtwyortSc1nNsfnBmzNB7MOJDYXTstDrfmUk3Tok wWQP3eBP4XpmCwQT8AkNNWq6Jh4MD/LnIC36Y=
+MIME-Version: 1.0
+Received: by 10.141.18.9 with SMTP id v9mr979055rvi.89.1255532171207; Wed, 14  Oct 2009 07:56:11 -0700 (PDT)
+In-Reply-To: <71166b3b0910140654tced78eciaa2755236ffe1006@mail.gmail.com>
+References: <20091014091420.5892955c.jon.forums@gmail.com> <71166b3b0910140654tced78eciaa2755236ffe1006@mail.gmail.com>
+Date: Thu, 15 Oct 2009 00:56:11 +1000
+Message-ID: <4ccee320910140756u5a30322h7047951c5d5338b8@mail.gmail.com>
+Subject: [ruby-ffi] Re: extconf.rb typo?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Yep, should be changed, although in that specific case, it doesn't
+matter, since we no longer use that part of libffi; ruby-ffi
+implements its own closure allocator.
+
+Speaking of win64, the libffi version in ruby-ffi has been updated to
+3.0.9rc1, which theoretically includes win64 support, so it would be
+interesting to see if that works with mingw64.  There are probably a
+few win32-isms in the windows support in ruby-ffi that need to be
+cleaned up.
+
+2009/10/14 Luis Lavena <luislavena@gmail.com>:
+>
+> On Wed, Oct 14, 2009 at 10:14 AM, Jon <jon.forums@gmail.com> wrote:
+>>
+>> Should line 21 in ext/ffi_c/extconf.rb
+>>
+>> mf.puts "FFI_MMAP_EXEC=3D-DFFI_MMAP_EXEC_WRIT=3D#{Config::CONFIG['host_o=
+s'] =3D~ /(win32|mingw)/ ? 0 : 1}"
+>>
+>> use /mswin|mingw/ instead of /(win32|mingw)/
+>>
+>
+> That is correct, the issue become a problem when Ruby is x86_64 (x64-mswi=
+n64_80)
+>
+> The proper evaluation should be mswin or mingw, since mingw can be 64
+> bits too (working on that).
+>
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry
+>

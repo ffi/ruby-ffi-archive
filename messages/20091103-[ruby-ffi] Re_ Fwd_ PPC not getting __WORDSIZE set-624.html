@@ -1,0 +1,47 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/3/09 8:58 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>On 11/02/2009 08:03 PM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>That does look a bit suspicious.
+<br>
+<br>Given you're packaging for fedora, and fedora has a recent version of
+<br>libffi installed (or can be added as a dependency), you could try
+<br>creating a patch using changeset
+<br>8cbc3f54a875a61e1fb67ac88a25b71940a3ed91
+<br>
+<br>That allows ruby-ffi to build against the system libffi.&nbsp; Technically
+<br>it always allowed this, but ruby-ffi was a bit overly picky about what
+<br>it wanted from libffi.
+<br>
+<br>You may find you don't even need that patch.&nbsp; Just having the proper
+<br>libffi-dev packages installed/as dependencies might allow extconf.rb
+<br>to pick it up.
+<br>
+<br>You might also need 1d50e0647ac55e15222f9a6a9d163d7a68022186 to
+<br>properly detect&amp;&nbsp; pass powerpc64 into libtest/GNUmakefile, so it
+<br>builds for the correct arch.
+<br>
+<br></blockquote>I&nbsp; have applied both, and I have gotten past the earlier issue (Thank 
+you!). I am now seeing different errors on ppc and ppc64. On the ppc 
+build [1] I build and get a couple of unit test failures.. On the ppc64 
+build [2] I see a wierd error about wrong number of arguments.
+<br>
+<br>I apologize, I am not strong in C and did not see anything obvious jump 
+out at me on these.
+<br>
+<br>-- bk
+<br>
+<br>
+<br>[1] PPC Build Log: 
+<a class="moz-txt-link-freetext" href="http://koji.fedoraproject.org/koji/getfile?taskID=1785189&amp;name=build.log">http://koji.fedoraproject.org/koji/getfile?taskID=1785189&amp;name=build.log</a>
+<br>[2] PPC64 Build Log: 
+<a class="moz-txt-link-freetext" href="http://koji.fedoraproject.org/koji/getfile?taskID=1785192&amp;name=build.log">http://koji.fedoraproject.org/koji/getfile?taskID=1785192&amp;name=build.log</a>
+<br></div></body>
+</html>
+</table></div>

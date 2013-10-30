@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Is there any way we can use string type as return  parameter?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Is there any way we can use string type as return  parameter?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/29/10 11:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 30 March 2010 05:20, Evan Phoenix <a class="moz-txt-link-rfc2396E" href="mailto:evan@fallingsnow.net">&lt;evan@fallingsnow.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Does ruby-ffi not support the :strptr type? It's in the original FFI spec.
+</pre></blockquote><pre wrap>
+
+No.  The most likely reason it was not included was because (at the
+time) there was no code using it and no tests.
+
+Its not hard to add - but any code using it will be incompatible with
+jruby 1.5 and below, so people are going to have to declare the return
+type as :pointer and extract the string anyway to be backwards
+compatible.
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

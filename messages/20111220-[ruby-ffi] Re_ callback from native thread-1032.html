@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: callback from native thread</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: callback from native thread</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/20/11 7:01 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Whilst that would work fine in JRuby, non-ruby callbacks in CRuby are best described as "delicate" (ie. they work, but avoid that scenario if you can).<div><br></div><div>You can also mark a ruby method as 'blocking' (tag it with @blocking = true before the attach_function call), so you could call libevent from ruby without blocking the interpreter, but once again, on CRuby, (mainly 1.8.x), it is not recommended.</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

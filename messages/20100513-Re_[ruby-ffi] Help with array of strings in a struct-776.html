@@ -1,0 +1,82 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Help with array of strings in a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Help with array of strings in a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/13/10 10:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On May 13, 2010, at 8:14 AM, Drew wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello, I'm trying to create an FFI wrapper for an Adobe Framemaker
+<span class="moz-txt-citetags">&gt; </span>automation library.  Here's the sample code in C that I'm trying to re-
+<span class="moz-txt-citetags">&gt; </span>create in Ruby:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>	IntT j = 0;
+<span class="moz-txt-citetags">&gt; </span>	UIntT i;
+<span class="moz-txt-citetags">&gt; </span>	F_IntsT attributes;
+<span class="moz-txt-citetags">&gt; </span>	F_StringsT strings;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>	/* Get name of each FontFamily and display it based on whether it is
+<span class="moz-txt-citetags">&gt; </span>visible
+<span class="moz-txt-citetags">&gt; </span>	 * in PGF Designer. */
+<span class="moz-txt-citetags">&gt; </span>	strings = F_ApiGetStrings(0, FV_SessionId, FP_FontFamilyNames);
+<span class="moz-txt-citetags">&gt; </span>	attributes = F_ApiGetInts(0, FV_SessionId, FP_FontFamilyAttributes);
+<span class="moz-txt-citetags">&gt; </span>	for(i=0; i&lt;attributes.len; i++){
+<span class="moz-txt-citetags">&gt; </span>		j = attributes.val[i];
+<span class="moz-txt-citetags">&gt; </span>		if(j &amp; FV_FAMILY_VISIBLE)
+<span class="moz-txt-citetags">&gt; </span>		F_Printf(NULL,"Family %s\n", strings.val[i]);
+<span class="moz-txt-citetags">&gt; </span>	}
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>F_StringsT looks like this:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>typedef struct {
+<span class="moz-txt-citetags">&gt; </span>	UIntT len;
+<span class="moz-txt-citetags">&gt; </span>	StringT *val;
+<span class="moz-txt-citetags">&gt; </span>} F_StringsT;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>StringT is defined as unsigned char *, so I think I'm trying to read
+<span class="moz-txt-citetags">&gt; </span>an array of pointers to strings, or unsigned char **.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Right now I'm just trying to get the strings in Ruby:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span># in my FFI module FM:
+<span class="moz-txt-citetags">&gt; </span>class FStringsT &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout :len, :int,
+<span class="moz-txt-citetags">&gt; </span>     :val, :pointer
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>attach_function :FApiGetStrings,[:int,:int,:int], FStringsT.by_value
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span># in my script:
+<span class="moz-txt-citetags">&gt; </span>strings = FM.FApiGetStrings(0, FM.FVSessionId, FM.FPFontFamilyNames)
+<span class="moz-txt-citetags">&gt; </span>attributes = FM.FApiGetInts(0, FM.FVSessionId,
+<span class="moz-txt-citetags">&gt; </span>FM.FPFontFamilyAttributes)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>puts strings[:len], attributes[:len] # =&gt; 337
+<span class="moz-txt-citetags">&gt; </span>strptr = strings[:val].read_pointer()
+<span class="moz-txt-citetags">&gt; </span>if !( strptr.null? )
+<span class="moz-txt-citetags">&gt; </span> puts strptr # =&gt;  #&lt;FFI::Pointer:0x3bd0e04&gt;
+<span class="moz-txt-citetags">&gt; </span> sa = strptr.get_array_of_string(0,strings[:len]).compact # =&gt; causes
+<span class="moz-txt-citetags">&gt; </span>seg fault
+<span class="moz-txt-citetags">&gt; </span> puts sa
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+Wow, lots of information here.
+
+Let's try to break it down a bit.
+
+Let's eliminate the #compact call. Without it, can you successfully read and access those members?
+
+Do you know that the read to strings[:len], attributes[:len] should output 337? Is that right or a guess?
+
+You have a lot going on here. Please simplify it or the diagnosis may be wrong.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

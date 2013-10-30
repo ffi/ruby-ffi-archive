@@ -1,0 +1,130 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs225077ane;
+        Fri, 8 Jan 2010 17:51:23 -0800 (PST)
+Received: by 10.150.56.29 with SMTP id e29mr2997713yba.268.1263001883432;
+        Fri, 08 Jan 2010 17:51:23 -0800 (PST)
+Return-Path: <3GeFHSw0JCI06y8vr1Bv4tzv9x3rz2.t538BsF-wwzx55x2vx85B69.t53@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 38si49000986yxe.55.2010.01.08.17.51.22;
+        Fri, 08 Jan 2010 17:51:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3GeFHSw0JCI06y8vr1Bv4tzv9x3rz2.t538BsF-wwzx55x2vx85B69.t53@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3GeFHSw0JCI06y8vr1Bv4tzv9x3rz2.t538BsF-wwzx55x2vx85B69.t53@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3GeFHSw0JCI06y8vr1Bv4tzv9x3rz2.t538BsF-wwzx55x2vx85B69.t53@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf3360999gxk.7
+        for <headius@headius.com>; Fri, 08 Jan 2010 17:51:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        bh=jqM/COwb6SVGi5pWIHvvs2Ary79QcokpwVbOt/SP9NE=;
+        b=ud47nfomtnHIqe8GGJ0p0rbZF6hDy9iETmsol+E+Lg/RVenXGZmaYfl56K99dE6lls
+         NKbGg69+iEQ0jkJRCpBy0fd4CfuCRuxkjOh1QW9SVhh6p5QoluY1lPj271DD5uUUGaU3
+         vGmDBCUOp5dn7kjyFk5s8VWblANSOqp5kBRzU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=fDrlY5CZJ4B3Cm5ZrCbkH90kYM+69vG9ghaTkaIl/C+hZD5nxj8M95Smdok7r2SlGS
+         xOwgo1FpxsiZgkUCohbiS+OsqD7r+FmgyutlhPMsQBhKVET35UxPfXAztE3DntQCxLLU
+         atTjOElxKtjRnDmUA2W5MX+tzJ2egV5WteBBk=
+Received: by 10.101.179.34 with SMTP id g34mr121130anp.52.1263001881383;
+        Fri, 08 Jan 2010 17:51:21 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.187.17 with SMTP id o17ls972185agp.2.p; Fri, 08 Jan 2010 
+	17:51:20 -0800 (PST)
+Received: by 10.90.9.33 with SMTP id 33mr30446130agi.14.1263001880417;
+        Fri, 08 Jan 2010 17:51:20 -0800 (PST)
+Received: by 10.90.9.33 with SMTP id 33mr30446128agi.14.1263001880384;
+        Fri, 08 Jan 2010 17:51:20 -0800 (PST)
+Return-Path: <phreakuencies@gmail.com>
+Received: from mail-yw0-f141.google.com (mail-yw0-f141.google.com [209.85.211.141])
+        by gmr-mx.google.com with ESMTP id 11si4303999gxk.9.2010.01.08.17.51.20;
+        Fri, 08 Jan 2010 17:51:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of phreakuencies@gmail.com designates 209.85.211.141 as permitted sender) client-ip=209.85.211.141;
+Received: by mail-yw0-f141.google.com with SMTP id 5so52015169ywh.12
+        for <ruby-ffi@googlegroups.com>; Fri, 08 Jan 2010 17:51:20 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.248.13 with SMTP id v13mr2180872ybh.50.1263001880349; Fri, 
+	08 Jan 2010 17:51:20 -0800 (PST)
+Date: Fri, 8 Jan 2010 17:51:20 -0800 (PST)
+In-Reply-To: <4ccee321001071710k5f9efdb4h252b3f4ba1c7b85@mail.gmail.com>
+X-IP: 200.55.100.92
+References: <d9233847-c12b-4a66-9a0a-bfb9a1f8598c@j19g2000yqk.googlegroups.com> 
+	<dc78b9ff-8312-4696-b58b-0edf3e6fce91@c3g2000yqd.googlegroups.com> 
+	<4ccee321001071710k5f9efdb4h252b3f4ba1c7b85@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/532.8 
+	(KHTML, like Gecko) Chrome/4.0.288.0 Safari/532.8,gzip(gfe),gzip(gfe)
+Message-ID: <ee3cb08f-b0da-40a3-90d9-07f72321f909@j24g2000yqa.googlegroups.com>
+Subject: [ruby-ffi] Re: Crazy thought (wrapping rb_thread_blocking_region)
+From: v01d <phreakuencies@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of phreakuencies@gmail.com designates 209.85.211.141 as permitted 
+	sender) smtp.mail=phreakuencies@gmail.com
+X-Original-Sender: phreakuencies@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/26440665daf6b519
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/a4e40ae192134122
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Well I think leaf cases are the usual thing when using FFI, unless
+you're wrapping some Ruby-aware code which re-enters the interpreter.
+I'd vote for an "attach_blocking_function" or something like that.
+
+On 7 ene, 22:10, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Support for this is technically there, however it is not expressable
+> using attach_function.
+>
+> e.g.
+>
+> lib =3D DynamicLibrary.open("libc.so", DynamicLibrary.RTLD_LAZY|
+> DynamicLibrary.RTLD_GLOBAL)
+> addr =3D lib.find_function("sleep")
+>
+> # :blocking =3D> true tells FFI the function will block, so it releases t=
+he GIL
+> fn =3D Function.new(:int, [ :int ], addr, { :blocking =3D> true })
+> module Sleep
+> =A0 fn.attach(self, "libc_sleep")
+> end
+>
+> Or something like that. =A0There is a spec that tests the functionality,
+> which you might want to look at in case I got something wrong above.
+>
+> I'm not sure I want to make this easier. =A0On CRuby, it is really easy
+> to do nasty things if you're not careful with this, e.g. if a blocking
+> function calls a ruby callback, very bad things will happen. =A0So you
+> really only want to use it for leaf functions.
+>
+> The real solution of course, is to upgrade to JRuby - it handles all
+> this blocking stuff automagically.
+>
+> 2010/1/8 rogerdpack <rogerpack2...@gmail.com>:>> several of these calls i=
+n parallel native threads) and I just found
+> >> out about Ruby's "rb_thread_blocking_region" C call.
+>
+> > It might be nice if FFI would optionally wrap its calls in an
+> > rb_thread_blocking_region (just on 1.9, I guess).
+> > -r

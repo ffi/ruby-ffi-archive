@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Multiple libraries included via dlopen()?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Multiple libraries included via dlopen()?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/16/10 9:46 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 17 December 2010 11:46, mjmac <a class="moz-txt-link-rfc2396E" href="mailto:mjmac42@gmail.com">&lt;mjmac42@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>By default, FFI loads libraries as :lazy, :local so symbols are not
+<span class="moz-txt-citetags">&gt;&gt; </span>exported into the global namespace.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Sweet!  I hackported this from master to 0.6.3 and it works
+<span class="moz-txt-citetags">&gt; </span>perfectly.  I'm still prototyping so this is a workable solution for
+<span class="moz-txt-citetags">&gt; </span>now.
+</pre></blockquote><pre wrap>
+
+You probably don't need to backport all the machinery in ffi_lib_flags
+and ffi_lib, you can might get away with using something like:
+
+GlobalSlurm = DynamicLibrary.open(FFI.map_library_name('slurm'),
+FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_GLOBAL)
+
+That should re-open the library as global.  (storing it in a constant
+just keeps the library handle alive, and hence from being closed when
+GC is performed).
+</pre></div></body>
+</html>
+</table></div>

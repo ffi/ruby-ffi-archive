@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs28127faj;
+        Fri, 18 Mar 2011 13:59:13 -0700 (PDT)
+Received: by 10.150.72.41 with SMTP id u41mr1729011yba.23.1300481951974;
+        Fri, 18 Mar 2011 13:59:11 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPD9hLXZDBCaj4_sBBoERcTA8Q@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id k3si3766319ybe.3.2011.03.18.13.59.11
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 18 Mar 2011 13:59:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPD9hLXZDBCaj4_sBBoERcTA8Q@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPD9hLXZDBCaj4_sBBoERcTA8Q@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCPD9hLXZDBCaj4_sBBoERcTA8Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxi11 with SMTP id 11sf6579176yxi.7
+        for <headius@headius.com>; Fri, 18 Mar 2011 13:59:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-via:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=JxEQTWNnW8uijH2hDMuvht+mIh3lm1lCWkzLJBz3OHM=;
+        b=oJmsF2Y/S3RA4xeVrttmwchk1UxOsoetEfhUH0lUPcHez1FtAgJpNb20WCWLoZ94zY
+         yghlCA3dj/hrlgz3JSNcurf3X8/9u841/egEKvTGpFhE6llW8N0cD5sMy8Q3KcVCyWSs
+         9nunzyXhi8iWulrSeuQCx5rLb/dlT46wQcI/g=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-via
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=Juy619hMsZ3uR5FcYuBarvNUoCczzD4VCJHUKRxcm/XB2ULtHMwKapWgAgfhpYo4df
+         21/iJ0Q6+2htZjo3C0ZomxmTgHJpcnncUdg3DY/TilEF0bMi5K2rsPgttvvEENwJODKI
+         pgwkPg0XqrN4cXg27brg83zj9O4Y/fKnuFJbQ=
+Received: by 10.151.5.13 with SMTP id h13mr345557ybi.10.1300481946465;
+        Fri, 18 Mar 2011 13:59:06 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.48.32 with SMTP id v32ls1711863ybv.3.p; Fri, 18 Mar 2011
+ 13:59:06 -0700 (PDT)
+Received: by 10.150.17.33 with SMTP id 33mr704436ybq.46.1300481946132;
+        Fri, 18 Mar 2011 13:59:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.92.18 with SMTP id p18mr136252anb.37.1300453149780; Fri,
+ 18 Mar 2011 05:59:09 -0700 (PDT)
+Received: by k9g2000yqi.googlegroups.com with HTTP; Fri, 18 Mar 2011 05:59:09
+ -0700 (PDT)
+Date: Fri, 18 Mar 2011 05:59:09 -0700 (PDT)
+X-IP: 194.199.172.33
+User-Agent: G2/1.0
+X-HTTP-Via: 1.0 proxy-http.cnes.fr (squid/3.0.STABLE13)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.0; fr; rv:1.9.2.10)
+ Gecko/20100914 Firefox/3.6.10,gzip(gfe)
+Message-ID: <665c401b-c17e-4f01-a338-7e25a228bbfa@k9g2000yqi.googlegroups.com>
+Subject: [ruby-ffi] Array of double as an input argument of a function
+From: Titus <julien.brutus@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: julien.brutus@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Good morning troops,
+I am a newbie to FFI with Ruby.
+How can I declare a 3 double array as an input argument?
+I tried [:double,3],....but seems not to be OK?
+BTW is there an available manual ?
+
+Thanks in advance

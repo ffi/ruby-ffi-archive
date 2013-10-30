@@ -1,0 +1,33 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Ruby Array  Pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Ruby Array  Pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/8/10 9:29 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Jun 8, 2010, at 5:25 PM, v01d wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>is it possible to pass a C function the data pointer to a Ruby array?
+<span class="moz-txt-citetags">&gt; </span>I have a Matrix class, and I wish to write a "to_a" method which will
+<span class="moz-txt-citetags">&gt; </span>produce an array of arrays. I've tried several ways and tested the
+<span class="moz-txt-citetags">&gt; </span>performance but it seems really slow, and I think it would be better
+<span class="moz-txt-citetags">&gt; </span>to just attach a C function that would take the pointer to the
+<span class="moz-txt-citetags">&gt; </span>destination array and the pointer to the input data contained in the
+<span class="moz-txt-citetags">&gt; </span>matrix (this second part is no problem).
+<span class="moz-txt-citetags">&gt; </span>Is this possible? Or I have to resort to writing a C function that
+<span class="moz-txt-citetags">&gt; </span>accesses the array using RARRAY_PTR and such?
+</pre></blockquote><pre wrap>
+
+What you want to do is possible, but it is outside the capability of FFI. You want to create a regular C extension. Be warned that it will not work on all Ruby runtimes since few (outside of MRI) provide the RARRY_PTR macro.
+
+To do it within the boundaries of FFI, you will need to copy the data from the Ruby array to a native memory chunk allocated via malloc. This memory can then be handed off to your C functions for manipulation. To expose it to Ruby again, the data will need to be copied back.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

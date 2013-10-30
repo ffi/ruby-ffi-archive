@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer Freeing Bug</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer Freeing Bug</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mike Dalessio <mike.dalessio@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/6/10 1:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><br><div class="gmail_quote">On Wed, Jan 6, 2010 at 1:38 PM, Luis Lavena <span dir="ltr">&lt;<a href="mailto:luislavena@gmail.com">luislavena@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+On Wed, Jan 6, 2010 at 2:41 PM, JEG2 &lt;<a href="mailto:james@graysoftinc.com">james@graysoftinc.com</a>&gt; wrote:<br>
+&gt; [...]<br>
+<div class="im">&gt;<br>
+&gt; I&#39;m pretty sure I&#39;m looking at a bug that&#39;s triggered during GC here.<br>
+&gt;<br>
+&gt; I thought the &quot;ruby malloc&quot; was a sign that Ruby is freeing up memory<br>
+&gt; before it allocates more.<br>
+&gt;<br>
+&gt; Also, as I said, all of my tests work fine when run alone.  It&#39;s not<br>
+&gt; until they are combined that the problem surfaces.  I assume it&#39;s the<br>
+&gt; longer run triggering GC.<br></div></blockquote><div><br>Yes, the nature of memory issues is that you may not necessarily trigger a segfault. Longer running code will, on average, tend to crash more often if there are memory issues.<br>
+<br>I would advise you to try running your code under valgrind. If you&#39;re using hoe, you can install the hoe-debugging plugin to get easy-to-use rake tasks for this. Otherwise, you could check out my blog post on the subject: <br>
+<br><div style="margin-left: 40px;"><a href="http://flavoriffic.blogspot.com/2009/06/easily-valgrind-gdb-your-ruby-c.html">http://flavoriffic.blogspot.com/2009/06/easily-valgrind-gdb-your-ruby-c.html</a><br></div><br><br>
+ </div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;"><div class="im">
+&gt;<br>
+&gt; Is this sounding right?<br>
+&gt;<br>
+&gt; I assume it almost has to be an FFI object being freed.  I mean, Ruby<br>
+&gt; wouldn&#39;t try to free some memory allocated by Tokyo Cabinet, right?<br>
+&gt; Are there FFI objects that try to free something as they are GCed?<br>
+&gt;<br>
+&gt; Any tips for the best way to isolate this issue are greatly<br>
+&gt; appreciated.<br>
+&gt;<br>
+<br>
+</div>What about forcing the garbage collect process on each spec?<br>
+<br>
+That, in combination with running the specs in a verbose mode may<br>
+provide any indication of a individual test that is storing the<br>
+pointer in a variable that gets collected before it&#39;s time.<br>
+<font color="#888888"><br>
+--<br>
+Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exupéry<br>
+</font></blockquote></div><br><br clear="all"><br>-- <br>mike dalessio<br><a href="mailto:mike@csa.net">mike@csa.net</a><br><br>
+
+</div></body>
+</html>
+</table></div>

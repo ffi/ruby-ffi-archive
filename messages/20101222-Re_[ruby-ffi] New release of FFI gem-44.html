@@ -1,0 +1,61 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/10 7:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 23 December 2010 05:16, Charles Oliver Nutter <a class="moz-txt-link-rfc2396E" href="mailto:headius@headius.com">&lt;headius@headius.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Wayne: Can you summarize what's needed to get 1.8.7 support back in the gem?
+</pre></blockquote><pre wrap>
+
+It should (ffi master) build and install on 1.8.x.  The main reason I
+dropped support for everything but 1.9.2+ on MacOS, was to reduce the
+surface area of the things I had to support, to actually get a new
+release out the door.
+
+I figured that anyone who cared about the other versions+platforms
+that broke would help to fix them.  This happened with win32 support
+(thanks to Luis &amp; Jon), which is why it got fixed almost immediately
+... but its only been this week that people have started to make noise
+about 1.8.x not working.
+
+There are a couple of different problems in 1.8.x
+
+1) Blocking calls.  These are C functions which will wait (e.g. on
+I/O).  Calling one of these will lock up the interpreter until the
+function returns.  The only way I've found to fix this for 1.8 is to:
+  a) create a pipe
+  b) spin up a new native thread, pass it the converted native
+arguments and the write end of the pipe
+  c) have the ruby thread go to sleep until the pipe becomes readable
+via rb_thread_wait_fd()
+  d) once the native thread returns from the function call, write to the pipe
+  e) ruby thread wakes up from rb_thread_wait_fd(), closes the pipe,
+joins on the native thread
+
+Not exactly rocket surgery, but not trivial either - and there will
+need to be two implementations, one for pthreads, one for win32
+(assuming we can't get just settle for 1.9.2+ on win32).
+
+2) Callbacks from non-ruby threads.  This is possibly more
+complicated, and there does not appear (unless I missed it) a way in
+1.8.x to detect attempts to call into the interpreter from a non-ruby
+thread.  This manifests as non-obvious crashes, that look to be in
+completely different sections of code.
+
+  I think there is a simple way to detect non-ruby threads calling
+back, just by storing/clearing the current thread id in a global var
+when entering/exiting native code, and checking that from the callback
+code.  This would mean the callback just does not get called when
+called from a non-ruby thread (and possibly an error is logged).
+
+  Fixing it properly so callbacks from non-ruby threads actually work,
+will be something similar to what is done for 1.9.x, but with the
+twist of using a pipe instead of a mutex+condvar.
+</pre></div></body>
+</html>
+</table></div>

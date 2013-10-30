@@ -1,0 +1,71 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Help with array of strings in a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Help with array of strings in a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Drew <drew.avis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/13/10 8:14 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello, I'm trying to create an FFI wrapper for an Adobe Framemaker
+automation library.  Here's the sample code in C that I'm trying to re-
+create in Ruby:
+
+	IntT j = 0;
+	UIntT i;
+	F_IntsT attributes;
+	F_StringsT strings;
+
+	/* Get name of each FontFamily and display it based on whether it is
+visible
+	 * in PGF Designer. */
+	strings = F_ApiGetStrings(0, FV_SessionId, FP_FontFamilyNames);
+	attributes = F_ApiGetInts(0, FV_SessionId, FP_FontFamilyAttributes);
+	for(i=0; i&lt;attributes.len; i++){
+		j = attributes.val[i];
+		if(j &amp; FV_FAMILY_VISIBLE)
+		F_Printf(NULL,"Family %s\n", strings.val[i]);
+	}
+
+
+F_StringsT looks like this:
+
+typedef struct {
+	UIntT len;
+	StringT *val;
+} F_StringsT;
+
+StringT is defined as unsigned char *, so I think I'm trying to read
+an array of pointers to strings, or unsigned char **.
+
+Right now I'm just trying to get the strings in Ruby:
+
+# in my FFI module FM:
+class FStringsT &lt; FFI::Struct
+    layout :len, :int,
+      :val, :pointer
+  end
+
+attach_function :FApiGetStrings,[:int,:int,:int], FStringsT.by_value
+
+# in my script:
+strings = FM.FApiGetStrings(0, FM.FVSessionId, FM.FPFontFamilyNames)
+attributes = FM.FApiGetInts(0, FM.FVSessionId,
+FM.FPFontFamilyAttributes)
+
+puts strings[:len], attributes[:len] # =&gt; 337
+strptr = strings[:val].read_pointer()
+if !( strptr.null? )
+  puts strptr # =&gt;  #&lt;FFI::Pointer:0x3bd0e04&gt;
+  sa = strptr.get_array_of_string(0,strings[:len]).compact # =&gt; causes
+seg fault
+  puts sa
+end
+
+I found the get_array_of_string example on the wiki.  Any ideas what I
+might be doing wrong?
+
+Thanks!
+Drew
+</pre></div></body>
+</html>
+</table></div>

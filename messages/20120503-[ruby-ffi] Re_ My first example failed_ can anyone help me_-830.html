@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: My first example failed, can anyone help me?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: My first example failed, can anyone help me?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/3/12 5:02 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">You need to declare the native function as 'extern "C"'<div><br></div><div>e.g.</div><div><br></div><div>extern "C" void hello();</div><div><br></div><div><br><br>On Thursday, May 3, 2012 6:43:45 PM UTC+10, win kiwi wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">I write a c header file:
+<br>
+<br>hello.h
+<br>------------------------------<wbr>-
+<br>extern void hello();
+<br>------------------------------<wbr>-
+<br>
+<br>souce file: hello.cpp
+<br>------------------------------
+<br>#include "hello.h"
+<br>#include &lt;stdio.h&gt;
+<br>
+<br>void hello() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("hello");
+<br>}
+<br>------------------------------
+<br>
+<br>I use this command to generate .so in ubuntu:
+<br>
+<br>g++ -O -fpic -shared -o hello.so hello.cpp
+<br>
+<br>
+<br>Now, the hello.so is under my directory.
+<br>
+<br>I write a ruby file: helloLib.rb:
+<br>-----------------------------
+<br>require 'ffi'
+<br>module HelloLib
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extend FFI::Library
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ffi_lib File.dirname(__FILE__) + "/hello.so"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attach_function :hello, [], :void
+<br>end
+<br>----------------------------
+<br>
+<br>then, I write codes to call this wrapper
+<br>
+<br>hellotest.rb
+<br>------------------------------<wbr>-
+<br>require 'rubygems'
+<br>require 'ffi'
+<br>require 'helloLib'
+<br>
+<br>HelloLib.hello()
+<br>------------------------------<wbr>-
+<br>
+<br>I type : ruby ./hellotest.rb at the console . get following error
+<br>information:
+<br>
+<br>
+<br>/var/lib/gems/1.8/gems/ffi-1.<wbr>0.11/lib/ffi/library.rb:249:in
+<br>`attach_function': Function 'hello' not found in [./hello.so]
+<br>(FFI::NotFoundError)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from ./helloLib.rb:5
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from /usr/lib/ruby/1.8/rubygems/<wbr>custom_require.rb:31:in
+<br>`gem_original_require'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from /usr/lib/ruby/1.8/rubygems/<wbr>custom_require.rb:31:in `require'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from ./hellotest.rb:3
+<br>
+<br>
+<br>Can any one give me suggestion? Thank you.</blockquote></div>
+</div></body>
+</html>
+</table></div>

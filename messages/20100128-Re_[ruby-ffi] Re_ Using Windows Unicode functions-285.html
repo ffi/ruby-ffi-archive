@@ -1,0 +1,28 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Using Windows Unicode functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Using Windows Unicode functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/28/10 1:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Nice!
+
+I minor tweaked the code and have added it to the wiki <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples#intermediate">http://wiki.github.com/ffi/ffi/windows-examples#intermediate</a>  Review and revise as needed.
+
+I removed the file encoding comment so as not to imply it's required, and I tweaked the function signature and invocation to be a bit closer to the MessageBox API documentation.
+
+Probably makes sense to try 'jcode' with MRI 1.8 and see if it can be made to work.  The code doesn't work with JRuby 1.4.0 using --1.9 due to undefined "String#encode" and I haven't yet tried JRuby 1.5.
+
+From the FFI API perspective, can the Ruby string code be de-uglied with a combination of some clever #ifdef compile-time and runtime check magic?
+
+A new type binary blob type similar to :buffer_in but skips over the null-byte checking and encodes to UTF-16LE behind the scenes?  Something like :unicode_string or :win_wide_string?  Could the new type also be made applicable to both Windows UTF-16 and *nix UTF-8/locale environments?
+
+Haven't thought about windows SBCS, DBCS, and MBCS C runtime code page issues, but having an explicit type to help with Unicode WinAPI's could be helpful and less error prone.
+
+??
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,203 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp309669obj;
+        Mon, 7 May 2012 15:26:22 -0700 (PDT)
+Received: by 10.224.211.3 with SMTP id gm3mr10891350qab.72.1336429582576;
+        Mon, 07 May 2012 15:26:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCNmKH9BBoEzzOxHg@googlegroups.com>
+Received: from mail-qc0-f190.google.com (mail-qc0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id go2si97410qab.62.2012.05.07.15.26.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 07 May 2012 15:26:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCNmKH9BBoEzzOxHg@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCNmKH9BBoEzzOxHg@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCNmKH9BBoEzzOxHg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qcsr22 with SMTP id r22sf12159740qcs.7
+        for <headius@headius.com>; Mon, 07 May 2012 15:26:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=iaHlAKNn4L0amtGyu4vC/dFbIAIl3MJrGWnmejOBt28=;
+        b=WxZm8ahqTffcSJqn6b3mVYCHWVRh8hJkASPzMNMxmpotwXAZ0vH93NftUHQJIjoRva
+         Gb4YL4jpYgpogWtNIuCsvDV6uw+1oeQKdgBQDLDNm4XCv2kFaW7bDaFBpNpmEYIQ56zY
+         09CgRRX65aDVWlRdc/zWpQKN2alW+m3wpkMgY=
+Received: by 10.68.236.234 with SMTP id ux10mr45493pbc.9.1336429581957;
+        Mon, 07 May 2012 15:26:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.242.40 with SMTP id wn8ls14394945pbc.1.gmail; Mon, 07 May
+ 2012 15:26:21 -0700 (PDT)
+Received: by 10.68.203.226 with SMTP id kt2mr42880pbc.6.1336429581747;
+        Mon, 07 May 2012 15:26:21 -0700 (PDT)
+Date: Mon, 7 May 2012 15:26:20 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <26810186.145.1336429580966.JavaMail.geo-discussion-forums@pbcia3>
+In-Reply-To: <6133187.2.1336413335460.JavaMail.geo-discussion-forums@pboc1>
+References: <6133187.2.1336413335460.JavaMail.geo-discussion-forums@pboc1>
+Subject: [ruby-ffi] Re: Iterating a linked list
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_144_26167144.1336429580965"
+
+------=_Part_144_26167144.1336429580965
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+You've got it almost right - the problem is your mapping of the struct 
+token string fields.
+
+e.g.
+  char tag[TOKEN_TAG_MAX];
+
+instead of
+  :tag, :string
+
+it should be:
+
+  :tag, [ :char, TOKEN_TAG_MAX ]
+
+Similar for pattern, value1, value2.  Of course, you'll also need to define 
+TOKEN_TAG_MAX and SYMBOL_MAX.
+
+On Tuesday, May 8, 2012 3:55:35 AM UTC+10, Navaneeth KN wrote:
+>
+> Hello,
+>
+> I recently started using FFI and I have to say it is one of the best 
+> libraries I have ever used. Very neat syntax and performance. Thanks for 
+> such a great library. 
+>
+> Everything was working fine for me untill I got to iterate over a linked 
+> list. I am getting a segmentation fault when used from FFI. My C code works 
+> well and all tests are passing. My C function is like,
+>
+> extern int
+> get_all_tokens(
+>     object *handle,
+>     int token_type,
+>     struct token **tokens
+> );
+>
+> This function points the head of the linked list to "tokens" variable. 
+> Here is my FFI code.
+>
+>   token_ptr = FFI::MemoryPointer.new :pointer
+>   done = Library.get_all_tokens($handle.get_pointer(0), 1, token_ptr);
+>   if done != 0
+>     error_message = Library.get_last_error($handle.get_pointer(0))
+>     error error_message
+>     return
+>   end
+>
+>   ptr = token_ptr.read_pointer
+>   
+>   until ptr.null?
+>     item = Library::Token.new(ptr)
+>     puts item[:pattern] ----> Fails here
+>     ptr = item[:next]
+>   end
+>
+> My C structure looks like,
+>
+> struct token {
+>     int type, match_type;
+>     char tag[TOKEN_TAG_MAX];
+>     char pattern[SYMBOL_MAX];
+>     char value1[SYMBOL_MAX];
+>     char value2[SYMBOL_MAX];
+>     int children;
+>     struct token* next;
+> };
+>
+> And here is the FFI equivalent one,
+>
+>   class Token < FFI::Struct
+>     layout :type, :int,
+>            :match_type, :int,
+>            :tag, :string,
+>            :pattern, :string,
+>            :value1, :string,
+>            :value2, :string,
+>            :children, :int,
+>            :next,  :pointer
+>   end
+>
+> When running this program, I am getting 
+>
+> [BUG] Segmentation fault
+> ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
+>
+> Any clue to resolve this issue would be helpful. 
+>
+> Thanks
+> Navaneeth
+>
+>
+------=_Part_144_26167144.1336429580965
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+You've got it almost right - the problem is your mapping of the struct toke=
+n string fields.<div><br></div><div>e.g.</div><div>&nbsp; char tag[TOKEN_TA=
+G_MAX];<br></div><div><br></div><div>instead of</div><div>&nbsp; :tag, :str=
+ing</div><div><br></div><div>it should be:</div><div><br></div><div>&nbsp; =
+:tag, [ :char, TOKEN_TAG_MAX ]</div><div><br></div><div>Similar for pattern=
+, value1, value2. &nbsp;Of course, you'll also need to define TOKEN_TAG_MAX=
+ and SYMBOL_MAX.<br><br>On Tuesday, May 8, 2012 3:55:35 AM UTC+10, Navaneet=
+h KN wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left=
+: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hello,<br><br>I rec=
+ently started using FFI and I have to say it is one of the best libraries I=
+ have ever used. Very neat syntax and performance. Thanks for such a great =
+library. <br><br>Everything was working fine for me untill I got to iterate=
+ over a linked list. I am getting a segmentation fault when used from FFI. =
+My C code works well and all tests are passing. My C function is like,<br><=
+br>extern int<br>get_all_tokens(<br>&nbsp;&nbsp;&nbsp; object *handle,<br>&=
+nbsp;&nbsp;&nbsp; int token_type,<br>&nbsp;&nbsp;&nbsp; struct token **toke=
+ns<br>);<br><br>This function points the head of the linked list to "tokens=
+" variable. Here is my FFI code.<br><br>&nbsp; token_ptr =3D FFI::MemoryPoi=
+nter.new :pointer<br>&nbsp; done =3D Library.get_all_tokens($<wbr>handle.ge=
+t_pointer(0), 1, token_ptr);<br>&nbsp; if done !=3D 0<br>&nbsp;&nbsp;&nbsp;=
+ error_message =3D Library.get_last_error($<wbr>handle.get_pointer(0))<br>&=
+nbsp;&nbsp;&nbsp; error error_message<br>&nbsp;&nbsp;&nbsp; return<br>&nbsp=
+; end<br><br>&nbsp; ptr =3D token_ptr.read_pointer<br>&nbsp; <br>&nbsp; unt=
+il ptr.null?<br>&nbsp;&nbsp;&nbsp; item =3D Library::Token.new(ptr)<br>&nbs=
+p;&nbsp;&nbsp; puts item[:pattern] ----&gt; Fails here<br>&nbsp;&nbsp;&nbsp=
+; ptr =3D item[:next]<br>&nbsp; end<br><br>My C structure looks like,<br><b=
+r>struct token {<br>&nbsp;&nbsp;&nbsp; int type, match_type;<br>&nbsp;&nbsp=
+;&nbsp; char tag[TOKEN_TAG_MAX];<br>&nbsp;&nbsp;&nbsp; char pattern[SYMBOL_=
+MAX];<br>&nbsp;&nbsp;&nbsp; char value1[SYMBOL_MAX];<br>&nbsp;&nbsp;&nbsp; =
+char value2[SYMBOL_MAX];<br>&nbsp;&nbsp;&nbsp; int children;<br>&nbsp;&nbsp=
+;&nbsp; struct token* next;<br>};<br><br>And here is the FFI equivalent one=
+,<br><br>&nbsp; class Token &lt; FFI::Struct<br>&nbsp;&nbsp;&nbsp; layout :=
+type, :int,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+ :match_type, :int,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp; :tag, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp; :pattern, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp; :value1, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; :value2, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :children, :int,<br>&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :next,&nbsp; :pointer<br>&nbsp; en=
+d<br><br>When running this program, I am getting <br><br>[BUG] Segmentation=
+ fault<br>ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]<br><br>=
+Any clue to resolve this issue would be helpful. <br><br>Thanks<br>Navaneet=
+h<br><br></blockquote></div>
+------=_Part_144_26167144.1336429580965--

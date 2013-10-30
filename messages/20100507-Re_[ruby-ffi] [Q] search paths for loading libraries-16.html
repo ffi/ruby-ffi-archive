@@ -1,0 +1,52 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [Q] search paths for loading libraries</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [Q] search paths for loading libraries</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Croisant <jacius@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/7/10 7:14 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+On Thu, May 6, 2010 at 5:41 PM, Jeremy Voorhis <a class="moz-txt-link-rfc2396E" href="mailto:jvoorhis@gmail.com">&lt;jvoorhis@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Thu, May 6, 2010 at 3:38 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>On 7 May 2010 08:31, Jeremy Voorhis <a class="moz-txt-link-rfc2396E" href="mailto:jvoorhis@gmail.com">&lt;jvoorhis@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>Is it only possible to specify complete, absolute paths to libraries for
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>ffi_lib? An api similar to Ruby's $: would be convenient for adding
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>directories to the load path, like FFI.load_paths &lt;&lt; '/usr/local/lib'.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>It would be fairly trivial to add ffi_library_path on a per-module
+<span class="moz-txt-citetags">&gt;&gt; </span>basis.  I'm not sure whether adding it globally is such a good idea -
+<span class="moz-txt-citetags">&gt;&gt; </span>one library can potentially screw another one over that way.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>If anyone wants to hack on it, look in lib/ffi/library.rb in the
+<span class="moz-txt-citetags">&gt;&gt; </span>ffi_lib method.  Both ruby-ffi and JRuby use the same code for that
+<span class="moz-txt-citetags">&gt;&gt; </span>section, so a patch for one should apply to the other.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>+1 to scoping it per-module. I had a feeling that idea was only half-baked
+<span class="moz-txt-citetags">&gt; </span><span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Shameless plug:
+
+My Nice-FFI library <a class="moz-txt-link-rfc2396E" href="http://github.com/jacius/nice-ffi/">&lt;http://github.com/jacius/nice-ffi/&gt;</a> has code to
+do exactly what you want. Have a look at the usage guide and see if
+you're interested:
+
+  <a class="moz-txt-link-freetext" href="http://github.com/jacius/nice-ffi/blob/master/docs/usage.rdoc">http://github.com/jacius/nice-ffi/blob/master/docs/usage.rdoc</a>
+
+Be aware, the API for Nice-FFI is not considered stable yet, i.e. I
+might change stuff in the future (although in practice it doesn't
+change much). But all the code is under the MIT License, so you could
+package it (or parts of it) with your code if API changes concern you.
+
+- John
+</pre></div></body>
+</html>
+</table></div>

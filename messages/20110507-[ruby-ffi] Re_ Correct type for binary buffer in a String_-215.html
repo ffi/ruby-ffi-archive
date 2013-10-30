@@ -1,0 +1,25 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Correct type for binary buffer in a String?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Correct type for binary buffer in a String?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/7/11 10:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br><br>On Friday, 6 May 2011 18:09:40 UTC+10, candlerb  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>Now, I also tried it using plain String instead of FFI::Buffer, and it
+<br>works. However if Ruby is sharing the underlying string storage
+<br>between multiple strings (copy-on-write) then aliasing happens:
+<br>
+<br>str = "xxxx"
+<br>buf = str.dup
+<br>buflen = [buf.bytesize].pack("I")
+<br>puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+<br>buflen)
+<br>p buf &nbsp;# "@\000\000\000"
+<br>p str &nbsp;# "@\000\000\000" as well!!
+<br>
+<br>Is that intentional? Perhaps if the argument is :buffer_inout then FFI
+<br>should call rb_str_modify on the string first?
+<br><br></blockquote><div>&nbsp;It is highly likely you are correct. &nbsp;If you haven't already, can you raise an issue on github for this, and also test it on JRuby and raise an issue in its bug tracker?</div><div><br></div>
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,118 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs157651agb;
+        Mon, 25 Apr 2011 13:09:19 -0700 (PDT)
+Received: by 10.150.115.18 with SMTP id n18mr3916765ybc.195.1303761780030;
+        Mon, 25 Apr 2011 13:03:00 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJLrrPi9EhDuptftBBoENen_hA@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id p33si15613184ybk.45.2011.04.25.13.02.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 25 Apr 2011 13:03:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhDuptftBBoENen_hA@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhDuptftBBoENen_hA@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCJLrrPi9EhDuptftBBoENen_hA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd10 with SMTP id 10sf6702628gyd.7
+        for <headius@headius.com>; Mon, 25 Apr 2011 13:02:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=GXml8vFiK+B42jXQI6/6xJSiwlfgauUud+mjlsjAxdc=;
+        b=Ke0XqV9/+FuhUArk5OhifgFa6nftsVuPdRTZ2RuUxWHwp+U+K9lvkmQaR7wn2vsq2d
+         Fu2BQVy/858kZIMMY2yBGUhGxgVpatenTV7/IbQqhMTofUcjlrTiAdvgo1jAy5/ZydaY
+         OLeVFD/Arl7UcRc00nMNmyh9oQOgNEJcowt1A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=JFFAYsrU5btZmI3slgXgIuaoHweWATt11byQ5Dpak2iQZIDML+RnbveAM5gbls080P
+         UQqoSTxBtghsHZid8BfiWX+6wcAhk8AfO3UJWu50zDg30YMfiyBBNMjgKBbPElxXT44G
+         3omzGG03bFU5YCq5ExS3vuK4+ZMbnGCbQrTYg=
+Received: by 10.236.184.104 with SMTP id r68mr401763yhm.2.1303761774808;
+        Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.13.196 with SMTP id d4ls4471680iba.0.gmail; Mon, 25 Apr
+ 2011 13:02:54 -0700 (PDT)
+Received: by 10.42.164.198 with SMTP id h6mr1245185icy.45.1303761774485;
+        Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+Received: by 10.42.164.198 with SMTP id h6mr1245184icy.45.1303761774476;
+        Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+Received: from mail-iy0-f169.google.com (mail-iy0-f169.google.com [209.85.210.169])
+        by gmr-mx.google.com with ESMTPS id xk8si876331icb.1.2011.04.25.13.02.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shurikk@gmail.com designates 209.85.210.169 as permitted sender) client-ip=209.85.210.169;
+Received: by iyh42 with SMTP id 42so2337196iyh.28
+        for <ruby-ffi@googlegroups.com>; Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.231.142.32 with SMTP id o32mr3119142ibu.143.1303761774321;
+ Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+Received: by 10.231.34.5 with HTTP; Mon, 25 Apr 2011 13:02:54 -0700 (PDT)
+In-Reply-To: <9985573.923.1303349150141.JavaMail.geo-discussion-forums@prhu33>
+References: <527e0f31-eb4b-4145-9495-d2c04422519e@j25g2000vbr.googlegroups.com>
+	<9985573.923.1303349150141.JavaMail.geo-discussion-forums@prhu33>
+Date: Mon, 25 Apr 2011 13:02:54 -0700
+Message-ID: <BANLkTik5Te37r2BRVACdLScU2c21JP0RUA@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: can't explain this behavior
+From: Alexander Kabanov <shurikk@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: shurikk@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of shurikk@gmail.com designates 209.85.210.169 as permitted sender)
+ smtp.mail=shurikk@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Thanks Wayne,
+
+you are correct, after doing what you just described everything works
+in both ruby 1.8.7 and 1.9.2
+
+best,
+
+--Alex
+
+On Wed, Apr 20, 2011 at 6:25 PM, Wayne Meissner <wmeissner@gmail.com> wrote=
+:
+>
+> I suspect the problem is this:
+> =C2=A0=C2=A0- pointer to result size (int)
+>
+>
+>
+> You should allocate it thusly:
+> =C2=A0=C2=A0 =C2=A0a3 =3D=C2=A0FFI::MemoryPointer.new(:int,=C2=A01,=C2=A0=
+false)
+> =C2=A0=C2=A0 =C2=A0a3.write_int(a2.size)
+> If that C function is doing a conversion from an input string to an outpu=
+t
+> string, the 'result size' probably needs to be initialized to the maximum
+> size of the output string, and after the function is called, it will cont=
+ain
+> the actual number of bytes used in the output buffer. =C2=A0Thats a prett=
+y common
+> idiom, and one of the most common things people get wrong.
+> The reason why it sometimes worked, and sometimes did not was because the
+> 'output size' was full of random garbage, since you were not initializing
+> the a3 memory, so occasionally it would contain a positive integer value.
+>
+>

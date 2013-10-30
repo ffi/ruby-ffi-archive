@@ -1,0 +1,98 @@
+Delivered-To: headius@headius.com
+Received: by 10.115.91.6 with SMTP id t6cs603590wal;
+        Sat, 5 Dec 2009 14:17:04 -0800 (PST)
+Received: by 10.224.36.6 with SMTP id r6mr2609141qad.219.1260051422127;
+        Sat, 05 Dec 2009 14:17:02 -0800 (PST)
+Return-Path: <329saSw0JCB0KH97KI35DVTTY9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com>
+Received: from mail-qy0-f156.google.com (mail-qy0-f156.google.com [209.85.221.156])
+        by mx.google.com with ESMTP id 11si5826844qyk.44.2009.12.05.14.17.00;
+        Sat, 05 Dec 2009 14:17:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of 329saSw0JCB0KH97KI35DVTTY9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.221.156 as permitted sender) client-ip=209.85.221.156;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 329saSw0JCB0KH97KI35DVTTY9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.221.156 as permitted sender) smtp.mail=329saSw0JCB0KH97KI35DVTTY9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by qyk28 with SMTP id 28sf2135307qyk.13
+        for <headius@headius.com>; Sat, 05 Dec 2009 14:17:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=cJBHeJfBFRUGOBmC/oaMAtmNtbLD/TodafZcQ9TWWFM=;
+        b=Jqz6XJd8TXHZNajAHqfUYw17tvtvat2K/1c7I2vozbXKcTQNUFdGOMlxIAbcQhIa+N
+         ucq+765O3MBNKJeKEeTDi1sMpOIBZqP8iI64jEOesLo1ZZ/unFvtfcabo34eXDX/yZ+E
+         3utbhhqkX+pQl/MNoeatVBRh0I2JFcE+FqOog=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type;
+        b=AwDvSEmc+iJGn5tlKLSYga6o4Wd0pYVCTRgXAbOlIaH4NKl7XDVu5zorjDmLE3PCPQ
+         FGaF0AkcyZgi9vt8Q4UQ6/IUEyYp4UwFGV4JeUcbpAoqQSkuC6UI5hFuu4yVR9YsfJoM
+         /MLoBC+3b98sq5L5mwRQ7rifwKi89UOQ7LJTE=
+Received: by 10.229.111.101 with SMTP id r37mr71273qcp.39.1260051419818;
+        Sat, 05 Dec 2009 14:16:59 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.44.36 with SMTP id y36ls176804qce.3.p; Sat, 05 Dec 2009 
+	14:16:59 -0800 (PST)
+Received: by 10.229.19.81 with SMTP id z17mr406038qca.19.1260051418937;
+        Sat, 05 Dec 2009 14:16:58 -0800 (PST)
+Received: by 10.229.19.81 with SMTP id z17mr406037qca.19.1260051418922;
+        Sat, 05 Dec 2009 14:16:58 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-vw0-f169.google.com (mail-vw0-f169.google.com [209.85.212.169])
+        by gmr-mx.google.com with ESMTP id 25si507223qyk.15.2009.12.05.14.16.58;
+        Sat, 05 Dec 2009 14:16:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.212.169 as permitted sender) client-ip=209.85.212.169;
+Received: by vws41 with SMTP id 41so4566851vws.15
+        for <ruby-ffi@googlegroups.com>; Sat, 05 Dec 2009 14:16:58 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.129.12 with SMTP id b12mr452129ybd.51.1260051418787; Sat, 
+	05 Dec 2009 14:16:58 -0800 (PST)
+Date: Sat, 5 Dec 2009 14:16:58 -0800 (PST)
+In-Reply-To: <6299bf3a-f922-4bec-beb1-2a723274b099@z7g2000vbl.googlegroups.com>
+X-IP: 216.49.181.254
+References: <ae3ecdd9-459d-4496-a17a-a9eb1a88d154@v25g2000yqk.googlegroups.com> 
+	<6299bf3a-f922-4bec-beb1-2a723274b099@z7g2000vbl.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.25 Safari/532.5,gzip(gfe),gzip(gfe)
+Message-ID: <9bd8f0b9-5c7e-4370-9167-44db8112167e@u20g2000vbq.googlegroups.com>
+Subject: [ruby-ffi] Re: c++ examples
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.212.169 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/cb31aba29ae17e59
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/b95c0b67f4530910
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> You may be interested in ffi-inliner[1][2]. With this library you can
+> link
+> - on the fly - to C++ through a C layer.
+
+Interesting jruby compatible solution.
+
+In the end I think I'm going to end up having to write ruby containers
+for c++ objects, so I'll probably end up having to write a "real"
+extension after all.  Anybody know of a cross-VM compatible way to
+wrap C objects and call their destructors, etc.?
+Thanks.
+-r

@@ -1,0 +1,171 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs284605faj;
+        Mon, 29 Nov 2010 11:05:20 -0800 (PST)
+Received: by 10.90.31.16 with SMTP id e16mr7074431age.21.1291057519078;
+        Mon, 29 Nov 2010 11:05:19 -0800 (PST)
+Return-Path: <ruby-ffi+bncCNOu8arYEhDt8s_nBBoEPNeUEQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id l7si6161202yhl.173.2010.11.29.11.05.17;
+        Mon, 29 Nov 2010 11:05:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNOu8arYEhDt8s_nBBoEPNeUEQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNOu8arYEhDt8s_nBBoEPNeUEQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCNOu8arYEhDt8s_nBBoEPNeUEQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyb13 with SMTP id 13sf4948854gyb.7
+        for <headius@headius.com>; Mon, 29 Nov 2010 11:05:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=ilRkf5dYvAnO1U7qmLLIKOyDS8+2Oul57+hSlLuWX5M=;
+        b=YfK7cHrHFbmdR9njnDDcsdYAwPS9pWjKRch2KQlu7/K6F1mVRpshrwWaJOul25jSFm
+         qqW3c+ZGniqQTLhTFaRWjV9lrtE3Ik27gMiTgqXgZbGNFkhw5garuUpZ5SyYee1ChRW3
+         t0L5ofVnafmox0+85GqQOuDijag7Oj5nS9ejI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=0rikevzi9t9sGgBz/WQ1vf+fT3ekRU+h1zqLKypLtt/rpuCL9YZw2EV8TYxFQGmtBh
+         h6WbrG9z0UBjIrGNnQ+1Hljk2jWV6Y8OUdeT0j7QeD0yQHAR6sKSTTnRPjFJeX1wEMOW
+         2DJcUknnuIFuUDsjd6wj+tIck7XwfSpHMgSC0=
+Received: by 10.101.135.5 with SMTP id m5mr168900ann.35.1291057517023;
+        Mon, 29 Nov 2010 11:05:17 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.102.9 with SMTP id z9ls1144639anb.3.p; Mon, 29 Nov 2010
+ 11:05:16 -0800 (PST)
+Received: by 10.100.202.11 with SMTP id z11mr937269anf.0.1291057516591;
+        Mon, 29 Nov 2010 11:05:16 -0800 (PST)
+Received: by 10.100.202.11 with SMTP id z11mr937268anf.0.1291057516565;
+        Mon, 29 Nov 2010 11:05:16 -0800 (PST)
+Received: from mail-gw0-f48.google.com (mail-gw0-f48.google.com [74.125.83.48])
+        by gmr-mx.google.com with ESMTP id i10si1236444anh.8.2010.11.29.11.05.15;
+        Mon, 29 Nov 2010 11:05:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of mike.dalessio@gmail.com designates 74.125.83.48 as permitted sender) client-ip=74.125.83.48;
+Received: by mail-gw0-f48.google.com with SMTP id a11so184057gwa.21
+        for <ruby-ffi@googlegroups.com>; Mon, 29 Nov 2010 11:05:15 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.42.170.132 with SMTP id f4mr1793630icz.75.1291057515407; Mon,
+ 29 Nov 2010 11:05:15 -0800 (PST)
+Received: by 10.42.174.201 with HTTP; Mon, 29 Nov 2010 11:05:15 -0800 (PST)
+In-Reply-To: <f99577ea-073c-42da-8553-7fe486e6408c@k11g2000vbf.googlegroups.com>
+References: <7444468f-efc4-4d95-8aea-8483aed362de@f20g2000vbc.googlegroups.com>
+	<AANLkTinezYQPGTXQRh=G8vjKPHdFqFFCNs2_3iMTR43Y@mail.gmail.com>
+	<f99577ea-073c-42da-8553-7fe486e6408c@k11g2000vbf.googlegroups.com>
+Date: Mon, 29 Nov 2010 14:05:15 -0500
+Message-ID: <AANLkTini2hswxAm3nS58y_Pw9349kogQfYrof=ruCfDo@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: What constitutes a sane building environment?
+From: Mike Dalessio <mike.dalessio@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: mike.dalessio@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of mike.dalessio@gmail.com designates 74.125.83.48 as permitted
+ sender) smtp.mail=mike.dalessio@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=90e6ba613664972a75049635c004
+
+--90e6ba613664972a75049635c004
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Nov 27, 2010 at 5:18 AM, James <james.b.thompson@gmail.com> wrote:
+
+> Hey Mike - thanks for giving me a hand.
+>
+> So I installed the libffi-devel package and then got past the initial
+> error that I had and on to a new one. I have managed to install
+> version 0.6.2, but I am getting the following errors for 0.6.3...
+> (sorry about the massive copy-paste)
+>
+> gem_make.out: =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>
+<snip>
+
+
+> gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=3D
+> \"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=3D2 -
+> fexceptions -fstack-protector --param=3Dssp-buffer-size=3D4 -m64 -
+> mtune=3Dgeneric -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+> include    -c MappedType.c
+> MappedType.c: In function =91mapped_allocate=92:
+> MappedType.c:54:26: error: =91NATIVE_MAPPED=92 undeclared (first use in
+> this function)
+> MappedType.c:54:26: note: each undeclared identifier is reported only
+> once for each function it appears in
+> MappedType.c: In function =91mapped_initialize=92:
+> MappedType.c:64:11: warning: unused variable =91t=92
+> make: *** [MappedType.o] Error 1
+>
+
+I don't think this is an environment issue. NATIVE_MAPPED is defined in
+Types.h, which is included by Type.h, which is included by MappedType.c on
+line 33. So I'm at a loss to explain what's going on.
+
+Perhaps if you included some information about your platform - what distro,
+version of GCC, etc., someone might have deeper insight than I do.
+
+Good luck,
+-mike
+
+--90e6ba613664972a75049635c004
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+<br><br><div class=3D"gmail_quote">On Sat, Nov 27, 2010 at 5:18 AM, James <=
+span dir=3D"ltr">&lt;<a href=3D"mailto:james.b.thompson@gmail.com">james.b.=
+thompson@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;"=
+>
+Hey Mike - thanks for giving me a hand.<br>
+<br>
+So I installed the libffi-devel package and then got past the initial<br>
+error that I had and on to a new one. I have managed to install<br>
+version 0.6.2, but I am getting the following errors for 0.6.3...<br>
+(sorry about the massive copy-paste)<br>
+<br>
+gem_make.out: =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+<br></blockquote><div><br></div><div>&lt;snip&gt;</div><div>=A0</div><block=
+quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
+ solid;padding-left:1ex;">gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I=
+. -DRUBY_EXTCONF_H=3D<br>
+
+\&quot;extconf.h\&quot; =A0 =A0-fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOUR=
+CE=3D2 -<br>
+fexceptions -fstack-protector --param=3Dssp-buffer-size=3D4 -m64 -<br>
+mtune=3Dgeneric -fno-strict-aliasing =A0-fPIC =A0-I/usr/lib64/libffi-3.0.9/=
+<br>
+include =A0 =A0-c MappedType.c<br>
+MappedType.c: In function =91mapped_allocate=92:<br>
+MappedType.c:54:26: error: =91NATIVE_MAPPED=92 undeclared (first use in<br>
+this function)<br>
+MappedType.c:54:26: note: each undeclared identifier is reported only<br>
+once for each function it appears in<br>
+MappedType.c: In function =91mapped_initialize=92:<br>
+MappedType.c:64:11: warning: unused variable =91t=92<br>
+make: *** [MappedType.o] Error 1<br></blockquote><div><br></div><div>I don&=
+#39;t think this is an environment issue. NATIVE_MAPPED is defined in Types=
+.h, which is included by Type.h, which is included by MappedType.c on line =
+33. So I&#39;m at a loss to explain what&#39;s going on.</div>
+<div><br></div><div>Perhaps if you included some information about your pla=
+tform - what distro, version of GCC, etc., someone might have deeper insigh=
+t than I do.</div><div><br></div><div>Good luck,</div><div>-mike</div><div>
+=A0</div></div>
+
+--90e6ba613664972a75049635c004--

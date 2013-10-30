@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Using a 32-bit C library from 64-bit Ruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Using a 32-bit C library from 64-bit Ruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/28/12 4:46 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Correct, you cannot load 32bit libraries in 64bit processes, nor vice-versa.<div><br></div><div>I think what you suggest, is the way most people solve this problem - have a 32bit server process, and communicate with it via a pipe or socket.</div><div><br></div><div>On Friday, September 28, 2012 7:02:17 PM UTC+10, Ivo Wever wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Given the differences between the ia32 and x86_64 architectures I suppose this is impossible, but just to verify: is it indeed impossible to use a 32-bit C library in a 64-bit Ruby process using FFI? Would the best solution to this problem be to run a separate 32-bit Ruby process with a DRb server and access the library from the 64-bit Ruby process using DRb?</blockquote></div>
+</div></body>
+</html>
+</table></div>

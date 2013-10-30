@@ -1,0 +1,130 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.101.141 with SMTP id c13cs31766fao;
+        Thu, 24 Feb 2011 17:10:48 -0800 (PST)
+Received: by 10.151.13.1 with SMTP id q1mr2787278ybi.86.1298596246999;
+        Thu, 24 Feb 2011 17:10:46 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOGO_7GJChCRg5zrBBoEQ2Uy0A@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTPS id x4si18383259ybh.14.2011.02.24.17.10.45
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 24 Feb 2011 17:10:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOGO_7GJChCRg5zrBBoEQ2Uy0A@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOGO_7GJChCRg5zrBBoEQ2Uy0A@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCOGO_7GJChCRg5zrBBoEQ2Uy0A@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb10 with SMTP id 10sf1721332gwb.7
+        for <headius@headius.com>; Thu, 24 Feb 2011 17:10:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=ucG6UYQEs8MUCRl8Ct0gtUWOOBADgiZ+3MEpXMduKl8=;
+        b=qB5ks5KTqmrfhy9aH6oB4AuzWeloGVBYuBlgQ9w+Z5EEOBSR7ZoFGd7+EXaF9sx/hi
+         QBMmkCzNOC84OFSHQlCY/AAi3G0W6BIsWKikq+ifUfcxBbkbHBmEC9u2dnnofmzhtHKc
+         t4oJjSZuk8hd5c77xFSDUkPg8/ElZRftZV8lw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=kUcfymdaFtqU5OWh+XFdV6cpHFkBjIjo1hXGIn20k2nekzc6AsDCWr7h1kfQi+7QyP
+         BUnhxy3GxYzF1m/x//KvJimXPsRNgyz1r+NtnwYhr1ewoI3ijKzjH1WRb1QYhRljRQxQ
+         jtYfyC4d38jXApWSHusT/mZqxB33tCTz+wacg=
+Received: by 10.90.250.5 with SMTP id x5mr260007agh.35.1298596241062;
+        Thu, 24 Feb 2011 17:10:41 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.87.7 with SMTP id p7ls240306agl.3.p; Thu, 24 Feb 2011
+ 17:10:40 -0800 (PST)
+Received: by 10.90.73.18 with SMTP id v18mr251980aga.11.1298596240644;
+        Thu, 24 Feb 2011 17:10:40 -0800 (PST)
+Date: Thu, 24 Feb 2011 17:10:38 -0800 (PST)
+From: Allan Bowhill <ajcbowhill@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <18537535.5.1298596238986.JavaMail.geo-discussion-forums@prfq4>
+In-Reply-To: <ef2726ea-7a55-45bc-9075-1103f4b08c0d@a6g2000vbp.googlegroups.com>
+Subject: [ruby-ffi] Re: require error: no such file to load -- ffi
+MIME-Version: 1.0
+X-Original-Sender: ajcbowhill@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4_26873397.1298596238981"
+
+------=_Part_4_26873397.1298596238981
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I have a similar same problem on FreeBSD 8.1 but I also have 
+
+require 'rubygems'
+require 'ffi'
+
+at the top of the Ruby file I am running.
+
+--Allan
+
+<internal:lib/rubygems/custom_require>:29:in `require': no such file to load 
+-- ffi (LoadError)
+        from <internal:lib/rubygems/custom_require>:29:in `require'
+        from 
+/home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq/wrapper.rb:1:in 
+`<top (required)>'
+        from <internal:lib/rubygems/custom_require>:29:in `require'
+        from <internal:lib/rubygems/custom_require>:29:in `require'
+        from 
+/home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq.rb:71:in 
+`block in <top (required)>'
+        from 
+/home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq.rb:70:in 
+`each'
+        from 
+/home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq.rb:70:in 
+`<top (required)>'
+        from <internal:lib/rubygems/custom_require>:33:in `require'
+        from <internal:lib/rubygems/custom_require>:33:in `rescue in 
+require'
+        from <internal:lib/rubygems/custom_require>:29:in `require'
+        from ww.rb:2:in `<main>'
+
+
+------=_Part_4_26873397.1298596238981
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div>I have a similar same problem on FreeBSD 8.1 but I also have&nbsp;</di=
+v><div><span class=3D"Apple-style-span" style=3D"color: rgb(34, 34, 34); ">=
+<br></span></div><div><span class=3D"Apple-style-span" style=3D"color: rgb(=
+34, 34, 34); ">require 'rubygems'<br>require 'ffi'</span><br></div><div><br=
+></div><div>at the top of the Ruby file I am running.</div><div><br></div><=
+div>--Allan<br></div><div><br></div><div>&lt;internal:lib/rubygems/custom_r=
+equire&gt;:29:in `require': no such file to load -- ffi (LoadError)</div><d=
+iv>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;from &lt;internal:lib/rubygems/custom_r=
+equire&gt;:29:in `require'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;from =
+/home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq/wra=
+pper.rb:1:in `&lt;top (required)&gt;'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; =
+&nbsp;from &lt;internal:lib/rubygems/custom_require&gt;:29:in `require'</di=
+v><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;from &lt;internal:lib/rubygems/cust=
+om_require&gt;:29:in `require'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;f=
+rom /home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq=
+.rb:71:in `block in &lt;top (required)&gt;'</div><div>&nbsp;&nbsp; &nbsp; &=
+nbsp; &nbsp;from /home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2=
+/lib/ffi-rzmq.rb:70:in `each'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;fr=
+om /home/kosmos/.rvm/gems/ruby-1.9.2-p136/gems/ffi-rzmq-0.7.2/lib/ffi-rzmq.=
+rb:70:in `&lt;top (required)&gt;'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbs=
+p;from &lt;internal:lib/rubygems/custom_require&gt;:33:in `require'</div><d=
+iv>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;from &lt;internal:lib/rubygems/custom_r=
+equire&gt;:33:in `rescue in require'</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &=
+nbsp;from &lt;internal:lib/rubygems/custom_require&gt;:29:in `require'</div=
+><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;from ww.rb:2:in `&lt;main&gt;'</div>=
+<div><br></div>
+------=_Part_4_26873397.1298596238981--

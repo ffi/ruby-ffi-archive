@@ -1,0 +1,95 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.197.132 with SMTP id iu4cs4434igc;
+        Sun, 23 Oct 2011 18:38:19 -0700 (PDT)
+Received: by 10.220.118.75 with SMTP id u11mr1536437vcq.15.1319420298955;
+        Sun, 23 Oct 2011 18:38:18 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICi5_2fAxCHg5P1BBoEfdVWRA@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id z1si3581249vcv.67.2011.10.23.18.38.18
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 23 Oct 2011 18:38:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICi5_2fAxCHg5P1BBoEfdVWRA@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICi5_2fAxCHg5P1BBoEfdVWRA@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCICi5_2fAxCHg5P1BBoEfdVWRA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws5 with SMTP id 5sf6483638vws.7
+        for <headius@headius.com>; Sun, 23 Oct 2011 18:38:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=tXqO9bs6Q91Jk/2iBqWsFxCzQfaQuMhCt+KRNF7UHZE=;
+        b=Nz3a1t5UzrhkA1IvgwSHUAccw0aWaCZ1RHOIR4McezSv9kuJuq1gnZFJ4xV7P8EDYR
+         EcpaFSzfjAMi7bg+IVr8AiLks3MemGORYj+1KO6lkaUPjCUlA7vvGY89vDwKgAk2dS7m
+         jJ7NMXKJky5kfQa5wnCumHaj2D6Xxd8x7Nuzo=
+Received: by 10.220.10.4 with SMTP id n4mr1805607vcn.0.1319420295045;
+        Sun, 23 Oct 2011 18:38:15 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.142.67 with SMTP id p3ls11357737vcu.1.gmail; Sun, 23 Oct
+ 2011 18:38:14 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.150.80 with SMTP id x16mr1766939vcv.47.1319420294686; Sun,
+ 23 Oct 2011 18:38:14 -0700 (PDT)
+Received: by c1g2000vbw.googlegroups.com with HTTP; Sun, 23 Oct 2011 18:38:14
+ -0700 (PDT)
+Date: Sun, 23 Oct 2011 18:38:14 -0700 (PDT)
+In-Reply-To: <E5E92CB0B26C422FAB6760E66BC6E914@gmail.com>
+References: <08749d02-510a-41e6-8c44-f669940ffc20@fk25g2000vbb.googlegroups.com>
+ <E5E92CB0B26C422FAB6760E66BC6E914@gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1,gzip(gfe)
+Message-ID: <62e63d33-88cc-42e3-bf22-98b84c3f3e8e@c1g2000vbw.googlegroups.com>
+Subject: [ruby-ffi] Re: distributing c with gem
+From: mixtli <mixtlispam@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mixtlispam@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ mixtlispam@gmail.com designates internal as permitted sender)
+ smtp.mail=mixtlispam@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Wow, is it really that difficult?  I'd have thought it'd just be a
+matter of setting up an extconf to build the extension and then
+telling ffi somehow about the ext/foo directory as a library path.
+
+
+On Oct 23, 1:52=A0pm, Jeremy Voorhis <jvoor...@gmail.com> wrote:
+> =A0I've tried to crack this one as well. After learning that RubyGems wil=
+l build extensions using configure-make-install in addition to extconf.rb, =
+I have a branch of ruby-llvm that uses the autotools to build and manage a =
+shared library, but unfortunately haven't released it yet because of incomp=
+atibilities between autoconf versions on Mac and Ubuntu.
+>
+> You can see my approach athttps://github.com/jvoorhis/ruby-llvm/tree/supp=
+ort-lib. If anyone is an autotools pro, or has a better idea, please help! =
+:)
+>
+> Jeremy
+>
+>
+>
+>
+>
+>
+>
+> On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote:
+> > =A0I want to package up my c source with my gem, and call it from ffi.
+> > How can I tell ffi to use a library packaged with the gem instead of
+> > looking in the system libraries?

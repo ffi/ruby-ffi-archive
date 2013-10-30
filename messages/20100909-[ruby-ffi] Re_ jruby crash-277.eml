@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.51.207 with SMTP id e15cs67080bkg;
+        Thu, 9 Sep 2010 10:30:28 -0700 (PDT)
+Received: by 10.101.59.14 with SMTP id m14mr293654ank.127.1284053427700;
+        Thu, 09 Sep 2010 10:30:27 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNuojKTqEBCxs6TkBBoEhwWN3Q@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id c22si3313701ana.162.2010.09.09.10.30.26;
+        Thu, 09 Sep 2010 10:30:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCxs6TkBBoEhwWN3Q@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCxs6TkBBoEhwWN3Q@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCNuojKTqEBCxs6TkBBoEhwWN3Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk8 with SMTP id 8sf2065284gxk.7
+        for <headius@headius.com>; Thu, 09 Sep 2010 10:30:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-via:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=K10CY5zFLio3wRKkUW3d5yoBdRLBOjZEqo0cY1RFfHw=;
+        b=w/8IKzt/mVzrSfiORzBZuwM8HiJ+bBeEcFM9A6p8/nKTvRzdKQlfEmZqicGRblMNvV
+         5ze19nSpJ0NTSOooc48EZhEK6dotnlRCJHHH9u+NMISVInqkONPJEA/zRTI8IqWv1laT
+         9eg8GkvcyRSGnt+XWWxqGWgZH0Jnl97FCBZOo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-via:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=dIBmxTR8XDGH/XCJa68abG1WCNBKtYLnm/wSAGMwkzMH+3jOZ/xnjK4yviBVDVvDHX
+         /mMgT2Yh0oHARzazQySlFPJuDiD8yrZXlPwSZ0+pa3xfXAgu2SbPcFq/dphsxUMUjkcT
+         0scT0k6YejqJlyCqCWlQ9Asta5/zdMzu7aYog=
+Received: by 10.101.23.15 with SMTP id a15mr678090anj.75.1284053425778;
+        Thu, 09 Sep 2010 10:30:25 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.194.29 with SMTP id w29ls2841873anp.1.p; Thu, 09 Sep 2010
+ 10:30:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.97.13 with SMTP id z13mr675582anl.51.1284053424926; Thu,
+ 09 Sep 2010 10:30:24 -0700 (PDT)
+Received: by 13g2000prf.googlegroups.com with HTTP; Thu, 9 Sep 2010 10:30:24
+ -0700 (PDT)
+Date: Thu, 9 Sep 2010 10:30:24 -0700 (PDT)
+In-Reply-To: <1c7c38cd-7b7a-4914-ba48-b03392027e1a@p22g2000pre.googlegroups.com>
+X-IP: 216.49.181.128
+References: <1c7c38cd-7b7a-4914-ba48-b03392027e1a@p22g2000pre.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455
+ (NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US)
+ AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.55 Safari/534.3,gzip(gfe)
+Message-ID: <b9bd1090-1e52-465a-a7c2-bdfe8d664b9e@13g2000prf.googlegroups.com>
+Subject: [ruby-ffi] Re: jruby crash
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+http://jira.codehaus.org/browse/JRUBY-4916
+
+Wayne's suggestion fixed the problem.
+Any chance of looking at this again sometime?
+I'm just afraid it will cause other subtle bugs, like
+http://jira.codehaus.org/browse/JRUBY-4555
+-r

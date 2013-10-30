@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Finding a segfault on GC</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Finding a segfault on GC</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>J Smith <dark.panda@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/10 12:26 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 10, 2010 at 12:25 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 10 December 2010 12:21, dark.panda <a class="moz-txt-link-rfc2396E" href="mailto:dark.panda@gmail.com">&lt;dark.panda@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Anyone have any ideas as to what's going on? I'm at my wits end at
+<span class="moz-txt-citetags">&gt;&gt; </span>this point. Modifying GEOS itself might not be an option, but if
+<span class="moz-txt-citetags">&gt;&gt; </span>there's something I can do in Ruby that would be awesome.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I haven't looked in depth, but in that cut down gist, it <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>could<span class="moz-txt-tag">_</span></span> be this:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>handle = FFIGeos.initGEOS_r(
+<span class="moz-txt-citetags">&gt; </span> self.method(:notice_handler),
+<span class="moz-txt-citetags">&gt; </span> self.method(:error_handler)
+<span class="moz-txt-citetags">&gt; </span>)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Stash the return values from self.method() somewhere.
+<span class="moz-txt-citetags">&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>@nh = self.method(:notice_handler)
+<span class="moz-txt-citetags">&gt; </span>@eh = self.method(:error_handler)
+<span class="moz-txt-citetags">&gt; </span>handle = FFIGeos.initGEOS_r(@nh, @eh))
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>They don't have to be ivars, but they need to be kept for as long as
+<span class="moz-txt-citetags">&gt; </span>Geos needs to use the callbacks.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Ah, I think this may well be it! The minimal test runs and, even
+better, so does the entire unit test suite! Cheers!
+
+I wrote up a quick patch to store the values from the error handler
+methods in Thread.current and everything seems to be working as
+expected including multithreading which is tremendous.
+
+I take it that garbage collection was trying to clean up some things
+it shouldn't and that was wreaking havoc, yeah? I'd like to step
+through this in gdb when I get a chance now that I know what to look
+for to try and understand what's happening in more detail, but for now
+I'm ecstatic that things appear to be working. This was the last major
+(known) issue in the library and I think a beta release is due for
+some testing.
+
+Cheers again, and thanks!
+
+J
+</pre></div></body>
+</html>
+</table></div>

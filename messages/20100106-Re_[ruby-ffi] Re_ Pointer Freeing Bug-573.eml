@@ -1,0 +1,166 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs108765ane;
+        Wed, 6 Jan 2010 17:49:04 -0800 (PST)
+Received: by 10.101.141.32 with SMTP id t32mr33270ann.46.1262828943705;
+        Wed, 06 Jan 2010 17:49:03 -0800 (PST)
+Return-Path: <3jT1FSwcJCFsLA3PGXV9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 1si16155489gxk.34.2010.01.06.17.49.02;
+        Wed, 06 Jan 2010 17:49:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3jT1FSwcJCFsLA3PGXV9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3jT1FSwcJCFsLA3PGXV9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) smtp.mail=3jT1FSwcJCFsLA3PGXV9F3BE.5HFKN4R-88B9HH9E79KHNIL.5HF@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42sf51610819yxe.22
+        for <headius@headius.com>; Wed, 06 Jan 2010 17:49:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=WNRqJQ8wSF6xd+wMQhY//hdCrEbjd0YBdppB0k/42T4=;
+        b=aX/nrZ22xukhKm6HsySvxZG4L7xlBOQHiFHSY72iYy/hb/YlXj0StZGXCLOCfjslQ2
+         wQ37QeBMEGfP0yAdsRSlWl1boffOBe8e+8f3sXEBWM23t/R0LyXR1sXLJ5GTf4WSGM6E
+         flg/b5WiygbA+ytgxyZb2MV6IlkDTJyVUrKE8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=N9fqo7KVrBP18t+EGoPnszCve69NSJ4v/WWXHRUoqYr+44c+/xc6Kbb4B9v4lLKpIx
+         wtkAVIWF3yMXa7hDm93U5KvDQ7XYGaWNNd80TnFEtvcCd96MAydC/Zr9mB7OVom1loIQ
+         HqrrxJ4GBwlSStcn+NASRx/tlqSdWt3Hjo/Sg=
+Received: by 10.101.166.27 with SMTP id t27mr3583641ano.28.1262828941656;
+        Wed, 06 Jan 2010 17:49:01 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.13.214 with SMTP id d22ls66037bka.0.p; Wed, 06 Jan 2010 
+	17:49:00 -0800 (PST)
+Received: by 10.204.24.81 with SMTP id u17mr922784bkb.35.1262828940418;
+        Wed, 06 Jan 2010 17:49:00 -0800 (PST)
+Received: by 10.204.24.81 with SMTP id u17mr922783bkb.35.1262828940370;
+        Wed, 06 Jan 2010 17:49:00 -0800 (PST)
+Return-Path: <shawn42@gmail.com>
+Received: from mail-bw0-f219.google.com (mail-bw0-f219.google.com [209.85.218.219])
+        by gmr-mx.google.com with ESMTP id 12si2217356bwz.6.2010.01.06.17.48.59;
+        Wed, 06 Jan 2010 17:48:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of shawn42@gmail.com designates 209.85.218.219 as permitted sender) client-ip=209.85.218.219;
+Received: by mail-bw0-f219.google.com with SMTP id 19so411065bwz.8
+        for <ruby-ffi@googlegroups.com>; Wed, 06 Jan 2010 17:48:59 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.204.157.26 with SMTP id z26mr297362bkw.124.1262828939271; Wed, 
+	06 Jan 2010 17:48:59 -0800 (PST)
+In-Reply-To: <20100106172851.bba94e5e.jon.forums@gmail.com>
+References: <bd5613e0-04a8-45d5-8fd1-e6550cf11dd7@q4g2000yqm.googlegroups.com> 
+	<71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com> 
+	<35cb33c3-0326-4be6-851a-5a349d3416f0@c3g2000yqd.googlegroups.com> 
+	<8e4ab10a-7018-463f-a562-3d3b92e04446@h9g2000yqa.googlegroups.com> 
+	<20100106172851.bba94e5e.jon.forums@gmail.com>
+From: Shawn Anderson <shawn42@gmail.com>
+Date: Wed, 6 Jan 2010 20:48:39 -0500
+Message-ID: <c410d2f21001061748y5173a01fkbd8e0527792838d3@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Pointer Freeing Bug
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of shawn42@gmail.com designates 209.85.218.219 as permitted sender) 
+	smtp.mail=shawn42@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: shawn42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9f891a35886cb969
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/23a661ae3f763ec
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0015175d0a4c565f0e047c89464e
+
+--0015175d0a4c565f0e047c89464e
+Content-Type: text/plain; charset=ISO-8859-1
+
+Also,
+To help verify if it is indeed a GC problem, I've found that adding
+GC.disable at the beginning of your code can tell you if the GC is what is
+causing problems.
+
+/Shawn
+
+On Wed, Jan 6, 2010 at 5:28 PM, Jon <jon.forums@gmail.com> wrote:
+
+> > On Jan 6, 2:43 pm, JEG2 <ja...@graysoftinc.com> wrote:
+> > > It seems to work, but I wasn't sure how to define the size_t
+> > > parameter.  I assumed it's an unsigned long and defined it as such:
+> > >
+> > >     func :name    => :malloc,
+> > >          :args    => :ulong,
+> > >          :returns => :pointer
+> > >
+> > > Can I really count on that though?  Is it portable?
+> >
+> > Ah, FFI does support size_t.  It's just not listed here:
+> >
+> > http://wiki.github.com/ffi/ffi/types
+> >
+> > I've switched to using that.
+> >
+> > James Edward Gray II
+>
+>
+> Is size_t portable across FFI impls?
+>
+> Jon
+>
+
+--0015175d0a4c565f0e047c89464e
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Also,<br>To help verify if it is indeed a GC problem, I&#39;ve found that a=
+dding GC.disable at the beginning of your code can tell you if the GC is wh=
+at is causing problems.<br><br>/Shawn<br><br><div class=3D"gmail_quote">On =
+Wed, Jan 6, 2010 at 5:28 PM, Jon <span dir=3D"ltr">&lt;<a href=3D"mailto:jo=
+n.forums@gmail.com">jon.forums@gmail.com</a>&gt;</span> wrote:<br>
+
+<blockquote class=3D"gmail_quote" style=3D"border-left: 1px solid rgb(204, =
+204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;"><div><div></div><=
+div class=3D"h5">&gt; On Jan 6, 2:43=A0pm, JEG2 &lt;<a href=3D"mailto:ja...=
+@graysoftinc.com">ja...@graysoftinc.com</a>&gt; wrote:<br>
+
+
+&gt; &gt; It seems to work, but I wasn&#39;t sure how to define the size_t<=
+br>
+&gt; &gt; parameter. =A0I assumed it&#39;s an unsigned long and defined it =
+as such:<br>
+&gt; &gt;<br>
+&gt; &gt; =A0 =A0 func :name =A0 =A0=3D&gt; :malloc,<br>
+&gt; &gt; =A0 =A0 =A0 =A0 =A0:args =A0 =A0=3D&gt; :ulong,<br>
+&gt; &gt; =A0 =A0 =A0 =A0 =A0:returns =3D&gt; :pointer<br>
+&gt; &gt;<br>
+&gt; &gt; Can I really count on that though? =A0Is it portable?<br>
+&gt;<br>
+&gt; Ah, FFI does support size_t. =A0It&#39;s just not listed here:<br>
+&gt;<br>
+&gt; <a href=3D"http://wiki.github.com/ffi/ffi/types" target=3D"_blank">htt=
+p://wiki.github.com/ffi/ffi/types</a><br>
+&gt;<br>
+&gt; I&#39;ve switched to using that.<br>
+&gt;<br>
+&gt; James Edward Gray II<br>
+<br>
+<br>
+</div></div>Is size_t portable across FFI impls?<br>
+<font color=3D"#888888"><br>
+Jon<br>
+</font></blockquote></div><br>
+
+--0015175d0a4c565f0e047c89464e--

@@ -1,0 +1,84 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: extconf.rb and libffi on OSX</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: extconf.rb and libffi on OSX</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Simon Chiang <simon.a.chiang@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/25/10 11:28 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Ok, rechecked and filed an issue (<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues/">http://github.com/ffi/ffi/issues/</a>
+#issue/26).  Unfortunately you'll see that I really don't have much
+help to give in debugging this... I'm not actually building the
+library manually; instead I'm making the gem and installing it, so all
+the build output is lost.
+
+Let me know if you need any more description of the issue.
+
+- Simon
+
+
+On Jan 24, 5:19 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I can't reproduce the problem on 10.6.2 (using latest source from github).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Can you recheck it, and file an issue with the output from the build,
+<span class="moz-txt-citetags">&gt; </span>if it still fails?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2010/1/13 Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chi...@gmail.com">&lt;simon.a.chi...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm trying to use the unreleased 0.6 version of FFI and I'm having an
+<span class="moz-txt-citetags">&gt; &gt; </span>issue that I ultimately tracked back to this part of extconf.rb:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span> unless Config::CONFIG['host_os'] =~ /mswin32|mingw32/
+<span class="moz-txt-citetags">&gt; &gt; </span>   if pkg_config("libffi") || find_header("ffi.h", "<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/local<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>include")
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>     # We need at least ffi_call and ffi_prep_closure
+<span class="moz-txt-citetags">&gt; &gt; </span>     libffi_ok = have_library("ffi", "ffi_call", [ "ffi.h" ]) &amp;&amp;
+<span class="moz-txt-citetags">&gt; &gt; </span>have_func("ffi_prep_closure")
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>     # Check if the raw api is available.
+<span class="moz-txt-citetags">&gt; &gt; </span>     $defs &lt;&lt; "-DHAVE_RAW_API" if have_func("ffi_raw_call") &amp;&amp;
+<span class="moz-txt-citetags">&gt; &gt; </span>have_func("ffi_prep_raw_closure")
+<span class="moz-txt-citetags">&gt; &gt; </span>   end
+<span class="moz-txt-citetags">&gt; &gt; </span> end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Apparently I need to access the raw api and so I think I need -
+<span class="moz-txt-citetags">&gt; &gt; </span>DHAVE_RAW_API to be set. When I modify extconf.rb to enable that flag,
+<span class="moz-txt-citetags">&gt; &gt; </span>everything works on OSX 10.5.8 but it still doesn't work on OSX
+<span class="moz-txt-citetags">&gt; &gt; </span>10.6.2.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>By looking at the commits where this code was introduced, I gather
+<span class="moz-txt-citetags">&gt; &gt; </span>this code is about detecting a functional libffi. So is libffi broke
+<span class="moz-txt-citetags">&gt; &gt; </span>on OSX or does it vary between 10.5.8 and 10.6.2 in some way that
+<span class="moz-txt-citetags">&gt; &gt; </span>causes FFI problems? Do I need to update libffi?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thanks.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Relevant commits:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/commit/8cbc3f54a875a61e1fb67ac88a25b71940a3">http://github.com/ffi/ffi/commit/8cbc3f54a875a61e1fb67ac88a25b71940a3</a>...
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/commit/31e65abbf7e57b9776557227a41e4cd45886">http://github.com/ffi/ffi/commit/31e65abbf7e57b9776557227a41e4cd45886</a>...
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

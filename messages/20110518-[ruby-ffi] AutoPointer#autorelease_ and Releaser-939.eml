@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs115076agb;
+        Wed, 18 May 2011 18:40:06 -0700 (PDT)
+Received: by 10.150.141.17 with SMTP id o17mr1877853ybd.85.1305769204866;
+        Wed, 18 May 2011 18:40:04 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMHqssvJERDu6dHuBBoE2cNDRQ@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id v20si1852700yba.53.2011.05.18.18.40.04
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 18 May 2011 18:40:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMHqssvJERDu6dHuBBoE2cNDRQ@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMHqssvJERDu6dHuBBoE2cNDRQ@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCMHqssvJERDu6dHuBBoE2cNDRQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf4135521gxk.7
+        for <headius@headius.com>; Wed, 18 May 2011 18:40:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=GI+X2k6HEsx2lEEC9tPLQOchSEP6rNOOdHNmy6UG8yk=;
+        b=5HO1ylsapABJPED430vZeaTDxsGw6lbyp8piv7eOFWCq8tRjmRycbRnTZK/CyA3bBw
+         sO4GRqtP0ruXUTy1SMH+7+TxBO9v6O3j+TvFjE8f7471EtJwvGz0bKC6xvRKgQFvoRkj
+         ky8pKiBX5yeA0rT7D0yLPu0RXKIesuI2i0FIA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=ZyMzyHwNQb3wsF0iT+t8w2QHj3thu14gcRQTp7TUgzeWOpaugXV2K8ujGr0TDtuxgV
+         qRWC0jZzgAvBumjChprkWNOxg8b94l+LnyahR2rLX4/LA0zRS6nQa1cZVhrpPpwqc04y
+         v2MtdhQJhKnyWCTF9KOS6ByO9/BeUXZ4QZVVk=
+Received: by 10.91.213.2 with SMTP id p2mr222883agq.52.1305769198989;
+        Wed, 18 May 2011 18:39:58 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.160.9 with SMTP id m9ls239313ago.4.gmail; Wed, 18 May 2011
+ 18:39:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.161.39 with SMTP id n39mr223668ago.32.1305769198441; Wed,
+ 18 May 2011 18:39:58 -0700 (PDT)
+Received: by r20g2000yqd.googlegroups.com with HTTP; Wed, 18 May 2011 18:39:58
+ -0700 (PDT)
+Date: Wed, 18 May 2011 18:39:58 -0700 (PDT)
+X-IP: 70.27.66.177
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1)
+ Gecko/20100101 Firefox/4.0.1,gzip(gfe)
+Message-ID: <f0fdf420-a75f-4ecd-82f7-f3c9a6bd639c@r20g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] AutoPointer#autorelease? and Releaser
+From: "dark.panda" <dark.panda@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: dark.panda@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+G'day list.
+
+I noticed that in ffi 1.0.8, an autorelease? method was added to the
+Pointer class to check on @autorelease. In the AutoPointer class, the
+autorelease= method is overridden and the value is forwarded to
+Releaser, but the autorelease? method isn't overridden in a similar
+fashion and will always return false.
+
+I'm currently cleaning up an ffi wrapper for the GEOS library, and the
+rules for whether or not to objects need to be explicitly freed
+depends on the situation such as whether or not a parent object owns a
+geometry and so forth. I'd like to use autorelease? to check on the
+status of autorelease as I'm relying upon it to detect whether or not
+I have to do some object cloning or if the objects I'm using are safe
+to use directly.
+
+So, I guess what I'm wondering is is if the absence of autorelease?
+delegating to Releaser in AutoPointer intentional and that what I'm
+trying to do is insane, or if I'm on to something here. At the moment
+I'm relying on instance_variable_get to get to @releaser.autorelease,
+but that seems pretty flaky.
+
+Cheers.

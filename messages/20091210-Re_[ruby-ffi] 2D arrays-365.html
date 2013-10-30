@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 2D arrays</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 2D arrays</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/09 9:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+There is currently no way to declare 2D arrays.
+
+One work around for a small struct like that is to declare 4 arrays.
+e.g.
+
+class ALLEGRO_TRANSFORM &lt; FFI::Struct
+   layout :m0, [:float, 4], :m1, [:float, 4], :m2, [:float, 4], :m3, [:float, 4]
+end
+
+Then instead of accessing the second element of the first array as
+[:m][0][1], it would be [:m0][1]
+
+Kinda messy, but its what you will have to do for now.
+
+Please file an issue at <a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues">http://github.com/ffi/ffi/issues</a> so this will
+can get implemented at some stage.
+
+2009/12/11 galdor <a class="moz-txt-link-rfc2396E" href="mailto:khaelin@gmail.com">&lt;khaelin@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to bind the following structure:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>struct ALLEGRO_TRANSFORM {
+<span class="moz-txt-citetags">&gt; </span>  float m[4][4];
+<span class="moz-txt-citetags">&gt; </span>};
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>But with the following FFI declaration:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class ALLEGRO_TRANSFORM &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout :m, [[:float, 4], 4]
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I get the following error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi/struct.rb:177:in
+<span class="moz-txt-citetags">&gt; </span>`add_array': undefined method `alignment' for [:float, 4]:Array
+<span class="moz-txt-citetags">&gt; </span>(NoMethodError)
+<span class="moz-txt-citetags">&gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>struct.rb:177:in `array_layout'
+<span class="moz-txt-citetags">&gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>struct.rb:106:in `layout'
+<span class="moz-txt-citetags">&gt; </span>       from lib/allegro/ffi_allegro.rb:558:in
+<span class="moz-txt-citetags">&gt; </span>`&lt;class:ALLEGRO_TRANSFORM&gt;'
+<span class="moz-txt-citetags">&gt; </span>       from lib/allegro/ffi_allegro.rb:557:in `&lt;module:Allegro&gt;'
+<span class="moz-txt-citetags">&gt; </span>       from lib/allegro/ffi_allegro.rb:4:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is there a specific syntax for 2D arrays ?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Regards,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Nicolas Martyanoff
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs15270agb;
+        Fri, 29 Apr 2011 01:41:58 -0700 (PDT)
+Received: by 10.236.79.3 with SMTP id h3mr1977559yhe.94.1304066518097;
+        Fri, 29 Apr 2011 01:41:58 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPTAuvbIChDQ8-ntBBoE0WmVVA@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id h28si8549328yhm.228.2011.04.29.01.41.58
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 29 Apr 2011 01:41:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPTAuvbIChDQ8-ntBBoE0WmVVA@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPTAuvbIChDQ8-ntBBoE0WmVVA@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPTAuvbIChDQ8-ntBBoE0WmVVA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf8478819gxk.7
+        for <headius@headius.com>; Fri, 29 Apr 2011 01:41:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Xtw24j/VBBUeUIu/ytsQKf4cyFPeqJ6m0Xsdr9QiTPU=;
+        b=FF/NZL5p1F2EMk5tpGE8n2cBEuuPdTjmA640gujbO8kw5KHG4l17ANmQ22KXDhNHkI
+         qy6zJGizSTDHdZWm59penSQ66TwSwHfNlLMRMkJOMq07ZwMClI4pIsm6QfhmZiFvhbAo
+         /fPhiPhOSs9Jc/Oc8YSx/j1GqQkkranpX4T9s=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=3eoS1+6pKR7N6wCQhkG4Go7vRHJ2wlTjFkDxxQzk57wDeTX9cBFohz2MRbI4ubX3AU
+         WAa7ITUSkpxXIbucv0hTNPESVdgd4Oy4cGX0JJ/F9nLsaiSs5569jp7PGzC6jg0ZcYnP
+         RxQWM4ubbKVM1fWjeUybjjErOut8zBQk5hQU4=
+Received: by 10.91.21.32 with SMTP id y32mr441208agi.1.1304066512468;
+        Fri, 29 Apr 2011 01:41:52 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.44.2 with SMTP id w2ls344620agj.7.gmail; Fri, 29 Apr 2011
+ 01:41:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.4.24 with SMTP id g24mr434505agi.9.1304066512056; Fri, 29
+ Apr 2011 01:41:52 -0700 (PDT)
+Received: by w24g2000yqb.googlegroups.com with HTTP; Fri, 29 Apr 2011 01:41:52
+ -0700 (PDT)
+Date: Fri, 29 Apr 2011 01:41:52 -0700 (PDT)
+X-IP: 98.156.13.180
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us)
+ AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1,gzip(gfe)
+Message-ID: <f67bf29f-b643-4024-8b19-f38237b38ee7@w24g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] calling internal ruby functions
+From: mixtli <ronmcclain75@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: ronmcclain75@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I wanted to call rb_thread_select to do some async polling, so I made
+a quick wrapper.  It actually works fine, but I have to specify the
+full path to my libruby.dylib in the call to ffi_lib.   If I just put
+"libruby", it segfaults.   Is there some standard mechanism for
+forcing ffi to use the libs from the rvm environment?   This is for a
+public gem (http://github.com/mixtli/net-snmp), so I'd like it to
+automagically work in the user's environment.
+
+Also, is there a standard set of wrappers for ruby internals similar
+to the set for libc (ffi-libc)?
+
+And finally, since I'm here..  Anyone else having problems requiring
+ffi-libc on snow leopard?  A bunch of the functions don't seem to be
+defined on my system (clearenv, stdin, etc).
+
+

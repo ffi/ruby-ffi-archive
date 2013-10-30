@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] [ANN] call for windows ffi examples</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] [ANN] call for windows ffi examples</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/5/09 10:45 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com, rubyinstaller@googlegroups.com, user@jruby.codehaus.org</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You probably know that FFI enables you to use existing and custom native libraries by writing only Ruby code.
+
+You probably know that a Ruby FFI extension is multi-platform, multi-implementation and will work without changes on Ruby, JRuby, and any other Ruby implementation that supports FFI.
+
+You may even know that FFI has been part of JRuby for awhile.
+
+But you may not know that mswin32 and mingw32 binary MRI RubyGems exist for Windows users <b class="moz-txt-star"><span class="moz-txt-tag">*</span>and<span class="moz-txt-tag">*</span></b> they support both 1.8 and 1.9 environments.  Installation is just a "gem install ffi" away!
+
+While using FFI with the Windows API works great, documentation has been a bit sparse.  We'd like to change this and have started to collect typical usage examples at <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a>
+
+The goal of the wiki page is not to try to cover everything or show off just puzzler-style code. Rather, we'd like to provide common examples for the use cases you'll likely encounter when working with the Windows API from Ruby.  You know, the 80% story.
+
+So what's the point to all of this?
+
+We'd like more real-world Windows FFI examples and I'm asking for your help in adding these examples, especially intermediate and advanced level examples.
+
+Guidelines
+==========
+1) Show off "core" examples that can be conceptually reused 
+2) Try to keep the C part of the example to less than 35 LOC
+3) Take relevant shortcuts in favor of highlighting the core idea (eg - full FFI::Struct definition really needed?) 
+4) Add unnecessary code (e.g. - free) if it hilites fundamental FFI behavior
+5) Confirm that your C code compiles and runs
+6) Validate that your Ruby FFI code runs on MRI 1.8, 1.9 and JRuby in 1.8 and 1.9 modes
+7) Reuse the side-by-side Textile wiki markup sections for your examples
+
+Feel free to edit the wiki page but be warned that the Textile + HTML + inline CSS is twitchy and non-DRY. I'm pushing the wiki page past what it was meant to do, but don't be scared off as GitHub version controls these pages...it's really hard to really mess things up.
+
+If you have a cool contribution, but can't update the wiki page, please create a <a class="moz-txt-link-freetext" href="http://gist.github.com/">http://gist.github.com/</a> or a <a class="moz-txt-link-freetext" href="http://pastie.org/">http://pastie.org/</a> or an email and reply back to this message on our Google Group at <a class="moz-txt-link-freetext" href="http://groups.google.com/group/ruby-ffi">http://groups.google.com/group/ruby-ffi</a>
+
+Thanks!
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

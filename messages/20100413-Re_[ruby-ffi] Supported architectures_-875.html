@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Supported architectures?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Supported architectures?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/13/10 1:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">CC: </div>micah &lt;micaho@gmail.com&gt;</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">I was able to build on x86, x86_64, ppc, ppc64
+<br>
+<br><a class="moz-txt-link-freetext" href="http://koji.fedoraproject.org/koji/buildinfo?buildID=161154">http://koji.fedoraproject.org/koji/buildinfo?buildID=161154</a>
+<br>
+<br>-- bk
+<br>
+<br>On 04/13/2010 01:12 PM, micah wrote:
+<br><blockquote type=cite style="color: #000000;">Hi all,
+<br>
+<br>When I uploaded ffi to Debian, it was automatically sent to the Debian
+<br>buildd network, where a build was attempted on all the different
+<br>architectures that Debian supports. Many of these failed, a few of
+<br>them succeeded.
+<br>
+<br>I will disable the builds on these failing architectures, but am
+<br>available to do anything to try and help debug the failures. What
+<br>architectures the project aims to support?
+<br>
+<br>The ones that succeeded were: amd64, i386, powerpc, and sparc.
+<br>
+<br>The ones that failed were: alpha, armel, hppa, ia64, mipsel, s390,
+<br>kfreebsd_amd64 and kfreebsd_i386.
+<br>
+<br>The alpha, armel, hppa, ia64, mipsel, s390 architectures all had this
+<br>build error:
+<br>
+<br>cc -I. -I. -I/usr/lib/ruby/1.8/alpha-linux -I/build/buildd-libffi-
+<br>ruby_0.6.2debian-5-alpha-WnppY4/libffi-ruby-0.6.2debian/ext/ffi_c -
+<br>DRUBY_EXTCONF_H=\"extconf.h\"&nbsp;&nbsp;&nbsp; -fPIC -mieee -fno-strict-aliasing -g -
+<br>g -O2&nbsp; -fPIC&nbsp;&nbsp; -c Platform.c
+<br>Platform.c:28:2: error: #error "Unknown cpu type"
+<br>Platform.c: In function 'rbffi_Platform_Init':
+<br>Platform.c:57: error: 'CPU' undeclared (first use in this function)
+<br>Platform.c:57: error: (Each undeclared identifier is reported only
+<br>once
+<br>Platform.c:57: error: for each function it appears in.)
+<br>make[1]: *** [Platform.o] Error 1
+<br>
+<br>kfreebsd_amd64 and kfreebsd_i386 both gave this error:
+<br>make[1]: Entering directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+<br>kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c'
+<br>cc -I. -I. -I/usr/lib/ruby/1.8/x86_64-kfreebsd-gnu -I/build/buildd-
+<br>libffi-ruby_0.6.2debian-5-kfreebsd-amd64-gPYTzl/libffi-
+<br>ruby-0.6.2debian/ext/ffi_c -DRUBY_EXTCONF_H=\"extconf.h\"&nbsp;&nbsp;&nbsp; -fPIC -
+<br>fno-strict-aliasing -g -g -O2&nbsp; -fPIC&nbsp;&nbsp; -c Variadic.c
+<br>In file included from /usr/include/sys/types.h:217,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from /usr/include/sys/param.h:42,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from Variadic.c:28:
+<br>./endian.h:37:4: error: #error "Cannot determine the endian-ness of
+<br>this platform"
+<br>make[1]: *** [Variadic.o] Error 1
+<br>make[1]: Leaving directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+<br>kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c
+<br>
+<br>
+<br>
+<br></blockquote>
+<br>
+<br>
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>To unsubscribe, reply using "remove me" as the subject.
+<br></div></div></body>
+</html>
+</table></div>

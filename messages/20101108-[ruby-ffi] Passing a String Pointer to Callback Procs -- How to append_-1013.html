@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Passing a String Pointer to Callback Procs -- How to append?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Passing a String Pointer to Callback Procs -- How to append?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Scott Gonyea <gonyea@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/8/10 6:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm having a really painful time figuring this out.  I jumped onto
+what NoKarma had already begun, with his curl-ffi library, and started
+running with it.  I'm trying to emulate the ruby extension layers used
+in some different Curl gems (Streamly and Patron, atm).
+
+Curl wants you to pass a method reference, which it will then
+callback.  You can see examples used in Streamly and Patron:
+
+Streamly, lines 29-83:
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29">https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29</a>
+
+Patron, lines 59-75 (Much simpler):
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c#L59">https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c#L59</a>
+
+Basically, they're allocating a buffer and providing a callback + that
+buffer, which is sent to the callback. I've added this callback to
+CurlFFI and I have the Proc working, etc... But I cannot seem to get
+it to append to the string.
+
+Callback Additions to CurlFFI:
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923</a>
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926">https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926</a>
+
+I'll delete 926, as it's not necessary (I think).
+
+Procs that get called:
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly/blob/master/lib/streamly/request.rb#L11">https://github.com/aitrus/streamly/blob/master/lib/streamly/request.rb#L11</a>
+
+I suppose the last resort can be to call C libraries, allocating /
+freeing a string.  But that makes me think I'm doing it wrong.  I
+can't imagine that I'm doing anything overly interesting with my code.
+
+Scott
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,69 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.193.169 with SMTP id hp9cs33026igc;
+        Sun, 6 Nov 2011 12:03:24 -0800 (PST)
+Received: by 10.229.247.206 with SMTP id md14mr2770489qcb.94.1320609803063;
+        Sun, 06 Nov 2011 12:03:23 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIDDkti1HBCG0Nv1BBoEEEPVHQ@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id s2si3149392qcx.65.2011.11.06.12.03.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 06 Nov 2011 12:03:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIDDkti1HBCG0Nv1BBoEEEPVHQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIDDkti1HBCG0Nv1BBoEEEPVHQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCIDDkti1HBCG0Nv1BBoEEEPVHQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyl16 with SMTP id 16sf4604563qyl.7
+        for <headius@headius.com>; Sun, 06 Nov 2011 12:03:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=9XB+nu+SIUwJQDyycTc8u/1W1p+KhUqqvbJGz9Ouq/Y=;
+        b=yDdNUkx7jX5POrIbzTCLCBlGOuFXeQArCmkpFYD0RZbE3r1Ib7SxBs585CIharZmOn
+         CvvOlRxHest3b32mjB5w4EQ68DyQNhSne3qCE1Y2Mo+tZcZZ6yiJSfjVKjS0TArk8cXX
+         HOlwhCSIeoZi0yuBKjFW5OYJWXehJ954tws+s=
+Received: by 10.229.47.193 with SMTP id o1mr555418qcf.19.1320609798565;
+        Sun, 06 Nov 2011 12:03:18 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.203.195 with SMTP id fj3ls7735732qab.5.gmail; Sun, 06 Nov
+ 2011 12:03:18 -0800 (PST)
+Received: by 10.224.111.129 with SMTP id s1mr9148899qap.3.1320609798020;
+        Sun, 06 Nov 2011 12:03:18 -0800 (PST)
+Received: by 10.224.137.13 with SMTP id u13msqat;
+        Sun, 6 Nov 2011 08:59:21 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.52.27.240 with SMTP id w16mr4282370vdg.20.1320598761679; Sun,
+ 06 Nov 2011 08:59:21 -0800 (PST)
+Received: by g7g2000vbv.googlegroups.com with HTTP; Sun, 6 Nov 2011 08:59:21
+ -0800 (PST)
+Date: Sun, 6 Nov 2011 08:59:21 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20111106 Firefox/7.0.1,gzip(gfe)
+Message-ID: <fea43bfd-4e67-4526-a166-b1925cf56b96@g7g2000vbv.googlegroups.com>
+Subject: [ruby-ffi] Catching signals with trap.
+From: "meh." <meh.ffff@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: meh.ffff@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm writing a window manager in Ruby using my x11 binding/wrapper in
+ruby-ffi but I'm having a small problem with signals.
+
+If the process is in a XNextEvent waiting for a new event and I send a
+signal to the process it doesn't call the block until an event
+arrives.
+
+Is there a way to make signals work within the ruby-ffi API or do I
+have to bind to the signal function and do it ugly?

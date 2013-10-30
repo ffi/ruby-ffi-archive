@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/09 7:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode">
+<br>On 11/11/2009 01:47 AM, <a class="moz-txt-link-abbreviated" href="mailto:hedgehogshiatus@gmail.com">hedgehogshiatus@gmail.com</a> wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>
+<br>On Wed, Nov 11, 2009 at 4:10 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a>
+<br>wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>2009/11/11 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+<br><blockquote type=cite style="color: #000000;">Passing a Single String by Reference
+<br>-------------------------------------
+<br>
+<br>Assume the method:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int aug_get(const augeas *aug, const char *path, const char
+<br>**value);
+<br></blockquote>
+<br>[...]
+<br><blockquote type=cite style="color: #000000;">Passing an Array of Strings back by Reference
+<br>----------------------------------------------
+<br>
+<br>int aug_match(const augeas *aug, const char *path, char ***matches);
+<br></blockquote>
+<br>Since these are pretty common things in C (well, in those types of
+<br>apis), I've been wondering if adding a higher-level wrapper would make
+<br>it easier to read/less confusing to write.
+<br>
+<br>e.g.
+<br>&nbsp;ref = FFI::Reference.new :string
+<br>&nbsp;AugeasLib.aug_get("foo", "/bar", ref)
+<br>&nbsp;str = ref.get&nbsp; # returns a string, or nil for null
+<br>&nbsp;# do stuff with str as you would expect
+<br>
+<br>and
+<br>&nbsp;ref = FFI::Reference.new :string_array # or maybe Reference.new [
+<br>:string ]
+<br></blockquote>
+<br>My vote would be for such a 'new' to accept (valid) vanilla Ruby:
+<br>
+<br>ref = FFI::Reference.new Array.new(String.new)
+<br>str = ref.get # returns "" for nil values
+<br>and
+<br>ref = FFI::Reference.new Array.new(sz, String.new) str = ref.get #
+<br>returns array of size sz, with "" for nil values
+<br>and
+<br>ref = FFI::Reference.new Array.[]('a','b','z') # returns array of size
+<br>3, with 'a','b' or 'z' for nil values
+<br>
+<br>not sure if that makes sense?
+<br>Cheers
+<br></blockquote>
+<br>
+<br>+1
+<br>
+<br>-- bk
+<br>
+<br></div></body>
+</html>
+</table></div>

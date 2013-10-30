@@ -1,0 +1,116 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.2.196 with SMTP id 4cs105482law;
+        Tue, 30 Aug 2011 00:25:00 -0700 (PDT)
+Received: by 10.52.21.9 with SMTP id r9mr3950775vde.106.1314689099621;
+        Tue, 30 Aug 2011 00:24:59 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxDFoPLyBBoE5Cg5WA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id bl8si3546063vcb.13.2011.08.30.00.24.58
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 30 Aug 2011 00:24:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDFoPLyBBoE5Cg5WA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDFoPLyBBoE5Cg5WA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxDFoPLyBBoE5Cg5WA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyg14 with SMTP id 14sf4623061qyg.7
+        for <headius@headius.com>; Tue, 30 Aug 2011 00:24:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=x50ZxoaMubPiitJM3SWRsLw+4EwqW8QW0clX6fXrm0U=;
+        b=ariuDajNZygIk/sJr9qdL6evF/GgiFIBz0J9eYjTSmotsmppCo8wtf9JeOQIl/JDVf
+         lT+kFQe5yFTLv9G99bJZe8IueIHXQm0WI6qYWZn+pfjAL2LsQot/eL2XAZij9V6/BwC0
+         Ij5vT4+T7c2fHGwj0pzk9LPfPTgPqyYo9FIyE=
+Received: by 10.224.201.131 with SMTP id fa3mr255629qab.46.1314689093073;
+        Tue, 30 Aug 2011 00:24:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.219.8 with SMTP id hs8ls4269949qab.1.gmail; Tue, 30 Aug
+ 2011 00:24:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.18.130 with SMTP id w2mr255595qaa.37.1314689092671; Tue,
+ 30 Aug 2011 00:24:52 -0700 (PDT)
+Received: by o9g2000vbo.googlegroups.com with HTTP; Tue, 30 Aug 2011 00:24:52
+ -0700 (PDT)
+Date: Tue, 30 Aug 2011 00:24:52 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <493bc804-4164-4f16-ae0f-2e417e93f890@o9g2000vbo.googlegroups.com>
+Subject: [ruby-ffi] AutoPointer#free incorrect?
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Unless I'm missing something, it looks to me that the implementation
+of #free is not correct.  I am wrapping FreeImage and have code like
+this:
+
+class Bitmap
+    def self.release(ptr) #:nodoc:
+      FreeImage.FreeImage_Unload(ptr)
+    end
+end
+
+Now I load an image:
+
+ bitmap = load_some_bitmap
+
+In time it will get GC'ed, but let's say I want to force the issue:
+
+  bitmap.free
+
+That calls AutoPointer#free
+
+    def free
+      @releaser.free
+    end
+
+Which in turn calls Releaser#free:
+
+      def free
+        raise RuntimeError.new("pointer already freed") unless @ptr
+        @autorelease = false
+        @ptr = nil
+        @proc = nil
+      end
+
+Notice that the bitmap was not freed.  Worse, the bitmap will never be
+freed because @autorelease is now false. Take a look at the finalizer:
+
+    class DefaultReleaser < Releaser
+      def call(*args)
+        @proc.release(@ptr) if @autorelease && @ptr
+      end
+    end
+
+I think the free method should be:
+
+      def free
+        raise RuntimeError.new("pointer already freed") unless @ptr
+        @proc.release(@ptr)
+        @autorelease = false
+        @ptr = nil
+        @proc = nil
+      end
+
+Thanks,
+
+Charlie

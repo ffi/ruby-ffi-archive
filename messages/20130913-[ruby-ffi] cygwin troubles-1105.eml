@@ -1,0 +1,708 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp110899laa;
+        Fri, 13 Sep 2013 19:09:38 -0700 (PDT)
+X-Received: by 10.236.27.196 with SMTP id e44mr15855177yha.16.1379124578044;
+        Fri, 13 Sep 2013 19:09:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBCJLDME6YUCRBYMKZ6IQKGQEOAMAMUI@googlegroups.com>
+Received: from mail-ye0-x240.google.com (mail-ye0-x240.google.com [2607:f8b0:4002:c04::240])
+        by mx.google.com with ESMTPS id i39si7120157yhq.35.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Fri, 13 Sep 2013 19:09:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBCJLDME6YUCRBYMKZ6IQKGQEOAMAMUI@googlegroups.com designates 2607:f8b0:4002:c04::240 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBCJLDME6YUCRBYMKZ6IQKGQEOAMAMUI@googlegroups.com designates 2607:f8b0:4002:c04::240 as permitted sender) smtp.mail=ruby-ffi+bncBCJLDME6YUCRBYMKZ6IQKGQEOAMAMUI@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ye0-f192.google.com with SMTP id m5sf393361yen.9
+        for <headius@headius.com>; Fri, 13 Sep 2013 19:09:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=sEu6NTp/CPSSKAkfTZw/ZG3JRPypXM1vDm9aJye2QYg=;
+        b=JWIx5nnD6FmlW0TPywyxwoVo4xUvifVr7AnfPaA0Uy503relkWxMcS2fBZVPFeR0xD
+         eeNJmiO7P9s6NUExOW1sFB0GLI2H8KsVz4iIDqsDSR1/gvWrNnd25cJI97Mav4N41BrL
+         3rt/W6E4KdifjgbYTp1ZWajHX4oQgE0Nug9vhV3l9EYzNL5HeD30mxlX94G60QNmz5Zy
+         DusM98vvtZ+MUrYId6Da7cB7yHrj0p+3JF8Ib2aeHLM2MD5tc27Kkvao+a8fAMdJ3tYk
+         vIaGqU7KT3hm2sCm8lOZG+xEw5Pxr7eN2JSwz22V0NZxesdERGve037IhfnSaRhcGfsL
+         WgWA==
+X-Received: by 10.50.44.67 with SMTP id c3mr236862igm.13.1379124577576;
+        Fri, 13 Sep 2013 19:09:37 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.39.106 with SMTP id o10ls536836igk.8.gmail; Fri, 13 Sep
+ 2013 19:09:37 -0700 (PDT)
+X-Received: by 10.42.253.74 with SMTP id mz10mr8710811icb.28.1379124577135;
+        Fri, 13 Sep 2013 19:09:37 -0700 (PDT)
+Received: by 10.50.73.1 with SMTP id h1msigv;
+        Fri, 13 Sep 2013 10:09:20 -0700 (PDT)
+X-Received: by 10.49.94.41 with SMTP id cz9mr52985qeb.26.1379092159871;
+        Fri, 13 Sep 2013 10:09:19 -0700 (PDT)
+Date: Fri, 13 Sep 2013 10:09:19 -0700 (PDT)
+From: Andrew Rothstein <andrew.rothstein@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <d828fc29-5ef8-42aa-9970-85799bc9ad16@googlegroups.com>
+Subject: [ruby-ffi] cygwin troubles
+MIME-Version: 1.0
+X-Original-Sender: andrew.rothstein@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2131_30753679.1379092159200"
+
+------=_Part_2131_30753679.1379092159200
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Just installed the 64 bit cygwin and was installing ffi with gem and ran=20
+into the following problem...
+
+gcc -shared -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o=20
+ClosurePool.o DataConverter.o DynamicLibrary.o ffi.o Function.o=20
+FunctionInfo.o LastError.o LongDouble.o MappedType.o MemoryPointer.o=20
+MethodHandle.o Platform.o Pointer.o Struct.o StructByReference.o=20
+StructByValue.o StructLayout.o Thread.o Type.o Types.o Variadic.o -L.=20
+-L/usr/lib -L.  -Wl,--export-all-symbols=20
+-Wl,--enable-auto-image-base,--enable-auto-import  =20
+ "/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/.=
+libs/libffi_convenience.a=20
+-lruby191  -lpthread -lrt -ldl -lcrypt
+Call.o: In function `call_blocking_function':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285: undefined=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285:(.text+0x94):=
+=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+Call.o: In function `rbffi_CallFunction':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369: undefined=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369:(.text+0xa29):=
+=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+Variadic.o: In function `variadic_invoke':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242: undefined=
+=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242:(.text+0x3=
+6d):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.lib=
+s/libffi_convenience.a(prep_cif.o):=20
+In function `ffi_prep_cif':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162=
+:=20
+undefined reference to `ffi_prep_cif_machdep'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162=
+:(.text+0x272):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_prep_cif_machdep'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.lib=
+s/libffi_convenience.a(prep_cif.o):=20
+In function `ffi_prep_closure':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:174=
+:=20
+undefined reference to `ffi_prep_closure_loc'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:174=
+:(.text+0x2b7):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_prep_closure_loc'
+collect2: error: ld returned 1 exit status
+Makefile:214: recipe for target `ffi_c.so' failed
+make: *** [ffi_c.so] Error 1
+
+I suspect the ffi_call symbol would be defined=20
+in "/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"=
+/.libs/libffi_convenience.a.
+
+$ nm=20
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.lib=
+s/libffi_convenience.a=20
+| fgrep ffi_call
+00000000000001f4 t .ffi_call_win64_end
+0000000000000080 T ffi_call_win64
+
+Looks like some sort of shim has fallen out. Any suggestions?
+
+regards, Andrew
+
+Full output:
+
+make -C=20
+"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"
+make[1]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+make "AR_FLAGS=3D"  "CC_FOR_BUILD=3D"  "CFLAGS=3D-Wall -fexceptions"  "CXXF=
+LAGS=3D"=20
+ "CFLAGS_FOR_BUILD=3D"  "CFLAGS_FOR_TARGET=3D"  "INSTALL=3D/usr/bin/install=
+ -c"=20
+ "INSTALL_DATA=3D/usr/bin/install -c -m 644"=20
+ "INSTALL_PROGRAM=3D/usr/bin/install -c"  "INSTALL_SCRIPT=3D/usr/bin/instal=
+l=20
+-c"  "JC1FLAGS=3D"  "LDFLAGS=3D"  "LIBCFLAGS=3D"  "LIBCFLAGS_FOR_TARGET=3D"=
+=20
+ "MAKE=3Dmake"  "MAKEINFO=3D/bin/sh=20
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/missing --run=20
+makeinfo "  "PICFLAG=3D"  "PICFLAG_FOR_TARGET=3D"  "RUNTESTFLAGS=3D"=20
+ "SHELL=3D/bin/sh"  "exec_prefix=3D/usr/local"  "infodir=3D/usr/local/share=
+/info"=20
+ "libdir=3D/usr/local/lib"  "mandir=3D/usr/local/share/man"=20
+ "prefix=3D/usr/local"  "AR=3Dar"  "AS=3Das"  "CC=3Dgcc"  "CXX=3Dg++"=20
+ "LD=3D/usr/x86_64-pc-cygwin/bin/ld.exe"  "NM=3D/usr/bin/nm -B"=20
+ "RANLIB=3Dranlib"  "DESTDIR=3D" all-recursive
+make[2]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+Making all in include
+make[3]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/inc=
+lude'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/inc=
+lude'
+Making all in testsuite
+make[3]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/tes=
+tsuite'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/tes=
+tsuite'
+Making all in man
+make[3]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/man=
+'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/man=
+'
+make[3]: Entering directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+make[3]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+make[2]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+make[1]: Leaving directory=20
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o AbstractMemory.o -c AbstractMemory.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o ArrayType.o -c ArrayType.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Buffer.o -c Buffer.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Call.o -c Call.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o ClosurePool.o -c ClosurePool.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o DataConverter.o -c DataConverter.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o DynamicLibrary.o -c DynamicLibrary.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o ffi.o -c ffi.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Function.o -c Function.c
+Function.c: In function =91callback_invoke=92:
+Function.c:470:9: warning: passing argument 1 of =91rb_thread_call_with_gvl=
+=92=20
+from incompatible pointer type [enabled by default]
+         rb_thread_call_with_gvl(callback_with_gvl, &cb);
+         ^
+Function.c:93:14: note: expected =91void * (*)(void *)=92 but argument is o=
+f=20
+type =91VALUE (*)(void *)=92
+ extern void *rb_thread_call_with_gvl(void *(*func)(void *), void *data1);
+              ^
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o FunctionInfo.o -c FunctionInfo.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o LastError.o -c LastError.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o LongDouble.o -c LongDouble.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o MappedType.o -c MappedType.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o MemoryPointer.o -c MemoryPointer.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o MethodHandle.o -c MethodHandle.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Platform.o -c Platform.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Pointer.o -c Pointer.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Struct.o -c Struct.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o StructByReference.o -c StructByReference.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o StructByValue.o -c StructByValue.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o StructLayout.o -c StructLayout.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Thread.o -c Thread.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Type.o -c Type.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Types.o -c Types.c
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin=20
+-I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I.=20
+-I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/=
+include=20
+-DRUBY_EXTCONF_H=3D\"extconf.h\"    -ggdb -O2 -pipe   -fno-strict-aliasing =
+ =20
+-o Variadic.o -c Variadic.c
+rm -f ffi_c.so
+gcc -shared -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o=20
+ClosurePool.o DataConverter.o DynamicLibrary.o ffi.o Function.o=20
+FunctionInfo.o LastError.o LongDouble.o MappedType.o MemoryPointer.o=20
+MethodHandle.o Platform.o Pointer.o Struct.o StructByReference.o=20
+StructByValue.o StructLayout.o Thread.o Type.o Types.o Variadic.o -L.=20
+-L/usr/lib -L.  -Wl,--export-all-symbols=20
+-Wl,--enable-auto-image-base,--enable-auto-import  =20
+ "/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/.=
+libs/libffi_convenience.a=20
+-lruby191  -lpthread -lrt -ldl -lcrypt
+Call.o: In function `call_blocking_function':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285: undefined=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285:(.text+0x94):=
+=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+Call.o: In function `rbffi_CallFunction':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369: undefined=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369:(.text+0xa29):=
+=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+Variadic.o: In function `variadic_invoke':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242: undefined=
+=20
+reference to `ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242:(.text+0x3=
+6d):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_call'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.lib=
+s/libffi_convenience.a(prep_cif.o):=20
+In function `ffi_prep_cif':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162=
+:=20
+undefined reference to `ffi_prep_cif_machdep'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162=
+:(.text+0x272):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_prep_cif_machdep'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.lib=
+s/libffi_convenience.a(prep_cif.o):=20
+In function `ffi_prep_closure':
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:174=
+:=20
+undefined reference to `ffi_prep_closure_loc'
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:174=
+:(.text+0x2b7):=20
+relocation truncated to fit: R_X86_64_PC32 against undefined symbol=20
+`ffi_prep_closure_loc'
+collect2: error: ld returned 1 exit status
+Makefile:214: recipe for target `ffi_c.so' failed
+make: *** [ffi_c.so] Error 1
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_2131_30753679.1379092159200
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Just installed the 64 bit cygwin and was installing f=
+fi with gem and ran into the following problem...</div><div><br></div><div>=
+gcc -shared -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o Closur=
+ePool.o DataConverter.o DynamicLibrary.o ffi.o Function.o FunctionInfo.o La=
+stError.o LongDouble.o MappedType.o MemoryPointer.o MethodHandle.o Platform=
+.o Pointer.o Struct.o StructByReference.o StructByValue.o StructLayout.o Th=
+read.o Type.o Types.o Variadic.o -L. -L/usr/lib -L. &nbsp;-Wl,--export-all-=
+symbols -Wl,--enable-auto-image-base,--enable-auto-import &nbsp; &nbsp;"/us=
+r/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/.libs/=
+libffi_convenience.a -lruby191 &nbsp;-lpthread -lrt -ldl -lcrypt<br></div><=
+div>Call.o: In function `call_blocking_function':</div><div>/usr/lib/ruby/g=
+ems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285: undefined reference to `ffi_=
+call'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:28=
+5:(.text+0x94): relocation truncated to fit: R_X86_64_PC32 against undefine=
+d symbol `ffi_call'</div><div>Call.o: In function `rbffi_CallFunction':</di=
+v><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369: undefi=
+ned reference to `ffi_call'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9=
+.0/ext/ffi_c/Call.c:369:(.text+0xa29): relocation truncated to fit: R_X86_6=
+4_PC32 against undefined symbol `ffi_call'</div><div>Variadic.o: In functio=
+n `variadic_invoke':</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/=
+ffi_c/Variadic.c:242: undefined reference to `ffi_call'</div><div>/usr/lib/=
+ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242:(.text+0x36d): relo=
+cation truncated to fit: R_X86_64_PC32 against undefined symbol `ffi_call'<=
+/div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-c=
+ygwin/.libs/libffi_convenience.a(prep_cif.o): In function `ffi_prep_cif':</=
+div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_=
+cif.c:162: undefined reference to `ffi_prep_cif_machdep'</div><div>/usr/lib=
+/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162:(.text+=
+0x272): relocation truncated to fit: R_X86_64_PC32 against undefined symbol=
+ `ffi_prep_cif_machdep'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/e=
+xt/ffi_c/libffi-x86_64-cygwin/.libs/libffi_convenience.a(prep_cif.o): In fu=
+nction `ffi_prep_closure':</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.=
+0/ext/ffi_c/libffi/src/prep_cif.c:174: undefined reference to `ffi_prep_clo=
+sure_loc'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libff=
+i/src/prep_cif.c:174:(.text+0x2b7): relocation truncated to fit: R_X86_64_P=
+C32 against undefined symbol `ffi_prep_closure_loc'</div><div>collect2: err=
+or: ld returned 1 exit status</div><div>Makefile:214: recipe for target `ff=
+i_c.so' failed</div><div>make: *** [ffi_c.so] Error 1</div><div><br></div><=
+div>I suspect the ffi_call symbol would be defined in&nbsp;"/usr/lib/ruby/g=
+ems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/.libs/libffi_conve=
+nience.a.</div><div><br></div><div><div>$ nm /usr/lib/ruby/gems/1.9.1/gems/=
+ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.libs/libffi_convenience.a | fgrep=
+ ffi_call</div><div>00000000000001f4 t .ffi_call_win64_end</div><div>000000=
+0000000080 T ffi_call_win64</div></div><div><br></div><div>Looks like some =
+sort of shim has fallen out. Any suggestions?</div><div><br></div><div>rega=
+rds, Andrew</div><div><br></div><div>Full output:</div><div><br></div><div>=
+<div>make -C "/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_=
+64-cygwin"</div><div>make[1]: Entering directory `/usr/lib/ruby/gems/1.9.1/=
+gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'</div><div>make "AR_FLAGS=3D"=
+ &nbsp;"CC_FOR_BUILD=3D" &nbsp;"CFLAGS=3D-Wall -fexceptions" &nbsp;"CXXFLAG=
+S=3D" &nbsp;"CFLAGS_FOR_BUILD=3D" &nbsp;"CFLAGS_FOR_TARGET=3D" &nbsp;"INSTA=
+LL=3D/usr/bin/install -c" &nbsp;"INSTALL_DATA=3D/usr/bin/install -c -m 644"=
+ &nbsp;"INSTALL_PROGRAM=3D/usr/bin/install -c" &nbsp;"INSTALL_SCRIPT=3D/usr=
+/bin/install -c" &nbsp;"JC1FLAGS=3D" &nbsp;"LDFLAGS=3D" &nbsp;"LIBCFLAGS=3D=
+" &nbsp;"LIBCFLAGS_FOR_TARGET=3D" &nbsp;"MAKE=3Dmake" &nbsp;"MAKEINFO=3D/bi=
+n/sh /usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/missing --run=
+ makeinfo " &nbsp;"PICFLAG=3D" &nbsp;"PICFLAG_FOR_TARGET=3D" &nbsp;"RUNTEST=
+FLAGS=3D" &nbsp;"SHELL=3D/bin/sh" &nbsp;"exec_prefix=3D/usr/local" &nbsp;"i=
+nfodir=3D/usr/local/share/info" &nbsp;"libdir=3D/usr/local/lib" &nbsp;"mand=
+ir=3D/usr/local/share/man" &nbsp;"prefix=3D/usr/local" &nbsp;"AR=3Dar" &nbs=
+p;"AS=3Das" &nbsp;"CC=3Dgcc" &nbsp;"CXX=3Dg++" &nbsp;"LD=3D/usr/x86_64-pc-c=
+ygwin/bin/ld.exe" &nbsp;"NM=3D/usr/bin/nm -B" &nbsp;"RANLIB=3Dranlib" &nbsp=
+;"DESTDIR=3D" all-recursive</div><div>make[2]: Entering directory `/usr/lib=
+/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'</div><div>M=
+aking all in include</div><div>make[3]: Entering directory `/usr/lib/ruby/g=
+ems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/include'</div><div>=
+make[3]: Nothing to be done for `all'.</div><div>make[3]: Leaving directory=
+ `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/in=
+clude'</div><div>Making all in testsuite</div><div>make[3]: Entering direct=
+ory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin=
+/testsuite'</div><div>make[3]: Nothing to be done for `all'.</div><div>make=
+[3]: Leaving directory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/l=
+ibffi-x86_64-cygwin/testsuite'</div><div>Making all in man</div><div>make[3=
+]: Entering directory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/li=
+bffi-x86_64-cygwin/man'</div><div>make[3]: Nothing to be done for `all'.</d=
+iv><div>make[3]: Leaving directory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0=
+/ext/ffi_c/libffi-x86_64-cygwin/man'</div><div>make[3]: Entering directory =
+`/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'</d=
+iv><div>make[3]: Leaving directory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0=
+/ext/ffi_c/libffi-x86_64-cygwin'</div><div>make[2]: Leaving directory `/usr=
+/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin'</div><d=
+iv>make[1]: Leaving directory `/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/=
+ffi_c/libffi-x86_64-cygwin'</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86=
+_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.=
+1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cy=
+gwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe=
+ &nbsp; -fno-strict-aliasing &nbsp; -o AbstractMemory.o -c AbstractMemory.c=
+</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/r=
+uby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems=
+/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCON=
+F_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasin=
+g &nbsp; -o ArrayType.o -c ArrayType.c</div><div>gcc -I. -I/usr/include/rub=
+y-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/includ=
+e/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libff=
+i-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggd=
+b -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Buffer.o -c Buffer.c</div=
+><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1=
+.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.=
+1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=
+=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &=
+nbsp; -o Call.o -c Call.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_6=
+4-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 =
+-I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygw=
+in"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &=
+nbsp; -fno-strict-aliasing &nbsp; -o ClosurePool.o -c ClosurePool.c</div><d=
+iv>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.=
+1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/g=
+ems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"=
+extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp;=
+ -o DataConverter.o -c DataConverter.c</div><div>gcc -I. -I/usr/include/rub=
+y-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/includ=
+e/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libff=
+i-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggd=
+b -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o DynamicLibrary.o -c Dynam=
+icLibrary.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/us=
+r/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/li=
+b/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -D=
+RUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-str=
+ict-aliasing &nbsp; -o ffi.o -c ffi.c</div><div>gcc -I. -I/usr/include/ruby=
+-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include=
+/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi=
+-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb=
+ -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Function.o -c Function.c</=
+div><div>Function.c: In function =91callback_invoke=92:</div><div>Function.=
+c:470:9: warning: passing argument 1 of =91rb_thread_call_with_gvl=92 from =
+incompatible pointer type [enabled by default]</div><div>&nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;rb_thread_call_with_gvl(callback_with_gvl, &amp;cb);</div><=
+div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;^</div><div>Function.c:93:14: note: e=
+xpected =91void * (*)(void *)=92 but argument is of type =91VALUE (*)(void =
+*)=92</div><div>&nbsp;extern void *rb_thread_call_with_gvl(void *(*func)(vo=
+id *), void *data1);</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; ^</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/inc=
+lude/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/rub=
+y/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_=
+EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-a=
+liasing &nbsp; -o FunctionInfo.o -c FunctionInfo.c</div><div>gcc -I. -I/usr=
+/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -=
+I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext=
+/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp=
+; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o LastError.o -=
+c LastError.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/=
+usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/=
+lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include =
+-DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-s=
+trict-aliasing &nbsp; -o LongDouble.o -c LongDouble.c</div><div>gcc -I. -I/=
+usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backwar=
+d -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/=
+ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &n=
+bsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o MappedType=
+.o -c MappedType.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwi=
+n -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"=
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/inc=
+lude -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -=
+fno-strict-aliasing &nbsp; -o MemoryPointer.o -c MemoryPointer.c</div><div>=
+gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/r=
+uby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems=
+/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"ext=
+conf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o=
+ MethodHandle.o -c MethodHandle.c</div><div>gcc -I. -I/usr/include/ruby-1.9=
+.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/rub=
+y-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86=
+_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2=
+ -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Platform.o -c Platform.c</div>=
+<div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.=
+9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1=
+/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D=
+\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbs=
+p; -o Pointer.o -c Pointer.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x8=
+6_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9=
+.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-c=
+ygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pip=
+e &nbsp; -fno-strict-aliasing &nbsp; -o Struct.o -c Struct.c</div><div>gcc =
+-I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/=
+backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi=
+-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf=
+.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Str=
+uctByReference.o -c StructByReference.c</div><div>gcc -I. -I/usr/include/ru=
+by-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/inclu=
+de/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libf=
+fi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-gg=
+db -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o StructByValue.o -c Struc=
+tByValue.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr=
+/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib=
+/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DR=
+UBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-stri=
+ct-aliasing &nbsp; -o StructLayout.o -c StructLayout.c</div><div>gcc -I. -I=
+/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backwa=
+rd -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0=
+/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &=
+nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Thread.o =
+-c Thread.c</div><div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/us=
+r/include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/li=
+b/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -D=
+RUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-str=
+ict-aliasing &nbsp; -o Type.o -c Type.c</div><div>gcc -I. -I/usr/include/ru=
+by-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.9.1/ruby/backward -I/usr/inclu=
+de/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libf=
+fi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D\"extconf.h\" &nbsp; &nbsp;-gg=
+db -O2 -pipe &nbsp; -fno-strict-aliasing &nbsp; -o Types.o -c Types.c</div>=
+<div>gcc -I. -I/usr/include/ruby-1.9.1/x86_64-cygwin -I/usr/include/ruby-1.=
+9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I"/usr/lib/ruby/gems/1.9.1=
+/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/include -DRUBY_EXTCONF_H=3D=
+\"extconf.h\" &nbsp; &nbsp;-ggdb -O2 -pipe &nbsp; -fno-strict-aliasing &nbs=
+p; -o Variadic.o -c Variadic.c</div><div>rm -f ffi_c.so</div><div>gcc -shar=
+ed -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o ClosurePool.o D=
+ataConverter.o DynamicLibrary.o ffi.o Function.o FunctionInfo.o LastError.o=
+ LongDouble.o MappedType.o MemoryPointer.o MethodHandle.o Platform.o Pointe=
+r.o Struct.o StructByReference.o StructByValue.o StructLayout.o Thread.o Ty=
+pe.o Types.o Variadic.o -L. -L/usr/lib -L. &nbsp;-Wl,--export-all-symbols -=
+Wl,--enable-auto-image-base,--enable-auto-import &nbsp; &nbsp;"/usr/lib/rub=
+y/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin"/.libs/libffi_co=
+nvenience.a -lruby191 &nbsp;-lpthread -lrt -ldl -lcrypt<br></div><div>Call.=
+o: In function `call_blocking_function':</div><div>/usr/lib/ruby/gems/1.9.1=
+/gems/ffi-1.9.0/ext/ffi_c/Call.c:285: undefined reference to `ffi_call'</di=
+v><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:285:(.text+=
+0x94): relocation truncated to fit: R_X86_64_PC32 against undefined symbol =
+`ffi_call'</div><div>Call.o: In function `rbffi_CallFunction':</div><div>/u=
+sr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Call.c:369: undefined refer=
+ence to `ffi_call'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ff=
+i_c/Call.c:369:(.text+0xa29): relocation truncated to fit: R_X86_64_PC32 ag=
+ainst undefined symbol `ffi_call'</div><div>Variadic.o: In function `variad=
+ic_invoke':</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Var=
+iadic.c:242: undefined reference to `ffi_call'</div><div>/usr/lib/ruby/gems=
+/1.9.1/gems/ffi-1.9.0/ext/ffi_c/Variadic.c:242:(.text+0x36d): relocation tr=
+uncated to fit: R_X86_64_PC32 against undefined symbol `ffi_call'</div><div=
+>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi-x86_64-cygwin/.li=
+bs/libffi_convenience.a(prep_cif.o): In function `ffi_prep_cif':</div><div>=
+/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162=
+: undefined reference to `ffi_prep_cif_machdep'</div><div>/usr/lib/ruby/gem=
+s/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/prep_cif.c:162:(.text+0x272): r=
+elocation truncated to fit: R_X86_64_PC32 against undefined symbol `ffi_pre=
+p_cif_machdep'</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/=
+libffi-x86_64-cygwin/.libs/libffi_convenience.a(prep_cif.o): In function `f=
+fi_prep_closure':</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi=
+_c/libffi/src/prep_cif.c:174: undefined reference to `ffi_prep_closure_loc'=
+</div><div>/usr/lib/ruby/gems/1.9.1/gems/ffi-1.9.0/ext/ffi_c/libffi/src/pre=
+p_cif.c:174:(.text+0x2b7): relocation truncated to fit: R_X86_64_PC32 again=
+st undefined symbol `ffi_prep_closure_loc'</div><div>collect2: error: ld re=
+turned 1 exit status</div><div>Makefile:214: recipe for target `ffi_c.so' f=
+ailed</div><div>make: *** [ffi_c.so] Error 1</div></div><div><br></div></di=
+v>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_2131_30753679.1379092159200--

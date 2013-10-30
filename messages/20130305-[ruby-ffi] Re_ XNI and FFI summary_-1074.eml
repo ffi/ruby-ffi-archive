@@ -1,0 +1,229 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp89735laf;
+        Mon, 4 Mar 2013 22:02:28 -0800 (PST)
+X-Received: by 10.68.6.167 with SMTP id c7mr34665122pba.24.1362463347558;
+        Mon, 04 Mar 2013 22:02:27 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB4EU22EQKGQE643ZBBY@googlegroups.com>
+Received: from mail-pb0-f63.google.com (mail-pb0-f63.google.com [209.85.160.63])
+        by mx.google.com with ESMTPS id zz9si11802965pbc.179.2013.03.04.22.02.26
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 04 Mar 2013 22:02:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB4EU22EQKGQE643ZBBY@googlegroups.com designates 209.85.160.63 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB4EU22EQKGQE643ZBBY@googlegroups.com designates 209.85.160.63 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB4EU22EQKGQE643ZBBY@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pb0-f63.google.com with SMTP id rp2sf3015672pbb.8
+        for <headius@headius.com>; Mon, 04 Mar 2013 22:02:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=YkugbHSKH+9MBaR73fwOL/JisMyv9Fkn/TCKXA2m984=;
+        b=FX2TkzAnOxQwzT8VNfQeEq9n9oT++G1mD44RNyrdQUbX7VaNpJfrrYLXcUQ5iB3DOk
+         bcLFQi7yuEWs9oIJCu37S3JyW5svHDs/HRnDiLa9ZkouoPRPU3HyplF1Zm29ILzJ877U
+         681IQcgLJ3/fTPHzdsWbwwWGIwojdQej53mELKz2kkGNwYXXu3OhH7w/UPFYKieJkyLR
+         5GWaairkU8JuTjE/gijTYDSWpCyQqfon9gqIxTp34UmNfOrWQA7+9H4wJjMISE1BSjx+
+         +CIn65y1IU1KjP96haYIS94gO6fvU8jcOJ/jgjkS/b+614+YD78UpCUV2kT3ekae/UW2
+         XuzA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=YkugbHSKH+9MBaR73fwOL/JisMyv9Fkn/TCKXA2m984=;
+        b=DlA5AFMpdXfTrFuFv8sTpVZTiVVACUmLwPU9mOt6Px4NAydsDPo/dyN19MUSgUhYnr
+         RTXiWi/YiH7IS7PPaG7gdiNeec1Lqa1gWBDrVwPO8H0L9Q3pa/ITV6FejOVEacQFb/oy
+         BsUg2PP25m0rvRVRE/UX9mjP9Tc/Q1Nn2UPTHaVRwFErlxwyqWURgdW6FvHzc32RGOFY
+         dR7ZvI93KEJJb2LeeoQgD7T/rOz1SbxCGMyMLeLUtBh3RE0dwiwZ23ytUELiVK6ZsqBZ
+         rmfhlaC5Q2+cSh8qQNZY2GCzfTvztvqA3rpaqznKAsIb2hfpd+XFq3t+QKug3t7QYc2w
+         RGBg==
+X-Received: by 10.50.5.244 with SMTP id v20mr921055igv.13.1362463345816;
+        Mon, 04 Mar 2013 22:02:25 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.195.129 with SMTP id ie1ls1060544igc.35.gmail; Mon, 04 Mar
+ 2013 22:02:24 -0800 (PST)
+X-Received: by 10.50.41.166 with SMTP id g6mr915307igl.14.1362463344569;
+        Mon, 04 Mar 2013 22:02:24 -0800 (PST)
+Date: Mon, 4 Mar 2013 22:02:23 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <44565aa1-482b-46f0-82d0-54252070123f@googlegroups.com>
+In-Reply-To: <20130304141214.56d048f0ecfab670176be098@gmail.com>
+References: <20130304141214.56d048f0ecfab670176be098@gmail.com>
+Subject: [ruby-ffi] Re: XNI and FFI summary?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_356_11588625.1362463343884"
+
+------=_Part_356_11588625.1362463343884
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Tuesday, 5 March 2013 05:12:14 UTC+10, Jon wrote:
+
+>
+> When you get a free moment, please provide a quick summary of: 
+>
+>   * XNI's main reason(s) for being 
+>
+
+At the moment, its an experiment in native interface design.  The aim is a 
+stream-lined FFI+ffi-compiler combo, with some hard-coded conventions to 
+make it easier to implement common patterns when writing extensions, whilst 
+avoiding the "gigantic-ball-of-mud" that is the ruby C api.  But, XNI does 
+not try to do everything - since you don't get access to Ruby VM internals, 
+you wouldn't use it for e.g. implementing a new data structure.
+
+This is Jeremy's hitimes gem converted to use FFI+ffi-compiler:
+https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b
+
+and converted to use XNI:
+https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5
+
+The XNI one has a bit less ruby boilerplate (XNI has the concept of a 
+DataObject, which can have instance methods that automagically pass in 
+'self' to native methods).  On the other hand, XNI excises a few FFI 
+concepts - there is no Struct that you can wrap around existing native 
+memory, nor MemoryPointer for generic native memory allocations.
+
+(as to why I used hitimes - its a fairly nicely written cext, it doesn't do 
+anything super-complicated, but would be hard to implement in pure FFI due 
+to the data structures and API calls it needs).
+
+  * when should one prefer XNI over FFI? 
+>
+
+That's a really good question - "when you're unhappy with FFI+ffi-compiler" 
+would be the pithy answer.  FFI isn't going away, so if people are happy 
+with it, then I encourage them to keep using it.  At this point, FFI is 
+stable and works.  On the other hand, if you're writing a gem from scratch, 
+and you're going to end up writing a bunch of ruby boilerplate around a raw 
+FFI api, and you'll need to use ffi-compiler to compile some native shims, 
+then XNI might be worth a look.  At least once it is a bit more stable.
+
+
+  * will XNI always utilize FFI? 
+>
+
+It will always utilize a ffi-like way of interfacing between the ruby VM 
+and the native code (that is part of the design), but it won't always use 
+the FFI gem.  There is a native backend for JRuby-1.7+, and I am currently 
+working on a native CRuby backend.  There could also be a native backend 
+for Topaz that uses ctypes (or whatever the RPython equivalent is).
+ 
+
+>
+> Thanks. 
+>
+> Jon 
+>
+> --- 
+> Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+> http://thecodeshop.github.com | http://jonforums.github.com/ 
+> twitter: @jonforums 
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_356_11588625.1362463343884
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Tuesday, 5 March 2013 05:12:14 UTC+10, Jon  wrote:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;"><br>When you get a free moment, please provide =
+a quick summary of:
+<br>
+<br>&nbsp; * XNI's main reason(s) for being
+<br></blockquote><div><br></div><div>At the moment, its an experiment in na=
+tive interface design. &nbsp;The aim is a stream-lined FFI+ffi-compiler com=
+bo, with some hard-coded conventions to make it easier to implement common =
+patterns when writing extensions, whilst avoiding the "gigantic-ball-of-mud=
+" that is the ruby C api. &nbsp;But, XNI does not try to do everything - si=
+nce you don't get access to Ruby VM internals, you wouldn't use it for e.g.=
+ implementing a new data structure.</div><div><br></div><div>This is Jeremy=
+'s hitimes gem converted to use FFI+ffi-compiler:</div><div>https://github.=
+com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b<br></=
+div><div><br></div><div>and converted to use XNI:</div><div>https://github.=
+com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5<br></=
+div><div><br></div><div>The XNI one has a bit less ruby boilerplate (XNI ha=
+s the concept of a DataObject, which can have instance methods that automag=
+ically pass in 'self' to native methods). &nbsp;On the other hand, XNI exci=
+ses a few FFI concepts - there is no Struct that you can wrap around existi=
+ng native memory, nor MemoryPointer for generic native memory allocations.<=
+/div><div><br></div><div>(as to why I used hitimes - its a fairly nicely wr=
+itten cext, it doesn't do anything super-complicated, but would be hard to =
+implement in pure FFI due to the data structures and API calls it needs).</=
+div><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0;mar=
+gin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&nbsp; * wh=
+en should one prefer XNI over FFI?
+<br></blockquote><div><br></div><div>That's a really good question - "when =
+you're unhappy with FFI+ffi-compiler" would be the pithy answer. &nbsp;FFI =
+isn't going away, so if people are happy with it, then I encourage them to =
+keep using it. &nbsp;At this point, FFI is stable and works. &nbsp;On the o=
+ther hand, if you're writing a gem from scratch, and you're going to end up=
+ writing a bunch of ruby boilerplate around a raw FFI api, and you'll need =
+to use ffi-compiler to compile some native shims, then XNI might be worth a=
+ look. &nbsp;At least once it is a bit more stable.</div><div><br></div><di=
+v><br></div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-lef=
+t: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&nbsp; * will XNI =
+always utilize FFI?
+<br></blockquote><div><br></div><div>It will always utilize a ffi-like way =
+of interfacing between the ruby VM and the native code (that is part of the=
+ design), but it won't always use the FFI gem. &nbsp;There is a native back=
+end for JRuby-1.7+, and I am currently working on a native CRuby backend. &=
+nbsp;There could also be a native backend for Topaz that uses ctypes (or wh=
+atever the RPython equivalent is).</div><div>&nbsp;</div><blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;">
+<br>Thanks.
+<br>
+<br>Jon
+<br>
+<br>---
+<br>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br><a href=3D"http://thecodeshop.github.com" target=3D"_blank">http://thec=
+odeshop.github.com</a> | <a href=3D"http://jonforums.github.com/" target=3D=
+"_blank">http://jonforums.github.com/</a>
+<br>twitter: @jonforums
+<br></blockquote>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_356_11588625.1362463343884--

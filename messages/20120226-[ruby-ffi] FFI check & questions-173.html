@@ -1,0 +1,73 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI check &amp; questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI check &amp; questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeffrey Jones <jjones@toppan-f.co.jp></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/26/12 7:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode">Hello all.
+<br>
+<br>I am in the process of looking at using the following library from ruby 
+(<a class="moz-txt-link-freetext" href="http://www.datalogics.com/products/pdf2img/">http://www.datalogics.com/products/pdf2img/</a>) using FFI but have run 
+into a few issues mainly due to my lack of FFI experience and general 
+lack of C++.
+<br>
+<br>This library handles conversion from PDFs to image files. I know about 
+things like ImageMagick and Ghostscript but they do not serve our 
+purposes for various reasons.
+<br>
+<br>Basically I wish to to the following:
+<br>
+<br>1. Read a PDF file in ruby (From a file, database etc.)
+<br>2. Convert the PDF to a jpg image using the above library and get the 
+image data back
+<br>3. Write the image in ruby (Or send_file in an web-app etc.)
+<br>
+<br>There is a C++ example for the above library which does all of these 
+things so what I want to do is replace the file reading / writing with 
+ruby and then call the library functions using FFI.
+<br>
+<br>The following Gist has the example C++ code (Posted with permission) and 
+my Ruby code along side some example output. <a class="moz-txt-link-freetext" href="https://gist.github.com/1920005">https://gist.github.com/1920005</a>
+<br>
+<br>C++ code overview
+<br>Lines 28 - 52 deal with opening a file
+<br>Lines 52 - 70 deal with conversion of the PDF to JPG
+<br>Lines 72 - 85 deal with writing the file (With line 79 actually getting 
+the image data info a memory buffer)
+<br>
+<br>The ruby code also contains the c++ function signatures above their ruby 
+FFI definitions.
+<br>
+<br>On line 22 of the ruby file I have defined the second argument as an 
+:int, this is probably wrong but it suffices for the moment I think. I 
+assume the real value is an Enumeration, struct or something along those 
+lines. It is not documented so I will ask the original developers.
+<br>
+<br>Questions:
+<br>
+<br>1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+this is obviously wrong, does anyone know why? (I assume I have messed 
+something up somewhere)
+<br>
+<br>2. Can anyone see any other obvious mistakes on my part?
+<br>
+<br>Currently the ruby program is accessing the Datalogics library functions 
+directly.&nbsp; Another option would be to create my own c library with a 
+very simple API which calls the datalogics functions.
+<br>
+<br>However while I seem to be able to create linux .so files without 
+trouble I cannot create .dll files (Well, I can but FFI cannot open 
+them, I assume I am missing some windows specific code). If anyone has a 
+super simple windows dll template that I can go from that would be 
+really helpful.
+<br>
+<br>Any advice would be much appreciated.
+<br>
+<br>Regards
+<br>
+<br>Jeff
+<br>
+<br></div></body>
+</html>
+</table></div>

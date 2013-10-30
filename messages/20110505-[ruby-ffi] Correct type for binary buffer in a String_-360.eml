@@ -1,0 +1,134 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs48792agb;
+        Thu, 5 May 2011 05:59:26 -0700 (PDT)
+Received: by 10.236.190.163 with SMTP id e23mr2917014yhn.420.1304600366601;
+        Thu, 05 May 2011 05:59:26 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRCnvoruBBoEstgCcg@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id l64si6040699yhn.15.2011.05.05.05.59.25
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 May 2011 05:59:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRCnvoruBBoEstgCcg@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRCnvoruBBoEstgCcg@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRCnvoruBBoEstgCcg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd10 with SMTP id 10sf5026311gyd.7
+        for <headius@headius.com>; Thu, 05 May 2011 05:59:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=5lhCY1RsKjgGWqew8GRXhMqVHO3fHoExLtstGzyvO54=;
+        b=pZ8mKNQXwhVgArPWnqZ0BXCn6Pkk2zSi+3K6CkjeuENotvdgg2PViCetZtR/z0NDT3
+         lj4ERikItif342v+tr2Ebzf6cCNB2X24RxIRiGs0qvR3vdwz4AX2zPvIs7GWoG+rQcAy
+         Tplkw2xXILfBZ2EsvZ8G1ThvGs3FsHb+SijHo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=Fe3K3s0l2JzO+oCJlYN0tDCKW+lippzipC85zNNhbjsfrwzolbNk4esvC7KozfsOnj
+         4azCPlit34DCjaJgdyPewD4ylukeddqxtrHAt558dYEXt8Dt8cX6IY1bcnOL0nBU2aaX
+         wtyArP4i1fep4Mgg3gzFgHsM77dDUvOKjwvCU=
+Received: by 10.236.78.39 with SMTP id f27mr284653yhe.34.1304600359814;
+        Thu, 05 May 2011 05:59:19 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.135.9 with SMTP id i9ls1494266ybd.4.gmail; Thu, 05 May
+ 2011 05:59:19 -0700 (PDT)
+Received: by 10.150.162.2 with SMTP id k2mr384089ybe.54.1304600359395;
+        Thu, 05 May 2011 05:59:19 -0700 (PDT)
+Received: by 10.150.73.31 with SMTP id v31msyba;
+        Thu, 5 May 2011 05:44:31 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.1.3 with SMTP id d3mr274195ani.4.1304599471727; Thu, 05
+ May 2011 05:44:31 -0700 (PDT)
+Received: by 28g2000yqu.googlegroups.com with HTTP; Thu, 5 May 2011 05:44:31
+ -0700 (PDT)
+Date: Thu, 5 May 2011 05:44:31 -0700 (PDT)
+X-IP: 62.24.245.203
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.57 Safari/534.24,gzip(gfe)
+Message-ID: <2aaf2ff3-2aee-48e5-8f5e-73761774f74c@28g2000yqu.googlegroups.com>
+Subject: [ruby-ffi] Correct type for binary buffer in a String?
+From: candlerb <bcandler100@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: bcandler100@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi, I'm just getting started with FFI. I'd like to check what's the
+right type to use when passing a String as a binary buffer. The
+following code doesn't work:
+
+# (1) built-in way
+require 'socket'
+s = Socket.new(Socket::AF_INET, Socket::SOCK_DGRAM, 0)
+p s.getsockopt(Socket::IPPROTO_IP, Socket::IP_TTL)
+
+# (2) FFI way
+require 'ffi'
+
+module Foo
+  extend FFI::Library
+  ffi_lib 'c'
+  attach_function :getsockopt,
+[:int, :int, :int, :buffer_inout, :size_t], :int
+end
+
+buf = "xxxxxxxx"
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buf.bytesize)  ## NOPE
+p buf
+
+The FFI getsockopt call is returning -1, and the buffer is unchanged.
+(Supplementary question: how do I get at 'errno' in this case?)
+
+It's the same if I use :string or :pointer instead of :buffer_inout.
+
+Clearly this particular getsockopt call doesn't need a buffer_inout,
+but there are cases where getsockopt *does* receive data and return
+results in the same buffer, and ruby's built-in getsockopt doesn't
+support this - http://redmine.ruby-lang.org/issues/4645
+
+Specifically I'm looking at iptables. Sample code from the iptables
+utility is below.
+
+Many thanks,
+
+Brian.
+
+---- libiptc/libiptc.c ----
+
+TC_INIT(const char *tablename)
+{
+...
+        sockfd = socket(TC_AF, SOCK_RAW, IPPROTO_RAW);
+        if (sockfd < 0)
+                return NULL;
+
+retry:
+        s = sizeof(info);
+
+        strcpy(info.name, tablename);
+        if (getsockopt(sockfd, TC_IPPROTO, SO_GET_INFO, &info, &s) <
+0) {
+                close(sockfd);
+                return NULL;
+        }
+
+        DEBUGP("valid_hooks=0x%08x, num_entries=%u, size=%u\n",
+                info.valid_hooks, info.num_entries, info.size);

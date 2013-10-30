@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] building ffi requires bones version == 2.5.1 , fix included</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] building ffi requires bones version == 2.5.1 , fix included</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/31/10 3:42 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>On Tue, Aug 31, 2010 at 5:11 PM, Stephen Bannasch
+<span class="moz-txt-citetags">&gt;</span><a class="moz-txt-link-rfc2396E" href="mailto:stephen.bannasch@deanbrook.org">&lt;stephen.bannasch@deanbrook.org&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Building ffi requires bones version == 2.5.1. Rake tasks won't work if newer
+<span class="moz-txt-citetags">&gt;&gt; </span>versions of Bones are installed.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I've got a very simple patch here:
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/stepheneb/ffi/compare/master...fix-bones">http://github.com/stepheneb/ffi/compare/master...fix-bones</a>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Which is referenced in this issue
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues#issue/29">http://github.com/ffi/ffi/issues#issue/29</a>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>A soft limit like ~&gt; 2.5.1 could be added instead. At least any 2.5.x
+<span class="moz-txt-citetags">&gt;</span>will be considered compatible.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Thoughts?
+</pre></blockquote><pre wrap>
+
+Yes that would work fine also. I didn't because there doesn't appear to be any versions between 2.5.1 and 3.x.x
+
+$ gem list bones -ra
+
+*** REMOTE GEMS ***
+
+bones (3.4.7, 3.4.6, 3.4.5, 3.4.4, 3.4.3, 3.4.2, 3.4.1, 3.4.0, 3.3.0, 3.2.1, 3.2.0, 3.1.3, 3.1.2, 3.1.1, 3.1.0, 3.0.1, 3.0.0, 2.5.1, 2.5.0, 2.4.2, 2.4.1, 2.4.0, 2.3.1, 2.3.0, 2.2.0, 2.1.1, 2.1.0, 2.0.3, 2.0.2, 2.0.1, 2.0.0, 1.3.5, 1.3.4, 1.3.3, 1.3.2, 1.3.1, 1.3.0, 1.2.1, 1.2.0, 1.1.2, 1.1.1, 1.1.0, 1.0.0)
+</pre></div></body>
+</html>
+</table></div>

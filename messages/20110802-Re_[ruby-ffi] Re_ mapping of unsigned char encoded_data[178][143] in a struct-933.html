@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: mapping of unsigned char encoded_data[178][143] in a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: mapping of unsigned char encoded_data[178][143] in a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Dominique Ribaut <domribaut@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/2/11 12:27 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><p>Tanks a lot for a detailed answer :-) <br>
+Dominique </p>
+<p>Den 2. aug. 2011 05.18 skrev &quot;Wayne Meissner&quot; &lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt; følgende:<br type="attribution">&gt; 2D arrays in structs are not supported by FFI - there&#39;s an issue for it <br>
+&gt; (issue #18), but its not exactly a high priority, since only 2 people have <br>&gt; asked for it in the last 2 years.<br>&gt; <br>&gt; You can work around it by declaring a struct type for the array width, then <br>&gt; declaring an array of that struct type.<br>
+&gt; e.g.<br>&gt; <br>&gt; #require &#39;rubygems&#39;<br>&gt; require &#39;ffi&#39;<br>&gt; <br>&gt; class DataArray &lt; FFI::Struct<br>&gt;   layout :array, [ :uchar, 178 ]<br>&gt; <br>&gt;   def [](idx)<br>&gt;     if idx.is_a?(Integer)<br>
+&gt;       self[:array][idx]<br>&gt;     else<br>&gt;       super(idx)<br>&gt;     end<br>&gt;   end<br>&gt; <br>&gt;   def []=(idx, val)<br>&gt;     if idx.is_a?(Integer)<br>&gt;       self[:array][idx] = val<br>&gt;     else<br>
+&gt;       super(idx, val)<br>&gt;     end<br>&gt;   end<br>&gt; end<br>&gt; <br>&gt; class Array2D &lt; FFI::Struct<br>&gt;   layout :encoded_data, [ DataArray, 143 ]<br>&gt; end<br>&gt; <br>&gt; ary = Array2D.new<br>&gt; ary[:encoded_data][0][0] = 0x1<br>
+&gt; ary[:encoded_data][0][1] = 0x2<br>&gt; ary[:encoded_data][0][2] = 0x3<br>&gt; ary[:encoded_data][1][0] = 0x4<br>&gt; ary[:encoded_data][2][0] = 0x5<br>&gt; ary[:encoded_data][3][0] = 0x6<br>&gt; <br>&gt; <br>&gt; puts &quot;ary[:encoded_data][0][0]=#{ary[:encoded_data][0][0]}&quot;<br>
+&gt; puts &quot;ary[:encoded_data][0][1]=#{ary[:encoded_data][0][1]}&quot; <br>&gt; puts &quot;ary[:encoded_data][1][0]=#{ary[:encoded_data][1][0]}&quot;<br>&gt; # idx=178 should correspond to ary[:encoded_data][1][0]<br>
+&gt; puts &quot;ary.pointer.get_char(178)=#{ary.pointer.get_char(178)}&quot;<br>&gt; # idx=356 should correspond to ary[:encoded_data][2][0]<br>&gt; puts &quot;ary.pointer.get_char(356)=#{ary.pointer.get_char(356)}&quot;<br>
+&gt; <br>&gt; <br></p>
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,75 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/2/09 7:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+That does look a bit suspicious.
+
+Given you're packaging for fedora, and fedora has a recent version of
+libffi installed (or can be added as a dependency), you could try
+creating a patch using changeset
+8cbc3f54a875a61e1fb67ac88a25b71940a3ed91
+
+That allows ruby-ffi to build against the system libffi.  Technically
+it always allowed this, but ruby-ffi was a bit overly picky about what
+it wanted from libffi.
+
+You may find you don't even need that patch.  Just having the proper
+libffi-dev packages installed/as dependencies might allow extconf.rb
+to pick it up.
+
+You might also need 1d50e0647ac55e15222f9a6a9d163d7a68022186 to
+properly detect &amp; pass powerpc64 into libtest/GNUmakefile, so it
+builds for the correct arch.
+
+2009/11/3 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So.. I am not a strong C guy. If you check this message, it appears that
+<span class="moz-txt-citetags">&gt; </span>__WORDSIZE is not being set correctly for ppc64. If I look at
+<span class="moz-txt-citetags">&gt; </span>ffi/ext/ffi_c/libffi/configure I see:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>       ppc64-<b class="moz-txt-star"><span class="moz-txt-tag">*</span>linux<span class="moz-txt-tag">*</span></b>|powerpc64-<b class="moz-txt-star"><span class="moz-txt-tag">*</span>linux<span class="moz-txt-tag">*</span></b>)
+<span class="moz-txt-citetags">&gt; </span>         LD="${LD-ld} -m elf32ppclinux"
+<span class="moz-txt-citetags">&gt; </span>         ;;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is this correct? Should it be calling 32 bit libraries
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- bk
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-------- Original Message --------
+<span class="moz-txt-citetags">&gt; </span>Subject: PPC not getting __WORDSIZE set
+<span class="moz-txt-citetags">&gt; </span>Date: Mon, 02 Nov 2009 17:15:50 -0500
+<span class="moz-txt-citetags">&gt; </span>From: Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>
+<span class="moz-txt-citetags">&gt; </span>Reply-To: Development discussions related to Fedora
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-rfc2396E" href="mailto:fedora-devel-list@redhat.com">&lt;fedora-devel-list@redhat.com&gt;</a>
+<span class="moz-txt-citetags">&gt; </span>To: Development discussions related to Fedora <a class="moz-txt-link-rfc2396E" href="mailto:fedora-devel-list@redhat.com">&lt;fedora-devel-list@redhat.com&gt;</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Word of warning.. I am no too familiar with C across platforms.  I am
+<span class="moz-txt-citetags">&gt; </span>trying to package ruby-ffi (spec file is at [1]) and when I do a scratch
+<span class="moz-txt-citetags">&gt; </span>build in Koji [2] it runs fine on x86 but is failing in ppc_64. It
+<span class="moz-txt-citetags">&gt; </span>appears that __WORDSIZE is not being set [3]. I looked at the CFLags for
+<span class="moz-txt-citetags">&gt; </span>the x86_64 and they are the same, so I assumed things would run fine.
+<span class="moz-txt-citetags">&gt; </span>Can anyone point me at what to look at next?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- bk
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>[1] Spec file: <a class="moz-txt-link-freetext" href="http://bkearney.fedorapeople.org/ruby-ffi.spec">http://bkearney.fedorapeople.org/ruby-ffi.spec</a>
+<span class="moz-txt-citetags">&gt; </span>[2] Main Build: <a class="moz-txt-link-freetext" href="http://koji.fedoraproject.org/koji/taskinfo?taskID=1783879">http://koji.fedoraproject.org/koji/taskinfo?taskID=1783879</a>
+<span class="moz-txt-citetags">&gt; </span>[3] Failing Build Log:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://koji.fedoraproject.org/koji/getfile?taskID=1783882&amp;name=build.log">http://koji.fedoraproject.org/koji/getfile?taskID=1783882&amp;name=build.log</a>
+<span class="moz-txt-citetags">&gt; </span>[4] SRPM: <a class="moz-txt-link-freetext" href="http://bkearney.fedorapeople.org/ruby-ffi-0.5.1-1.fc11.src.rpm">http://bkearney.fedorapeople.org/ruby-ffi-0.5.1-1.fc11.src.rpm</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt; </span>fedora-devel-list mailing list
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-abbreviated" href="mailto:fedora-devel-list@redhat.com">fedora-devel-list@redhat.com</a>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://www.redhat.com/mailman/listinfo/fedora-devel-list">https://www.redhat.com/mailman/listinfo/fedora-devel-list</a>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

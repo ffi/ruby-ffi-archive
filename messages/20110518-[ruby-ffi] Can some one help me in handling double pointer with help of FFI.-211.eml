@@ -1,0 +1,75 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs86971agb;
+        Wed, 18 May 2011 07:20:56 -0700 (PDT)
+Received: by 10.68.36.234 with SMTP id t10mr2757146pbj.361.1305728455361;
+        Wed, 18 May 2011 07:20:55 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzBrsjWBBDAq8_uBBoE6ZU0Kg@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id r2si4818484pba.60.2011.05.18.07.20.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 18 May 2011 07:20:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzBrsjWBBDAq8_uBBoE6ZU0Kg@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzBrsjWBBDAq8_uBBoE6ZU0Kg@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzBrsjWBBDAq8_uBBoE6ZU0Kg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf1585850pwj.7
+        for <headius@headius.com>; Wed, 18 May 2011 07:20:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :subject:mime-version:x-original-sender:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=HCRJut+5pf3ZeKXveZ+840o5FOo7aHnXfZdoEdUy04Q=;
+        b=tLNyOyyulwNPWq9DfLAPnsZguDF0VEQA51CtuAI/4rBfWpwW8rSnb9jtm8gVXrG8kO
+         aROryzpJhxum1r0ypm0WDi2jO9Qlb3OOO3FjtzofEUHkHXl1iQUjpm4DNuiZqaL/b48b
+         T0mlglfU8MvRJzV0hsUqEQbEMSrGIioJrnYmI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=2XE7MAgQIrApfqurWiSfCFgpEQw0wPeRUUmGZAasGiVGFRz6hqpIXzN0izAk61oIef
+         8OKG4UtIHLOVdO97iUQk4zQtxgxLI7uCOzX7qR44OPbytKZaA1ShzGkZXJsFzMWDizza
+         1/lhqBar5O/RMjFzmNPGAOIcyePC1BQp7FwXU=
+Received: by 10.142.118.26 with SMTP id q26mr197883wfc.61.1305728448041;
+        Wed, 18 May 2011 07:20:48 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.218.15 with SMTP id q15ls402033wfg.0.gmail; Wed, 18 May
+ 2011 07:20:47 -0700 (PDT)
+Received: by 10.142.62.31 with SMTP id k31mr187208wfa.50.1305728447521;
+        Wed, 18 May 2011 07:20:47 -0700 (PDT)
+Date: Wed, 18 May 2011 07:20:45 -0700 (PDT)
+From: Chennai ROR <dvvivek@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <1415764.3158.1305728445016.JavaMail.geo-discussion-forums@prjs22>
+Subject: [ruby-ffi] Can some one help me in handling double pointer with help
+ of FFI.
+MIME-Version: 1.0
+X-Original-Sender: dvvivek@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3157_19130123.1305728445015"
+
+------=_Part_3157_19130123.1305728445015
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I am looking for some examples to handle Double pointer using FFI. please 
+help me thanks in advance.
+------=_Part_3157_19130123.1305728445015
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I am looking for some examples to handle Double pointer using FFI. please help me thanks in advance.
+------=_Part_3157_19130123.1305728445015--

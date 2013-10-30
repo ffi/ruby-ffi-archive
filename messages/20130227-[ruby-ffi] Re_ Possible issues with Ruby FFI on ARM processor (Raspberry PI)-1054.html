@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Burgestrand <kim@burgestrand.se></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/27/13 3:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">On Monday, February 25, 2013 10:49:54 PM UTC+1, Wayne Meissner wrote:<br><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div><br></div>Off the top of my head, a couple of issues could be:<div><br></div><div>1) data sizes/layout. &nbsp;Verify that the sizes of all your FFI structs match the C ones, and that the sizes &amp; offsets of members match.</div></blockquote><div>That’s a good idea. I tried it, and they do match (was kind of hoping they didn’t — updated the gist with the offset-checking code).</div><div>&nbsp;</div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div>2) Given it only crashes on exit, it could be some sort of GC/finalizer interaction. &nbsp;Set all the MemoryPointer instances, including the ones backing the structs to autorelease=false - this causes FFI to disown the memory, so it won't try to free it.</div></blockquote><div>Hm, I’ve updated the gist with these changes. Unfortunately the crashes still occur. I know how vague crash messages can be, but in case it might ring any bells: `*** glibc detected *** ruby: free(): invalid next size (fast): 0x01a3acf0 ***`</div><div><br></div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div>3) Endian-ness issues in ruby-ffi itself. &nbsp;Is that arm arch big-endian or little-endian?</div></blockquote><div>From what I could gather from googling is that it’s primarily little-endian. By primarily is that it apparently has some big-endian support if you do a little bit of hoop-jumping.</div><div><br></div><div>Thanks for your time Wayne, I appreciate it.</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

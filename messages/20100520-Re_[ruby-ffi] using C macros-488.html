@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] using C macros</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] using C macros</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 6:57 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+No, C macros are not present in the library as code, since they are
+handled by the  C pre-processor.
+
+You could just implement ruby versions of those macros (they should be
+pretty simple).
+
+On 21 May 2010 01:22, mixtli <a class="moz-txt-link-rfc2396E" href="mailto:ronmcclain75@gmail.com">&lt;ronmcclain75@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Is it possible to access macros such as FD_SET and FD_ZERO?  I'm
+<span class="moz-txt-citetags">&gt; </span>trying to wrap net-snmp, specifically the snmp_select_info function
+<span class="moz-txt-citetags">&gt; </span>which is called in C like so:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> int fds = 0, block = 1;
+<span class="moz-txt-citetags">&gt; </span> fd_set fdset;
+<span class="moz-txt-citetags">&gt; </span> struct timeval timeout;
+<span class="moz-txt-citetags">&gt; </span> FD_ZERO(&amp;fdset);
+<span class="moz-txt-citetags">&gt; </span> snmp_select_info(&amp;fds, &amp;fdset, &amp;timeout, &amp;block);
+<span class="moz-txt-citetags">&gt; </span> fds = select(fds, &amp;fdset, 0,0, block ? 0 : &amp;timeout);
+<span class="moz-txt-citetags">&gt; </span> if(fds) { snmp_read(&amp;fdset); } else { snmp_timeout(); }
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I've been trying to do it with ffi-inliner, but haven't had much
+<span class="moz-txt-citetags">&gt; </span>luck.  Any pointers would be appreciated.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,83 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Standardizing the FFI specs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Standardizing the FFI specs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/14/09 5:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Ernie,
+
+I am indeed here.
+
+There are 2 issues. The first is the API and it's divergence.
+
+My original API was slim and light, but had a number of holes. Those holes have been filled by the different implementations in different ways and thusly only the simplest of APIs are now common.
+
+I think that it is in the best interest of FFI, if it is truly to be a cross implementation API, that all new API additions stop and we begin to formalize a 1.0 API.
+
+This would allow us a clean, consistent target for all implementations. In addition, it would simplify what to spec.
+
+I don't want to turn this into design by committee, but if people do want the API to be cross implementation, some degree of coordination and agreement must be reached. Unilateral changes only destabilize the effort.
+
+Since it appears that most of the FFI implementers are on this list, please reply to this email and indicate that you'd like to participate in the planning of the 1.0 API. 
+
+To kick off the 1.0 planning, here is the list of builtin types that I believe the 1.0 should contain:
+
+Fundamental Types:
+
+  Platform Independent: int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64, pointer, string, buffer
+
+  Platform Dependent: char, uchar, int, uint, long, ulong, float, double
+
+Composite Types:
+
+  struct, callback
+
+
+Users would have the ability to add their own aliases for structs, etc.
+
+In addition, I believe the unix types provided by sys/types should be made available by requesting so. Perhaps calling "FFI.add_sys_types" would be fine (this as opposed to a require so that it can be calculated entirely at runtime if need be)
+
+Thats a good place for us to start. Please comment.
+
+ - Evan
+
+On Dec 14, 2009, at 2:17 PM, Ernest Prabhakar wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>This is Dr. Ernie, one of the MacRuby committers. We would like to add the FFI specs <a class="moz-txt-link-rfc2396E" href="http://github.com/ffi/ffi/tree/master/spec/ffi/">&lt;http://github.com/ffi/ffi/tree/master/spec/ffi/&gt;</a> to our existing RubySpec tests.  
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>When I asked on the rubyspec list about what could be done to "mainstream" FFI, I was told:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On Dec 4, 2009, at 2:51 PM, Brian Ford wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>The specs need quite a bit of cleanup to conform to the rubyspec style guide.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://rubyspec.org/wiki/rubyspec/Style_Guide">http://rubyspec.org/wiki/rubyspec/Style_Guide</a>
+<span class="moz-txt-citetags">&gt; </span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Also, the API is still in flux a bit. If you'd like to
+<span class="moz-txt-citetags">&gt;&gt; </span>contribute to the specs or FFI API,  please coordinate with Evan
+<span class="moz-txt-citetags">&gt;&gt; </span>Phoenix (evan in #rubinius on freenode.net) as he is the original API
+<span class="moz-txt-citetags">&gt;&gt; </span>author and is trying to get the API standardized across
+<span class="moz-txt-citetags">&gt;&gt; </span>implementations.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Evan, are you here? What process would you suggest? 
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Should I file a bug about the specs (on Kenai)?  Or should I wait until the API stabilizes a bit more?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>-- Ernie P.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] How to call system libraries</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] How to call system libraries</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/29/10 11:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hello,<div><br></div><div>ffi_lib loads dynamic libraries, so you should call it with the name of an object file, and not a header. On recent versions of FFI, you can call ffi_lib(&#39;c&#39;) to make system calls available.</div>
+<div><br></div><div>hth</div><div><br></div><div>Jeremy Voorhis<br><br><div class="gmail_quote">On Fri, Oct 29, 2010 at 5:38 PM, Steve <span dir="ltr">&lt;<a href="mailto:please-hack-me@hotmail.com">please-hack-me@hotmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">I am just leaning FFI and am having problems calling linux network<br>
+functions.<br>
+<br>
+In a C file I might do #include &lt;arpa/inet.h&gt;<br>
+<br>
+However, in ruby ffi neither ffi_lib &#39;arpa/inet&#39; nor ffi_lib &#39;inet&#39;<br>
+works. I can&#39;t get socket either.<br>
+<br>
+Any help is appreciated!</blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

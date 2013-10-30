@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] DataConverter for callback type</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] DataConverter for callback type</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/22/13 6:05 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>Ruby-FFI Google Group <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I'm trying to create a DataConverter that represents a callback function. The
+code basically boils down to this:
+
+module Lib
+  include FFI::Library
+  ffi_lib 'some-library'
+end
+
+class Foo &lt; Proc
+  extend FFI::DataConverter
+
+  Callback = Lib.callback ... # usual call to FFI::Library.callback
+
+  def self.native_type
+    self::Callback
+  end
+end
+
+[The reason I'm doing this is that I want to wrap procs passed from ruby in some
+argument conversion code using a method defined on, in this case, Foo]
+
+Now, I'm unable to figure out what the definition of Foo.to_native should be.
+Foo::Callback is of type FFI::FunctionType, which doesn't have a to_native method.
+
+Any ideas?
+
+Thanks and regards,
+<div class="moz-txt-sig">-- 
+Matijs
+
+</div></pre></div></body>
+</html>
+</table></div>

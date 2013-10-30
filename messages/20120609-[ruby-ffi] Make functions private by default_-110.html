@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Make functions private by default?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Make functions private by default?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Daniel Berger <djberg96@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/9/12 10:25 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+Is there a way to make the FFI function declarations private by
+default? I want to use the functions internally only. I don't want
+them exposed as part of a public API. Simply using the "private"
+keyword doesn't seem to work. Consider:
+
+require 'ffi'
+
+module Windows
+  extend FFI::Library
+  ffi_lib :kernel32
+
+  private
+
+  attach_function :CloseHandle, [:ulong], :bool
+end
+
+p Windows.methods(false) # =&gt; [:CloseHandle]
+
+The only way to make it work is to call private_class_method on the
+functions after the fact, so it can be done. I was just hoping there
+was a nicer way to do them "en masse" as it were.
+
+Perhaps if attach_function is called in the context of private
+automatically declare them private_class_methods? Although I don't
+actually know if that's possible in Ruby. <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Regards,
+
+Dan
+</pre></div></body>
+</html>
+</table></div>

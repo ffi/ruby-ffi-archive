@@ -1,0 +1,56 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] native thread callback woes</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] native thread callback woes</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/19/10 4:17 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 20 March 2010 03:36, Shawn Anderson <a class="moz-txt-link-rfc2396E" href="mailto:shawn42@gmail.com">&lt;shawn42@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to get allegro-ffi to work with the latest 4.9 branch of allegro
+<span class="moz-txt-citetags">&gt; </span>in SVN.  Allegro has recently changed to run everything in a native
+<span class="moz-txt-citetags">&gt; </span>callback.
+<span class="moz-txt-citetags">&gt; </span>ie..
+<span class="moz-txt-citetags">&gt; </span>... setup code ...
+<span class="moz-txt-citetags">&gt; </span>al_run_main argc, argv, &amp;method(:run)
+<span class="moz-txt-citetags">&gt; </span>puts "this code will never be called"
+<span class="moz-txt-citetags">&gt; </span>running this in ruby 1.9.1 I see the error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>examples/simple_window.rb:13: [BUG] object allocation during garbage
+<span class="moz-txt-citetags">&gt; </span>collection phase
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+<span class="moz-txt-citetags">&gt; </span>full trace here:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://gist.github.com/95d3ccc14fd8fdc1febf">https://gist.github.com/95d3ccc14fd8fdc1febf</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Allegro spins off a new native thread (os x only) and calls the callback
+<span class="moz-txt-citetags">&gt; </span>from that native thread.  Apparently os x needs the main thread for its
+<span class="moz-txt-citetags">&gt; </span>event stuff...
+<span class="moz-txt-citetags">&gt; </span>Is there anyway to let this new non-ruby native thread call back into ruby
+<span class="moz-txt-citetags">&gt; </span>code?
+</pre></blockquote><pre wrap>
+
+I asked around, and the consensus is "don't do threading with MRI".
+
+The functions for doing this are a horrible rats nest of
+quasi-documented functions marked as "experimental", "use at own risk"
+and "may not be supported in 1.9.2".
+
+The good news is that JRuby should work ok (but you'll want to check
+that), because it has sane threading.
+
+There's also an additional problem - al_run_main() won't be releasing
+the GIL while it waits for events.  There is support in FFI for doing
+this, but its not exposed in the attach_function interface (look at
+spec/ffi/function_spec.rb and search for blocking).
+
+I have ideas on how to make the async callbacks work on MRI (1.9.x
+only - 1.8.x is just not possible), but it won't be this weekend.  Put
+it in a github issue so its not forgotten.
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

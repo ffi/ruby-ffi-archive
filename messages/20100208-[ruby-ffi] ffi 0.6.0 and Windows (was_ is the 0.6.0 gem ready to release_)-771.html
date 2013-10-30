@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ffi 0.6.0 and Windows (was: is the 0.6.0 gem ready to  release?)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ffi 0.6.0 and Windows (was: is the 0.6.0 gem ready to  release?)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/8/10 2:43 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Mon, Jan 25, 2010 at 3:14 PM, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Sorry for top post. Going to check all windows versions tomorrow. Travelling
+<span class="moz-txt-citetags">&gt; </span>right now.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Apologizes for not responding to this before.
+
+Seems 0.6.0 got released anyway.
+
+I was unable to compile or locally check if these gems worked properly
+on MinGW and VC6 builds of Ruby on Windows.
+
+Wayne: there was an issue with Windows native versions? Checking with gem list:
+
+C:\Users\Luis&gt;gem list ffi --remote --details
+
+*** REMOTE GEMS ***
+
+ffi (0.6.0)
+    Platform: ruby, ["java"]
+    Author: Wayne Meissner
+    Rubyforge: <a class="moz-txt-link-freetext" href="http://rubyforge.org/projects/ffi">http://rubyforge.org/projects/ffi</a>
+    Homepage: <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi">http://wiki.github.com/ffi/ffi</a>
+
+    Ruby-FFI is a ruby extension for programmatically loading dynamic
+    libraries, binding functions within them, and calling those
+    functions from Ruby code
+
+
+I cannot see "x86-mingw32" or "x86-mswin32" released.
+
+Trying to install the "ruby" version and trigger the compile process
+failed on a sed segmentation fault (used to compile libffi)
+
+If you don't mind, I would like to take a stab and rearrange libffi
+and ffi build directories to make it work on Windows while keep it
+working under OSX/Linux.
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

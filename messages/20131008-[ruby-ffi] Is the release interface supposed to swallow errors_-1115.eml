@@ -1,0 +1,166 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp208172laa;
+        Tue, 8 Oct 2013 08:52:17 -0700 (PDT)
+X-Received: by 10.236.42.10 with SMTP id i10mr650096yhb.130.1381247536480;
+        Tue, 08 Oct 2013 08:52:16 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDE6VXOBVIBRBL6U2CJAKGQENR6QQHI@googlegroups.com>
+Received: from mail-yh0-x23a.google.com (mail-yh0-x23a.google.com [2607:f8b0:4002:c01::23a])
+        by mx.google.com with ESMTPS id j65si13423429yhn.291.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 08 Oct 2013 08:52:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDE6VXOBVIBRBL6U2CJAKGQENR6QQHI@googlegroups.com designates 2607:f8b0:4002:c01::23a as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDE6VXOBVIBRBL6U2CJAKGQENR6QQHI@googlegroups.com designates 2607:f8b0:4002:c01::23a as permitted sender) smtp.mail=ruby-ffi+bncBDE6VXOBVIBRBL6U2CJAKGQENR6QQHI@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yh0-f58.google.com with SMTP id b6sf295804yha.13
+        for <headius@headius.com>; Tue, 08 Oct 2013 08:52:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=VlK+nuvH1zkRwCWNmilJZ6mLg48PpqiMtYSmkeYTHxs=;
+        b=zQJ4N/N0LhSTnvAW9U3IxQ7j5G2LJR2BtI5sKP1cCJAeU8IxB/Dhxshosk0pHb5Yvi
+         wbm0GiWeXdowoQgrp1+Syy+HgtINgYcRbdyPlFt7vl2H0fc842xrj/4+WkFuFn+JEFi4
+         WqPx0zutjwxo7Zk2S5pqWQtUqgS/a3hU73wE/nRJYlYucjD3ZT+ym9m6esDq48qkZ7uu
+         Tl4CbLI/UduUetyDR7Z2h5Tp1UBfaNq8i6oafpnegaE5myokJlhZBErjd8I+VPQqbhqd
+         wQbK85ztfniZMAhjglm3Zb/zdj/+YatLOn41foT1n72vaDx95ZMiw+3tRPJYKrDKmTM8
+         f1Og==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=VlK+nuvH1zkRwCWNmilJZ6mLg48PpqiMtYSmkeYTHxs=;
+        b=Fe4tGrlkwfK5MyZkK7YFA7cqs5mAh0v2iuR8UTOi8gzxYmOnacmqP1h7jUgTz1dgxT
+         HR0wqDT6aztRM1w6/DkCwQi6xtDr0h6iRFY0ZXrr7w6oU5zqlxxIb8/Wl82gTnrYldS/
+         vFnwFvdFM2tkyliBY3cBGEfwPJNlA/Lq2uXRI7VI7Eh8TWSS8N+xzfqPqevtOkFjk/Cj
+         6eQefH6vc19re6NU/Zhux6Gr86dATeEwmWyxDtU4vZzLc2Gw/jMcWveO8XYUzv73QJUu
+         fseQYY/9j6ejrQW1c8lM1+69Zs7VHIQUAF3DSM8zAkuTUG0276tsADrI0hGK5ADkOqI0
+         aN2w==
+X-Received: by 10.49.24.5 with SMTP id q5mr34623qef.33.1381247535995;
+        Tue, 08 Oct 2013 08:52:15 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.132.132 with SMTP id ou4ls187268qeb.20.gmail; Tue, 08 Oct
+ 2013 08:52:15 -0700 (PDT)
+X-Received: by 10.49.24.175 with SMTP id v15mr39639qef.16.1381247535631;
+        Tue, 08 Oct 2013 08:52:15 -0700 (PDT)
+Date: Tue, 8 Oct 2013 08:52:15 -0700 (PDT)
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <1f5fd940-2980-46fd-a06d-27ab7929e1b2@googlegroups.com>
+Subject: [ruby-ffi] Is the release interface supposed to swallow errors?
+MIME-Version: 1.0
+X-Original-Sender: djberg96@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_208_3452576.1381247535198"
+
+------=_Part_208_3452576.1381247535198
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+ffi 1.9.0
+
+I noticed that if I declare a struct using .auto_ptr, that the 
+corresponding release method seems to swallow errors.
+
+require 'ffi'
+
+class Solaris
+  extend FFI::Library
+  ffi_lib :kstat
+
+  class KstatCtl < FFI::Struct
+    layout(:kc_chain_id, :int, :kc_chain, :pointer, :kc_kd, :int)
+
+    def self.release(pointer)
+      puts "Releasing..." # Yep, I see this
+      bogus # Shouldn't this raise an error? Instead, nothing happens.
+    end
+  end
+
+  attach_function :kstat_open, [], KstatCtl.auto_ptr
+  attach_function :kstat_close, [KstatCtl], :int
+
+  def self.kstat
+    kptr = kstat_open()
+    kstat_close(kptr)
+  end
+end
+
+Solaris.kstat
+
+What I'm really trying to do is have the release method call kstat_close 
+inside the KstatCtl's release method. It fails, but I can't tell -why- it 
+fails since the error is getting swallowed.
+
+Help or advice appreciated.
+
+Regards,
+
+Dan
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_208_3452576.1381247535198
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi,<div><br></div><div>ffi 1.9.0</div><div><br></div><div>=
+I noticed that if I declare a struct using .auto_ptr, that the correspondin=
+g release method seems to swallow errors.</div><div><br></div><div><font si=
+ze=3D"1" face=3D"times new roman, serif">require 'ffi'</font></div><font si=
+ze=3D"1" face=3D"times new roman, serif"><br>class Solaris<br>&nbsp; extend=
+ FFI::Library<br>&nbsp; ffi_lib :kstat<br><br>&nbsp; class KstatCtl &lt; FF=
+I::Struct<br>&nbsp;&nbsp;&nbsp; layout(:kc_chain_id, :int, :kc_chain, :poin=
+ter, :kc_kd, :int)<br><br>&nbsp;&nbsp;&nbsp; def self.release(pointer)<br>&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "Releasing..." # Yep, I see this<br>&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp; bogus # Shouldn't this raise an error? Instead, =
+nothing happens.<br>&nbsp;&nbsp;&nbsp; end<br>&nbsp; end<br><br>&nbsp; atta=
+ch_function :kstat_open, [], KstatCtl.auto_ptr<br>&nbsp; attach_function :k=
+stat_close, [KstatCtl], :int<br><br>&nbsp; def self.kstat<br>&nbsp;&nbsp;&n=
+bsp; kptr =3D kstat_open()<br>&nbsp;&nbsp;&nbsp; kstat_close(kptr)<br>&nbsp=
+; end<br>end<br><br>Solaris.kstat</font><div><font size=3D"1" face=3D"times=
+ new roman, serif"><br></font></div><div><font size=3D"1" face=3D"times new=
+ roman, serif">What I'm really trying to do is have the release method call=
+ kstat_close inside the KstatCtl's release method. It fails, but I can't te=
+ll -why- it fails since the error is getting swallowed.</font></div><div><f=
+ont size=3D"1" face=3D"times new roman, serif"><br></font></div><div><font =
+size=3D"1" face=3D"times new roman, serif">Help or advice appreciated.</fon=
+t></div><div><font size=3D"1" face=3D"times new roman, serif"><br></font></=
+div><div><font size=3D"1" face=3D"times new roman, serif">Regards,</font></=
+div><div><font size=3D"1" face=3D"times new roman, serif"><br></font></div>=
+<div><font size=3D"1" face=3D"times new roman, serif">Dan</font></div></div=
+>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_208_3452576.1381247535198--

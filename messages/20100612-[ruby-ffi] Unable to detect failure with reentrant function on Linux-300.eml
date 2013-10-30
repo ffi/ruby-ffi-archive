@@ -1,0 +1,125 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.228.137 with SMTP id je9cs25022qcb;
+        Sat, 12 Jun 2010 19:38:10 -0700 (PDT)
+Received: by 10.101.160.30 with SMTP id m30mr3322122ano.192.1276396689300;
+        Sat, 12 Jun 2010 19:38:09 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMnq3cGqAxCPidHgBBoEXa56PA@googlegroups.com>
+Received: from mail-yw0-f143.google.com (mail-yw0-f143.google.com [209.85.211.143])
+        by mx.google.com with ESMTP id 6si1650725ywh.120.2010.06.12.19.38.08;
+        Sat, 12 Jun 2010 19:38:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCPidHgBBoEXa56PA@googlegroups.com designates 209.85.211.143 as permitted sender) client-ip=209.85.211.143;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCPidHgBBoEXa56PA@googlegroups.com designates 209.85.211.143 as permitted sender) smtp.mail=ruby-ffi+bncCMnq3cGqAxCPidHgBBoEXa56PA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh7 with SMTP id 7sf4664940ywh.26
+        for <headius@headius.com>; Sat, 12 Jun 2010 19:38:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=uV8ZkZWJ5TofeBTJdmDMNrZ+qQ57a6Vr1bAiKI0lXhY=;
+        b=4uB0hfSU35G417bW5QmrxKZxHXctRFUxMakE7lvT2Zbq9FX0Gvrs5/XW8XlbX7QfJX
+         UOBiIRWo4i8F1GpeWSUzvKXXy54ayW/SrtqqBZznHvwCLP5MzvRZKrjZDuj60FcEoJkh
+         PbtK8ntfeo4VGO7buyfCqUhuOqwHTezdWM0tk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=pW1/0VfKPX8K74f+35UqqlcQn9OnRGPhW67V644BuJw7nXbvGmmEpYWFPFkB4Njt1d
+         qoJhSpR3W4idLwFl3EK5YOZAmHLMNVIjSJ1VmSbXs8xS5LdU4Mguin1Rv9KWNp2N1G6L
+         oHG9kK3+KIplXWblvu6AS0BI5XDMviDwXXY58=
+Received: by 10.101.142.34 with SMTP id u34mr257000ann.57.1276396687575;
+        Sat, 12 Jun 2010 19:38:07 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.148.2 with SMTP id a2ls4445390ano.1.p; Sat, 12 Jun 2010 
+	19:38:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.142.21 with SMTP id u21mr268513ann.43.1276396686884; Sat, 
+	12 Jun 2010 19:38:06 -0700 (PDT)
+Received: by h13g2000yqm.googlegroups.com with HTTP; Sat, 12 Jun 2010 19:38:06 
+	-0700 (PDT)
+Date: Sat, 12 Jun 2010 19:38:06 -0700 (PDT)
+X-IP: 97.122.224.234
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.3) 
+	Gecko/20100423 Ubuntu/10.04 (lucid) Firefox/3.6.3,gzip(gfe)
+Message-ID: <9f216bde-2460-425a-ba66-f2091f876c9b@h13g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Unable to detect failure with reentrant function on Linux
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+Ruby 1.8.6
+FFI 0.6.3
+
+I cannot seem to detect a failure with getprotobynumber_r on Linux
+when I intentionally pass it a bogus value. Instead, it returns the
+last value of /etc/protocols.
+
+What am I doing wrong?
+
+require 'ffi'
+
+module Net
+  class Proto
+    extend FFI::Library
+
+    unless RUBY_PLATFORM == 'java' && JRUBY_VERSION.to_f < 1.5
+      ffi_lib(FFI::Library::LIBC)
+    end
+
+    class ProtocolStruct < FFI::Struct
+      layout(
+        :p_name,    :string,
+        :p_aliases, :pointer,
+        :p_proto,   :int
+      )
+    end
+
+    attach_function 'setprotoent', [:int], :void
+    attach_function 'endprotoent', [], :void
+    attach_function 'getprotobynumber_r',
+[:int, :pointer, :string, :long, :pointer], :int
+
+    def self.getprotobynumber(protocol)
+      raise TypeError unless protocol.is_a?(Integer)
+
+      pptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+      qptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+      buf  = 1.chr * 1024
+
+      begin
+        setprotoent(0)
+        int = getprotobynumber_r(protocol, pptr, buf, buf.size, qptr)
+      ensure
+        endprotoent()
+      end
+
+      int > 0 || qptr.null? ? nil : ProtocolStruct.new(pptr)[:p_name]
+    end
+  end
+end
+
+p Net::Proto.getprotobynumber(999999999) # should be nil
+
+Regards,
+
+Dan

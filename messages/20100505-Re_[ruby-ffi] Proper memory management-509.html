@@ -1,0 +1,89 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Proper memory management</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Proper memory management</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/10 7:09 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You have hit on the #1 problem with ruby's finalizer API. You've referenced the object you want to finalize with the closure for finalizing it, thus preventing it from ever being collected.
+
+AutoPointer provides an API to do this exact thing, you're better of using that than trying to use finalizers directly.
+
+If you must use a finalizer, here is what you should do instead
+
+def Vector.create_finalizer(ptr)
+   lambda { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id<span class="moz-txt-tag">|</span></code> GSLng.backend.gsl_free_vector(ptr) }
+end
+
+def Vector.define_finalizer(self, ptr)
+   ObjectSpace.define_finalizer(self, create_finalizer(ptr))
+end
+
+ - Evan
+
+On May 5, 2010, at 3:56 PM, v01d wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>I'm in the process of developing a Ruby binding to the GSL numerical
+<span class="moz-txt-citetags">&gt; </span>library using FFI. Recently I stumbled upon a problematic issue
+<span class="moz-txt-citetags">&gt; </span>regarding memory management and finalizers.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Since the GSL library allows creation and destruction of instances
+<span class="moz-txt-citetags">&gt; </span>like this:
+<span class="moz-txt-citetags">&gt; </span>gsl_vector* ptr = gsl_alloc_vector(size_t n);
+<span class="moz-txt-citetags">&gt; </span>...
+<span class="moz-txt-citetags">&gt; </span>gsl_free_vector(ptr);
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Then, in Ruby I do something like this:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>class Vector
+<span class="moz-txt-citetags">&gt; </span> def initialize(n)
+<span class="moz-txt-citetags">&gt; </span>   @ptr = GSLng.backend.gsl_alloc_vector(n)
+<span class="moz-txt-citetags">&gt; </span>   Vector.define_finalizer(self, @ptr)
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> def Vector.define_finalizer(self, ptr)
+<span class="moz-txt-citetags">&gt; </span>   ObjectSpace.define_finalizer(self, lambda {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>GSLng.backend.gsl_free_vector(ptr)})
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The problem is that if later I instatiante a Vector inside a loop,
+<span class="moz-txt-citetags">&gt; </span>like:
+<span class="moz-txt-citetags">&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt; </span> Vector.new(3)
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>This obviously eats a lot of memory until GC runs. Now, if I do:
+<span class="moz-txt-citetags">&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt; </span> Vector.new(3)
+<span class="moz-txt-citetags">&gt; </span> GC.start
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>the memory that the Vector instances themselves occupy is freed but
+<span class="moz-txt-citetags">&gt; </span>the finalizer is not called (it is later called at program end),
+<span class="moz-txt-citetags">&gt; </span>therefore all of the memory allocated through gsl_alloc_vector() is
+<span class="moz-txt-citetags">&gt; </span>sitting there until program ends.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I know that Ruby doesn't guarantee that finalizers are called in any
+<span class="moz-txt-citetags">&gt; </span>particular moment (even after GC.start, which I thought would
+<span class="moz-txt-citetags">&gt; </span>suffice). So what I'm asking probably is not really related to FFI
+<span class="moz-txt-citetags">&gt; </span>itself, but I wanted to ask here since I imagined this would be a
+<span class="moz-txt-citetags">&gt; </span>common pattern among FFI users. The question is then: is there a
+<span class="moz-txt-citetags">&gt; </span>better way to manage this type of memory? I obviously cant use the
+<span class="moz-txt-citetags">&gt; </span>transaction-like pattern (like File.open) since for a Vector that
+<span class="moz-txt-citetags">&gt; </span>wouldn't make sense. It would be ideal to make the gsl_vector_free
+<span class="moz-txt-citetags">&gt; </span>call when the actual Vector class is free'd. Maybe I need to go to a
+<span class="moz-txt-citetags">&gt; </span>lower level for this and use the C api to register this call in the
+<span class="moz-txt-citetags">&gt; </span>"free" function for this class, but that would be overkill since I
+<span class="moz-txt-citetags">&gt; </span>wanted to avoid using C altogether.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thank you!
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

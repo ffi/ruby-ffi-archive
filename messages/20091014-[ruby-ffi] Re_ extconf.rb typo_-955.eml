@@ -1,0 +1,109 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs316938qaj;
+        Wed, 14 Oct 2009 07:59:27 -0700 (PDT)
+Received: by 10.224.103.75 with SMTP id j11mr7112203qao.46.1255532367513;
+        Wed, 14 Oct 2009 07:59:27 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 4si7374695ywh.81.2009.10.14.07.59.26;
+        Wed, 14 Oct 2009 07:59:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.170 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42so7161900yxe.22
+        for <headius@headius.com>; Wed, 14 Oct 2009 07:59:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :from:date:message-id:subject:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=YPrW61/d7uEcKkXb+bAJkXgt9DZADENheizCc+eyogk=;
+        b=SxsiS4KyruO0jELgF5h9vX/vqtffGwNbFcI/yx1pHKhHPrkjF/1weXPeg7NwcwJ/CH
+         tuvyusuQnaHmfbW3D4mrkuQYpCbC4zM0TS4+O1YDBXZ8xukeNnY5C2chfPRwUM9qUbop
+         4svpXcKMeU69RbYj/YEr9Im1+CdFr8vMjIvBc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:from:date:message-id:subject:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=YsJV9ZZNxpJdl2mDWuT+3I2x453ZdfIyGDt65dYbN5XNGYiKgJuXEn7Cg5+87SLdAk
+         1yNIyFlf2lXhuaDYXn0BND5ux/YEqs9aGOd1Aj6BJnOmpcPVc2q1dP6b68lS+LT2CqTd
+         A5xH328nziAcQijaXylDTWSomOb/iQR/uPRtg=
+Received: by 10.150.130.5 with SMTP id c5mr1015298ybd.39.1255532364996;
+        Wed, 14 Oct 2009 07:59:24 -0700 (PDT)
+Received: by 10.177.117.7 with SMTP id u7gr53yqm.0;
+	Wed, 14 Oct 2009 07:59:24 -0700 (PDT)
+X-Sender: luislavena@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.224.102.208 with SMTP id h16mr2085974qao.21.1255532364610; Wed, 14 Oct 2009 07:59:24 -0700 (PDT)
+Received: by 10.224.102.208 with SMTP id h16mr2085973qao.21.1255532364580; Wed, 14 Oct 2009 07:59:24 -0700 (PDT)
+Return-Path: <luislavena@gmail.com>
+Received: from qw-out-1920.google.com (qw-out-1920.google.com [74.125.92.145]) by gmr-mx.google.com with ESMTP id 25si404539qyk.15.2009.10.14.07.59.23; Wed, 14 Oct 2009 07:59:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 74.125.92.145 as permitted sender) client-ip=74.125.92.145;
+Received: by qw-out-1920.google.com with SMTP id 5so3336945qwc.22 for <ruby-ffi@googlegroups.com>; Wed, 14 Oct 2009 07:59:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :from:date:message-id:subject:to:content-type :content-transfer-encoding; bh=6ACZSNg6eeQpEokKmZXjRLTCnIU19TYpGmmwsl3YF5Y=; b=VCreO0nONB+RXz8Qv73k0JfluwrlX1PkrBGd7YSy62v0PATvjpwMCLSmK9qYBqUWq2 rSCSzvaDn4LDunTfQ82qeYF/1OAm6LWyfCAvSOmhCPgazVeDyjCoPTrNOkGuRDkSqoH7 CgKPzG3vhza3mK8iHMkuX8Cpv9yTYukmShYJU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:from:date:message-id:subject:to :content-type:content-transfer-encoding; b=NsPsIZRZMatScGLkabxkZxUWAY54mT71bWjIbTv2fuAgu/kWw1m3i1lMD1lT2yINDA LgRJUW2wFznnTUk+TvJmpZNNkhf5PbKamfggJqlODijQUmGOUg5ijH9qOSRguHBCIo93 9zNjQFA/n1caLs+LqlBazoukjRIKzoRySehDU=
+MIME-Version: 1.0
+Received: by 10.239.181.155 with SMTP id m27mr584291hbg.195.1255532363177;  Wed, 14 Oct 2009 07:59:23 -0700 (PDT)
+In-Reply-To: <4ccee320910140756u5a30322h7047951c5d5338b8@mail.gmail.com>
+References: <20091014091420.5892955c.jon.forums@gmail.com>  <71166b3b0910140654tced78eciaa2755236ffe1006@mail.gmail.com>  <4ccee320910140756u5a30322h7047951c5d5338b8@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 14 Oct 2009 11:59:03 -0300
+Message-ID: <71166b3b0910140759m32c16daev8d676463b46e210f@mail.gmail.com>
+Subject: [ruby-ffi] Re: extconf.rb typo?
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+On Wed, Oct 14, 2009 at 11:56 AM, Wayne Meissner <wmeissner@gmail.com> wrot=
+e:
+>
+> Yep, should be changed, although in that specific case, it doesn't
+> matter, since we no longer use that part of libffi; ruby-ffi
+> implements its own closure allocator.
+
+Yet still the condition in extconf is being used to define options for
+the build process, right?
+
+As long that is true, the evaluation of the platform is still relevant
+
+> Speaking of win64, the libffi version in ruby-ffi has been updated to
+> 3.0.9rc1, which theoretically includes win64 support, so it would be
+> interesting to see if that works with mingw64. =A0There are probably a
+> few win32-isms in the windows support in ruby-ffi that need to be
+> cleaned up.
+>
+
+Cannot comment further right now, did a good progress on this front
+and also support for it with rake-compiler cross-compiling, but still
+too premature to start testing 3rd party dependencies (still dealing
+with Ruby bundled ones).
+
+Will keep everybody posted.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

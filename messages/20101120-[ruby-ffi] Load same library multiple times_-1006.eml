@@ -1,0 +1,74 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs15318faj;
+        Sat, 20 Nov 2010 12:52:24 -0800 (PST)
+Received: by 10.150.91.13 with SMTP id o13mr6303982ybb.6.1290286341978;
+        Sat, 20 Nov 2010 12:52:21 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMHsmJT3EhCD6qDnBBoEXjN5Eg@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id x36si7651153anx.51.2010.11.20.12.52.20;
+        Sat, 20 Nov 2010 12:52:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMHsmJT3EhCD6qDnBBoEXjN5Eg@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMHsmJT3EhCD6qDnBBoEXjN5Eg@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCMHsmJT3EhCD6qDnBBoEXjN5Eg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg10 with SMTP id 10sf4452356gyg.7
+        for <headius@headius.com>; Sat, 20 Nov 2010 12:52:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=wtUyrqOpre630xfPxsdvxH4IEJFw0ZvGbwtiuXFTUbs=;
+        b=fiEH2ASwRMjgcgMGgjEh4X5Y0AqzZfMdC+Me0zLTdMRGMFF1Tpffy1xK9PUlg3HnPA
+         H/pEJMBsPJygSojbxKmLvFTBj5r9jaCSI57sjwGnQTdXyURQ0gnO6OAEi3eQsoCRriwW
+         Ud6DPTGxm2zXBRS7+hDEv9AWgna8TuvtdKqHc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=S5p+S0J6+iHnTASd7/1HuEGoDX77cKpqxbJFwjj8704uUmwOsK+gCFmgKR2KFZxL9+
+         21XyNvVb/L1VXknQ4+HrW54XnUMufbEHsPR+rfI4wl4/rIySBEs2P+YyPjnKUiWQZURC
+         V2fgJznqRpVH7TTePBjnumnjNYcTEfk2c0CWY=
+Received: by 10.150.26.10 with SMTP id 10mr382366ybz.78.1290286339665;
+        Sat, 20 Nov 2010 12:52:19 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.6.2 with SMTP id 2ls739187ybf.7.p; Sat, 20 Nov 2010
+ 12:52:19 -0800 (PST)
+Received: by 10.151.10.19 with SMTP id n19mr977652ybi.10.1290286339243;
+        Sat, 20 Nov 2010 12:52:19 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.98.19 with SMTP id a19mr124755anm.70.1290269097544; Sat,
+ 20 Nov 2010 08:04:57 -0800 (PST)
+Received: by t35g2000yqj.googlegroups.com with HTTP; Sat, 20 Nov 2010 08:04:57
+ -0800 (PST)
+Date: Sat, 20 Nov 2010 08:04:57 -0800 (PST)
+X-IP: 174.103.101.116
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US)
+ AppleWebKit/534.7 (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7,gzip(gfe)
+Message-ID: <162bae32-81fe-4be0-aeb9-b1e4f69c8c7c@t35g2000yqj.googlegroups.com>
+Subject: [ruby-ffi] Load same library multiple times?
+From: "Kim.Toms" <kim.toms@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: kim.toms@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'd like to load the same library multiple times, so that the global
+variables in my C program are complete separate.  This would allow me
+to run multiple simulations of objects that arre connected.  The
+objects are all communicating with each other, and I'd like to track
+the communication.  I've posted a simple example in the issues at
+https://github.com/ffi/ffi/issues/#issue/65

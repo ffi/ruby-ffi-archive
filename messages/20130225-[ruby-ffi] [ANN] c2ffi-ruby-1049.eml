@@ -1,0 +1,131 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp93196laf;
+        Mon, 25 Feb 2013 08:43:07 -0800 (PST)
+X-Received: by 10.52.90.39 with SMTP id bt7mr8728067vdb.110.1361810586812;
+        Mon, 25 Feb 2013 08:43:06 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDT3F4XIUMJRBGNJV2EQKGQEXXJEQZQ@googlegroups.com>
+Received: from mail-ve0-f192.google.com (mail-ve0-f192.google.com [209.85.128.192])
+        by mx.google.com with ESMTPS id c11si9393208vcp.90.2013.02.25.08.43.06
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 25 Feb 2013 08:43:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDT3F4XIUMJRBGNJV2EQKGQEXXJEQZQ@googlegroups.com designates 209.85.128.192 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDT3F4XIUMJRBGNJV2EQKGQEXXJEQZQ@googlegroups.com designates 209.85.128.192 as permitted sender) smtp.mail=ruby-ffi+bncBDT3F4XIUMJRBGNJV2EQKGQEXXJEQZQ@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ve0-f192.google.com with SMTP id d10sf1544719vea.9
+        for <headius@headius.com>; Mon, 25 Feb 2013 08:43:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=eAI8HuE0nROG9A+rfiab/KHUzxPuXMEk8htFbPPB3Q0=;
+        b=f2wgHPwiA3/jN8GYcg8CD+IahRsFpz0CvMXHiKxVnad0sUGQfut8dtpBV2PZVykR38
+         jr+hAS+7jVBgYdQOdv3nmGUSaNKwnRmSXteiSLnxYLNGDMTPPvF4J81U4ql+58gbYG8m
+         uy2ca5Cm2GIncJP5AHFG6qEY3boJRBNdwaD+PgZFZOixHYOfGogH2v/tCiylYtespdNf
+         r6gdsAWK6rj0Wtf54bdVIKaA70q/xCGOL0DRC463cQ0gvT8dZ1rnlcIgvSDL+4z0omJ/
+         xQIp4EICBQTvA6/eTzwaOQa8pp0YPoYTQJzN/atNn/Q3cJxWiDBMVI1gE4ixYVgMS+tJ
+         42vg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=eAI8HuE0nROG9A+rfiab/KHUzxPuXMEk8htFbPPB3Q0=;
+        b=H977nUrKBuK19Ri2DABrtNYf0VMPwXk1u1KaJXD9WqIGeQbNP/6Lyeys5qoUUvc0wj
+         Z2xDfIrdjWQ6oi/oXiI34EEWoPt98rWdKF9zi7j/TzH8g7cMlydic/wwLdXfdxh4KDUv
+         I1Zztcl/gCzmYhP98E1rtA3BT5y7XZMOeypNfLLSWZbShOinLIApx6WmSZzbaVDq4vsy
+         w5nyZck/T8ojz3AMvektPsgLzGweTW79z/wWRJH+E6Rnbx/9nK6hfAa7v9UQRMicbyg1
+         j/rRcVjiWTC680mTbhG67fV+Jzs1l9FUr7e8Fttlso7wVWL8AsWFjeUD4yUj/M8JPyWm
+         8QbQ==
+X-Received: by 10.49.116.1 with SMTP id js1mr1026411qeb.19.1361810586124;
+        Mon, 25 Feb 2013 08:43:06 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.25.41 with SMTP id z9ls1159549qef.83.gmail; Mon, 25 Feb
+ 2013 08:43:05 -0800 (PST)
+X-Received: by 10.224.18.199 with SMTP id x7mr9041532qaa.1.1361810585475;
+        Mon, 25 Feb 2013 08:43:05 -0800 (PST)
+Received: by 10.224.40.2 with SMTP id i2msqae;
+        Mon, 25 Feb 2013 08:41:18 -0800 (PST)
+X-Received: by 10.49.94.129 with SMTP id dc1mr993459qeb.22.1361810474999;
+        Mon, 25 Feb 2013 08:41:14 -0800 (PST)
+Date: Mon, 25 Feb 2013 08:41:14 -0800 (PST)
+From: Ryan Pavlik <rpavlik@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <a4541c97-3fae-42a9-9397-25f61657bb2a@googlegroups.com>
+Subject: [ruby-ffi] [ANN] c2ffi-ruby
+MIME-Version: 1.0
+X-Original-Sender: rpavlik@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1767_11772240.1361810474530"
+
+------=_Part_1767_11772240.1361810474530
+Content-Type: text/plain; charset=ISO-8859-1
+
+For anyone interested, I've recently been working on c2ffi 
+(https://github.com/rpav/c2ffi), which uses Clang to parse C into JSON, and 
+I have just posted c2ffi-ruby, which transforms the JSON into a file for 
+ruby-ffi:
+
+    https://github.com/rpav/c2ffi-ruby
+
+This should produce more accurate input than SWIG.
+
+Apologies for ugly code; this was done as a bit of a test for c2ffi, and I 
+haven't written much ruby in awhile.  Nor has it been extensively tested, 
+but it does parse the included Cairo bindings.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_1767_11772240.1361810474530
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+For anyone interested, I've recently been working on c2ffi (https://github.=
+com/rpav/c2ffi), which uses Clang to parse C into JSON, and I have just pos=
+ted c2ffi-ruby, which transforms the JSON into a file for ruby-ffi:<br><br>=
+&nbsp;&nbsp;&nbsp; https://github.com/rpav/c2ffi-ruby<br><br>This should pr=
+oduce more accurate input than SWIG.<br><br>Apologies for ugly code; this w=
+as done as a bit of a test for c2ffi, and I haven't written much ruby in aw=
+hile.&nbsp; Nor has it been extensively tested, but it does parse the inclu=
+ded Cairo bindings.<br style=3D"font-family: &quot;Arial&quot;,sans-serif,s=
+ans-serif;">
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_1767_11772240.1361810474530--

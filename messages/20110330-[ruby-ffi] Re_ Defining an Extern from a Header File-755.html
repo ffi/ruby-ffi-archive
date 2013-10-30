@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Defining an Extern from a Header File</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Defining an Extern from a Header File</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/30/11 6:06 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br><div>try attach_variable.</div><div><br></div><div>e.g.</div><div>module Foo</div><div>&nbsp; # std library stuff here</div><div>&nbsp; # ...</div><div>&nbsp; # Attach C global LEA_SERVER as ruby variable lea_server</div><div>&nbsp; attach_variable :lea_server, :LEA_SERVER, :pointer</div><div>end</div><div><br></div><div>Then use it like so:</div><div><br></div><div>Foo.opsec_init_entity(env, Foo.lea_server, Foo::OPSEC_EOL);</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

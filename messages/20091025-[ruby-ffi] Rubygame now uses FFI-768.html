@@ -1,0 +1,73 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Rubygame now uses FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Rubygame now uses FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Croisant <jacius@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/25/09 1:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+
+Greetings, FFI-ers
+
+I've finally released the first FFI-powered version of Rubygame! I was
+able to completely eliminate all the C code for Rubygame, which has
+already made it a lot easier for users on all platforms to install,
+since no compilation is needed anymore. And of course, there's the
+added bonus for me of being able to develop in all Ruby. <span class="moz-smiley-s5" title=":-D"><span>:-D</span></span>
+
+You can read the full announcement on the Rubygame blog. (If you get
+an application error on my blog, please try again later. Rails has
+been acting up lately.)
+
+  <a class="moz-txt-link-freetext" href="http://blog.rubygame.org/articles/2009/10/24/rubygame-2-6-released">http://blog.rubygame.org/articles/2009/10/24/rubygame-2-6-released</a>
+
+Gems are available on Rubyforge ("gem install rubygame"), and are
+known to work on MatzRuby (1.8.6, 1.8.7, 1.9.1) as well as JRuby
+(1.3.1, 1.4.0RC2). However, JRuby users need to first install the ffi
+stub gem [1] to resolve the gem dependencies. Also, I'm afraid JRuby
+users on Mac are out of luck until a JRuby equivalent of RSDL [2] is
+written.
+
+  [1] <a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi-jruby">http://github.com/ffi/ffi-jruby</a>
+  [2] <a class="moz-txt-link-freetext" href="http://github.com/knu/rsdl">http://github.com/knu/rsdl</a>
+
+I haven't been able to test it on Rubinius, but in theory it should
+work if the FFI interface is compatible. I'd love to hear reports of
+anyone who tries it on Rubinius.
+
+I created two other FFI-ish libraries to support the new Rubygame:
+Nice-FFI and Ruby-SDL-FFI. Nice-FFI is a helper library on top of FFI,
+which makes some things in FFI more convenient for me. As one example,
+it can automatically turn pointers returned from a function into
+struct instances of the appropriate class. Ruby-SDL-FFI uses Nice-FFI
+(and plain FFI) to interface with SDL and related libraries. Rubygame
+then uses Ruby-SDL-FFI instead of a compiled extension written in C.
+
+Overall, FFI has been great to work with, and I'm very happy that I
+switched to it! As I mentioned above, I was able to throw away the C
+code and now write everything in Ruby, which is a joy. Not only is it
+easier to write and maintain, it also works on more platforms and is
+much easier for users to install. Before, users had to have a compiler
+environment set up, or hope someone would create a binary gem for
+their OS, which was a huge barrier for Windows users.
+
+Plus, I can now do run-time detection of what libraries and features
+are available on the user's system, and even theoretically provide
+alternative back ends using different libraries. For example, I'm
+considering adding an OpenGL back end (using ffi-opengl, of course!),
+to provide faster rendering and better Mac support. Such a thing would
+have been much more difficult using a C extension, because the feature
+detection there is (usually) done at compile time, which is unreliable
+if compiled on one system and then distributed to others, such as with
+a binary gem.
+
+Anyway, I guess you can count me as a total FFI fanboy now! <span class="moz-smiley-s5" title=":-D"><span>:-D</span></span>
+
+Thanks to everyone for your wonderful work on FFI, both for MatzRuby
+and JRuby! It has made my programming life a lot easier, and easier
+for Rubygame users as well.
+
+- John
+</pre></div></body>
+</html>
+</table></div>

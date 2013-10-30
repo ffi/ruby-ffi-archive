@@ -1,0 +1,146 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs722835anc;
+        Mon, 25 Jan 2010 09:28:43 -0800 (PST)
+Received: by 10.150.29.19 with SMTP id c19mr593613ybc.13.1264440522674;
+        Mon, 25 Jan 2010 09:28:42 -0800 (PST)
+Return-Path: <3yNRdSw4JCEY0quwv.i.kpqivoouiqt.kwuz2j6-nnqowwotmozw2x0.kwu@groups.bounces.google.com>
+Received: from mail-yw0-f137.google.com (mail-yw0-f137.google.com [209.85.211.137])
+        by mx.google.com with ESMTP id 5si8739125ywh.48.2010.01.25.09.28.41;
+        Mon, 25 Jan 2010 09:28:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3yNRdSw4JCEY0quwv.i.kpqivoouiqt.kwuz2j6-nnqowwotmozw2x0.kwu@groups.bounces.google.com designates 209.85.211.137 as permitted sender) client-ip=209.85.211.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3yNRdSw4JCEY0quwv.i.kpqivoouiqt.kwuz2j6-nnqowwotmozw2x0.kwu@groups.bounces.google.com designates 209.85.211.137 as permitted sender) smtp.mail=3yNRdSw4JCEY0quwv.i.kpqivoouiqt.kwuz2j6-nnqowwotmozw2x0.kwu@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh1 with SMTP id 1sf9885266ywh.22
+        for <headius@headius.com>; Mon, 25 Jan 2010 09:28:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=MIzXVvaBY8AZpf0TOI29GRlD91WxSIow6viEZEyAz1Y=;
+        b=G+8TYP49XwNhe/074yLC+6XUFIkLuqW4Why/V6l3peCERqxed1P+6yiJMZLJYt9l7P
+         s/hOzefXCp79MWrXCj5vx4T7pfbsLEUuXaU1OpEyFTIVw+jBe/STwF6krVHWKK11PXGL
+         BMO7vU0np9mAYUI93DO+G8n3lOBKbAl6rrIhM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=flM/KvaYbdeLaLhkN66FuHuqZFoayoP9eaVtE+FNGRzleRILTikSj7ZjMj0/qt9AoP
+         /9MO/DGvvk4eB3pUBtYw1n0v1MXvDmQMXA3Qe6t/FZZ6C+G/gipyBovPbhQ/p6Th/gHE
+         NHnsE0Dtrt8zSV15abwZfPwQy83QeyqdywBu4=
+Received: by 10.150.247.4 with SMTP id u4mr168623ybh.79.1264440520093;
+        Mon, 25 Jan 2010 09:28:40 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.4.12 with SMTP id 12ls126225ybd.2.p; Mon, 25 Jan 2010 
+	09:28:38 -0800 (PST)
+Received: by 10.150.65.9 with SMTP id n9mr6530407yba.8.1264440518185;
+        Mon, 25 Jan 2010 09:28:38 -0800 (PST)
+Received: by 10.150.65.9 with SMTP id n9mr6530406yba.8.1264440518162;
+        Mon, 25 Jan 2010 09:28:38 -0800 (PST)
+Return-Path: <simon.a.chiang@gmail.com>
+Received: from mail-yw0-f170.google.com (mail-yw0-f170.google.com [209.85.211.170])
+        by gmr-mx.google.com with ESMTP id 19si499523ywh.6.2010.01.25.09.28.38;
+        Mon, 25 Jan 2010 09:28:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of simon.a.chiang@gmail.com designates 209.85.211.170 as permitted sender) client-ip=209.85.211.170;
+Received: by mail-yw0-f170.google.com with SMTP id 42so9096872ywh.28
+        for <ruby-ffi@googlegroups.com>; Mon, 25 Jan 2010 09:28:38 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.165.10 with SMTP id s10mr487262ano.49.1264440518062; Mon, 
+	25 Jan 2010 09:28:38 -0800 (PST)
+Date: Mon, 25 Jan 2010 09:28:38 -0800 (PST)
+In-Reply-To: <4ccee321001241619h35204bb9k375c49e047cd2946@mail.gmail.com>
+X-IP: 65.125.146.33
+References: <e2392b2d-e07f-4846-abe2-b7acb34184d1@u7g2000yqm.googlegroups.com> 
+	<4ccee321001241619h35204bb9k375c49e047cd2946@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; 
+	rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7,gzip(gfe),gzip(gfe)
+Message-ID: <ff0459f8-5c08-4321-8b88-553a13285e7b@q4g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Re: extconf.rb and libffi on OSX
+From: Simon Chiang <simon.a.chiang@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of simon.a.chiang@gmail.com designates 209.85.211.170 as permitted 
+	sender) smtp.mail=simon.a.chiang@gmail.com
+X-Original-Sender: simon.a.chiang@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/b657c9a1990332ba
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/335a9fa8d97b9069
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Ok, rechecked and filed an issue (http://github.com/ffi/ffi/issues/
+#issue/26).  Unfortunately you'll see that I really don't have much
+help to give in debugging this... I'm not actually building the
+library manually; instead I'm making the gem and installing it, so all
+the build output is lost.
+
+Let me know if you need any more description of the issue.
+
+- Simon
+
+
+On Jan 24, 5:19=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> I can't reproduce the problem on 10.6.2 (using latest source from github)=
+.
+>
+> Can you recheck it, and file an issue with the output from the build,
+> if it still fails?
+>
+> 2010/1/13 Simon Chiang <simon.a.chi...@gmail.com>:
+>
+> > I'm trying to use the unreleased 0.6 version of FFI and I'm having an
+> > issue that I ultimately tracked back to this part of extconf.rb:
+>
+> > =A0unless Config::CONFIG['host_os'] =3D~ /mswin32|mingw32/
+> > =A0 =A0if pkg_config("libffi") || find_header("ffi.h", "/usr/local/
+> > include")
+>
+> > =A0 =A0 =A0# We need at least ffi_call and ffi_prep_closure
+> > =A0 =A0 =A0libffi_ok =3D have_library("ffi", "ffi_call", [ "ffi.h" ]) &=
+&
+> > have_func("ffi_prep_closure")
+>
+> > =A0 =A0 =A0# Check if the raw api is available.
+> > =A0 =A0 =A0$defs << "-DHAVE_RAW_API" if have_func("ffi_raw_call") &&
+> > have_func("ffi_prep_raw_closure")
+> > =A0 =A0end
+> > =A0end
+>
+> > Apparently I need to access the raw api and so I think I need -
+> > DHAVE_RAW_API to be set. When I modify extconf.rb to enable that flag,
+> > everything works on OSX 10.5.8 but it still doesn't work on OSX
+> > 10.6.2.
+>
+> > By looking at the commits where this code was introduced, I gather
+> > this code is about detecting a functional libffi. So is libffi broke
+> > on OSX or does it vary between 10.5.8 and 10.6.2 in some way that
+> > causes FFI problems? Do I need to update libffi?
+>
+> > Thanks.
+>
+> > Relevant commits:
+>
+> >http://github.com/ffi/ffi/commit/8cbc3f54a875a61e1fb67ac88a25b71940a3...
+> >http://github.com/ffi/ffi/commit/31e65abbf7e57b9776557227a41e4cd45886...
+>
+>

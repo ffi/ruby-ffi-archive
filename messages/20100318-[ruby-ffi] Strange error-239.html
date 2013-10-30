@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Strange error</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Strange error</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Peter <peter.schrammel@gmx.de></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/18/10 3:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+I'm playing around with ffi and stumbled over a strange error:
+
+module XosdRaw
+    extend FFI::Library
+    ffi_lib 'xosd'
+    enum :command, [:percentage,:string,:printf,:slider]
+    attach_function :xosd_display,
+[:pointer,:int,:command,:varargs],:int
+end
+
+gets me this error:
+
+ruby: symbol lookup error: <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/popel<span class="moz-txt-tag">/</span></i>.gem/ruby/1.8/gems/ffi-0.6.3/
+lib/ffi_c.so: undefined symbol: rb_intern2
+
+it seems that the lookup of type fails. I patched types.rb
+
+def self.find_type(name, type_map = nil)
+    type_map = TypeDefs if type_map.nil?
+    code = type_map[name]
+    code = TypeDefs[name] unless code  #&lt;------added this line
+    code = name if !code &amp;&amp; name.kind_of?(FFI::Type)
+    raise TypeError, "Unable to resolve type '#{name}'" unless code
+    return code
+end
+
+
+Now it works. I don't know if this is the right way (perhaps I did
+something completly stupid) but perhaps some of you can have a look at
+this.
+
+THX
+
+Peter
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

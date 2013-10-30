@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs21039agb;
+        Fri, 29 Apr 2011 23:42:13 -0700 (PDT)
+Received: by 10.151.87.6 with SMTP id p6mr4699080ybl.352.1304145733545;
+        Fri, 29 Apr 2011 23:42:13 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPTAuvbIChDA3u7tBBoEUyPayw@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id g3si3613572ybh.41.2011.04.29.23.42.13
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 29 Apr 2011 23:42:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPTAuvbIChDA3u7tBBoEUyPayw@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPTAuvbIChDA3u7tBBoEUyPayw@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCPTAuvbIChDA3u7tBBoEUyPayw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxi11 with SMTP id 11sf8785849yxi.7
+        for <headius@headius.com>; Fri, 29 Apr 2011 23:42:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=BltoaJX/ihg4DjRlD4YBrVR8fqB0atS3bgiA5uqGi2Y=;
+        b=lzGUyQFjl5SLAzmMfYEGDBHQmTYG5I7VwmP8b7sPaVcMdHeoZJhOwSP4NWVcKfE/Tq
+         fUlHI+lBcMVon8mLAnbFoi2YiLqytIcNiqqW5nfMpAtUmn7Q33R94QxiD3yDW1ZkM/zJ
+         7FABynmkZl3MY0ezfsP+XuhyFi1l7CU7Y45X8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=QwkKcFx39RJovwXugNu5GcQ96VGb226dT15BRt9YpPjsxDNfuGIDa3otnd9rKizBWl
+         Gj+HNcq4MRPPyAYPyIdzSUDW7cwgfsD62iRThJPsqVqxam7+WsLe9wbHYCfDy1ETQZFp
+         R51AE2Rt0GKmXOvRdCt5+98r9zxmb5Ro3s+HA=
+Received: by 10.100.89.7 with SMTP id m7mr602324anb.27.1304145728006;
+        Fri, 29 Apr 2011 23:42:08 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.20.10 with SMTP id 10ls439341ant.0.gmail; Fri, 29 Apr 2011
+ 23:42:07 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.18.33 with SMTP id 33mr583346anr.36.1304145727571; Fri, 29
+ Apr 2011 23:42:07 -0700 (PDT)
+Received: by q32g2000yqn.googlegroups.com with HTTP; Fri, 29 Apr 2011 23:42:07
+ -0700 (PDT)
+Date: Fri, 29 Apr 2011 23:42:07 -0700 (PDT)
+In-Reply-To: <85052b2f-85ea-4686-bc2e-751acf1a9754@r20g2000yqd.googlegroups.com>
+X-IP: 98.156.13.180
+References: <18694276.1786.1304113161285.JavaMail.geo-discussion-forums@prok25>
+ <85052b2f-85ea-4686-bc2e-751acf1a9754@r20g2000yqd.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us)
+ AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1,gzip(gfe)
+Message-ID: <0acb4727-802e-4e0b-a58a-d0c9204baef3@q32g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Re: calling internal ruby functions
+From: mixtli <ronmcclain75@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: ronmcclain75@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+That all worked great.  Thanks for the help.
+
+One quick suggestion/request..  what is your opinion of altering the
+library so that it just issues a warning
+instead of failing if attach_function fails due to a missing system
+call?  It's easy enough to just copy/paste
+the stuff I need from ffi-libc, but it'd be nice not to have to.
+Probably would have to be added to add_variable as
+well for consistency.  Stinks having the whole library not load
+because of one or two syscalls I'll never use.
+
+I can fork/patch if you like.
+
+
+On Apr 29, 5:31=A0pm, mixtli <ronmcclai...@gmail.com> wrote:
+> Thanks for the info. =A0I was using select before, but or course =A0it
+> would block
+> the whole vm. =A0Didn't know about the @blocking thing. =A0I'll give that
+> a try.

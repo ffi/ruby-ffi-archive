@@ -1,0 +1,71 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Alignment problem when passing values for struct on  x86_64-linux</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Alignment problem when passing values for struct on  x86_64-linux</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rhp <ronald.pijnacker@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/2/09 3:23 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+
+Recently I am trying out ffi, and I think it is great.
+However, I am running into an alignment problem when passing values to
+a struct:
+
+--- ffi.c
+#include &lt;stdio.h&gt;
+
+typedef struct {
+    int a;
+    int b;
+} Struct;
+
+void test(char *ptr, int i, Struct s, int dummy)
+{
+    printf("%p %d [%d, %d] %d\n", ptr, i, s.a, s.b, dummy);
+}
+---
+
+--- Makefile
+libffi.so:      ffi.o
+        gcc -g -shared -o libffi.so ffi.o
+ffi.o:  ffi.c
+        gcc -g -O2 -fPIC -o ffi.o -c ffi.c
+---
+
+--- ffi_test.rb
+#!/usr/bin/ruby -w
+
+require 'rubygems'
+require 'ffi'
+
+module TestFFI extend FFI::Library
+    ffi_lib 'ffi'
+    attach_function :test, [:pointer, :int, :int, :int], :void
+end
+
+ptr = FFI::MemoryPointer.new :float, 10
+TestFFI.test(ptr, 10, 1, 2)
+---
+
+$ ./ffi_test.rb
+0x20ed020 10 [1, 0] 2
+
+
+I tried changing the latter two :ints into :int16 or :int64, but that
+does not
+make any difference.
+
+I am running this on 64bit ubuntu 9.10.
+
+$ ruby -v
+    ruby 1.8.7 (2009-06-12 patchlevel 174) [x86_64-linux]
+$ ruby1.9.1 -v
+    ruby 1.9.1p243 (2009-07-16 revision 24175) [x86_64-linux]
+
+Thanks,
+
+Ronald
+</pre></div></body>
+</html>
+</table></div>

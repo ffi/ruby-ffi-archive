@@ -1,0 +1,83 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.36.206 with SMTP id u14cs31408qcd;
+        Thu, 3 Jun 2010 22:18:54 -0700 (PDT)
+Received: by 10.101.3.25 with SMTP id f25mr11365707ani.62.1275628734177;
+        Thu, 03 Jun 2010 22:18:54 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLvR4rYNELyZouAEGgR5BfQ5@googlegroups.com>
+Received: from mail-yw0-f164.google.com (mail-yw0-f164.google.com [209.85.211.164])
+        by mx.google.com with ESMTP id w2si814405ani.1.2010.06.03.22.18.53;
+        Thu, 03 Jun 2010 22:18:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLvR4rYNELyZouAEGgR5BfQ5@googlegroups.com designates 209.85.211.164 as permitted sender) client-ip=209.85.211.164;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLvR4rYNELyZouAEGgR5BfQ5@googlegroups.com designates 209.85.211.164 as permitted sender) smtp.mail=ruby-ffi+bncCLvR4rYNELyZouAEGgR5BfQ5@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh36 with SMTP id 36sf1205535ywh.27
+        for <headius@headius.com>; Thu, 03 Jun 2010 22:18:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=8qhieP7npOxLxipJYbNcm9Ru7IuEBSwKmbbmmHdzNCg=;
+        b=cxPROKdkGZ0h0V4eq02kvh3Z/C20zMifEeZ5feI9z16csiXZJaYcjCV9b0OFxFszSN
+         9v4thHouDLYWlAwCviVHA3MVtm1q9AleJ92jtXEByczUKga6HfOYNyxOrsjDdHdGHf/+
+         ZYskULR45JEDREhpaVtpXfSemozGNv4RPq+mQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=WmRTfgdEU1VLiXIVvVwg9ZUJxGWb4326ohUHzBok8JTrEty+hfHBjyDuHUtDwb7nVG
+         xt2wZzeJLvfs1h4bUB5uKzo8IUg3sg7a7DPF7jEuj3fD0EJSbv/JdzXrY2OGvWc82e+c
+         0CeRv0LqdqysaVa2kCBANazatqjBJhlXS/WyI=
+Received: by 10.101.152.38 with SMTP id e38mr391226ano.26.1275628732665;
+        Thu, 03 Jun 2010 22:18:52 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.11.8 with SMTP id o8ls2287002ani.6.p; Thu, 03 Jun 2010 
+	22:18:51 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.139.29 with SMTP id r29mr393302ann.10.1275628731846; Thu, 
+	03 Jun 2010 22:18:51 -0700 (PDT)
+Received: by e34g2000pra.googlegroups.com with HTTP; Thu, 3 Jun 2010 22:18:51 
+	-0700 (PDT)
+Date: Thu, 3 Jun 2010 22:18:51 -0700 (PDT)
+X-IP: 210.230.183.190
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; 
+	rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2 (.NET CLR 3.5.30729),gzip(gfe)
+Message-ID: <3e447811-7a2e-4750-850b-fcfc71d37d2b@e34g2000pra.googlegroups.com>
+Subject: [ruby-ffi] Attaching function with two different signatures
+From: Arvicco <arvitallian@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Sorry to post amateurish question, but I have really hard time
+figuring out how to attach a function that has 2 different signatures.
+For example, last argument in SendMessage from Win32 API can be
+either :long or :pointer:
+
+attach_function :SendMessage, [:ulong, :uint, :uint, :long], :int
+ attach_function :SendMessage,
+[:ulong, :uint, :uint, :pointer], :int
+
+ I need to be able to call this function with any type, but it seems
+that it is only possible to  attach a function with one signature. I
+honestly tried to find the way on FFI wiki and rdoc pages, but wasn't
+able to figure out how to go about it. :( Any hints or pointers will
+be much appreciated...
+
+Regards, Arvicco

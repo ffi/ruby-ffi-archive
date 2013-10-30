@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs82331eea;
+        Sun, 21 Aug 2011 12:02:56 -0700 (PDT)
+Received: by 10.101.49.3 with SMTP id b3mr219588ank.167.1313953375790;
+        Sun, 21 Aug 2011 12:02:55 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCODBv_nyDBDarMXyBBoEpuv2lw@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id p26si7071425ann.87.2011.08.21.12.02.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 21 Aug 2011 12:02:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCODBv_nyDBDarMXyBBoEpuv2lw@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCODBv_nyDBDarMXyBBoEpuv2lw@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCODBv_nyDBDarMXyBBoEpuv2lw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd12 with SMTP id 12sf9630872gyd.7
+        for <headius@headius.com>; Sun, 21 Aug 2011 12:02:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=eISNyWvke1ualPbSIMZVSBtl85uJK9MxHM6+oOz9EPQ=;
+        b=b+U5BXtqzJXHkxHyLLr2gW5c5o6zt6wQ5v9K3xVZJsC7RaPUx6qM8l+RERCfaAPU0k
+         JM9e3/VfJn0LcldVkJ1rQqztM+0UrmFsU54+i9ogMRlbNwnOW0QW//HxL16WDGJSpxx4
+         zrpqOKegQqDB1u2m2nDOS+iBeeMHirdkILFqI=
+Received: by 10.236.192.170 with SMTP id i30mr1017537yhn.6.1313953370695;
+        Sun, 21 Aug 2011 12:02:50 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.122.4 with SMTP id u4ls19873915agc.5.gmail; Sun, 21 Aug
+ 2011 12:02:49 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.163.37 with SMTP id q37mr392928ago.55.1313953369778; Sun,
+ 21 Aug 2011 12:02:49 -0700 (PDT)
+Received: by x11g2000yqx.googlegroups.com with HTTP; Sun, 21 Aug 2011 12:02:49
+ -0700 (PDT)
+Date: Sun, 21 Aug 2011 12:02:49 -0700 (PDT)
+In-Reply-To: <4E514BB8.3090809@matijs.net>
+References: <7c04baf1-f660-480d-ad17-0df09d11e14c@z7g2000vbp.googlegroups.com>
+ <5889d909-2140-44fd-837c-2dacfc69fc84@l4g2000vbz.googlegroups.com>
+ <8f434fe7-cafc-4f6e-8b49-fdb769cf12f2@b20g2000vbz.googlegroups.com> <4E514BB8.3090809@matijs.net>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <eedb4bcb-a0cb-4d73-a217-fcea8846ddc0@x11g2000yqx.googlegroups.com>
+Subject: [ruby-ffi] Re: How to declare (int *argc, char *argv)?
+From: przemo_li <an.przemek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: an.przemek@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ an.przemek@gmail.com designates internal as permitted sender)
+ smtp.mail=an.przemek@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+
+On 21 Sie, 20:17, Matijs van Zuijlen <mat...@matijs.net> wrote:
+> First, did you take a look athttps://github.com/remogatto/ffi-opengl?Perhaps
+> you can fork it and go from there?
+
+Thx! I quickly checked it and it seam to cover OpenGL 1.3 only, and
+also with ffi-swing, but it will be worth even as just examples.
+> > I've read that :pointer can be used as output array of strings.
+> > (int * argc, char ** argv)
+>
+> > Can I use :int, as output int parameter?
+> > [:int, :pointer]
+>
+> No, both parameters need to be pointers.
+
+Yeah, I've figured it out :) (ps maybe there should be some exmaple
+added to docs? they only describe complex objects, thats fooled me,
+something with int* should do)
+
+> For an example of processing ARGC and ARGV, see:
+>
+> https://github.com/mvz/ruby-gir-ffi/blob/master/examples/hard_coded.rb
+>
+> (Oh, and note that ARGV on ruby doesn't include the name of the executable, but
+> C functions generally expect that it does).
+> Matijs
+
+Big thx!!

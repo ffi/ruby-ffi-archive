@@ -1,0 +1,108 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Proper memory management</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Proper memory management</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>v01d <phreakuencies@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/10 8:18 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Continuing brainstorming...
+
+I was thinking on a solution that involves a little coding in C but
+which I think could be a good candidate to do with some FFI magic
+(maybe extending Ruby::FFI somehow).
+
+My idea is to store not only @ptr, but a custom class that wraps the
+pointer (using Data_Wrap_Struct) and registers a "free function" that
+will call gsl_vector_free. This instance is saved as @ptr_holder so
+that when the Vector instance is GC'd, @ptr_holder is also GC'd and
+gsl_vector_free is called without having to wait for the finalizer to
+be executed.
+
+Now the problem is that requires a strange mix of C API usage and FFI.
+First I would have to define a function like this on the C side:
+VALUE hold_vector_ptr(VALUE ptr) {
+  gsl_vector* ptr2 = (gsl_vector*)NUM2ULL(ptr);
+  return Data_Wrap_Struct(cSomeClass, NULL, gsl_vector_free, ptr2);
+}
+
+so that I can do:
+  def initialize(n)
+    @ptr = GSLng.backend.gsl_alloc_vector(n)
+    @ptr = GSLng.hold_vector_ptr(@ptr.address)
+    Vector.define_finalizer(self, @ptr)
+  end
+
+What would be ideal in this case is to have a way to avoid the need of
+defining at the C side one of these hold_*_ptr functions for each
+pointer type (there are a lot under GSL). What I mean is something
+like doing:
+hold_ptr(@ptr.address, :gsl_vector_free)
+on the Ruby side. At the C side this would require grabbing the
+appropriate C function (in this case gsl_vector_free()) using the C
+FFI API or something).
+
+Ideas welcome (not necessarily for this proposed "solution", but for
+any other that serves my purpose).
+
+On May 5, 7:56 pm, v01d <a class="moz-txt-link-rfc2396E" href="mailto:phreakuenc...@gmail.com">&lt;phreakuenc...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>I'm in the process of developing a Ruby binding to the GSL numerical
+<span class="moz-txt-citetags">&gt; </span>library using FFI. Recently I stumbled upon a problematic issue
+<span class="moz-txt-citetags">&gt; </span>regarding memory management and finalizers.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Since the GSL library allows creation and destruction of instances
+<span class="moz-txt-citetags">&gt; </span>like this:
+<span class="moz-txt-citetags">&gt; </span>gsl_vector* ptr = gsl_alloc_vector(size_t n);
+<span class="moz-txt-citetags">&gt; </span>...
+<span class="moz-txt-citetags">&gt; </span>gsl_free_vector(ptr);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Then, in Ruby I do something like this:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class Vector
+<span class="moz-txt-citetags">&gt; </span>  def initialize(n)
+<span class="moz-txt-citetags">&gt; </span>    @ptr = GSLng.backend.gsl_alloc_vector(n)
+<span class="moz-txt-citetags">&gt; </span>    Vector.define_finalizer(self, @ptr)
+<span class="moz-txt-citetags">&gt; </span>  end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  def Vector.define_finalizer(self, ptr)
+<span class="moz-txt-citetags">&gt; </span>    ObjectSpace.define_finalizer(self, lambda {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>GSLng.backend.gsl_free_vector(ptr)})
+<span class="moz-txt-citetags">&gt; </span>  end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The problem is that if later I instatiante a Vector inside a loop,
+<span class="moz-txt-citetags">&gt; </span>like:
+<span class="moz-txt-citetags">&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt; </span>  Vector.new(3)
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This obviously eats a lot of memory until GC runs. Now, if I do:
+<span class="moz-txt-citetags">&gt; </span>10000.times do
+<span class="moz-txt-citetags">&gt; </span>  Vector.new(3)
+<span class="moz-txt-citetags">&gt; </span>  GC.start
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>the memory that the Vector instances themselves occupy is freed but
+<span class="moz-txt-citetags">&gt; </span>the finalizer is not called (it is later called at program end),
+<span class="moz-txt-citetags">&gt; </span>therefore all of the memory allocated through gsl_alloc_vector() is
+<span class="moz-txt-citetags">&gt; </span>sitting there until program ends.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I know that Ruby doesn't guarantee that finalizers are called in any
+<span class="moz-txt-citetags">&gt; </span>particular moment (even after GC.start, which I thought would
+<span class="moz-txt-citetags">&gt; </span>suffice). So what I'm asking probably is not really related to FFI
+<span class="moz-txt-citetags">&gt; </span>itself, but I wanted to ask here since I imagined this would be a
+<span class="moz-txt-citetags">&gt; </span>common pattern among FFI users. The question is then: is there a
+<span class="moz-txt-citetags">&gt; </span>better way to manage this type of memory? I obviously cant use the
+<span class="moz-txt-citetags">&gt; </span>transaction-like pattern (like File.open) since for a Vector that
+<span class="moz-txt-citetags">&gt; </span>wouldn't make sense. It would be ideal to make the gsl_vector_free
+<span class="moz-txt-citetags">&gt; </span>call when the actual Vector class is free'd. Maybe I need to go to a
+<span class="moz-txt-citetags">&gt; </span>lower level for this and use the C api to register this call in the
+<span class="moz-txt-citetags">&gt; </span>"free" function for this class, but that would be overkill since I
+<span class="moz-txt-citetags">&gt; </span>wanted to avoid using C altogether.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thank you!
+</pre></div></body>
+</html>
+</table></div>

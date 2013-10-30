@@ -1,0 +1,123 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.54.10 with SMTP id o10cs306014qag;
+        Thu, 18 Mar 2010 13:25:29 -0700 (PDT)
+Received: by 10.101.2.32 with SMTP id e32mr5039000ani.239.1268943927678;
+        Thu, 18 Mar 2010 13:25:27 -0700 (PDT)
+Return-Path: <3NYyiSw8GCK8eTiTg.hRWgPbbTaVbm.STgjQn-UUXVddVaTVgdjeh.Rdb@groups.bounces.google.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id 19si703459gxk.73.2010.03.18.13.25.26;
+        Thu, 18 Mar 2010 13:25:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3NYyiSw8GCK8eTiTg.hRWgPbbTaVbm.STgjQn-UUXVddVaTVgdjeh.Rdb@groups.bounces.google.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3NYyiSw8GCK8eTiTg.hRWgPbbTaVbm.STgjQn-UUXVddVaTVgdjeh.Rdb@groups.bounces.google.com designates 74.125.83.62 as permitted sender) smtp.mail=3NYyiSw8GCK8eTiTg.hRWgPbbTaVbm.STgjQn-UUXVddVaTVgdjeh.Rdb@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj15 with SMTP id 15sf3396921gwj.7
+        for <headius@headius.com>; Thu, 18 Mar 2010 13:25:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date:x-ip
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=ahPElAfuzaUhfRC2y8oNEQ/yltRZtcpstwenyTqRtcM=;
+        b=IzoBIYLs33yUV+9NWJc/pnf4Zti8ofYGtCAqmCD7Q0lcluddySGix7oztTZLsmO/jL
+         odGuuO2kzr4G1sqYPehKUhNPTM+eC0YGqd+q7N3WGDZ21KYH2hZcyIePcFpD4FL/vRit
+         9uP6lLnsvRCFaKGPm8ngFVCCvEGvZHrMpABZQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=4K9IP2rAFJ7wBPHg5ve/s+JwQNdvmsDSSOo83E11tbbVONRplZrdmSDyxJgB9/OZ3+
+         v4YwdUwUVK/PW+feyl3+zlq0eL1UBqf2B8hBgpq8WdV6jCoE166lAJbLxZ9CedkeVBuW
+         iqEGcdRvrnM/51yOScynYRSRgU3YKvx8Su+T8=
+Received: by 10.101.175.10 with SMTP id c10mr103137anp.20.1268943925022;
+        Thu, 18 Mar 2010 13:25:25 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.146.35 with SMTP id y35ls499831ann.7.p; Thu, 18 Mar 2010 
+	13:25:24 -0700 (PDT)
+Received: by 10.100.56.33 with SMTP id e33mr4181647ana.16.1268943924336;
+        Thu, 18 Mar 2010 13:25:24 -0700 (PDT)
+Received: by 10.100.56.33 with SMTP id e33mr4181646ana.16.1268943924310;
+        Thu, 18 Mar 2010 13:25:24 -0700 (PDT)
+Return-Path: <peter.schrammel@gmx.de>
+Received: from mail-gy0-f192.google.com (mail-gy0-f192.google.com [209.85.160.192])
+        by gmr-mx.google.com with ESMTP id 19si39417ywh.4.2010.03.18.13.25.24;
+        Thu, 18 Mar 2010 13:25:24 -0700 (PDT)
+Received-SPF: fail (google.com: domain of peter.schrammel@gmx.de does not designate 209.85.160.192 as permitted sender) client-ip=209.85.160.192;
+Received: by mail-gy0-f192.google.com with SMTP id 13so2991947gyb.9
+        for <ruby-ffi@googlegroups.com>; Thu, 18 Mar 2010 13:25:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.22.12 with SMTP id z12mr104625ani.61.1268943924250; Thu, 
+	18 Mar 2010 13:25:24 -0700 (PDT)
+Date: Thu, 18 Mar 2010 13:25:24 -0700 (PDT)
+X-IP: 84.150.215.82
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; de; rv:1.9.1.8) 
+	Gecko/20100308 Iceweasel/3.5.8 (like Firefox/3.5.8),gzip(gfe),gzip(gfe)
+Message-ID: <43ca059f-7905-447b-8f79-f575b602b3d9@g19g2000yqe.googlegroups.com>
+Subject: [ruby-ffi] Strange error
+From: Peter <peter.schrammel@gmx.de>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=hardfail 
+	(google.com: domain of peter.schrammel@gmx.de does not designate 
+	209.85.160.192 as permitted sender) smtp.mail=peter.schrammel@gmx.de
+X-Original-Sender: peter.schrammel@gmx.de
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/1d1bd0917528630b
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/2102b093b4cb73c7
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+I'm playing around with ffi and stumbled over a strange error:
+
+module XosdRaw
+    extend FFI::Library
+    ffi_lib 'xosd'
+    enum :command, [:percentage,:string,:printf,:slider]
+    attach_function :xosd_display,
+[:pointer,:int,:command,:varargs],:int
+end
+
+gets me this error:
+
+ruby: symbol lookup error: /home/popel/.gem/ruby/1.8/gems/ffi-0.6.3/
+lib/ffi_c.so: undefined symbol: rb_intern2
+
+it seems that the lookup of type fails. I patched types.rb
+
+def self.find_type(name, type_map = nil)
+    type_map = TypeDefs if type_map.nil?
+    code = type_map[name]
+    code = TypeDefs[name] unless code  #<------added this line
+    code = name if !code && name.kind_of?(FFI::Type)
+    raise TypeError, "Unable to resolve type '#{name}'" unless code
+    return code
+end
+
+
+Now it works. I don't know if this is the right way (perhaps I did
+something completly stupid) but perhaps some of you can have a look at
+this.
+
+THX
+
+Peter
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.

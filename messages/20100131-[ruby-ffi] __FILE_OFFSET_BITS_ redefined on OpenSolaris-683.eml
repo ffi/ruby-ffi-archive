@@ -1,0 +1,172 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.5.7 with SMTP id 7cs13884ane;
+        Sun, 31 Jan 2010 01:21:19 -0800 (PST)
+Received: by 10.101.175.28 with SMTP id c28mr3480928anp.85.1264929679008;
+        Sun, 31 Jan 2010 01:21:19 -0800 (PST)
+Return-Path: <3jEtlSwgJCIgtqz3AvqzB56zq.zq536nA-rrus00sxqs30614.o0y@groups.bounces.google.com>
+Received: from mail-gx0-f185.google.com (mail-gx0-f185.google.com [209.85.217.185])
+        by mx.google.com with ESMTP id 6si6971370ywh.78.2010.01.31.01.21.17;
+        Sun, 31 Jan 2010 01:21:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3jEtlSwgJCIgtqz3AvqzB56zq.zq536nA-rrus00sxqs30614.o0y@groups.bounces.google.com designates 209.85.217.185 as permitted sender) client-ip=209.85.217.185;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3jEtlSwgJCIgtqz3AvqzB56zq.zq536nA-rrus00sxqs30614.o0y@groups.bounces.google.com designates 209.85.217.185 as permitted sender) smtp.mail=3jEtlSwgJCIgtqz3AvqzB56zq.zq536nA-rrus00sxqs30614.o0y@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk1 with SMTP id 1sf8246065gxk.15
+        for <headius@headius.com>; Sun, 31 Jan 2010 01:21:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=mGbADsfj9O+8RAvxWlVWHcvuY9yhSuzAR99bFeH9JL0=;
+        b=eUolsXKk8nJKD0XeXiSOzE8jWtlvLCEhm6AAc0ifpovzSMgQS06CPHJtNq7uUHrt7o
+         Cry8JZUNQ72Fy9sHZfIDzyqLhO4HC4EE7GiKU0Dx+ELmHMtldh5BtnXDT6uApZpBK7CI
+         yz/vyHvIlC9Y4f3uFV6K1Y6MLlEDe9gMoaBmI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:x-thread-url
+         :x-message-url:sender:list-subscribe:list-unsubscribe:content-type;
+        b=jcW5f0aHbeLpraDF8NRQO/L3IfuxYI6DVIKxdNrPEchD09uEtuEeAWeZ5kvS2PeF3r
+         fikZmMOpSheOdKT2Le5+iJzYs8mmJ1IwFWR8xhOdqdO/6RXv4f15bD+78uk28/WeR2pX
+         xbthlFdBQyakkmDG2fgt9ZqL4zEE3QH/rdCpw=
+Received: by 10.150.173.42 with SMTP id v42mr83587ybe.21.1264929676822;
+        Sun, 31 Jan 2010 01:21:16 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.4.27 with SMTP id 27ls1042431ybd.2.p; Sun, 31 Jan 2010 
+	01:21:16 -0800 (PST)
+Received: by 10.150.183.6 with SMTP id g6mr3838018ybf.13.1264929676043;
+        Sun, 31 Jan 2010 01:21:16 -0800 (PST)
+Received: by 10.100.192.3 with SMTP id p3mr2975438anf.18.1264921795988;
+        Sat, 30 Jan 2010 23:09:55 -0800 (PST)
+Received: by 10.100.192.3 with SMTP id p3mr2975437anf.18.1264921795958;
+        Sat, 30 Jan 2010 23:09:55 -0800 (PST)
+Return-Path: <henryjen@ztune.net>
+Received: from mail-gx0-f195.google.com (mail-gx0-f195.google.com [209.85.217.195])
+        by gmr-mx.google.com with ESMTP id 17si447343gxk.4.2010.01.30.23.09.55;
+        Sat, 30 Jan 2010 23:09:55 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.217.195 is neither permitted nor denied by best guess record for domain of henryjen@ztune.net) client-ip=209.85.217.195;
+Received: by mail-gx0-f195.google.com with SMTP id 19so7672409gxk.9
+        for <ruby-ffi@googlegroups.com>; Sat, 30 Jan 2010 23:09:55 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.161.2 with SMTP id j2mr79485ybe.7.1264921795551; Sat, 30 
+	Jan 2010 23:09:55 -0800 (PST)
+Date: Sat, 30 Jan 2010 23:09:53 -0800 (PST)
+X-IP: 98.207.175.49
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) 
+	AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5,gzip(gfe),gzip(gfe)
+Message-ID: <5fe392c4-7a44-4690-8e03-216968b333a4@k36g2000prb.googlegroups.com>
+Subject: [ruby-ffi] "_FILE_OFFSET_BITS" redefined on OpenSolaris
+From: slowhog <henryjen@ztune.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9e39612ba02d33cc
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/e0cf977d2f21a091
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+I am trying to install ffi gem on OpenSolaris b130, but encounter
+"_FILE_OFFSET_BITS" redefined error. Below is the result from `rake --
+trace gem:install`.
+
+The error is obvious, but I am not sure what's the right fix. Am I
+missing something?
+
+Cheers,
+Henry
+
+===> suspicious, not sure if this is expected?
+** Invoke spec/ffi/rbx/spec_helper.rb (first_time, not_needed)
+** Invoke spec/ffrake-compiler must be configured first to enable
+cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rm -r pkg
+<...snip...>
+sudo gem install --local pkg/ffi-0.6.0
+Password:
+Building native extensions.  This could take a while...
+ERROR:  Error installing pkg/ffi-0.6.0:
+        ERROR: Failed to build gem native extension.
+
+/usr/ruby/1.8/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... no
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+/usr/sfw/bin/gcc -I. -I. -I/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11
+-I. -DRUBY_EXTCONF_H=\"extconf.h\" -I/usr/sfw/include -fPIC -g -O3 -
+fPIC -I/usr/lib/libffi-3.0.8/include   -Werror -Wunused -Wformat -
+Wimplicit -Wreturn-type   -c Buffer.c
+In file included from /usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/
+ruby.h:24,
+                 from Buffer.c:31:
+/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/config.h:27:1:
+"_FILE_OFFSET_BITS" redefined
+In file included from /usr/include/sys/int_types.h:55,
+                 from /usr/include/sys/stdint.h:38,
+                 from /usr/include/stdint.h:38,
+                 from Buffer.c:29:
+/usr/include/sys/feature_tests.h:209:1: this is the location of the
+previous definition
+make: *** [Buffer.o] Error 1
+
+
+Gem files will remain installed in /var/ruby/1.8/gem_home/gems/
+ffi-0.6.0 for inspection.
+Results logged to /var/ruby/1.8/gem_home/gems/ffi-0.6.0/ext/ffi_c/
+gem_make.out
+rake aborted!
+Command failed with status (1): [sudo gem install --local pkg/
+ffi-0.6.0...]
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:995:in `sh'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `call'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `sh'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1094:in `sh'
+/home/henryjen/git/ffi/tasks/gem.rake:171
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:597:in
+`invoke_with_call_chain'
+/usr/ruby/1.8/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:590:in
+`invoke_with_call_chain'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2051:in
+`invoke_task'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+`standard_exception_handling'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+`standard_exception_handling'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/bin/rake:31
+/usr/bin/rake:19:in `load'
+/usr/bin/rake:19

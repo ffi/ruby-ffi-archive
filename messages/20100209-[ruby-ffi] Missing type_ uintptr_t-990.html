@@ -1,0 +1,33 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Missing type: uintptr_t</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Missing type: uintptr_t</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>galdor <khaelin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/9/10 2:29 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+It seems the type uintptr_t isn't supported by ruby-ffi. intptr_t is
+supported by :__intptr_t (should be renamed, it's a bit awkward), but
+there is neither :uintptr_t nor :__uintptr_t.
+I added the following function to FFI:
+
+  def self.get_types
+    type_map = TypeDefs if type_map.nil?
+    type_map.keys
+  end
+
+And when called, I get:
+
+[:char, :uchar, :int8, :uint8, :short, :ushort, :int16, :uint16, :int, :uint, :int32, :uint32, :long, :ulong, :int64, :uint64, :long_long, :ulong_long, :float, :double, :pointer, :void, :string, :buffer_in, :buffer_out, :buffer_inout, :varargs, :enum, :bool, :char_array]
+
+I don't know where the problem is, but if someone had an idea to
+get :uintptr_t, it would be helpful <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Regards,
+
+Nicolas Martyanoff
+</pre></div></body>
+</html>
+</table></div>

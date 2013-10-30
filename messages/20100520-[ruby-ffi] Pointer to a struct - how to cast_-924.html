@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Drew <drew.avis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 10:14 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi there, I have a pointer to a struct that looks like this:
+
+// c:
+typedef struct
+	{
+	 IntT offset;
+	 IntT dataType;
+	 union {
+		StringT sdata;
+		IntT idata;
+		} u;
+	} F_TextItemT;
+
+In Ruby I've defined it like this:
+
+  class FTextItemU &lt; FFI::Union
+    layout :sdata, :string,
+    :idata, :int
+  end
+
+  class FTextItemT &lt; FFI::Struct
+    layout :offset, :int,
+      :dataType, :int,
+      :u, FTextItemU
+  end
+
+I'm trying to cast the pointer like this:
+
+my_struct = FM::FTexFtItemT.new(p)
+puts "test: #{my_struct[:dataType]}"
+
+However, I'm getting a seg fault on the puts statement.
+
+Any ideas of what I'm doing wrong?
+
+Thanks!
+Drew
+</pre></div></body>
+</html>
+</table></div>

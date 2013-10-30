@@ -1,0 +1,122 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7cs9460obb;
+        Wed, 8 Feb 2012 02:48:13 -0800 (PST)
+Received: by 10.220.115.135 with SMTP id i7mr14229395vcq.40.1328698091954;
+        Wed, 08 Feb 2012 02:48:11 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDnpcn5BBoEZlhRow@googlegroups.com>
+Received: from mail-vx0-f190.google.com (mail-vx0-f190.google.com [209.85.220.190])
+        by mx.google.com with ESMTPS id i18si220936vcq.105.2012.02.08.02.48.11
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Feb 2012 02:48:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDnpcn5BBoEZlhRow@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDnpcn5BBoEZlhRow@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDnpcn5BBoEZlhRow@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vcbfo13 with SMTP id fo13sf460656vcb.7
+        for <headius@headius.com>; Wed, 08 Feb 2012 02:48:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=N0Rd38PgYdnti6cvKU+NmPxmT6Aqs1HN85XXJs5OBQE=;
+        b=x1P5Rd9hkVwu68XH3xJTim6P+lBQR0ofuzWIks4A/G5EbrJwmTERx2vLd6zg8t4mPO
+         Zn1kqC2xkEPqBzD7etUcQ1+QDf/ZNpO7NbAERmD16GyexGdjV1SEFVFMrQKzCDQeqri5
+         JY+x1bIrWjvPwkGdFmCN4R0zWtFTIAiow4m1w=
+Received: by 10.52.70.242 with SMTP id p18mr1233639vdu.18.1328698087918;
+        Wed, 08 Feb 2012 02:48:07 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.240.68 with SMTP id kz4ls189983vcb.1.gmail; Wed, 08 Feb
+ 2012 02:48:07 -0800 (PST)
+Received: by 10.52.77.97 with SMTP id r1mr16504867vdw.4.1328698087500;
+        Wed, 08 Feb 2012 02:48:07 -0800 (PST)
+Received: by 10.52.77.97 with SMTP id r1mr16504866vdw.4.1328698087491;
+        Wed, 08 Feb 2012 02:48:07 -0800 (PST)
+Received: from mail-vw0-f44.google.com (mail-vw0-f44.google.com [209.85.212.44])
+        by gmr-mx.google.com with ESMTPS id t13si406023vdf.2.2012.02.08.02.48.07
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Feb 2012 02:48:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.212.44 as permitted sender) client-ip=209.85.212.44;
+Received: by mail-vw0-f44.google.com with SMTP id fr13so239479vbb.3
+        for <ruby-ffi@googlegroups.com>; Wed, 08 Feb 2012 02:48:07 -0800 (PST)
+Received: by 10.52.95.65 with SMTP id di1mr11923164vdb.87.1328698087411; Wed,
+ 08 Feb 2012 02:48:07 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.52.187.1 with HTTP; Wed, 8 Feb 2012 02:47:47 -0800 (PST)
+In-Reply-To: <693c4134-db4a-4b54-9c65-a592e26ddf71@ow3g2000pbc.googlegroups.com>
+References: <693c4134-db4a-4b54-9c65-a592e26ddf71@ow3g2000pbc.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 8 Feb 2012 07:47:47 -0300
+Message-ID: <CAN_J9auo+P+PEuirtozHMy7XtN0pYJWV4B25R6H_f9znE-suoQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] Rails install
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.212.44 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Feb 4, 2012 at 4:24 PM, kristy snow <kristysnow@gmail.com> wrote:
+> could not find gem ' turn <>=3D 0> x86-mingw32' in any of the gem
+> sources listed in your Gemfile.
+>
+
+turn gem has nothing to do with ffi (Ruby-FFI) project or gem, so you
+posting here seems unrelated.
+
+Turn does exist in rubygems.org:
+
+http://rubygems.org/gems/turn
+
+So perhaps you're having internet connection issues when you did
+"bundle install"
+
+> Says to run bundle install.
+>
+
+I think the message is pretty clear, you need to run "bundle install"
+
+> After bundle install I get failed to build gem native extension
+> An error occured while installing json 1.6.5 and bundler can't
+> continue.
+>
+
+json gem has nothing to do with Ruby-FFI project.
+
+> 1- I installed mingw and it didn't help
+> 2- I installed devkit and still not working
+
+I believe I did mention this all over the place in your threads at
+RailsInstaller group: please include exact output you get at the
+console.
+
+You're definitely not cooperating and providing us enough information
+to help you. This is the 3rd time I share this link with you:
+
+http://yourbugreportneedsmore.info/
+http://yourbugreportneedsmore.info/tatham/en.html
+
+Please, read these pages, they will explain you how to better ask
+question when you're having problems and provide us contextual
+information to better assist you.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

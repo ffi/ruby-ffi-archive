@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 5:21 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/22 Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a>:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span> # s can now be collected, the backing memory proxy can be collected,
+<span class="moz-txt-citetags">&gt; </span>which will free the
+<span class="moz-txt-citetags">&gt; </span> # allocated native memory.
+</pre></blockquote><pre wrap>
+
+I should have added a footnote that just because it <b class="moz-txt-star"><span class="moz-txt-tag">*</span>can<span class="moz-txt-tag">*</span></b> be
+collected, there is in fact no guarantee that objects are in fact ever
+collected by the GC.  Depending on the implementation, there might not
+be sufficient ruby/java memory pressure to cause a GC event, so the
+objects are not collected, and the native memory is never freed.
+
+Automated management of native memory is a no-win situation:
+
+If we have it in FFI core, then people will (ab)use it and rely on it
+when they really should not.
+
+If we do not have it in core, people will implement them anyway, and
+instead of a single known implementation,  there will be a dozen
+crappy, broken implementations of the concept, and people will still
+abuse these implementations and rely upon them when they should not.
+
+MemoryPointer and AutoPointer are in FFI core because I thought that
+was the lesser of two evils.
+
+(and, most instances are small and short lived, so there is enough
+object churn to cause a GC event, so the negative effects haven't
+massively bitten anyone).
+
+In hindsight, I would probably have just two types of memory - purely
+passive native pointers, and ruby heap allocated memory with
+copy-in/copy-out to transient native memory semantics.  Structs would
+implicitly use the ruby heap memory, unless an explicit native pointer
+was passed to the constructor.
+
+People should peruse e.g. the nokogiri FFI backend, and figure out how
+one would rewrite it with explicit memory management, before proposing
+solutions to the problem.
+</pre></div></body>
+</html>
+</table></div>

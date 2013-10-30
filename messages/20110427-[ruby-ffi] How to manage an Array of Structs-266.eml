@@ -1,0 +1,117 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs281397agb;
+        Wed, 27 Apr 2011 14:36:17 -0700 (PDT)
+Received: by 10.236.78.40 with SMTP id f28mr3615859yhe.149.1303940177142;
+        Wed, 27 Apr 2011 14:36:17 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKH6psKSHBDLmOLtBBoEuxvrWA@googlegroups.com>
+Received: from mail-yi0-f62.google.com (mail-yi0-f62.google.com [209.85.218.62])
+        by mx.google.com with ESMTPS id 11si3868426yhl.50.2011.04.27.14.36.17
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 27 Apr 2011 14:36:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKH6psKSHBDLmOLtBBoEuxvrWA@googlegroups.com designates 209.85.218.62 as permitted sender) client-ip=209.85.218.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKH6psKSHBDLmOLtBBoEuxvrWA@googlegroups.com designates 209.85.218.62 as permitted sender) smtp.mail=ruby-ffi+bncCKH6psKSHBDLmOLtBBoEuxvrWA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yic15 with SMTP id 15sf5487457yic.7
+        for <headius@headius.com>; Wed, 27 Apr 2011 14:36:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Z+1Xt2gChhkJFrRH0waB/UpAAMMs204waofMXrQl1JI=;
+        b=r5YCsMXR/GHqOwpyrAERtCatZtltQiaN7NqO34zNvjl07z8iRBJXK6n31Zv6OVC+39
+         uPpFOKEbrb18X0LCCu6cKePkVNH/12xK9wrA3VPdL5xMyoTLL63NqRgguDzZbLM47sMN
+         3sk3syh5wbj2SpgGZ9hP+uvP7LnHnjY899Mps=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=k0fTWCfnJFz5yc/eMkdxSc3VTClrs1ObuQ0D9eXEVr+MTcs/c2a0PBwbwYzYpZIU65
+         oG0WTTkR2DWA18RIAXiYYCM3bOXXl3OHjXlkZEMEC2nWfB3SWdzn80FQEs6m9fQrj4Qg
+         9zhTl13+cLQBF7mdK932HY2lsG1kEeYxIyTWk=
+Received: by 10.91.194.2 with SMTP id w2mr261663agp.48.1303940171570;
+        Wed, 27 Apr 2011 14:36:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.92.14 with SMTP id u14ls178760agl.2.gmail; Wed, 27 Apr 2011
+ 14:36:11 -0700 (PDT)
+Received: by 10.91.51.9 with SMTP id d9mr1199182agk.29.1303940171090;
+        Wed, 27 Apr 2011 14:36:11 -0700 (PDT)
+Received: by 10.151.127.19 with SMTP id e19msybn;
+        Wed, 27 Apr 2011 09:58:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.142.230.15 with SMTP id c15mr157802wfh.4.1303923533746; Wed,
+ 27 Apr 2011 09:58:53 -0700 (PDT)
+Received: by z27g2000prz.googlegroups.com with HTTP; Wed, 27 Apr 2011 09:58:53
+ -0700 (PDT)
+Date: Wed, 27 Apr 2011 09:58:53 -0700 (PDT)
+X-IP: 171.64.109.95
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us)
+ AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1,gzip(gfe)
+Message-ID: <2952a6dd-e006-41f6-9e07-64681f010c4a@z27g2000prz.googlegroups.com>
+Subject: [ruby-ffi] How to manage an Array of Structs
+From: P4010 <paolo.bosetti@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: paolo.bosetti@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all,
+I am writing an FFI interface to IP shared memory and semaphores. I
+wonder if someone here can give me advice on how to manage an Array of
+Structs.
+
+I am mapping the semop() function in FFI. It has the following
+signature:
+
+#include <sys/sem.h>
+int
+semop(int semid, struct sembuf *sops, size_t nsops);
+
+I wrote something like:
+
+module Shared
+  extend FFI::Library
+  ffi_lib FFI::Library::LIBC
+
+  class Sembuf < FFI::Struct
+    layout :sem_num, :ushort,
+      :sem_op, :short,
+      :sem_flg, :short
+  end
+
+  attach_function :semop,  [:int, :pointer, :size_t], :int
+
+end
+
+Now the Shared#semop wants a pointer to an array of Shared::Sembuf
+structs. How can I build such a pointer? I guess I should start with
+
+op = Shared::Sembuf.new
+op[:sem_num] = 0
+op[:sem_op] = -1
+op[:sem_flg] = 0
+
+ops = FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)
+
+But then I could not find how to add the op instance to the array
+pointed to by ops...
+
+I'll appreciate any suggestion...
+
+Cheers,
+-P.

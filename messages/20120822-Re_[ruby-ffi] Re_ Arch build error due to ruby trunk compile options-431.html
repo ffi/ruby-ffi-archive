@@ -1,0 +1,187 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Arch build error due to ruby trunk compile options</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Arch build error due to ruby trunk compile options</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/22/12 3:03 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+eek =&gt; MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in this function)
+
+
+[jon@archee ~]$ gem i ffi --pre --user-install
+Fetching: ffi-1.2.0.dev3.gem (100%)
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+        ERROR: Failed to build gem native extension.
+
+        /usr/local/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... yes
+checking for ffi_prep_raw_closure()... yes
+checking for rb_thread_blocking_region()... yes
+checking for ruby_native_thread_p()... yes
+checking for rb_thread_call_with_gvl()... yes
+checking for ffi_prep_cif_var()... yes
+creating extconf.h
+creating Makefile
+
+make
+compiling Pointer.c
+compiling Platform.c
+compiling Types.c
+compiling MappedType.c
+compiling Buffer.c
+compiling Call.c
+Call.c: In function 'do_blocking_call':
+Call.c:281:5: warning: 'rb_thread_blocking_region' is deprecated (declared at /usr/local/include/ruby-2.0.0/ruby/intern.h:823) [-Wdeprecated-declarations]
+compiling LongDouble.c
+compiling ClosurePool.c
+compiling StructByReference.c
+compiling ArrayType.c
+compiling Variadic.c
+compiling MemoryPointer.c
+compiling Struct.c
+compiling AbstractMemory.c
+compiling MethodHandle.c
+MethodHandle.c: In function 'rbffi_MethodHandle_Init':
+MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in this function)
+MethodHandle.c:340:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [MethodHandle.o] Error 1
+
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Can you try 1.2.0.dev3 ?  It should eliminate the warnflags MRI puts in 
+<span class="moz-txt-citetags">&gt; </span>there.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On Friday, 10 August 2012 06:16:10 UTC+10, Jon wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>With ruby trunk the last few ffi gem releases have failed to build on my 
+<span class="moz-txt-citetags">&gt; &gt; </span>Arch 3.4.7 32bit dev system with gcc 4.7.1 (20120721). 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Given the details and workaround info below, the root cause appears to be 
+<span class="moz-txt-citetags">&gt; &gt; </span>recent `configure.in` ansi compliance mods: 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>  <a class="moz-txt-link-freetext" href="https://github.com/ruby/ruby/blob/trunk/configure.in#L619-635">https://github.com/ruby/ruby/blob/trunk/configure.in#L619-635</a> 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Looks like others are running into as well 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>  <a class="moz-txt-link-freetext" href="https://github.com/flori/json/issues/142">https://github.com/flori/json/issues/142</a> 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>While I've only briefly investigated, I don't have time to fully look into 
+<span class="moz-txt-citetags">&gt; &gt; </span>it. But I don't want to forget about it. 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>*** GEM UPDATE FAILURE *** 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>[jon@archee ~]$ gem update ffi --user-install 
+<span class="moz-txt-citetags">&gt; &gt; </span>Updating installed gems 
+<span class="moz-txt-citetags">&gt; &gt; </span>Updating ffi 
+<span class="moz-txt-citetags">&gt; &gt; </span>Fetching: ffi-1.1.5.gem (100%) 
+<span class="moz-txt-citetags">&gt; &gt; </span>Building native extensions.  This could take a while... 
+<span class="moz-txt-citetags">&gt; &gt; </span>ERROR:  Error installing ffi: 
+<span class="moz-txt-citetags">&gt; &gt; </span>        ERROR: Failed to build gem native extension. 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>        /usr/local/bin/ruby extconf.rb 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for ffi_call() in -lffi... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for ffi_prep_closure()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for ffi_raw_call()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for ffi_prep_raw_closure()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for rb_thread_blocking_region()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for ruby_native_thread_p()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>checking for rb_thread_call_with_gvl()... yes 
+<span class="moz-txt-citetags">&gt; &gt; </span>creating extconf.h 
+<span class="moz-txt-citetags">&gt; &gt; </span>creating Makefile 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>make 
+<span class="moz-txt-citetags">&gt; &gt; </span>compiling Pointer.c 
+<span class="moz-txt-citetags">&gt; &gt; </span>In file included from Pointer.c:34:0: 
+<span class="moz-txt-citetags">&gt; &gt; </span>rbffi_endian.h:46:4: error: #error "Cannot determine the endian-ness of 
+<span class="moz-txt-citetags">&gt; &gt; </span>this platform" 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c: In function 'ptr_order': 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c:339:59: error: 'BYTE_ORDER' undeclared (first use in this 
+<span class="moz-txt-citetags">&gt; &gt; </span>function) 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c:339:59: note: each undeclared identifier is reported only once 
+<span class="moz-txt-citetags">&gt; &gt; </span>for each function it appears in 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c:339:72: error: 'BIG_ENDIAN' undeclared (first use in this 
+<span class="moz-txt-citetags">&gt; &gt; </span>function) 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c:351:25: error: 'LITTLE_ENDIAN' undeclared (first use in this 
+<span class="moz-txt-citetags">&gt; &gt; </span>function) 
+<span class="moz-txt-citetags">&gt; &gt; </span>Pointer.c:368:1: warning: control reaches end of non-void function 
+<span class="moz-txt-citetags">&gt; &gt; </span>[-Wreturn-type] 
+<span class="moz-txt-citetags">&gt; &gt; </span>make: *** [Pointer.o] Error 1 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Gem files will remain installed in 
+<span class="moz-txt-citetags">&gt; &gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jon<span class="moz-txt-tag">/</span></i>.gem/ruby/2.0.0/gems/ffi-1.1.5 for inspection. 
+<span class="moz-txt-citetags">&gt; &gt; </span>Results logged to 
+<span class="moz-txt-citetags">&gt; &gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jon<span class="moz-txt-tag">/</span></i>.gem/ruby/2.0.0/gems/ffi-1.1.5/ext/ffi_c/gem_make.out 
+<span class="moz-txt-citetags">&gt; &gt; </span>Nothing to update 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>*** WORKAROUND *** 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>gem update ffi --user-install -- --with-cflags='--std=gnu99' 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>*** SYSTEM INFO *** 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span># rbconfig.rb contents: 
+<span class="moz-txt-citetags">&gt; &gt; </span>  CONFIG["warnflags"] = "-Wall -Wextra -Wno-unused-parameter 
+<span class="moz-txt-citetags">&gt; &gt; </span>-Wno-parentheses -Wno-long-long -Wno-missing-field-initializers 
+<span class="moz-txt-citetags">&gt; &gt; </span>-Wunused-variable -Werror=pointer-arith -Werror=write-strings 
+<span class="moz-txt-citetags">&gt; &gt; </span>-Werror=declaration-after-statement -Werror=implicit-function-declaration 
+<span class="moz-txt-citetags">&gt; &gt; </span>-ansi -std=iso9899:199409" 
+<span class="moz-txt-citetags">&gt; &gt; </span>  CONFIG["WERRORFLAG"] = "-Werror" 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>[jon@archee ~]$ gem env 
+<span class="moz-txt-citetags">&gt; &gt; </span>RubyGems Environment: 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - RUBYGEMS VERSION: 1.8.24 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - RUBY VERSION: 2.0.0 (2012-08-10 patchlevel -1) [i686-linux] 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - INSTALLATION DIRECTORY: /usr/local/lib/ruby/gems/2.0.0 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - RUBY EXECUTABLE: /usr/local/bin/ruby 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - EXECUTABLE DIRECTORY: /usr/local/bin 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - RUBYGEMS PLATFORMS: 
+<span class="moz-txt-citetags">&gt; &gt; </span>    - ruby 
+<span class="moz-txt-citetags">&gt; &gt; </span>    - x86-linux 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - GEM PATHS: 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - /usr/local/lib/ruby/gems/2.0.0 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jon<span class="moz-txt-tag">/</span></i>.gem/ruby/2.0.0 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - GEM CONFIGURATION: 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :update_sources =&gt; true 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :verbose =&gt; true 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :benchmark =&gt; false 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :backtrace =&gt; false 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :bulk_threshold =&gt; 1000 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - :sources =&gt; [<a class="moz-txt-link-rfc2396E" href="http://rubygems.org">"http://rubygems.org"</a>] 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - "gem" =&gt; "--no-ri --no-rdoc" 
+<span class="moz-txt-citetags">&gt; &gt; </span>  - REMOTE SOURCES: 
+<span class="moz-txt-citetags">&gt; &gt; </span>     - <a class="moz-txt-link-freetext" href="http://rubygems.org">http://rubygems.org</a> 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Jon 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>--- 
+<span class="moz-txt-citetags">&gt; &gt; </span>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+<span class="moz-txt-citetags">&gt; &gt; </span><a class="moz-txt-link-freetext" href="http://thecodeshop.github.com">http://thecodeshop.github.com</a> | <a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a> 
+<span class="moz-txt-citetags">&gt; &gt; </span>twitter: @jonforums 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote></blockquote><pre wrap>
+
+
+Jon
+
+---
+Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<a class="moz-txt-link-freetext" href="http://thecodeshop.github.com">http://thecodeshop.github.com</a> | <a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+twitter: @jonforums
+</pre></div></body>
+</html>
+</table></div>

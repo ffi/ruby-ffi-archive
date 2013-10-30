@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.54.212 with SMTP id r20cs17582bkg;
+        Tue, 5 Oct 2010 08:51:17 -0700 (PDT)
+Received: by 10.101.139.34 with SMTP id r34mr8141794ann.147.1286293876698;
+        Tue, 05 Oct 2010 08:51:16 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLvR4rYNEPKSreUEGgRsB7n8@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id a3si17172400anj.145.2010.10.05.08.51.15;
+        Tue, 05 Oct 2010 08:51:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLvR4rYNEPKSreUEGgRsB7n8@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLvR4rYNEPKSreUEGgRsB7n8@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCLvR4rYNEPKSreUEGgRsB7n8@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb15 with SMTP id 15sf6823599gwb.7
+        for <headius@headius.com>; Tue, 05 Oct 2010 08:51:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=PXnP8ZlFRQRL196Y5KlFb5+1J4Z/J4glMsVNiJUf2yQ=;
+        b=ci8JTK+RJ9hH83IQh8YpIPqGZ/6hSuH/kkmD5OLwBa3DW5odYe7vsCptuP+hyOQVYs
+         Er0cmHr0/x98nvx28fZLpkVgx9dwWhv7hpPe+CrsUxF/AZtkBqaSQCuQ4tIB7m16oBiA
+         Noe8sDLmd7q02XMHtrOeA7KaLUHRkM7f7Chm8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-via
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=HlpAI2Em1ocPDiu4g4lKGdW7+8XMSWu9tCurSLWQ4oxN1QFkH8tqgFJ6AV3eI0Odzn
+         iWQY9FnrBGkRVzw+ObKZxvJqBuw3781BEwwg2ksj9VsjgZLiN/6YzoP4utN+2A7/BGm5
+         /D5FpWeyml4uEXQtlEpYYzni2AxuYJfgCm2R8=
+Received: by 10.101.162.8 with SMTP id p8mr209866ano.50.1286293874319;
+        Tue, 05 Oct 2010 08:51:14 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.131.11 with SMTP id i11ls2816515ann.5.p; Tue, 05 Oct 2010
+ 08:51:14 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.63.16 with SMTP id q16mr211002ank.44.1286293873985; Tue,
+ 05 Oct 2010 08:51:13 -0700 (PDT)
+Received: by d17g2000yqm.googlegroups.com with HTTP; Tue, 5 Oct 2010 08:51:13
+ -0700 (PDT)
+Date: Tue, 5 Oct 2010 08:51:13 -0700 (PDT)
+X-IP: 91.103.66.5
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 squid-node1.avp.ru:3128 (squid/2.6.STABLE21), 1.0 GW3
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US;
+ rv:1.9.2.10) Gecko/20100914 Firefox/3.6.10 (.NET CLR 3.5.30729),gzip(gfe)
+Message-ID: <f077ebe0-6d1e-487f-abe4-ae8866664bdf@d17g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Troubles with Daemon Kit and FFI
+From: Arvicco <arvitallian@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: arvitallian@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello all,
+
+I'm having trouble to marry Daemon Kit and FFI under Cygwin (Yes,
+daemons work well under Cygwin until I try to use FFI).
+
+I've generated default daemon_kit skeleton and wrote simple proof-of-
+concept daemon in libexec:
+http://gist.github.com/611727
+
+It just defines Win32 API function using FFI (vanilla FFI wiki
+example) and then tries to call this function.
+
+The trouble is, everything seems to work just fine when the daemon
+binary is invoked with "my_daemon run" but when it is called with
+"my_daemon start"(requesting daemonization), it just dies upon FFI
+function call. Silently, without leaving any trace. No exceptions
+(yes, I tried to catch them), nothing logged... it just disappears.
+
+Did anyone try to use FFI like this? Am I missing something here? Any
+help/tips would be greatly appreciated...
+
+Regards,
+Arvicco

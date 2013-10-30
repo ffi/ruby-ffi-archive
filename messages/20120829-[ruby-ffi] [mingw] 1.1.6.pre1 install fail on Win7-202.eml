@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.72.202 with SMTP id f10csp233089obv;
+        Wed, 29 Aug 2012 17:58:11 -0700 (PDT)
+Received: by 10.236.179.98 with SMTP id g62mr3453818yhm.44.1346288290933;
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLeTq4HQChCi9fqBBRoES1YtIA@googlegroups.com>
+Received: from mail-gg0-f190.google.com (mail-gg0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id n62si151978yhm.90.2012.08.29.17.58.10
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCi9fqBBRoES1YtIA@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCi9fqBBRoES1YtIA@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCLeTq4HQChCi9fqBBRoES1YtIA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggdk2 with SMTP id k2sf1448645ggd.7
+        for <headius@headius.com>; Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:received-spf:mime-version:date:message-id:subject:from
+         :to:x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=90dFBdccWE1hpJNUYfeFrl8wEIdUU1fKWSJA53zx45w=;
+        b=xZMA2CeK56no20D8UgvK4UFrfQq1QYDtRlDpM4VJAXstTRQXeDCqzygsTCJ4GRyy5k
+         A/H4XAKoFgxl/o/4BhMBm+SvwK2FU60mZCwcU3ieYjfDkaFGwRR/7350ae1bCJZetlg5
+         IQzB8YOhoMjQdX1j4/ew/PAes9V8Xd3jY+Sr/AsmLUyS9e3injHi4AWKCPiNSHDJ+/2/
+         zXHKxUP5hvamOyPaUYO/T6LUhT397ZllU8RvUDx/YcYSgHBaaXdYYC1jusCgN2ty0eAI
+         eUD2GYANcFE1TIinpSAyxrDpoEK3PNppywC8rHqXBryXcqzOXvCNXrMkXjrvLD5e56lJ
+         tGRA==
+Received: by 10.52.23.145 with SMTP id m17mr646098vdf.0.1346288290625;
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.35.202 with SMTP id k10ls2010318vdj.0.gmail; Wed, 29 Aug
+ 2012 17:58:10 -0700 (PDT)
+Received: by 10.58.253.5 with SMTP id zw5mr912488vec.2.1346288290260;
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Received: by 10.58.253.5 with SMTP id zw5mr912487vec.2.1346288290251;
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Received: from mail-vc0-f172.google.com (mail-vc0-f172.google.com [209.85.220.172])
+        by gmr-mx.google.com with ESMTPS id cf2si9190vdb.0.2012.08.29.17.58.10
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.220.172 as permitted sender) client-ip=209.85.220.172;
+Received: by mail-vc0-f172.google.com with SMTP id fo14so1611389vcb.3
+        for <ruby-ffi@googlegroups.com>; Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.19.243 with SMTP id i19mr1743304vde.69.1346288290087; Wed,
+ 29 Aug 2012 17:58:10 -0700 (PDT)
+Received: by 10.220.38.1 with HTTP; Wed, 29 Aug 2012 17:58:10 -0700 (PDT)
+Date: Wed, 29 Aug 2012 17:58:10 -0700
+Message-ID: <CAANDx0MJUQ=v87BRkBXvV6v_aoXb-r8Hd50M7w4r61w3wsErZg@mail.gmail.com>
+Subject: [ruby-ffi] [mingw] 1.1.6.pre1 install fail on Win7
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jon.forums@gmail.com designates 209.85.220.172 as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On both trunk@36849 and ruby_1_9_3@36834 during a gem install,
+1.1.6.pre1 fails to build on Win7 32bit using mingw.org gcc 4.6.2 due
+to missing `rbConventionStr` declaration in
+`ext/ffi_c/Variadic.c:variadic_initialize`.
+
+Adding a non-ifdef'd `VALUE rbConventionStr = Qnil;` makes everything sublime.
+
+Jon

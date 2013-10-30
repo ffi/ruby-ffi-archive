@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [BUG] ffi 0.5.4 on OSX ?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [BUG] ffi 0.5.4 on OSX ?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Hinegardner <jeremy@hinegardner.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/09 10:46 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+As of commit b991c09de631cc204cfc8232c661ff7dd0fd9ed0 'rake test'
+and installing as a gem both work for me.  A test piece of
+code I was playing with using ff works too.
+
+All is good here, thanks!
+
+enjoy,
+
+-jeremy
+
+On Thu, Dec 10, 2009 at 04:11:32PM +1000, Wayne Meissner wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Ok, I think this one is fixed.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I tested in 3 modes.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>1) no macports in PATH.  Uses /usr/bin/ruby and compiles libffi from
+<span class="moz-txt-citetags">&gt; </span>source, because /usr/lib/libffi is dodgy.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2) macports in PATH, using /usr/bin/ruby.  Links against macports
+<span class="moz-txt-citetags">&gt; </span>libffi, found via macports pkg-config
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>3) macports in PATH, using macports ruby.  Links against macports libffi.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Jeremy, can you update to ffi master and test it on your setup?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2009/12/10 Jeremy Hinegardner <a class="moz-txt-link-rfc2396E" href="mailto:jeremy@hinegardner.org">&lt;jeremy@hinegardner.org&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I just tried updating to 0.5.4 and ended up with this:
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>? ?<a class="moz-txt-link-freetext" href="http://pastie.org/736768">http://pastie.org/736768</a>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Doing some digging into the code reveals that in the extconf.rb it fails
+<span class="moz-txt-citetags">&gt; &gt; </span>to find the 'ffi.h' header, but the link tests for ffi_call and
+<span class="moz-txt-citetags">&gt; &gt; </span>ffi_prep_closure succeed so libffi_ok is true in extconf.rb.
+<span class="moz-txt-citetags">&gt; &gt; </span>When the extension builds, it fails because ffi.h is not in the include
+<span class="moz-txt-citetags">&gt; &gt; </span>path.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>It looks to me as if ffi already exits on my OSX
+<span class="moz-txt-citetags">&gt; &gt; </span>(/usr/include/ffi/ffi.h), but but it is version 2.1 instead of the
+<span class="moz-txt-citetags">&gt; &gt; </span>shipped version 3.0.6 of ffi with gem version 0.5.4
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>? ?% grep VERSION /usr/include/ffi/ffi*
+<span class="moz-txt-citetags">&gt; &gt; </span>? ?/usr/include/ffi/fficonfig.h:#define PACKAGE_VERSION "2.1"
+<span class="moz-txt-citetags">&gt; &gt; </span>? ?/usr/include/ffi/fficonfig.h:#define VERSION "2.1-pyobjc"
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>Adding "/usr/include/ffi" to the find_header() call results in conflicts
+<span class="moz-txt-citetags">&gt; &gt; </span>on the PACKAGE_BUGREPORT, PACKAGE_NAME, PACKAGE_STRING, PACKAGE_TARNAME,
+<span class="moz-txt-citetags">&gt; &gt; </span>and PACKAGE_VERSION declarations.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>I was able to work around the issue for me with the attached patch, but
+<span class="moz-txt-citetags">&gt; &gt; </span>it is probably not the correct way to deal with this issue.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>enjoy,
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>-jeremy
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>--
+<span class="moz-txt-citetags">&gt; &gt; </span>========================================================================
+<span class="moz-txt-citetags">&gt; &gt; </span>?Jeremy Hinegardner ? ? ? ? ? ? ? ? ? ? ? ? ? ? ?jeremy@hinegardner.org
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote></blockquote><pre wrap>
+
+<div class="moz-txt-sig">-- 
+========================================================================
+ Jeremy Hinegardner                              <a class="moz-txt-link-abbreviated" href="mailto:jeremy@hinegardner.org">jeremy@hinegardner.org</a> 
+
+</div></pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,83 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs155041eea;
+        Tue, 23 Aug 2011 04:30:22 -0700 (PDT)
+Received: by 10.236.179.34 with SMTP id g22mr3301648yhm.120.1314099022217;
+        Tue, 23 Aug 2011 04:30:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC8ns7yBBoEi01FMA@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id z23si324030yhn.1.2011.08.23.04.30.21
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 23 Aug 2011 04:30:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC8ns7yBBoEi01FMA@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC8ns7yBBoEi01FMA@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBC8ns7yBBoEi01FMA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf12526gxk.7
+        for <headius@headius.com>; Tue, 23 Aug 2011 04:30:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=UghWk3d8uwLcUwzqBiObEjOdZppcbG0UvJPN/i4smeU=;
+        b=jgUXMw8dbzoMf3gnXkblXT2/0IALdIkH8F1LXQm4RSFeBFMPTWfTiKGWZtgwpNJLNK
+         OsVZX08gQ440gOsn/a+S44n0bjHNwGjJ7l52S90CzSBM1SZyD3HS2AMWYYabTT3ly7u3
+         davK19TVz8YAOdFBKBuiNwLp2mUQPGC/Pg1OE=
+Received: by 10.236.191.136 with SMTP id g8mr2663034yhn.5.1314099004644;
+        Tue, 23 Aug 2011 04:30:04 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.51.2 with SMTP id y2ls8793238agy.1.gmail; Tue, 23 Aug 2011
+ 04:30:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.111.2 with SMTP id o2mr820090agm.50.1314098996443; Tue, 23
+ Aug 2011 04:29:56 -0700 (PDT)
+Received: by f1g2000pre.googlegroups.com with HTTP; Tue, 23 Aug 2011 04:29:56
+ -0700 (PDT)
+Date: Tue, 23 Aug 2011 04:29:56 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)
+ AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.94 Safari/535.1,gzip(gfe)
+Message-ID: <875642a4-e441-4e3c-bceb-1083dd91ff27@f1g2000pre.googlegroups.com>
+Subject: [ruby-ffi] ffi 1.0.10 testing
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+Can people please test ffi-master on your favourite ruby version?
+
+Things fixed since 1.0.9:
+
+- should now work on 1.9.3 (ruby_thread_has_gvl_p no longer exported)
+- installs on non-MRI rubies
+- compiles using VC++ toolchain on win32 (Charlie Savage)
+- a lot of API documentation (Kim Burgestrand)
+- other win32/win64 mingw fixes (Luis Lavena)
+- better handling of linker scripts on linux (aniederl)
+- ext/ffi_c/StructLayout.c fixes (Chikanaga Tomoyuki)
+- Size lookup for MemoryPointer.new and Buffer.new type
+(e.g. :int, :long, etc) parameters now much faster.
+- FFI::Buffer.new for small sizes (<= 8 bytes) types now approx 30%
+faster.
+
+I especially would like people to test on 1.9.3-preview1 (or later
+1.9.3 builds/source), since I want the release to work out-of-the-box
+on 1.9.3.
+

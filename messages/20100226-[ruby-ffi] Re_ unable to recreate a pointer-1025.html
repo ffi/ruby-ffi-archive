@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: unable to recreate a pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: unable to recreate a pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/26/10 6:43 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://pastie.org/839395">http://pastie.org/839395</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I read in an HWND, attempt to copy it, and use the copy.  However, the
+<span class="moz-txt-citetags">&gt; </span>copy doesn't seem to work.
+</pre></blockquote><pre wrap>
+
+So it appears the problem is that doing a
+(HWND).read_int
+
+isn't allowed by windows at all...
+
+a HANDLE maybe is like a pointer into some deep dark internal
+(unreadable, unwritable) windows memory structure.
+
+It's a "special" pointer.  It's not what it points to that matters,
+but rather that you are pointing to the "right" location.
+
+As a work around you can specify long's for HWND and it works great.
+Either that or at least don't try to copy them <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+The only way to copy them (if you're using pointers) is like
+
+new_pointer = FFI::Pointer.new (Top.GetForegroundWindow.address)
+
+Thanks for your patience.
+
+-r
+</pre></div></body>
+</html>
+</table></div>

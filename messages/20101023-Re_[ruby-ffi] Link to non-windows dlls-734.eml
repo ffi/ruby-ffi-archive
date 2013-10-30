@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs64504bkh;
+        Sat, 23 Oct 2010 07:47:20 -0700 (PDT)
+Received: by 10.216.17.130 with SMTP id j2mr814633wej.47.1287845240306;
+        Sat, 23 Oct 2010 07:47:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRD26ovmBBoEQIRlfQ@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id x17si3717912weq.147.2010.10.23.07.47.19;
+        Sat, 23 Oct 2010 07:47:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRD26ovmBBoEQIRlfQ@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRD26ovmBBoEQIRlfQ@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRD26ovmBBoEQIRlfQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyj26 with SMTP id 26sf1663037wyj.7
+        for <headius@headius.com>; Sat, 23 Oct 2010 07:47:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=hTHsnm2PYX437JqewRh81JEze1zaV4a5KIzFgF8k7AQ=;
+        b=2euBKhohR/sv9mLgQP79kfbOrDlPbEAHhU8abELdMxHclaP0avT7HbOrlOsQTdcCKU
+         wB5MeyM73LTaEaEmV7Dz5K3WNgLB+t656baZ7NilJ5yvPCbjpsCOrqJAgfZ0aHJtvP1u
+         KUH6uhCoXBoaUHlAnncV68LQexwRUKqENJImA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=D0OXaJ+CgMOqOVstRc1y98k3JeuSNysJlPgDKt/H4XcMnWUL95SBE6SPsurniiLjLP
+         nNAru9c4y1cQJQy8MSAseIdaghYMO78f7/CwrFEZ7fsmHCWhp/y6CxnOSHhV4++JXvMK
+         grzUejfJ65AiyqNU70X5UxNRxpnYmIO+N46Rk=
+Received: by 10.216.237.83 with SMTP id x61mr646188weq.18.1287845238872;
+        Sat, 23 Oct 2010 07:47:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.26.28 with SMTP id b28ls393394eea.5.p; Sat, 23 Oct 2010
+ 07:47:17 -0700 (PDT)
+Received: by 10.14.119.72 with SMTP id m48mr354773eeh.22.1287845237714;
+        Sat, 23 Oct 2010 07:47:17 -0700 (PDT)
+Received: by 10.14.119.72 with SMTP id m48mr354772eeh.22.1287845237697;
+        Sat, 23 Oct 2010 07:47:17 -0700 (PDT)
+Received: from mail-ew0-f51.google.com (mail-ew0-f51.google.com [209.85.215.51])
+        by gmr-mx.google.com with ESMTP id r57si2833606eeh.5.2010.10.23.07.47.16;
+        Sat, 23 Oct 2010 07:47:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.51 as permitted sender) client-ip=209.85.215.51;
+Received: by ewy22 with SMTP id 22so981939ewy.38
+        for <ruby-ffi@googlegroups.com>; Sat, 23 Oct 2010 07:47:16 -0700 (PDT)
+Received: by 10.213.28.18 with SMTP id k18mr416302ebc.5.1287845236496; Sat, 23
+ Oct 2010 07:47:16 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.213.20.81 with HTTP; Sat, 23 Oct 2010 07:46:56 -0700 (PDT)
+In-Reply-To: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+References: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Sat, 23 Oct 2010 11:46:56 -0300
+Message-ID: <AANLkTim2Dx5GL5ZFpW0MCi+fT5U78y=-svOEgS2ft0Rv@mail.gmail.com>
+Subject: Re: [ruby-ffi] Link to non-windows dlls
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.51 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Oct 22, 2010 at 8:33 PM, kvberge <kvandenberge@gmail.com> wrote:
+> Is there a trick to using FFI and the non-windows api dll's? =A0I am
+> attempting to link to a custom usb dll that is known to work
+> (currently using wrapper created from swig and using ruby 1.8.6). =A0I
+> am now attempting to run ruby 1.9.2 and FFI seemed like a simpler
+> solution than worrying about using swig. =A0I should also note that I am
+> on windows 7 and ran the ruby one click installer for windows. =A0When
+> running the script I get this error:
+>
+>
+> Any advice?
+> If you need more information let me know.
+
+Please show the code, we need to look at the code to be able to see
+what are you talking about. Perhaps even reproduce it.
+
+Some non-microsoft DLLs uses cdecl as calling convention instead of
+stdcall, which is the default on Windows.
+
+Please provide every single piece of code and information for us to be
+able to reproduce the problem. Linsk to download of the DLL, the code
+that generates the issue, any documentation.
+
+That will really help us help you.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

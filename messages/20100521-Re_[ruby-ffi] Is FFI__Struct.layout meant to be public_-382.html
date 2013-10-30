@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Is FFI::Struct.layout meant to be public?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Is FFI::Struct.layout meant to be public?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/21/10 3:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+If it works on both JRuby and ruby-ffi, create a spec for it (to
+ensure it doesn't get broken in future), then we'll call it officially
+public.
+
+i.e. I can't see much reason to not make it public.
+
+On 20 May 2010 03:42, Jeremy Voorhis <a class="moz-txt-link-rfc2396E" href="mailto:jvoorhis@gmail.com">&lt;jvoorhis@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello,
+<span class="moz-txt-citetags">&gt; </span>I'm working on a project where I generate both an FFI::Struct and an LLVM
+<span class="moz-txt-citetags">&gt; </span>struct from the same description. It's been convenient to create the struct
+<span class="moz-txt-citetags">&gt; </span>like so:
+<span class="moz-txt-citetags">&gt; </span>  klass = Class.new(FFI::Struct)
+<span class="moz-txt-citetags">&gt; </span>  klass.layout(...)
+<span class="moz-txt-citetags">&gt; </span>This conveniently avoids devising a way to pass data into the scope of the
+<span class="moz-txt-citetags">&gt; </span>class definition from the enclosing scope, but I'm having a little cognitive
+<span class="moz-txt-citetags">&gt; </span>dissonance. Should FFI support this usage, or am I abusing the api?
+<span class="moz-txt-citetags">&gt; </span>Thanks,
+<span class="moz-txt-citetags">&gt; </span>Jeremy
+</pre></div></body>
+</html>
+</table></div>

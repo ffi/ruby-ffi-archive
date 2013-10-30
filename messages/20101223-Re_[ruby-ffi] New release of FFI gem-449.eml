@@ -1,0 +1,89 @@
+MIME-Version: 1.0
+Received: by 10.223.89.144 with HTTP; Thu, 23 Dec 2010 15:08:00 -0800 (PST)
+In-Reply-To: <692E15F7-E65A-4904-971C-18782BBC89F7@fallingsnow.net>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+	<20101130105256.d687602f.jon.forums@gmail.com>
+	<AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+	<20101201123846.5c4724b5.jon.forums@gmail.com>
+	<AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+	<AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+	<AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+	<AANLkTimrfcA9i4vPkoiewHqEWZ4Uju_F60h=6jXbNTtC@mail.gmail.com>
+	<AANLkTi=VYho0G3n+V3DYp3Saz-BWGGGLWfFoD+RSuxLG@mail.gmail.com>
+	<692E15F7-E65A-4904-971C-18782BBC89F7@fallingsnow.net>
+Date: Thu, 23 Dec 2010 17:08:00 -0600
+Delivered-To: headius@headius.com
+Message-ID: <AANLkTimW3mR0hse4-zxMFUYBL=VCFgGAO-NPo5OhgvrM@mail.gmail.com>
+Subject: Re: [ruby-ffi] New release of FFI gem
+From: Charles Oliver Nutter <headius@headius.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Dec 22, 2010 at 7:15 PM, Evan Phoenix <evan@fallingsnow.net> wrote:
+> On Dec 22, 2010, at 5:03 PM, Wayne Meissner wrote:
+>> 1) Blocking calls. =C2=A0These are C functions which will wait (e.g. on
+>> I/O). =C2=A0Calling one of these will lock up the interpreter until the
+>> function returns. =C2=A0The only way I've found to fix this for 1.8 is t=
+o:
+>> =C2=A0a) create a pipe
+>> =C2=A0b) spin up a new native thread, pass it the converted native
+>> arguments and the write end of the pipe
+>> =C2=A0c) have the ruby thread go to sleep until the pipe becomes readabl=
+e
+>> via rb_thread_wait_fd()
+>> =C2=A0d) once the native thread returns from the function call, write to=
+ the pipe
+>> =C2=A0e) ruby thread wakes up from rb_thread_wait_fd(), closes the pipe,
+>> joins on the native thread
+>>
+>> Not exactly rocket surgery, but not trivial either - and there will
+>> need to be two implementations, one for pthreads, one for win32
+>> (assuming we can't get just settle for 1.9.2+ on win32).
+>
+> I think that this should be simply ignored on 1.8. These is very good pre=
+cedent for doing so: CAPI methods. Users regularly write methods in C that =
+perform some long action which blocks all threads. Thus users are used to t=
+his very thing for a long time and are generally ok with it.
+>
+> If a FFI method blocks the same as a C-API method, then FFI doesn't have =
+a bug.
+
+I tend to agree, with the caveat that if we can maintain the logic to
+make the calls non-blocking, it might be a nice additional option (in
+the future). But I don't think this should block getting a
+1.8-supporting version of the gem released.
+
+>> 2) Callbacks from non-ruby threads. =C2=A0This is possibly more
+>> complicated, and there does not appear (unless I missed it) a way in
+>> 1.8.x to detect attempts to call into the interpreter from a non-ruby
+>> thread. =C2=A0This manifests as non-obvious crashes, that look to be in
+>> completely different sections of code.
+>>
+>> =C2=A0I think there is a simple way to detect non-ruby threads calling
+>> back, just by storing/clearing the current thread id in a global var
+>> when entering/exiting native code, and checking that from the callback
+>> code. =C2=A0This would mean the callback just does not get called when
+>> called from a non-ruby thread (and possibly an error is logged).
+>>
+>> =C2=A0Fixing it properly so callbacks from non-ruby threads actually wor=
+k,
+>> will be something similar to what is done for 1.9.x, but with the
+>> twist of using a pipe instead of a mutex+condvar.
+>
+> Again, I think we can safely ignore this functionality on 1.8 and simply =
+report an error if a user attempts it (which can be detected using the glob=
+al variable techinque). My reasoning is the same as above, namely that you =
+can't write a C-API method that does this, so there is no need for FFI to s=
+upport it.
+
+Agreed again. I see FFI as being "C extensions written in Ruby", and
+when you look at it that way the behaviors don't have to be very
+different from C exts. Best case might be to just make the calls
+directly and provide a way for users to opt into pipe/thread or
+rb_thread_blocking_region-type tricks for specific calls (like maybe
+via an "attach_blocking_function") or something (and again...this
+would be a *future* direction...we should get the FFI gem back out
+there for 1.8 ASAP).
+
+- Charlie

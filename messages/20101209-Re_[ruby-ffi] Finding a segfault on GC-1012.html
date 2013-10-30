@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Finding a segfault on GC</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Finding a segfault on GC</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/10 11:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 10 December 2010 12:21, dark.panda <a class="moz-txt-link-rfc2396E" href="mailto:dark.panda@gmail.com">&lt;dark.panda@gmail.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Anyone have any ideas as to what's going on? I'm at my wits end at
+<span class="moz-txt-citetags">&gt; </span>this point. Modifying GEOS itself might not be an option, but if
+<span class="moz-txt-citetags">&gt; </span>there's something I can do in Ruby that would be awesome.
+</pre></blockquote><pre wrap>
+
+I haven't looked in depth, but in that cut down gist, it <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>could<span class="moz-txt-tag">_</span></span> be this:
+
+handle = FFIGeos.initGEOS_r(
+  self.method(:notice_handler),
+  self.method(:error_handler)
+)
+
+Stash the return values from self.method() somewhere.
+e.g.
+
+@nh = self.method(:notice_handler)
+@eh = self.method(:error_handler)
+handle = FFIGeos.initGEOS_r(@nh, @eh))
+
+They don't have to be ivars, but they need to be kept for as long as
+Geos needs to use the callbacks.
+</pre></div></body>
+</html>
+</table></div>

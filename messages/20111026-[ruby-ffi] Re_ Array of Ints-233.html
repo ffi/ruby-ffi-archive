@@ -1,0 +1,82 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Array of Ints</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Array of Ints</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Lee <jiujitsu1985@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/26/11 10:31 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I tried wrapping my code inside a module, but the problem still
+persists.
+
+Do you think :pointer is the correct type to represent the array in
+attach_function.
+
+I know that if you have an array in a struct, you can specify it as:
+class Struct1 &lt; ::FFI::Struct
+   layout :value1, [:int, 3]
+end
+
+So I tried to replace :pointer with [:int, 3] in attach_function, but
+it complains about "unable to resolve type ':int, 3]' &lt;TypeError&gt;"
+attach_function :function1, [[:int, 3], :int, :int], :int
+
+Has anyone got arrays to work with FFI?
+
+On Oct 25, 4:25 pm, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devl...@mac.com">&lt;cremes.devl...@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Oct 25, 2011, at 3:51 PM, John Lee wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I am  using Ruby 192
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I have the following c function:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>int function1(int *dataArray, int value1 , int value2)
+<span class="moz-txt-citetags">&gt; &gt; </span>The first argument is an array of ints
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Here is my FFI code:
+<span class="moz-txt-citetags">&gt; &gt; </span>attach_function :function1, [:pointer, :int, :int], :int
+<span class="moz-txt-citetags">&gt; &gt; </span>ruby_array =  FFI::MemoryPointer.new(:int,4)
+<span class="moz-txt-citetags">&gt; &gt; </span>ruby_array.write_array_of_int(1000,2000,3000,4000])
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>...
+<span class="moz-txt-citetags">&gt; &gt; </span>function1(ruby_array, 1, 2)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>But that produces an error message that function1 is an  undefined
+<span class="moz-txt-citetags">&gt; &gt; </span>method.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Try wrapping your FFI code up in a module.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; </span>module MyLibrary
+<span class="moz-txt-citetags">&gt; </span>  ffi_libs(path_to_lib)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  attach_function :function1, [:pointer, :int, :int], :int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>MyLibrary.function1(ruby_array, 1, 2)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+</pre></div></body>
+</html>
+</table></div>

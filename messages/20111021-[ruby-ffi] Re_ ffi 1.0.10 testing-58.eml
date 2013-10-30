@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.135.9 with SMTP id l9cs14167qct;
+        Fri, 21 Oct 2011 08:22:23 -0700 (PDT)
+Received: by 10.224.203.66 with SMTP id fh2mr12347378qab.71.1319210542516;
+        Fri, 21 Oct 2011 08:22:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS_nLSTFRCpnIb1BBoEQL6omQ@googlegroups.com>
+Received: from mail-vx0-f190.google.com (mail-vx0-f190.google.com [209.85.220.190])
+        by mx.google.com with ESMTPS id k19si3413255qcx.20.2011.10.21.08.22.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 21 Oct 2011 08:22:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS_nLSTFRCpnIb1BBoEQL6omQ@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS_nLSTFRCpnIb1BBoEQL6omQ@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS_nLSTFRCpnIb1BBoEQL6omQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vcbfo11 with SMTP id fo11sf4670508vcb.7
+        for <headius@headius.com>; Fri, 21 Oct 2011 08:22:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=5ivUthpqWeq8juHxqifqU0HD7WZ5Gd/WNBNAKxbLt/M=;
+        b=Qz3vKUwkKFFanoM8AH0uO5XIeXOkdc48dyX795GQA3rDDTzHZgU+2J+b3m/m92j+aZ
+         xYXZkD4vyiaIzcF5lf3hOaEZjF2+pIqxhTJqvCG8TK0R39WP48zY/L7J5hdufPCC7Pwm
+         FJos7m+orVrc8UgH4S/JY4AaQ/vareVPcRV0Y=
+Received: by 10.220.27.67 with SMTP id h3mr987940vcc.8.1319210537301;
+        Fri, 21 Oct 2011 08:22:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.8.196 with SMTP id i4ls1137735vci.0.canary; Fri, 21 Oct
+ 2011 08:22:16 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.148.132 with SMTP id p4mr1368304vcv.39.1319210536703; Fri,
+ 21 Oct 2011 08:22:16 -0700 (PDT)
+Received: by n13g2000vbv.googlegroups.com with HTTP; Fri, 21 Oct 2011 08:22:16
+ -0700 (PDT)
+Date: Fri, 21 Oct 2011 08:22:16 -0700 (PDT)
+In-Reply-To: <21150566.225.1319149338799.JavaMail.geo-discussion-forums@prhj35>
+References: <875642a4-e441-4e3c-bceb-1083dd91ff27@f1g2000pre.googlegroups.com>
+ <3230ac98-1a9f-4bd6-8432-5bd504031d27@20g2000yqz.googlegroups.com> <21150566.225.1319149338799.JavaMail.geo-discussion-forums@prhj35>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML,
+ like Gecko) Ubuntu/10.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30,gzip(gfe)
+Message-ID: <05174476-65ff-4009-b342-acdc4e9fb726@n13g2000vbv.googlegroups.com>
+Subject: [ruby-ffi] Re: ffi 1.0.10 testing
+From: rohit <rohit.namjoshi@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rohit.namjoshi@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ rohit.namjoshi@gmail.com designates internal as permitted sender)
+ smtp.mail=rohit.namjoshi@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Oct 20, 5:22=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Uninstall the ffi gem and re-install, it should pickup the -java version
+> now.
+
+Hi Wayne,
+
+That worked. Why did the non-java version get installed via bundle
+update?
+
+Thanks, Rohit

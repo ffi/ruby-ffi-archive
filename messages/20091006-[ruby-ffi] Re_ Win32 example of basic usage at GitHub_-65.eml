@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs195543qaj;
+        Tue, 6 Oct 2009 15:04:38 -0700 (PDT)
+Received: by 10.140.127.21 with SMTP id z21mr339688rvc.147.1254866678057;
+        Tue, 06 Oct 2009 15:04:38 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 37si14950562pzk.44.2009.10.06.15.04.36;
+        Tue, 06 Oct 2009 15:04:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12so1344037pzk.13
+        for <headius@headius.com>; Tue, 06 Oct 2009 15:04:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type:reply-to:sender
+         :precedence:x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=XEJmm8H3Z6hnfKDtIsrSouJd0OC8YM2fFKuKprZjcmc=;
+        b=OsBWagPvYou4Gi6K/bk6+Ncx4f9zrBW5D8d9JhnxeOw5dc+Xgo0fxweGVnmLXCTwDn
+         dvMbS0weGUYMQSRKvHauI/i9a8yq+jWpv0XclQnmeWwJmQQRHnPDVx8y24hmqwEprQZ9
+         H7Dh9IaH6qQIvOznmwzkrK7TC1HyhJnzml43w=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=sFiHyui3vaf4qlXkiAzRMSxGGB4NTfCGSA1HCQtRSE9oJiDN2jG3tdkkqdvCExQ6Wx
+         DUaZtiB+s2HJgdReQ8aQoiiurfwmsWtnWpv3wAgOsEsHQA6EnGm6s2xGFXgJdjLKJAjV
+         XpfRCLObKg+2OKRmVE5bqmaoqAIEkXNmQ1MkU=
+Received: by 10.142.7.3 with SMTP id 3mr169912wfg.24.1254866674450;
+        Tue, 06 Oct 2009 15:04:34 -0700 (PDT)
+Received: by 10.106.154.17 with SMTP id b17gr45pre.0;
+	Tue, 06 Oct 2009 15:04:34 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.115.66.17 with SMTP id t17mr1327542wak.11.1254866673401; Tue, 06 Oct 2009 15:04:33 -0700 (PDT)
+Received: by 10.115.66.17 with SMTP id t17mr1327541wak.11.1254866673373; Tue, 06 Oct 2009 15:04:33 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f177.google.com (mail-pz0-f177.google.com [209.85.222.177]) by gmr-mx.google.com with ESMTP id 41si1225282pxi.8.2009.10.06.15.04.32; Tue, 06 Oct 2009 15:04:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.177 as permitted sender) client-ip=209.85.222.177;
+Received: by pzk7 with SMTP id 7so4294225pzk.33 for <ruby-ffi@googlegroups.com>; Tue, 06 Oct 2009 15:04:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type; bh=/PJCPbI+LU355xqz8c0hxvX58JOv8fTIbndTdkkOkq4=; b=jbA4mEpJYwZjdqDeUxg1seSBtP8j6f0GLeKKhR6x8++ZzQ7RU4A75IuH44yxNb/wyI kc+OEZrq1JS8htzxd7EvF9fBbkxUnZhh6pIbDlGxOD+WIVOk94kuMaO0PbCgqNV3r9iC WClOi2rncxvQGjqZQK/LDF1slK5zYsHpnn2HE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type; b=O9kB2vGMuoagduue/KeJGjn0vH6TvTwm+NjlyGu65yTCZS4Vx3zQjG8UwZxpFLN4yG BnuT26YUdP8iClMLLyCw5l+D/l1Fs0/xfrjPvHDHUY62FjZ9ESfpC5D7A1MqE3TfRf39 PlXIU2jKWNlQ4jRZkTFckpnZXTRtAb8TUtnxg=
+MIME-Version: 1.0
+Received: by 10.141.4.20 with SMTP id g20mr322402rvi.121.1254866672121; Tue,  06 Oct 2009 15:04:32 -0700 (PDT)
+In-Reply-To: <5e71ba2d-28b9-476e-bc13-e52141bb6422@g1g2000vbr.googlegroups.com>
+References: <5e71ba2d-28b9-476e-bc13-e52141bb6422@g1g2000vbr.googlegroups.com>
+Date: Wed, 7 Oct 2009 08:04:32 +1000
+Message-ID: <4ccee320910061504u48dbbc57m62f687c018b98766@mail.gmail.com>
+Subject: [ruby-ffi] Re: Win32 example of basic usage at GitHub?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+2009/10/7 Jon <jon.forums@gmail.com>:
+>
+> Would you mind if I updated
+>
+> http://wiki.github.com/ffi/ffi/basic-usage
+>
+> ...with a section below "Hello, World using FFI" with code (and some
+> blah blah) like the following (assuming this is the correct basic
+> usage for calling typical Win32 API fcns):
+
+Sure, go for it.   Thats what the wiki is for.
+
+Also, if you have time, it would be nice to add some stdcall tests to
+the spec & libtest.  Everything in the spec only tests C calling
+convention, so it would be nice to have tests on windows that exercise
+the stdcall path.

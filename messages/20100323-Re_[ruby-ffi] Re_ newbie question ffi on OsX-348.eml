@@ -1,0 +1,181 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.225.19 with SMTP id x19cs175144ybg;
+        Tue, 23 Mar 2010 07:34:00 -0700 (PDT)
+Received: by 10.114.187.7 with SMTP id k7mr5396308waf.153.1269354836256;
+        Tue, 23 Mar 2010 07:33:56 -0700 (PDT)
+Return-Path: <3UdGoSwkJCBcJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@groups.bounces.google.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id 39si5744107pzk.76.2010.03.23.07.33.54;
+        Tue, 23 Mar 2010 07:33:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3UdGoSwkJCBcJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@groups.bounces.google.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3UdGoSwkJCBcJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@groups.bounces.google.com designates 74.125.83.190 as permitted sender) smtp.mail=3UdGoSwkJCBcJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg12 with SMTP id 12sf2341243pvg.7
+        for <headius@headius.com>; Tue, 23 Mar 2010 07:33:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=0Bh0NWbWZxzQ9GByzVkDAmwcfoV4mV7IoLvkiPEmT9c=;
+        b=SGo+QM/ykFWXgHLqZhYx4jE9aN4EjRefIzEfiP3MnHv6MmCr/FZDCYq046osVqaBtO
+         hYaHS793NK/Xy0+h5Om/YGBchXfZ1UoxDZ0h9RqQ7dzuepezmu9IqlwYZ1sBXtViw0tk
+         OWGszjz3i2RM1sB3yTgb63PhywL8HlAIJPewA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=l1Zy4ldzt9+z0rKm4szOONmneI7DszjdZSBKXncd3N8YLKzC3GHpeOq/TwAoF/JtFX
+         IArVehhxPZgXKSZnUGEPYUgLlS0q/UDdmx7/Ogt1nRWGBZJYgmUWF7D6FSujXOY+6Ck0
+         3KS/FbX5ia3pQ6Iz70LZEob0c0mofPvOA8cqs=
+Received: by 10.115.101.12 with SMTP id d12mr208860wam.16.1269354833325;
+        Tue, 23 Mar 2010 07:33:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.19.2 with SMTP id 2ls1744513was.0.p; Tue, 23 Mar 2010 
+	07:33:51 -0700 (PDT)
+Received: by 10.114.33.39 with SMTP id g39mr1039299wag.1.1269354831898;
+        Tue, 23 Mar 2010 07:33:51 -0700 (PDT)
+Received: by 10.114.33.39 with SMTP id g39mr1039298wag.1.1269354831879;
+        Tue, 23 Mar 2010 07:33:51 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f177.google.com (mail-pz0-f177.google.com [209.85.222.177])
+        by gmr-mx.google.com with ESMTP id 24si492024pzk.13.2010.03.23.07.33.50;
+        Tue, 23 Mar 2010 07:33:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.177 as permitted sender) client-ip=209.85.222.177;
+Received: by pzk7 with SMTP id 7so3135568pzk.0
+        for <ruby-ffi@googlegroups.com>; Tue, 23 Mar 2010 07:33:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.141.53.19 with SMTP id f19mr2043661rvk.64.1269354830513; Tue, 
+	23 Mar 2010 07:33:50 -0700 (PDT)
+In-Reply-To: <b26c2326-ec1f-4c8f-ae9a-56b8970b89de@t32g2000prg.googlegroups.com>
+References: <59718a03-d170-44e8-9d45-44c00ce112a2@m35g2000prh.googlegroups.com>
+	 <7eee96c4-b2a0-458c-92e8-665972cc3d43@a10g2000pri.googlegroups.com>
+	 <4ccee321003091846l3c7309d1r6f18c2cabe4a90b3@mail.gmail.com>
+	 <b26c2326-ec1f-4c8f-ae9a-56b8970b89de@t32g2000prg.googlegroups.com>
+Date: Wed, 24 Mar 2010 00:33:50 +1000
+Message-ID: <4ccee321003230733u7491a2a5h58dcc8caabae832b@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: newbie question ffi on OsX
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.177 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f48bd31c2e7cbe
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/5dde4ed560481824
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+That looks pretty good.
+
+On 23 March 2010 23:59, macarthy <justin.maccarthy@gmail.com> wrote:
+>
+> Done =A0- feel free to improve it
+> http://wiki.github.com/ffi/ffi/using-ruby-ffi-on-osx-with-mixed-architect=
+ures-universal-binaries
+>
+> Justin
+>
+> On Mar 10, 9:46=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+>> You are now the honorary universal binary expert for ruby-ffi on
+>> MacOS. =A0Turn your email thread into a FAQ and put it up on the wiki.
+>>
+>> On 10 March 2010 00:56, macarthy <justin.maccar...@gmail.com> wrote:
+>>
+>>
+>>
+>> > Answering my own question, since I can't recompile the lib as 64bit I
+>> > was able to run ruby as 32 bit and ffi works fine, Commands and output
+>> > below.
+>>
+>> > $ lipo -info /usr/local/lib/libmylib.dylib
+>> > Non-fat file: /usr/local/lib/libmylib.dylib is architecture: i386
+>>
+>> > $ lipo -detailed_info /usr/bin/ruby
+>> > Fat header in: /usr/bin/ruby
+>> > fat_magic 0xcafebabe
+>> > nfat_arch 3
+>> > architecture x86_64
+>> > =A0 =A0cputype CPU_TYPE_X86_64
+>> > =A0 =A0cpusubtype CPU_SUBTYPE_X86_64_ALL
+>> > =A0 =A0offset 4096
+>> > =A0 =A0size 14176
+>> > =A0 =A0align 2^12 (4096)
+>> > architecture i386
+>> > =A0 =A0cputype CPU_TYPE_I386
+>> > =A0 =A0cpusubtype CPU_SUBTYPE_I386_ALL
+>> > =A0 =A0offset 20480
+>> > =A0 =A0size 14112
+>> > =A0 =A0align 2^12 (4096)
+>> > architecture ppc7400
+>> > =A0 =A0cputype CPU_TYPE_POWERPC
+>> > =A0 =A0cpusubtype CPU_SUBTYPE_POWERPC_7400
+>> > =A0 =A0offset 36864
+>> > =A0 =A0size 13904
+>> > =A0 =A0align 2^12 (4096)
+>>
+>> > $ arch -arch i386 /usr/bin/ruby libmylib.rb
+>>
+>> >> Hi all,
+>>
+>> >> Can someone explain this error ? Obviously an architecture mismatch o=
+f
+>> >> some sort, how does one got about fixing this? Or compile libmylib as
+>> >> a different arch (or as several ? )
+>>
+>> >> /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:61:in
+>> >> `ffi_lib': Could not open library 'libmylib.dylib':
+>> >> dlopen(libmylib.dylib, 9): no suitable image found. =A0Did find:
+>> >> (LoadError)
+>>
+>> >> /usr/local/lib/libmylib.dylib: mach-o, but wrong architecture. Could
+>> >> not open library 'libmylib': dlopen(libmylib, 9): image not found
+>> >> =A0 =A0 =A0 =A0 from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/li=
+brary.rb:
+>> >> 43:in `map'
+>> >> =A0 =A0 =A0 =A0 from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/li=
+brary.rb:
+>> >> 43:in `ffi_lib'
+>> >> =A0 =A0 =A0 =A0 from xxx.rb:14
+>>
+>> >> otool gives me this ...
+>>
+>> >> =A0otool -h /usr/local/lib/libmylib.dylib
+>>
+>> >> /usr/local/lib/libmylib.dylib:
+>> >> Mach header
+>> >> =A0 =A0 =A0 magic cputype cpusubtype =A0caps =A0 =A0filetype ncmds si=
+zeofcmds
+>> >> flags
+>> >> =A00xfeedface =A0 =A0 =A0 7 =A0 =A0 =A0 =A0 =A03 =A00x00 =A0 =A0 =A0 =
+=A0 =A06 =A0 =A020 =A0 =A0 =A0 2404
+>> >> 0x00118085
+>>
+>> >> Thanks
+>
+> To unsubscribe from this group, send email to ruby-ffi+unsubscribegoogleg=
+roups.com or reply to this email with the words "REMOVE ME" as the subject.
+>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words "REMOVE ME" as the subject.

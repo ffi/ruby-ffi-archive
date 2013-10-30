@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] [PATCH] No blank files</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] [PATCH] No blank files</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/2/09 12:00 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">I am trying to package ruby-ffi for fedora. one of the things that 
+rpmlint complains about is blank files. This patch puts a small comment 
+into buffer.rb which is filled out by the c extensions.
+<br>
+<br>-- bk
+<br></div><BR><FIELDSET CLASS="mimeAttachmentHeader"><LEGEND CLASS="mimeAttachmentHeaderName">AddComments.patch</LEGEND></FIELDSET><BR/><div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+diff --git a/lib/ffi/buffer.rb b/lib/ffi/buffer.rb
+index e69de29..529aa64 100644
+--- a/lib/ffi/buffer.rb
++++ b/lib/ffi/buffer.rb
+@@ -0,0 +1 @@
++# This class is completed by buffer.c in the ext directory
+</pre></div><br><hr><br><div style="font-size:12px;color:black;"><img src="data:image/gif;base64,R0lGODdhDwAPAOMAAP///zEwYmJlzQAAAPr6+vv7+/7+/vb29pyZ//39/YOBg////////////////////ywAAAAADwAPAAAESRDISUG4lQYr+s5bIEwDUWictA2GdBjhaAGDrKZzjYq3PgUw2co24+VGLYAAAesRLQklxoeiUDUI0qSj6EoH4Iuoq6B0PQJyJQIAOw==">
+<ul><li><a href="Attachments/AddComments.patch">Attachments/AddComments.patch</li></a></ul></div></body>
+</html>

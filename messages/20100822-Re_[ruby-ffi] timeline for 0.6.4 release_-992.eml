@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.74.78 with SMTP id t14cs60609qaj;
+        Sun, 22 Aug 2010 21:53:50 -0700 (PDT)
+Received: by 10.216.174.7 with SMTP id w7mr4053740wel.21.1282539229346;
+        Sun, 22 Aug 2010 21:53:49 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDb_cfjBBoEQrmC0Q@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id p66si7457404wej.92.2010.08.22.21.53.47;
+        Sun, 22 Aug 2010 21:53:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDb_cfjBBoEQrmC0Q@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDb_cfjBBoEQrmC0Q@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDb_cfjBBoEQrmC0Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwb24 with SMTP id 24sf15402wwb.7
+        for <headius@headius.com>; Sun, 22 Aug 2010 21:53:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=2/XXSEkJtbYNSpZxIPI7MM8hKhUk11SG/WWU/qlfH98=;
+        b=5D4i6Rae7dab8+Ry5vqp59TzLgJMX6S78403s2llWLka6Y+1iCYYk1eVyx0DjwL9X4
+         gITl38FRm8rREBXtE+oQgi+rqwDynlyaNWf8+tIvZicZe7PLgolk7Qs904jOCeoxp2mj
+         qaxZ7lAa+NcwOhf/TpeFolF7gr9nrfzUyZT7k=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=x0lQwfRZ7VEWmgrtle/Q6QhjBhreznhxqxn1LwA3XB40GJqhoKme0PJDJZFOdvJl4t
+         +Vq8nbiXdXakpIDw62Tw/UTKZ8gGAs1nLf+GPNDzfhSlK+H7HPZC9CeP433szysmT28d
+         JGwHKrjmmY/ZqJhd2uxPCRynl8lKdhlNI+Mqs=
+Received: by 10.216.145.9 with SMTP id o9mr915645wej.15.1282539227685;
+        Sun, 22 Aug 2010 21:53:47 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.28.140 with SMTP id g12ls1277007wea.0.p; Sun, 22 Aug 2010
+ 21:53:47 -0700 (PDT)
+Received: by 10.216.187.210 with SMTP id y60mr112311wem.5.1282539227083;
+        Sun, 22 Aug 2010 21:53:47 -0700 (PDT)
+Received: by 10.216.187.210 with SMTP id y60mr112310wem.5.1282539227059;
+        Sun, 22 Aug 2010 21:53:47 -0700 (PDT)
+Received: from mail-wy0-f182.google.com (mail-wy0-f182.google.com [74.125.82.182])
+        by gmr-mx.google.com with ESMTP id x33si2146559wbs.1.2010.08.22.21.53.45;
+        Sun, 22 Aug 2010 21:53:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.82.182 as permitted sender) client-ip=74.125.82.182;
+Received: by wyj26 with SMTP id 26so8348463wyj.27
+        for <ruby-ffi@googlegroups.com>; Sun, 22 Aug 2010 21:53:45 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.216.231.26 with SMTP id k26mr4073913weq.3.1282539225914; Sun,
+ 22 Aug 2010 21:53:45 -0700 (PDT)
+Received: by 10.216.12.9 with HTTP; Sun, 22 Aug 2010 21:53:45 -0700 (PDT)
+In-Reply-To: <CBC0E1B9-677E-4A16-BD14-BF0E0A349DF9@mac.com>
+References: <CBC0E1B9-677E-4A16-BD14-BF0E0A349DF9@mac.com>
+Date: Mon, 23 Aug 2010 14:53:45 +1000
+Message-ID: <AANLkTinTs5QATkEq9HmC9aCP5hANQw71wmtdqCs=yQ=i@mail.gmail.com>
+Subject: Re: [ruby-ffi] timeline for 0.6.4 release?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 74.125.82.182 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Next weekend, I suspect.
+
+Now that 1.9.2 is out, I will be dropping support for anything older
+than 1.9.2  Although it will most likely work fine with any 1.9.x, and
+maybe even 1.8.7, I will personally only be making sure 1.9.2+ works.
+Older versions will only get support if people send in patches.
+
+I don't want to drop support for existing versions in a point release,
+so it will be version 0.7.0.
+
+To anyone who has raised a ticket in the ruby-ffi github tracker, and
+_has_ attached a patch and I haven't applied it to master, speak up
+now, or forever hold your peace - it means I overlooked your patch.
+
+
+On 22 August 2010 01:28, Chuck Remes <cremes.devlist@mac.com> wrote:
+> The 0.6.3 release was tagged back in the middle of March. Since then there has been over 50 commits to the repository including some really important threading fixes.
+>
+> When can we expect a 0.6.4 (or later) release?
+>
+> cr
+>
+>

@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Ruby FFI to C to Ruby FFI to C</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Ruby FFI to C to Ruby FFI to C</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bulat Shakirzyanov <mallluhuct@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/5/12 5:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Forgot to clarify that the same issue appears with FFI versions 1.1.0.rc2 and 1.0.11<br><br><div class="gmail_quote">On Thu, Apr 5, 2012 at 2:50 PM, avalanche123 <span dir="ltr">&lt;<a href="mailto:mallluhuct@gmail.com">mallluhuct@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hello,<br>
+<br>
+I&#39;m working on libuv ffi bindings for Ruby and have an issue I can&#39;t<br>
+understand<br>
+<br>
+Libuv needs an allocated buffer it can write to, here is a gist of<br>
+code <a href="https://gist.github.com/2313277" target="_blank">https://gist.github.com/2313277</a> that has my ruby module and usage<br>
+examples both in C and Ruby<br>
+The C example works fine, while ruby makes Libuv raise EINVAL. I&#39;ve<br>
+used some basic debugging and figured out that the buffer len than<br>
+comes from Ruby is 140735085305696<br>
+instead of 128, as can be seen from shell outputs examples I&#39;ve added<br>
+to the gist. I&#39;ve also added relevant pieces of Libuv to the gist,<br>
+specifically uv_buf_init that is<br>
+responsible for creating uv_buf_t and part of libuv&#39;s uv__read that is<br>
+responsible for using it.<br>
+<br>
+From my debugging it looks like a corrupted uv_buf_t memory comes back<br>
+from Ruby, making libuv believe beffer&#39;s len attribute is<br>
+140735085305696 bytes long.<br>
+<br>
+I will appreciate any feedback as I&#39;ve been struggling with this for a<br>
+while.<br>
+<br>
+Best,<br>
+Bulat</blockquote></div><br><br clear="all"><div><br></div>-- <br><b>Bulat Shakirzyanov</b> | <font color="#999999">Software Alchemist</font><div><font color="#999999"><br></font></div><div><div><font face="&#39;courier new&#39;, monospace"><b>a: </b><a href="http://about.me/avalanche123" target="_blank">about.me/avalanche123</a></font></div>
+<div><span style="font-family:&#39;courier new&#39;,monospace"><b>e:</b> <a href="mailto:mallluhuct@gmail.com" target="_blank">mallluhuct@gmail.com</a></span></div></div><br>
+
+</div></body>
+</html>
+</table></div>

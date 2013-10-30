@@ -1,0 +1,125 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.175.98 with SMTP id bz2csp15262obc;
+        Sun, 11 Mar 2012 15:59:22 -0700 (PDT)
+Received: by 10.236.116.195 with SMTP id g43mr11065952yhh.26.1331506761928;
+        Sun, 11 Mar 2012 15:59:21 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDF3PT6BBoE94ZS1A@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id w16si4549034anb.9.2012.03.11.15.59.21
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 11 Mar 2012 15:59:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDF3PT6BBoE94ZS1A@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDF3PT6BBoE94ZS1A@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDF3PT6BBoE94ZS1A@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggmi4 with SMTP id i4sf7630958ggm.7
+        for <headius@headius.com>; Sun, 11 Mar 2012 15:59:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=br1jmIP++64mLljcm9zn8zZJcKWf80KMN9Mb2tJByiY=;
+        b=iaOIfyciJrOQBt3bRx8/sV0+lz4hA5PDxkLbEzTfC3BEdZWz8ycdrckyG50VUj3XB7
+         rj3t02DXU94t6sY+paerE7IG6oNi+FQVch4UNM3bOpw9fw4raHtHNFDKXnHwZj1tYXs8
+         3wemsIO36VxMrOj6zKUA+rM76oq8Q0QjwfcDM=
+Received: by 10.68.189.162 with SMTP id gj2mr2095704pbc.3.1331506757604;
+        Sun, 11 Mar 2012 15:59:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.216.164 with SMTP id or4ls114903pbc.2.gmail; Sun, 11 Mar
+ 2012 15:59:17 -0700 (PDT)
+Received: by 10.68.216.130 with SMTP id oq2mr2275966pbc.6.1331506757312;
+        Sun, 11 Mar 2012 15:59:17 -0700 (PDT)
+Date: Sun, 11 Mar 2012 15:59:16 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <2731066.2674.1331506756577.JavaMail.geo-discussion-forums@pbls8>
+In-Reply-To: <6485e679-db2e-418f-a44f-cd7ed058b716@m2g2000vbc.googlegroups.com>
+References: <6485e679-db2e-418f-a44f-cd7ed058b716@m2g2000vbc.googlegroups.com>
+Subject: [ruby-ffi] Re: How to use native c-code's dynamic buffer pointer
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2673_25464955.1331506756576"
+
+------=_Part_2673_25464955.1331506756576
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I posted an answer on stackoverflow, but I'll repaste it here:
+
+edit_db() takes a pointer to a pointer as its parameter, so you need 
+something like:
+
+db = LibDB.new_db()
+
+# pack the 'db' pointer into a temporary bit of memory
+dbp = FFI::MemoryPointer.new(:pointer)
+dbp.write_pointer(db)
+
+# equivalent of edit_db(&db);
+LibDB.edit_db(dbp)
+
+# read the 'db' pointer back out in case edit_db altered the actual pointer 
+value
+db = dbp.read_pointer
+
+
+On Sunday, 11 March 2012 08:14:44 UTC+10, MJoutsi wrote:
+>
+> Hi, 
+>
+> On c-code side it goes: 
+>
+> /* Declarations */ 
+> DATABLOCK *new_db (); 
+> edit_db(DATABLOCK **db); 
+>
+> /* Usage */ 
+> db = new_db(); 
+> edit_db(&db); 
+>
+> How this goes on Ruby? https://github.com/ffi/ffi/wiki/Examples 
+> mentions about MemoryPointer but on my case I already have that buffer 
+> (created by new_db()), so how to pass reference to buffer for 
+> edit_db() or how it should go? 
+>
+
+------=_Part_2673_25464955.1331506756576
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+I posted an answer on stackoverflow, but I'll repaste it here:<div><div><br></div><div>edit_db() takes a pointer to a pointer as its parameter, so you need something like:</div><div><br></div><div>db = LibDB.new_db()</div><div><br></div><div># pack the 'db' pointer into a temporary bit of memory</div><div>dbp = FFI::MemoryPointer.new(:pointer)</div><div>dbp.write_pointer(db)</div><div><br></div><div># equivalent of edit_db(&amp;db);</div><div>LibDB.edit_db(dbp)</div><div><br></div><div># read the 'db' pointer back out in case edit_db altered the actual pointer value</div><div>db = dbp.read_pointer</div><div><br></div><div><br>On Sunday, 11 March 2012 08:14:44 UTC+10, MJoutsi  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi,
+<br>
+<br>On c-code side it goes:
+<br>
+<br>/* Declarations */
+<br>DATABLOCK *new_db ();
+<br>edit_db(DATABLOCK **db);
+<br>
+<br>/* Usage */
+<br>db = new_db();
+<br>edit_db(&amp;db);
+<br>
+<br>How this goes on Ruby? <a href="https://github.com/ffi/ffi/wiki/Examples" target="_blank">https://github.com/ffi/ffi/<wbr>wiki/Examples</a>
+<br>mentions about MemoryPointer but on my case I already have that buffer
+<br>(created by new_db()), so how to pass reference to buffer for
+<br>edit_db() or how it should go?
+<br></blockquote></div></div>
+------=_Part_2673_25464955.1331506756576--

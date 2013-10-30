@@ -1,0 +1,70 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.89.9 with SMTP id c9cs33783qam;
+        Mon, 16 Aug 2010 16:58:02 -0700 (PDT)
+Received: by 10.151.145.6 with SMTP id x6mr6403946ybn.277.1282003081796;
+        Mon, 16 Aug 2010 16:58:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNuojKTqEBCIoafjBBoE0hQxCg@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id p12si16433190ybk.85.2010.08.16.16.58.00;
+        Mon, 16 Aug 2010 16:58:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCIoafjBBoE0hQxCg@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCIoafjBBoE0hQxCg@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCNuojKTqEBCIoafjBBoE0hQxCg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb15 with SMTP id 15sf12955648gwb.7
+        for <headius@headius.com>; Mon, 16 Aug 2010 16:58:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=bUSCBMJHDsalI4cfaB4WxRQb9El1d7sRr3+ywgNO2Zo=;
+        b=mb3/RtGABw9aopHOx6ryHoxqDzXxHYxLhtNtawUc+5e+VF4a3CH2CA6uccWUdu3K4Y
+         xojFp7I6Z8m4XpZJGyoza1gtlIzXSD10Pa7tbZSx0/P8VTyOhGy8uwI0BGfugcGGRKMF
+         gmbk7uTSCZjudjZQV9mymUnUZ4opwJNI5Nl58=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=YMQIhe/DoVJw47lDBAGY2FFgmH/BAua3NzbUroORhqWADWm8hWWQsT+AQRkbt7zUdj
+         A9KIRON72bgAG8S+RWesgIrgwYeLCom3bGwNCpjdktHvNVgmS6i2FwHy2b4ler09dlrV
+         u0OpN9006oC6K1ZvOdlYLqSqKWQ/DpX2+r7Bs=
+Received: by 10.101.175.25 with SMTP id c25mr606114anp.68.1282003080045;
+        Mon, 16 Aug 2010 16:58:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.49.22 with SMTP id w22ls1918319anw.2.p; Mon, 16 Aug 2010
+ 16:57:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.151.37 with SMTP id d37mr601209ano.43.1282003079770; Mon,
+ 16 Aug 2010 16:57:59 -0700 (PDT)
+Received: by z30g2000prg.googlegroups.com with HTTP; Mon, 16 Aug 2010 16:57:59
+ -0700 (PDT)
+Date: Mon, 16 Aug 2010 16:57:59 -0700 (PDT)
+X-IP: 216.49.181.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US)
+ AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.33 Safari/534.3,gzip(gfe)
+Message-ID: <97202010-74d3-4516-9133-3b1bd4b86584@z30g2000prg.googlegroups.com>
+Subject: [ruby-ffi] get_uint32(0)
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Can anybody tell me what the "0" here means?
+Also could I request that it be made the default?
+Thanks.
+-r

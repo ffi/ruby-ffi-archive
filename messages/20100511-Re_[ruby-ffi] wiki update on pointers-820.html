@@ -1,0 +1,97 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] wiki update on pointers</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] wiki update on pointers</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/10 7:18 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Way ahead of you, Wayne. You may recognize some of the text on that page...
+
+BTW, I would like to add some rdoc to the classes but I don't know how to do that for methods that are part of the C extension and have no ruby equivalent. I'll look into the rdoc syntax and see if there's a way I can achieve that. Any problem with that?
+
+cr
+
+On May 11, 2010, at 6:09 PM, Wayne Meissner wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Well, now that you are wise in the way of pointers, please go ahead
+<span class="moz-txt-citetags">&gt; </span>and fix the damn page <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>If something on the wiki doesn't look right, fix it - its a wiki after
+<span class="moz-txt-citetags">&gt; </span>all.  (and if your changes aren't right, in theory someone else will
+<span class="moz-txt-citetags">&gt; </span>rip your stuff out ... ad infinitum).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On 12 May 2010 08:59, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'll make the modifications for #1 and #2.
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>The text at the top (#3) was put there by someone else. I just added to the page. It didn't look right to me, but it's been there for a while so I didn't touch it. <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>cr
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>On May 11, 2010, at 5:33 PM, Wayne Meissner wrote:
+<span class="moz-txt-citetags">&gt;&gt; </span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>It looks pretty good.
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>A couple of nits:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>1) The LibC module can just use:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>  ffi_lib FFI::Library::LIBC
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>ffi knows that means "whatever the libc on this system is supposed to
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>be", since its a pretty common library people want to map in, and the
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>name differs across platforms (e.g. on linux, its libc.so.6, macos is
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>libc.dylib, windows is msvcrt.dll, aix is something weird, etc.
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>2) The first arg to MemoryPointer.new can in fact be either a symbol,
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>or anything that responds to #size.
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> class S &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>   layout :i, :int
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> end
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span> FFI::MemoryPointer.new(S, 1, false)  # Will allocate space for one
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>instance of S, without clearing the memory first
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>3) The bit at the top about copying pointers is ... confusing.  A
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>pointer is merely a Fixnum that holds a native memory address, so
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>there is no need to do anything special to "copy" a pointer - just
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>assign it to a like you would any other Fixnum.  Think of "Pointer" as
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>"fixnum with methods to read/write the native memory at the address".
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>The example:
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>b = MemoryPointer.new(:pointer).write_pointer(some_pointer.read_pointer)
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>Doesn't do what you think.  It reads a pointer from the memory
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>pointed-to by some_pointer, allocates a new chunk of memory, and
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>writes that pointer value into that memory - it doesn't copy the value
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>of some_pointer to a new pointer.
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>On 12 May 2010 02:02, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>I just wrote an update to the wiki page on pointers at <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/pointers">http://wiki.github.com/ffi/ffi/pointers</a>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>I'd appreciate it if someone more knowledgeable would check it over (the bottom section under the sub-heading) and verify that what I wrote is correct. It seems to be working for me but I've been wrong before! <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>cr
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt;&gt;&gt; </span>
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+</pre></blockquote></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

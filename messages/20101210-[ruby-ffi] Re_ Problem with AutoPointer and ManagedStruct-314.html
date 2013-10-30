@@ -1,0 +1,223 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Problem with AutoPointer and ManagedStruct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Problem with AutoPointer and ManagedStruct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>zenChild <dan.wanek@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/10 8:48 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+This seems to work for my issue.  Is there any reason why this
+shouldn't be done?
+
+output_token = LibGSSAPI::GssBufferDesc.new
+output_token[:length] = 0
+output_token[:value] = nil
+@o_buff =
+LibGSSAPI::MGssBufferDesc.new(FFI::Pointer.new(output_token.pointer))
+
+... method call that fills the output_token
+... the release now happens automatically during GC without SegFault
+and I can use the ManagedStruct the way I could the old Struct.
+
+Cheers,
+
+Dan Wanek
+
+
+
+On Dec 9, 3:24 pm, zenChild <a class="moz-txt-link-rfc2396E" href="mailto:dan.wa...@gmail.com">&lt;dan.wa...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Still no go.  The custom method to release the GssBufferDesc struct
+<span class="moz-txt-citetags">&gt; </span>(gss_release_buffer) assumes it's getting the struct as the argument
+<span class="moz-txt-citetags">&gt; </span>to release so I don't think passing just the :value would work anyway.
+<span class="moz-txt-citetags">&gt; </span>(I did try it though and still got the backtrace).  The :value param
+<span class="moz-txt-citetags">&gt; </span>of GssBufferDesc is of type (void *) and that is why I think it
+<span class="moz-txt-citetags">&gt; </span>requires the library specific gss_release_buffer call.  Any other
+<span class="moz-txt-citetags">&gt; </span>ideas?  Here is the full post of what I would like to work:  (below
+<span class="moz-txt-citetags">&gt; </span>that is the backtrace)
+<span class="moz-txt-citetags">&gt; </span>The LibGSSAPI code is out on github:<a class="moz-txt-link-freetext" href="https://github.com/zenchild/gssapi">https://github.com/zenchild/gssapi</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks for your input!
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>------------------snip -------------------
+<span class="moz-txt-citetags">&gt; </span>$: &lt;&lt; 'lib'
+<span class="moz-txt-citetags">&gt; </span>require 'gssapi'
+<span class="moz-txt-citetags">&gt; </span>include GSSAPI
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>@host_name = 'mytesthost.example.org'
+<span class="moz-txt-citetags">&gt; </span>@int_name = nil
+<span class="moz-txt-citetags">&gt; </span>buff_str = LibGSSAPI::GssBufferDesc.new
+<span class="moz-txt-citetags">&gt; </span>host_str = "host@#{@host_name}"
+<span class="moz-txt-citetags">&gt; </span>buff_str[:length] = host_str.length
+<span class="moz-txt-citetags">&gt; </span>buff_val = FFI::MemoryPointer.from_string(host_str) # assign to var so
+<span class="moz-txt-citetags">&gt; </span>it isn't garbage collected
+<span class="moz-txt-citetags">&gt; </span>buff_str[:value] = buff_val
+<span class="moz-txt-citetags">&gt; </span>name = FFI::MemoryPointer.new :pointer # gss_name_t
+<span class="moz-txt-citetags">&gt; </span>min_stat = FFI::MemoryPointer.new :uint32
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>maj_stat = LibGSSAPI.gss_import_name(min_stat, buff_str.pointer,
+<span class="moz-txt-citetags">&gt; </span>LibGSSAPI.GSS_C_NT_HOSTBASED_SERVICE, name)
+<span class="moz-txt-citetags">&gt; </span>@int_name = name.get_pointer(0)
+<span class="moz-txt-citetags">&gt; </span>LibGSSAPI::GssNameT.new(@int_name)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>min_stat = FFI::MemoryPointer.new :uint32
+<span class="moz-txt-citetags">&gt; </span>no_cred = FFI::MemoryPointer.new :pointer  # GSS_C_NO_CREDENTIAL
+<span class="moz-txt-citetags">&gt; </span>no_cred.write_int 0
+<span class="moz-txt-citetags">&gt; </span>ctx  = FFI::MemoryPointer.new :pointer  # GSS_C_NO_CONTEXT
+<span class="moz-txt-citetags">&gt; </span>ctx.write_int 0
+<span class="moz-txt-citetags">&gt; </span>no_chn_bind = FFI::MemoryPointer.new :pointer  #
+<span class="moz-txt-citetags">&gt; </span>no_chn_bind.write_int 0
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>input_token = LibGSSAPI::GssBufferDesc.new
+<span class="moz-txt-citetags">&gt; </span>input_token[:length] = 0
+<span class="moz-txt-citetags">&gt; </span>input_token[:value] = nil
+<span class="moz-txt-citetags">&gt; </span>output_token = FFI::MemoryPointer.new :pointer
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>mech = LibGSSAPI.gss_mech_krb5
+<span class="moz-txt-citetags">&gt; </span>maj_stat = LibGSSAPI.gss_init_sec_context(min_stat,
+<span class="moz-txt-citetags">&gt; </span>                                          nil,
+<span class="moz-txt-citetags">&gt; </span>                                          ctx,
+<span class="moz-txt-citetags">&gt; </span>                                          @int_name,
+<span class="moz-txt-citetags">&gt; </span>                                          mech,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>(LibGSSAPI::GSS_C_MUTUAL_FLAG | LibGSSAPI::GSS_C_SEQUENCE_FLAG),
+<span class="moz-txt-citetags">&gt; </span>                                          0,
+<span class="moz-txt-citetags">&gt; </span>                                          nil,
+<span class="moz-txt-citetags">&gt; </span>                                          input_token.pointer,
+<span class="moz-txt-citetags">&gt; </span>                                          nil,
+<span class="moz-txt-citetags">&gt; </span>                                          output_token,
+<span class="moz-txt-citetags">&gt; </span>                                          nil,
+<span class="moz-txt-citetags">&gt; </span>                                          nil)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>if(maj_stat == 0 || maj_stat == 1)
+<span class="moz-txt-citetags">&gt; </span>  @context = ctx.get_pointer(0)
+<span class="moz-txt-citetags">&gt; </span>  LibGSSAPI::MGssBufferDesc.new(output_token.get_pointer(0))
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>----------------- snip -------------------
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>---------------backtrace--------------
+<span class="moz-txt-citetags">&gt; </span>ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-linux]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- control frame ----------
+<span class="moz-txt-citetags">&gt; </span>c:0007 p:---- s:0025 b:0025 l:000024 d:000024
+<span class="moz-txt-citetags">&gt; </span>CFUNC  :gss_release_buffer
+<span class="moz-txt-citetags">&gt; </span>c:0006 p:0065 s:0020 b:0020 l:000019 d:000019 METHOD <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>Coding/gssapi/lib/gssapi/lib_gssapi.rb:46
+<span class="moz-txt-citetags">&gt; </span>c:0005 p:---- s:0014 b:0014 l:000013 d:000013 FINISH
+<span class="moz-txt-citetags">&gt; </span>c:0004 p:---- s:0012 b:0012 l:000011 d:000011 CFUNC  :call
+<span class="moz-txt-citetags">&gt; </span>c:0003 p:0028 s:0008 b:0008 l:000007 d:000007 METHOD <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/
+<span class="moz-txt-citetags">&gt; </span>gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/autopointer.rb:107
+<span class="moz-txt-citetags">&gt; </span>c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+<span class="moz-txt-citetags">&gt; </span>c:0001 p:0000 s:0002 b:0002 l:001578 d:001578 TOP
+<span class="moz-txt-citetags">&gt; </span>---------------------------
+<span class="moz-txt-citetags">&gt; </span>-- Ruby level backtrace information
+<span class="moz-txt-citetags">&gt; </span>----------------------------------------
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/
+<span class="moz-txt-citetags">&gt; </span>autopointer.rb:107:in `call'
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/
+<span class="moz-txt-citetags">&gt; </span>autopointer.rb:107:in `call'
+<span class="moz-txt-citetags">&gt; </span>/home/dwanek/Coding/gssapi/lib/gssapi/lib_gssapi.rb:46:in `release'
+<span class="moz-txt-citetags">&gt; </span>/home/dwanek/Coding/gssapi/lib/gssapi/lib_gssapi.rb:46:in
+<span class="moz-txt-citetags">&gt; </span>`gss_release_buffer'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-- C level backtrace information
+<span class="moz-txt-citetags">&gt; </span>-------------------------------------------
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.
+<span class="moz-txt-citetags">&gt; </span>1.9(rb_vm_bugreport+0x5f) [0x7f78aa22bb2f]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x62b96)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa113b96]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_bug+0xb3)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa113d33]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x10bea5)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa1bcea5]
+<span class="moz-txt-citetags">&gt; </span>/lib/libpthread.so.0(+0xfb40) [0x7f78a9ea3b40]
+<span class="moz-txt-citetags">&gt; </span>/usr/lib/libgssapi_krb5.so(gss_release_buffer+0x14) [0x7f78a8454ed4]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+<span class="moz-txt-citetags">&gt; </span>ffi_c.so(ffi_call_unix64+0x4c) [0x7f78a868e44c]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+<span class="moz-txt-citetags">&gt; </span>ffi_c.so(ffi_call+0x3ef) [0x7f78a868debc]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+<span class="moz-txt-citetags">&gt; </span>ffi_c.so(rbffi_CallFunction+0xbb) [0x7f78a868d06b]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x175fe8)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa226fe8]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x1689c9)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa2199c9]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x16fb49)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa220b49]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x171444)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa222444]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.
+<span class="moz-txt-citetags">&gt; </span>1.9(rb_method_call+0x163) [0x7f78aa11dcd3]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x175fe8)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa226fe8]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x1689c9)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa2199c9]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x16fb49)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa220b49]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x171444)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa222444]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_eval_cmd
+<span class="moz-txt-citetags">&gt; </span>+0x101) [0x7f78aa227541]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x78e64)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa129e64]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_protect
+<span class="moz-txt-citetags">&gt; </span>+0xf1) [0x7f78aa117dc1]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x78dfd)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa129dfd]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x79671)
+<span class="moz-txt-citetags">&gt; </span>[0x7f78aa12a671]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(ruby_cleanup
+<span class="moz-txt-citetags">&gt; </span>+0x1ec) [0x7f78aa119bbc]
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/dwanek<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(ruby_run_node
+<span class="moz-txt-citetags">&gt; </span>+0x25) [0x7f78aa119e05]
+<span class="moz-txt-citetags">&gt; </span>ruby(main+0x4b) [0x4009fb]
+<span class="moz-txt-citetags">&gt; </span>/lib/libc.so.6(__libc_start_main+0xfe) [0x7f78a9267d8e]
+<span class="moz-txt-citetags">&gt; </span>ruby() [0x4008e9]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>[NOTE]
+<span class="moz-txt-citetags">&gt; </span>You may have encountered a bug in the Ruby interpreter or extension
+<span class="moz-txt-citetags">&gt; </span>libraries.
+<span class="moz-txt-citetags">&gt; </span>Bug reports are welcome.
+<span class="moz-txt-citetags">&gt; </span>For details:<a class="moz-txt-link-freetext" href="http://www.ruby-lang.org/bugreport.html">http://www.ruby-lang.org/bugreport.html</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Aborted
+<span class="moz-txt-citetags">&gt; </span>---------------backtrace--------------
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Dec 9, 2:24 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>On 10 December 2010 00:36, zenChild <a class="moz-txt-link-rfc2396E" href="mailto:dan.wa...@gmail.com">&lt;dan.wa...@gmail.com&gt;</a> wrote:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span># --------- Example One ---------
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>class GssBufferDesc &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span> layout  :length =&gt; :size_t,
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>         :value  =&gt; :pointer # pointer of :void
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>end
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>output_token = FFI::MemoryPointer.new :pointer
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>LibGSSAPI::GssBufferT.new(output_token.get_pointer(0))
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I suspect what you're passing in as output_token is the problem.  Do
+<span class="moz-txt-citetags">&gt; &gt; </span>the same as you were in example One - allocate a GssBufferDesc and use
+<span class="moz-txt-citetags">&gt; &gt; </span>it as output_token, then construct the AutoPointer using its :value
+<span class="moz-txt-citetags">&gt; &gt; </span>field as the pointer.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; &gt; </span>output_token = GssBufferDesc.new
+<span class="moz-txt-citetags">&gt; &gt; </span>maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+<span class="moz-txt-citetags">&gt; &gt; </span>LibGSSAPI::GssBufferT.new(output_token[:value])
+</pre></div></body>
+</html>
+</table></div>

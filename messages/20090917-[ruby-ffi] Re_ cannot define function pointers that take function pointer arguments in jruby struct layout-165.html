@@ -1,0 +1,63 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: cannot define function pointers that take function  pointer arguments in jruby struct layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: cannot define function pointers that take function  pointer arguments in jruby struct layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/17/09 10:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/9/14 Aman Gupta <a class="moz-txt-link-rfc2396E" href="mailto:themastermind1@gmail.com">&lt;themastermind1@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm using ffi-swig-generator on:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>typedef void (*MyCallback) (void *data);
+<span class="moz-txt-citetags">&gt; </span>typedef struct {
+<span class="moz-txt-citetags">&gt; </span> void (*member) (MyCallback cb);
+<span class="moz-txt-citetags">&gt; </span>} MyStruct;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>which generates:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> callback(:MyCallback, [ :pointer ], :void)
+<span class="moz-txt-citetags">&gt; </span> class MyStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout(
+<span class="moz-txt-citetags">&gt; </span>     :member, callback([ :MyCallback ], :void)
+<span class="moz-txt-citetags">&gt; </span>   )
+<span class="moz-txt-citetags">&gt; </span> end
+</pre></blockquote><pre wrap>
+
+The root problem here is the resolution of :MyCallback - it will fail
+on both JRuby and 1.9 (or at least it does for me).
+
+The best way to ensure this works is to define a constant in enclosing
+module, and use that on the layout line.
+
+e.g.
+module Foo
+  extend FFI::Library
+  MyCallback = callback(:MyCallback, [ :pointer ], :void
+  class MyStruct &lt; FFI::Struct
+    layout(:member, callback(MyCallback, :void))
+  end
+end
+
+Alternatively you can look it up using Foo.find_type(:MyCallback)
+
+module Foo
+  extend FFI::Library
+  callback(:MyCallback, [ :pointer ], :void
+  class MyStruct &lt; FFI::Struct
+    layout(:member, callback(Foo.find_type(:MyCallback), :void))
+  end
+end
+
+ffi-swig-generator should be altered to do one of the above.
+
+Struct#find_type tries to emulate this behaviour, and fails - ruby
+does not appear to have anyway of getting the lexical enclosing module
+of a subclass, when accessed from a method of the superclass.  If
+anyone knows a way, I'd be interested.
+</pre></div></body>
+</html>
+</table></div>

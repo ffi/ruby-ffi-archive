@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Function &#39;LoadIconMetric&#39; not found in [kernel32, user32, gdi32, comctl32] (FFI::NotFoundError)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Function &#39;LoadIconMetric&#39; not found in [kernel32, user32, gdi32, comctl32] (FFI::NotFoundError)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>bawng@intoxicated.co.za</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/28/13 6:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">To be honest, I thought all details needed were already included, I should have included the error I put in the topic in my post body as well, maybe you didn't notice it in the topic.<div><br></div><div>The error says:&nbsp;Function 'LoadIconMetric' not found in [kernel32, user32, gdi32, comctl32] (FFI::NotFoundError)</div><div><br></div><div>From that I thought it would be clear I am using ffi_lib to load those 4 DLLs,&nbsp;comctl32.dll is supposed to contain&nbsp;LoadIconMetric but in order to use that function it needs to be loaded with the correct manifest specifying version 6 like my quoted C++ sample code explained.</div><div><blockquote class="gmail_quote" style="margin: 0px 0px 0px 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;">// we need commctrl v6 for LoadIconMetric()<br>#pragma comment(linker,"/<wbr>manifestdependency:\"type='<wbr>win32' name='Microsoft.Windows.<wbr>Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='<wbr>6595b64144ccf1df' language='*'\"")<br>#pragma comment(lib, "comctl32.lib")</blockquote><div><br></div><div>From what I can tell after searching the ffi source code and documentation, it does not appear to have any support for Windows manifests. I have even tried creating manual ffi_c.so.manifest file, but it does not get used. This is the first time I have had to learn about manifests and how DLLs can hide functions depending on the manifest version it was loaded with, I usually avoid Windows specific programming in general.</div><div><br></div><div>The best workaround I can think of is compiling my own custom proxy DLL written in C++ which defines that manifest with the #pragma line quoted above, load that DLL with FFI and use it to access the correct Windows API function.</div><div><br></div><div>It would be great if FFI could support manifests in future, so that you do not have to compile a proxy DLL file like this.</div><div><br></div><div>Thanks,</div><div>bawNg</div><div><br></div><br>On Sunday, September 29, 2013 12:31:03 AM UTC+2, Jon wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr"><div><div>You've fallen prey to a great way to not get a response; making one work harder in order to help.<br><br>Always provide a minimal failing code snippet. Laziness can be great, but you're being too lazy ;)<br>
+</div><div><br></div>That said, assuming something like pestudio or dependency walker failed to find these symbols, could LoadIconMetric be a macro wrapping another API? I don't have vc++ or the platform sdk on this machine to check, but spelunking the headers might get you unstuck since<br>
+<br><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb775701%28v=vs.85%29.aspx" target="_blank">http://msdn.microsoft.com/en-<wbr>us/library/windows/desktop/<wbr>bb775701%28v=vs.85%29.aspx</a><br><br></div>is minimally helpful.<br>
+</div><div><br><br><div class="gmail_quote">On Sat, Sep 28, 2013 at 2:46 PM,  <span dir="ltr">&lt;<a href="javascript:" target="_blank" gdf-obfuscated-mailto="HJfZK82H_MwJ">ba...@intoxicated.co.za</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir="ltr">Hello ruby-ffi,<div><br></div><div>I am attempting to attach to the&nbsp;LoadIconMetric Windows API function which is part of&nbsp;comctl32. The function is not found and so can never be attached.</div>
+<div><br></div><div>The following 3 lines are taken from the top of one of the Microsoft VC++ sample projects cpp files:</div><div><blockquote class="gmail_quote" style="margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1ex">
+// we need commctrl v6 for LoadIconMetric()<br>#pragma comment(linker,"/<wbr>manifestdependency:\"type='<wbr>win32' name='Microsoft.Windows.<wbr>Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='<wbr>6595b64144ccf1df' language='*'\"")<br>
+#pragma comment(lib, "comctl32.lib")</blockquote><div><br></div><div>&nbsp;This function is required in order to make use of the Windows system tray icon API. I really hope there is a simple solution to this problem.</div>
+</div><div><br></div><div>Thanks,</div><div>bawNg</div></div><span><font color="#888888">
+
+<p></p>
+
+-- <br>
+&nbsp;<br>
+--- <br>
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="HJfZK82H_MwJ">ruby-ffi+u...@<wbr>googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<wbr>groups/opt_out</a>.<br>
+</font></span></blockquote></div><br></div>
+</blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

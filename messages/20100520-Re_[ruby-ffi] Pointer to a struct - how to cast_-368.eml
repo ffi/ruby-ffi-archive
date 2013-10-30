@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs7770qcb;
+        Thu, 20 May 2010 10:16:41 -0700 (PDT)
+Received: by 10.140.58.5 with SMTP id g5mr260811rva.157.1274375801270;
+        Thu, 20 May 2010 10:16:41 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJvd2ov6FxD13NXfBBoEJM3Srw@googlegroups.com>
+Received: from mail-yw0-f151.google.com ([209.85.211.151])
+        by mx.google.com with ESMTP id b2si144196rvn.71.2010.05.20.10.16.39;
+        Thu, 20 May 2010 10:16:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJvd2ov6FxD13NXfBBoEJM3Srw@googlegroups.com designates 209.85.211.151 as permitted sender) client-ip=209.85.211.151;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJvd2ov6FxD13NXfBBoEJM3Srw@googlegroups.com designates 209.85.211.151 as permitted sender) smtp.mail=ruby-ffi+bncCJvd2ov6FxD13NXfBBoEJM3Srw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh15 with SMTP id 15sf52699ywh.7
+        for <headius@headius.com>; Thu, 20 May 2010 10:16:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=1vA0JV0+n2mJ7669z5mFgnzM/XLxwII6Y1+Phzeu8Pw=;
+        b=m3tlRPkLl2xnwAyEi0KZDtr0Us42AKHp0aYZkoNYeiKbYanwUmOxCExpW6UHlLYs/n
+         tvHFJvLmJ4FCQI43CLd9RPDVDLxCQEbOsc30MP/Q//OfDcF7TIjs6PzCHVFpImXrTZWh
+         dp3934LDCQUGObaTKHpOPTw+4y9Ng4MfTMRWg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=fstsbzGkSmmYK5Ve3aU+Q4Zl9HDK0r3fZUJgymPNfj0mjhah2347/6pUrUmVFU9+mw
+         H7Yr2cNh+C1zRN121aJ6tluiu6A6CBqb8gmK60jNS692lCIlSxjdAWmeYYqJEJ4ZsmQ0
+         iCw8zr8euh+6ceFRrRYKPqewL6KAwFgnu6GEo=
+Received: by 10.101.180.31 with SMTP id h31mr30988anp.2.1274375797446;
+        Thu, 20 May 2010 10:16:37 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.160.35 with SMTP id m35ls122457ano.2.p; Thu, 20 May 2010 
+	10:16:36 -0700 (PDT)
+Received: by 10.101.204.24 with SMTP id g24mr104722anq.51.1274375796855;
+        Thu, 20 May 2010 10:16:36 -0700 (PDT)
+Received: by 10.101.204.24 with SMTP id g24mr104721anq.51.1274375796811;
+        Thu, 20 May 2010 10:16:36 -0700 (PDT)
+Return-Path: <drew.avis@gmail.com>
+Received: from mail-gx0-f225.google.com (mail-gx0-f225.google.com [209.85.217.225])
+        by gmr-mx.google.com with ESMTP id 12si7437gxk.2.2010.05.20.10.16.35;
+        Thu, 20 May 2010 10:16:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drew.avis@gmail.com designates 209.85.217.225 as permitted sender) client-ip=209.85.217.225;
+Received: by mail-gx0-f225.google.com with SMTP id 25so34544gxk.11
+        for <ruby-ffi@googlegroups.com>; Thu, 20 May 2010 10:16:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.150.170.11 with SMTP id s11mr1558515ybe.390.1274375794144; 
+	Thu, 20 May 2010 10:16:34 -0700 (PDT)
+Received: by 10.151.109.5 with HTTP; Thu, 20 May 2010 10:16:33 -0700 (PDT)
+In-Reply-To: <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+	 <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+Date: Thu, 20 May 2010 13:16:33 -0400
+Message-ID: <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: DA <drew.avis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of drew.avis@gmail.com designates 209.85.217.225 as permitted sender) 
+	smtp.mail=drew.avis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: drew.avis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Thu, May 20, 2010 at 12:37 PM, Jeremy Voorhis <jvoorhis@gmail.com> wrote:
+> The code looks alright to me on first glance. Are you sure your pointer is
+> valid?
+
+I'm not sure how to check that.  If I do this:
+puts "p: #{p}"
+I get:
+p: #<FFI::Pointer:0x4145ec0>
+
+Is there a tool I could use to take a peek at that address?  (I'm on Win7.)
+
+Drew

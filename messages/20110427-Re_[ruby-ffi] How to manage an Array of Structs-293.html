@@ -1,0 +1,109 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] How to manage an Array of Structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] How to manage an Array of Structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Paolo Bosetti <paolo.bosetti@me.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/27/11 11:10 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Perfect! it works! now that I see it, the answer was easy.
+Thanks a lot, Charles,
+-P.
+
+
+
+On Apr 27, 2011, at 5:41 PM, Charles Strahan wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Woops!
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>To get the bytes from the struct, you would want to do something like this:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  # Call Struct#pointer, and then Pointer#get_bytes
+<span class="moz-txt-citetags">&gt; </span>  struct_bytes = op.pointer.get_bytes(0, Sembuf.size) # (offset, length)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>-Charles
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On Wed, Apr 27, 2011 at 7:37 PM, Charles Strahan <a class="moz-txt-link-rfc2396E" href="mailto:charles.c.strahan@gmail.com">&lt;charles.c.strahan@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt; </span>Hi P,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Just FYI, the first parameter to MemoryPointer.new is the type_size, and the second parameter is count - so you probably wanted to do something like this (for an array consisting of a single Sembuf):
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  ops = FFI::MemoryPointer.new(Shared::Sembuf) # count defaults to 1
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Now then, there's probably a better way to do this, but this should work:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  sembuf_count = ... # however many Sembufs you want to write
+<span class="moz-txt-citetags">&gt; </span>  ops = FFI::MemoryPointer.new(Shared::Sembuf, sembuf_count)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  # get the bytes
+<span class="moz-txt-citetags">&gt; </span>  struct_bytes = op.get_bytes(0, Sembuf.size) # (offset, length)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  # Pointer#[n] returns a new pointer with the address incremented by (n * Pointer#type_size) - just like a C array
+<span class="moz-txt-citetags">&gt; </span>  ops[0].put_bytes(0, struct_bytes) # (offset, byte_string)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  # now you repeat with ops[1], ops[2], ops[n-1]
+<span class="moz-txt-citetags">&gt; </span>  ops[1].put_bytes ..
+<span class="moz-txt-citetags">&gt; </span>  ...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Again, there might be a better way to do this. I figured that Pointer#[]= would do the trick, but I guess not.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>HTH,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Charles
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On Wed, Apr 27, 2011 at 11:58 AM, P4010 <a class="moz-txt-link-rfc2396E" href="mailto:paolo.bosetti@gmail.com">&lt;paolo.bosetti@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt; </span>I am writing an FFI interface to IP shared memory and semaphores. I
+<span class="moz-txt-citetags">&gt; </span>wonder if someone here can give me advice on how to manage an Array of
+<span class="moz-txt-citetags">&gt; </span>Structs.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I am mapping the semop() function in FFI. It has the following
+<span class="moz-txt-citetags">&gt; </span>signature:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>#include &lt;sys/sem.h&gt;
+<span class="moz-txt-citetags">&gt; </span>int
+<span class="moz-txt-citetags">&gt; </span>semop(int semid, struct sembuf *sops, size_t nsops);
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I wrote something like:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>module Shared
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> ffi_lib FFI::Library::LIBC
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> class Sembuf &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout :sem_num, :ushort,
+<span class="moz-txt-citetags">&gt; </span>     :sem_op, :short,
+<span class="moz-txt-citetags">&gt; </span>     :sem_flg, :short
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> attach_function :semop,  [:int, :pointer, :size_t], :int
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Now the Shared#semop wants a pointer to an array of Shared::Sembuf
+<span class="moz-txt-citetags">&gt; </span>structs. How can I build such a pointer? I guess I should start with
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>op = Shared::Sembuf.new
+<span class="moz-txt-citetags">&gt; </span>op[:sem_num] = 0
+<span class="moz-txt-citetags">&gt; </span>op[:sem_op] = -1
+<span class="moz-txt-citetags">&gt; </span>op[:sem_flg] = 0
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>ops = FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>But then I could not find how to add the op instance to the array
+<span class="moz-txt-citetags">&gt; </span>pointed to by ops...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'll appreciate any suggestion...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Cheers,
+<span class="moz-txt-citetags">&gt; </span>-P.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

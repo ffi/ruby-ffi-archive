@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/09 1:44 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/23 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>1) Both FFI::Struct and FFI::ManagedStruct are able to be freed by the Ruby impl's GC. Overall GC semantics are no different that any other Ruby object GC'd by the specific Ruby impl.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>My question is
+<span class="moz-txt-citetags">&gt; </span>1) is the "struct's worth of memory" allocated when you call #new
+</pre></blockquote><pre wrap>
+
+Yes, the backing memory is allocated by Struct.new
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2) when you do struct[:member] = something
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>does it actually set the bits within the struct right then, or at some
+<span class="moz-txt-citetags">&gt; </span>later marshalling time?
+</pre></blockquote><pre wrap>
+
+It sets the bits in the struct right then.  The inverse is also true;
+x = struct[:member] does a read from the memory, each time you access
+it.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>In theory there is a guarantee that it will be collected
+<span class="moz-txt-citetags">&gt; </span>"at_exit" [objects with finalizers are all called in an at_exit in
+<span class="moz-txt-citetags">&gt; </span>MRI].
+</pre></blockquote><pre wrap>
+
+Yes, although I don't think this same guarantee is made for the jvm.
+However, assuming the program is running forever, and you busily
+allocate native memory in FFI, and do not explicitly free it,  there
+may not be a GC event during the run which frees it.  So you can get
+into a state where you exhaust the native memory arena.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,90 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Problem retrieving struct from pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Problem retrieving struct from pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/5/10 3:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Aug 5, 2010, at 8:12 AM, Joe wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>[snip]
+<span class="moz-txt-citetags">&gt; </span>typedef struct hba_AdapterAttributes {
+<span class="moz-txt-citetags">&gt; </span>   char	Manufacturer[64];
+<span class="moz-txt-citetags">&gt; </span>   char	SerialNumber[64];
+<span class="moz-txt-citetags">&gt; </span>   char	Model[256];
+<span class="moz-txt-citetags">&gt; </span>   char	ModelDescription[256];
+<span class="moz-txt-citetags">&gt; </span>   HBA_WWN	NodeWWN;
+<span class="moz-txt-citetags">&gt; </span>   char	NodeSymbolicName[256];
+<span class="moz-txt-citetags">&gt; </span>   char	HardwareVersion[256];
+<span class="moz-txt-citetags">&gt; </span>   char	DriverVersion[256];
+<span class="moz-txt-citetags">&gt; </span>   char	OptionROMVersion[256];
+<span class="moz-txt-citetags">&gt; </span>   char	FirmwareVersion[256];
+<span class="moz-txt-citetags">&gt; </span>   HBA_UINT32	VendorSpecificID;
+<span class="moz-txt-citetags">&gt; </span>   HBA_UINT32	NumberOfPorts;
+<span class="moz-txt-citetags">&gt; </span>   char	DriverName[256];
+<span class="moz-txt-citetags">&gt; </span>} HBA_ADAPTERATTRIBUTES, *PHBA_ADAPTERATTRIBUTES;
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+[snip]
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>----------
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>In Ruby, I created the struct as so:
+<span class="moz-txt-citetags">&gt; </span>class HBA_AdapterAttributes &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>	layout :Manufacturer, :char
+<span class="moz-txt-citetags">&gt; </span>	:SerialNumber, :char,
+<span class="moz-txt-citetags">&gt; </span>	:Model, :char,
+<span class="moz-txt-citetags">&gt; </span>	:ModelDescription, :char,
+<span class="moz-txt-citetags">&gt; </span>	:NodeWWN, :uint8,
+<span class="moz-txt-citetags">&gt; </span>	:NodeSymbolicName, :char,
+<span class="moz-txt-citetags">&gt; </span>	:HardwareVersion, :char,
+<span class="moz-txt-citetags">&gt; </span>	:DriverVersion, :char,
+<span class="moz-txt-citetags">&gt; </span>	:OptionROMVersion, :char,
+<span class="moz-txt-citetags">&gt; </span>	:FirmwareVersion, :char,
+<span class="moz-txt-citetags">&gt; </span>	:VendorSpecificID, :uint32,
+<span class="moz-txt-citetags">&gt; </span>	:NumberOfPorts, :uint32,
+<span class="moz-txt-citetags">&gt; </span>	:DriverName, :char
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Now def get_struct pointer
+<span class="moz-txt-citetags">&gt; </span>def get_struct pointer
+<span class="moz-txt-citetags">&gt; </span>	HBA::HBA_AdapterAttributes.new pointer
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Calling the get_struct_pointer returns an array of fixnums, instead of
+<span class="moz-txt-citetags">&gt; </span>any string values.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Any idea what I'm overlooking here?
+</pre></blockquote><pre wrap>
+
+Your FFI::Struct looks wrong for the char arrays/strings. You need to make sure the struct is allocating space for your string by telling it the length.
+
+class HBA_AdapterAttributes &lt; FFI::Struct
+	layout :Manufacturer, [:char, 64],
+	:SerialNumber, [:char, 64],
+	:Model, [:char, 256],
+	:ModelDescription, [:char, 256],
+	:NodeWWN, :uint8, # this probably needs to be another struct
+	:NodeSymbolicName, [:char, 256],
+	:HardwareVersion, [:char, 256],
+	:DriverVersion, [:char, 256],
+	:OptionROMVersion, [:char, 256],
+	:FirmwareVersion, [:char, 256],
+	:VendorSpecificID, :uint32,
+	:NumberOfPorts, :uint32,
+	:DriverName, [:char, 256]
+end
+
+Check out the wiki at <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/structs">http://wiki.github.com/ffi/ffi/structs</a>
+
+Lots of good information there...
+
+cr
+
+
+</pre></div></body>
+</html>
+</table></div>

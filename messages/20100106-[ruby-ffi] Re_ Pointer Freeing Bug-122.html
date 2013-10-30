@@ -1,0 +1,124 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Pointer Freeing Bug</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Pointer Freeing Bug</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>JEG2 <james@graysoftinc.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/6/10 2:43 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Jan 6, 12:38 pm, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislav...@gmail.com">&lt;luislav...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>What about forcing the garbage collect process on each spec?
+</pre></blockquote><pre wrap>
+
+This was a great tip that led me straight to the issue.  Thanks for
+the idea.
+
+The problem was a callback I had setup (call() and func() are a
+trivial FFI DSL I made):
+
+        call :name    =&gt; :TCPDPROC,
+             :args    =&gt; [:pointer, :int, :pointer, :pointer],
+             :returns =&gt; :pointer
+        func :name    =&gt; :putproc,
+             :args    =&gt;
+[:pointer, :pointer, :int, :pointer, :int, :TCPDPROC,
+                          :pointer],
+             :returns =&gt; :bool
+
+and was using like this:
+
+        callback = lambda { |old_value_pointer, old_size,
+returned_size, _|
+          old_value   = old_value_pointer.get_bytes(0, old_size)
+          replacement = yield(key, old_value, value).to_s
+          returned_size.put_int(0, replacement.size)
+          FFI::MemoryPointer.from_string(replacement)
+        }
+        try(:putproc, k, k.size, v, v.size, callback, nil)
+
+The problem seems to be the FFI::MemoryPointer allocation.  Tokyo
+Cabinet says in the documentation that it will free the returned
+pointer:
+
+/* Store a record into a hash database object with a duplication
+handler.
+   `hdb' specifies the hash database object connected as a writer.
+   `kbuf' specifies the pointer to the region of the key.
+   `ksiz' specifies the size of the region of the key.
+   `vbuf' specifies the pointer to the region of the value.  `NULL'
+means that record addition is
+   ommited if there is no corresponding record.
+   `vsiz' specifies the size of the region of the value.
+   `proc' specifies the pointer to the callback function to process
+duplication.  It receives
+   four parameters.  The first parameter is the pointer to the region
+of the value.  The second
+   parameter is the size of the region of the value.  The third
+parameter is the pointer to the
+   variable into which the size of the region of the return value is
+assigned.  The fourth
+   parameter is the pointer to the optional opaque object.  It returns
+the pointer to the result
+   object allocated with `malloc'.  It is released by the caller.  If
+it is `NULL', the record is
+   not modified.  If it is `(void *)-1', the record is removed.
+   `op' specifies an arbitrary pointer to be given as a parameter of
+the callback function.  If
+   it is not needed, `NULL' can be specified.
+   If successful, the return value is true, else, it is false.
+   Note that the callback function can not perform any database
+operation because the function
+   is called in the critical section guarded by the same locks of
+database operations. */
+bool tchdbputproc(TCHDB *hdb, const void *kbuf, int ksiz, const void
+*vbuf, int vsiz,
+                  TCPDPROC proc, void *op);
+
+I'm assuming it does free it, and then FFI tries to free the same
+already freed pointer.
+
+I was able to "fix" the issue using this code:
+
+        callback = lambda { |old_value_pointer, old_size,
+returned_size, _|
+          old_value   = old_value_pointer.get_bytes(0, old_size)
+          replacement = yield(key, old_value, value).to_s
+          returned_size.put_int(0, replacement.size)
+          pointer = Utilities.malloc(replacement.size)
+          pointer.put_bytes(0, replacement)
+          pointer
+        }
+        try(:putproc, k, k.size, v, v.size, callback, nil)
+
+The Utilities.malloc() call is an FFI function wrapping tcmalloc():
+
+/* Allocate a region on memory.
+   `size' specifies the size of the region.
+   The return value is the pointer to the allocated region.
+   This function handles failure of memory allocation implicitly.
+Because the region of the
+   return value is allocated with the `malloc' call, it should be
+released with the `free' call
+   when it is no longer in use. */
+void *tcmalloc(size_t size);
+
+It seems to work, but I wasn't sure how to define the size_t
+parameter.  I assumed it's an unsigned long and defined it as such:
+
+    func :name    =&gt; :malloc,
+         :args    =&gt; :ulong,
+         :returns =&gt; :pointer
+
+Can I really count on that though?  Is it portable?
+
+Is there a better way for me to define a pointer that FFI won't try to
+free?  I originally tried using FFI::Pointer (instead of
+FFI::MemoryPointer), but I couldn't seem to make that work.
+
+Again, thanks for the advice.
+
+James Edward Gray II
+</pre></div></body>
+</html>
+</table></div>

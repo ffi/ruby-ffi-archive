@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.217.6.197 with SMTP id y47cs231147wes;
+        Tue, 18 Jan 2011 14:29:25 -0800 (PST)
+Received: by 10.147.171.14 with SMTP id y14mr8783843yao.21.1295389765086;
+        Tue, 18 Jan 2011 14:29:25 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOar7YaCHRDDqNjpBBoEYLXjwg@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id u9si11756199yba.74.2011.01.18.14.29.23
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 18 Jan 2011 14:29:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOar7YaCHRDDqNjpBBoEYLXjwg@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOar7YaCHRDDqNjpBBoEYLXjwg@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCOar7YaCHRDDqNjpBBoEYLXjwg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywe9 with SMTP id 9sf102360ywe.7
+        for <headius@headius.com>; Tue, 18 Jan 2011 14:29:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=LtQTcG+iAHZ7qpFR6OrkOyQX1XfhoShfzYpj3iPxt+8=;
+        b=T8lbmVBYxTmz0RYu281P/laha5hp43yJFqiHqQLkYCOh75tDZvfdBICLa9QDVANBH+
+         hTQWqnl7ZGwA0lk4Dn7VqqJdBOq8mgK/lo5A/FAHj1avhUx6z1NjjbD49RPuLcFJQ7UE
+         5tLSFRfyPPN8tCcbS/oYmBKDZbsClZE4d8AfI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=Uuudh3uNy0dEADLjgGeEbdkr8XfnZPiSLGVZSEslVbJozUcPWFk1bERbisw+CYMsh6
+         tCSg31L3St317YSgm4tUfi3Mb6DphrLwAyk2wssA37ZnoA42J50LA5BNUd89dbh8D/Pj
+         LB5VC56fR/fcH3FWBN27fwPhRlB+kq7bxLur8=
+Received: by 10.147.167.8 with SMTP id u8mr508393yao.24.1295389763160;
+        Tue, 18 Jan 2011 14:29:23 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.28.20 with SMTP id b20ls546777anb.1.p; Tue, 18 Jan 2011
+ 14:29:22 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.100.96.19 with SMTP id t19mr205833anb.67.1295389762206; Tue,
+ 18 Jan 2011 14:29:22 -0800 (PST)
+Received: by n10g2000yqd.googlegroups.com with HTTP; Tue, 18 Jan 2011 14:29:22
+ -0800 (PST)
+Date: Tue, 18 Jan 2011 14:29:22 -0800 (PST)
+In-Reply-To: <39fb9ee4-8740-4cc1-bc22-4b38eff9b5cc@m35g2000vbn.googlegroups.com>
+X-IP: 190.242.65.202
+References: <39fb9ee4-8740-4cc1-bc22-4b38eff9b5cc@m35g2000vbn.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-us)
+ AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4,gzip(gfe)
+Message-ID: <35502ab3-0049-44be-9df4-1a815ffa4401@n10g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Passing Windows VARIANT by value leads to segfault
+From: Stephan Schwab <sns@caimito.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sns@caimito.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+While this post had been waiting to be published I learned a bit more
+about the Windows VARIANT. It is a very complex datatype that consists
+of multiple structs and unions. The segmentation fault happens because
+the contents of memory are wrong once the C function wants to do
+something with it.
+
+Does anyone have a VARIANT modeled using FFI::Struct and FFI::Union?
+I'm sure it can be done but seems to be a lot of work and if one
+element is missing --- booom.
+
+On Jan 18, 1:23=A0pm, Stephan Schwab <s...@caimito.net> wrote:
+> Hi!
+>
+> Given this code:
+>
+> get_accState =A0 =A0 =A0=3D FFI::Function.new(:uint32, [:pointer,
+> Variant.by_value, :pointer], i_accessible_vtbl[:get_accState])
+> variant_out =A0 =A0 =A0 =3D Variant.new
+>
+> variant_in =3D Variant.new
+> variant_init(variant_in)
+> variant_in[:vt] =3D Constants::VT_I4 =A0 # 0x3
+> variant_in[:lVal] =3D 0 =A0# CHILDID_SELF
+>
+> acc_state_result =A0=3D get_accState.call(i_accessible, variant_in,
+> variant_out)
+> fail "Can't query for button state. HRESULT =3D 0x" +
+> acc_state_result.to_s(16) unless acc_state_result =3D=3D Constants::S_OK
+> # S_OK =3D 0
+>
+> I get a segmentation fault when calling get_accState.call()
+>
+> The method get_accState() allows me to skip the second parameter and
+> pass in NULL instead. If I do that (after changing the parameter type
+> to a pointer and using 'nil') the function returns S_OK and does not
+> crash.
+>
+> What might be the reason for the segmentation fault given this code?
+>
+> Stephan

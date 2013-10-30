@@ -1,0 +1,98 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: XNI and FFI summary?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: XNI and FFI summary?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/5/13 4:21 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Yes, the C parsing (whether done by a computer, or a human) is the weakest point of FFI - there are projects that use llvm or swig to produce bindings from the C headers, but with XNI, I wanted to avoid that extra dependency.<div><br></div><div>With XNI, you describe your API in a simple DSL, which is used at both runtime to wire up ruby -&gt; C, and at compile time to generate the C header+stubs. &nbsp;It is a lot easier to produce a clean C api from a simple ruby description, than wrangle a pathological C api into ruby.<br><br>There is actually a variant of the stub generator in ffi-compiler - it can take a FFI interface and generate a header with C function signatures and structs.<br><br>On Wednesday, 6 March 2013 03:03:02 UTC+10, Jon  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">&gt; &gt;
+<br>&gt; &gt; When you get a free moment, please provide a quick summary of: 
+<br>&gt; &gt;
+<br>&gt; &gt; &nbsp; * XNI's main reason(s) for being 
+<br>&gt; &gt;
+<br>&gt; 
+<br>&gt; At the moment, its an experiment in native interface design. &nbsp;The aim is a 
+<br>&gt; stream-lined FFI+ffi-compiler combo, with some hard-coded conventions to 
+<br>&gt; make it easier to implement common patterns when writing extensions, whilst 
+<br>&gt; avoiding the "gigantic-ball-of-mud" that is the ruby C api. &nbsp;But, XNI does 
+<br>&gt; not try to do everything - since you don't get access to Ruby VM internals, 
+<br>&gt; you wouldn't use it for e.g. implementing a new data structure.
+<br>&gt; 
+<br>&gt; This is Jeremy's hitimes gem converted to use FFI+ffi-compiler:
+<br>&gt; <a href="https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b" target="_blank">https://github.com/wmeissner/<wbr>hitimes/commit/<wbr>b226af0498127a9e25f002b01db923<wbr>0f68f93f7b</a>
+<br>&gt; 
+<br>&gt; and converted to use XNI:
+<br>&gt; <a href="https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5" target="_blank">https://github.com/wmeissner/<wbr>hitimes/commit/<wbr>9252959cebc6678a969ba672438ba4<wbr>b11ff98ef5</a>
+<br>&gt; 
+<br>&gt; The XNI one has a bit less ruby boilerplate (XNI has the concept of a 
+<br>&gt; DataObject, which can have instance methods that automagically pass in 
+<br>&gt; 'self' to native methods). &nbsp;On the other hand, XNI excises a few FFI 
+<br>&gt; concepts - there is no Struct that you can wrap around existing native 
+<br>&gt; memory, nor MemoryPointer for generic native memory allocations.
+<br>&gt; 
+<br>&gt; (as to why I used hitimes - its a fairly nicely written cext, it doesn't do 
+<br>&gt; anything super-complicated, but would be hard to implement in pure FFI due 
+<br>&gt; to the data structures and API calls it needs).
+<br>&gt; 
+<br>&gt; &nbsp; * when should one prefer XNI over FFI? 
+<br>&gt; &gt;
+<br>&gt; 
+<br>&gt; That's a really good question - "when you're unhappy with FFI+ffi-compiler" 
+<br>&gt; would be the pithy answer. &nbsp;FFI isn't going away, so if people are happy 
+<br>&gt; with it, then I encourage them to keep using it. &nbsp;At this point, FFI is 
+<br>&gt; stable and works. &nbsp;On the other hand, if you're writing a gem from scratch, 
+<br>&gt; and you're going to end up writing a bunch of ruby boilerplate around a raw 
+<br>&gt; FFI api, and you'll need to use ffi-compiler to compile some native shims, 
+<br>&gt; then XNI might be worth a look. &nbsp;At least once it is a bit more stable.
+<br>&gt; 
+<br>&gt; 
+<br>&gt; &nbsp; * will XNI always utilize FFI? 
+<br>&gt; &gt;
+<br>&gt; 
+<br>&gt; It will always utilize a ffi-like way of interfacing between the ruby VM 
+<br>&gt; and the native code (that is part of the design), but it won't always use 
+<br>&gt; the FFI gem. &nbsp;There is a native backend for JRuby-1.7+, and I am currently 
+<br>&gt; working on a native CRuby backend. &nbsp;There could also be a native backend 
+<br>&gt; for Topaz that uses ctypes (or whatever the RPython equivalent is).
+<br>
+<br>Thanks. It sounds intruiging and I'm looking forward to digging into XNI and ffi-compiler.
+<br>
+<br>Awhile ago I'd looked into go's interop, python's cffi+libffi+pycparser+ply, luajit's ffi, and powershell's ability to intfc to Win32 via .NET's interop magic. While I liked the idea of copy-n-pasting normal C declarations as in the luajit and cffi simple examples
+<br>
+<br>&nbsp; # luajit
+<br>&nbsp; local ffi = require("ffi")
+<br>&nbsp; ffi.cdef[[
+<br>&nbsp; int printf(const char *fmt, ...);
+<br>&nbsp; ]]
+<br>
+<br>&nbsp; # python cffi
+<br>&nbsp; from cffi import FFI
+<br>&nbsp; ffi = FFI()
+<br>&nbsp; ffi.cdef("""
+<br>&nbsp; &nbsp; &nbsp; &nbsp; int printf(const char *fmt, ...);
+<br>&nbsp; """)
+<br>
+<br>I had a gut feeling that the extra complexity of implementing/maintaining C declaration parsing code may not be worth it. Given the types of setup questions on this list, and the setup info on the FFI wiki pages, what's your XNI perspective?
+<br>
+<br>Jon
+<br>
+<br>---
+<br>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br><a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a>
+<br>twitter: @jonforums
+<br></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

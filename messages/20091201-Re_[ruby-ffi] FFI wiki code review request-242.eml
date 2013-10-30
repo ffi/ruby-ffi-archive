@@ -1,0 +1,170 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.52.18 with SMTP id z18cs357945wfz;
+        Tue, 1 Dec 2009 15:37:46 -0800 (PST)
+Received: by 10.114.19.30 with SMTP id 30mr12386345was.134.1259710666705;
+        Tue, 01 Dec 2009 15:37:46 -0800 (PST)
+Return-Path: <3yKgVSwkJCNEJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@listserv.bounces.google.com>
+Received: from mail-px0-f144.google.com (mail-px0-f144.google.com [209.85.216.144])
+        by mx.google.com with ESMTP id 39si1387856pzk.82.2009.12.01.15.37.45;
+        Tue, 01 Dec 2009 15:37:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3yKgVSwkJCNEJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@listserv.bounces.google.com designates 209.85.216.144 as permitted sender) client-ip=209.85.216.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3yKgVSwkJCNEJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@listserv.bounces.google.com designates 209.85.216.144 as permitted sender) smtp.mail=3yKgVSwkJCNEJ915FFA1E39x58.zB9EHyL-2253BB3813EBHCF.zB9@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by pxi8 with SMTP id 8sf1156892pxi.22
+        for <headius@headius.com>; Tue, 01 Dec 2009 15:37:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=3h2wPM4YGiqcNnNDzJDDfA4tnqwP41oHnBPag5Q/wP8=;
+        b=HXqfolM6rm9lNgSEgmlrTy3zdgv+rd6UQaA1OEgiJInX38Cbbeqls3C2sOJf4NYZbO
+         4G6s+pVlS/AJ6cE2DGQdb8wUs+TCrycrsUKU1Gw/I+Pw3wEcbYwss9DyoE/ROsp12wmJ
+         90sYu815rJh3GsImLaBBnW8irjOCSvk/aVusM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=G3D14gYFgPKvvs1tiq3s3dIfu+jO7cX6cU/HIaDjVybIkOTMbtalq3GlYYQhDC2SbM
+         GyEEz0Th0xVHqUSQrmKdJniX0kdlXLAd+GN1e5yS+PCmooJY+6KP+kK9NNA5RwPW6K+k
+         mf8HyI/FsdBas4I5rjXbPq7f5jABPnvw+zNfg=
+Received: by 10.115.39.9 with SMTP id r9mr412232waj.4.1259710664234;
+        Tue, 01 Dec 2009 15:37:44 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.188.15 with SMTP id l15ls3695510waf.3.p; Tue, 01 Dec 2009 
+	15:37:42 -0800 (PST)
+Received: by 10.114.189.22 with SMTP id m22mr1307815waf.7.1259710662631;
+        Tue, 01 Dec 2009 15:37:42 -0800 (PST)
+Received: by 10.114.189.22 with SMTP id m22mr1307814waf.7.1259710662612;
+        Tue, 01 Dec 2009 15:37:42 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pw0-f41.google.com (mail-pw0-f41.google.com [209.85.160.41])
+        by gmr-mx.google.com with ESMTP id 19si64102pzk.12.2009.12.01.15.37.41;
+        Tue, 01 Dec 2009 15:37:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.160.41 as permitted sender) client-ip=209.85.160.41;
+Received: by pwj21 with SMTP id 21so664131pwj.20
+        for <ruby-ffi@googlegroups.com>; Tue, 01 Dec 2009 15:37:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.29.11 with SMTP id g11mr469238rvj.99.1259710661339; Tue, 
+	01 Dec 2009 15:37:41 -0800 (PST)
+In-Reply-To: <20091201105328.224331a3.jon.forums@gmail.com>
+References: <20091201105328.224331a3.jon.forums@gmail.com>
+Date: Wed, 2 Dec 2009 09:37:41 +1000
+Message-ID: <4ccee320912011537l780c57a6r46f9e7b901c6b31@mail.gmail.com>
+Subject: Re: [ruby-ffi] FFI wiki code review request
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.160.41 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/306601e23e9744bd
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/50975522ae78b418
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+2009/12/2 Jon <jon.forums@gmail.com>:
+> KEY QUESTIONS
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+> 1) It appears all FFI objects created in Ruby code live in the heap. =A0I=
+s this correct? =A0If yes, I've tried to highlight this in the C code by us=
+e of calloc/free.
+>
+> 2) There's no way to create FFI objects on the stack?
+
+There is no concept of a C stack in FFI, so yes, everything lives on
+the heap - either the C heap (MemoryPointer, other Pointer instances),
+or the ruby heap (everything else).
+
+>
+> 3) In the "Enumerate Top Level Windows" example, should I use an FFI::Mem=
+oryPointer or an FFI::Buffer with :buffer_out in the :get_window_text signa=
+ture? =A0Both work in this specific example. =A0The underyling question rea=
+lly is, "When should I use an FFI::MemoryPointer and when should I use an F=
+FI::Buffer?"
+
+Short answer: use MemoryPointer unless you're optimizing, and know
+what you're doing.
+
+Long answer: On some ruby VMs (such as jvm, clr), which use a
+copying/moving GC, there are two types of heap memory - the ruby heap
+and the native heap.
+
+The ruby heap is managed by the GC, and is very fast to allocate,
+access (get/put data) from ruby code, and release.  To pass data from
+the ruby heap to/from native code, the data must be copied.
+
+The native heap is slower to allocate, slower to access from ruby
+code, and has significant management overhead for the VM.  Since the
+memory is already on the native heap, it can be passed directly to
+native code without any additional copying.
+
+The heuristic on which one to use, is when the data is small and of a
+fixed size (e.g. a reference to an int that will be filled in by
+native code), use a Buffer, since the cost of the copy is small.  For
+these small allocations, the MemoryPointer management overhead
+massively exceeds the copy cost.
+
+
+
+Simplified example:
+
+void get_path(char* path, int* lenp) {
+  strlcpy(path, "foo", *lenp);
+  *lenp =3D 3;
+}
+
+To call the above in C, you would do something like:
+  char buf[512];
+  int len =3D sizeof(buf);
+  get_path(buf, &len);
+
+To call it from FFI, you since the lenp param is small and fixed size,
+you could use a Buffer.
+
+module Foo
+  attach_function :get_path, [ :buffer_out, :buffer_inout ], :void
+end
+
+# Use MemoryPointer for the path buf, since it is large-ish
+pathbuf =3D MemoryPointer.new :char, 512
+
+# Use Buffer for the int reference, since it is small and fixed size
+lenp =3D Buffer.new :int
+Foo.get_path(pathbuf, lenp)
+
+# read out only len bytes as the path
+len =3D lenp.get_int(0)
+path =3D pathbuf.get_bytes(0, len)
+
+# lessen the load on the GC by freeing the path memory when no longer neede=
+d
+pathbuf.free
+
+
+
+
+>
+> 4) In the "Enumerate Top Level Windows" example, should I zero out the ti=
+tle buffer via "title.clear" similar to the C memset?
+
+Yes.  MemoryPointer and Buffer by default zero out the contents when
+allocated, but if you re-use them you will need to call clear.

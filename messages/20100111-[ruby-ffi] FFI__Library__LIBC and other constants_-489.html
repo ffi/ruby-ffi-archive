@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI::Library::LIBC and other constants?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI::Library::LIBC and other constants?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Vladimir Sizikov <vsizikov@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/11/10 10:20 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+In this list there were a couple of times when the following constant
+has been mentioned:
+FFI::Library::LIBC
+
+Which is a pretty handy thing, since it guarantees to proper value for
+C lib on every platform.
+
+<b class="moz-txt-star"><span class="moz-txt-tag">*</span>BUT<span class="moz-txt-tag">*</span></b>, it is not available on the latest ruby-ffi 0.5.4 (on Windows, at least).
+
+Furthermore, the constants in FFI::Library are just different:
+
+1. JRuby-dev: FFI::Library.constants
+=&gt; ["LIBC", "CURRENT_PROCESS"]
+
+2. ruby-ffi with MRI 1.8.7: FFI::Library.constants
+=&gt; ["DEFAULT"]
+
+It would be great to have the constants aligned. At the minimum, it
+would be really nice to have FFI::Library::LIBC present.
+
+Am I missing something?
+
+Thanks,
+  --Vladimir
+</pre></div></body>
+</html>
+</table></div>

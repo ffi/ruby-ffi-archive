@@ -1,0 +1,155 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.5.7 with SMTP id 7cs50178ane;
+        Thu, 4 Feb 2010 11:21:12 -0800 (PST)
+Received: by 10.101.134.17 with SMTP id l17mr2261394ann.74.1265311272603;
+        Thu, 04 Feb 2010 11:21:12 -0800 (PST)
+Return-Path: <3JR5rSwcHCPktvuojvrhny.ofusvcz-ggjhpphmfhspvqt.dpn@groups.bounces.google.com>
+Received: from mail-yx0-f137.google.com (mail-yx0-f137.google.com [209.85.210.137])
+        by mx.google.com with ESMTP id 11si1323682yxe.74.2010.02.04.11.21.11;
+        Thu, 04 Feb 2010 11:21:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3JR5rSwcHCPktvuojvrhny.ofusvcz-ggjhpphmfhspvqt.dpn@groups.bounces.google.com designates 209.85.210.137 as permitted sender) client-ip=209.85.210.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3JR5rSwcHCPktvuojvrhny.ofusvcz-ggjhpphmfhspvqt.dpn@groups.bounces.google.com designates 209.85.210.137 as permitted sender) smtp.mail=3JR5rSwcHCPktvuojvrhny.ofusvcz-ggjhpphmfhspvqt.dpn@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe1 with SMTP id 1sf8217726yxe.3
+        for <headius@headius.com>; Thu, 04 Feb 2010 11:21:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date:x-ip
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=0AjOGS865PgGU/jWwwJhUcngttH84hK4PyQgSWkJlGo=;
+        b=L9UAe8Z3tBCZMXYk2ms/iKbRioMQykJUTvDadrt7akxiuqXZYeT40+3KfRnpaUzQN5
+         kpFfpwsHOYJwrgtjeEzz42Pzi3SKOomnhRKs//IzQ5ovl9Tg1Gf5viMZTixE8dX2Mn7B
+         lnTrUv7YJjW7ixRNAXVUDDcfc/A7G+rg5bOl0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=H8lItDKTAfBrWUWIRk16e3+VcIBbGhX/LeZV3pqkSfG/QlTARtXFnZ5sw6ohpN63Ky
+         QBOo0NqpVd/SK21WUN1a3NSYl567acJkyPP9aOM/Mk7eDQv8c3F7xPDXiZTVDt7Hiwug
+         p6SGAuj3/L1IiXO4c5eTuiicMzce4a4TgxG8k=
+Received: by 10.151.89.10 with SMTP id r10mr57524ybl.38.1265311269927;
+        Thu, 04 Feb 2010 11:21:09 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.187.17 with SMTP id o17ls13275agp.2.p; Thu, 04 Feb 2010 
+	11:21:08 -0800 (PST)
+Received: by 10.91.122.10 with SMTP id z10mr1936830agm.12.1265311268540;
+        Thu, 04 Feb 2010 11:21:08 -0800 (PST)
+Received: by 10.91.122.10 with SMTP id z10mr1936829agm.12.1265311268503;
+        Thu, 04 Feb 2010 11:21:08 -0800 (PST)
+Return-Path: <sutniuq@gmx.net>
+Received: from mail-gx0-f189.google.com (mail-gx0-f189.google.com [209.85.217.189])
+        by gmr-mx.google.com with ESMTP id 19si43285yxe.6.2010.02.04.11.21.08;
+        Thu, 04 Feb 2010 11:21:08 -0800 (PST)
+Received-SPF: fail (google.com: domain of sutniuq@gmx.net does not designate 209.85.217.189 as permitted sender) client-ip=209.85.217.189;
+Received: by mail-gx0-f189.google.com with SMTP id 5so8040742gxk.19
+        for <ruby-ffi@googlegroups.com>; Thu, 04 Feb 2010 11:21:08 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.87.2 with SMTP id p2mr57359ybl.66.1265311268417; Thu, 04 
+	Feb 2010 11:21:08 -0800 (PST)
+Date: Thu, 4 Feb 2010 11:21:08 -0800 (PST)
+X-IP: 77.178.188.203
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.0; de; rv:1.9.1.7) 
+	Gecko/20091221 Firefox/3.5.7 (.NET CLR 3.5.30729),gzip(gfe),gzip(gfe)
+Message-ID: <06ced854-31c3-424a-bcc0-dcb94b7e1f7b@l19g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Arrays in Structs and Unions
+From: Quintus <sutniuq@gmx.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=hardfail 
+	(google.com: domain of sutniuq@gmx.net does not designate 209.85.217.189 as 
+	permitted sender) smtp.mail=sutniuq@gmx.net
+X-Original-Sender: sutniuq@gmx.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/25c90d5db2e9be13
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4ad704b15a81bf69
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+I've two questions. This is the more important one: How to use arrays
+in Structs via FFI? I have this nice struct declaration:
+----------------------------------------------------
+typedef struct _OSVERSIONINFO {
+  DWORD dwOSVersionInfoSize;
+  DWORD dwMajorVersion;
+  DWORD dwMinorVersion;
+  DWORD dwBuildNumber;
+  DWORD dwPlatformId;
+  TCHAR szCSDVersion[128];
+} OSVERSIONINFO;
+----------------------------------------------------
+( From http://msdn.microsoft.com/en-us/library/ms724834%28VS.85%29.aspx
+, to be used with the GetVersionInfoEx() function:
+http://msdn.microsoft.com/en-us/library/ms724451%28VS.85%29.aspx )
+and I'm not sure how to access the szCSDVVersion[128] member. I
+thought, I had to work with Memory pointers for arrays, but the
+following code doesn't work for me:
+-----------------------------------------------------
+class OSVersionInfo < FFI::Struct
+
+  layout  :os_version_info_size, :int,
+            :major_version, :int,
+            :minor_version, :int,
+            :build_number, :int,
+            :platform_id, :int,
+            :csdv_version, :buffer_out
+
+end
+
+ptr = FFI::MemoryPointer.new(:pointer, 128)
+osversioninfo = OSVersionInfo.new
+osversioninfo[:csdv_version] = ptr # line 106
+osversioninfo[:os_version_info_size] = OSVersionInfo.size
+get_version_ex(osversioninfo)
+p osversioninfo[:major_version]
+---------------------------------------------------------
+I get this error:
+---------------------------------------------------------
+system_info.rb:106:in `put': put not supported for
+FFI::StructLayout::Field (ArgumentError)
+	from system_info.rb:106:in `[]='
+	from system_info.rb:106:in `test_version'
+	from system_info.rb:117:in `<main>'
+---------------------------------------------------------
+I tried it without the MemoryPointer:
+---------------------------------------------------------
+osversioninfo = OSVersionInfo.new
+osversioninfo[:os_version_info_size] = OSVersionInfo.size
+get_version_ex(osversioninfo)
+p osversioninfo[:major_version] #=> 0
+---------------------------------------------------------
+That code doesn't thorw an error, but the function call fails - the
+line starting with "p" should print out 6 on my Vista machine.
+How can this be done?
+
+The second question is a simple one: Where do I find a quick example
+of how to use the FFI::Union class? The wiki just states this:
+> The actual Windows INPUT struct contains an anonymous union member with MOUSEINPUT, KEYBDINPUT,
+> and HARDWAREINPUT members. As the MOUSEINPUT struct is the largest of these members, we can get
+> away with the hacky InputEvent FFI union definition for example purposes.
+So, what to do if I haven't an "example purpose"?
+
+ruby -v: ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+OS: Windows Vista SP2
+
+Marvin

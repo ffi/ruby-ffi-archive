@@ -1,0 +1,108 @@
+Delivered-To: headius@headius.com
+Received: by 10.115.91.6 with SMTP id t6cs701195wal;
+        Mon, 7 Dec 2009 09:56:08 -0800 (PST)
+Received: by 10.101.113.11 with SMTP id q11mr1910368anm.178.1260208565705;
+        Mon, 07 Dec 2009 09:56:05 -0800 (PST)
+Return-Path: <3s0EdSw0JCF0MJB9MK57FXVVaBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com>
+Received: from mail-yw0-f138.google.com (mail-yw0-f138.google.com [209.85.211.138])
+        by mx.google.com with ESMTP id 11si8599959ywh.12.2009.12.07.09.56.04;
+        Mon, 07 Dec 2009 09:56:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3s0EdSw0JCF0MJB9MK57FXVVaBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) client-ip=209.85.211.138;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3s0EdSw0JCF0MJB9MK57FXVVaBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) smtp.mail=3s0EdSw0JCF0MJB9MK57FXVVaBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by ywh2 with SMTP id 2sf6908646ywh.27
+        for <headius@headius.com>; Mon, 07 Dec 2009 09:56:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=x7GBodzzyqro34pl63YWq9NAnX7VWfESwq5y5SeKb8c=;
+        b=Jbvp+M89GcxhjcljDxQNLaXA3qXpEpwv8WuxGl8cV3KKfr9ju+HVTY8BZFBQMBz36I
+         y087McmndowQU0YIKbR5M4bLqWM+1KPt8DpcdSkz5G/SyCtgxC1mV4wRSKBOuEH+dM9x
+         xfLCluFusdcKdU1B1hsuRg2au0ZCBqJaAmOMw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=oVjPrA0SMOxdVRwOV2vdgNBaLND3rz+HwNhf7w3fDr3fDN9WQzZSEB/fDIWBHN1FlA
+         JB+dF39WkzEAAZS2WytqIrhJ9oUdEVv9SwXPXinxUPEIwhK8hhmwsGUFFbWuNheCIbFR
+         ETfamMV61XyAe2YWvw+BFlSGkWtPIFCYhFCn8=
+Received: by 10.100.24.38 with SMTP id 38mr634484anx.54.1260208563432;
+        Mon, 07 Dec 2009 09:56:03 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.214.12 with SMTP id r12ls1230766anq.0.p; Mon, 07 Dec 2009 
+	09:56:02 -0800 (PST)
+Received: by 10.101.137.8 with SMTP id p8mr7719137ann.15.1260208560435;
+        Mon, 07 Dec 2009 09:56:00 -0800 (PST)
+Received: by 10.101.137.8 with SMTP id p8mr7719122ann.15.1260208560334;
+        Mon, 07 Dec 2009 09:56:00 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-gx0-f193.google.com (mail-gx0-f193.google.com [209.85.217.193])
+        by gmr-mx.google.com with ESMTP id 17si464352gxk.0.2009.12.07.09.55.59;
+        Mon, 07 Dec 2009 09:55:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.217.193 as permitted sender) client-ip=209.85.217.193;
+Received: by mail-gx0-f193.google.com with SMTP id 9so9003042gxk.18
+        for <ruby-ffi@googlegroups.com>; Mon, 07 Dec 2009 09:55:59 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.158.16 with SMTP id k16mr642919ano.0.1260208559503; Mon, 
+	07 Dec 2009 09:55:59 -0800 (PST)
+Date: Mon, 7 Dec 2009 09:55:59 -0800 (PST)
+In-Reply-To: <71166b3b0912051418r156d05a0v18ab2503dc2bf1b3@mail.gmail.com>
+X-IP: 216.49.181.254
+References: <ae3ecdd9-459d-4496-a17a-a9eb1a88d154@v25g2000yqk.googlegroups.com> 
+	<6299bf3a-f922-4bec-beb1-2a723274b099@z7g2000vbl.googlegroups.com> 
+	<9bd8f0b9-5c7e-4370-9167-44db8112167e@u20g2000vbq.googlegroups.com> 
+	<71166b3b0912051418r156d05a0v18ab2503dc2bf1b3@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.25 Safari/532.5,gzip(gfe),gzip(gfe)
+Message-ID: <3d351bca-ca00-47ab-bb05-644547d4a49a@y32g2000prd.googlegroups.com>
+Subject: [ruby-ffi] Re: c++ examples
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.217.193 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/cb31aba29ae17e59
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/6d1a96875c023e58
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> > In the end I think I'm going to end up having to write ruby containers
+> > for c++ objects, so I'll probably end up having to write a "real"
+> > extension after all. =A0Anybody know of a cross-VM compatible way to
+> > wrap C objects and call their destructors, etc.?
+> > Thanks.
+>
+> You mean C++ objects and make them work with Ruby C API?
+
+Good point. C++.
+
+It appears on closer inspection that you can call something like
+MyClass.free_object
+(http://wiki.github.com/ffi/ffi/examples)
+on objects, so perhaps I could register my C++ wrapped object using
+ObjectSpace#define_finalizer and call a wrapper to the C++
+destructor.  That might work.
+
+-r

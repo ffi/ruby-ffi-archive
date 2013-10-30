@@ -1,0 +1,33 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Representing an opaque struct pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Representing an opaque struct pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Misty De Meo <mistydemeo@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/16/13 10:57 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Apologies if this has been asked before - couldn't find it on the list
+archives or the wiki.
+
+A library I'm using has an opaque struct (actually a pointer to a C++
+object usable in pure C code), which is used in most of the functions
+in the public C API. How should I represent this in ffi?
+
+For example, the definition and a function using it:
+
+typedef struct Music_Emu Music_Emu;
+
+gme_err_t gme_open_file( const char path [], Music_Emu** out, int sample_rate );
+
+Thanks,
+Misty
+
+<div class="moz-txt-sig">-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+</div></pre></div></body>
+</html>
+</table></div>

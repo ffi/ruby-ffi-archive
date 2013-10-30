@@ -1,0 +1,108 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs419659fam;
+        Tue, 4 Jan 2011 03:44:12 -0800 (PST)
+Received: by 10.216.169.202 with SMTP id n52mr16110364wel.15.1294141451795;
+        Tue, 04 Jan 2011 03:44:11 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRCKkIzpBBoE-Oap0A@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id c54si23145088wer.141.2011.01.04.03.44.10;
+        Tue, 04 Jan 2011 03:44:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCKkIzpBBoE-Oap0A@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCKkIzpBBoE-Oap0A@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRCKkIzpBBoE-Oap0A@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyg36 with SMTP id 36sf22265995wyg.7
+        for <headius@headius.com>; Tue, 04 Jan 2011 03:44:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=ULFDIt/QFOlkSmo5UlwGzSlAf8XiHA2r+QgC27yN0Cs=;
+        b=qQYMGpBn1UN6lId5D5uFX/X8WRdiW6ig3BvQecPV8xJX1UXWI8zbHz3L2lLSUyvT/u
+         6synfy4dhG9+hHanYPYhZbJc1UsfveFaokOuldh9QqSr/xD0nO3UE1wSowzZ3EkhzTSa
+         m3Bh62wbFM5sMkP7P0xQyVS79bVHfVoVeRTXU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=4823hQgjIGaHTpeD+mXpMKFs14VLWjnLvXbC9AvpeghiKamWutLhvXlHyYVLpFt0YA
+         jyO4WCTDsJJ5ChduF/VUzHsV4Qut7ukI406Dhijy23NgUH7/1UM1piPSyUeqfnq+KDm9
+         GYkEpK2ltl+JkSf7j95T0qzB3QuJNQOkRQlxM=
+Received: by 10.216.29.201 with SMTP id i51mr2280033wea.6.1294141450336;
+        Tue, 04 Jan 2011 03:44:10 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.26.28 with SMTP id b28ls974139eea.5.p; Tue, 04 Jan 2011
+ 03:44:09 -0800 (PST)
+Received: by 10.14.37.77 with SMTP id x53mr1987340eea.19.1294141449676;
+        Tue, 04 Jan 2011 03:44:09 -0800 (PST)
+Received: by 10.14.37.77 with SMTP id x53mr1987339eea.19.1294141449656;
+        Tue, 04 Jan 2011 03:44:09 -0800 (PST)
+Received: from mail-ey0-f194.google.com (mail-ey0-f194.google.com [209.85.215.194])
+        by gmr-mx.google.com with ESMTPS id t6si6242834eeh.4.2011.01.04.03.44.08
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 04 Jan 2011 03:44:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.194 as permitted sender) client-ip=209.85.215.194;
+Received: by eya28 with SMTP id 28so1993791eya.1
+        for <ruby-ffi@googlegroups.com>; Tue, 04 Jan 2011 03:44:08 -0800 (PST)
+Received: by 10.213.16.137 with SMTP id o9mr2417156eba.31.1294141448448; Tue,
+ 04 Jan 2011 03:44:08 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.102.7 with HTTP; Tue, 4 Jan 2011 03:43:48 -0800 (PST)
+In-Reply-To: <24335598.2491.1294139513802.JavaMail.geo-discussion-forums@prje29>
+References: <4D22F959.5030506@matijs.net> <24335598.2491.1294139513802.JavaMail.geo-discussion-forums@prje29>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Tue, 4 Jan 2011 08:43:48 -0300
+Message-ID: <AANLkTi=1r-mdut4Bt9L--uTP7jr9kThwxBOduk9uzwmg@mail.gmail.com>
+Subject: Re: [ruby-ffi] FFI 1.0.4
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.194 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jan 4, 2011 at 8:11 AM, Wayne Meissner <wmeissner@gmail.com> wrote:
+>
+>
+> On Tuesday, January 4, 2011 8:41:29 PM UTC+10, Matijs van Zuijlen wrote:
+>>
+>> Hi,
+>>
+>> Are any other checks needed besides 'rake test' in order to deem the
+>> code working on 1.8.x?
+>
+> No, thats pretty much it. =A0But, I'm pretty sure 1.8.x win32 is currentl=
+y
+> broken, and someone will have to check that master keeps working on 1.8.x=
+.
+>
+
+Charles, can ffi be setup on your Windows Hudson box? I can help get
+the task working, but for me is hard to do manual testing of all
+libraries so far.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

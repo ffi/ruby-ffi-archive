@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Linked list of structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Linked list of structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/20/10 10:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thanks, I am starting to get the hang of it. One last problem
+remains(I hope).
+
+
+This struct is giving me fits
+
+struct pcap_pkthdr {
+	struct timeval ts;	/* time stamp */
+	bpf_u_int32 caplen;	/* length of portion present */
+	bpf_u_int32 len;	/* length this packet (off wire) */
+};
+
+
+A pointer of this gets passed into: const u_char*  pcap_next(pcap_t *,
+struct pcap_pkthdr *);
+
+attach_function :pcap_next,[:pointer,:pointer],:pointer
+
+I can apparently get caplen and len without issue, but the timeval
+field is reported as a pointer and any attempt to get at it results in
+a seg fault.
+
+
+ph_ptr = FFI::MemoryPointer.new :pointer,Header::Pcap_pkthdr.size,true
+pack=Header::Pcap_pkthdr.new ph_ptr
+pack[:ts]=TimeStamp::Timeval.new
+packet=Pcap::pcap_next @pcap_ptr,pack
+raise "no packet read" if packet.null?
+
+puts pack[:ts] #pointer object
+
+packet is not null, so it appears the packet is read properly(I
+haven't laid out the various header and payload structures yet.
+
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,129 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.37.130 with SMTP id x2cs47695ibd;
+        Wed, 18 Jan 2012 23:40:07 -0800 (PST)
+Received: by 10.68.72.230 with SMTP id g6mr51355028pbv.119.1326958805773;
+        Wed, 18 Jan 2012 23:40:05 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMSw2MXzERDRkd_4BBoEpbidIg@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id h6si18661117pbn.188.2012.01.18.23.40.05
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 18 Jan 2012 23:40:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMSw2MXzERDRkd_4BBoEpbidIg@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMSw2MXzERDRkd_4BBoEpbidIg@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCMSw2MXzERDRkd_4BBoEpbidIg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by dadw11 with SMTP id w11sf4116166dad.7
+        for <headius@headius.com>; Wed, 18 Jan 2012 23:40:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=NL+bqnzSJzbIgRxpgGQ7ED5BXNgIVH+rN9et22mTn9U=;
+        b=JEz/FyQ9WRJimdHWO2HwRpA9xVsq2pRNP9ZPUbV8VsgdRNQZSQCC+/S4mfyKGv8txr
+         9JYOM7q1G6b8C5w5jfPQFYD/I3Vn3vEW49FVR4qtOivJJ04DySgGPveZAEKoGZla9eXH
+         dVkzyaQkV1ej599NQp2fGti/wuorm7wiljgQE=
+Received: by 10.68.132.164 with SMTP id ov4mr880330pbb.16.1326958801941;
+        Wed, 18 Jan 2012 23:40:01 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.157.41 with SMTP id wj9ls28786175pbb.6.gmail; Wed, 18 Jan
+ 2012 23:40:01 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.68.220.232 with SMTP id pz8mr3686971pbc.18.1326958801702; Wed,
+ 18 Jan 2012 23:40:01 -0800 (PST)
+Received: by y5g2000pbk.googlegroups.com with HTTP; Wed, 18 Jan 2012 23:40:01
+ -0800 (PST)
+Date: Wed, 18 Jan 2012 23:40:01 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)
+ AppleWebKit/535.16 (KHTML, like Gecko) Chrome/18.0.1003.1 Safari/535.16,gzip(gfe)
+Message-ID: <6f5c513f-9a39-4b8d-b72f-09325e094391@y5g2000pbk.googlegroups.com>
+Subject: [ruby-ffi] pointers and out parameters
+From: Mark  Wotton <mwotton@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mwotton@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of mwotton@gmail.com designates internal as permitted sender)
+ smtp.mail=mwotton@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all,
+
+I'm trying to move some code from C to Ruby using FFI.
+
+  The problematic chunk looks like this:
+
+  int verbose = (argc > 1 && streq (argv [1], "-v"));
+    mdwrk_t *session = mdwrk_new (
+        "tcp://localhost:5555", "echo", verbose);
+
+    zmsg_t *reply = NULL;
+    while (1) {
+        zmsg_t *request = mdwrk_recv (session, &reply);
+        if (request == NULL)
+            break;              //  Worker was interrupted
+        reply = request;        //  Echo is complex... :-)
+    }
+    mdwrk_destroy (&session);
+    return 0;
+
+
+I'm not quite sure how to model the "reply = request" chunk - I have
+this:
+
+
+module Majordomo
+  extend FFI::Library
+  ffi_lib 'lib0mq_majordomo'
+
+  attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+  attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+  attach_function :mdwrk_destroy, [:pointer], :void
+  class Worker < FFI::ManagedStruct
+    def initialize(host, service, verbose=false)
+      @session = Majordomo.mdwrk_new host, service, verbose
+    end
+
+    # this is a bit ugly, but the C expects to be in a run loop
+    # and therefore makes mdwrk_recv do two things...
+    def once
+      raise "Worker needs a responder block" unless block_given?
+
+      ptr = FFI::MemoryPointer.new(:pointer)
+      while true
+        puts "calling receive"
+        request = Majordomo.mdwrk_recv @session, ptr
+        puts "worker interrupted" unless request
+
+        ptr = yield request
+      end
+    end
+  end
+end
+
+calling it as
+
+  while true
+    worker.once {|x| x}
+  end
+
+to test. The first run goes through ok, but the "ptr = yield request"
+is clearly bogus: it should really be one layer of indirection out.
+
+I can't see how to model this, even after going through the out
+parameter section in the wiki. Could you help?
+
+cheers
+Mark

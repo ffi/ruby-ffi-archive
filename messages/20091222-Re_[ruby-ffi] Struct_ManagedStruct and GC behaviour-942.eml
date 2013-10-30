@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs567147and;
+        Tue, 22 Dec 2009 06:49:33 -0800 (PST)
+Received: by 10.150.25.30 with SMTP id 30mr13641849yby.83.1261493373137;
+        Tue, 22 Dec 2009 06:49:33 -0800 (PST)
+Return-Path: <3e9wwSwoJCNM8DC.4DGJBH5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 12si14251346yxe.10.2009.12.22.06.49.32;
+        Tue, 22 Dec 2009 06:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3e9wwSwoJCNM8DC.4DGJBH5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3e9wwSwoJCNM8DC.4DGJBH5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3e9wwSwoJCNM8DC.4DGJBH5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf18115443ywh.3
+        for <headius@headius.com>; Tue, 22 Dec 2009 06:49:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=S8usxM1GvtxJum+dWJmBCu09RDCyN+tjfQdBkclMVac=;
+        b=PImoUymKftcGompIhf9RtgWK4cQJ1j8LgWVxTxw5iklcZM6uAAIjUmOwbdmyEueyPY
+         coE+FavDgpSTk3byE4rQKBoZO+rQ+orhFfMW80fBZ0yAEiGA+RFoC5zcnZ0GgzNOoxUk
+         3ZcvQEG110SSgkVZdUZQIo6xiDprLSPyQCB6Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=ORwm0WnZYPuPhOFFAx8aZFR8NnjbvnuecP0tcjtMkuHQXBvmeHzOzuF92RHnuxu/Vj
+         AqOQ9bQyfVi3uThgc6dzozqxdKKFQBi2RgALrG/hWBCsVclSwlgucW72ShotyllGgrcE
+         KoJvEcctUAEgsgMxcZTXUcZd2MqDbWqZ600jI=
+Received: by 10.150.248.13 with SMTP id v13mr651140ybh.5.1261493371082;
+        Tue, 22 Dec 2009 06:49:31 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.244.1 with SMTP id r1ls245054agh.1.p; Tue, 22 Dec 2009 
+	06:49:30 -0800 (PST)
+Received: by 10.90.230.10 with SMTP id c10mr7249252agh.10.1261493370528;
+        Tue, 22 Dec 2009 06:49:30 -0800 (PST)
+Received: by 10.90.230.10 with SMTP id c10mr7249251agh.10.1261493370475;
+        Tue, 22 Dec 2009 06:49:30 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-gx0-f222.google.com (mail-gx0-f222.google.com [209.85.217.222])
+        by gmr-mx.google.com with ESMTP id 11si950442gxk.5.2009.12.22.06.49.29;
+        Tue, 22 Dec 2009 06:49:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.217.222 as permitted sender) client-ip=209.85.217.222;
+Received: by gxk22 with SMTP id 22so5895498gxk.18
+        for <ruby-ffi@googlegroups.com>; Tue, 22 Dec 2009 06:49:29 -0800 (PST)
+Received: by 10.101.21.13 with SMTP id y13mr13950778ani.72.1261493369250;
+        Tue, 22 Dec 2009 06:49:29 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 20sm5576989iwn.5.2009.12.22.06.49.26
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 22 Dec 2009 06:49:27 -0800 (PST)
+Date: Tue, 22 Dec 2009 09:49:22 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour
+Message-Id: <20091222094922.60cd5204.jon.forums@gmail.com>
+In-Reply-To: <4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+	<4ccee320912211400t18af822coe605c5353cea0950@mail.gmail.com>
+	<4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.217.222 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/ebaac0605d044062
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> People should peruse e.g. the nokogiri FFI backend, and figure out how
+> one would rewrite it with explicit memory management, before proposing
+> solutions to the problem.
+
+That makes a lot of sense to me.
+
+I'd also like to take a pause on updating the main Structs wiki doc to give us a chance to generate some real solid recommendations and examples to help users consider and take into account these tradeoffs when using FFI in their code.
+
+I'll start a Struct doc (HTML) that will live under http://ffi.github.com/ so we can tweak as needed via git push/pull rather than working ton our main wiki page.  No, it won't have my hard-to-edit-side-by-side-CSS-styling so, while it will be ugly, it should be easy for anyone to update ;)
+
+Jon

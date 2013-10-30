@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 1.2.0.pre6 testing</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 1.2.0.pre6 testing</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/14/12 3:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br><br>On Wednesday, 14 November 2012 15:17:19 UTC+11, Jon  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>While I never install ffi this way, jruby+bundler on Win7 32bit with JRuby 1.7.0 ended up in Wile E. flames trying to build the C ext due to my scheming:
+<br>
+<br>C:\Users\Jon\Downloads\temp\<wbr>ffi-java&gt;type Gemfile
+<br>source :rubygems
+<br>gem 'ffi', '1.2.0.pre6', :platforms =&gt; :jruby
+<br>
+<br>C:\Users\Jon\Downloads\temp\<wbr>ffi-java&gt;bundle install
+<br>Fetching gem metadata from <a href="http://rubygems.org/........." target="_blank">http://rubygems.org/.........</a>.<wbr>.
+<br>Fetching gem metadata from <a href="http://rubygems.org/" target="_blank">http://rubygems.org/</a>..
+<br>Installing ffi (1.2.0.pre6) with native extensions
+<br>Gem::Installer::<wbr>ExtensionBuildError: ERROR: Failed to build gem native extension.
+</blockquote><div>&nbsp;</div><div>Hmm. &nbsp;When installing on something that is not MRI, extconf.rb generates a dummy Makefile. &nbsp;I suspect on win32, the dummy Makefile isn't quite correct. &nbsp;Can you investigate this one a bit more (look right at the bottom of ext/ext_c/extconf.rb)? &nbsp;It could be something as simple as \r\n vs \n line termination.</div><div><br></div><div>I can continue to publish the ffi-java gem, but, I want to get rid of it in the long term.</div><div><br></div>
+</div></body>
+</html>
+</table></div>

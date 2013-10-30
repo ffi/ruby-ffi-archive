@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Other compilers?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Other compilers?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/28/10 11:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, Jan 28, 2010 at 4:17 PM, Daniel Berger <a class="moz-txt-link-rfc2396E" href="mailto:djberg96@gmail.com">&lt;djberg96@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Are there any plans to support other compilers? Or does FFI use some
+<span class="moz-txt-citetags">&gt; </span>GNU specific extensions?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+As long libffi is compilable with Visual Studio and a makefile for it
+is provided (maybe libffivs.mk) things could work.
+
+Please take a look here:
+
+<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/blob/master/ext/ffi_c/extconf.rb#L28-39">http://github.com/ffi/ffi/blob/master/ext/ffi_c/extconf.rb#L28-39</a>
+
+And here:
+
+<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/tree/master/ext/ffi_c/">http://github.com/ffi/ffi/tree/master/ext/ffi_c/</a>
+
+for libffi.*.mk files
+
+Then try compiling and running the specs with a Visual Studio built
+version of Ruby.
+
+(gem install ffi --development will install all the dependencies)
+
+Cheers,
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

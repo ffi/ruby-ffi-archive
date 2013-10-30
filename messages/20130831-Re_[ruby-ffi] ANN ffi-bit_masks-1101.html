@@ -1,0 +1,71 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] ANN ffi-bit_masks</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] ANN ffi-bit_masks</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>postmodern <postmodern.mod3@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/31/13 7:44 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    <div class="moz-cite-prefix">The library defines a typedef to the
+      new BitMask Data Converter. So anywhere you can use a typedef, you
+      can use ffi-bit_masks.<br>
+      <br>
+      I'm thinking about forking the library and writing a plugin
+      specifically for Struct bit-fields, but I want to use sexy syntax:<br>
+      <div style="" data-md-original="&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        layout :foo, :uint,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &amp;nbsp;&amp;nbsp;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        :x,&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        1,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &amp;nbsp;&amp;nbsp;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        :y,&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        3,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;
+        :z,&amp;nbsp;&amp;nbsp;&amp;nbsp; 2"
+        class="markdown-here-wrapper" id="markdown-here-wrapper-211124">
+        <pre style="font-size: 0.85em; font-family: Consolas,Inconsolata,Courier,monospace;font-size: 1em; line-height: 1.2em;margin: 1.2em 0px;"><code style="font-size: 0.85em; font-family: Consolas,Inconsolata,Courier,monospace;margin: 0px 0.15em; padding: 0px 0.3em; white-space: pre-wrap; border: 1px solid rgb(234, 234, 234); background-color: rgb(248, 248, 248); border-radius: 3px 3px 3px 3px; display: inline;white-space: pre; overflow: auto; border-radius: 3px 3px 3px 3px; border: 1px solid rgb(204, 204, 204); padding: 0.5em 0.7em;display: block; padding: 0.5em; background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(248, 248, 248);">layout :foo, :uint,
+       :x,    1,
+       :y,    3,
+       :z,    2</code></pre>
+      </div>
+      On 08/31/2013 04:05 AM, Matijs van Zuijlen wrote:<br>
+    </div>
+    <blockquote cite="mid:5221CDDE.1070708@matijs.net" type="cite">
+      <pre wrap="">On 28/08/13 12:15, postmodern wrote:
+</pre>
+      <blockquote type="cite">
+        <pre wrap="">I finally got around to finishing my FFI plugin for handling bit-masked
+function arguments. Much thanks to Wayne Meissner for explaining the
+DataConverter API.
+<a class="moz-txt-link-freetext" href="https://github.com/postmodern/ffi-bit_masks#readme">https://github.com/postmodern/ffi-bit_masks#readme</a>
+
+Now I'm wondering what a FFI plugin for struct bit-fields might look like?
+
+</pre>
+      </blockquote>
+      <pre wrap="">
+Does this mean this plugin will work for function arguments but not for struct
+fields?
+
+</pre>
+    </blockquote>
+    <br>
+    <br>
+    <pre class="moz-signature markdown-here-signature" cols="72">-- 
+Blog: <a class="moz-txt-link-freetext" href="http://postmodern.github.com/">http://postmodern.github.com/</a>
+GitHub: <a class="moz-txt-link-freetext" href="https://github.com/postmodern">https://github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+  </body>
+</html>
+
+</div></body>
+</html>
+</table></div>

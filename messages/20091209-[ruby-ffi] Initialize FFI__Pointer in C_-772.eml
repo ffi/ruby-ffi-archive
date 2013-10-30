@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.114.184.4 with SMTP id h4cs696940waf;
+        Tue, 8 Dec 2009 22:09:51 -0800 (PST)
+Received: by 10.101.163.1 with SMTP id q1mr898192ano.67.1260338990675;
+        Tue, 08 Dec 2009 22:09:50 -0800 (PST)
+Return-Path: <3LT8fSw4JCNYKAEGF.2.49A2F88E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 36si14324742yxe.125.2009.12.08.22.09.50;
+        Tue, 08 Dec 2009 22:09:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3LT8fSw4JCNYKAEGF.2.49A2F88E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3LT8fSw4JCNYKAEGF.2.49A2F88E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3LT8fSw4JCNYKAEGF.2.49A2F88E2AD.4GEJM3Q-77A8GG8D68JGMHK.4GE@listserv.bounces.google.com
+Received: by yxe6 with SMTP id 6sf10078530yxe.13
+        for <headius@headius.com>; Tue, 08 Dec 2009 22:09:50 -0800 (PST)
+Received: by 10.150.162.6 with SMTP id k6mr1000720ybe.29.1260338989372;
+        Tue, 08 Dec 2009 22:09:49 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.129.26 with SMTP id b26ls105545ybd.1.p; Tue, 08 Dec 2009 
+	22:09:48 -0800 (PST)
+Received: by 10.150.89.42 with SMTP id m42mr537364ybb.20.1260338988255;
+        Tue, 08 Dec 2009 22:09:48 -0800 (PST)
+Received: by 10.150.89.42 with SMTP id m42mr537362ybb.20.1260338988167;
+        Tue, 08 Dec 2009 22:09:48 -0800 (PST)
+Return-Path: <simon.a.chiang@gmail.com>
+Received: from mail-gx0-f195.google.com (mail-gx0-f195.google.com [209.85.217.195])
+        by gmr-mx.google.com with ESMTP id 18si646266ywh.9.2009.12.08.22.09.48;
+        Tue, 08 Dec 2009 22:09:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of simon.a.chiang@gmail.com designates 209.85.217.195 as permitted sender) client-ip=209.85.217.195;
+Received: by gxk19 with SMTP id 19so11430714gxk.9
+        for <ruby-ffi@googlegroups.com>; Tue, 08 Dec 2009 22:09:48 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.130.29 with SMTP id h29mr471956ann.2.1260338986910; Tue, 
+	08 Dec 2009 22:09:46 -0800 (PST)
+Date: Tue, 8 Dec 2009 22:09:46 -0800 (PST)
+X-IP: 71.208.181.248
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; 
+	rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5,gzip(gfe),gzip(gfe)
+Message-ID: <4c3f8117-e7a8-4919-96ea-57d4541634dd@n35g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Initialize FFI::Pointer in C?
+From: Simon Chiang <simon.a.chiang@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of simon.a.chiang@gmail.com designates 209.85.217.195 as permitted 
+	sender) smtp.mail=simon.a.chiang@gmail.com
+X-Original-Sender: simon.a.chiang@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/e9af8945b7d9ce71
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/fa18b6d3bc0d5894
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm building a callback to ruby from an extension and I would like to
+pass back pointers much like an attached function that returns
+a :pointer.  Basically something like this:
+
+  int RubyCallback(void *thing)
+  {
+    VALUE ffi_pointer = rbffi_Pointer_NewInstance(thing);
+    VALUE ruby_module = rb_const_get(rb_cObject, rb_intern
+("SomeModule"));
+    VALUE ruby_result = rb_funcall(ruby_module, rb_intern("callback"),
+1, ffi_pointer);
+
+    long result = FIX2INT(ruby_result);
+    return(result);
+  }
+
+And then in ruby:
+
+  module SomeModule
+    module_function
+
+    def callback(ptr)
+       ptr.inspect         # => shows this to be an FFI::Pointer
+    end
+  end
+
+A method like this works on OS X with ffi-0.5.0 (pre snow-lepoard,
+I'll get the version if necessary) but results in a segfault on snow
+leopard 10.6.2.  The segfault is triggered upon inspect.  I don't know
+how FFI works... I really only got this working by taking a guess at
+what rbffi_Pointer_NewInstance does.  Any ideas what's going wrong on
+10.6.2 and/or how I can do this better?

@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.239.15 with SMTP id m15csp47991wfh;
+        Sat, 9 Jun 2012 08:25:08 -0700 (PDT)
+Received: by 10.224.95.197 with SMTP id e5mr3590731qan.32.1339255508262;
+        Sat, 09 Jun 2012 08:25:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMnq3cGqAxDT1c3-BBoE8qSlBQ@googlegroups.com>
+Received: from mail-qc0-f190.google.com (mail-qc0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id gx8si7698530qab.114.2012.06.09.08.25.07
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 09 Jun 2012 08:25:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxDT1c3-BBoE8qSlBQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxDT1c3-BBoE8qSlBQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCMnq3cGqAxDT1c3-BBoE8qSlBQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qcsr22 with SMTP id r22sf1836699qcs.7
+        for <headius@headius.com>; Sat, 09 Jun 2012 08:25:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=dJfYnZuMzdQUUrcjrQPJz4ypm4BL+lbtDnrhx1v2ouM=;
+        b=lR2Kkoxt6DHzAtHpA8uEi4o7E3l5HcRA7Lc4mqLxellZ6PFGq1SJha7p6cqMeX/xo0
+         y98pRewjQ6V5NlldIxfBhbX3lWa5gzjLxs1Cd1/+bILqf4V03ElMGCqrbAOOewtasq3U
+         yjtOyEERvzRY2jfustAInh1uNp1G6WGj8S5o4=
+Received: by 10.52.23.65 with SMTP id k1mr672351vdf.7.1339255507841;
+        Sat, 09 Jun 2012 08:25:07 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.140.139 with SMTP id i11ls1481687vcu.1.gmail; Sat, 09 Jun
+ 2012 08:25:07 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.94.111 with SMTP id db15mr21882vdb.11.1339255507401; Sat,
+ 09 Jun 2012 08:25:07 -0700 (PDT)
+Received: by p27g2000vbl.googlegroups.com with HTTP; Sat, 9 Jun 2012 08:25:07
+ -0700 (PDT)
+Date: Sat, 9 Jun 2012 08:25:07 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5
+ (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5,gzip(gfe)
+Message-ID: <f1c6325f-5003-4feb-a3b1-cc64b7f5b663@p27g2000vbl.googlegroups.com>
+Subject: [ruby-ffi] Make functions private by default?
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: djberg96@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of djberg96@gmail.com designates internal as permitted sender)
+ smtp.mail=djberg96@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+Is there a way to make the FFI function declarations private by
+default? I want to use the functions internally only. I don't want
+them exposed as part of a public API. Simply using the "private"
+keyword doesn't seem to work. Consider:
+
+require 'ffi'
+
+module Windows
+  extend FFI::Library
+  ffi_lib :kernel32
+
+  private
+
+  attach_function :CloseHandle, [:ulong], :bool
+end
+
+p Windows.methods(false) # => [:CloseHandle]
+
+The only way to make it work is to call private_class_method on the
+functions after the fact, so it can be done. I was just hoping there
+was a nicer way to do them "en masse" as it were.
+
+Perhaps if attach_function is called in the context of private
+automatically declare them private_class_methods? Although I don't
+actually know if that's possible in Ruby. :)
+
+Regards,
+
+Dan

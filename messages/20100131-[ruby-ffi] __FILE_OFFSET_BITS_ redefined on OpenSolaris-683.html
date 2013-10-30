@@ -1,0 +1,102 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] &quot;_FILE_OFFSET_BITS&quot; redefined on OpenSolaris</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] &quot;_FILE_OFFSET_BITS&quot; redefined on OpenSolaris</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>slowhog <henryjen@ztune.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/31/10 1:09 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+I am trying to install ffi gem on OpenSolaris b130, but encounter
+"_FILE_OFFSET_BITS" redefined error. Below is the result from `rake --
+trace gem:install`.
+
+The error is obvious, but I am not sure what's the right fix. Am I
+missing something?
+
+Cheers,
+Henry
+
+===&gt; suspicious, not sure if this is expected?
+** Invoke spec/ffi/rbx/spec_helper.rb (first_time, not_needed)
+** Invoke spec/ffrake-compiler must be configured first to enable
+cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rake-compiler must be configured first to enable cross-compilation
+rm -r pkg
+&lt;...snip...&gt;
+sudo gem install --local pkg/ffi-0.6.0
+Password:
+Building native extensions.  This could take a while...
+ERROR:  Error installing pkg/ffi-0.6.0:
+        ERROR: Failed to build gem native extension.
+
+/usr/ruby/1.8/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... no
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+/usr/sfw/bin/gcc -I. -I. -I/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11
+-I. -DRUBY_EXTCONF_H=\"extconf.h\" -I/usr/sfw/include -fPIC -g -O3 -
+fPIC -I/usr/lib/libffi-3.0.8/include   -Werror -Wunused -Wformat -
+Wimplicit -Wreturn-type   -c Buffer.c
+In file included from /usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/
+ruby.h:24,
+                 from Buffer.c:31:
+/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/config.h:27:1:
+"_FILE_OFFSET_BITS" redefined
+In file included from /usr/include/sys/int_types.h:55,
+                 from /usr/include/sys/stdint.h:38,
+                 from /usr/include/stdint.h:38,
+                 from Buffer.c:29:
+/usr/include/sys/feature_tests.h:209:1: this is the location of the
+previous definition
+make: *** [Buffer.o] Error 1
+
+
+Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/ruby/1.8/gem_home/gems<span class="moz-txt-tag">/</span></i>
+ffi-0.6.0 for inspection.
+Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/ruby/1.8/gem_home/gems/ffi-0.6.0/ext/ffi_c<span class="moz-txt-tag">/</span></i>
+gem_make.out
+rake aborted!
+Command failed with status (1): [sudo gem install --local pkg/
+ffi-0.6.0...]
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:995:in `sh'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `call'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `sh'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1094:in `sh'
+/home/henryjen/git/ffi/tasks/gem.rake:171
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:597:in
+`invoke_with_call_chain'
+/usr/ruby/1.8/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:590:in
+`invoke_with_call_chain'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2051:in
+`invoke_task'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+`standard_exception_handling'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+`standard_exception_handling'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/var/ruby/1.8/gem_home/gems/rake-0.8.7/bin/rake:31
+/usr/bin/rake:19:in `load'
+/usr/bin/rake:19
+</pre></div></body>
+</html>
+</table></div>

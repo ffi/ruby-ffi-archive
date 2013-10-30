@@ -1,0 +1,171 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp208450laf;
+        Wed, 27 Feb 2013 13:12:33 -0800 (PST)
+X-Received: by 10.66.139.198 with SMTP id ra6mr9500091pab.174.1361999552706;
+        Wed, 27 Feb 2013 13:12:32 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDQ73F6KTYOBBPXNXGEQKGQEVBDHZEA@googlegroups.com>
+Received: from mail-pb0-f64.google.com (mail-pb0-f64.google.com [209.85.160.64])
+        by mx.google.com with ESMTPS id d10si6392730paz.55.2013.02.27.13.12.31
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Wed, 27 Feb 2013 13:12:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBPXNXGEQKGQEVBDHZEA@googlegroups.com designates 209.85.160.64 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBPXNXGEQKGQEVBDHZEA@googlegroups.com designates 209.85.160.64 as permitted sender) smtp.mail=ruby-ffi+bncBDQ73F6KTYOBBPXNXGEQKGQEVBDHZEA@googlegroups.com;
+       dkim=pass header.i=@burgestrand.se
+Received: by mail-pb0-f64.google.com with SMTP id un1sf482749pbc.19
+        for <headius@headius.com>; Wed, 27 Feb 2013 13:12:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=brK7tUZggfqSkAkaLl51rJMf1R/0RXQDkr6wotPjAbA=;
+        b=LegDuAFdMDGIizWZmnhFFO7Q+O3nayeCvSN0g2McLAML8zp4phD7U49+qi264bXFio
+         ryGOsvuFgBcPGjxYahYx/PY719uKrPXXVkzd9pz6hwEoMftT/ZeLtKjCjcDUU8YSlZ6X
+         N2s9pcRCXq4XsJy57FdWbWUgy9PfcNNARBDK+oaSqNJr6u3Vr+KuDLb8VvUHnMHIZJ8Q
+         IizoffjdcTeY4+IlgrCvKRZae0Gz1Bs9EF/WX6uEnI+YU2rcVxFVfOcAP4owweF8YuhI
+         D+kGwKlqmT+PW5RkitPc5sleFkVbn9auaSSc4MNASEw7x98IZfmQ2KzkQjv8pI9NmNAx
+         A0lw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=burgestrand.se; s=google-dkim;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=brK7tUZggfqSkAkaLl51rJMf1R/0RXQDkr6wotPjAbA=;
+        b=Nvwbra/eg1knyW4mjMjE3hzYrM89SdpPpmhVcBpJiFz0vzbZGzhuELmhq3A9sieaKw
+         xWRTj0n6VCw37S4zivQohTUvH5MpsuuU2LIUP8EsYvi3a5KbTV4QrOmVuxtsdlxxTHUu
+         Ik4brdaVLTrCowc3m5K3PjqXrvgNX/Ohs1x60=
+X-Received: by 10.49.95.68 with SMTP id di4mr523535qeb.0.1361999551090;
+        Wed, 27 Feb 2013 13:12:31 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.64.6 with SMTP id k6ls352006qes.76.gmail; Wed, 27 Feb 2013
+ 13:12:30 -0800 (PST)
+X-Received: by 10.49.24.227 with SMTP id x3mr502197qef.10.1361999550530;
+        Wed, 27 Feb 2013 13:12:30 -0800 (PST)
+Date: Wed, 27 Feb 2013 13:12:29 -0800 (PST)
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-Id: <a8e170ae-23fd-4910-8bcd-413255591edd@googlegroups.com>
+In-Reply-To: <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+References: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+ <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+Subject: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor
+ (Raspberry PI)
+MIME-Version: 1.0
+X-Original-Sender: kim@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_158_20665120.1361999549926"
+
+------=_Part_158_20665120.1361999549926
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+On Monday, February 25, 2013 10:49:54 PM UTC+1, Wayne Meissner wrote:
+
+>
+> Off the top of my head, a couple of issues could be:
+>
+> 1) data sizes/layout.  Verify that the sizes of all your FFI structs matc=
+h=20
+> the C ones, and that the sizes & offsets of members match.
+>
+That=92s a good idea. I tried it, and they do match (was kind of hoping the=
+y=20
+didn=92t =97 updated the gist with the offset-checking code).
+=20
+
+> 2) Given it only crashes on exit, it could be some sort of GC/finalizer=
+=20
+> interaction.  Set all the MemoryPointer instances, including the ones=20
+> backing the structs to autorelease=3Dfalse - this causes FFI to disown th=
+e=20
+> memory, so it won't try to free it.
+>
+Hm, I=92ve updated the gist with these changes. Unfortunately the crashes=
+=20
+still occur. I know how vague crash messages can be, but in case it might=
+=20
+ring any bells: `*** glibc detected *** ruby: free(): invalid next size=20
+(fast): 0x01a3acf0 ***`
+
+3) Endian-ness issues in ruby-ffi itself.  Is that arm arch big-endian or=
+=20
+> little-endian?
+>
+ From what I could gather from googling is that it=92s primarily=20
+little-endian. By primarily is that it apparently has some big-endian=20
+support if you do a little bit of hoop-jumping.
+
+Thanks for your time Wayne, I appreciate it.
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_158_20665120.1361999549926
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+On Monday, February 25, 2013 10:49:54 PM UTC+1, Wayne Meissner wrote:<br><b=
+lockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;borde=
+r-left: 1px #ccc solid;padding-left: 1ex;"><div><br></div>Off the top of my=
+ head, a couple of issues could be:<div><br></div><div>1) data sizes/layout=
+. &nbsp;Verify that the sizes of all your FFI structs match the C ones, and=
+ that the sizes &amp; offsets of members match.</div></blockquote><div>That=
+=92s a good idea. I tried it, and they do match (was kind of hoping they di=
+dn=92t =97 updated the gist with the offset-checking code).</div><div>&nbsp=
+;</div><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.=
+8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div>2) Given it only c=
+rashes on exit, it could be some sort of GC/finalizer interaction. &nbsp;Se=
+t all the MemoryPointer instances, including the ones backing the structs t=
+o autorelease=3Dfalse - this causes FFI to disown the memory, so it won't t=
+ry to free it.</div></blockquote><div>Hm, I=92ve updated the gist with thes=
+e changes. Unfortunately the crashes still occur. I know how vague crash me=
+ssages can be, but in case it might ring any bells: `*** glibc detected ***=
+ ruby: free(): invalid next size (fast): 0x01a3acf0 ***`</div><div><br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;b=
+order-left: 1px #ccc solid;padding-left: 1ex;"><div>3) Endian-ness issues i=
+n ruby-ffi itself. &nbsp;Is that arm arch big-endian or little-endian?</div=
+></blockquote><div>From what I could gather from googling is that it=92s pr=
+imarily little-endian. By primarily is that it apparently has some big-endi=
+an support if you do a little bit of hoop-jumping.</div><div><br></div><div=
+>Thanks for your time Wayne, I appreciate it.</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_158_20665120.1361999549926--

@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] can&#39;t explain this behavior</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] can&#39;t explain this behavior</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/20/11 3:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Apr 20, 2011, at 1:12 PM, Alexander Kabanov wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi there,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to do something basic in my opinion, and get mixed results
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>code example is here: <a class="moz-txt-link-freetext" href="http://pastebin.com/b15rrd6n">http://pastebin.com/b15rrd6n</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>C function signature (arguments in order):
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>- pointer to a string (input)
+<span class="moz-txt-citetags">&gt; </span>- string size
+<span class="moz-txt-citetags">&gt; </span>- pointer to final result (string)
+<span class="moz-txt-citetags">&gt; </span>- pointer to result size (int)
+<span class="moz-txt-citetags">&gt; </span>- int (always 0 now)
+<span class="moz-txt-citetags">&gt; </span>- pointer to a string
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>sometimes function call works as expected, sometimes it doesn't, I
+<span class="moz-txt-citetags">&gt; </span>can't explain why. adding removing few lines of code (random "puts"
+<span class="moz-txt-citetags">&gt; </span>calls etc.) will change the function call behavior (will work 20% or
+<span class="moz-txt-citetags">&gt; </span>100% of times). am I supposed to maintain memory pointers somehow
+<span class="moz-txt-citetags">&gt; </span>(i.e. malloc/free) or my .so lib has bad implementation (i know it's
+<span class="moz-txt-citetags">&gt; </span>used in other places without any issues)?
+</pre></blockquote><pre wrap>
+
+Please pastie the errors you are getting particularly if MRI is crashing. You say it doesn't work up to 80% of the time, but what does "does not work" mean in this case?
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I tried to use LibC approach described on wiki page using malloc, same
+<span class="moz-txt-citetags">&gt; </span>deal.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>ruby 1.8.7 (2010-12-23 patchlevel 330) [i386-linux] RHEL 5.4
+<span class="moz-txt-citetags">&gt; </span>ffi (1.0.7)
+</pre></blockquote><pre wrap>
+
+This might be your issue. I think that 1.8.x support is "best effort" and no longer a target. Try your code again with 1.9.2 and see if it functions more reliably. Alternately, try your code with some other ruby runtimes (JRuby, Rubinius) that have FFI support and see if they provide additional details in their errors. Those other runtimes could greatly aid in debugging.
+
+cr
+
+
+</pre></div></body>
+</html>
+</table></div>

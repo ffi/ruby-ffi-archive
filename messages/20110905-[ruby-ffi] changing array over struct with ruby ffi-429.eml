@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs70366lae;
+        Mon, 5 Sep 2011 13:22:50 -0700 (PDT)
+Received: by 10.52.156.13 with SMTP id wa13mr157470vdb.165.1315254168665;
+        Mon, 05 Sep 2011 13:22:48 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOeBn9XCBBCR35TzBBoEVFWTrg@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id x6si1750351vcv.77.2011.09.05.13.22.47
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 05 Sep 2011 13:22:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOeBn9XCBBCR35TzBBoEVFWTrg@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOeBn9XCBBCR35TzBBoEVFWTrg@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCOeBn9XCBBCR35TzBBoEVFWTrg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyg14 with SMTP id 14sf4009397qyg.7
+        for <headius@headius.com>; Mon, 05 Sep 2011 13:22:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=Nq4TK9cxnFkeqJu3ceiRqFuNsJo26x1I998RlKLS5Mw=;
+        b=NVN6vRMW4FDOkpB56fJQSfLp7BF1SfilgRbpZMxQEG6JIFRBncs3BOEBsid6HMsiGV
+         v0j+vWUPMUDHRu8SBfvgUXAhDIY3v7zc6rqbR+NUI1kq3t68iwnP5IISyRJ+bHZBbEJY
+         GaqgnlyBQb/Q4I/oOpHl+A2GvSEIY4QFSl/f0=
+Received: by 10.224.200.6 with SMTP id eu6mr368930qab.29.1315254161937;
+        Mon, 05 Sep 2011 13:22:41 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.206.135 with SMTP id fu7ls277429qab.0.gmail; Mon, 05 Sep
+ 2011 13:22:41 -0700 (PDT)
+Received: by 10.224.200.194 with SMTP id ex2mr3242202qab.0.1315254161590;
+        Mon, 05 Sep 2011 13:22:41 -0700 (PDT)
+Received: by 10.224.117.75 with SMTP id p11msqaq;
+        Mon, 5 Sep 2011 09:04:38 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.188.71 with SMTP id cz7mr347273qab.18.1315238678296; Mon,
+ 05 Sep 2011 09:04:38 -0700 (PDT)
+Received: by fe21g2000vbb.googlegroups.com with HTTP; Mon, 5 Sep 2011 09:04:38
+ -0700 (PDT)
+Date: Mon, 5 Sep 2011 09:04:38 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0)
+ AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.865.0 Safari/535.2,gzip(gfe)
+Message-ID: <f3d480d9-3009-467f-8272-457bb12b521e@fe21g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] changing array over struct with ruby ffi
+From: Dor Kalev <dor@dorkalev.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: dor@dorkalev.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi there!
+I have this data
+
+typedef struct {
+  unsigned int size;
+  unsigned int e[8];
+} SmallAry;
+
+typedef struct {
+  unsigned int title;
+  SmallAry form;
+} Node;
+
+typedef struct {
+  Node * e;
+  unsigned int size;
+} NodeList;
+
+int foo(NodeList * states);
+
+
+module Foon
+  class SAry < FFI::Struct
+    layout :size,  :pointer,
+           :e,     :pointer
+  end
+  class Node < FFI::Struct
+    layout :title,  :int,
+           :e,      SAry
+  end
+  class NodeList < FFI::Struct
+    layout :title,  :int,
+           :e,      :pointer
+  end
+  extend FFI::Library
+  ffi_lib "foon.so"
+  attach_function :create_object, [], :pointer
+  attach_function :foo, [ :pointer ], :int
+end
+
+I need foo to update the NodeList it gets and return it to Ruby so I
+can use it,
+help will be much appreciated.
+
+thanks,
+DK

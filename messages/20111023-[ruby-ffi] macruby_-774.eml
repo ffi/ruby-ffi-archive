@@ -1,0 +1,67 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.197.132 with SMTP id iu4cs4590igc;
+        Sun, 23 Oct 2011 18:56:06 -0700 (PDT)
+Received: by 10.52.38.99 with SMTP id f3mr9857003vdk.117.1319421365846;
+        Sun, 23 Oct 2011 18:56:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICi5_2fAxCxi5P1BBoE-zWZGA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id s7si3581550vcv.135.2011.10.23.18.56.05
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 23 Oct 2011 18:56:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICi5_2fAxCxi5P1BBoE-zWZGA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICi5_2fAxCxi5P1BBoE-zWZGA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCICi5_2fAxCxi5P1BBoE-zWZGA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk34 with SMTP id 34sf8259822qyk.7
+        for <headius@headius.com>; Sun, 23 Oct 2011 18:56:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=shta5Qoam97ynM1Se2n/HyUg16ENEU+Jgt6+fNR6kxk=;
+        b=rg7XEmtQ6DkVhVWwfVIdJYb4WITsKEjDorzSOeTWE93IAXgHdwAtBTLUDic7BSrW/b
+         DlG+QVJhfBmAeYYcqWEgD0+s8OrizhoX8i/1zqzHde/jgD/J3op8dg1pe7nGfVDe3EIx
+         aBzY1Iwut+FFVGdn7WB910jO6RM/ZgqwkIYnA=
+Received: by 10.229.12.65 with SMTP id w1mr1062449qcw.18.1319421361771;
+        Sun, 23 Oct 2011 18:56:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.47.13 with SMTP id l13ls9936187qaf.1.gmail; Sun, 23 Oct
+ 2011 18:56:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.33.135 with SMTP id h7mr657820qad.13.1319421361324; Sun,
+ 23 Oct 2011 18:56:01 -0700 (PDT)
+Received: by gk10g2000vbb.googlegroups.com with HTTP; Sun, 23 Oct 2011
+ 18:56:01 -0700 (PDT)
+Date: Sun, 23 Oct 2011 18:56:01 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.202 Safari/535.1,gzip(gfe)
+Message-ID: <59f9e71a-5250-4051-afb5-73c67339f553@gk10g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] macruby?
+From: mixtli <mixtlispam@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mixtlispam@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ mixtlispam@gmail.com designates internal as permitted sender)
+ smtp.mail=mixtlispam@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+In macruby, I get "NoMethodError: undefined method `ffi_lib' for
+PgUtil:Class" on my extension module.  It works ok under 1.9.2.   I've
+seen mixed reports about macruby support, so am wondering what is the
+latest?  Is it supported or planned to be supported?
+

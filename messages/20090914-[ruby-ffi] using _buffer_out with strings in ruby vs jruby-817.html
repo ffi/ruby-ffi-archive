@@ -1,0 +1,84 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] using :buffer_out with strings in ruby vs jruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] using :buffer_out with strings in ruby vs jruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Aman Gupta <themastermind1@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/14/09 4:07 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+I'm seeing different behavior on ruby vs jruby when passing in a
+string as a :buffer_out argument:
+
+require 'rubygems'
+require 'ffi'
+
+module GLib
+  extend FFI::Library
+  ffi_lib 'libglib-2.0'
+  attach_function :g_memdup_buf, :g_memdup,
+[ :buffer_out, :uint ], :pointer
+  attach_function :g_memdup_ptr, :g_memdup,
+[ :pointer, :uint ], :pointer
+
+  def self.test_memdup(arg_type, func_type)
+    ostr = "a\0b\0c"
+
+    if arg_type == :string
+      arg = ostr.dup
+    elsif arg_type == :buffer
+      arg = FFI::Buffer.new(ostr.size)
+      arg.put_bytes(0, ostr)
+    end
+
+    if func_type == :buffer_out
+      ret = GLib.g_memdup_buf(arg, arg.size)
+    elsif func_type == :pointer
+      ret = GLib.g_memdup_ptr(arg, arg.size)
+    end
+
+    rstr = ret.get_bytes(0, ostr.size)
+
+    p [arg_type, func_type, ostr, rstr, ostr == rstr]
+  end
+end
+
+GLib.test_memdup(:buffer, :buffer_out)
+GLib.test_memdup(:buffer, :pointer)
+GLib.test_memdup(:string, :buffer_out)
+GLib.test_memdup(:string, :pointer)
+
+$ ruby glib_memduptest.rb
+[:buffer, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+[:string, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+[:string, :pointer, "a\000b\000c", "a\000b\000c", true]
+
+$ jruby glib_memduptest.rb
+[:buffer, :buffer_out, "a\000b\000c", "\300\370\177\260A", false]
+[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+[:string, :buffer_out, "\001\000\000\000\270", "\001\000\000\000\270",
+true]
+[:string, :pointer, "\001\000\000\000\270", "\001\000\000\000\270",
+true]
+
+I'm not really sure what's happening in the jruby case. If I use an
+explicit FFI::Buffer with :pointer, it seems to work.
+
+What's really strange though, is that if you reverse the order in
+which the tests happen (so the string versions execute first), they
+all fail:
+
+GLib.test_memdup(:string, :buffer_out)
+GLib.test_memdup(:string, :pointer)
+GLib.test_memdup(:buffer, :buffer_out)
+GLib.test_memdup(:buffer, :pointer)
+
+$ jruby glib_memduptest.rb
+[:string, :buffer_out, "\300\370\177\260A", "\300\370\177\260A", true]
+[:string, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+[:buffer, :buffer_out, "\300\370\177\260A", "0\f\200\001@", false]
+[:buffer, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+</pre></div></body>
+</html>
+</table></div>

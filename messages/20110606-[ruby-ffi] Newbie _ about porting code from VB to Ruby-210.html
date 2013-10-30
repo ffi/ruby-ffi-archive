@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Newbie ? about porting code from VB to Ruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Newbie ? about porting code from VB to Ruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>JesseFair <jfair9@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/6/11 6:09 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi there I am new to Ruby programming and I am trying to port the
+below code over to Ruby:
+
+
+
+Declare Function WinHLLAPI Lib "\\Wally\WinApps
+\SYNAPSE5.32\Whllapi.dll" (lpwFunction As Long, ByVal lpbyString As
+Any, lpwLength As Any, lpwReturnCode As Long) As Long
+
+
+Declare Function WinHLLAPIStartup Lib "\\Wally\WinApps
+\SYNAPSE5.32\Whllapi.dll" (ByVal wVersionRequired As Long, lpData As
+WHLLAPIDATA) As Long
+
+Public tHLLAPIData As WHLLAPIDATA
+
+
+Public Type WHLLAPIDATA
+    wVersion As Long
+    'szDescription(128) As Byte
+    szDescription As String * 128
+End Type
+
+
+    VersionRequired = 3
+    tHLLAPIData.wVersion = 3
+
+hold = WinHLLAPIStartup(VersionRequired, tHLLAPIData)
+
+
+
+Any help would be greatly appreciated.
+</pre></div></body>
+</html>
+</table></div>

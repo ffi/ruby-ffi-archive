@@ -1,0 +1,116 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs100457ane;
+        Wed, 6 Jan 2010 14:29:21 -0800 (PST)
+Received: by 10.90.11.7 with SMTP id 7mr7319434agk.79.1262816961462;
+        Wed, 06 Jan 2010 14:29:21 -0800 (PST)
+Return-Path: <3vg5FSwoJCF0EJI.AJMPHNBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 20si41900593gxk.55.2010.01.06.14.29.20;
+        Wed, 06 Jan 2010 14:29:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3vg5FSwoJCF0EJI.AJMPHNBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3vg5FSwoJCF0EJI.AJMPHNBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) smtp.mail=3vg5FSwoJCF0EJI.AJMPHNBH5DG.7JHMP6T-AADBJJBG9BMJPKN.7JH@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42sf51366928yxe.22
+        for <headius@headius.com>; Wed, 06 Jan 2010 14:29:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=XmKOTjfawzbdrd8du2xv2ykaXZwpU1TL7UDypHYI9LQ=;
+        b=fRoZ2kXo8zVBqjG50HYMB+lr5anxzkUqFPkYIr4pj1TCuRD0hrXqTvGIBylVWzrxK3
+         HwVBJQoLvfZuVmrizjbrgGKLCBqOQCa5/r1X8AvirFLN2bFlmnmduwFfVSUr8JnW/ZMN
+         LOAHmgY/Yo3fDWuKEvQXxO05UOkQN5llVkD4w=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=gSlazNZJe3wtcS861m5RuU4uOQGbx3jUYcDRVyxiL5TWFHlNk73SGbfP2/3+TLdxuf
+         otAhF13VOCfKxIYvXnxMOZqNbhoNzbacIWbZQEOnFs6ngGiaK53FXi2Zi+W0YIe3aQ4w
+         e7DipQP6IZOQ5n80BlNBx6sTod99ncQsqbKkg=
+Received: by 10.101.188.3 with SMTP id q3mr1259655anp.35.1262816959236;
+        Wed, 06 Jan 2010 14:29:19 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.244.1 with SMTP id r1ls81424agh.1.p; Wed, 06 Jan 2010 
+	14:29:17 -0800 (PST)
+Received: by 10.90.12.22 with SMTP id 22mr4561297agl.2.1262816957258;
+        Wed, 06 Jan 2010 14:29:17 -0800 (PST)
+Received: by 10.90.12.22 with SMTP id 22mr4561296agl.2.1262816957221;
+        Wed, 06 Jan 2010 14:29:17 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-gx0-f213.google.com (mail-gx0-f213.google.com [209.85.217.213])
+        by gmr-mx.google.com with ESMTP id 18si2512471yxe.0.2010.01.06.14.29.16;
+        Wed, 06 Jan 2010 14:29:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.217.213 as permitted sender) client-ip=209.85.217.213;
+Received: by gxk5 with SMTP id 5so17266770gxk.15
+        for <ruby-ffi@googlegroups.com>; Wed, 06 Jan 2010 14:29:16 -0800 (PST)
+Received: by 10.151.16.13 with SMTP id t13mr41121606ybi.214.1262816956075;
+        Wed, 06 Jan 2010 14:29:16 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 23sm19773308iwn.7.2010.01.06.14.29.14
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Wed, 06 Jan 2010 14:29:14 -0800 (PST)
+Date: Wed, 6 Jan 2010 17:28:51 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Re: Pointer Freeing Bug
+Message-Id: <20100106172851.bba94e5e.jon.forums@gmail.com>
+In-Reply-To: <8e4ab10a-7018-463f-a562-3d3b92e04446@h9g2000yqa.googlegroups.com>
+References: <bd5613e0-04a8-45d5-8fd1-e6550cf11dd7@q4g2000yqm.googlegroups.com>
+	<71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com>
+	<35cb33c3-0326-4be6-851a-5a349d3416f0@c3g2000yqd.googlegroups.com>
+	<8e4ab10a-7018-463f-a562-3d3b92e04446@h9g2000yqa.googlegroups.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.217.213 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9f891a35886cb969
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/a3f774e19468607a
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> On Jan 6, 2:43=A0pm, JEG2 <ja...@graysoftinc.com> wrote:
+> > It seems to work, but I wasn't sure how to define the size_t
+> > parameter. =A0I assumed it's an unsigned long and defined it as such:
+> >
+> > =A0 =A0 func :name =A0 =A0=3D> :malloc,
+> > =A0 =A0 =A0 =A0 =A0:args =A0 =A0=3D> :ulong,
+> > =A0 =A0 =A0 =A0 =A0:returns =3D> :pointer
+> >
+> > Can I really count on that though? =A0Is it portable?
+>=20
+> Ah, FFI does support size_t.  It's just not listed here:
+>=20
+> http://wiki.github.com/ffi/ffi/types
+>=20
+> I've switched to using that.
+>=20
+> James Edward Gray II
+
+
+Is size_t portable across FFI impls?
+
+Jon

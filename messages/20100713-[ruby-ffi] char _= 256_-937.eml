@@ -1,0 +1,82 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.251.145 with SMTP id ms17cs122971qcb;
+        Tue, 13 Jul 2010 16:50:24 -0700 (PDT)
+Received: by 10.151.62.40 with SMTP id p40mr7230489ybk.171.1279065024387;
+        Tue, 13 Jul 2010 16:50:24 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNuojKTqEBC-9_PhBBoEzySLPw@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id d32si10781932ybl.11.2010.07.13.16.50.23;
+        Tue, 13 Jul 2010 16:50:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNuojKTqEBC-9_PhBBoEzySLPw@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNuojKTqEBC-9_PhBBoEzySLPw@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCNuojKTqEBC-9_PhBBoEzySLPw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxm8 with SMTP id 8sf14590999yxm.7
+        for <headius@headius.com>; Tue, 13 Jul 2010 16:50:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Ubqn4V9DozmtOQ1yfYcgKMiou7YxIu1HLanMdfhB49o=;
+        b=y1Au79tgizzNpmKnK72QXBRGr1gCpPDQWgeboGkB/gzBdaHkb4ofO7lYRSqUET56Q5
+         37dvvA9dtlAQF3tBNQg7riYHVmDtL/9z4xyp2FSuc5tX/6n/x0lyY/GIUiLir5hNUjx7
+         rlE0VQclp3Zc5+cusrIaXjDH3khiyXJod8VGI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=Y7wc1aEgydHwW4QjTxmMnsFKOk00N2+JaaJIEyHpESVA7oiehzkQjQQNVpn3wuAWjO
+         Wj7R+P/8jOmN/Mu8BCMe02/O1g85sp3N5oqvRwfx6VH/pEIOGOCN5ozVQJkstvPpq3p7
+         z1QIIEr3ZuDtIpybb3uSYDTj2cao/F7zv5lYc=
+Received: by 10.90.3.14 with SMTP id 14mr451765agc.47.1279065022855;
+        Tue, 13 Jul 2010 16:50:22 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.7.35 with SMTP id 35ls71261agg.3.p; Tue, 13 Jul 2010 
+	16:50:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.70.18 with SMTP id s18mr447732aga.19.1279065022446; Tue, 13 
+	Jul 2010 16:50:22 -0700 (PDT)
+Received: by x2g2000prk.googlegroups.com with HTTP; Tue, 13 Jul 2010 16:50:22 
+	-0700 (PDT)
+Date: Tue, 13 Jul 2010 16:50:22 -0700 (PDT)
+X-IP: 216.49.181.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) 
+	AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.99 Safari/533.4,gzip(gfe)
+Message-ID: <13a9edbf-6659-46a6-92e1-b06cf1e76c13@x2g2000prk.googlegroups.com>
+Subject: [ruby-ffi] char <= 256?
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all.  Got this recently.
+
+
+C:\dev\ruby\universal-scene-skipper\lib>ruby mute.rb
+mute.rb:32:in `keybd_event': Value 173 outside char range (RangeError)
+        from mute.rb:32:in `<module:Win>'
+        from mute.rb:19:in `<main>'
+
+a bit surprising, since char types in C are quite happy to accept such
+numbers.  So is this a bug because of such? It appears that's it's
+ambiguous [1] so could go either way.
+Thanks!
+-r
+[1] http://en.wikipedia.org/wiki/C_syntax#Primitive_data_types

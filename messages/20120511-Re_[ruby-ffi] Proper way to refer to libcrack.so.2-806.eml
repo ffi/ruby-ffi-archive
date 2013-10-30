@@ -1,0 +1,204 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.227.9 with SMTP id rw9csp202134obc;
+        Fri, 11 May 2012 18:37:41 -0700 (PDT)
+Received: by 10.101.6.8 with SMTP id j8mr88528ani.10.1336786660986;
+        Fri, 11 May 2012 18:37:40 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDk_bb9BBoENa_YKw@googlegroups.com>
+Received: from mail-gg0-f190.google.com (mail-gg0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id t12si4689154anh.190.2012.05.11.18.37.40
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 11 May 2012 18:37:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDk_bb9BBoENa_YKw@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDk_bb9BBoENa_YKw@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDk_bb9BBoENa_YKw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggcq2 with SMTP id q2sf5422295ggc.7
+        for <headius@headius.com>; Fri, 11 May 2012 18:37:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=JJXiEpC18Esnym8MORbnElXUA5B6I3IYHnDNvmIeN4w=;
+        b=bYiAuTDRqdwNY30VZX6iueGsCnHzoQctBXtN1MUYGl1vKdRVEio1Gqm7uXDI2VdPcD
+         bJiJCZZyXa5FnqrJmcNJC7KMG2rduCewQ1DNSQ7nT0rTleZUIInRFP3oF/ACj8+6TRrN
+         zgdRwLlCNh3mHZYSqiuVcI62Tu/BFDH7q2z9Q=
+Received: by 10.68.236.234 with SMTP id ux10mr17205pbc.9.1336786660390;
+        Fri, 11 May 2012 18:37:40 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.229.8 with SMTP id sm8ls9019030pbc.0.gmail; Fri, 11 May
+ 2012 18:37:40 -0700 (PDT)
+Received: by 10.68.236.234 with SMTP id ux10mr17204pbc.9.1336786660195;
+        Fri, 11 May 2012 18:37:40 -0700 (PDT)
+Date: Fri, 11 May 2012 18:37:39 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <15936990.2.1336786659453.JavaMail.geo-discussion-forums@pbeo9>
+In-Reply-To: <4FACD41F.4090605@matijs.net>
+References: <dc398b1e-c330-47ae-b824-6451109b6031@nl1g2000pbc.googlegroups.com> <4FACB8C7.2000807@gmail.com>
+ <4FACD41F.4090605@matijs.net>
+Subject: Re: [ruby-ffi] Proper way to refer to libcrack.so.2
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1_25608245.1336786659384"
+
+------=_Part_1_25608245.1336786659384
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Although I think those are both useful suggestions, like all the other 
+feature suggestions I've been getting, I've been pushing back and 
+recommending they be done in a third-party gem.  That way, the new features 
+can be used on e.g. JRuby without the lag of waiting until JRuby's FFI 
+implements the new feature (installing the ffi gem on jruby does not update 
+the ffi implementation, since it is internal to JRuby).
+
+ffi_lib is implemented in ruby, so implementing an alternative version of 
+it won't be that hard, should work across all implementations, and making 
+use of it in a gem can be as easy as:
+
+require 'ffi-xtra'
+
+module FooLib
+  extend FFI::Xtra::Library
+
+  ffi_lib 'crack', '>= 2' # loads "libcrack.so.2"
+
+  ... # attach_function, etc
+end
+
+I'm happy for source for such a gem to be hosted under the ffi github org, 
+and make it the 'official' extra-features-that-people-want gem we can throw 
+all this type of stuff into it.
+
+
+
+On Friday, 11 May 2012 18:55:59 UTC+10, Matijs van Zuijlen wrote:
+>
+> Something like that would be great. A helper method to list available 
+> versions 
+> would also be nice; I'm now relying on a rather unpleasant set of rescue 
+> blocks 
+> to load either the preferred version or an unsupported version of a 
+> library 
+> (with proper warnings shown, of course). 
+>
+> On 05/11/2012 08:59 AM, postmodern wrote: 
+> > This brings up a feature I wanted to request. Most Linux distributions 
+> > have moved the primary "libfoo.so" file into "foo-dev" or "foo-devel" 
+> > packages, with the "libfoo" package containing "libfoo.so.X". Maybe in 
+> > the future, you could specify the Major version of the library you wish 
+> > to load? 
+> > 
+> >      ffi_lib 'crack', '>= 2' # loads "libcrack.so.2" 
+> > 
+> > On 05/10/2012 11:40 PM, broberts wrote: 
+> >> On CentOS cracklib is deploy as libcrack.so.2 which is a symlink to 
+> >> libcrack.so.2.8.1. There is no libcrack.so. Referring to this library 
+> >> using: 
+> >> 
+> >> ffi_lib 'crack' 
+> >> 
+> >> fails with a file not found error. Referring to the library using: 
+> >> 
+> >> ffi_lib 'crack.so.2' 
+> >> 
+> >> succeeds. I assume that this is the expected behavior but I wanted to 
+> >> make sure before I get too far down the road. 
+> >> 
+> >> Thanks for any help. 
+> >> 
+> >> Baron 
+>
+> -- 
+> Matijs 
+>
+
+------=_Part_1_25608245.1336786659384
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div>Although I think those are both useful suggestions, like all=
+ the other feature suggestions I've been getting, I've been pushing back an=
+d recommending they be done in a third-party gem. &nbsp;That way, the new f=
+eatures can be used on e.g. JRuby without the lag of waiting until JRuby's =
+FFI implements the new feature (installing the ffi gem on jruby does not up=
+date the ffi implementation, since it is internal to JRuby).<div><br></div>=
+<div>ffi_lib is implemented in ruby, so implementing an alternative version=
+ of it won't be that hard, should work across all implementations, and maki=
+ng use of it in a gem can be as easy as:</div><div><br></div><div>require '=
+ffi-xtra'</div><div><br></div><div>module FooLib</div><div>&nbsp; extend FF=
+I::Xtra::Library</div><div><br></div><div>&nbsp;&nbsp;ffi_lib 'crack', '&gt=
+;=3D 2' # loads "libcrack.so.2"</div><div><br></div><div>&nbsp; ... # attac=
+h_function, etc</div><div>end</div><div><br></div><div>I'm happy for source=
+ for such a gem to be hosted under the ffi github org, and make it the 'off=
+icial' extra-features-that-people-want gem we can throw all this type of st=
+uff into it.</div><div><br></div><div><br><br>On Friday, 11 May 2012 18:55:=
+59 UTC+10, Matijs van Zuijlen  wrote:<blockquote class=3D"gmail_quote" styl=
+e=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left:=
+ 1ex;">Something like that would be great. A helper method to list availabl=
+e versions=20
+<br>would also be nice; I'm now relying on a rather unpleasant set of rescu=
+e blocks=20
+<br>to load either the preferred version or an unsupported version of a lib=
+rary=20
+<br>(with proper warnings shown, of course).
+<br>
+<br>On 05/11/2012 08:59 AM, postmodern wrote:
+<br>&gt; This brings up a feature I wanted to request. Most Linux distribut=
+ions
+<br>&gt; have moved the primary "libfoo.so" file into "foo-dev" or "foo-dev=
+el"
+<br>&gt; packages, with the "libfoo" package containing "libfoo.so.X". Mayb=
+e in
+<br>&gt; the future, you could specify the Major version of the library you=
+ wish
+<br>&gt; to load?
+<br>&gt;
+<br>&gt; &nbsp; &nbsp; &nbsp;ffi_lib 'crack', '&gt;=3D 2' # loads "libcrack=
+.so.2"
+<br>&gt;
+<br>&gt; On 05/10/2012 11:40 PM, broberts wrote:
+<br>&gt;&gt; On CentOS cracklib is deploy as libcrack.so.2 which is a symli=
+nk to
+<br>&gt;&gt; libcrack.so.2.8.1. There is no libcrack.so. Referring to this =
+library
+<br>&gt;&gt; using:
+<br>&gt;&gt;
+<br>&gt;&gt; ffi_lib 'crack'
+<br>&gt;&gt;
+<br>&gt;&gt; fails with a file not found error. Referring to the library us=
+ing:
+<br>&gt;&gt;
+<br>&gt;&gt; ffi_lib 'crack.so.2'
+<br>&gt;&gt;
+<br>&gt;&gt; succeeds. I assume that this is the expected behavior but I wa=
+nted to
+<br>&gt;&gt; make sure before I get too far down the road.
+<br>&gt;&gt;
+<br>&gt;&gt; Thanks for any help.
+<br>&gt;&gt;
+<br>&gt;&gt; Baron
+<br>
+<br>--=20
+<br>Matijs
+<br></blockquote></div>
+------=_Part_1_25608245.1336786659384--

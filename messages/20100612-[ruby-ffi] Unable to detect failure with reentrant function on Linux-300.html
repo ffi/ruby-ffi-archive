@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Unable to detect failure with reentrant function on Linux</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Unable to detect failure with reentrant function on Linux</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Daniel Berger <djberg96@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/12/10 9:38 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+Ruby 1.8.6
+FFI 0.6.3
+
+I cannot seem to detect a failure with getprotobynumber_r on Linux
+when I intentionally pass it a bogus value. Instead, it returns the
+last value of /etc/protocols.
+
+What am I doing wrong?
+
+require 'ffi'
+
+module Net
+  class Proto
+    extend FFI::Library
+
+    unless RUBY_PLATFORM == 'java' &amp;&amp; JRUBY_VERSION.to_f &lt; 1.5
+      ffi_lib(FFI::Library::LIBC)
+    end
+
+    class ProtocolStruct &lt; FFI::Struct
+      layout(
+        :p_name,    :string,
+        :p_aliases, :pointer,
+        :p_proto,   :int
+      )
+    end
+
+    attach_function 'setprotoent', [:int], :void
+    attach_function 'endprotoent', [], :void
+    attach_function 'getprotobynumber_r',
+[:int, :pointer, :string, :long, :pointer], :int
+
+    def self.getprotobynumber(protocol)
+      raise TypeError unless protocol.is_a?(Integer)
+
+      pptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+      qptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+      buf  = 1.chr * 1024
+
+      begin
+        setprotoent(0)
+        int = getprotobynumber_r(protocol, pptr, buf, buf.size, qptr)
+      ensure
+        endprotoent()
+      end
+
+      int &gt; 0 || qptr.null? ? nil : ProtocolStruct.new(pptr)[:p_name]
+    end
+  end
+end
+
+p Net::Proto.getprotobynumber(999999999) # should be nil
+
+Regards,
+
+Dan
+</pre></div></body>
+</html>
+</table></div>

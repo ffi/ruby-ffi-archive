@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] unsigned char *</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] unsigned char *</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/8/12 12:13 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Feb 6, 2012, at 3:15 AM, Jeffrey Jones wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello all,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I am in the early stages of investigating ruby FFI for use with a
+<span class="moz-txt-citetags">&gt; </span>particular third party library.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>This library makes use of a few functions with the following
+<span class="moz-txt-citetags">&gt; </span>signature.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>struct * function (unsigned char*, unsigned int)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>These functions are basically used for reading data in from various
+<span class="moz-txt-citetags">&gt; </span>places (fread for example) so it is the data itself and the data size.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Looking at all the various documentation and examples and code, I
+<span class="moz-txt-citetags">&gt; </span>cannot actually see what I need to do in ruby to match the signature.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>module Foo
+<span class="moz-txt-citetags">&gt; </span> attach_function :function, [:uchar, :uint], :pointer
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Doesn't work because it isn't expecting a single char but a char*.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Does anyone know what I need to do? (If it is even possible?)
+</pre></blockquote><pre wrap>
+
+A "char *" is a pointer. You almost had the answer on your own.
+
+module Foo
+  attach_function :function, [:pointer, :uint], :pointer
+end
+
+Try that.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

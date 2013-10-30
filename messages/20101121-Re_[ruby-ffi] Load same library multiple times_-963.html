@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Load same library multiple times?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Load same library multiple times?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Toms <kim.toms@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/21/10 6:53 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">The application I&#39;m using this for is simulating a small system (embedded CPU) which just happens to be in C.  The nodes are connected together with radios (think Crossbow or Dust Systems), and I&#39;d like to simulate a network of them, while letting the Ruby code record the radio traffic to a database for later analysis.  When they make a call to their &quot;Send a radio message&quot; routine, I just catch that in the Ruby and then deliver it to whatever nodes are &quot;close enough&quot; to hear it.  I think I can make it work using the FFI and call-backs.  I&#39;ve found that I can use the library approach if I make a discrete copy of the library for each node; each will get mapped into the space independently.  The global variables don&#39;t clash because all the linking is done at runtime; I&#39;m not sure exactly how it works, but it appears that the global vars are not added to the processes global vars, at least as far as I can tell.<div>
+<br></div><div>My other choice would be to use something like DRB to make it possible to run the many processes.<br><br><div class="gmail_quote">On Sat, Nov 20, 2010 at 5:01 PM, Chuck Remes <span dir="ltr">&lt;<a href="mailto:cremes.devlist@mac.com">cremes.devlist@mac.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;"><div><div></div><div class="h5"><br>
+On Nov 20, 2010, at 10:04 AM, Kim.Toms wrote:<br>
+<br>
+&gt; I&#39;d like to load the same library multiple times, so that the global<br>
+&gt; variables in my C program are complete separate.  This would allow me<br>
+&gt; to run multiple simulations of objects that arre connected.  The<br>
+&gt; objects are all communicating with each other, and I&#39;d like to track<br>
+&gt; the communication.  I&#39;ve posted a simple example in the issues at<br>
+&gt; <a href="https://github.com/ffi/ffi/issues/#issue/65" target="_blank">https://github.com/ffi/ffi/issues/#issue/65</a><br>
+<br>
+</div></div>I don&#39;t think this is possible. When you load a library, it is mapped into the same address space as the interpreter (MRI, JRuby, Rubinius, etc.). If your library is using global variables in a global namespace, then it isn&#39;t re-entrant either.<br>
+
+<br>
+I recommend modifying the library so it is re-entrant. Then you can load the library *once* but call into it from multiple threads safely.<br>
+<font color="#888888"><br>
+cr<br>
+<br>
+</font></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

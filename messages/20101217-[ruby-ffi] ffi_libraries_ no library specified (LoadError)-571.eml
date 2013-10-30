@@ -1,0 +1,115 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs124761fam;
+        Fri, 17 Dec 2010 11:12:37 -0800 (PST)
+Received: by 10.91.201.13 with SMTP id d13mr2653498agq.38.1292613156340;
+        Fri, 17 Dec 2010 11:12:36 -0800 (PST)
+Return-Path: <ruby-ffi+bncCM664LeXDxCi7K7oBBoE-czDiw@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id c14si8822232anc.148.2010.12.17.11.12.34;
+        Fri, 17 Dec 2010 11:12:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM664LeXDxCi7K7oBBoE-czDiw@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM664LeXDxCi7K7oBBoE-czDiw@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCM664LeXDxCi7K7oBBoE-czDiw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb19 with SMTP id 19sf698895gwb.7
+        for <headius@headius.com>; Fri, 17 Dec 2010 11:12:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=30ogOQPYWVrDas4FepkpCfV+yAMaQFT1wQBbjwMLnj4=;
+        b=Xkq0GanQgFKvQT30XJdmn30/68E0WTDQBMHSunXsqGiY7Dmkl0fVZyauUzmbjvcuMR
+         3kK1ibSGLC54mlU21ABqauFrnO09fgIBpgJ2u1fXtxn+vx/1ksBxh1iYFGhiXZYCDsum
+         x1OsJczUwKcNT7uEm31lszYZkvgmollTsaSD4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=J7/FNv+/ro3K1kF58P4wQdpsX+HfHeA6skP1Uuu5rJMVCwTPhJv8q9Vb2OJoagvh5V
+         ckqs7SKwFwx2P5tMK85nWPHtzg78hdpn3ZtvhoHreAa3gq4L72KWcyZepKBkaMIdGZ0q
+         dXFqikFOoMpYz/5SKDdjLqXmLG+uGOdQ5bN0k=
+Received: by 10.151.63.8 with SMTP id q8mr193899ybk.41.1292613154108;
+        Fri, 17 Dec 2010 11:12:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.17.13 with SMTP id u13ls2651357ybi.1.p; Fri, 17 Dec 2010
+ 11:12:33 -0800 (PST)
+Received: by 10.151.98.2 with SMTP id a2mr382781ybm.55.1292613153756;
+        Fri, 17 Dec 2010 11:12:33 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.90.95.14 with SMTP id s14mr59638agb.5.1292597991691; Fri, 17
+ Dec 2010 06:59:51 -0800 (PST)
+Received: by c13g2000prc.googlegroups.com with HTTP; Fri, 17 Dec 2010 06:59:51
+ -0800 (PST)
+Date: Fri, 17 Dec 2010 06:59:51 -0800 (PST)
+X-IP: 93.93.81.193
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US)
+ AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.224 Safari/534.10,gzip(gfe)
+Message-ID: <fa52e226-b21f-438a-9c51-f7df49c50ead@c13g2000prc.googlegroups.com>
+Subject: [ruby-ffi] ffi_libraries: no library specified (LoadError)
+From: Usman Hussain <usmanhhussain@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: usmanhhussain@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi Guys,
+
+This may not be the correct place to post this but i thought it is
+worth a try.
+
+I am having a problem trying to run a rufus-lua example and am getting
+this error:
+
+gl01231m:rubyluabridge usman.hussain$ ruby rubylua.rb
+/Library/Ruby/Gems/1.8/gems/ffi-1.0.0/lib/ffi/library.rb:93:in
+`ffi_libraries': no library specified (LoadError)
+	from /Library/Ruby/Gems/1.8/gems/ffi-1.0.0/lib/ffi/library.rb:129:in
+`attach_function'
+	from /Library/Ruby/Gems/1.8/gems/rufus-lua-1.1.0/lib/rufus/lua/lib.rb:
+62
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in
+`require'
+	from /Library/Ruby/Gems/1.8/gems/rufus-lua-1.1.0/lib/rufus/lua.rb:25
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in
+`gem_original_require'
+	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:36:in
+`require'
+	from rubylua.rb:4
+
+I am using a MAC.
+Ruby Version is: ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-
+darwin10.0]
+My Script looks something like this:
+require 'rubygems'
+require 'rufus/lua'
+
+  s = Rufus::Lua::State.new
+
+  puts s.eval("return table.concat({ 'hello', 'from', 'Lua' }, ' ')")
+    #
+    # => "Hello from Lua"
+
+  s.close
+
+When i run the script im getting the error above.
+
+Does anyone know why im getting it?
+
+Kind regards,
+Usman Hussain

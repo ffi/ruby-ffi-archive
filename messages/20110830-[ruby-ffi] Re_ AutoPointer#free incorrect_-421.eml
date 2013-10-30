@@ -1,0 +1,74 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.2.196 with SMTP id 4cs105507law;
+        Tue, 30 Aug 2011 00:26:09 -0700 (PDT)
+Received: by 10.236.139.169 with SMTP id c29mr31052039yhj.122.1314689168498;
+        Tue, 30 Aug 2011 00:26:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxCKofLyBBoEqKmbTQ@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id u46si7829853yhm.130.2011.08.30.00.26.07
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 30 Aug 2011 00:26:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxCKofLyBBoEqKmbTQ@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxCKofLyBBoEqKmbTQ@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxCKofLyBBoEqKmbTQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf14567789gxk.7
+        for <headius@headius.com>; Tue, 30 Aug 2011 00:26:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=c4A4w21C66af5NCLtaN1gKoJMbB/xK3GI5RS07qsA5Y=;
+        b=tQWu0p9+JkPWSdvfJVG7nOjhNtOVpL1t1c+9d0LGrpVxebhNrThmkr6ScUu48d/xiA
+         peRKoJeXjLMG/ChHqBtykmSNQXlu5ZSr227HW6SEly809nZqXV4nnPmM9G0OCxAqrJPZ
+         XZH1XnFXljIMgU/fLTB/Ek+xm6x4ZyMM39f2I=
+Received: by 10.91.66.19 with SMTP id t19mr997711agk.36.1314689162300;
+        Tue, 30 Aug 2011 00:26:02 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.4.23 with SMTP id 23ls5976751agd.3.gmail; Tue, 30 Aug 2011
+ 00:26:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.3.35 with SMTP id 35mr1019698agc.21.1314689161085; Tue, 30
+ Aug 2011 00:26:01 -0700 (PDT)
+Received: by x11g2000yqx.googlegroups.com with HTTP; Tue, 30 Aug 2011 00:26:01
+ -0700 (PDT)
+Date: Tue, 30 Aug 2011 00:26:01 -0700 (PDT)
+In-Reply-To: <493bc804-4164-4f16-ae0f-2e417e93f890@o9g2000vbo.googlegroups.com>
+References: <493bc804-4164-4f16-ae0f-2e417e93f890@o9g2000vbo.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <b77efcbf-c5d0-4b2b-a8d3-77d09aa58d57@x11g2000yqx.googlegroups.com>
+Subject: [ruby-ffi] Re: AutoPointer#free incorrect?
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+The class definition above should have been:
+
+class Bitmap < FFI::AutoPointer
+  def self.release(ptr) #:nodoc:
+    FreeImage.FreeImage_Unload(ptr)
+  end
+  ....
+end
+
+
+Charlie

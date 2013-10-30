@@ -1,0 +1,287 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs66594fam;
+        Fri, 10 Dec 2010 06:48:59 -0800 (PST)
+Received: by 10.150.217.6 with SMTP id p6mr1615190ybg.63.1291992538866;
+        Fri, 10 Dec 2010 06:48:58 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzR7pDjBRDY-4joBBoECQZW1g@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id u23si1834375yba.85.2010.12.10.06.48.57;
+        Fri, 10 Dec 2010 06:48:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzR7pDjBRDY-4joBBoECQZW1g@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzR7pDjBRDY-4joBBoECQZW1g@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzR7pDjBRDY-4joBBoECQZW1g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk1 with SMTP id 1sf2791523gxk.7
+        for <headius@headius.com>; Fri, 10 Dec 2010 06:48:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=PjVWas8tizaEJ61WOy6zIVrhIY1c0lYzAhoohvuT6XQ=;
+        b=2Bnh2kQMY2VVreG39mu8dt2tdHlMngYTyLZq6ip3v9mXwjm/YOAihk9jO9ndGDj3ei
+         MMzZ892atLeShC3cjV++6KRsAJA8sXIEm03j3Lo/JMBNocIY1WeSBnhpTztGQamrOBm7
+         qH0wxhG5XY1O+u9bh7mOF7U9dZOIlpvVSexHY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=NJKjZ4lfP7RybId/1XrC3qxK5BikLZbeYcip5ek8a5EPpnuxPBos1aqDRKPD1cTqAU
+         0PyEiGzfyGQrUioDo2j0Q0c82pehREIml1tQ2+eOqrFwoEi819B1y9bvf0uELCahYB6N
+         8Z9JC7kdsZI8BWhpjoMsAiUWmxSTRFUYybEto=
+Received: by 10.90.17.6 with SMTP id 6mr48576agq.1.1291992536828;
+        Fri, 10 Dec 2010 06:48:56 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.172.9 with SMTP id z9ls676938ago.7.p; Fri, 10 Dec 2010
+ 06:48:56 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.90.67.20 with SMTP id p20mr45674aga.45.1291992536280; Fri, 10
+ Dec 2010 06:48:56 -0800 (PST)
+Received: by 37g2000prx.googlegroups.com with HTTP; Fri, 10 Dec 2010 06:48:56
+ -0800 (PST)
+Date: Fri, 10 Dec 2010 06:48:56 -0800 (PST)
+In-Reply-To: <db753b42-5025-4a7d-b1b3-be2ee4c52287@o9g2000pre.googlegroups.com>
+X-IP: 165.234.90.1
+References: <4378b5ad-6fb6-4693-8dd8-e1d37aa2b3a0@r38g2000prj.googlegroups.com>
+ <AANLkTinvgh3uzVA2cTkzxpE-AfcU-JKv1Oaiw7BF5NJ5@mail.gmail.com> <db753b42-5025-4a7d-b1b3-be2ee4c52287@o9g2000pre.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.7
+ (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7,gzip(gfe)
+Message-ID: <5054a1c8-219b-43a3-a5da-d622bacbfb86@37g2000prx.googlegroups.com>
+Subject: [ruby-ffi] Re: Problem with AutoPointer and ManagedStruct
+From: zenChild <dan.wanek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: dan.wanek@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+This seems to work for my issue.  Is there any reason why this
+shouldn't be done?
+
+output_token =3D LibGSSAPI::GssBufferDesc.new
+output_token[:length] =3D 0
+output_token[:value] =3D nil
+@o_buff =3D
+LibGSSAPI::MGssBufferDesc.new(FFI::Pointer.new(output_token.pointer))
+
+... method call that fills the output_token
+... the release now happens automatically during GC without SegFault
+and I can use the ManagedStruct the way I could the old Struct.
+
+Cheers,
+
+Dan Wanek
+
+
+
+On Dec 9, 3:24=A0pm, zenChild <dan.wa...@gmail.com> wrote:
+> Still no go. =A0The custom method to release the GssBufferDesc struct
+> (gss_release_buffer) assumes it's getting the struct as the argument
+> to release so I don't think passing just the :value would work anyway.
+> (I did try it though and still got the backtrace). =A0The :value param
+> of GssBufferDesc is of type (void *) and that is why I think it
+> requires the library specific gss_release_buffer call. =A0Any other
+> ideas? =A0Here is the full post of what I would like to work: =A0(below
+> that is the backtrace)
+> The LibGSSAPI code is out on github:https://github.com/zenchild/gssapi
+>
+> Thanks for your input!
+>
+> ------------------snip -------------------
+> $: << 'lib'
+> require 'gssapi'
+> include GSSAPI
+>
+> @host_name =3D 'mytesthost.example.org'
+> @int_name =3D nil
+> buff_str =3D LibGSSAPI::GssBufferDesc.new
+> host_str =3D "host@#{@host_name}"
+> buff_str[:length] =3D host_str.length
+> buff_val =3D FFI::MemoryPointer.from_string(host_str) # assign to var so
+> it isn't garbage collected
+> buff_str[:value] =3D buff_val
+> name =3D FFI::MemoryPointer.new :pointer # gss_name_t
+> min_stat =3D FFI::MemoryPointer.new :uint32
+>
+> maj_stat =3D LibGSSAPI.gss_import_name(min_stat, buff_str.pointer,
+> LibGSSAPI.GSS_C_NT_HOSTBASED_SERVICE, name)
+> @int_name =3D name.get_pointer(0)
+> LibGSSAPI::GssNameT.new(@int_name)
+>
+> min_stat =3D FFI::MemoryPointer.new :uint32
+> no_cred =3D FFI::MemoryPointer.new :pointer =A0# GSS_C_NO_CREDENTIAL
+> no_cred.write_int 0
+> ctx =A0=3D FFI::MemoryPointer.new :pointer =A0# GSS_C_NO_CONTEXT
+> ctx.write_int 0
+> no_chn_bind =3D FFI::MemoryPointer.new :pointer =A0#
+> no_chn_bind.write_int 0
+>
+> input_token =3D LibGSSAPI::GssBufferDesc.new
+> input_token[:length] =3D 0
+> input_token[:value] =3D nil
+> output_token =3D FFI::MemoryPointer.new :pointer
+>
+> mech =3D LibGSSAPI.gss_mech_krb5
+> maj_stat =3D LibGSSAPI.gss_init_sec_context(min_stat,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 nil,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 ctx,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 @int_name,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 mech,
+>
+> (LibGSSAPI::GSS_C_MUTUAL_FLAG | LibGSSAPI::GSS_C_SEQUENCE_FLAG),
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 0,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 nil,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 input_token.pointer,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 nil,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 output_token,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 nil,
+> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =
+=A0 =A0 =A0 nil)
+>
+> if(maj_stat =3D=3D 0 || maj_stat =3D=3D 1)
+> =A0 @context =3D ctx.get_pointer(0)
+> =A0 LibGSSAPI::MGssBufferDesc.new(output_token.get_pointer(0))
+> end
+> ----------------- snip -------------------
+>
+> ---------------backtrace--------------
+> ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-linux]
+>
+> -- control frame ----------
+> c:0007 p:---- s:0025 b:0025 l:000024 d:000024
+> CFUNC =A0:gss_release_buffer
+> c:0006 p:0065 s:0020 b:0020 l:000019 d:000019 METHOD /home/dwanek/
+> Coding/gssapi/lib/gssapi/lib_gssapi.rb:46
+> c:0005 p:---- s:0014 b:0014 l:000013 d:000013 FINISH
+> c:0004 p:---- s:0012 b:0012 l:000011 d:000011 CFUNC =A0:call
+> c:0003 p:0028 s:0008 b:0008 l:000007 d:000007 METHOD /home/dwanek/.rvm/
+> gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/autopointer.rb:107
+> c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+> c:0001 p:0000 s:0002 b:0002 l:001578 d:001578 TOP
+> ---------------------------
+> -- Ruby level backtrace information
+> ----------------------------------------
+> /home/dwanek/.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/
+> autopointer.rb:107:in `call'
+> /home/dwanek/.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/ffi/
+> autopointer.rb:107:in `call'
+> /home/dwanek/Coding/gssapi/lib/gssapi/lib_gssapi.rb:46:in `release'
+> /home/dwanek/Coding/gssapi/lib/gssapi/lib_gssapi.rb:46:in
+> `gss_release_buffer'
+>
+> -- C level backtrace information
+> -------------------------------------------
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.
+> 1.9(rb_vm_bugreport+0x5f) [0x7f78aa22bb2f]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x62b96)
+> [0x7f78aa113b96]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_bug+0xb3)
+> [0x7f78aa113d33]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x10bea5)
+> [0x7f78aa1bcea5]
+> /lib/libpthread.so.0(+0xfb40) [0x7f78a9ea3b40]
+> /usr/lib/libgssapi_krb5.so(gss_release_buffer+0x14) [0x7f78a8454ed4]
+> /home/dwanek/.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+> ffi_c.so(ffi_call_unix64+0x4c) [0x7f78a868e44c]
+> /home/dwanek/.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+> ffi_c.so(ffi_call+0x3ef) [0x7f78a868debc]
+> /home/dwanek/.rvm/gems/ruby-1.9.2-p0/gems/ffi-1.0.1/lib/
+> ffi_c.so(rbffi_CallFunction+0xbb) [0x7f78a868d06b]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x175fe8)
+> [0x7f78aa226fe8]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x1689c9)
+> [0x7f78aa2199c9]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x16fb49)
+> [0x7f78aa220b49]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x171444)
+> [0x7f78aa222444]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.
+> 1.9(rb_method_call+0x163) [0x7f78aa11dcd3]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x175fe8)
+> [0x7f78aa226fe8]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x1689c9)
+> [0x7f78aa2199c9]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x16fb49)
+> [0x7f78aa220b49]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x171444)
+> [0x7f78aa222444]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_eval_cmd
+> +0x101) [0x7f78aa227541]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x78e64)
+> [0x7f78aa129e64]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(rb_protect
+> +0xf1) [0x7f78aa117dc1]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x78dfd)
+> [0x7f78aa129dfd]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(+0x79671)
+> [0x7f78aa12a671]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(ruby_cleanup
+> +0x1ec) [0x7f78aa119bbc]
+> /home/dwanek/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.so.1.9(ruby_run_node
+> +0x25) [0x7f78aa119e05]
+> ruby(main+0x4b) [0x4009fb]
+> /lib/libc.so.6(__libc_start_main+0xfe) [0x7f78a9267d8e]
+> ruby() [0x4008e9]
+>
+> [NOTE]
+> You may have encountered a bug in the Ruby interpreter or extension
+> libraries.
+> Bug reports are welcome.
+> For details:http://www.ruby-lang.org/bugreport.html
+>
+> Aborted
+> ---------------backtrace--------------
+>
+> On Dec 9, 2:24=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+>
+>
+>
+>
+>
+>
+>
+> > On 10 December 2010 00:36, zenChild <dan.wa...@gmail.com> wrote:
+>
+> > > # --------- Example One ---------
+> > > class GssBufferDesc < FFI::Struct
+> > > =A0layout =A0:length =3D> :size_t,
+> > > =A0 =A0 =A0 =A0 =A0:value =A0=3D> :pointer # pointer of :void
+> > > end
+> > > output_token =3D FFI::MemoryPointer.new :pointer
+> > > maj_stat =3D LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+> > > LibGSSAPI::GssBufferT.new(output_token.get_pointer(0))
+>
+> > I suspect what you're passing in as output_token is the problem. =A0Do
+> > the same as you were in example One - allocate a GssBufferDesc and use
+> > it as output_token, then construct the AutoPointer using its :value
+> > field as the pointer.
+>
+> > e.g.
+> > output_token =3D GssBufferDesc.new
+> > maj_stat =3D LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+> > LibGSSAPI::GssBufferT.new(output_token[:value])

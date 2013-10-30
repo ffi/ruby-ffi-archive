@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: puts example fails in doze</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: puts example fails in doze</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 3:41 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/19 Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>works in linux without doing an explicit ffi_lib call...I'm curious as
+<span class="moz-txt-citetags">&gt;&gt; </span>to why windows require ffi_lib 'msvcrt', when it is linked against
+<span class="moz-txt-citetags">&gt;&gt; </span>msvcrt in the beginning to start with (I guess)?
+<span class="moz-txt-citetags">&gt;&gt; </span>Any ideas there?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Mentioned in another thread about default library being used
+<span class="moz-txt-citetags">&gt; </span>automatically. I guess the gem didn't had the support baked in?
+</pre></blockquote><pre wrap>
+
+That has changed in ruby-ffi 0.6.0 &amp; JRuby 1.5.0; you now need to
+explicitly specify the library, or specify
+FFI::Library::CURRENT_PROCESS as the library.
+
+Tips (as of 0.6.0):
+
+1) FFI::Library::LIBC will always be the correct
+libc.so/libc.dylib/msvcrt.dll for the current platform.
+
+2) Avoid using FFI::Library::CURRENT_PROCESS, unless you're hacking
+ruby VM internals using FFI.  The set of libraries that are loaded
+into the VM differ from VM to VM and from OS to OS, so relying on the
+current process having e.g. calloc(3) in its symbol table will lead to
+your program/library breaking.
+</pre></div></body>
+</html>
+</table></div>

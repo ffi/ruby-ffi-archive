@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs13059ane;
+        Tue, 12 Jan 2010 03:21:30 -0800 (PST)
+Received: by 10.90.38.24 with SMTP id l24mr1896564agl.92.1263295274453;
+        Tue, 12 Jan 2010 03:21:14 -0800 (PST)
+Return-Path: <3J1tMSw4JCBoF4J4H.IKI27B8A6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@listserv.bounces.google.com>
+Received: from mail-yw0-f137.google.com (mail-yw0-f137.google.com [209.85.211.137])
+        by mx.google.com with ESMTP id 4si60600999gxk.18.2010.01.12.03.21.12;
+        Tue, 12 Jan 2010 03:21:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3J1tMSw4JCBoF4J4H.IKI27B8A6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@listserv.bounces.google.com designates 209.85.211.137 as permitted sender) client-ip=209.85.211.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3J1tMSw4JCBoF4J4H.IKI27B8A6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@listserv.bounces.google.com designates 209.85.211.137 as permitted sender) smtp.mail=3J1tMSw4JCBoF4J4H.IKI27B8A6C08B.2ECHK1O-5586EE6B46HEKFI.2EC@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh1 with SMTP id 1sf58645136ywh.22
+        for <headius@headius.com>; Tue, 12 Jan 2010 03:21:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=JrQlD7NH+KHyuh2vs/+Bq0/efzc5jme+ur56dADkgXU=;
+        b=j+8XUTzqcO8Ev5ht/efxK87FZp4WWAXMjtcK1RnnGd3z5OKQWgFqVbNwgSH06W8XcJ
+         BiZPqMDVIIcDWEPQl4CuPUOOSpGzptwptDenhqQ07bH2nhI87TL5jMETqbWWi8T7pbEY
+         htZjvJRDtsA9zDdyI/eH41xwlIbWo+72wgZxY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=Op6QlQDaixMIOrvcHO8c3pL7JWMqkEDKqxM8Tci5eHbfre8oEI1FBIPccXxWHq3bOh
+         9K3L7qSkD5dp1NXJrRkGH+GBBeWP8GGGh3bZXbaHBQYo6zqWNjuVU80OIqYFuJFOVOmW
+         037Sl09JeFe+zzeJpdrgUfG6fXlEOcZh7SHZc=
+Received: by 10.150.171.13 with SMTP id t13mr808448ybe.41.1263295271234;
+        Tue, 12 Jan 2010 03:21:11 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.42.5 with SMTP id p5ls163085ybp.1.p; Tue, 12 Jan 2010 
+	03:21:10 -0800 (PST)
+Received: by 10.151.88.32 with SMTP id q32mr34080148ybl.4.1263295270263;
+        Tue, 12 Jan 2010 03:21:10 -0800 (PST)
+Received: by 10.150.3.30 with SMTP id 30mr33941957ybc.0.1263289188761;
+        Tue, 12 Jan 2010 01:39:48 -0800 (PST)
+Received: by 10.150.3.30 with SMTP id 30mr33941956ybc.0.1263289188740;
+        Tue, 12 Jan 2010 01:39:48 -0800 (PST)
+Return-Path: <peter.suschlik@gmail.com>
+Received: from mail-yw0-f141.google.com (mail-yw0-f141.google.com [209.85.211.141])
+        by gmr-mx.google.com with ESMTP id 24si3566946ywh.7.2010.01.12.01.39.48;
+        Tue, 12 Jan 2010 01:39:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.suschlik@gmail.com designates 209.85.211.141 as permitted sender) client-ip=209.85.211.141;
+Received: by mail-yw0-f141.google.com with SMTP id 5so59142834ywh.12
+        for <ruby-ffi@googlegroups.com>; Tue, 12 Jan 2010 01:39:48 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.250.2 with SMTP id x2mr250169ybh.31.1263289188707; Tue, 12 
+	Jan 2010 01:39:48 -0800 (PST)
+Date: Tue, 12 Jan 2010 01:39:48 -0800 (PST)
+In-Reply-To: <p0624080cc76d7159175f@[63.138.152.192]>
+X-IP: 87.139.102.24
+References: <bf2f536c0912211449q7a337147g69257040a6abab91@mail.gmail.com> 
+	<3454c9680912212356g2c79f728rad39f7c1796611cd@mail.gmail.com> 
+	<p0624080cc76d7159175f@[63.138.152.192]>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.6) 
+	Gecko/20091216 Iceweasel/3.5.6 (like Firefox/3.5.6; Debian-3.5.6-1),gzip(gfe),gzip(gfe)
+Message-ID: <4b7d939a-b87f-4569-845e-3c35046d362c@j4g2000yqe.googlegroups.com>
+Subject: [ruby-ffi] Re: Behavior of ffi_lib with Arrays (Was: lists only one 
+	lib?)
+From: Peter Suschlik <peter.suschlik@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/11b365ae7374c20d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/65c8e6c8ac84d802
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+does it already work with 0.5.4?
+
+It seems that this change http://github.com/ffi/ffi/commit/9657b43b5946aa24cfa87bb3cdc73903029191d3
+didn't make into http://gemcutter.org/gems/ffi/versions/0.5.4
+
+Alternate loading does not work in 0.5.4. Tested for 1.8.7, 1.9 and
+jruby.
+
+Am I missing something?
+
+Kind regards,
+  Peter

@@ -1,0 +1,151 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs7802qcb;
+        Thu, 20 May 2010 10:19:52 -0700 (PDT)
+Received: by 10.141.187.15 with SMTP id o15mr257989rvp.174.1274375991764;
+        Thu, 20 May 2010 10:19:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERC03tXfBBoELPKVgQ@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id o38si158739rvp.41.2010.05.20.10.19.50;
+        Thu, 20 May 2010 10:19:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERC03tXfBBoELPKVgQ@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERC03tXfBBoELPKVgQ@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERC03tXfBBoELPKVgQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvf33 with SMTP id 33sf17673pvf.7
+        for <headius@headius.com>; Thu, 20 May 2010 10:19:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=gefIAMquZTl+MkWI/0O+zoxZSh9tJ7qdf6mwnZlmpbU=;
+        b=MV+D57dbw14ylGafJwi34gFQuXw9i331SDzrgUSdUhOeMgvqq4F92Nq4mJA9t5bSW8
+         1MLRnAp52uG6/pxt/Qhye0iqAL0oNhlJU1A2MFEAG3dafku4klijOrWx4WQRqLpEqXG0
+         ZHrdSnOxBTj/3DI3PqQVIi0fmyKTAkONoZkjo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=LRsd6crNmf2w8pucaIOqkXeFUgTIQG/fRMQpPh/e+Dh3iKBzViS4hfR2IyybH7cNxe
+         p4Jn9Y4WgHF0tsDZeqZEk+Lxa17yICtsAUCv2TYZZgnY+grMpHLB47mOOyLq5QFfljsl
+         yIzrX96ZqgVAj/7pODk/HpjtjP2Bgvjva032g=
+Received: by 10.143.21.33 with SMTP id y33mr54630wfi.18.1274375988503;
+        Thu, 20 May 2010 10:19:48 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.8.28 with SMTP id 28ls249131wfh.0.p; Thu, 20 May 2010 
+	10:19:47 -0700 (PDT)
+Received: by 10.142.3.29 with SMTP id 29mr116760wfc.9.1274375987779;
+        Thu, 20 May 2010 10:19:47 -0700 (PDT)
+Received: by 10.142.3.29 with SMTP id 29mr116759wfc.9.1274375987744;
+        Thu, 20 May 2010 10:19:47 -0700 (PDT)
+Return-Path: <jvoorhis@gmail.com>
+Received: from mail-qy0-f183.google.com (mail-qy0-f183.google.com [209.85.221.183])
+        by gmr-mx.google.com with ESMTP id 19si17536pzk.7.2010.05.20.10.19.46;
+        Thu, 20 May 2010 10:19:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 209.85.221.183 as permitted sender) client-ip=209.85.221.183;
+Received: by qyk13 with SMTP id 13so70302qyk.1
+        for <ruby-ffi@googlegroups.com>; Thu, 20 May 2010 10:19:46 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.113.217 with SMTP id b25mr266360qaq.345.1274375985933; 
+	Thu, 20 May 2010 10:19:45 -0700 (PDT)
+Received: by 10.229.217.206 with HTTP; Thu, 20 May 2010 10:19:45 -0700 (PDT)
+In-Reply-To: <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+	 <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+	 <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+Date: Thu, 20 May 2010 10:19:45 -0700
+Message-ID: <AANLkTili1Czv42tlJoSK00kXSGDRXttq8pHB2TMWLle7@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jvoorhis@gmail.com designates 209.85.221.183 as permitted sender) 
+	smtp.mail=jvoorhis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jvoorhis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=000feaf11132f3ae97048709c7b2
+
+--000feaf11132f3ae97048709c7b2
+Content-Type: text/plain; charset=UTF-8
+
+The address is in the output of inspect (0x4145ec0). You can also use
+Pointer#to_i.
+
+Best,
+
+Jeremy
+
+On Thu, May 20, 2010 at 10:16 AM, DA <drew.avis@gmail.com> wrote:
+
+> On Thu, May 20, 2010 at 12:37 PM, Jeremy Voorhis <jvoorhis@gmail.com>
+> wrote:
+> > The code looks alright to me on first glance. Are you sure your pointer
+> is
+> > valid?
+>
+> I'm not sure how to check that.  If I do this:
+> puts "p: #{p}"
+> I get:
+> p: #<FFI::Pointer:0x4145ec0>
+>
+> Is there a tool I could use to take a peek at that address?  (I'm on Win7.)
+>
+> Drew
+>
+
+--000feaf11132f3ae97048709c7b2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+The address is in the output of inspect (<meta charset=3D"utf-8"><span clas=
+s=3D"Apple-style-span" style=3D"font-family: arial, sans-serif; font-size: =
+13px; border-collapse: collapse; ">0x4145ec0). You can also use Pointer#to_=
+i.</span><div>
+<font class=3D"Apple-style-span" face=3D"arial, sans-serif"><span class=3D"=
+Apple-style-span" style=3D"border-collapse: collapse;"><br></span></font></=
+div><div><font class=3D"Apple-style-span" face=3D"arial, sans-serif"><span =
+class=3D"Apple-style-span" style=3D"border-collapse: collapse;">Best,</span=
+></font></div>
+<div><font class=3D"Apple-style-span" face=3D"arial, sans-serif"><span clas=
+s=3D"Apple-style-span" style=3D"border-collapse: collapse;"><br></span></fo=
+nt></div><div><font class=3D"Apple-style-span" face=3D"arial, sans-serif"><=
+span class=3D"Apple-style-span" style=3D"border-collapse: collapse;">Jeremy=
+<br>
+</span></font><br><div class=3D"gmail_quote">On Thu, May 20, 2010 at 10:16 =
+AM, DA <span dir=3D"ltr">&lt;<a href=3D"mailto:drew.avis@gmail.com">drew.av=
+is@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+<div class=3D"im">On Thu, May 20, 2010 at 12:37 PM, Jeremy Voorhis &lt;<a h=
+ref=3D"mailto:jvoorhis@gmail.com">jvoorhis@gmail.com</a>&gt; wrote:<br>
+&gt; The code looks alright to me on first glance. Are you sure your pointe=
+r is<br>
+&gt; valid?<br>
+<br>
+</div>I&#39;m not sure how to check that. =C2=A0If I do this:<br>
+puts &quot;p: #{p}&quot;<br>
+I get:<br>
+p: #&lt;FFI::Pointer:0x4145ec0&gt;<br>
+<br>
+Is there a tool I could use to take a peek at that address? =C2=A0(I&#39;m =
+on Win7.)<br>
+<font color=3D"#888888"><br>
+Drew<br>
+</font></blockquote></div><br></div>
+
+--000feaf11132f3ae97048709c7b2--

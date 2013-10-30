@@ -1,0 +1,150 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp275093laa;
+        Tue, 15 Oct 2013 02:58:24 -0700 (PDT)
+X-Received: by 10.49.62.3 with SMTP id u3mr43350556qer.6.1381831103694;
+        Tue, 15 Oct 2013 02:58:23 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDF6F5MASYDRBPVD6SJAKGQEHXVL53A@googlegroups.com>
+Received: from mail-qc0-x23b.google.com (mail-qc0-x23b.google.com [2607:f8b0:400d:c01::23b])
+        by mx.google.com with ESMTPS id y9si32125787qar.112.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 15 Oct 2013 02:58:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBPVD6SJAKGQEHXVL53A@googlegroups.com designates 2607:f8b0:400d:c01::23b as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRBPVD6SJAKGQEHXVL53A@googlegroups.com designates 2607:f8b0:400d:c01::23b as permitted sender) smtp.mail=ruby-ffi+bncBDF6F5MASYDRBPVD6SJAKGQEHXVL53A@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-f187.google.com with SMTP id n4sf1568676qcx.24
+        for <headius@headius.com>; Tue, 15 Oct 2013 02:58:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=a4D7vwqS9yrh1/8FIkL0mCLtht6loTg1EZS1mwwMeAc=;
+        b=rrjuYx6dTJ7P9YwsAZ6pl0sjMpj3cAoSALPjjq/hNPM5j3m4cr/AH1z5Yx06ZusBKk
+         t2BluJT/4NpIdgwlFSjzB2xh8BGgE5VbxJCFrrWUnKcr+K1qGd4xxaEq4z16xOsnH6GL
+         58OufltNljWxCrUSUMKtuVqoI3Kk/qoTuC80oQBPijI2ia++MJtwzRExxqSnDLs7bwc+
+         X/mSy+9xGr3YOy2KAT18f++lLiElzPsHtgzzFnA37nPK4Xbv83mqIVftJZbKVxaOrmE4
+         hZYiZkcvmxe7T/1nOe6owi+z7Mv6zDJ46DlDoepOb7i6ETKa0Ji3zAlxGcpVqD1PuEEy
+         h00w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=a4D7vwqS9yrh1/8FIkL0mCLtht6loTg1EZS1mwwMeAc=;
+        b=qrjj3EmxUnBVT4XQr5dYGm6tfeNQSiERwg8WT9PEua+ZpoXNNnaGsBPe4o3vIiietr
+         M4+N+5Ep4bG44xMUav5wndjcvijtDcNXjG1CyQvwXSFGRqcdGvGkJQfNM59Iq65PmjnP
+         I3VMeu0ORm+9mAURNN65/oD8hb6vAjWPYNJogu/1nP/rHSlnfcdhTaYM2aKFgoaEehli
+         d4PHOeJ1/bjaL6d/gcMXSiOP+HVbuH/aduh4cBGT4GuWo5OYro1XQm+Q/uKPb/uodaQD
+         8AxP3jw+Rizj5yduUfBcJLMEjYyFU/oRP4hEZTgXSzLLIYPfHLrcEmi6g/seXqnivd/5
+         dFIQ==
+X-Received: by 10.49.71.225 with SMTP id y1mr1444qeu.31.1381831103232;
+        Tue, 15 Oct 2013 02:58:23 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.87.36 with SMTP id u4ls36114qez.56.gmail; Tue, 15 Oct 2013
+ 02:58:22 -0700 (PDT)
+X-Received: by 10.49.76.38 with SMTP id h6mr143535qew.9.1381831102897;
+        Tue, 15 Oct 2013 02:58:22 -0700 (PDT)
+Date: Tue, 15 Oct 2013 02:58:22 -0700 (PDT)
+From: Maurizio De Santis <desantis.maurizio@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <5bb5172b-6d37-4f09-b120-6fbed8f6d5ca@googlegroups.com>
+Subject: [ruby-ffi] Best way to handle constants
+MIME-Version: 1.0
+X-Original-Sender: desantis.maurizio@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_96_24134170.1381831102569"
+
+------=_Part_96_24134170.1381831102569
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello,
+
+I'm writing a wrapper for libgtop2 using ruby-ffi. I would like to read 
+some constants (mainly version, in order to warn the user about having 
+installed the right version). I have some doubts:
+
+   - FFI::ConstGenerator seems to be not so popular between projects using 
+   ffi. I'm trying to use it and I found that probably its disadvantage is 
+   that you have to specify cppflags in order to make it work; for example on 
+   my machine I have to use it in this way to make it work:
+
+    cg = FFI::ConstGenerator.new('libgtop-2.0', cppflags: 
+'-I/usr/include/libgtop-2.0 -I/usr/include/glib-2.0 
+-I/usr/lib/x86_64-linux-gnu/glib-2.0/include') do |gen|
+      gen.include 'glibtop.h'
+      gen.const(:LIBGTOP_MAJOR_VERSION)
+      gen.const(:LIBGTOP_MINOR_VERSION)
+      gen.const(:LIBGTOP_MICRO_VERSION)
+    end
+    puts cg.to_ruby
+
+It seems to me that cppflags value is strongly dependent from the 
+environment (OS and user customizations). Maybe reading LD configurations 
+could help, but I'm not skilled in C-C++ management, so I'm pretty unsure 
+about it.
+
+   - Are there any other advantages/disadvantages I didn't consider? Do you 
+   have suggestions about how to mitigate these issues, or alternatives to 
+   FFI::ConstGenerator?
+
+Thank you
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_96_24134170.1381831102569
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<br><br>I'm writing a wrapper for libgtop2 using rub=
+y-ffi. I would like to read some constants (mainly version, in order to war=
+n the user about having installed the right version). I have some doubts:<b=
+r><ul><li>FFI::ConstGenerator seems to be not so popular between projects u=
+sing ffi. I'm trying to use it and I found that probably its disadvantage i=
+s that you have to specify cppflags in order to make it work; for example o=
+n my machine I have to use it in this way to make it work:</li></ul><p><spa=
+n style=3D"font-family: courier new,monospace;">&nbsp;&nbsp;&nbsp; cg =3D F=
+FI::ConstGenerator.new('libgtop-2.0', cppflags: '-I/usr/include/libgtop-2.0=
+ -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include') do =
+|gen|<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gen.include 'glibtop.h'<br>&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp; gen.const(:LIBGTOP_MAJOR_VERSION)<br>&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp; gen.const(:LIBGTOP_MINOR_VERSION)<br>&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp; gen.const(:LIBGTOP_MICRO_VERSION)<br>&nbsp;&nbsp;&nbsp; end<br>&nb=
+sp;&nbsp;&nbsp; puts cg.to_ruby</span></p><p style=3D"margin-left: 40px;">I=
+t seems to me that cppflags value is strongly dependent from the environmen=
+t (OS and user customizations). Maybe reading LD configurations could help,=
+ but I'm not skilled in C-C++ management, so I'm pretty unsure about it.<br=
+></p><ul><li>Are there any other advantages/disadvantages I didn't consider=
+? Do you have suggestions about how to mitigate these issues, or alternativ=
+es to FFI::ConstGenerator?</li></ul><p>Thank you<br></p></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_96_24134170.1381831102569--

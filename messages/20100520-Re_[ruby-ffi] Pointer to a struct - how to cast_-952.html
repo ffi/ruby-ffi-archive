@@ -1,0 +1,47 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>DA <drew.avis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 2:04 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, May 20, 2010 at 2:48 PM, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>That looks kind of funky to me. In the F_TextItemsT C struct, it shows *val which is just a single pointer. There is no array of pointers to read from at that location. I believe the syntax for arrays of pointers are more like:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>struct {
+<span class="moz-txt-citetags">&gt; </span> int len;
+<span class="moz-txt-citetags">&gt; </span> item_t **list;
+<span class="moz-txt-citetags">&gt; </span>}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Note the double-asterisk.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Have you written this in C to see how to get each F_TextItemT?
+</pre></blockquote><pre wrap>
+
+Hi Chuck, you're right, that pointer is for an array of F_TextItemT,
+<b class="moz-txt-star"><span class="moz-txt-tag">*</span>not<span class="moz-txt-tag">*</span></b> an array of pointers to F_TextItemT.
+
+The c code looks like this:
+
+tis = F_ApiGetText(docId, flowId, FTI_String | FTI_LineEnd);
+/* Traverse text items and print strings and line ends. */
+for (i=0; i&lt;tis.len; i++)
+{
+ip = &amp;tis.val[i];
+if (ip-&gt;dataType == FTI_String)
+F_Printf(NULL,"%s", ip-&gt;u.sdata);
+else F_Printf(NULL,"\n");
+}
+
+So I guess I need the equivalent of "get_array_of_struct"?  I can't
+find an example for this case (array of struct) on the wiki.  Any
+ideas?
+
+Thanks,
+Drew
+</pre></div></body>
+</html>
+</table></div>

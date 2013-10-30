@@ -1,0 +1,216 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.47.194 with SMTP id f2csp38841obn;
+        Thu, 5 Apr 2012 17:14:39 -0700 (PDT)
+Received: by 10.216.132.229 with SMTP id o79mr2758917wei.64.1333671278052;
+        Thu, 05 Apr 2012 17:14:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJHz69weEOnq-PsEGgREE1Cd@googlegroups.com>
+Received: from mail-we0-f190.google.com (mail-we0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTPS id v6si5310966weq.146.2012.04.05.17.14.37
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 17:14:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJHz69weEOnq-PsEGgREE1Cd@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJHz69weEOnq-PsEGgREE1Cd@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCJHz69weEOnq-PsEGgREE1Cd@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by werc1 with SMTP id c1sf2207164wer.7
+        for <headius@headius.com>; Thu, 05 Apr 2012 17:14:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=UxMFCRjnrEO8wTO9FX3xnK1yy3nrM7qMYcVAogI68U4=;
+        b=rfMQBsMd3oZ53Umue2L4za1AsiAstZDzQS6np0bccgKaelemWU78UVDviT3ebp2aIp
+         pFjD3FdX4ou6QB9lbIi/V6J2xLADXFRyRHkTU0wBp7Bfsdeci68aC2TBrwAa1IS82oQN
+         pUjN0TLyEqR7LLDe0ZVFeQWx3jVnPGrzVfyDM=
+Received: by 10.180.84.197 with SMTP id b5mr1051221wiz.3.1333671273501;
+        Thu, 05 Apr 2012 17:14:33 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.211.195 with SMTP id w45ls2701236weo.5.gmail; Thu, 05 Apr
+ 2012 17:14:32 -0700 (PDT)
+Received: by 10.180.104.163 with SMTP id gf3mr1464656wib.0.1333671272954;
+        Thu, 05 Apr 2012 17:14:32 -0700 (PDT)
+Received: by 10.180.104.163 with SMTP id gf3mr1464655wib.0.1333671272932;
+        Thu, 05 Apr 2012 17:14:32 -0700 (PDT)
+Received: from mail-wi0-f169.google.com (mail-wi0-f169.google.com [209.85.212.169])
+        by gmr-mx.google.com with ESMTPS id ga1si307528wib.2.2012.04.05.17.14.32
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 17:14:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mallluhuct@gmail.com designates 209.85.212.169 as permitted sender) client-ip=209.85.212.169;
+Received: by wibhm17 with SMTP id hm17so213286wib.2
+        for <ruby-ffi@googlegroups.com>; Thu, 05 Apr 2012 17:14:32 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.180.106.9 with SMTP id gq9mr7584668wib.17.1333671272799; Thu,
+ 05 Apr 2012 17:14:32 -0700 (PDT)
+Received: by 10.180.105.73 with HTTP; Thu, 5 Apr 2012 17:14:32 -0700 (PDT)
+In-Reply-To: <27277479.32.1333668702207.JavaMail.geo-discussion-forums@pbcoy7>
+References: <14fe67cd-34b3-400f-aaf1-e1ef26d76661@vy8g2000pbc.googlegroups.com>
+	<27277479.32.1333668702207.JavaMail.geo-discussion-forums@pbcoy7>
+Date: Thu, 5 Apr 2012 17:14:32 -0700
+Message-ID: <CAKVp7b0pMnd+qOTCcv7kQE9pRfvv7YHsxyGmwbD3ti+X33G5Fg@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Ruby FFI to C to Ruby FFI to C
+From: Bulat Shakirzyanov <mallluhuct@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: mallluhuct@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of mallluhuct@gmail.com designates 209.85.212.169 as permitted sender)
+ smtp.mail=mallluhuct@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=f46d04451a15765d7204bcf78af1
+
+--f46d04451a15765d7204bcf78af1
+Content-Type: text/plain; charset=ISO-8859-1
+
+This worked, thanks a lot!
+
+On Thu, Apr 5, 2012 at 4:31 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+> From a quick look, it looks like a struct-by-value problem.
+>
+> i.e. uv_buf_init() returns a uv_buf_t by value, but you declare it to
+> return a :pointer.
+>
+> You'll need to find the layout of uv_buf_t and recreate it in FFI, then
+> use it as the return value.
+> e.g.
+>
+> if FFI::Platform.windows?
+>  # win32 has a different uv_buf_t layout to everything else.
+>   class UvBuf < FFI::Struct
+>     layout :len, :ulong, :base, :pointer
+>   end
+> else
+>   class UvBuf < FFI::Struct
+>     layout :base, :pointer, :len, :size_t
+>   end
+> end
+>
+> Then use UvBuf.by_value in place of uv_buf_t ... you can probably do that
+> with typedef like you've done everything else, since uv seems to only use
+> that struct by value (but you'll want to double check).
+>
+> typedef UvBuf.by_value, :uv_buf_t
+>
+>
+>
+>
+> On Friday, April 6, 2012 7:50:55 AM UTC+10, avalanche123 wrote:
+>>
+>> Hello,
+>>
+>> I'm working on libuv ffi bindings for Ruby and have an issue I can't
+>> understand
+>>
+>> Libuv needs an allocated buffer it can write to, here is a gist of
+>> code https://gist.github.com/**2313277 <https://gist.github.com/2313277>that has my ruby module and usage
+>> examples both in C and Ruby
+>> The C example works fine, while ruby makes Libuv raise EINVAL. I've
+>> used some basic debugging and figured out that the buffer len than
+>> comes from Ruby is 140735085305696
+>> instead of 128, as can be seen from shell outputs examples I've added
+>> to the gist. I've also added relevant pieces of Libuv to the gist,
+>> specifically uv_buf_init that is
+>> responsible for creating uv_buf_t and part of libuv's uv__read that is
+>> responsible for using it.
+>>
+>> From my debugging it looks like a corrupted uv_buf_t memory comes back
+>> from Ruby, making libuv believe beffer's len attribute is
+>> 140735085305696 bytes long.
+>>
+>> I will appreciate any feedback as I've been struggling with this for a
+>> while.
+>>
+>> Best,
+>> Bulat
+>
+>
+
+
+-- 
+*Bulat Shakirzyanov* | Software Alchemist
+
+*a: *about.me/avalanche123
+*e:* mallluhuct@gmail.com
+
+--f46d04451a15765d7204bcf78af1
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+This worked, thanks a lot!<br><br><div class=3D"gmail_quote">On Thu, Apr 5,=
+ 2012 at 4:31 PM, Wayne Meissner <span dir=3D"ltr">&lt;<a href=3D"mailto:wm=
+eissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc soli=
+d;padding-left:1ex">
+ From a quick look, it looks like a struct-by-value problem.<div><br></div><=
+div>i.e. uv_buf_init() returns a uv_buf_t by value, but you declare it to r=
+eturn a :pointer.</div><div><br></div><div>You&#39;ll need to find the layo=
+ut of uv_buf_t and recreate it in FFI, then use it as the return value.</di=
+v>
+<div>e.g.</div><div><br></div><div>if FFI::Platform.windows?</div><div>=A0#=
+ win32 has a different uv_buf_t layout to everything else.</div><div><div>=
+=A0 class UvBuf &lt; FFI::Struct</div><div>=A0 =A0 layout :len, :ulong, :ba=
+se, :pointer</div>
+<div>=A0 end</div></div><div>else=A0</div><div>=A0 class UvBuf &lt; FFI::St=
+ruct</div><div>=A0 =A0 layout :base, :pointer, :len, :size_t</div><div>=A0 =
+end</div><div>end</div><div><br></div><div>Then use UvBuf.by_value in place=
+ of uv_buf_t ... you can probably do that with typedef like you&#39;ve done=
+ everything else, since uv seems to only use that struct by value (but you&=
+#39;ll want to double check).</div>
+<div><br></div><div>typedef UvBuf.by_value, :uv_buf_t</div><div class=3D"HO=
+EnZb"><div class=3D"h5"><div><br></div><div><br></div><div><br></div><div><=
+br>On Friday, April 6, 2012 7:50:55 AM UTC+10, avalanche123 wrote:<blockquo=
+te class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+Hello,
+<br>
+<br>I&#39;m working on libuv ffi bindings for Ruby and have an issue I can&=
+#39;t
+<br>understand
+<br>
+<br>Libuv needs an allocated buffer it can write to, here is a gist of
+<br>code <a href=3D"https://gist.github.com/2313277" target=3D"_blank">http=
+s://gist.github.com/<u></u>2313277</a> that has my ruby module and usage
+<br>examples both in C and Ruby
+<br>The C example works fine, while ruby makes Libuv raise EINVAL. I&#39;ve
+<br>used some basic debugging and figured out that the buffer len than
+<br>comes from Ruby is 140735085305696
+<br>instead of 128, as can be seen from shell outputs examples I&#39;ve add=
+ed
+<br>to the gist. I&#39;ve also added relevant pieces of Libuv to the gist,
+<br>specifically uv_buf_init that is
+<br>responsible for creating uv_buf_t and part of libuv&#39;s uv__read that=
+ is
+<br>responsible for using it.
+<br>
+<br>From my debugging it looks like a corrupted uv_buf_t memory comes back
+<br>from Ruby, making libuv believe beffer&#39;s len attribute is
+<br>140735085305696 bytes long.
+<br>
+<br>I will appreciate any feedback as I&#39;ve been struggling with this fo=
+r a
+<br>while.
+<br>
+<br>Best,
+<br>Bulat</blockquote></div></div></div></blockquote></div><br><br clear=3D=
+"all"><div><br></div>-- <br><b>Bulat Shakirzyanov</b> | <font color=3D"#999=
+999">Software Alchemist</font><div><font color=3D"#999999"><br></font></div=
+>
+<div><div><font face=3D"&#39;courier new&#39;, monospace"><b>a:=A0</b><a hr=
+ef=3D"http://about.me/avalanche123" target=3D"_blank">about.me/avalanche123=
+</a></font></div><div><span style=3D"font-family:&#39;courier new&#39;,mono=
+space"><b>e:</b>=A0<a href=3D"mailto:mallluhuct@gmail.com" target=3D"_blank=
+">mallluhuct@gmail.com</a></span></div>
+</div><br>
+
+--f46d04451a15765d7204bcf78af1--

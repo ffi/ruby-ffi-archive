@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor (Raspberry PI)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/25/13 3:49 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div><br></div>Off the top of my head, a couple of issues could be:<div><br></div><div>1) data sizes/layout. &nbsp;Verify that the sizes of all your FFI structs match the C ones, and that the sizes &amp; offsets of members match.</div><div><br></div><div>2) Given it only crashes on exit, it could be some sort of GC/finalizer interaction. &nbsp;Set all the MemoryPointer instances, including the ones backing the structs to autorelease=false - this causes FFI to disown the memory, so it won't try to free it.</div><div><br></div><div>Do the same for any strings you pass in to the API - :string parameters in particular could be a problem if the library persists the pointer passed in instead of copying the string contents - :string params are temporary - the memory allocated only lasts until the function returns.</div><div><br></div><div>3) Endian-ness issues in ruby-ffi itself. &nbsp;Is that arm arch big-endian or little-endian?<br><br>On Monday, 25 February 2013 00:24:00 UTC+10, Kim Burgestrand  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">I’ve been having some issues running one of my gems (<a href="http://rubygems.org/gems/spotify" target="_blank">http://rubygems.org/gems/<wbr>spotify</a>) successfully on Raspberry PI, using the soft float debian “weezy” OS, downloadable from&nbsp;<a href="http://www.raspberrypi.org/downloads" target="_blank">http://www.raspberrypi.<wbr>org/downloads</a> on cruby 1.9.3 (ruby 1.9.3p385 (2013-02-06 revision 39114) [armv6l-linux-eabi]).<div><br></div><div>I’ve been troubleshooting some, and created one example written in C, and one equivalent example written in Ruby using FFI. My suspicion was that they would behave identically, but the ruby code will sometimes segfault on exit, while the C code does not.</div><div><br></div><div>Now, I’m not entirely certain that the two examples are completely equivalent, so I’d be grateful for any pair of critical eyes on the two code samples:&nbsp;<a href="https://gist.github.com/Burgestrand/7b691591af20c29d6849" target="_blank">https://gist.github.<wbr>com/Burgestrand/<wbr>7b691591af20c29d6849</a></div><div><br></div><div>My questions are:</div><div><br></div><div>1. Are the two (C vs. Ruby) samples really equivalent?</div><div>2. Any ideas for further troubleshooting?</div><div><br></div><div>— Kim</div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

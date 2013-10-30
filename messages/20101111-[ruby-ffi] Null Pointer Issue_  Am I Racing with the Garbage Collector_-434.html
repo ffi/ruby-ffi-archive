@@ -1,0 +1,28 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Null Pointer Issue?  Am I Racing with the Garbage Collector?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Null Pointer Issue?  Am I Racing with the Garbage Collector?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Scott Gonyea <gonyea@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/10 11:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+<a class="moz-txt-link-freetext" href="https://gist.github.com/673753">https://gist.github.com/673753</a>
+
+That will show you the script I'm running, the gdb backtrace, and ruby-
+prof (if that helps at all).  I basically was benchmarking my library
+with the one I started branching from.  It's all good, until I start
+running a whole lot of iterations.  I made some changes, which seems
+to have made it less frequent... until I up the number of iterations.
+
+<a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c2337b1adff21d00#comments">https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c2337b1adff21d00#comments</a>
+
+That was the one fix.  This GSolr junk of mine uses StreamlyFFI and
+CurlFFI:
+
+StreamlyFFI: <a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi">https://github.com/aitrus/streamly_ffi</a>
+CurlFFI: <a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi">https://github.com/aitrus/curl_ffi</a>
+
+Scott
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,148 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.21.132 with SMTP id v4csp49272lbe;
+        Thu, 31 Jan 2013 15:06:36 -0800 (PST)
+X-Received: by 10.68.223.135 with SMTP id qu7mr26801370pbc.134.1359673595900;
+        Thu, 31 Jan 2013 15:06:35 -0800 (PST)
+Return-Path: <ruby-ffi+bncBC3IV6FRS4ERB6PRVOEAKGQE56IBK6Q@googlegroups.com>
+Received: from mail-pb0-f62.google.com (mail-pb0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id vy7si5797704pbc.336.2013.01.31.15.06.35
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 31 Jan 2013 15:06:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBC3IV6FRS4ERB6PRVOEAKGQE56IBK6Q@googlegroups.com designates 209.85.160.62 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBC3IV6FRS4ERB6PRVOEAKGQE56IBK6Q@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncBC3IV6FRS4ERB6PRVOEAKGQE56IBK6Q@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-pb0-f62.google.com with SMTP id xa12sf1335841pbc.27
+        for <headius@headius.com>; Thu, 31 Jan 2013 15:06:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=Ih9E7zz5+F2oQl1J/aUBpkNuQUyjN8hhZq+NHRBAVFs=;
+        b=LdRS6HvBzAhzClb17crOuuvTU05eBgV1/lnlJjaIrgW+GE8aAO7geHNEyTgC6B+AzT
+         /ZleXxKac0APR0vnSnsis2difuyQkzHYTWtQUtSYwGT+GQwozadLihETymAy8izih2Ul
+         UDXZ52R6qu0Lix1btZzJEXYYjD8762P77F7QmbTRC4avjO9/uTy4/aRzlBKKZwAQyrz1
+         kmtjZjRIEWa+4fYAzLs9HmTS6JOmaLFOPFbcc2OHx5BvAncNhLZRZPstdsrDnN/ED/cR
+         ljftVMRJFP8Dd/X3tOfOKkFj0drlAl80f9l9YXXY3IF0tbUYD4Ge4EC2l1ecLwGnFtWf
+         IB6w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=Ih9E7zz5+F2oQl1J/aUBpkNuQUyjN8hhZq+NHRBAVFs=;
+        b=T+u15y5BoRzekjt5Bdy9/nFR/8A3jvBlMDfPSUlTZX6d02ATQEdDyRUOJvjB1XNib+
+         PV23VkGBy9EskMofS86A8HWl8Tuov5opbzyGtI4BmdXWF5ddIv4voFUgJTA/jlV5CdgY
+         fDE6nd27nPn385fOYvI2Daf7kj7pnRC0TaOAGyM2MJ0EyrMlYrgquv1S/wEZ0huuX9N2
+         GYnOlocL6h5IRvSP+XQvbs3Cl9qB+lnmpwgTxvAiYrE4lXfkH/JNMCbYmCVhGYyetZNU
+         jWqZW/v+HsvBP0Wqjr40EogHppwDgDz5wBhm+7ACKArqH9Kvv1l6vjSHb3YYUn/Ob89g
+         ad+g==
+X-Received: by 10.49.94.129 with SMTP id dc1mr1051985qeb.22.1359673594812;
+        Thu, 31 Jan 2013 15:06:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.50.98 with SMTP id b2ls1026274qeo.19.gmail; Thu, 31 Jan
+ 2013 15:06:33 -0800 (PST)
+X-Received: by 10.224.17.140 with SMTP id s12mr5229185qaa.3.1359673593804;
+        Thu, 31 Jan 2013 15:06:33 -0800 (PST)
+Received: by 10.224.181.20 with SMTP id bw20msqab;
+        Thu, 31 Jan 2013 12:21:44 -0800 (PST)
+X-Received: by 10.49.71.135 with SMTP id v7mr1038614qeu.28.1359663704701;
+        Thu, 31 Jan 2013 12:21:44 -0800 (PST)
+Date: Thu, 31 Jan 2013 12:21:44 -0800 (PST)
+From: Rob Marshall <rob.marshall17@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <b651d38f-66fa-4ac1-bd6b-3dda3b4d7d40@googlegroups.com>
+Subject: [ruby-ffi] attach_function syntax when input args are pointers to
+ contain return values
+MIME-Version: 1.0
+X-Original-Sender: rob.marshall17@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_770_31369753.1359663704336"
+
+------=_Part_770_31369753.1359663704336
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+My guess is that this has been asked before, but I didn't find it...not 
+exactly sure what to search for...
+
+Anyway, I am trying to attach functions that return :void but use the input 
+parameters to hold the return values. e.g. A function that gets a value and 
+returns it as a string and length. So say my C-function declaration is:
+
+void GetMyString(const long reference, char *buffer, int *size)
+
+My guess, and I'm sure it doesn't work because I tried it, was to do:
+
+buffer = FFI::MemoryPointer.new(:char, 256)
+size = FFI::MemoryPointer.new(:int,1)
+attach_function :GetMyString, [ :long, buffer, size ], :void
+
+I got a "can't resolve type" error when I tried that.
+
+What's the correct way to do it?
+
+Thanks,
+
+Rob
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_770_31369753.1359663704336
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi,<div><br></div><div>My guess is that this has been asked before, but I d=
+idn't find it...not exactly sure what to search for...</div><div><br></div>=
+<div>Anyway, I am trying to attach functions that return :void but use the =
+input parameters to hold the return values. e.g. A function that gets a val=
+ue and returns it as a string and length. So say my C-function declaration =
+is:</div><div><br></div><div>void GetMyString(const long reference, char *b=
+uffer, int *size)</div><div><br></div><div>My guess, and I'm sure it doesn'=
+t work because I tried it, was to do:</div><div><br></div><div>buffer =3D F=
+FI::MemoryPointer.new(:char, 256)</div><div>size =3D FFI::MemoryPointer.new=
+(:int,1)</div><div>attach_function :GetMyString, [ :long, buffer, size ], :=
+void</div><div><br></div><div>I got a "can't resolve type" error when I tri=
+ed that.</div><div><br></div><div>What's the correct way to do it?</div><di=
+v><br></div><div>Thanks,</div><div><br></div><div>Rob</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_770_31369753.1359663704336--

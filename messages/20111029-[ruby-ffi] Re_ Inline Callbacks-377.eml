@@ -1,0 +1,84 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs9549igc;
+        Sat, 29 Oct 2011 18:07:10 -0700 (PDT)
+Received: by 10.68.72.73 with SMTP id b9mr13642935pbv.100.1319936828688;
+        Sat, 29 Oct 2011 18:07:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC4xrL1BBoE-jUjnA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id x7si1224298pbe.264.2011.10.29.18.07.08
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 29 Oct 2011 18:07:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC4xrL1BBoE-jUjnA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC4xrL1BBoE-jUjnA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBC4xrL1BBoE-jUjnA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk37 with SMTP id 37sf8850226pzk.7
+        for <headius@headius.com>; Sat, 29 Oct 2011 18:07:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=HnrN+alQ1DRQTjj+MYnv8DsXKthyz7s+dOYDPsQfCIk=;
+        b=XSbmoNbolyrxJSH5o1l6L49pD7UnkXMBVI5L8f6/jjgVPfa1krUjrAIyqJLm8WORTt
+         AESm5EmjJJs9Pb5ZdE3p5fWHnXoVmFWQ6Z+6IHzEj5V3Pgc6mgdO5bKJZqwkbwhwpTJC
+         gAnXrFRUXarHUwmKZeWRtJVhlr7UIZwB8rhRU=
+Received: by 10.68.25.232 with SMTP id f8mr945302pbg.2.1319936824675;
+        Sat, 29 Oct 2011 18:07:04 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.12.106 with SMTP id x10ls11330781pbb.3.gmail; Sat, 29 Oct
+ 2011 18:07:04 -0700 (PDT)
+Received: by 10.68.12.163 with SMTP id z3mr293216pbb.10.1319936824326;
+        Sat, 29 Oct 2011 18:07:04 -0700 (PDT)
+Date: Sat, 29 Oct 2011 18:07:03 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <8622166.1035.1319936823940.JavaMail.geo-discussion-forums@prep8>
+In-Reply-To: <CAD_Zexq+S2gvRYE741XPkz=LUg3PinAPyWzmz1_BMJ07O7H5aA@mail.gmail.com>
+References: <CAD_Zexq+S2gvRYE741XPkz=LUg3PinAPyWzmz1_BMJ07O7H5aA@mail.gmail.com>
+Subject: [ruby-ffi] Re: Inline Callbacks
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1034_18142306.1319936823939"
+
+------=_Part_1034_18142306.1319936823939
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Blocks-as-callbacks work only for the case where there is exactly one 
+callback parameter specified for the function, when the function is called 
+with a block, and the number of arguments passed is one less than the 
+number specified, then pass the block as the callback.
+
+Its in Call.c, line 86.
+
+Not supported for varargs functions.
+
+
+
+
+
+------=_Part_1034_18142306.1319936823939
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>Blocks-as-callbacks work only for the case where there is exactly one callback parameter specified for the function, when the function is called with a block, and the number of arguments passed is one less than the number specified, then pass the block as the callback.</div><div><br></div><div>Its in Call.c, line 86.</div><div><br></div><div>Not supported for varargs functions.</div><div><br></div><div><br></div><div><br></div><div><br></div>
+------=_Part_1034_18142306.1319936823939--

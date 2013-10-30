@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: extconf.rb typo?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: extconf.rb typo?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/14/09 8:54 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Wed, Oct 14, 2009 at 10:14 AM, Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Should line 21 in ext/ffi_c/extconf.rb
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>mf.puts "FFI_MMAP_EXEC=-DFFI_MMAP_EXEC_WRIT=#{Config::CONFIG['host_os'] =~ /(win32|mingw)/ ? 0 : 1}"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>use <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>mswin|mingw<span class="moz-txt-tag">/</span></i> instead of /(win32|mingw)/
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+That is correct, the issue become a problem when Ruby is x86_64 (x64-mswin64_80)
+
+The proper evaluation should be mswin or mingw, since mingw can be 64
+bits too (working on that).
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

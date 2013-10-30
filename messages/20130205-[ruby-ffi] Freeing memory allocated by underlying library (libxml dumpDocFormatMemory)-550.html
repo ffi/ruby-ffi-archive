@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Paul Hinze <paul.t.hinze@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/5/13 12:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Hi folks!<br><br>I'm trying to figure out how i'm supposed to free memory when i get a pointer to a string buffer allocated by my underlying library.<br><br>https://github.com/phinze/xml_security/blob/ebd1743f7ab493b6565137ace8d60ad3e5bac52b/lib/xml_security.rb#L216-L224<br><br>The docs for xmlDocDumpFormatMemory say it's my responsibility to free the allocated memory with xmlFree [1]. But if i try to call xmlFree on the ptr or the strptr i get segfaults, and MemoryPointer#free seems to not cork the leak.<br><br>Any guidance would be much appreciated,<br><br>Paul Hinze<br><br><br>[1] <a href="http://xmlsoft.org/html/libxml-tree.html#xmlDocDumpFormatMemory">http://xmlsoft.org/html/libxml-tree.html#xmlDocDumpFormatMemory</a><br><br><br>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

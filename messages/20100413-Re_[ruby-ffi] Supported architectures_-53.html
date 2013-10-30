@@ -1,0 +1,80 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Supported architectures?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Supported architectures?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/13/10 4:51 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+"Officially" (meaning what I'll try and debug) only i386 and x86_64
+are supported.  Other people have fixed up the ppc and ppc64 ports,
+but everything else is in the "waiting until someone cares enough to
+test it and fix what breaks".
+
+Depending on how much effort you want to put in, and given there are
+probably only a handful of people on those alternative arches, it
+might be best to just disable builds on them.  If someone complains
+enough about it not being there, let them fix it.
+
+The kfreebsd arches could conceivably be supported - FreeBSD should
+be, but that weird freebsd-kernel-with-gnu-libc setup might require an
+ifdef tweak.
+
+
+On 14 April 2010 03:12, micah <a class="moz-txt-link-rfc2396E" href="mailto:micaho@gmail.com">&lt;micaho@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>When I uploaded ffi to Debian, it was automatically sent to the Debian
+<span class="moz-txt-citetags">&gt; </span>buildd network, where a build was attempted on all the different
+<span class="moz-txt-citetags">&gt; </span>architectures that Debian supports. Many of these failed, a few of
+<span class="moz-txt-citetags">&gt; </span>them succeeded.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I will disable the builds on these failing architectures, but am
+<span class="moz-txt-citetags">&gt; </span>available to do anything to try and help debug the failures. What
+<span class="moz-txt-citetags">&gt; </span>architectures the project aims to support?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The ones that succeeded were: amd64, i386, powerpc, and sparc.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The ones that failed were: alpha, armel, hppa, ia64, mipsel, s390,
+<span class="moz-txt-citetags">&gt; </span>kfreebsd_amd64 and kfreebsd_i386.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The alpha, armel, hppa, ia64, mipsel, s390 architectures all had this
+<span class="moz-txt-citetags">&gt; </span>build error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cc -I. -I. -I/usr/lib/ruby/1.8/alpha-linux -I/build/buildd-libffi-
+<span class="moz-txt-citetags">&gt; </span>ruby_0.6.2debian-5-alpha-WnppY4/libffi-ruby-0.6.2debian/ext/ffi_c -
+<span class="moz-txt-citetags">&gt; </span>DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -mieee -fno-strict-aliasing -g -
+<span class="moz-txt-citetags">&gt; </span>g -O2  -fPIC   -c Platform.c
+<span class="moz-txt-citetags">&gt; </span>Platform.c:28:2: error: #error "Unknown cpu type"
+<span class="moz-txt-citetags">&gt; </span>Platform.c: In function 'rbffi_Platform_Init':
+<span class="moz-txt-citetags">&gt; </span>Platform.c:57: error: 'CPU' undeclared (first use in this function)
+<span class="moz-txt-citetags">&gt; </span>Platform.c:57: error: (Each undeclared identifier is reported only
+<span class="moz-txt-citetags">&gt; </span>once
+<span class="moz-txt-citetags">&gt; </span>Platform.c:57: error: for each function it appears in.)
+<span class="moz-txt-citetags">&gt; </span>make[1]: *** [Platform.o] Error 1
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>kfreebsd_amd64 and kfreebsd_i386 both gave this error:
+<span class="moz-txt-citetags">&gt; </span>make[1]: Entering directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+<span class="moz-txt-citetags">&gt; </span>kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c'
+<span class="moz-txt-citetags">&gt; </span>cc -I. -I. -I/usr/lib/ruby/1.8/x86_64-kfreebsd-gnu -I/build/buildd-
+<span class="moz-txt-citetags">&gt; </span>libffi-ruby_0.6.2debian-5-kfreebsd-amd64-gPYTzl/libffi-
+<span class="moz-txt-citetags">&gt; </span>ruby-0.6.2debian/ext/ffi_c -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -
+<span class="moz-txt-citetags">&gt; </span>fno-strict-aliasing -g -g -O2  -fPIC   -c Variadic.c
+<span class="moz-txt-citetags">&gt; </span>In file included from /usr/include/sys/types.h:217,
+<span class="moz-txt-citetags">&gt; </span>                from /usr/include/sys/param.h:42,
+<span class="moz-txt-citetags">&gt; </span>                from Variadic.c:28:
+<span class="moz-txt-citetags">&gt; </span>./endian.h:37:4: error: #error "Cannot determine the endian-ness of
+<span class="moz-txt-citetags">&gt; </span>this platform"
+<span class="moz-txt-citetags">&gt; </span>make[1]: *** [Variadic.o] Error 1
+<span class="moz-txt-citetags">&gt; </span>make[1]: Leaving directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+<span class="moz-txt-citetags">&gt; </span>kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt; </span>To unsubscribe, reply using "remove me" as the subject.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

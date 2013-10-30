@@ -1,0 +1,154 @@
+Delivered-To: headius@headius.com
+Received: by 10.151.157.14 with SMTP id j14cs155144ybo;
+        Tue, 13 Apr 2010 10:58:26 -0700 (PDT)
+Received: by 10.140.255.14 with SMTP id c14mr5803361rvi.270.1271181505410;
+        Tue, 13 Apr 2010 10:58:25 -0700 (PDT)
+Return-Path: <3vbDESwgKCH4dmgctpg0tgfjcv.eqotwd0-hhkiqqingitqwru.eqo@groups.bounces.google.com>
+Received: from mail-qy0-f153.google.com (mail-qy0-f153.google.com [209.85.221.153])
+        by mx.google.com with ESMTP id s9si3270608rvl.23.2010.04.13.10.58.23;
+        Tue, 13 Apr 2010 10:58:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3vbDESwgKCH4dmgctpg0tgfjcv.eqotwd0-hhkiqqingitqwru.eqo@groups.bounces.google.com designates 209.85.221.153 as permitted sender) client-ip=209.85.221.153;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3vbDESwgKCH4dmgctpg0tgfjcv.eqotwd0-hhkiqqingitqwru.eqo@groups.bounces.google.com designates 209.85.221.153 as permitted sender) smtp.mail=3vbDESwgKCH4dmgctpg0tgfjcv.eqotwd0-hhkiqqingitqwru.eqo@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk17 with SMTP id 17sf6032150qyk.11
+        for <headius@headius.com>; Tue, 13 Apr 2010 10:58:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:message-id:date
+         :from:user-agent:mime-version:to:cc:subject:references:in-reply-to
+         :x-scanned-by:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=nksVWimI+f9YT9Cv10ULq0gK8kEAhsSaHIMpnU80Plk=;
+        b=Wt5DI+JAfV/AjujX/FQqYc8FObbzkJOUIb2Q85IdwdE5yxS3gX4+1lGLBkWiSoKcaG
+         aBv+12bqru5C4Vyjo8Tv5EtskRhlPBhvaZX0wSqcZeWF3EVA/vxpLBdKrdxh1CoZ+ZHY
+         hhEkXEeeCmlBnrMM4o9NMwvKhW5K0lhkLDzhk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:cc:subject:references:in-reply-to:x-scanned-by
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=VfL2q8380RivnmFeUdcLgSifoTsBSstMIobp8Xr0cI/OqOg3tDqXyDGj/cq9APeANK
+         UACvpUGZSzkqziXxTLPFzRcHRV6Qp82eT4QpbIkTgmyfg5H7RwTm33+yAfuypwjb75Bi
+         HSfwMzJ/v2mY77QN4bPvjktlfp667wnxE8k9w=
+Received: by 10.229.43.91 with SMTP id v27mr199815qce.24.1271181501542;
+        Tue, 13 Apr 2010 10:58:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.50.82 with SMTP id y18ls22574qcf.1.p; Tue, 13 Apr 2010 
+	10:58:20 -0700 (PDT)
+Received: by 10.229.219.147 with SMTP id hu19mr417415qcb.4.1271181499825;
+        Tue, 13 Apr 2010 10:58:19 -0700 (PDT)
+Received: by 10.229.219.147 with SMTP id hu19mr417414qcb.4.1271181499799;
+        Tue, 13 Apr 2010 10:58:19 -0700 (PDT)
+Return-Path: <bkearney@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+        by gmr-mx.google.com with ESMTP id 19si845620qyk.5.2010.04.13.10.58.19;
+        Tue, 13 Apr 2010 10:58:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bkearney@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: from int-mx01.intmail.prod.int.phx2.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	by mx1.redhat.com (8.13.8/8.13.8) with ESMTP id o3DHwGPn002547
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=OK);
+	Tue, 13 Apr 2010 13:58:17 -0400
+Received: from ns3.rdu.redhat.com (ns3.rdu.redhat.com [10.11.255.199])
+	by int-mx01.intmail.prod.int.phx2.redhat.com (8.13.8/8.13.8) with ESMTP id o3DHwG0f025745;
+	Tue, 13 Apr 2010 13:58:16 -0400
+Received: from localhost.localdomain (vpn-11-55.rdu.redhat.com [10.11.11.55])
+	by ns3.rdu.redhat.com (8.13.8/8.13.8) with ESMTP id o3DHwGEF011029;
+	Tue, 13 Apr 2010 13:58:16 -0400
+Message-ID: <4BC4B16B.9070903@redhat.com>
+Date: Tue, 13 Apr 2010 14:01:15 -0400
+From: Bryan Kearney <bkearney@redhat.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.8) Gecko/20100301 Fedora/3.0.3-1.fc12 Thunderbird/3.0.3
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+CC: micah <micaho@gmail.com>
+Subject: Re: [ruby-ffi] Supported architectures?
+References: <863083a0-c4f8-4bbc-98e2-be07cf94bdf4@c36g2000yqm.googlegroups.com>
+In-Reply-To: <863083a0-c4f8-4bbc-98e2-be07cf94bdf4@c36g2000yqm.googlegroups.com>
+X-Scanned-By: MIMEDefang 2.67 on 10.5.11.11
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of bkearney@redhat.com designates 209.132.183.28 as permitted sender) 
+	smtp.mail=bkearney@redhat.com
+X-Original-Sender: bkearney@redhat.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f18a6e56e31352f
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/2feb7ee187a261ad
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+
+I was able to build on x86, x86_64, ppc, ppc64
+
+http://koji.fedoraproject.org/koji/buildinfo?buildID=161154
+
+-- bk
+
+On 04/13/2010 01:12 PM, micah wrote:
+> Hi all,
+>
+> When I uploaded ffi to Debian, it was automatically sent to the Debian
+> buildd network, where a build was attempted on all the different
+> architectures that Debian supports. Many of these failed, a few of
+> them succeeded.
+>
+> I will disable the builds on these failing architectures, but am
+> available to do anything to try and help debug the failures. What
+> architectures the project aims to support?
+>
+> The ones that succeeded were: amd64, i386, powerpc, and sparc.
+>
+> The ones that failed were: alpha, armel, hppa, ia64, mipsel, s390,
+> kfreebsd_amd64 and kfreebsd_i386.
+>
+> The alpha, armel, hppa, ia64, mipsel, s390 architectures all had this
+> build error:
+>
+> cc -I. -I. -I/usr/lib/ruby/1.8/alpha-linux -I/build/buildd-libffi-
+> ruby_0.6.2debian-5-alpha-WnppY4/libffi-ruby-0.6.2debian/ext/ffi_c -
+> DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -mieee -fno-strict-aliasing -g -
+> g -O2  -fPIC   -c Platform.c
+> Platform.c:28:2: error: #error "Unknown cpu type"
+> Platform.c: In function 'rbffi_Platform_Init':
+> Platform.c:57: error: 'CPU' undeclared (first use in this function)
+> Platform.c:57: error: (Each undeclared identifier is reported only
+> once
+> Platform.c:57: error: for each function it appears in.)
+> make[1]: *** [Platform.o] Error 1
+>
+> kfreebsd_amd64 and kfreebsd_i386 both gave this error:
+> make[1]: Entering directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+> kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c'
+> cc -I. -I. -I/usr/lib/ruby/1.8/x86_64-kfreebsd-gnu -I/build/buildd-
+> libffi-ruby_0.6.2debian-5-kfreebsd-amd64-gPYTzl/libffi-
+> ruby-0.6.2debian/ext/ffi_c -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -
+> fno-strict-aliasing -g -g -O2  -fPIC   -c Variadic.c
+> In file included from /usr/include/sys/types.h:217,
+>                   from /usr/include/sys/param.h:42,
+>                   from Variadic.c:28:
+> ./endian.h:37:4: error: #error "Cannot determine the endian-ness of
+> this platform"
+> make[1]: *** [Variadic.o] Error 1
+> make[1]: Leaving directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+> kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c
+>
+>
+>
+
+
+
+-- 
+To unsubscribe, reply using "remove me" as the subject.

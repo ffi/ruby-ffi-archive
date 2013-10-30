@@ -1,0 +1,66 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/1/10 7:04 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Wayne, sorry for top posting, using a limited device.
+
+If FFI is aiming 1.9.2 or bigger, then the rubygem spec needs to be
+tweaked to reflect that. I'm not against of ditching 1.8.x support,
+but just want to reduce painful support issues for users still using
+1.8.x
+
+
+On 12/1/10, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 2 December 2010 03:38, Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Understood and I think your darwinistic focus is a good choice. If the
+<span class="moz-txt-citetags">&gt;&gt; </span>mingw32 (fat or otherwise) binary is truly valued, patches should
+<span class="moz-txt-citetags">&gt;&gt; </span>eventually flow, right? <span class="moz-smiley-s3" title=";)"><span>;)</span></span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thats the theory I'm working under.
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I see what you mean re: Function.c.  Doing a "gem install ffi
+<span class="moz-txt-citetags">&gt;&gt; </span>--platform=ruby" using DevKit on 1.9.3dev errors out on
+<span class="moz-txt-citetags">&gt;&gt; </span>'async_cb_{mutex,cond,call,wait}' and then 'struct gvl_callback'.  I want
+<span class="moz-txt-citetags">&gt;&gt; </span>to look into it.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>It should be pretty straightforward to convert from pthread
+<span class="moz-txt-citetags">&gt; </span>conditionals and mutexes to the win32 equivalents.  The code isn't
+<span class="moz-txt-citetags">&gt; </span>doing a lot of tricky stuff, just putting stuff onto a queue,
+<span class="moz-txt-citetags">&gt; </span>signalling the queue processor and waiting for notification that the
+<span class="moz-txt-citetags">&gt; </span>task has completed.
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>As your focus appears to be 1.9.2+, are you thinking that future mingw32
+<span class="moz-txt-citetags">&gt;&gt; </span>binary gems will <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>not<span class="moz-txt-tag">_</span></span> be fat?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>It would be 1.9.2+ only.  The main reason to ditch 1.8.x, is the lack
+<span class="moz-txt-citetags">&gt; </span>of threading support - specifically, the ability to detect non-ruby
+<span class="moz-txt-citetags">&gt; </span>threads trying to call back up into ruby, and handle that situation
+<span class="moz-txt-citetags">&gt; </span>sanely.  This causes all sorts of strange errors.  FFI should
+<span class="moz-txt-citetags">&gt; </span>technically build and work fine on 1.8.x apart from that.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

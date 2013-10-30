@@ -1,0 +1,59 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct within a Struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct within a Struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/24/10 2:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 24 March 2010 15:31, Colby Gutierrez-Kraybill <a class="moz-txt-link-rfc2396E" href="mailto:colbygk@gmail.com">&lt;colbygk@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm attempting to make use of a library with methods that return a
+<span class="moz-txt-citetags">&gt; </span>struct by value and that struct contains another struct:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>spam_in_a_can_view s = windowShopping(); // note, not returning a
+<span class="moz-txt-citetags">&gt; </span>pointer
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>typedef struct
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span> size_t size;
+<span class="moz-txt-citetags">&gt; </span> double *data;
+<span class="moz-txt-citetags">&gt; </span>} spam_in_a_can;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>typedef struct
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span> spam_in_a_can can;
+<span class="moz-txt-citetags">&gt; </span>}  spam_in_a_can_view;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm not sure how to go about this (if it's possible) with FFI.  The
+<span class="moz-txt-citetags">&gt; </span>initial layout I would put down as:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class Spam_In_A_Can &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout :size, :size_t,
+<span class="moz-txt-citetags">&gt; </span>           :data, :pointer
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class Spam_In_A_Can_View &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span> layout :can, :pointer # ???
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+You simply use the struct subclass name as the type
+i.e.
+
+class Spam_In_A_Can_View &lt; FFI::Struct
+  layout :can, Spam_In_A_Can
+end
+
+The same also works for arrays of structs as members
+e.g.
+
+class Many_Cans_Of_Spam &lt; FFI::Struct
+  layout :spam_array, [ Spam_In_A_Can, 5 ]
+end
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

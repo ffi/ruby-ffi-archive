@@ -1,0 +1,182 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs63289fam;
+        Wed, 22 Dec 2010 11:53:17 -0800 (PST)
+Received: by 10.90.105.3 with SMTP id d3mr9137878agc.142.1293047596487;
+        Wed, 22 Dec 2010 11:53:16 -0800 (PST)
+Return-Path: <ruby-ffi+bncCJqzneqyHRCqrsnoBBoEDEXw5w@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id t1si21853190anp.54.2010.12.22.11.53.15;
+        Wed, 22 Dec 2010 11:53:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJqzneqyHRCqrsnoBBoEDEXw5w@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJqzneqyHRCqrsnoBBoEDEXw5w@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCJqzneqyHRCqrsnoBBoEDEXw5w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxk30 with SMTP id 30sf5599014yxk.7
+        for <headius@headius.com>; Wed, 22 Dec 2010 11:53:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=GI49ZkreFlF3/WzFC7A/M7rhxmGBtJOtRuOm2sY52es=;
+        b=OVD4LozOxdNHRivp6GBeYuENuZmjwrqFRWr5yYjRN+5P4Q9RFTzhOnRYIVDqsAxuXO
+         asS5W8Z/S1E5Siq6QIyiFB8suVizZSrG0EnMqNV8O25KJXyX/pHqGl/IyyfsIvKOtZvN
+         Yop6+7b8lx9+9R0mAXzgGHwoEoMjVaLYBYG0o=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=H+KDcVFTASC+fZSO87dH8g7xRhueUtRFPCDVZT+cCqZn7s3vAxYvdPN1ZOBgGihHXj
+         UsH02cmA3FmCyk43iV9TeaRKeIHi1wmeh78HWiGNqX1QN+z1NZn6YN//TBiTOPcUviD3
+         9yuEUkoEWSmJ0FXNY91Z5DOe7Ct6E1sGvZkLA=
+Received: by 10.150.149.20 with SMTP id w20mr677719ybd.3.1293047594400;
+        Wed, 22 Dec 2010 11:53:14 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.99.19 with SMTP id w19ls5335146ybb.0.p; Wed, 22 Dec 2010
+ 11:53:14 -0800 (PST)
+Received: by 10.150.50.14 with SMTP id x14mr1451155ybx.17.1293047593921;
+        Wed, 22 Dec 2010 11:53:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.90.72.3 with SMTP id u3mr388172aga.47.1293046696929; Wed, 22
+ Dec 2010 11:38:16 -0800 (PST)
+Received: by t8g2000prh.googlegroups.com with HTTP; Wed, 22 Dec 2010 11:38:15
+ -0800 (PST)
+Date: Wed, 22 Dec 2010 11:38:15 -0800 (PST)
+In-Reply-To: <3781F503-79D1-436D-B36F-47D9BD3E60AF@fallingsnow.net>
+X-IP: 76.95.29.3
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+ <20101130105256.d687602f.jon.forums@gmail.com> <AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+ <20101201123846.5c4724b5.jon.forums@gmail.com> <AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+ <AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+ <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+ <AANLkTimrfcA9i4vPkoiewHqEWZ4Uju_F60h=6jXbNTtC@mail.gmail.com> <3781F503-79D1-436D-B36F-47D9BD3E60AF@fallingsnow.net>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US)
+ AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.231 Safari/534.10,gzip(gfe)
+Message-ID: <90b5822b-9d7e-4dff-80c5-5021c530bb5c@t8g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: New release of FFI gem
+From: Mitchell Hashimoto <mitchell.hashimoto@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mitchell.hashimoto@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+I'm going to have to jump into this discussion as well. While I can't
+get any hard statistic, I think I'm one of the largest users of FFI,
+with the development of Vagrant, virtualbox bindings, and libvirt
+bindings. All the aforementioned projects are used in "enterprisey"
+environments, where the only company-bestowed Ruby installation is
+that which their current OS ships with its package manager.
+
+For Ubuntu users, this means that my corporate users are restricted to
+Ruby 1.8.7 for another year at least (until another LTS release is
+out). To support this, I've had to restrict FFI versions for my gems
+to "~> 0.6.3" I'm even currently struggling with a company interested
+in using my libvirt bindings, but they're restricting to Ruby 1.8.5!
+(RedHat Enterprise Linux 5) While I think thats a bit too far back, I
+think you get the idea.
+
+While I agree that Ruby 1.9.x adoption is improving and moving
+forward, there are important groups of people who simply _cant_ move
+forward, even if they wanted to, due to corporate policy.
+
+FFI is an important enough library for Ruby that this needs to be
+handled in a cleaner way.
+
+I'd love to help in any way I can. I've never written a C extension so
+my experience falls short there, but if I can provide testing (Vagrant/
+virtualbox _really_ stress FFI) or some other form of support, I'm
+happy to.
+
+Thanks for all your hard work so far.
+
+Best,
+Mitchell
+
+On Dec 22, 11:24=A0am, Evan Phoenix <e...@fallingsnow.net> wrote:
+> On Dec 22, 2010, at 11:16 AM, Charles Oliver Nutter wrote:
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> > On Fri, Dec 3, 2010 at 4:57 AM, Wayne Meissner <wmeiss...@gmail.com> wr=
+ote:
+> >>> If FFI is aiming 1.9.2 or bigger, then the rubygem spec needs to be
+> >>> tweaked to reflect that. I'm not against of ditching 1.8.x support,
+> >>> but just want to reduce painful support issues for users still using
+> >>> 1.8.x
+>
+> >> Agreed, and I just pushed a change the restricts it to >=3D 1.9.2
+>
+> >> I'm not against it still working on 1.8.7 - I'm just against:
+>
+> >> a) doing the work to make it work, and
+> >> b) dealing with issues when people try to run code that either
+> >> requires blocking threads, or non-ruby threads calling back into ruby.
+>
+> > I think it's premature to drop 1.8.7 support. The majority of Ruby
+> > users are still on 1.8.7, and that's not changing rapidly. There's
+> > also people with production apps and released libraries that depend on
+> > FFI.
+>
+> > I think we need to find a way to get support back in there ASAP.
+> > Perhaps that means we need to actively find someone to help Wayne
+> > maintain the FFI gem (or take over 1.8 support completely). If we
+> > don't have FFI for 1.8.7, it becomes substantially less useful as a
+> > cross-impl replacement for extensions.
+>
+> I agree. Sorry that I didn't chime in when 1.0.0 was released also, I got=
+ tied up with the Rubinius 1.2 release.
+>
+>
+>
+> > I appreciate the issues with blocking threads, but I think that's a
+> > peril for any C extension on 1.8.7. In other words...we punt, since
+> > there's no solution, and recommend people consider blocking calls when
+> > using libraries through FFI.
+>
+> I agree this, is a tricky problem that Wayne has done a great job support=
+ing. But I think that the difficulty in it points that it's just not possib=
+le to do properly with the architecture of 1.8. Not supporting callbacks on=
+ non-ruby threads seems like an OK compromise. Are there a lot of people us=
+ing this functionality?
+>
+>
+>
+> > Wayne: Can you summarize what's needed to get 1.8.7 support back in the=
+ gem?
+>
+> Wayne, in the past we've talked about me help with the gem development an=
+d API. I'm happy to start doing this in earnest.
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> > - Charlie

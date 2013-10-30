@@ -1,0 +1,19 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] [mingw] 1.1.6.pre1 install fail on Win7</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] [mingw] 1.1.6.pre1 install fail on Win7</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/29/12 7:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On both trunk@36849 and ruby_1_9_3@36834 during a gem install,
+1.1.6.pre1 fails to build on Win7 32bit using mingw.org gcc 4.6.2 due
+to missing `rbConventionStr` declaration in
+`ext/ffi_c/Variadic.c:variadic_initialize`.
+
+Adding a non-ifdef'd `VALUE rbConventionStr = Qnil;` makes everything sublime.
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

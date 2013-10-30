@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.10.131 with SMTP id p3cs17024bkp;
+        Fri, 5 Mar 2010 22:45:48 -0800 (PST)
+Received: by 10.143.24.15 with SMTP id b15mr1349319wfj.41.1267857947670;
+        Fri, 05 Mar 2010 22:45:47 -0800 (PST)
+Return-Path: <3GPqRSwkJCO8ndVZjjeViXdRZc.TfdilSp-WWZXffXcVXiflgj.Tfd@groups.bounces.google.com>
+Received: from mail-px0-f166.google.com (mail-px0-f166.google.com [209.85.216.166])
+        by mx.google.com with ESMTP id 37si8965431pzk.118.2010.03.05.22.45.46;
+        Fri, 05 Mar 2010 22:45:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3GPqRSwkJCO8ndVZjjeViXdRZc.TfdilSp-WWZXffXcVXiflgj.Tfd@groups.bounces.google.com designates 209.85.216.166 as permitted sender) client-ip=209.85.216.166;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3GPqRSwkJCO8ndVZjjeViXdRZc.TfdilSp-WWZXffXcVXiflgj.Tfd@groups.bounces.google.com designates 209.85.216.166 as permitted sender) smtp.mail=3GPqRSwkJCO8ndVZjjeViXdRZc.TfdilSp-WWZXffXcVXiflgj.Tfd@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi38 with SMTP id 38sf196596pxi.26
+        for <headius@headius.com>; Fri, 05 Mar 2010 22:45:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=6bka8vLAybJuIvnyW+GbHsNGRQnB9V7X02CfgBU4w3g=;
+        b=NOOfcKn5OtqTCEt09CtbAdyYphJSEEc05d59+9vnIMkBKY7oTD5umTbUBOnexeEf5o
+         n713VKHHoYFaChdRXCuNG3bS4WivZvq3FDuwXqmKWWvHmS77P/3kA9j5EgB/kcOE+odW
+         85fqKmy1jwFg67zyBFD5zWih8cn7SI1ozt0ao=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=T2xr5GOzzL7tAJeUOdeNHX+bVetiUP50gPMByz0xK/xzpyN+6wALiew1qxswmOCNdJ
+         llLi4BOwL2aA4q7E0DEBlVJdaYWrI1ACRK5zTMDx/iArPr1wVGSJWsEKmMpUb0yB+x4z
+         mZSCwK311hmUXF4EPI5Jr9zk6Xnv2TTuNdnDY=
+Received: by 10.114.251.36 with SMTP id y36mr125772wah.2.1267857944554;
+        Fri, 05 Mar 2010 22:45:44 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.214.33 with SMTP id m33ls933220wag.0.p; Fri, 05 Mar 2010 
+	22:45:43 -0800 (PST)
+Received: by 10.115.50.15 with SMTP id c15mr405333wak.26.1267857943020;
+        Fri, 05 Mar 2010 22:45:43 -0800 (PST)
+Received: by 10.115.50.15 with SMTP id c15mr405332wak.26.1267857942985;
+        Fri, 05 Mar 2010 22:45:42 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f172.google.com (mail-px0-f172.google.com [209.85.216.172])
+        by gmr-mx.google.com with ESMTP id 24si675334pzk.9.2010.03.05.22.45.41;
+        Fri, 05 Mar 2010 22:45:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.172 as permitted sender) client-ip=209.85.216.172;
+Received: by mail-px0-f172.google.com with SMTP id 2so759449pxi.4
+        for <ruby-ffi@googlegroups.com>; Fri, 05 Mar 2010 22:45:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.12.8 with SMTP id p8mr1276812rvi.160.1267857940800; Fri, 
+	05 Mar 2010 22:45:40 -0800 (PST)
+In-Reply-To: <876bd0f8-d66a-49da-91e4-69f1cb63e149@g7g2000yqe.googlegroups.com>
+References: <876bd0f8-d66a-49da-91e4-69f1cb63e149@g7g2000yqe.googlegroups.com>
+Date: Sat, 6 Mar 2010 16:45:40 +1000
+Message-ID: <4ccee321003052245q7f8c20adv661385d35dfcbffb@mail.gmail.com>
+Subject: Re: [ruby-ffi] Ruby 1.9.1 and Debian
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.216.172 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/e838bfb0d4948dd0
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/7ded44a66098e6c9
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On 6 March 2010 09:10, micah <micaho@gmail.com> wrote:
+> Hi,
+>
+> I have just uploaded the most recent release of FFI to Debian.
+>
+> I built it for both ruby1.8 and ruby1.9. I would have preferred to use
+> 1.9.1, but the ffi.rb has this contained in it:
+>
+> =A0elsif RUBY_VERSION =3D~ /1.9/
+> =A0 =A0require '1.9/ffi_c'
+>
+> The debian 1.9.1 packages would get installed under 1.9.1, so this
+> require would fail. Perhaps that is a good thing, can the FFI ruby
+> library work with 1.9.1, or is it 1.9 specific?
+
+That shouldn't affect you at all, unless debian is doing something
+broken like sharing gem installations between ruby versions.
+
+The 1.8 and 1.9 specific code is there for win32 fat binary support,
+and on everything else will fall thru to the "require 'ffi_c'" line.

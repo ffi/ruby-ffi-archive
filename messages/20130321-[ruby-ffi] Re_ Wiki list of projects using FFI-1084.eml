@@ -1,0 +1,145 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.148.3 with SMTP id to3csp45260lab;
+        Thu, 21 Mar 2013 02:29:34 -0700 (PDT)
+X-Received: by 10.224.173.147 with SMTP id p19mr9017679qaz.78.1363858173948;
+        Thu, 21 Mar 2013 02:29:33 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB7FFVOFAKGQEQYYYD4Q@googlegroups.com>
+Received: from mail-qe0-f60.google.com (mail-qe0-f60.google.com [209.85.128.60])
+        by mx.google.com with ESMTPS id u17si9607275qct.65.2013.03.21.02.29.33
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 21 Mar 2013 02:29:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7FFVOFAKGQEQYYYD4Q@googlegroups.com designates 209.85.128.60 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7FFVOFAKGQEQYYYD4Q@googlegroups.com designates 209.85.128.60 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB7FFVOFAKGQEQYYYD4Q@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qe0-f60.google.com with SMTP id a11sf940807qen.5
+        for <headius@headius.com>; Thu, 21 Mar 2013 02:29:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=DSTV4heN7LcudfPbtOxpI7baXsl4m+CaoULDFENZq5k=;
+        b=O9fgI/jqYDh+myq/xDUG2YrtSwp71gLM9MtoYwQFrVnC8kmrX8/IQrNEEn2cqacS8J
+         fiUDWtS611w2jKbtKhoH++RzLN21ajaOm3+iqIWLknyYNiF3T9tqOyoHVpOVBauVIrXw
+         uBSy1mfyY3L4e/ITD47sqQYTXz2cir+jyi0x2J50mPOspESx9Ph3UuzSH1kE1W6CpBJw
+         HM8AEJL+OQWx4ZoAVvw0JDjAAQws3edy3RUHpE0flRnWYCxGbrppnZd+FeRPK4skNqaq
+         vfxS2S8z/fyXxNc3bOEmluo5TK7m8umT2bP1rO65fbTzAQqtf9pZzz/ySf58Xfwtj9dq
+         DAVw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=DSTV4heN7LcudfPbtOxpI7baXsl4m+CaoULDFENZq5k=;
+        b=MwvUcoon1vdzZDK5Bxqk8il23In6Urg2Cyy52dkVIgBvER/59eFJ0m6GL2y8HcswZj
+         M236rfNFLSoQnEMoS9X5H+g+jfGCkzprDwXkVU/G5KreS2W4uCW0VSvEd0den1vzZA6d
+         85WNutXX5VJivVnnKH8iSSEp+vX/oeyAj50HGJADMjr5wSp6G0yKXhuuY2kdguGFSTLf
+         xmsdnepje2s96DYDKiXO8pSzvgXnUU1WZOHXvCNX+glP9pMC2x8+mquj+pDFtsiRNA0E
+         XvAYRGdtuTJnSM2gjaNzGi3Afd7WWn9YikC1dkAizfOkHPt7AhwruNQOWhaNAFrtilBm
+         Vi2g==
+X-Received: by 10.50.152.232 with SMTP id vb8mr363778igb.16.1363858173169;
+        Thu, 21 Mar 2013 02:29:33 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.202.72 with SMTP id kg8ls3086484igc.24.canary; Thu, 21 Mar
+ 2013 02:29:32 -0700 (PDT)
+X-Received: by 10.50.27.42 with SMTP id q10mr211692igg.1.1363858172773;
+        Thu, 21 Mar 2013 02:29:32 -0700 (PDT)
+Date: Thu, 21 Mar 2013 02:29:31 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <b0c2e962-bc6c-4910-83a2-deee463192ad@googlegroups.com>
+In-Reply-To: <9f512e1d-232b-484c-9eb4-01a199cda439@googlegroups.com>
+References: <9f512e1d-232b-484c-9eb4-01a199cda439@googlegroups.com>
+Subject: [ruby-ffi] Re: Wiki list of projects using FFI
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_417_19610646.1363858171819"
+
+------=_Part_417_19610646.1363858171819
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Fixed that one, thanks.
+
+The wiki used to be open, but there was some vandalism (which was fixed by=
+=20
+someone else, as a wiki should be), and since there weren't a lot of=20
+modifications happening (~1 per month), I turned off write access.
+
+On Thursday, 21 March 2013 17:47:04 UTC+10, Kim Burgestrand wrote:
+>
+> See here: https://github.com/ffi/ffi/wiki/Projects-Using-FFI
+>
+> The libspotify-ruby project has moved to=20
+> https://github.com/Burgestrand/spotify and is now just called `spotify`.=
+=20
+> Still heavily using FFI.
+>
+> I=92d update the list myself, but it appears to be closed from modificati=
+on=20
+> from non-collaborators.
+>
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_417_19610646.1363858171819
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+Fixed that one, thanks.<div><br></div><div>The wiki used to be open, but th=
+ere was some vandalism (which was fixed by someone else, as a wiki should b=
+e), and since there weren't a lot of modifications happening (~1 per month)=
+, I turned off write access.<br><br>On Thursday, 21 March 2013 17:47:04 UTC=
++10, Kim Burgestrand  wrote:<blockquote class=3D"gmail_quote" style=3D"marg=
+in: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Se=
+e here:&nbsp;<a href=3D"https://github.com/ffi/ffi/wiki/Projects-Using-FFI"=
+ target=3D"_blank">https://github.com/ffi/<wbr>ffi/wiki/Projects-Using-FFI<=
+/a><div><br></div><div>The libspotify-ruby project has moved to&nbsp;<a hre=
+f=3D"https://github.com/Burgestrand/spotify" target=3D"_blank">https://gith=
+ub.com/<wbr>Burgestrand/spotify</a> and is now just called `spotify`. Still=
+ heavily using FFI.</div><div><br></div><div>I=92d update the list myself, =
+but it appears to be closed from modification from non-collaborators.</div>=
+</blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_417_19610646.1363858171819--

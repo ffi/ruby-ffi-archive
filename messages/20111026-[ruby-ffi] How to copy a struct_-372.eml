@@ -1,0 +1,67 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.197.132 with SMTP id iu4cs12492igc;
+        Thu, 27 Oct 2011 03:06:20 -0700 (PDT)
+Received: by 10.150.220.9 with SMTP id s9mr31263643ybg.84.1319709980326;
+        Thu, 27 Oct 2011 03:06:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCM-78_jqChCa2qT1BBoEx0I8Iw@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id w1si2021509ane.127.2011.10.27.03.06.20
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 27 Oct 2011 03:06:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCM-78_jqChCa2qT1BBoEx0I8Iw@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCM-78_jqChCa2qT1BBoEx0I8Iw@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCM-78_jqChCa2qT1BBoEx0I8Iw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ggnj1 with SMTP id j1sf7966317ggn.7
+        for <headius@headius.com>; Thu, 27 Oct 2011 03:06:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=HdXrDEGNaE/L1eZ/oWGQCaedLHiWvHFXBUD6Ctx30Mc=;
+        b=v7PONEmh3x1ge3Y9dDLeCMCPh70LpKI40B+wBU6V5M8X8fRJ/SOGps6G0n/1l2sWh+
+         KLbSWiTLDGo1/ngcIjLumMFtQOnnQYHWIPgMcGNRTpOs2OR5/dKK64IhtQ2CZe2YYEzh
+         P4XH56oJ4rfncxRlNsc7gzr7kMYAty+HQ4N0I=
+Received: by 10.236.123.5 with SMTP id u5mr9190780yhh.11.1319709978765;
+        Thu, 27 Oct 2011 03:06:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.2.12 with SMTP id e12ls4934400ani.3.gmail; Thu, 27 Oct
+ 2011 03:06:18 -0700 (PDT)
+Received: by 10.101.192.27 with SMTP id u27mr6887883anp.18.1319709978253;
+        Thu, 27 Oct 2011 03:06:18 -0700 (PDT)
+Received: by 10.150.69.1 with SMTP id r1msyba;
+        Wed, 26 Oct 2011 21:50:42 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.236.77.37 with SMTP id c25mr9061960yhe.19.1319691042489; Wed,
+ 26 Oct 2011 21:50:42 -0700 (PDT)
+Received: by z28g2000pro.googlegroups.com with HTTP; Wed, 26 Oct 2011 21:50:42
+ -0700 (PDT)
+Date: Wed, 26 Oct 2011 21:50:42 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0,gzip(gfe)
+Message-ID: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+Subject: [ruby-ffi] How to copy a struct?
+From: cootcraig <craig@coot.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: craig@coot.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+What's a good way to copy a struct?
+
+I have one thread that creates a struct and then loops reading from a
+network socket into the struct.  I would like to copy the struct and
+have the copy handled in a separate thread.
+
+Thanks.

@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI 1.0.3 and Windows build issue with MRI trunk@30404</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI 1.0.3 and Windows build issue with MRI trunk@30404</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/27/10 9:11 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Using MRI 1.9.2-p136 I successfully install the 1.0.3 binary gem via
+
+C:\Users\Jon&gt;gem update ffi
+Updating installed gems
+Updating ffi
+Successfully installed ffi-1.0.3-x86-mingw32
+Gems updated: ffi
+
+
+But when I try to update using MRI 1.9.3dev (trunk@30404) I get the following failure. I don't have time to investigate further, but there appears to be two issues: (1) FFI fails to install a binary mingw32 gem when run on MRI 1.9.3dev, and (2) recent trunk configure.in mods (-Werror=declaration-after-statement) are leaking into, and breaking, the FFI gem build similar to the 0.7.9 curb gem breakage.
+
+I've commented on (2) in this ruby-core thread <a class="moz-txt-link-freetext" href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/33843">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/33843</a>  While I think the trunk mod is great for enforcing MRI core code consistency, I think it's a bad idea to leak this new build constraint into every native gem out there.  Whether you agree or disagree with my view, I think ruby-core needs more feedback on the topic before the mod gets backported to ruby_1_9_2.
+
+Or, if you agree with core, mod the FFI code to be strictly compliant with ISO C90 <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+
+C:\Users\Jon&gt;gem update ffi
+Updating installed gems
+Updating ffi
+Temporarily enhancing PATH to include DevKit...
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+        ERROR: Failed to build gem native extension.
+
+C:/ruby19trunk/bin/ruby.exe extconf.rb
+checking for rb_thread_blocking_region()... yes
+...
+compiling Function.c
+compiling FunctionInfo.c
+FunctionInfo.c: In function 'fntype_initialize':
+FunctionInfo.c:161:5: error: ISO C90 forbids mixed declarations and code
+
+
+# ext/ffi_c/FunctionInfo.c:161
+#if defined(_WIN32) || defined(__WIN32__)
+    VALUE rbConventionStr = rb_funcall2(rbConvention, rb_intern("to_s"), 0, NULL);
+
+
+Jon
+
+---
+<a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+</pre></div></body>
+</html>
+</table></div>

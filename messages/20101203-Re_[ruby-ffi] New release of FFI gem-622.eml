@@ -1,0 +1,103 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs39882faj;
+        Fri, 3 Dec 2010 03:02:57 -0800 (PST)
+Received: by 10.227.127.134 with SMTP id g6mr1705371wbs.54.1291374177231;
+        Fri, 03 Dec 2010 03:02:57 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDfnOPnBBoEyK8LaQ@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id a44si3011167wer.90.2010.12.03.03.02.56;
+        Fri, 03 Dec 2010 03:02:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDfnOPnBBoEyK8LaQ@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDfnOPnBBoEyK8LaQ@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDfnOPnBBoEyK8LaQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyg36 with SMTP id 36sf11850764wyg.7
+        for <headius@headius.com>; Fri, 03 Dec 2010 03:02:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=8nVesyrnYrIOwnAg8ZDl5ZCxdIf6sVpj2jSNZN2XO0Q=;
+        b=kWknjjnOJEkqiNRVBTpdT+p+PaxD0p0Ru2GpwhbxainXF+WNMqwkvP1p2614ewZFMh
+         57+gOlWgvtP1nq4xNgLUK7fAtlGwTx5/jxIFELjLGx4b6pFar+jjzp05WqvAp4IorLkB
+         +ufIlVecBlHCnK67HQtJiUx5ij/o7+kczALi0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=6pDzc3krL4cud1L1uWDwJo0oL5tuN73P8g2xtwpXEdcatAEGpk10uJGKzT/c2Dmt27
+         W3tL7Yfktl5KiCFAfrm/qjqpSeBYV0LEyCOqlHLg88KcFrVMDLjXcWCslXy0TcTt6u6H
+         cYUTrLO9tOkxz0HXhKTng6YGrI1T25G6ij9M4=
+Received: by 10.216.82.142 with SMTP id o14mr39359wee.27.1291374175787;
+        Fri, 03 Dec 2010 03:02:55 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.26.28 with SMTP id b28ls1247423eea.5.p; Fri, 03 Dec 2010
+ 03:02:55 -0800 (PST)
+Received: by 10.14.2.211 with SMTP id 59mr261130eef.28.1291374174828;
+        Fri, 03 Dec 2010 03:02:54 -0800 (PST)
+Received: by 10.14.2.211 with SMTP id 59mr261129eef.28.1291374174767;
+        Fri, 03 Dec 2010 03:02:54 -0800 (PST)
+Received: from mail-ew0-f53.google.com (mail-ew0-f53.google.com [209.85.215.53])
+        by gmr-mx.google.com with ESMTP id z15si517826eeh.2.2010.12.03.03.02.53;
+        Fri, 03 Dec 2010 03:02:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.53 as permitted sender) client-ip=209.85.215.53;
+Received: by ewy6 with SMTP id 6so5631564ewy.26
+        for <ruby-ffi@googlegroups.com>; Fri, 03 Dec 2010 03:02:53 -0800 (PST)
+Received: by 10.213.13.130 with SMTP id c2mr353819eba.5.1291374173426; Fri, 03
+ Dec 2010 03:02:53 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.19.195 with HTTP; Fri, 3 Dec 2010 03:02:33 -0800 (PST)
+In-Reply-To: <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+ <20101130105256.d687602f.jon.forums@gmail.com> <AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+ <20101201123846.5c4724b5.jon.forums@gmail.com> <AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+ <AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com> <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 3 Dec 2010 08:02:33 -0300
+Message-ID: <AANLkTinXJdYjbWh9WY4wuor02pEkDiB=MX-a8jgd0ZUw@mail.gmail.com>
+Subject: Re: [ruby-ffi] New release of FFI gem
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.53 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 3, 2010 at 7:57 AM, Wayne Meissner <wmeissner@gmail.com> wrote:
+>
+> btw, I *think* I fixed up the win32 build. =A0I couldn't test it, since
+> I'm having issues getting rake-compiler to build a cross-ruby on my
+> machine ... and I have no win32 vm to run it in anyway. =A0But, if
+> anyone wants to try building out of master for win32 and letting me
+> know if it all works, that would be nice.
+
+rake-compiler 0.7.5 can compile Ruby 1.8.6 official release packages
+and 1.8.7 only form a checkout. 1.9.2 works out of the box.
+
+Please email me personally with the output you're getting and will
+love help you out (Windows, Ubuntu 10.04 and OSX SL over here).
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

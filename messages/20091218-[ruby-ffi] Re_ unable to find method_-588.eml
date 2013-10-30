@@ -1,0 +1,125 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs383678and;
+        Fri, 18 Dec 2009 10:10:19 -0800 (PST)
+Received: by 10.150.45.37 with SMTP id s37mr6713120ybs.281.1261159819587;
+        Fri, 18 Dec 2009 10:10:19 -0800 (PST)
+Return-Path: <3gcUrSw0JCL0urjhusdfn5338jpdlo.frpuxe1-iiljrrjohjurxsv.frp@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 7si4669408ywh.92.2009.12.18.10.10.18;
+        Fri, 18 Dec 2009 10:10:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3gcUrSw0JCL0urjhusdfn5338jpdlo.frpuxe1-iiljrrjohjurxsv.frp@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3gcUrSw0JCL0urjhusdfn5338jpdlo.frpuxe1-iiljrrjohjurxsv.frp@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3gcUrSw0JCL0urjhusdfn5338jpdlo.frpuxe1-iiljrrjohjurxsv.frp@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf5959233gxk.7
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:10:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=caVsAeMmlPXmAkJvkhgdEIh5a3N7QBrnkEMqbsuwb6w=;
+        b=t903lsRlTx+pD+KEH5YJGCVTw0T3jc2/djm48jqdskc5WlH+lVFvrOfaNvg3dvfLl8
+         rhNGww0z8HSPv3CWYM3SH431yAIYRubyzs1EQuO5Hnr8xVwadxvI+WXBAG7yBcn3uZqW
+         +y3pa/Q9KSFKXpZR8sJhuQ4TRl1CMwXuImbi4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=rrY/MaxJujXNbSE/YV/aUHuu5qIpqFbWYyEHZfb8svtv4xqThkMwfXnTCYEw/KnnDy
+         uIz82QhRCmwfjDhe+OCMitVUrsq6omPHp8v7F0d5ufAX8F3UY3XbYQHCXPuN01QbVK61
+         P9HZ3O1WwHtkf1X5y54B1UvBZO4GEzn8a4utI=
+Received: by 10.91.119.20 with SMTP id w20mr204453agm.2.1261159809829;
+        Fri, 18 Dec 2009 10:10:09 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.154.37 with SMTP id g37ls14722ano.3.p; Fri, 18 Dec 2009 
+	10:10:09 -0800 (PST)
+Received: by 10.101.173.28 with SMTP id a28mr1450737anp.7.1261159808101;
+        Fri, 18 Dec 2009 10:10:08 -0800 (PST)
+Received: by 10.101.173.28 with SMTP id a28mr1450726anp.7.1261159806794;
+        Fri, 18 Dec 2009 10:10:06 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f148.google.com (mail-yx0-f148.google.com [209.85.210.148])
+        by gmr-mx.google.com with ESMTP id 19si391808yxe.10.2009.12.18.10.10.06;
+        Fri, 18 Dec 2009 10:10:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.148 as permitted sender) client-ip=209.85.210.148;
+Received: by mail-yx0-f148.google.com with SMTP id 12so5576018yxe.1
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:10:06 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.19.1 with SMTP id 1mr346672ybs.64.1261159806387; Fri, 18 
+	Dec 2009 10:10:06 -0800 (PST)
+Date: Fri, 18 Dec 2009 10:10:06 -0800 (PST)
+In-Reply-To: <71166b3b0912180457x2a7ae4acndb604f9f7b3fa31@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com> 
+	<71166b3b0912180457x2a7ae4acndb604f9f7b3fa31@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <bdd37b0b-d359-40e9-a25f-c8ae96ddba74@9g2000yqa.googlegroups.com>
+Subject: [ruby-ffi] Re: unable to find method?
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.148 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/11763c76954fa68f
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+> > ref:http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx
+>
+> > What might it be...?
+>
+> FindWindow is an alias of FindWindowA or FindWindowW depending if
+> unicode/wide condition was defined prior including the headers.
+>
+> So: there is no FindWindow, as pointed by others on this thread.
+
+Interesting.
+
+Thanks for the help.
+
+C:\>strings \WINDOWS\system32\user32.dll | grep  FindWindow
+FindWindowA
+FindWindowExA
+FindWindowExW
+FindWindowW
+
+
+Any guesses as to how VB is able to accomplish its snippet?
+
+<DllImport("user32.dll", CharSet:=CharSet.Auto)> _
+Public Shared Function FindWindow(ByVal lpClassName As String, ByVal
+lpWindowName As String) As IntPtr
+End Function
+
+Does it add a W or something, for us? (and ffi theoretically could,
+too?)
+
+
+Thanks.
+-r

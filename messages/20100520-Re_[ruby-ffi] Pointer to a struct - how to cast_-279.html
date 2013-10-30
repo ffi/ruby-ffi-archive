@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 1:48 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On May 20, 2010, at 1:00 PM, DA wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Here's how I'm getting the array:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>// c struct:
+<span class="moz-txt-citetags">&gt; </span>typedef struct {
+<span class="moz-txt-citetags">&gt; </span>	UIntT len;
+<span class="moz-txt-citetags">&gt; </span>	F_TextItemT *val;
+<span class="moz-txt-citetags">&gt; </span>} F_TextItemsT;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>// ruby def:
+<span class="moz-txt-citetags">&gt; </span>class FTextItemsT &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout :len, :uint,
+<span class="moz-txt-citetags">&gt; </span>     :val, :pointer
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>// ruby code:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>tis = FM.FApiGetText(docid, flowid, (FM.FTIString | FM.FTILineEnd));
+<span class="moz-txt-citetags">&gt; </span>parr = tis[:val].read_array_of_pointer(tis[:len])
+<span class="moz-txt-citetags">&gt; </span>puts "tis len: #{tis[:len]}"
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The tis[:len] gives me the same value as calling this code in c, so
+<span class="moz-txt-citetags">&gt; </span>I'm pretty sure the FApiGetText call is working and I'm getting a
+<span class="moz-txt-citetags">&gt; </span>valid struct returned. Am I using read_array_of_pointer wrong?
+</pre></blockquote><pre wrap>
+
+That looks kind of funky to me. In the F_TextItemsT C struct, it shows *val which is just a single pointer. There is no array of pointers to read from at that location. I believe the syntax for arrays of pointers are more like:
+
+struct {
+  int len;
+  item_t **list;
+}
+
+Note the double-asterisk.
+
+Have you written this in C to see how to get each F_TextItemT?
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

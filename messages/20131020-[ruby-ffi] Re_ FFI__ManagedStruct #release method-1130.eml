@@ -1,0 +1,164 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp105813laa;
+        Sun, 20 Oct 2013 20:03:10 -0700 (PDT)
+X-Received: by 10.52.35.136 with SMTP id h8mr7885921vdj.6.1382324589961;
+        Sun, 20 Oct 2013 20:03:09 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB3NSSKJQKGQELFAB7IA@googlegroups.com>
+Received: from mail-ve0-x23c.google.com (mail-ve0-x23c.google.com [2607:f8b0:400c:c01::23c])
+        by mx.google.com with ESMTPS id o10si3997128vco.65.2013.10.20.20.03.09
+        for <headius@headius.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 20 Oct 2013 20:03:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB3NSSKJQKGQELFAB7IA@googlegroups.com designates 2607:f8b0:400c:c01::23c as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB3NSSKJQKGQELFAB7IA@googlegroups.com designates 2607:f8b0:400c:c01::23c as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB3NSSKJQKGQELFAB7IA@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ve0-f188.google.com with SMTP id c14sf1145810vea.5
+        for <headius@headius.com>; Sun, 20 Oct 2013 20:03:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=p+PqxQsZcLxtb4hk0AWU7wXrK/buAHnnqyax8obadOc=;
+        b=K23sSkRZpghNLF5dP4R6eC9gkDnHpcdZzgaRWs37lWTv4rgHKsz8RjbmZy3XKOVuyO
+         tCM4Gf+pcibgEKJABARtn8DcFcqWiMT0Js49EZO8LwEvjPiGRWT9aPdHi1afOIAk8cbF
+         l5rWdKgI70g0IV/zbT8WXwv5Qsd9LFWDA6jYnXqSMHPk8SwlBbuhndasrRfbX/AtsJ+o
+         IhB1dPBdWZiZoroh2ovd2EqAbmkcqM1XE/wrsZ+CvB3zjjfC81u4mOlphnJ4dzoffEA8
+         E6WEJ7IrKTY/R7RE8mk8q4vhY8w5IcuAadoq9fDQ3iT/h+Kc9QLtDcyA1jSxPjoACmEj
+         9HIw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=p+PqxQsZcLxtb4hk0AWU7wXrK/buAHnnqyax8obadOc=;
+        b=xl2G+TSAn20gfPIJ95d+t/BBT4m1NK+M/r7ZdLKRn7/yFCpg8ZLr7nngMwwq2BcjTp
+         03Bc2eQmUwkobSn9orw/D4kfSWKzScJpKRenp6aN6Y2sELELJt/qN9rQf8NVZaLZrxKW
+         R9sUaGJlwtjaKZW/Uy9p6Zu7kP+Ly31a7f+nlcNSnWUlkYJlGNqEGtOPoO4jQXZXuhyw
+         wl4iJdyT2zhmrR0oRNGDwehhA3dCTkgF1NLgfcDB0twBAFcu4+yPmmORewJ5ERJaMEm0
+         JGwSaKXVwptK2wRDQI0Ghw1irOosWwVPupT4mAmy+erzV2DCXhLQyX04trT9kBe1v9L+
+         UQ5A==
+X-Received: by 10.50.171.169 with SMTP id av9mr180511igc.11.1382324589421;
+        Sun, 20 Oct 2013 20:03:09 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.7.41 with SMTP id g9ls1447909iga.19.gmail; Sun, 20 Oct 2013
+ 20:03:09 -0700 (PDT)
+X-Received: by 10.50.61.200 with SMTP id s8mr178208igr.17.1382324589034;
+        Sun, 20 Oct 2013 20:03:09 -0700 (PDT)
+Date: Sun, 20 Oct 2013 20:03:07 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <2ae3a96e-7add-4523-9a3e-5aff993c2fa1@googlegroups.com>
+In-Reply-To: <67e4c019-df57-49c9-a560-535a82d741d7@googlegroups.com>
+References: <67e4c019-df57-49c9-a560-535a82d741d7@googlegroups.com>
+Subject: [ruby-ffi] Re: FFI::ManagedStruct #release method
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2762_27443848.1382324588070"
+
+------=_Part_2762_27443848.1382324588070
+Content-Type: text/plain; charset=ISO-8859-1
+
+Thats the current behaviour - the problem with "raise exception", is ... 
+where does it raise the exception, since the release method is called from 
+a GC thread, which has to quash any exceptions, since it should never die.
+
+On the other hand, I am open to suggestions on how to make debugging this 
+easier, since it is likely to bite more people.
+
+
+On Monday, 21 October 2013 13:26:25 UTC+11, Levi Wilson wrote:
+>
+> I'm using FFI::ManagedStruct in a project of mine to be sure to clean up 
+> my memory. The question I have is around what happens if that call fails. 
+> The reason that I ask is because I had renamed the function and forgot to 
+> reflect this in the self.release definition. I expected this to raise an 
+> exception as my function wasn't defined. Is there a way to make this more 
+> obvious to me if this happens again?
+>
+> class MyManagedStruct < FFI::ManagedStruct
+>   layout :name, :string,
+>             :ids, :pointer,
+>             :ids_length, :int
+>
+>   def self.release
+>     MyLibrary.release_my_struct
+>     # MyLibrary.oops_this_is_not_named_correctly does not fail
+>   end
+> end
+>
+> Thanks in advance,
+>
+> Levi
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_2762_27443848.1382324588070
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thats the current behaviour - the problem with "raise exce=
+ption", is ... where does it raise the exception, since the release method =
+is called from a GC thread, which has to quash any exceptions, since it sho=
+uld never die.<div><br></div><div>On the other hand, I am open to suggestio=
+ns on how to make debugging this easier, since it is likely to bite more pe=
+ople.</div><div><br><br>On Monday, 21 October 2013 13:26:25 UTC+11, Levi Wi=
+lson  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-lef=
+t: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">I=
+'m using <font face=3D"courier new, monospace">FFI::ManagedStruct</font> in=
+ a project of mine to be sure to clean up my memory. The question I have is=
+ around what happens if that call fails. The reason that I ask is because I=
+ had renamed the function and forgot to reflect this in the <font face=3D"c=
+ourier new, monospace">self.release</font> definition. I expected this to r=
+aise an exception as my function wasn't defined. Is there a way to make thi=
+s more obvious to me if this happens again?<div><br></div><div><font face=
+=3D"courier new, monospace">class MyManagedStruct &lt; FFI::ManagedStruct</=
+font></div><div><font face=3D"courier new, monospace">&nbsp; layout :name, =
+:string,</font></div><div><font face=3D"courier new, monospace">&nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; :ids, :pointer,</font></div><div><font face=
+=3D"courier new, monospace">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :ids_=
+length, :int<br></font></div><div><font face=3D"courier new, monospace"><br=
+></font></div><div><font face=3D"courier new, monospace">&nbsp; def self.re=
+lease</font></div><div><font face=3D"courier new, monospace">&nbsp; &nbsp; =
+MyLibrary.release_my_struct</font></div><div><font face=3D"courier new, mon=
+ospace">&nbsp; &nbsp; # MyLibrary.oops_this_is_not_<wbr>named_correctly doe=
+s not fail</font></div><div><font face=3D"courier new, monospace">&nbsp; en=
+d</font></div><div><font face=3D"courier new, monospace">end</font></div><d=
+iv><br></div><div>Thanks in advance,</div><div><br></div><div>Levi</div></d=
+iv></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_2762_27443848.1382324588070--

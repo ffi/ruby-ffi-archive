@@ -1,0 +1,131 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Crazy thought (wrapping rb_thread_blocking_region)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Crazy thought (wrapping rb_thread_blocking_region)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>v01d <phreakuencies@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 2:38 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+Actually I was refering to the case where one needs to do a couple of
+heavy independent tasks, which could benefit from parallel execution.
+Specfically I was thinking in a 3d simulator I have written that uses
+physics + graphics + logics (the first two in C++, the later in Ruby),
+and I think some tasks could be executed in parallel there.
+
+Anyway, for the type of problems you mention (something like a big
+problem that can be solved with divide &amp; conquer) mpi-ruby seems
+interesting and its good to know it exists.
+
+Matt
+
+On 12 dic, 16:34, Hedge Hog <a class="moz-txt-link-rfc2396E" href="mailto:hedgehogshia...@gmail.com">&lt;hedgehogshia...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>-----BEGIN PGP SIGNED MESSAGE-----
+<span class="moz-txt-citetags">&gt; </span>Hash: SHA1
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Sun, Dec 13, 2009 at 2:26 AM, v01d  wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm a little interested in a possible future where Ruby could be used
+<span class="moz-txt-citetags">&gt; &gt; </span>for heavy processing stuff (but by means of calling computationally
+<span class="moz-txt-citetags">&gt; &gt; </span>heavy C code, and take advantage of multi-core processors by doing
+<span class="moz-txt-citetags">&gt; &gt; </span>several of these calls in parallel native threads) and I just found
+<span class="moz-txt-citetags">&gt; &gt; </span>out about Ruby's "rb_thread_blocking_region" C call.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>What came to my mind is that maybe FFI could be used here to make
+<span class="moz-txt-citetags">&gt; &gt; </span>writing these type of parallelized Ruby extensions easier, by just
+<span class="moz-txt-citetags">&gt; &gt; </span>doing something like:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>module RubyAPI
+<span class="moz-txt-citetags">&gt; &gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; &gt; </span> attach_function :rb_thread_blocking_region,
+<span class="moz-txt-citetags">&gt; &gt; </span>[ :pointer, :pointer, :pointer ], :void
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>then maybe I'm wrapping a HeavyComputationLibrary:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>My 2c:
+<span class="moz-txt-citetags">&gt; </span>Context: I take 'HeavyComputation' to mean 'saturates more than one machine'.
+<span class="moz-txt-citetags">&gt; </span>In that case I think you'd be using somthing like this:<a class="moz-txt-link-freetext" href="http://github.com/abedra/mpi-ruby">http://github.com/abedra/mpi-ruby</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ffi-mpi-ruby would be interesting.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>My preference has been to <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>try<span class="moz-txt-tag">_</span></span> avoid threading and any issues it
+<span class="moz-txt-citetags">&gt; </span>causes.  I would rather just throw more instances of a ruby script
+<span class="moz-txt-citetags">&gt; </span>(processes, somtimes processes&gt;=processors/cores) at the problem -
+<span class="moz-txt-citetags">&gt; </span>this does scale beyond one machine.  Threading doesn't.
+<span class="moz-txt-citetags">&gt; </span>It has been a while since I used MPI and there may be threading buried
+<span class="moz-txt-citetags">&gt; </span>in the library above.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Of course 'HeavyComputation' might mean using only one machine.  Then
+<span class="moz-txt-citetags">&gt; </span>scaling is not an issue and maybe threading is undisputably the best
+<span class="moz-txt-citetags">&gt; </span>way to go?
+<span class="moz-txt-citetags">&gt; </span>As I said, just my 2c.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>HH
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>module HeavyComputationLibrary
+<span class="moz-txt-citetags">&gt; &gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; &gt; </span> attach_function :long_running_computation, [ :pointer ], :value
+<span class="moz-txt-citetags">&gt; &gt; </span> attach_function :unblock_computation, [ :pointer ], :void
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>and then do something like:
+<span class="moz-txt-citetags">&gt; &gt; </span>RubyAPI.rb_thread_blocking_region
+<span class="moz-txt-citetags">&gt; &gt; </span>(HeavyComputationLibrary.long_running_computation, data_ptr,
+<span class="moz-txt-citetags">&gt; &gt; </span>HeavyComputationLibrary.unblock_computation)
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Obviously there are a couple of non-existing things here (like passing
+<span class="moz-txt-citetags">&gt; &gt; </span>the function pointer of a C function (maybe there's already a way to
+<span class="moz-txt-citetags">&gt; &gt; </span>do that?), usage of :value), but I wanted to ask if this is feasible
+<span class="moz-txt-citetags">&gt; &gt; </span>or not.
+<span class="moz-txt-citetags">&gt; &gt; </span>I think that something like this could ease writing parallel-aware
+<span class="moz-txt-citetags">&gt; &gt; </span>Ruby extensions (maybe with some help of Ruby Inline) for existing C
+<span class="moz-txt-citetags">&gt; &gt; </span>libraries. Then again, I may be wrong.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Matt
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>PS: I'm obviously talking about Ruby 1.9 and the function call defined
+<span class="moz-txt-citetags">&gt; &gt; </span>here:<a class="moz-txt-link-freetext" href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- --
+<span class="moz-txt-citetags">&gt; </span>πόλλ' οἶδ ἀλώπηξ, ἀλλ' ἐχῖνος ἓν μέγα
+<span class="moz-txt-citetags">&gt; </span>[The fox knows many things, but the hedgehog knows one big thing.]
+<span class="moz-txt-citetags">&gt; </span>  Archilochus, Greek poet (c. 680 BC – c. 645 BC)<a class="moz-txt-link-freetext" href="http://wiki.hedgehogshiatus.com">http://wiki.hedgehogshiatus.com</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-----BEGIN PGP SIGNATURE-----
+<span class="moz-txt-citetags">&gt; </span>Version: GnuPG v2.0.9 (GNU/Linux)
+<span class="moz-txt-citetags">&gt; </span>Comment: Use GnuPG with Firefox :<a class="moz-txt-link-freetext" href="http://getfiregpg.org(Version">http://getfiregpg.org(Version</a>: 0.7.10)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>iEYEARECAAYFAksj8EYACgkQL/DTCig+NhfFWQCeKK5ohPsJzjieM2y1HSv7l4Dq
+<span class="moz-txt-citetags">&gt; </span>8gIAn1b97tMd/o4sBg1uPX+JJFRVDMf7
+<span class="moz-txt-citetags">&gt; </span>=Mj85
+<span class="moz-txt-citetags">&gt; </span>-----END PGP SIGNATURE-----
+</pre></div></body>
+</html>
+</table></div>

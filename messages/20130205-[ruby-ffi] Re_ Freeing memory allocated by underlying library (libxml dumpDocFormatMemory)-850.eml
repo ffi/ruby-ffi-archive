@@ -1,0 +1,173 @@
+X-Mozilla-Keys: notjunk $notjunk
+Delivered-To: headius@headius.com
+Received: by 10.152.162.111 with SMTP id xz15csp237173lab;
+        Tue, 5 Feb 2013 14:22:51 -0800 (PST)
+X-Received: by 10.49.24.132 with SMTP id u4mr23339952qef.55.1360102971063;
+        Tue, 05 Feb 2013 14:22:51 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBOUMY2EAKGQE3XP7SJA@googlegroups.com>
+Received: from mail-qe0-f55.google.com (mail-qe0-f55.google.com [209.85.128.55])
+        by mx.google.com with ESMTPS id gb1si13380858qab.63.2013.02.05.14.22.50
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 05 Feb 2013 14:22:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBOUMY2EAKGQE3XP7SJA@googlegroups.com designates 209.85.128.55 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBOUMY2EAKGQE3XP7SJA@googlegroups.com designates 209.85.128.55 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBOUMY2EAKGQE3XP7SJA@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qe0-f55.google.com with SMTP id 7sf206890qeb.20
+        for <headius@headius.com>; Tue, 05 Feb 2013 14:22:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=7VKYex30IW8JBhyXsWm5wd3AThmGJKPXecgCEyotzqI=;
+        b=w+OSLut9y2ZgorvIrhVkj5rGre/YTmzPfhmm34VnxwkCwZLMj9bFf6kfu4acitex5l
+         y5b+ocBmQwzGOjELapeG8Egjuaf72hTkVVVeJ0iE3zft+iXSlGuKoMxqfXmdjNPzyXHM
+         yLyTwY+J5DUpjc/QBiypyM91no6wdUhRWuRUI664pVnMBvUicOf1ZmjZh2NYy82kf/1c
+         AbGwGWngpAzdHmm8HxTKqcjY7CiSLqEpQV5lhxk+vEMDuqj/Phvu8GcGkPaYX8OgRdwA
+         +cQl8sk+lbjA5CnvnDfkCg7CsGzjAQuryREQ/t3qqxLUId7UV99F32uqPynVoPfXd1Ej
+         H0DA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=7VKYex30IW8JBhyXsWm5wd3AThmGJKPXecgCEyotzqI=;
+        b=f0+211+uembF3bY/M6kcqDR6O9n9tE8+A6TfuUzIzaRdsRWvHhW1ADlm6aVGvYOD3C
+         SUdF2oT9UUVDSDRrFBRnG14ZPUlQqR8VEoO4/JfEIzx6kNn08F7QWjwMDfvzlXatNcKM
+         bRMP1bX3RqDniQylq0fgxMQjlfsuN4gVT6qmx9FXKeyeYgpKZJ30Ryn/1MNih+4fs/CQ
+         5crrTPKfLnPv29wn1wnef1aiOKY1zwQcq4sGWolNYne9qH2S+H3UFBteVU2rwyxAE0RG
+         VAl/6lX1vkZ6cS4phyutIWR/UMvUoh4Pvdwr7h/BmZwrqCecho03KaoqK25W0TEKiVcI
+         QLtw==
+X-Received: by 10.49.94.143 with SMTP id dc15mr2271692qeb.32.1360102970555;
+        Tue, 05 Feb 2013 14:22:50 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.72.225 with SMTP id g1ls175049qev.15.gmail; Tue, 05 Feb
+ 2013 14:22:50 -0800 (PST)
+X-Received: by 10.49.62.2 with SMTP id u2mr2273148qer.38.1360102970276;
+        Tue, 05 Feb 2013 14:22:50 -0800 (PST)
+Date: Tue, 5 Feb 2013 14:22:49 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <757382e0-08fe-43c3-934c-debb022f2cf4@googlegroups.com>
+In-Reply-To: <96958782-a0ac-4240-918a-fe2652490f75@googlegroups.com>
+References: <96958782-a0ac-4240-918a-fe2652490f75@googlegroups.com>
+Subject: [ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_712_12653934.1360102969968"
+
+------=_Part_712_12653934.1360102969968
+Content-Type: text/plain; charset=ISO-8859-1
+
+You're correct that MemoryPointer#free won't do anything for you - it only 
+frees the memory allocated for itself.
+
+ From looking at other C based examples, it should be as simple as adding 
+the following (after reading result from the strptr):
+
+  C::LibXML.xmlFree(strptr) unless strptr.null?
+
+
+Additionally, sizeptr should be allocated as :int, and you should probably 
+read the string via:
+
+    size = sizeptr.read_int
+    result = strptr.null? ? nil : strptr.read_string(size)
+
+
+On Wednesday, February 6, 2013 4:39:12 AM UTC+10, Paul Hinze wrote:
+>
+> Hi folks!
+>
+> I'm trying to figure out how i'm supposed to free memory when i get a 
+> pointer to a string buffer allocated by my underlying library.
+>
+>
+> https://github.com/phinze/xml_security/blob/ebd1743f7ab493b6565137ace8d60ad3e5bac52b/lib/xml_security.rb#L216-L224
+>
+> The docs for xmlDocDumpFormatMemory say it's my responsibility to free the 
+> allocated memory with xmlFree [1]. But if i try to call xmlFree on the ptr 
+> or the strptr i get segfaults, and MemoryPointer#free seems to not cork the 
+> leak.
+>
+> Any guidance would be much appreciated,
+>
+> Paul Hinze
+>
+>
+> [1] http://xmlsoft.org/html/libxml-tree.html#xmlDocDumpFormatMemory
+>
+>
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_712_12653934.1360102969968
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+You're correct that MemoryPointer#free won't do anything for you - it only =
+frees the memory allocated for itself.<div><br></div><div>From looking at o=
+ther C based examples, it should be as simple as adding the following (afte=
+r reading result from the strptr):</div><div><br></div><div>&nbsp; C::LibXM=
+L.xmlFree(strptr) unless strptr.null?<br><br><br>Additionally, sizeptr shou=
+ld be allocated as :int, and you should probably read the string via:</div>=
+<div><br></div><div>&nbsp; &nbsp; size =3D sizeptr.read_int</div><div>&nbsp=
+; &nbsp; result =3D strptr.null? ? nil : strptr.read_string(size)</div><div=
+><br></div><div><br>On Wednesday, February 6, 2013 4:39:12 AM UTC+10, Paul =
+Hinze wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-lef=
+t: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi folks!<br><br>I=
+'m trying to figure out how i'm supposed to free memory when i get a pointe=
+r to a string buffer allocated by my underlying library.<br><br><a href=3D"=
+https://github.com/phinze/xml_security/blob/ebd1743f7ab493b6565137ace8d60ad=
+3e5bac52b/lib/xml_security.rb#L216-L224" target=3D"_blank">https://github.c=
+om/phinze/xml_<wbr>security/blob/<wbr>ebd1743f7ab493b6565137ace8d60a<wbr>d3=
+e5bac52b/lib/xml_security.<wbr>rb#L216-L224</a><br><br>The docs for xmlDocD=
+umpFormatMemory say it's my responsibility to free the allocated memory wit=
+h xmlFree [1]. But if i try to call xmlFree on the ptr or the strptr i get =
+segfaults, and MemoryPointer#free seems to not cork the leak.<br><br>Any gu=
+idance would be much appreciated,<br><br>Paul Hinze<br><br><br>[1] <a href=
+=3D"http://xmlsoft.org/html/libxml-tree.html#xmlDocDumpFormatMemory" target=
+=3D"_blank">http://xmlsoft.org/html/<wbr>libxml-tree.html#<wbr>xmlDocDumpFo=
+rmatMemory</a><br><br><br></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_712_12653934.1360102969968--

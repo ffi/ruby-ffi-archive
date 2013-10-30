@@ -1,0 +1,116 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.60.79 with SMTP id o15cs234521qah;
+        Sat, 7 Aug 2010 06:10:56 -0700 (PDT)
+Received: by 10.227.135.16 with SMTP id l16mr11776221wbt.158.1281186655277;
+        Sat, 07 Aug 2010 06:10:55 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCP397LbnChDctvXiBBoETdQTww@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id a13si4060248wbe.6.2010.08.07.06.10.53;
+        Sat, 07 Aug 2010 06:10:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCP397LbnChDctvXiBBoETdQTww@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCP397LbnChDctvXiBBoETdQTww@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCP397LbnChDctvXiBBoETdQTww@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwb18 with SMTP id 18sf21066wwb.7
+        for <headius@headius.com>; Sat, 07 Aug 2010 06:10:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:message-id:date:from
+         :user-agent:mime-version:to:subject:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=1u3dgoLqyx8GOslA/BVw4sjjVHiILmCRTudADXsx4p4=;
+        b=peA+QHVrkWB7F3BQ9O3VLbZgvKAy4uiYW4sHGU8Z2+DWiHpczyNotav7lG7NJ1Yu6l
+         2+DwjAEXAZ1DTYcmv/Q7EZa48OUFweE7/xNzknyKe3qu7+uMhseh+4SDn2RUv83/9Wr9
+         5+c+6m9yEAlplnb6W3Fqb4lGGEtCeuEbf4ptY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:x-virus-scanned:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=ngdMNv0B8yQVImjEOAAr1GmH9qCzOoqlMxfZt4Q2Iy7FgJ49HzveMNQxRKYPUiOogv
+         92AwN0ADDZmhR92q4yXxpU57usG+VsQVXIDYYsmm9OZFTN6TB4LFaMcSI5gaBJT0StUo
+         S5QVjn4Wv9WhArxo8Ode+cJA+OJNVc5ioVRxA=
+Received: by 10.216.144.194 with SMTP id n44mr2914672wej.4.1281186653004;
+        Sat, 07 Aug 2010 06:10:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.10.228 with SMTP id 76ls274339eev.3.p; Sat, 07 Aug 2010 
+	06:10:51 -0700 (PDT)
+Received: by 10.14.53.69 with SMTP id f45mr1160604eec.28.1281186650875;
+        Sat, 07 Aug 2010 06:10:50 -0700 (PDT)
+Received: by 10.14.53.69 with SMTP id f45mr1160603eec.28.1281186650821;
+        Sat, 07 Aug 2010 06:10:50 -0700 (PDT)
+Received: from smtp-vbr6.xs4all.nl (smtp-vbr6.xs4all.nl [194.109.24.26])
+        by gmr-mx.google.com with ESMTP id b5si2900900eei.4.2010.08.07.06.10.50;
+        Sat, 07 Aug 2010 06:10:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 194.109.24.26 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.26;
+Received: from apricot.matijs.net (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr6.xs4all.nl (8.13.8/8.13.8) with ESMTP id o77DAogU095255
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Sat, 7 Aug 2010 15:10:50 +0200 (CEST)
+	(envelope-from matijs@matijs.net)
+Received: from localhost ([127.0.0.1])
+	by apricot.matijs.net with esmtp (Exim 4.72)
+	(envelope-from <matijs@matijs.net>)
+	id 1OhjAn-0005ab-EH
+	for ruby-ffi@googlegroups.com; Sat, 07 Aug 2010 15:10:49 +0200
+Message-ID: <4C5D5B59.5040200@matijs.net>
+Date: Sat, 07 Aug 2010 15:10:49 +0200
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.10) Gecko/20100620 Icedove/3.0.5
+MIME-Version: 1.0
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Subject: [ruby-ffi] Inheritance and FFI::Struct
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	194.109.24.26 is neither permitted nor denied by best guess record for domain 
+	of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hello all,
+
+I'm trying to set up an inheritance chain that ultimately inherits from 
+FFI::Struct. However, the derived classes have a different layouts. This results 
+in warnings about class variables being overridden.
+
+The following code demonstrates the problem when run with ruby -w:
+
+   require 'ffi'
+
+   class Foo < FFI::Struct
+     layout :a, :int, :b, :int
+   end
+
+   class Bar < Foo
+     layout :p, Foo, :c, :int
+   end
+
+   bar = Bar.new
+
+I could set up separate Foo::Struct and Bar::Struct classes to avoid this 
+problem, but I'd rather not, as it introduces a lot of extra complexity.
+
+Any thoughts?
+
+Regards,
+-- 
+Matijs

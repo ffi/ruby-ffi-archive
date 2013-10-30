@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs16094qaj;
+        Thu, 8 Oct 2009 05:28:22 -0700 (PDT)
+Received: by 10.114.83.17 with SMTP id g17mr2025107wab.38.1255004902248;
+        Thu, 08 Oct 2009 05:28:22 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 32si20182036pzk.23.2009.10.08.05.28.20;
+        Thu, 08 Oct 2009 05:28:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.148 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12so324760pzk.13
+        for <headius@headius.com>; Thu, 08 Oct 2009 05:28:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=QAYKtFSTPUqOK1UPsGrg9dUdxLEOYayBPWreq3DOTTE=;
+        b=jSLslXoLH+XjKVWHnmOARU+wNs1meB1g7IT575WSdId5CU2kzoj8VMFvzxS94Fgkir
+         mBjSzo0DRPSXF3qV4XH2Fj0wEVCTSoL/+w/QnH7599K+kgZRa1HVcovWQtZir39Fh90t
+         /+NF3tbnQpcEZE3SVKnKtASLwvgpfqoXkKruM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=UQ7maSAhDFC6plqHnyMIfXZ4QmCiRu1RTrH5rsBSSQiilwpzYudDMR1TkCF/F/jgk1
+         tA7enDWDhbT7ZsPaL4casbJYvzy4F6kKFpz2oYYPcV9ko2sYGJLszAVNoqsg4qQ3506/
+         tydLa+NhOjVqg+bWc6cmOGiVUAa3VkhgaVtuM=
+Received: by 10.142.5.32 with SMTP id 32mr23045wfe.16.1255004899551;
+        Thu, 08 Oct 2009 05:28:19 -0700 (PDT)
+Received: by 10.106.154.17 with SMTP id b17gr47pre.0;
+	Thu, 08 Oct 2009 05:28:19 -0700 (PDT)
+X-Sender: nudtlliu@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.17.1 with SMTP id 1mr135228ybq.14.1255004897997; Thu, 08  Oct 2009 05:28:17 -0700 (PDT)
+Date: Thu, 8 Oct 2009 05:28:17 -0700 (PDT)
+In-Reply-To: <f30b734d-88a8-4e40-8a10-15b0f29b0bdd@d4g2000vbm.googlegroups.com>
+X-IP: 138.246.7.136
+References: <f30b734d-88a8-4e40-8a10-15b0f29b0bdd@d4g2000vbm.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US)  AppleWebKit/532.2 (KHTML, like Gecko) Chrome/4.0.220.1 Safari/532.2,gzip(gfe),gzip(gfe)
+Message-ID: <60626d1f-3cf2-4ee0-a2ce-7f89ea951d28@d4g2000vbm.googlegroups.com>
+Subject: [ruby-ffi] Re: require error: no such file to load -- ffi
+From: Lu Liu <nudtlliu@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+p.s. my environment: ubuntu 9.04, ruby 1.8.7
+
+On Oct 8, 2:25=A0pm, Lu Liu <nudtl...@gmail.com> wrote:
+> Hi all,
+>
+> I have successfully installed ffi-0.5.0. But when I tried require
+> 'ffi' in irb, it reported LoadError: no such file to load -- ffi. I
+> have no idea why this happens.
+>
+> Actually, the installation process was not so smooth either. When I
+> tried sudo gem install ffi, it reported such an error:
+>
+> rake RUBYARCHDIR=3D/var/lib/gems/1.8/gems/ffi-0.5.0/lib RUBYLIBDIR=3D/var=
+/
+> lib/gems/1.8/gems/ffi-0.5.0/lib
+> sh: rake: command not found
+>
+> but I found this post (http://bugs.debian.org/cgi-bin/bugreport.cgi?
+> bug=3D529663), added a symbolic link to rake in /usr/bin, and solved the
+> installation problem. I am not sure if this is also a bug of RubyGem
+> on Ubuntu.
+>
+> However, the require command can not find 'ffi' even though I tried
+> both of the two ways of ffi installation (directly gem install and the
+> git way mentioned in this post:http://groups.google.com/group/ruby-ffi/br=
+owse_thread/thread/e46d8a6a...).
+>
+> Any suggestions? e.g. how can I check if the 'ffi' is in the list that
+> ruby require command can find?
+>
+> BTW: i just tried the require 'ffi' in /var/lib/gems/1.8/gems/
+> ffi-0.5.0/lib with irb, it worked. but in other directories, no.
+>
+> Thanks a lot!

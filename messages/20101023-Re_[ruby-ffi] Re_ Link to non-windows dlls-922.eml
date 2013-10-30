@@ -1,0 +1,213 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs66319bkh;
+        Sat, 23 Oct 2010 08:52:04 -0700 (PDT)
+Received: by 10.227.145.134 with SMTP id d6mr4140995wbv.195.1287849123410;
+        Sat, 23 Oct 2010 08:52:03 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICH0uSrDRChiYzmBBoEQ2NpUg@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id v69si8004527weq.35.2010.10.23.08.52.02;
+        Sat, 23 Oct 2010 08:52:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICH0uSrDRChiYzmBBoEQ2NpUg@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICH0uSrDRChiYzmBBoEQ2NpUg@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCICH0uSrDRChiYzmBBoEQ2NpUg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyj26 with SMTP id 26sf1689833wyj.7
+        for <headius@headius.com>; Sat, 23 Oct 2010 08:52:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=bMF84EYjT35kNcU4IVx/eLcubAwdI4x+r509LmN7ycM=;
+        b=ZpmP1WXSHHguHJ8UmgThPKPdJ3VEcr0lcu0PI1fNpqhPzX1/b88dFy75N7ELAFbfsr
+         P/0+eQUWEJZbXLjWdI2PCyokv9rpfT/fHZTBvaSMEjStepabjJBESxbQSCbTIK/ASpo7
+         /umJylHsd8lrKbaWdNPGNTNq6wyg45FeTXahg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=I06/a8vQwuekViNsCO7kKOOQTRURulY0gDw9JLo4hZLsFGTpc1P6QtzcWbRqoAfO8u
+         QtACkUMccC2Aqez2tAC7OBG6iLgMyICkgqmpdOHqxjVLq2UjzFVxnp/gSA7AFVsQbzv1
+         H62UXCSusROQF4b/XsSXVh0R6M4Tp4N35wO6I=
+Received: by 10.216.141.94 with SMTP id f72mr91872wej.13.1287849121859;
+        Sat, 23 Oct 2010 08:52:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.208.4 with SMTP id p4ls2056007weo.2.p; Sat, 23 Oct 2010
+ 08:52:01 -0700 (PDT)
+Received: by 10.216.20.141 with SMTP id p13mr40693wep.11.1287849120922;
+        Sat, 23 Oct 2010 08:52:00 -0700 (PDT)
+Received: by 10.216.20.141 with SMTP id p13mr40691wep.11.1287849120856;
+        Sat, 23 Oct 2010 08:52:00 -0700 (PDT)
+Received: from mail-wy0-f175.google.com (mail-wy0-f175.google.com [74.125.82.175])
+        by gmr-mx.google.com with ESMTP id x26si1405759weq.8.2010.10.23.08.51.59;
+        Sat, 23 Oct 2010 08:51:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvandenberge@gmail.com designates 74.125.82.175 as permitted sender) client-ip=74.125.82.175;
+Received: by wya21 with SMTP id 21so1892413wya.6
+        for <ruby-ffi@googlegroups.com>; Sat, 23 Oct 2010 08:51:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.227.9.79 with SMTP id k15mr4400442wbk.101.1287849119621; Sat,
+ 23 Oct 2010 08:51:59 -0700 (PDT)
+Received: by 10.227.183.193 with HTTP; Sat, 23 Oct 2010 08:51:59 -0700 (PDT)
+In-Reply-To: <AANLkTik31uCK4HbZ83=zhS8p1oMhAztEc-k6s5vo1XAt@mail.gmail.com>
+References: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+	<AANLkTim2Dx5GL5ZFpW0MCi+fT5U78y=-svOEgS2ft0Rv@mail.gmail.com>
+	<fd1caa93-ba45-4e0c-b2d8-9f7f05636c80@h7g2000yqn.googlegroups.com>
+	<AANLkTi=vM8R=EcXFjyOmSzTme0P7VPDxUmK_QSSSNsA5@mail.gmail.com>
+	<AANLkTinZxH-+4yo6dV5i8Y3Rik=4-nGuNGJRAYCKnRsM@mail.gmail.com>
+	<AANLkTik31uCK4HbZ83=zhS8p1oMhAztEc-k6s5vo1XAt@mail.gmail.com>
+Date: Sat, 23 Oct 2010 11:51:59 -0400
+Message-ID: <AANLkTim=Z5-Qo5vnLcXSbQBeKB7_P2Kxnc2bhw77FSwV@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Link to non-windows dlls
+From: Kevin Vanden Berge <kvandenberge@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: kvandenberge@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of kvandenberge@gmail.com designates 74.125.82.175 as permitted
+ sender) smtp.mail=kvandenberge@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=002215b01e664ca38404934abd5e
+
+--002215b01e664ca38404934abd5e
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+I think I'm missing something...
+"Traditionally with pointers you=92ll have a method, like attach_function
+:GetForeGroundWindow, [ ], :pointer
+What this returns to you is a pointer that, probably, some other library is
+managing. You don=92t need to release this pointer or anything."
+
+I took that to mean I don't have to do anything special for it.  Are you
+suggesting I do something like:
+
+buf =3D MemoryPointer.new(1024)
+buf =3D UsbLibrary.Receive(a,1000)
+
+On Sat, Oct 23, 2010 at 11:41 AM, Luis Lavena <luislavena@gmail.com> wrote:
+
+> On Sat, Oct 23, 2010 at 12:33 PM, Kevin Vanden Berge
+> <kvandenberge@gmail.com> wrote:
+> > The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) i=
+n
+> the
+> > test_usb.rb script.  Changing the Send parameter from :pointer to :stri=
+ng
+> > has no effect on the outcome.  As for why I did pointer instead of
+> string, I
+> > have no good reason except that I saw an example of a wrapper to a C
+> > function that had a char* as parameter and it was done using :string an=
+d
+> > then another example showed it using :pointer another time.
+> >
+>
+> For you to receive in a pointer you need to allocate memory for that
+> buffer.
+>
+> http://github.com/ffi/ffi/wiki/Pointers
+>
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry
+>
+
+--002215b01e664ca38404934abd5e
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+I think I&#39;m missing something...<div>&quot;<span class=3D"Apple-style-s=
+pan" style=3D"font-family: helvetica, arial, freesans, clean, sans-serif; f=
+ont-size: 14px; color: rgb(51, 51, 51); line-height: 21px; ">Traditionally =
+with pointers you=92ll have a method, like=A0<code style=3D"margin-top: 0px=
+; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px=
+ !important; padding-right: 0.2em !important; padding-bottom: 0px !importan=
+t; padding-left: 0.2em !important; font: normal normal normal 12px/normal M=
+onaco, &#39;Courier New&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Ve=
+ra Sans Mono&#39;, monospace; line-height: 1.4em; font-size: 12px !importan=
+t; background-color: rgb(248, 248, 255) !important; color: rgb(68, 68, 68) =
+!important; border-top-width: 1px !important; border-right-width: 1px !impo=
+rtant; border-bottom-width: 1px !important; border-left-width: 1px !importa=
+nt; border-top-style: solid !important; border-right-style: solid !importan=
+t; border-bottom-style: solid !important; border-left-style: solid !importa=
+nt; border-top-color: rgb(222, 222, 222) !important; border-right-color: rg=
+b(222, 222, 222) !important; border-bottom-color: rgb(222, 222, 222) !impor=
+tant; border-left-color: rgb(222, 222, 222) !important; ">attach_function :=
+GetForeGroundWindow, [ ], :pointer</code><br style=3D"margin-top: 0px; marg=
+in-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padd=
+ing-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height: 1.4em;=
+ ">
+What this returns to you is a pointer that, probably, some other library is=
+ managing. You don=92t need to release this pointer or anything.&quot;</spa=
+n></div><div><font class=3D"Apple-style-span" color=3D"#333333" face=3D"hel=
+vetica, arial, freesans, clean, sans-serif" size=3D"4"><span class=3D"Apple=
+-style-span" style=3D"font-size: 14px; line-height: 21px;"><br>
+</span></font></div><div><font class=3D"Apple-style-span" color=3D"#333333"=
+ face=3D"helvetica, arial, freesans, clean, sans-serif" size=3D"4"><span cl=
+ass=3D"Apple-style-span" style=3D"font-size: 14px; line-height: 21px;">I to=
+ok that to mean I don&#39;t have to do anything special for it. =A0Are you =
+suggesting I do something like:</span></font></div>
+<div><font class=3D"Apple-style-span" color=3D"#333333" face=3D"helvetica, =
+arial, freesans, clean, sans-serif" size=3D"4"><span class=3D"Apple-style-s=
+pan" style=3D"font-size: 14px; line-height: 21px;"><br></span></font></div>=
+<div><font class=3D"Apple-style-span" color=3D"#333333" face=3D"helvetica, =
+arial, freesans, clean, sans-serif" size=3D"4"><span class=3D"Apple-style-s=
+pan" style=3D"font-size: 14px; line-height: 21px;">buf =3D MemoryPointer.ne=
+w(1024)</span></font></div>
+<div><font class=3D"Apple-style-span" color=3D"#333333" face=3D"helvetica, =
+arial, freesans, clean, sans-serif" size=3D"4"><span class=3D"Apple-style-s=
+pan" style=3D"font-size: 14px; line-height: 21px;">buf =3D UsbLibrary.Recei=
+ve(a,1000)<br>
+</span></font><br><div class=3D"gmail_quote">On Sat, Oct 23, 2010 at 11:41 =
+AM, Luis Lavena <span dir=3D"ltr">&lt;<a href=3D"mailto:luislavena@gmail.co=
+m">luislavena@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail=
+_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
+1ex;">
+<div class=3D"im">On Sat, Oct 23, 2010 at 12:33 PM, Kevin Vanden Berge<br>
+&lt;<a href=3D"mailto:kvandenberge@gmail.com">kvandenberge@gmail.com</a>&gt=
+; wrote:<br>
+&gt; The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) =
+in the<br>
+&gt; test_usb.rb script. =A0Changing the Send parameter from :pointer to :s=
+tring<br>
+&gt; has no effect on the outcome. =A0As for why I did pointer instead of s=
+tring, I<br>
+&gt; have no good reason except that I saw an example of a wrapper to a C<b=
+r>
+&gt; function that had a char* as parameter and it was done using :string a=
+nd<br>
+&gt; then another example showed it using :pointer another time.<br>
+&gt;<br>
+<br>
+</div>For you to receive in a pointer you need to allocate memory for that =
+buffer.<br>
+<br>
+<a href=3D"http://github.com/ffi/ffi/wiki/Pointers" target=3D"_blank">http:=
+//github.com/ffi/ffi/wiki/Pointers</a><br>
+<font color=3D"#888888"><br>
+--<br>
+</font><div><div></div><div class=3D"h5">Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exup=E9ry<br>
+</div></div></blockquote></div><br></div>
+
+--002215b01e664ca38404934abd5e--

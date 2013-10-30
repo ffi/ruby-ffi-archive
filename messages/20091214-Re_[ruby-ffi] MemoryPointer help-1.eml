@@ -1,0 +1,88 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs131724and;
+        Mon, 14 Dec 2009 12:47:41 -0800 (PST)
+Received: by 10.90.21.8 with SMTP id 8mr1548583agu.35.1260823660901;
+        Mon, 14 Dec 2009 12:47:40 -0800 (PST)
+Return-Path: <3a6QmSwYJCIEofhnzxlrfnq.htrwzg3-kknlttlqjlwtzux.htr@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 27si2969782ywh.6.2009.12.14.12.47.40;
+        Mon, 14 Dec 2009 12:47:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3a6QmSwYJCIEofhnzxlrfnq.htrwzg3-kknlttlqjlwtzux.htr@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3a6QmSwYJCIEofhnzxlrfnq.htrwzg3-kknlttlqjlwtzux.htr@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3a6QmSwYJCIEofhnzxlrfnq.htrwzg3-kknlttlqjlwtzux.htr@listserv.bounces.google.com
+Received: by ywh8 with SMTP id 8sf9257491ywh.3
+        for <headius@headius.com>; Mon, 14 Dec 2009 12:47:40 -0800 (PST)
+Received: by 10.101.152.1 with SMTP id e1mr505793ano.5.1260823659821;
+        Mon, 14 Dec 2009 12:47:39 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.17.29 with SMTP id 29ls2847431anq.1.p; Mon, 14 Dec 2009 
+	12:47:38 -0800 (PST)
+Received: by 10.100.29.20 with SMTP id c20mr6101635anc.17.1260823658775;
+        Mon, 14 Dec 2009 12:47:38 -0800 (PST)
+Received: by 10.100.29.20 with SMTP id c20mr6101634anc.17.1260823658755;
+        Mon, 14 Dec 2009 12:47:38 -0800 (PST)
+Return-Path: <jacius@gmail.com>
+Received: from mail-yw0-f194.google.com (mail-yw0-f194.google.com [209.85.211.194])
+        by gmr-mx.google.com with ESMTP id 18si622919gxk.11.2009.12.14.12.47.37;
+        Mon, 14 Dec 2009 12:47:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of jacius@gmail.com designates 209.85.211.194 as permitted sender) client-ip=209.85.211.194;
+Received: by mail-yw0-f194.google.com with SMTP id 32so3481084ywh.14
+        for <ruby-ffi@googlegroups.com>; Mon, 14 Dec 2009 12:47:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.91.105.17 with SMTP id h17mr1388410agm.62.1260823657581; Mon, 
+	14 Dec 2009 12:47:37 -0800 (PST)
+In-Reply-To: <c410d2f20912141042g2f255903k8678b4da6ed4f06d@mail.gmail.com>
+References: <c410d2f20912141042g2f255903k8678b4da6ed4f06d@mail.gmail.com>
+From: John Croisant <jacius@gmail.com>
+Date: Mon, 14 Dec 2009 14:47:15 -0600
+Message-ID: <bf2f536c0912141247r4df3cf1fu80d5bb98282c7814@mail.gmail.com>
+Subject: Re: [ruby-ffi] MemoryPointer help
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jacius@gmail.com designates 209.85.211.194 as permitted sender) 
+	smtp.mail=jacius@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jacius@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/56d08bb8d7b55f4d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/8a4f21e6d4600447
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 14, 2009 at 12:42 PM, Shawn Anderson <shawn42@gmail.com> wrote:
+> I have a struct that has a void* data, I use MemoryPointer to alloc some =
+mem
+> and assign:
+> mem =3D FFI::MemoryPointer.new(:long)
+> @struct.data =3D mem
+>
+> Struct says around in my app, but I was seeing strange GC behavior.=C2=A0=
+ Is
+> assigning the mem pointer to the struct good enough to keep it around?
+> I was seeing my struct.data being corrupted over time.
+>
+> adding
+> @mem =3D mem
+>
+> fixed the problem.=C2=A0 Am I using MemoryPointer correctly?
+
+@struct.data =3D mem doesn't actually store the MemoryPointer instance
+in the struct, it just sets @struct.data to the pointer address. That
+means the MemoryPointer instance is being garbage collected after it
+goes out of scope, and the memory is freed when the MemoryPointer is
+garbage collected.
+
+So yes, you should do something like @mem =3D mem to keep the
+MemoryPointer alive until it is supposed be freed. :)
+
+- John

@@ -1,0 +1,120 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs29146fam;
+        Thu, 9 Dec 2010 12:04:23 -0800 (PST)
+Received: by 10.101.136.32 with SMTP id o32mr3882402ann.143.1291925062329;
+        Thu, 09 Dec 2010 12:04:22 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzR7pDjBRDE7IToBBoE17HFgg@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id b24si5219438anb.69.2010.12.09.12.04.20;
+        Thu, 09 Dec 2010 12:04:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzR7pDjBRDE7IToBBoE17HFgg@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzR7pDjBRDE7IToBBoE17HFgg@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzR7pDjBRDE7IToBBoE17HFgg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyh4 with SMTP id 4sf2431566gyh.7
+        for <headius@headius.com>; Thu, 09 Dec 2010 12:04:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=LchqUuUf4Ek47t+hV2ZrQgRSrGumoT9z/Krl3ek+Kcw=;
+        b=BLI86bYMEZBi+98VhoL06XbRV9DaJMzXxlD2dp1CBORV3kwfuUzjOFri6+5SX2GUD3
+         8dNmvWRE0aXbq/bZBOaYG3JvNJmUVwuqBGDAX8onyWdxekcRnNE8bNAGoerAsBUoWNYx
+         JZiXuslXHYWIMuDcJlQiOoJZrdGPJv4UB4jNM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=h1NW94bVYBGSFnBWnH8+EWjl08PqlMoOubje1DNW2NsULxo16uPQ/dXLSMvTJnXeBX
+         fm3IXJZAIfbE/GVtbFZLTqqhni7C29i918CxFKyLb3XrW/6KaNI5RSh24BJHDhI6lR6y
+         Y/X97hCVTRE4tZ30SrwJc22+U5oXzV7Mlo1lk=
+Received: by 10.236.111.52 with SMTP id v40mr33175yhg.20.1291925060562;
+        Thu, 09 Dec 2010 12:04:20 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.56.35 with SMTP id e35ls1497405yba.5.p; Thu, 09 Dec 2010
+ 12:04:20 -0800 (PST)
+Received: by 10.150.49.18 with SMTP id w18mr228493ybw.50.1291925059994;
+        Thu, 09 Dec 2010 12:04:19 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.142.152.27 with SMTP id z27mr520926wfd.18.1291905394196; Thu,
+ 09 Dec 2010 06:36:34 -0800 (PST)
+Received: by r38g2000prj.googlegroups.com with HTTP; Thu, 9 Dec 2010 06:36:33
+ -0800 (PST)
+Date: Thu, 9 Dec 2010 06:36:33 -0800 (PST)
+X-IP: 165.234.90.1
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.7
+ (KHTML, like Gecko) Chrome/7.0.517.44 Safari/534.7,gzip(gfe)
+Message-ID: <4378b5ad-6fb6-4693-8dd8-e1d37aa2b3a0@r38g2000prj.googlegroups.com>
+Subject: [ruby-ffi] Problem with AutoPointer and ManagedStruct
+From: zenChild <dan.wanek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: dan.wanek@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm trying to use AutoPointer or ManagedStruct to free some memory for
+a gss_buffer_desc struct in the GSSAPI.  It seems I can free the
+object manually, but when wrapped in an AutoPointer or ManagedStruct I
+get a SegFault.
+
+This is working, but I need to be able to free the memory in an
+automatic fashion.
+
+# --------- Example One ---------
+class GssBufferDesc < FFI::Struct
+  layout  :length => :size_t,
+          :value  => :pointer # pointer of :void
+end
+
+.... misc code
+
+output_token = LibGSSAPI::GssBufferDesc.new
+output_token[:length] = 0
+output_token[:value] = nil
+maj_stat = LibGSSAPI.gss_init_sec_context(...,
+output_token.pointer,...)
+
+... do work
+
+maj_stat = LibGSSAPI.gss_release_buffer(min_stat,
+output_token.pointer)
+# gss_release_buffer exists with success:w
+
+
+# --------- Example Two ---------  This example gets a SegFault
+
+class GssBufferT < FFI::AutoPointer
+  def self.release(buffer_ptr)
+    puts "Releasing gss_buffer_t at #{buffer_ptr.address}" if $DEBUG
+    min_stat = FFI::MemoryPointer.new :uint32
+    maj_stat = LibGSSAPI.gss_release_buffer(min_stat, buffer_ptr)
+  end
+end
+
+.... misc code
+
+output_token = FFI::MemoryPointer.new :pointer
+maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+LibGSSAPI::GssBufferT.new(output_token.get_pointer(0))
+
+# on exit the release method in GssBufferT causes a segfault and if I
+wrap it in a ManagedStruct the same thing happens.  Does anyone have
+any ideas for me?
+
+Cheers,
+
+Dan Wanek

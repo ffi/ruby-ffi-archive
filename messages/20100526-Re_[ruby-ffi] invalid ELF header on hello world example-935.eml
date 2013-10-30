@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs16723qcb;
+        Wed, 26 May 2010 16:50:12 -0700 (PDT)
+Received: by 10.142.121.5 with SMTP id t5mr6128748wfc.277.1274917811970;
+        Wed, 26 May 2010 16:50:11 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCx5_bfBBoE7zcekA@googlegroups.com>
+Received: from mail-pz0-f159.google.com (mail-pz0-f159.google.com [209.85.222.159])
+        by mx.google.com with ESMTP id j22si1341757waf.6.2010.05.26.16.50.10;
+        Wed, 26 May 2010 16:50:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCx5_bfBBoE7zcekA@googlegroups.com designates 209.85.222.159 as permitted sender) client-ip=209.85.222.159;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCx5_bfBBoE7zcekA@googlegroups.com designates 209.85.222.159 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCx5_bfBBoE7zcekA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk31 with SMTP id 31sf2117587pzk.7
+        for <headius@headius.com>; Wed, 26 May 2010 16:50:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=7/YdqRqvZzfZ7Pt7KRhO1SP1DhSXqpCg6darXd/kXA4=;
+        b=NREqBm6OoetlyEoV2FC35f8TwHZQqYQi0Quhx61+oppqVOFiz9p1TI+ARVPeHCVS9M
+         uXXoZasAldoZosELNZaZaGq7QwbSvWN7X7cWT975EXtsC3wsYhrUiPRfROGtvP+NcQ6K
+         Wx5bmDL47yFWln9oPaOn870JpmdZIcG2KVlJg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=WPcGdqEj/lIQPZNEBbkJdlbL9l9I2ifMf4dWChjPM1IwsE9WFilLJbrd9dfOHbeiuW
+         G7Le6MUwwQ+PsYCNom5lRO7xFrk4Lbsw3Pt2Ws175bzS3uQZn1Lrw3mRkw2BGl9VSKfI
+         7Ee3v8QbvsvKAPzTo71yHsJpMJKBK/rG4PlF8=
+Received: by 10.114.70.14 with SMTP id s14mr1352175waa.7.1274917809992;
+        Wed, 26 May 2010 16:50:09 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.115.38.17 with SMTP id q17ls966744waj.0.p; Wed, 26 May 2010 
+	16:50:09 -0700 (PDT)
+Received: by 10.114.16.2 with SMTP id 2mr3894407wap.49.1274917809045;
+        Wed, 26 May 2010 16:50:09 -0700 (PDT)
+Received: by 10.114.16.2 with SMTP id 2mr3894406wap.49.1274917808974;
+        Wed, 26 May 2010 16:50:08 -0700 (PDT)
+Received: from mail-pv0-f178.google.com (mail-pv0-f178.google.com [74.125.83.178])
+        by gmr-mx.google.com with ESMTP id e19si834179wam.0.2010.05.26.16.50.07;
+        Wed, 26 May 2010 16:50:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 74.125.83.178 as permitted sender) client-ip=74.125.83.178;
+Received: by pvg11 with SMTP id 11so1182397pvg.9
+        for <ruby-ffi@googlegroups.com>; Wed, 26 May 2010 16:50:07 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.140.255.8 with SMTP id c8mr3406316rvi.7.1274917807773; Wed, 26 
+	May 2010 16:50:07 -0700 (PDT)
+Received: by 10.141.51.6 with HTTP; Wed, 26 May 2010 16:50:07 -0700 (PDT)
+In-Reply-To: <AANLkTim8k8Nm6kS4a2_xGL2MulrdAWGUWyrnu3x0k4bQ@mail.gmail.com>
+References: <fbca960d-859a-4e2c-8538-d900252b54ef@32g2000prq.googlegroups.com>
+	<AANLkTinfstZG4iFodfiySvBfMIuwWe2m8UVdCGbguN3d@mail.gmail.com>
+	<AANLkTim8k8Nm6kS4a2_xGL2MulrdAWGUWyrnu3x0k4bQ@mail.gmail.com>
+Date: Thu, 27 May 2010 09:50:07 +1000
+Message-ID: <AANLkTikRScBMLCrCW-VeDoJFDtsPkKqJoO9zES06kWBN@mail.gmail.com>
+Subject: Re: [ruby-ffi] invalid ELF header on hello world example
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 74.125.83.178 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 27 May 2010 09:28, Luis Lavena <luislavena@gmail.com> wrote:
+> But LIBC is not defined in that context, better be explicit:
+>
+> ffi_lib FFI::Library::LIBC
+>
+> Works even on Windows ;-)
+
+Thanks Luis.  That example is fixed now.  (there could be others that
+either don't have a ffi_lib call, or aren't correct, but I haven't
+looked for them).
+
+Yup, working on windows (and AIX, which uses something strange like
+libc.a(shr_64.o)) is what that constant is for.  Even ffi_lib 'c'
+should work on all of them, since ffi_lib looks for 'c' and converts
+it back to FFI::Library::LIBC.

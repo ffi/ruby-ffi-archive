@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] 0.5.1 install failed on JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] 0.5.1 install failed on JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jerome Riga <lamit.jay@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/29/09 7:50 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>Hi all,
+<br>
+<br>On my dev environment, it seems that FFI 0.5.1 is trying to build the C-extension on the JRuby.
+<br>
+<br>$ jgem i ffi --no-ri --no-rdoc --version=0.5.0
+<br>Successfully installed ffi-0.5.0-java
+<br>1 gem installed
+<br>
+<br>$ jgem i ffi --no-ri --no-rdoc --version=0.5.1
+<br>Building native extensions.&nbsp; This could take a while...
+<br>ERROR:&nbsp; Error installing ffi:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ERROR: Failed to build gem native extension.
+<br>
+<br>/opt/local/bin/jruby extconf.rb
+<br>WARNING: JRuby does not support native extensions or the `mkmf' library.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Check wiki.jruby.org for alternatives.
+<br>extconf.rb:4: undefined method `dir_config' for main:Object (NoMethodError)
+<br>
+<br>
+<br>Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/local/lib/jruby-1.4.0RC3/lib<span class="moz-txt-tag">/</span></i>ruby/gems/1.8/gems/ffi-0.5.1 for inspection.
+<br>Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/local/lib/jruby-1.4.0RC3/lib/ruby/gems/1.8/gems<span class="moz-txt-tag">/</span></i>ffi-0.5.1/ext/ffi_c/gem_make.out
+<br>
+<br>Could someone verify this, please?
+<br>
+<br>Cheers,
+<br>
+<br>Jerome Riga
+<br></div></body>
+</html>
+</table></div>

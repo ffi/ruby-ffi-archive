@@ -1,0 +1,22 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Snow Leopard + ruby-ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Snow Leopard + ruby-ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/14/09 3:31 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+ruby-ffi is somewhat broken w.r.t closures/callbacks on snow leopard,
+due to the NX bit being enabled on heap allocations now, and a
+mis-configuration when building the internal libffi - the code to
+properly allocate closures as read+execute was not being compiled in.
+
+To add to the fun, if you build libffi out of macports, it also does
+not enable that code, and ruby-ffi will find that version and try to
+use it, and fail miserably.
+
+So if you need FFI on 10.6, install 0.5.0 from source.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,139 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.44.67 with SMTP id c3csp144420lbm;
+        Tue, 15 Jan 2013 15:09:41 -0800 (PST)
+X-Received: by 10.194.76.137 with SMTP id k9mr144930373wjw.29.1358291381497;
+        Tue, 15 Jan 2013 15:09:41 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDWM7HMLVIORBNGD26DQKGQEHLF4LWI@googlegroups.com>
+Received: from mail-fa0-f55.google.com (mail-fa0-f55.google.com [209.85.161.55])
+        by mx.google.com with ESMTPS id ex6si6383322wib.22.2013.01.15.15.09.41
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 15 Jan 2013 15:09:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDWM7HMLVIORBNGD26DQKGQEHLF4LWI@googlegroups.com designates 209.85.217.179 as permitted sender) client-ip=209.85.217.179;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDWM7HMLVIORBNGD26DQKGQEHLF4LWI@googlegroups.com designates 209.85.217.179 as permitted sender) smtp.mail=ruby-ffi+bncBDWM7HMLVIORBNGD26DQKGQEHLF4LWI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-fa0-f55.google.com with SMTP id p1sf298907fad.0
+        for <headius@headius.com>; Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=fIecT3Vwe+/6ax3g/veofYLp7l790PsoiAgXnXnuxtc=;
+        b=YM2CVGxJn47gnSlXFvif66P4XYy2UxmhAGVpVFgQ/GXcuIFEypv8EkF9yOkQ5BmhM8
+         2/Slvv7/NCAkpshoiCAwreBs2nCsycZa/mj16x8HX1IjWdhp8l0MCGIy0PbGw4cV6S5b
+         uujnIXR4jlK1YuBPmQv4zhjxMW5EvNjj1nSoZwr9sMWo2Dw/Nny7DBJEZbx6tlEbrexm
+         XI/w9t4nzKeRy+YdSRRlOXtE5V5QCzYMCkzDTzPnJ0Dea4b1g/vpjWbtV6tnj3u6x/o2
+         FA/V23KEhwUAlcOTLKYjd9DMeMXxMiGzF04K5iZ6+rtR6I/uK0EhuXFOka3lvmXKIwkO
+         DxSw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:received-spf
+         :mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=fIecT3Vwe+/6ax3g/veofYLp7l790PsoiAgXnXnuxtc=;
+        b=sHrMroDWiondjFL9SUVoOKSWV6AvUHeIJE/OM+UDb2Jotn9721jBR7wYRx2e5G4IqK
+         AnZxSMaKKv5y0pdBDCg5tHrcAitNbBnyiG2U7840SEPfjaknCQZG2cjysvBMWKIe5gku
+         Phx4YkSU6Idd+sqOe36zE93H4uFXyH6c+8VTBrJAiLfyN69p+w7ehMZczXR+nRoKcZbU
+         3eU6btk8keku1v4Z/1kEsfa/FWkHNDwHwrqTI8ocllJvzDPaL5fD2LfW5L+bDJ6bYkhG
+         xVi0wWf/jbheZKRxv4NTm3lPR8qUotcpxKO+81IjEGyNcIQzrJXV9QaXVwRno/YGHmUn
+         susQ==
+X-Received: by 10.180.95.199 with SMTP id dm7mr972488wib.18.1358291380835;
+        Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.88.73 with SMTP id be9ls490880wib.21.gmail; Tue, 15 Jan
+ 2013 15:09:40 -0800 (PST)
+X-Received: by 10.204.145.215 with SMTP id e23mr4682868bkv.0.1358291380382;
+        Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+X-Received: by 10.204.145.215 with SMTP id e23mr4682866bkv.0.1358291380354;
+        Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+Received: from mail-lb0-f179.google.com (mail-lb0-f179.google.com [209.85.217.179])
+        by gmr-mx.google.com with ESMTPS id e21si1453504bkv.2.2013.01.15.15.09.40
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.217.179 as permitted sender) client-ip=209.85.217.179;
+Received: by mail-lb0-f179.google.com with SMTP id gm13so583149lbb.10
+        for <ruby-ffi@googlegroups.com>; Tue, 15 Jan 2013 15:09:40 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.112.28.133 with SMTP id b5mr37913049lbh.79.1358291379997; Tue,
+ 15 Jan 2013 15:09:39 -0800 (PST)
+Received: by 10.114.15.225 with HTTP; Tue, 15 Jan 2013 15:09:39 -0800 (PST)
+Received: by 10.114.15.225 with HTTP; Tue, 15 Jan 2013 15:09:39 -0800 (PST)
+In-Reply-To: <826e1999-3748-4f19-a833-6e47d7b5e37f@googlegroups.com>
+References: <826e1999-3748-4f19-a833-6e47d7b5e37f@googlegroups.com>
+Date: Tue, 15 Jan 2013 20:09:39 -0300
+Message-ID: <CAN_J9auN8UhekbN8Rv9eznEx6QGFSCste6zAfd7hh+6fpifUsw@mail.gmail.com>
+Subject: Re: [ruby-ffi] [ANN] ffi-compiler 0.0.1
+From: Luis Lavena <luislavena@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of luislavena@gmail.com designates 209.85.217.179 as
+ permitted sender) smtp.mail=luislavena@gmail.com;       dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=bcaec554d8e434cd8c04d35bdb5f
+
+--bcaec554d8e434cd8c04d35bdb5f
+Content-Type: text/plain; charset=ISO-8859-1
+
+Interesting.
+
+Noticed in the example that result of compilation is left in the ext
+folder. Assume that is to avoid clash wih ruby trying to load the shared
+library?
+
+I'll try this with Windows too and report back ;-)
+
+Sorry for top posting. Sent from mobile.
+On Jan 15, 2013 6:04 PM, "Wayne Meissner" <wmeissner@gmail.com> wrote:
+
+>
+> I have released a new gem - ffi-compiler (
+> https://github.com/ffi/ffi-compiler) - to help people who need to need to
+> write custom C code (e.g. for C++ shims), but don't want to get bogged down
+> with figuring out how to compile that into a shared library and have
+> everything install & load correctly when their gem is installed.
+>
+>
+>
+
+--bcaec554d8e434cd8c04d35bdb5f
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<p>Interesting. </p>
+<p>Noticed in the example that result of compilation is left in the ext fol=
+der. Assume that is to avoid clash wih ruby trying to load the shared libra=
+ry? </p>
+<p>I&#39;ll try this with Windows too and report back ;-) </p>
+<p>Sorry for top posting. Sent from mobile.</p>
+<div class=3D"gmail_quote">On Jan 15, 2013 6:04 PM, &quot;Wayne Meissner&qu=
+ot; &lt;<a href=3D"mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt; =
+wrote:<br type=3D"attribution"><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br><div>I have released a new gem - ffi-compiler (<a href=3D"https://githu=
+b.com/ffi/ffi-compiler" target=3D"_blank">https://github.com/ffi/ffi-compil=
+er</a>) - to help people who need to need to write custom C code (e.g. for =
+C++ shims), but don&#39;t want to get bogged down with figuring out how to =
+compile that into a shared library and have everything install &amp; load c=
+orrectly when their gem is installed.</div>
+<div><br></div><div><br></div></blockquote></div>
+
+--bcaec554d8e434cd8c04d35bdb5f--

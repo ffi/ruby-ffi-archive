@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.228.137 with SMTP id je9cs199132qcb;
+        Fri, 11 Jun 2010 12:25:48 -0700 (PDT)
+Received: by 10.150.165.1 with SMTP id n1mr4180920ybe.61.1276284347915;
+        Fri, 11 Jun 2010 12:25:47 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRC6m8rgBBoEhVbuTQ@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id v3si4907112ybe.5.2010.06.11.12.25.46;
+        Fri, 11 Jun 2010 12:25:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRC6m8rgBBoEhVbuTQ@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRC6m8rgBBoEhVbuTQ@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRC6m8rgBBoEhVbuTQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxj4 with SMTP id 4sf2207692yxj.7
+        for <headius@headius.com>; Fri, 11 Jun 2010 12:25:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=suBXt8DJDhejFfyd1nd6FogmPF0vqUJITITN4bePtpo=;
+        b=jFmmoUNdp+R54n5U+8FEBwKvalCodPjX/4BG+7KXgIuMsYRAPfIeFRZuYlPYps+gsg
+         HFOUxsTuxFqmS4BhrRBkLxx3ikF2XAdTpm9B6v5RY/T7ab7OsKRQMV+TlLMspzr/e8XX
+         8eui4qs1jJYgnjwtPvEB/fu23IybHwR/2A5/s=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=f6Io3NMFZ2dNnGeJh69z7Spvf0nzxwvIJX3QA0bsXYfvJw/PCuKK0/oGgjo64JeLze
+         myb/oxVlas54LIB7zlDjR1h5wdCjZSz3S/JO4VGYV+SIQgjcMxgWy8Nw2NW/LSs1+gsw
+         qM23g8WjFt4YnRAtnHQh6ea0bJ5jfCx+3+REc=
+Received: by 10.101.165.30 with SMTP id s30mr172766ano.65.1276284346290;
+        Fri, 11 Jun 2010 12:25:46 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.160.35 with SMTP id m35ls4230197ano.2.p; Fri, 11 Jun 2010 
+	12:25:44 -0700 (PDT)
+Received: by 10.100.28.35 with SMTP id b35mr730663anb.4.1276284344102;
+        Fri, 11 Jun 2010 12:25:44 -0700 (PDT)
+Received: by 10.100.28.35 with SMTP id b35mr730662anb.4.1276284344081;
+        Fri, 11 Jun 2010 12:25:44 -0700 (PDT)
+Received: from mail-yx0-f180.google.com (mail-yx0-f180.google.com [209.85.213.180])
+        by gmr-mx.google.com with ESMTP id m3si1172876anh.4.2010.06.11.12.25.43;
+        Fri, 11 Jun 2010 12:25:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.213.180 as permitted sender) client-ip=209.85.213.180;
+Received: by mail-yx0-f180.google.com with SMTP id 5so714687yxd.11
+        for <ruby-ffi@googlegroups.com>; Fri, 11 Jun 2010 12:25:43 -0700 (PDT)
+Received: by 10.101.142.17 with SMTP id u17mr2222790ann.196.1276284342880; 
+	Fri, 11 Jun 2010 12:25:42 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.6.7 with HTTP; Fri, 11 Jun 2010 12:25:22 -0700 (PDT)
+In-Reply-To: <e7927406-ff8d-44d1-981a-2008fc6956a9@g39g2000pri.googlegroups.com>
+References: <e7927406-ff8d-44d1-981a-2008fc6956a9@g39g2000pri.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 11 Jun 2010 15:25:22 -0400
+Message-ID: <AANLkTimsKt339M4QT3LTpPsHasBDcfVv8I7-5QmdDgES@mail.gmail.com>
+Subject: Re: [ruby-ffi] default to :stdcall on windows?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.213.180 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jun 11, 2010 at 12:16 PM, rogerdpack <rogerpack2005@gmail.com> wrot=
+e:
+> I'm not sure if this is necessary, but I recently saw a bug report
+> that, for one user, the fact that they weren't using stdcall for their
+> method declarations was causing a memory leak. =A0Maybe it should
+> default to stdcall on windows since that's what dll's default to,
+> isn't it?
+>
+
+DLLs that are not Microsoft ones can safely be cdecl
+
+defaulting to stdcall will make they need to explicitly state that also.
+
+> Thoughts? Or maybe I'm repeating myself here.
+
+There is no win-win situation more than "indicating". Explicit over implici=
+t.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

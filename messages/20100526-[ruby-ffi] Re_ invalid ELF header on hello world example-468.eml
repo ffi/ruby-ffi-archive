@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs19492qcb;
+        Wed, 26 May 2010 21:41:46 -0700 (PDT)
+Received: by 10.150.94.3 with SMTP id r3mr960116ybb.13.1274935305755;
+        Wed, 26 May 2010 21:41:45 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPiTwqOpCxCI8PffBBoEZgSc-w@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id t4si2320028ybi.69.2010.05.26.21.41.44;
+        Wed, 26 May 2010 21:41:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPiTwqOpCxCI8PffBBoEZgSc-w@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPiTwqOpCxCI8PffBBoEZgSc-w@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCPiTwqOpCxCI8PffBBoEZgSc-w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg8 with SMTP id 8sf6245298gyg.7
+        for <headius@headius.com>; Wed, 26 May 2010 21:41:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=FCijxdrBhBGkxEIG+nTDrzkJyCIqoYZYdTY+L1KJLU0=;
+        b=aC6tzcwxrDQPPkgj1pueLqnkaSRcMeM0vNH+5RpC+Pu6P+SuzqcvZBbBchoIqaMrPf
+         1r2gmmAdUwxH1zAC9LJdtLEmPh4zT8j6RaBuPiv/0zbUboLSsNk2Fb3S9t4+s49U87oS
+         22SyXlmXby3G1d5U6fj4qXMa9RvnMmPF+eSeA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=tqQ5ja8nCgYMQzqptb/eRng5YhE/1ANW8d0RooSNVd5Hc8hlnM1O9JQkFGqw/tutxI
+         xe6gBvNxBuLWcfW7YN03Tqijx9L2l1AN0Yn/9yUfCWhRVVT3kgsrvhiSb/4WBzktQ/Iu
+         cH8E2hpeCxQ/HdlQSShg23VzkjC85kNGk26kQ=
+Received: by 10.101.143.22 with SMTP id v22mr346593ann.29.1274935304042;
+        Wed, 26 May 2010 21:41:44 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.11.8 with SMTP id o8ls312362ani.6.p; Wed, 26 May 2010 
+	21:41:43 -0700 (PDT)
+Received: by 10.100.20.2 with SMTP id 2mr3039747ant.1.1274935303682;
+        Wed, 26 May 2010 21:41:43 -0700 (PDT)
+Received: by 10.100.20.2 with SMTP id 2mr3039746ant.1.1274935303655;
+        Wed, 26 May 2010 21:41:43 -0700 (PDT)
+Received: from mail-gx0-f203.google.com (mail-gx0-f203.google.com [209.85.217.203])
+        by gmr-mx.google.com with ESMTP id z17si628324ank.5.2010.05.26.21.41.43;
+        Wed, 26 May 2010 21:41:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jtprince@gmail.com designates 209.85.217.203 as permitted sender) client-ip=209.85.217.203;
+Received: by mail-gx0-f203.google.com with SMTP id 27so245913gxk.1
+        for <ruby-ffi@googlegroups.com>; Wed, 26 May 2010 21:41:43 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.152.10 with SMTP id e10mr337461ano.35.1274935303596; Wed, 
+	26 May 2010 21:41:43 -0700 (PDT)
+Received: by q36g2000prg.googlegroups.com with HTTP; Wed, 26 May 2010 21:41:43 
+	-0700 (PDT)
+Date: Wed, 26 May 2010 21:41:43 -0700 (PDT)
+In-Reply-To: <AANLkTikz8C75ujBr497UeTPeY9D1qqTaWAbQlTbiwR3f@mail.gmail.com>
+X-IP: 67.182.217.162
+References: <fbca960d-859a-4e2c-8538-d900252b54ef@32g2000prq.googlegroups.com> 
+	<AANLkTinfstZG4iFodfiySvBfMIuwWe2m8UVdCGbguN3d@mail.gmail.com> 
+	<AANLkTim8k8Nm6kS4a2_xGL2MulrdAWGUWyrnu3x0k4bQ@mail.gmail.com> 
+	<AANLkTikRScBMLCrCW-VeDoJFDtsPkKqJoO9zES06kWBN@mail.gmail.com> 
+	<AANLkTikz8C75ujBr497UeTPeY9D1qqTaWAbQlTbiwR3f@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.3) 
+	Gecko/20100423 Ubuntu/10.04 (lucid) Firefox/3.6.3,gzip(gfe)
+Message-ID: <efe99253-bf06-4241-9477-05500c6ecd21@q36g2000prg.googlegroups.com>
+Subject: [ruby-ffi] Re: invalid ELF header on hello world example
+From: bwv549 <jtprince@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jtprince@gmail.com designates 209.85.217.203 as permitted sender) 
+	smtp.mail=jtprince@gmail.com
+X-Original-Sender: jtprince@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+That works for me on linux.  Much obliged!
+
+On May 26, 5:57=A0pm, Luis Lavena <luislav...@gmail.com> wrote:
+> On Wed, May 26, 2010 at 8:50 PM, Wayne Meissner <wmeiss...@gmail.com> wro=
+te:
+>
+> > Yup, working on windows (and AIX, which uses something strange like
+> > libc.a(shr_64.o)) is what that constant is for. =A0Even ffi_lib 'c'
+> > should work on all of them, since ffi_lib looks for 'c' and converts
+> > it back to FFI::Library::LIBC.
+>
+> Only on *NIX, on Windows fails, but knowing the constant is better
+> than letting FFI do magic :-)
+> (better explicit than implicit)
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry

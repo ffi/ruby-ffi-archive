@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs232615fam;
+        Tue, 28 Dec 2010 08:02:34 -0800 (PST)
+Received: by 10.229.75.10 with SMTP id w10mr12050763qcj.109.1293552153729;
+        Tue, 28 Dec 2010 08:02:33 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLeTq4HQChCYlOjoBBoEbAwzhg@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTP id e7si24793191qck.151.2010.12.28.08.02.32;
+        Tue, 28 Dec 2010 08:02:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCYlOjoBBoEbAwzhg@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLeTq4HQChCYlOjoBBoEbAwzhg@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCLeTq4HQChCYlOjoBBoEbAwzhg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws4 with SMTP id 4sf4929052vws.7
+        for <headius@headius.com>; Tue, 28 Dec 2010 08:02:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=wEKGDw3jsmh6LWsaxFBP5MVY8CZJTV7ZCIHCtENLJBw=;
+        b=1rLF2yIrv3hXk9rxIQABwe1xFD4v/L36G7ZsD/kG34HHremhMmqyc/UnO0nx5YJfur
+         s15sL09CUPbK8/sTYPRAFj6BdjMHqiYCRrhZzteVdQP9QD5LMnWi1ZkNWD9SvgsimX37
+         dGayQsbsnALHcYM7qaNUfDnXkbX08OHTKwYqI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=3ZGgh0ZG+5bI494ZWDtsGOVdpZuC7W9d6+BRj3mw7UMzswtpGdvKekMsrVhSjTG7iu
+         vw9BhIuYXdtlVOmskVpWRzeR9W2PSBhB001qubD3xphrTIh+Y68scg/tZ4Schsov2DND
+         FuDMr7KoBWkYKEapPEgYDXrx+APN5glYgRSdc=
+Received: by 10.220.200.139 with SMTP id ew11mr161998vcb.31.1293552152017;
+        Tue, 28 Dec 2010 08:02:32 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.52.1 with SMTP id f1ls1319252vcg.0.p; Tue, 28 Dec 2010
+ 08:02:30 -0800 (PST)
+Received: by 10.220.177.12 with SMTP id bg12mr4461012vcb.5.1293552150662;
+        Tue, 28 Dec 2010 08:02:30 -0800 (PST)
+Received: by 10.220.177.12 with SMTP id bg12mr4461011vcb.5.1293552150612;
+        Tue, 28 Dec 2010 08:02:30 -0800 (PST)
+Received: from mail-qy0-f172.google.com (mail-qy0-f172.google.com [209.85.216.172])
+        by gmr-mx.google.com with ESMTPS id a11si835724vci.15.2010.12.28.08.02.29
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 28 Dec 2010 08:02:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.216.172 as permitted sender) client-ip=209.85.216.172;
+Received: by mail-qy0-f172.google.com with SMTP id 34so10821140qyk.10
+        for <ruby-ffi@googlegroups.com>; Tue, 28 Dec 2010 08:02:29 -0800 (PST)
+Received: by 10.224.6.140 with SMTP id 12mr3710767qaz.331.1293552149467;
+        Tue, 28 Dec 2010 08:02:29 -0800 (PST)
+Received: from Red (rrcs-98-102-103-102.central.biz.rr.com [98.102.103.102])
+        by mx.google.com with ESMTPS id g32sm7726151qck.34.2010.12.28.08.02.28
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 28 Dec 2010 08:02:28 -0800 (PST)
+Date: Tue, 28 Dec 2010 11:02:23 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] FFI 1.0.3 and Windows build issue with MRI trunk@30404
+Message-Id: <20101228110223.deccaacf.jon.forums@gmail.com>
+In-Reply-To: <AANLkTimzRHr1pDdFZUUKpqr-diFsxuNS89aitcoTG-kF@mail.gmail.com>
+References: <20101227101122.9ec1841c.jon.forums@gmail.com>
+	<AANLkTinMy=5UsOCvJ=GS6Uf4L_b-xauwkKUvwWdaMy7Q@mail.gmail.com>
+	<20101228102551.898cdf6c.jon.forums@gmail.com>
+	<AANLkTimzRHr1pDdFZUUKpqr-diFsxuNS89aitcoTG-kF@mail.gmail.com>
+X-Mailer: Sylpheed 3.0.3 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jon.forums@gmail.com designates 209.85.216.172 as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> > I think it's fine to enforce code consistency for MRI core and it's included extensions, but agree with you on breaking third party code. I can't yet see how this mod enhances code quality. Extension API's already exist for third parties to code to. IMO, a build flag is not an API.
+> >
+> 
+> Jon, why not report this to Ruby-Core instead?
+> 
+> If the flag is going to have such impact on extensions and other gems,
+> Core should hear this before that change hits another release.
+
+Already started in the http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/33843 thread.  Not much uptake in discussion likely because the thread title is likely skippable ;)  Perhaps you or others would like to weigh in?
+
+
+> More than "extending things to circumvent the change" in the form of
+> patch or anything, better tell Core to revert that or make it default
+> false with the optional configure flag.
+>
+> Sorry for the tone, couldn't resist that this needs to be deal on Core
+> by Core and not discussed over this list.
+
+In general, this is good feedback Luis. However, in this case, the issue has already been highlighted to core and I think it's premature to revert it or make it an optional default.  While I'm not yet decided, I fundamentally like the mod, but it needs to be enhanced as trunk mods often do.  On this FFI thread, I'm really interested in hearing Wayne's feedback since the FFI gem is an important cross platform capability.
+
+At this stage I'm just trying to get some other PoV's on the dual build environment idea. If it adds value, the next step is a feature request.
+
+Jon

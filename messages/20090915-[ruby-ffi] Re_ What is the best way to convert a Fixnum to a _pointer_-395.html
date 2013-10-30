@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: What is the best way to convert a Fixnum to a  :pointer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: What is the best way to convert a Fixnum to a  :pointer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/15/09 9:15 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+A MemoryPointer is an allocated Pointer.
+
+i.e. it handles allocation and deallocation of the memory.
+FFI::MemoryPointer.new(x) tries to allocate x bytes.
+
+FFI::Pointer.new on the other hand, just wraps whatever you give it in
+a Pointer instance
+
+btw, you should be checking for Integer in your code, not Fixnum.  A
+Fixnum in MRI cannot hold all the bits in a pointer.
+
+e.g. on 32bit:
+a = 0xfee1dead # this is a valid 32bit address
+puts "a.is_a?(Fixnum)=#{a.is_a?(Fixnum)}"
+# =&gt; false
+puts "a.is_a?(Integer)=#{a.is_a?(Integer)}"
+# =&gt; true
+
+Or the better way is to do:
+
+pointer = address.is_a?(FFI::Pointer) ? address : FFI::Pointer.new(address)
+
+Or you could always just wrap it using FFI::Pointer.new(address),
+since FFI::Pointer.new can take pointer arguments as well as Integer
+arguments
+
+2009/9/16 Brett Blackham <a class="moz-txt-link-rfc2396E" href="mailto:brett.blackham@gmail.com">&lt;brett.blackham@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Ah ha! Thanks.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>pointer = FFI::Pointer.new(address) # Works
+<span class="moz-txt-citetags">&gt; </span>pointer = FFI::MemoryPointer.new(address) # Fails.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks again!
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Now I am curious what is the difference between a Pointer and
+<span class="moz-txt-citetags">&gt; </span>MemoryPointer. It was my understanding that a pointer is a pointer.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Test pointer results</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Test pointer results</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Brett Blackham <brett.blackham@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/8/09 8:13 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+I have the following code:
+
+  DWORD     = FFI::Type::UINT32
+  ...
+  ffi_lib 'kernel32'
+  attach_function :CreateToolhelp32Snapshot, [DWORD, DWORD], :pointer
+
+
+  snapshot = KERNEL32.CreateToolhelp32Snapshot
+( Win32DebuggerDefines::TH32CS_SNAPTHREAD, @pid
+  if snapshot == nil
+    return false
+  end
+
+
+  However, this code fails at "if snapshot == nil". It appears that
+CreateToolhelp32Snapshot will always return a pointer. Even if @pid is
+not a valid process ID. Additionally, FFI pointers don't like to be
+compared to nil. Any thoughts on how I could test the results to
+ensure the CreateToolhelp32Snapshot call worked?
+
+Thanks
+
+
+
+
+
+
+</pre></div></body>
+</html>
+</table></div>

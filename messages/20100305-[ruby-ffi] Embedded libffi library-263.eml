@@ -1,0 +1,102 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.165.131 with SMTP id i3cs3198vcy;
+        Fri, 5 Mar 2010 21:03:34 -0800 (PST)
+Received: by 10.101.64.18 with SMTP id r18mr3399040ank.24.1267851814481;
+        Fri, 05 Mar 2010 21:03:34 -0800 (PST)
+Return-Path: <3JOKRSwYJCOMRNHFMTLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@groups.bounces.google.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id 3si5192150ywh.57.2010.03.05.21.03.33;
+        Fri, 05 Mar 2010 21:03:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3JOKRSwYJCOMRNHFMTLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@groups.bounces.google.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3JOKRSwYJCOMRNHFMTLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@groups.bounces.google.com designates 74.125.83.62 as permitted sender) smtp.mail=3JOKRSwYJCOMRNHFMTLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwaa20 with SMTP id a20sf7223018gwa.7
+        for <headius@headius.com>; Fri, 05 Mar 2010 21:03:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=+MY1aNItI1AEuLtFlDSbjZ72c7jYnsuavxqAERN2T2E=;
+        b=MQjEFsn7tRMBq/+2Zdb11kDDcfyfXMwXWRVuLxiAEP5yT5JZQJsLqSxCBdD8Cr0TB1
+         yAF4PXnd8F2yn78IB0xq9lnf1xbA1RmTexvnK7UBPIljZHmeBRyqimP9O5Fv4fw9sB0K
+         WTaI0eynoAh9HV2yVgzKpI6D9OAUpJfwafcWY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=DCMpvl4hsqvYEx9UOtsl0HaQSJofh0+3blSPxVwVvqMgslKfTdmJ2/h1u/5gPRNt1h
+         WUBu6RzT3CLUQZHEkV78f2sraa++WNxeCQ2nqznN8iPjtPYXIJEGkcpcRfiauyHekjZu
+         G7uOydqPHD8OUt2C6pJlwKBGb+fkcgYWiMMpI=
+Received: by 10.150.75.11 with SMTP id x11mr83238yba.46.1267851812064;
+        Fri, 05 Mar 2010 21:03:32 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.18.15 with SMTP id v15ls352688ybi.7.p; Fri, 05 Mar 2010 
+	21:03:31 -0800 (PST)
+Received: by 10.150.127.5 with SMTP id z5mr2086925ybc.1.1267851810980;
+        Fri, 05 Mar 2010 21:03:30 -0800 (PST)
+Received: by 10.91.65.8 with SMTP id s8mr1942694agk.6.1267830765290;
+        Fri, 05 Mar 2010 15:12:45 -0800 (PST)
+Received: by 10.91.65.8 with SMTP id s8mr1942691agk.6.1267830765240;
+        Fri, 05 Mar 2010 15:12:45 -0800 (PST)
+Return-Path: <micaho@gmail.com>
+Received: from mail-gy0-f192.google.com (mail-gy0-f192.google.com [209.85.160.192])
+        by gmr-mx.google.com with ESMTP id 24si231107yxe.5.2010.03.05.15.12.45;
+        Fri, 05 Mar 2010 15:12:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of micaho@gmail.com designates 209.85.160.192 as permitted sender) client-ip=209.85.160.192;
+Received: by mail-gy0-f192.google.com with SMTP id 12so59088gyd.9
+        for <ruby-ffi@googlegroups.com>; Fri, 05 Mar 2010 15:12:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.165.36 with SMTP id s36mr45896ano.73.1267830765199; Fri, 
+	05 Mar 2010 15:12:45 -0800 (PST)
+Date: Fri, 5 Mar 2010 15:12:45 -0800 (PST)
+X-IP: 198.252.153.210
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.8) 
+	Gecko/20100225 Iceweasel/3.5.6 (like Firefox/3.5.6; Debian-3.5.6-1),gzip(gfe),gzip(gfe)
+Message-ID: <4066c36d-3432-454e-8054-a07a82699f21@k17g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Embedded libffi library
+From: micah <micaho@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of micaho@gmail.com designates 209.85.160.192 as permitted sender) 
+	smtp.mail=micaho@gmail.com
+X-Original-Sender: micaho@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/cc8d865246b7003e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/490b35af1efcafcc
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+In working on the Debian package, I found that the ffi ruby library
+embeds an entire code-copy of the upstream libffi C library. Embedding
+code is a bug in Debian if there is already an available library and
+headers that can be depended on and used instead... so I have taken
+the steps to repack the tarball to remove this embedded code-copy in
+the Debian package.
+
+However, I am curious to know if this is just a convenience copy, or
+if it has any modifications that I should be aware of?
+
+thanks,
+micah

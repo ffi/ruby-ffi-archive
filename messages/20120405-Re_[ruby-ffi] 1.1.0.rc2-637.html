@@ -1,0 +1,72 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] 1.1.0.rc2</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] 1.1.0.rc2</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/5/12 9:54 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I just pushed 1.1.0.rc2 to rubygems.  Please try it out and report any 
+<span class="moz-txt-citetags">&gt; </span>installation problems on your favourite platform.
+</pre></blockquote><pre wrap>
+
+uname -rsm
+Linux 3.2.13-1-ARCH i686
+
+ruby --version
+ruby 2.0.0dev (2012-04-05 trunk 35241) [i686-linux]
+
+gcc --version
+gcc (GCC) 4.7.0 20120324 (prerelease)
+
+gem install ffi --pre --user-install
+Fetching: ffi-1.1.0.rc2.gem (100%)
+Building native extensions.  This could take a while...
+Successfully installed ffi-1.1.0.rc2
+1 gem installed
+
+ripl -r ffi
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::Platform::IS_LINUX
+</pre></blockquote></blockquote><pre wrap>
+=&gt; true
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::Platform::IS_WINDOWS
+</pre></blockquote></blockquote><pre wrap>
+=&gt; false
+
+=============================
+
+# Win7 Ultimate 32bit
+ruby --version
+ruby 1.9.3p174 (2012-04-03 revision 35222) [i386-mingw32]
+
+gcc --version
+gcc (GCC) 4.6.2
+
+gem install ffi --pre
+Fetching: ffi-1.1.0.rc2-x86-mingw32.gem (100%)
+Successfully installed ffi-1.1.0.rc2-x86-mingw32
+1 gem installed
+
+ripl -r ffi
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::Platform::IS_LINUX
+</pre></blockquote></blockquote><pre wrap>
+=&gt; false
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::Platform::IS_WINDOWS
+</pre></blockquote></blockquote><pre wrap>
+=&gt; true
+
+
+Jon
+
+---
+Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<a class="moz-txt-link-freetext" href="http://thecodeshop.github.com">http://thecodeshop.github.com</a> | <a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+twitter: @jonforums
+</pre></div></body>
+</html>
+</table></div>

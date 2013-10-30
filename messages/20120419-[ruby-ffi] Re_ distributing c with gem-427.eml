@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.108.105 with SMTP id hj9csp71709obb;
+        Thu, 19 Apr 2012 14:47:12 -0700 (PDT)
+Received: by 10.50.46.167 with SMTP id w7mr3925506igm.73.1334872032217;
+        Thu, 19 Apr 2012 14:47:12 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJK2oeb9AhDfj8L8BBoENt80bw@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id b7si3978662icw.103.2012.04.19.14.47.12
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 19 Apr 2012 14:47:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJK2oeb9AhDfj8L8BBoENt80bw@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJK2oeb9AhDfj8L8BBoENt80bw@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCJK2oeb9AhDfj8L8BBoENt80bw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by iage36 with SMTP id e36sf22234847iag.7
+        for <headius@headius.com>; Thu, 19 Apr 2012 14:47:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=OvnENZ9CIVNCkGkv59hSnxPDZdfoG/7NwS8o036cBww=;
+        b=ia2abgvCh+lulOOz906TDWcr8x+/igjTGont9JBk5WQhk18m4SbSLv45P8A5885xm2
+         ssehdS1cBA3vgrj8Oy2hKt20z0fwfKONvgVUvZyCuwLX42Rsh0dYb3oOYfVnFW/z/4RI
+         kkQeDL6JkPbe2NBH2KKTlhzSuXtQyAk+zKNj8=
+Received: by 10.50.236.36 with SMTP id ur4mr100851igc.1.1334872031882;
+        Thu, 19 Apr 2012 14:47:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.58.146 with SMTP id g18ls3743415ibh.3.gmail; Thu, 19 Apr
+ 2012 14:47:11 -0700 (PDT)
+Received: by 10.42.89.20 with SMTP id e20mr2680915icm.3.1334872031572;
+        Thu, 19 Apr 2012 14:47:11 -0700 (PDT)
+Received: by 10.50.151.242 with SMTP id ut18msigb;
+        Thu, 19 Apr 2012 13:01:37 -0700 (PDT)
+Received: by 10.68.218.103 with SMTP id pf7mr849189pbc.11.1334865697224;
+        Thu, 19 Apr 2012 13:01:37 -0700 (PDT)
+Date: Thu, 19 Apr 2012 13:01:36 -0700 (PDT)
+From: Hampton Catlin <hcatlin@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <20740276.737.1334865696631.JavaMail.geo-discussion-forums@pbcuv5>
+In-Reply-To: <62e63d33-88cc-42e3-bf22-98b84c3f3e8e@c1g2000vbw.googlegroups.com>
+References: <08749d02-510a-41e6-8c44-f669940ffc20@fk25g2000vbb.googlegroups.com>
+ <E5E92CB0B26C422FAB6760E66BC6E914@gmail.com>
+ <62e63d33-88cc-42e3-bf22-98b84c3f3e8e@c1g2000vbw.googlegroups.com>
+Subject: [ruby-ffi] Re: distributing c with gem
+MIME-Version: 1.0
+X-Original-Sender: hcatlin@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_736_10913861.1334865696631"
+
+------=_Part_736_10913861.1334865696631
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I'm also super interested in this. I have a small C library that I'd rather 
+just
+bundle in with the gem and allow local compilation.
+
+What mixtli described is what I would assume would work... but I don't know 
+how to actually make ffi see the code!
+
+-hampton.
+
+On Sunday, October 23, 2011 6:38:14 PM UTC-7, mixtli wrote:
+>
+> Wow, is it really that difficult?  I'd have thought it'd just be a 
+> matter of setting up an extconf to build the extension and then 
+> telling ffi somehow about the ext/foo directory as a library path. 
+>
+>
+> On Oct 23, 1:52 pm, Jeremy Voorhis <jvoor...@gmail.com> wrote: 
+> >  I've tried to crack this one as well. After learning that RubyGems will 
+> build extensions using configure-make-install in addition to extconf.rb, I 
+> have a branch of ruby-llvm that uses the autotools to build and manage a 
+> shared library, but unfortunately haven't released it yet because of 
+> incompatibilities between autoconf versions on Mac and Ubuntu. 
+> > 
+> > You can see my approach athttps://
+> github.com/jvoorhis/ruby-llvm/tree/support-lib. If anyone is an autotools 
+> pro, or has a better idea, please help! :) 
+> > 
+> > Jeremy 
+> > 
+> > 
+> > 
+> > 
+> > 
+> > 
+> > 
+> > On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote: 
+> > >  I want to package up my c source with my gem, and call it from ffi. 
+> > > How can I tell ffi to use a library packaged with the gem instead of 
+> > > looking in the system libraries?
+
+
+------=_Part_736_10913861.1334865696631
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+I'm also super interested in this. I have a small C library that I'd rather just<div>bundle in with the gem and allow local compilation.</div><div><br></div><div>What mixtli described is what I would assume would work... but I don't know&nbsp;</div><div>how to actually make ffi see the code!</div><div><br></div><div>-hampton.<br><br>On Sunday, October 23, 2011 6:38:14 PM UTC-7, mixtli wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Wow, is it really that difficult? &nbsp;I'd have thought it'd just be a
+<br>matter of setting up an extconf to build the extension and then
+<br>telling ffi somehow about the ext/foo directory as a library path.
+<br>
+<br>
+<br>On Oct 23, 1:52&nbsp;pm, Jeremy Voorhis &lt;<a>jvoor...@gmail.com</a>&gt; wrote:
+<br>&gt; &nbsp;I've tried to crack this one as well. After learning that RubyGems will build extensions using configure-make-install in addition to extconf.rb, I have a branch of ruby-llvm that uses the autotools to build and manage a shared library, but unfortunately haven't released it yet because of incompatibilities between autoconf versions on Mac and Ubuntu.
+<br>&gt;
+<br>&gt; You can see my approach athttps://<a href="http://github.com/jvoorhis/ruby-llvm/tree/support-lib" target="_blank">github.com/jvoorhis/<wbr>ruby-llvm/tree/support-lib</a>. If anyone is an autotools pro, or has a better idea, please help! :)
+<br>&gt;
+<br>&gt; Jeremy
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote:
+<br>&gt; &gt; &nbsp;I want to package up my c source with my gem, and call it from ffi.
+<br>&gt; &gt; How can I tell ffi to use a library packaged with the gem instead of
+<br>&gt; &gt; looking in the system libraries?</blockquote></div>
+------=_Part_736_10913861.1334865696631--

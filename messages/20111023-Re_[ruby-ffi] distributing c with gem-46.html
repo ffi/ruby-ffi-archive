@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] distributing c with gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] distributing c with gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/23/11 1:52 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+ I've tried to crack this one as well. After learning that RubyGems will build extensions using configure-make-install in addition to extconf.rb, I have a branch of ruby-llvm that uses the autotools to build and manage a shared library, but unfortunately haven't released it yet because of incompatibilities between autoconf versions on Mac and Ubuntu. 
+
+You can see my approach at <a class="moz-txt-link-freetext" href="https://github.com/jvoorhis/ruby-llvm/tree/support-lib">https://github.com/jvoorhis/ruby-llvm/tree/support-lib</a>. If anyone is an autotools pro, or has a better idea, please help! <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Jeremy 
+
+
+On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span> I want to package up my c source with my gem, and call it from ffi.
+<span class="moz-txt-citetags">&gt; </span>How can I tell ffi to use a library packaged with the gem instead of
+<span class="moz-txt-citetags">&gt; </span>looking in the system libraries?
+</pre></blockquote><pre wrap>
+
+
+</pre></div></body>
+</html>
+</table></div>

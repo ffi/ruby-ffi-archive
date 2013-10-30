@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI from C?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI from C?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mark Wotton <mwotton@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/5/10 3:42 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Mon, Apr 5, 2010 at 6:10 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Short answer is 'no' - there is no C api for Ruby-FFI.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>However, can you drive the integration from the ruby side, ala the lua
+<span class="moz-txt-citetags">&gt; </span>bindings (<a class="moz-txt-link-freetext" href="http://github.com/jmettraux/rufus-lua">http://github.com/jmettraux/rufus-lua</a>)?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I had a quick search for calling Haskell from C, and it looks like it
+<span class="moz-txt-citetags">&gt; </span>might be doable - if its callable from straight C, then you can call
+<span class="moz-txt-citetags">&gt; </span>it via FFI.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Basically how it would go is:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>1) create ruby wrapper method
+<span class="moz-txt-citetags">&gt; </span>2) massage ruby data into basic C types (int, string, struct, raw
+<span class="moz-txt-citetags">&gt; </span>chunk of memory, etc)
+<span class="moz-txt-citetags">&gt; </span>3) call C method exported by Haskell with massaged parameters
+<span class="moz-txt-citetags">&gt; </span>4) convert Haskell result back into ruby type.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Calling back into ruby from Haskell via a C function pointer works
+<span class="moz-txt-citetags">&gt; </span>similarly, but in reverse.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>There was an example on stackoverflow using DL to do this - FFI would
+<span class="moz-txt-citetags">&gt; </span>work much the same.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If you're doing it the other way round, calling ruby from Haskell,
+<span class="moz-txt-citetags">&gt; </span>you're doomed.  There is no common C api, and no C api at all on JRuby
+<span class="moz-txt-citetags">&gt; </span>or IronRuby.
+</pre></blockquote><pre wrap>
+
+The use case is mostly to have Ruby calling Haskell - Haskell does
+call back in to the MRI runtime currently, but only to query data
+(accessing hashes/arrays etc). The tricky bit is that it then needs to
+have libruby (or something similar) to build against, so you can then
+dlopen the library in ruby. I could get around this by not including
+ruby-specific code on the Haskell side, but part of the reason for
+doing it on the Haskell side is that I can scan a Haskell module and
+automatically export anything that would be callable from Ruby, which
+is a rather nice feature. What I was hoping for was an
+interpreter-agnostic C api to link against, but I guess that if that's
+not available, I'll write my own C API for MRI 1.8 and 1.9 and add
+JRuby support when I get a request for it.
+
+Anyway, thank you for your considered response. The FFI is a really
+good step forward for ruby interop, it's just a pity it's orthogonal
+to my needs.
+
+Cheers
+Mark
+
+<div class="moz-txt-sig">-- 
+A UNIX signature isn't a return address, it's the ASCII equivalent of a
+black velvet clown painting. It's a rectangle of carets surrounding a
+quote from a literary giant of weeniedom like Heinlein or Dr. Who.
+        -- Chris Maeda
+
+
+<div class="moz-txt-sig">-- 
+To unsubscribe, reply using "remove me" as the subject.
+</div></pre></div></body>
+</html>
+</table></div>

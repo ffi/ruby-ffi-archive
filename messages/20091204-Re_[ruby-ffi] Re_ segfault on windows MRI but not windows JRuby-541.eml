@@ -1,0 +1,125 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.52.18 with SMTP id z18cs506475wfz;
+        Fri, 4 Dec 2009 10:31:40 -0800 (PST)
+Received: by 10.101.166.2 with SMTP id t2mr4446494ano.9.1259951499089;
+        Fri, 04 Dec 2009 10:31:39 -0800 (PST)
+Return-Path: <3iFUZSwoJCEIpymwpezirekqemp.gsqvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com>
+Received: from mail-yw0-f138.google.com (mail-yw0-f138.google.com [209.85.211.138])
+        by mx.google.com with ESMTP id 35si6296722yxe.67.2009.12.04.10.31.37;
+        Fri, 04 Dec 2009 10:31:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3iFUZSwoJCEIpymwpezirekqemp.gsqvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) client-ip=209.85.211.138;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3iFUZSwoJCEIpymwpezirekqemp.gsqvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com designates 209.85.211.138 as permitted sender) smtp.mail=3iFUZSwoJCEIpymwpezirekqemp.gsqvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by ywh2 with SMTP id 2sf2002125ywh.27
+        for <headius@headius.com>; Fri, 04 Dec 2009 10:31:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=LVmGWyW7kPxosqOijGkokPDmH7x0tt47HwCHuhpQw84=;
+        b=GVagOkqR46UCFSrFQCWCdWW+2wPUvK+wfNRx3Qv7JV6aGDwS0A1+KA4OU3Cmu/jFMD
+         Ja4HCSVNYl30h0Ez9LCoKFlTTj50UbcFzeB3V3XPav/6VOzyLIz9Onq/Ljy1ItvZp/WL
+         o3PNimPv6vZeAgmUFHmBiRg0Nkw2fV6Sgml58=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=Ce9GwCGAjamIE/7l01lTV9KDdXTXw1eDBCa2vz6J2RQL30b4KipRWJFsk4DPYGxdM2
+         0xnmj0fpOxYMIKcLw4OgPN81bpRr3MeM1Q1eGiUM0J1T0RkMAlFP3Vh52trrw3oowwY/
+         7UKgSR0XD/2T5Rc02+/MmXxFr1uagmPt/XDDo=
+Received: by 10.90.60.2 with SMTP id i2mr200852aga.16.1259951496813;
+        Fri, 04 Dec 2009 10:31:36 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.151.83 with SMTP id b19ls3509285bkw.2.p; Fri, 04 Dec 2009 
+	10:31:35 -0800 (PST)
+Received: by 10.204.13.70 with SMTP id b6mr112577bka.37.1259951495698;
+        Fri, 04 Dec 2009 10:31:35 -0800 (PST)
+Received: by 10.204.13.70 with SMTP id b6mr112576bka.37.1259951495661;
+        Fri, 04 Dec 2009 10:31:35 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f222.google.com (mail-fx0-f222.google.com [209.85.220.222])
+        by gmr-mx.google.com with ESMTP id 17si174951bwz.8.2009.12.04.10.31.34;
+        Fri, 04 Dec 2009 10:31:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.222 as permitted sender) client-ip=209.85.220.222;
+Received: by fxm22 with SMTP id 22so2942151fxm.2
+        for <ruby-ffi@googlegroups.com>; Fri, 04 Dec 2009 10:31:34 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.168.230 with SMTP id l38mr369187hbe.37.1259951494253; Fri, 
+	04 Dec 2009 10:31:34 -0800 (PST)
+In-Reply-To: <2c0671440912040618m1aa4e37bsed3619c8f4d6d8cd@mail.gmail.com>
+References: <20091127124131.0f3ca7b2.jon.forums@gmail.com> 
+	<ce9339db-91a2-42c5-8428-925a6afc9117@j14g2000yqm.googlegroups.com> 
+	<20091202085358.55048b8a.jon.forums@gmail.com> <2c0671440912040618m1aa4e37bsed3619c8f4d6d8cd@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 4 Dec 2009 15:31:14 -0300
+Message-ID: <71166b3b0912041031k4cfdf916n664ae69dad55bdc6@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.222 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/1712f5507b15b467
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/bed83c0e4ad88367
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 4, 2009 at 11:18 AM, Bosko Ivanisevic
+<bosko.ivanisevic@gmail.com> wrote:
+>
+> I've cloned ffi, executed:
+> rake install
+>
+> and with new installation enumerating desktop windows sample works withou=
+t
+> problems except that sample on the Wiki has one error. Line:
+>
+> if not Win.EnumDesktopWindows
+> should be:
+>
+> if not Win.enum_desktop_windows
+>
+> and in order to display window title puts command should be:
+> puts "[%03i] Found '%s'" % [ win_count +=3D 1, title.get_string(0) ]
+>
+> I was using Rubyinstaller 1.8.6. version of Ruby (mingw) with devkit to
+> build ffi gem.
+
+Ok, so perhaps the issue is related to GCC and mingw32 headers used by
+cross compiling?
+
+Wayne:
+
+Which versions of packages for mingw32 do you have installed?
+
+luis@seyori ~$ port installed | grep "mingw32"
+  i386-mingw32-binutils @2.19.1_0 (active)
+  i386-mingw32-gcc @3.4.5-20060117-2_0 (active)
+  i386-mingw32-runtime @3.15.2_0 (active)
+  i386-mingw32-w32api @3.13_0 (active)
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

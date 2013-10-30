@@ -1,0 +1,82 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs97349agb;
+        Sat, 14 May 2011 21:01:59 -0700 (PDT)
+Received: by 10.68.51.129 with SMTP id k1mr5087845pbo.343.1305432118441;
+        Sat, 14 May 2011 21:01:58 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCuoL3uBBoE-oiQXA@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id 8si11100798pbf.159.2011.05.14.21.01.57
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 14 May 2011 21:01:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuoL3uBBoE-oiQXA@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCuoL3uBBoE-oiQXA@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCuoL3uBBoE-oiQXA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf3859089pwj.7
+        for <headius@headius.com>; Sat, 14 May 2011 21:01:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :subject:mime-version:x-original-sender:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=50vyq7kqoFvuBx8hlXG1vCAdy4+bybHz46BbDzCZd3s=;
+        b=yHPKHnA/Hk+nn6/U/9RxYEcHD0xKQ3LhHCi89lWi//OKy/J03SdcYPIChlnHTWcTk1
+         5yFdNJ9ta0GfY3Fa/BvPu/+xB+Ho5bWjPNq+1HOf094rLoWOB/lVh9qJLAc0xF9BvgXY
+         WSaraJTgysltImZgxHR0sOyUKm1ziXpc8DjvE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=3qWuBUq8h7VuAOkMp4yeKkPRBLx83QS/unGDluVAQdJi26hdy8BZnT+QMgWlV4bdCQ
+         HjwHTaQnJUB1OT23imr/8uMZp6MJn6xt46VrGKYDLG41ErgNgbqx8WXvHiaEE2co8oh1
+         b5B/WCzyzjz1MJENsNdTU9Ce+EanTpT043zeE=
+Received: by 10.143.11.21 with SMTP id o21mr181858wfi.51.1305432110983;
+        Sat, 14 May 2011 21:01:50 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.3.33 with SMTP id 33ls2281861wfc.1.gmail; Sat, 14 May 2011
+ 21:01:50 -0700 (PDT)
+Received: by 10.142.62.31 with SMTP id k31mr354715wfa.50.1305432110413;
+        Sat, 14 May 2011 21:01:50 -0700 (PDT)
+Date: Sat, 14 May 2011 21:01:47 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <18912944.3040.1305432107648.JavaMail.geo-discussion-forums@prat5>
+Subject: [ruby-ffi] Ruby-FFI 1.0.8
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3039_2919943.1305432107647"
+
+------=_Part_3039_2919943.1305432107647
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+I just pushed ffi-1.0.8.  Please test it, _especially_ if you've previously 
+been having trouble installing due to rake dependency problems.
+
+Not a whole lot interesting in this release, it basically bundles up a few 
+fixes people have supplied since 1.0.7.  git log 1.0.7..1.0.8 is your friend 
+if you want detail.
+
+
+
+------=_Part_3039_2919943.1305432107647
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>I just pushed ffi-1.0.8. &nbsp;Please test it, _especially_ if you've previously been having trouble installing due to rake dependency problems.</div><div><br></div><div>Not a whole lot interesting in this release, it basically bundles up a few fixes people have supplied since 1.0.7. &nbsp;git log 1.0.7..1.0.8 is your friend if you want detail.</div><div><br></div><div><br></div>
+------=_Part_3039_2919943.1305432107647--

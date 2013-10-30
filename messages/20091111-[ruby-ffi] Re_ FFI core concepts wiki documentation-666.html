@@ -1,0 +1,42 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/09 10:21 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>On 11/11/2009 10:49 AM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>2009/11/11 Bryan Kearney<a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+<br><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;">This could all be implemented in a third-party gem, e.g. NiceFFI,
+<br>which would be preferable to putting it in ruby-ffi itself, since that
+<br>way it can evolve faster, and be used across both CRuby and JRuby.
+<br></blockquote>
+<br>I dont know the packaging issues for you reference, but I would really like
+<br>to see it combined. If the packaging makes that not possible, at least
+<br>document the two together.
+<br></blockquote>
+<br>There are a couple of points:
+<br>1) ruby-ffi releases are timed to coincide with JRuby releases, to
+<br>keep the FFI apis in sync.&nbsp; This means it takes on average 3 months
+<br>from one 0.x.0 release to the next, which can seem like an eternity to
+<br>someone waiting for a feature.
+<br>
+<br>2) The more stuff added to the core api, the more other
+<br>implementations have to implement.
+<br>
+<br>
+<br>Putting these extras in NiceFFI or another gem allows the features to
+<br>iterate a lot quicker, since they no longer impose any api
+<br>compatibility constraints - its all pure ruby that runs on any FFI
+<br>implementation.
+<br></blockquote>Makes sense. As long as there a documented in one place, then I am fine 
+with it. I would hate to learn the one model and then get a "Hey Dufus, 
+use NiceFFI"
+<br>
+<br>-- bk
+<br>
+<br></div></body>
+</html>
+</table></div>

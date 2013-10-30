@@ -1,0 +1,72 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.187.140 with SMTP id y12cs122252eem;
+        Mon, 1 Aug 2011 17:26:51 -0700 (PDT)
+Received: by 10.150.163.11 with SMTP id l11mr1222944ybe.268.1312244810825;
+        Mon, 01 Aug 2011 17:26:50 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOTExePwEBDFiN3xBBoEaoLNpQ@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTPS id m17si7138170ybh.91.2011.08.01.17.26.50
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 01 Aug 2011 17:26:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOTExePwEBDFiN3xBBoEaoLNpQ@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOTExePwEBDFiN3xBBoEaoLNpQ@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCOTExePwEBDFiN3xBBoEaoLNpQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj22 with SMTP id 22sf12816766gwj.7
+        for <headius@headius.com>; Mon, 01 Aug 2011 17:26:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=9nxi8zccAbLr/T3A6hGQwJFO9fKMJG+W3JFYTeh7wVU=;
+        b=DJvBD0RWT3HEMrxQAj6DAx2vk6tdEbWv6TlE8O3K5U4Huc29uZjdCpe1Qsncy42JGH
+         caj/K44IfgLuMOen+/xPkwJfb3uU2q6vLJ5+mtmEybdi36u1kuh9xNXluGUCfKx4HrLQ
+         VmF69QsGWotNe6rJziaALbrUg4vXnjSgA5bTg=
+Received: by 10.91.132.6 with SMTP id j6mr78327agn.28.1312244805392;
+        Mon, 01 Aug 2011 17:26:45 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.159.16 with SMTP id l16ls14069749ago.5.gmail; Mon, 01 Aug
+ 2011 17:26:45 -0700 (PDT)
+Received: by 10.236.165.70 with SMTP id d46mr267869yhl.201.1312244805015;
+        Mon, 01 Aug 2011 17:26:45 -0700 (PDT)
+Received: by 10.150.111.18 with SMTP id j18msybc;
+        Mon, 1 Aug 2011 17:23:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.18.8 with SMTP id v8mr692947agi.35.1312244581439; Mon, 01
+ Aug 2011 17:23:01 -0700 (PDT)
+Received: by p20g2000yqp.googlegroups.com with HTTP; Mon, 1 Aug 2011 17:23:01
+ -0700 (PDT)
+Date: Mon, 1 Aug 2011 17:23:01 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.30 (KHTML,
+ like Gecko) Chrome/12.0.742.124 Safari/534.30,gzip(gfe)
+Message-ID: <8db95be6-f27e-41ff-b6d8-b381f40b0362@p20g2000yqp.googlegroups.com>
+Subject: [ruby-ffi] mapping of unsigned char encoded_data[178][143] in a struct
+From: DomRibaut <domribaut@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: domribaut@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello
+I need to read a field defined as shown above in a struct.
+I used :encoded_data, [[:uchar, 178], 143] but when I try to access it
+I get an error message ArgumentError: get not supported for
+FFI::ArrayType
+the type of the array is FFI::Struct::InlineArray.
+I would greatly apreciate any advice for this mapping or any pointer
+to the relevant documentation.
+
+BR.
+Dominique

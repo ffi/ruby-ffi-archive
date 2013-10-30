@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Using Windows Unicode functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Using Windows Unicode functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/19/10 7:08 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Hi there,
+
+I'm trying to access Windows functions through the ffi gem, but I
+wasn't that successfull (otherwise I wouldn't post here, I
+think  <span class="moz-smiley-s3" title=";-)"><span>;-)</span></span>  ). So far, I've been using the win32-api gem which worked
+quite well with the Windows Unicode functions (they require UTF-16LE
+encoded strings, also known as the wchar_t C type I think), but I
+wasn't able to construct that with ffi.
+
+Here's my code so far:
+-------------------------------------
+#Encoding: UTF-8
+require "ffi"
+
+module Test
+  extend FFI::Library
+
+  ffi_lib "user32"
+  ffi_convention :stdcall
+
+  attach_function :message_box, :MessageBoxW,
+[:long, :string, :string, :int], :int
+end
+
+module Test2
+  extend FFI::Library
+
+  CP_UTF8 = 65001
+  MB_PRECOMPOSED = 0x00000001
+
+  ffi_lib "kernel32"
+  ffi_convention :stdcall
+
+  attach_function :get_last_error, :GetLastError, [], :long
+  attach_function :multi_byte_to_wide_char, :MultiByteToWideChar,
+[:uint, :int, :string, :int, :buffer_out, :int], :int
+end
+
+buffer = "\0" * 100_000
+
+#I know, I could use Rubys built-in encoding functions
+#and I WILL do so, but for now this is to ensure
+#everything is 100% correct as MS it expects.
+ret = Test2.multi_byte_to_wide_char(Test2::CP_UTF8, 0, "Test",
+"Test".length, buffer, buffer.length)
+
+buffer.force_encoding("UTF-16LE")
+puts buffer.encode("ISO-8859-1").rstrip #Everything displayed correct
+
+#The following line causes the error:
+Test.message_box(0, buffer, buffer, 0)
+-------------------------------------
+
+
+This is the error message:
+-------------------------------------
+t2.rb:32:in `message_box': string contains null byte (ArgumentError)
+  from t2.rb:32:in `&lt;main&gt;'
+-------------------------------------
+An UTF-16LE encoded string <b class="moz-txt-star"><span class="moz-txt-tag">*</span>contains<span class="moz-txt-tag">*</span></b> NUL bytes, I know--but I want to
+use Unicode functions, so: How to do that?
+
+My ruby version: ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-
+mingw32]
+My OS: Windows Vista Home Premium SP2 (32 bit)
+
+Marvin
+</pre></div></body>
+</html>
+</table></div>

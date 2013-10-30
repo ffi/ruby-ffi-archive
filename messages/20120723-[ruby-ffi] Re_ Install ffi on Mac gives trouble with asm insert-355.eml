@@ -1,0 +1,221 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.39.3 with SMTP id r3csp353158wfj;
+        Mon, 23 Jul 2012 16:03:50 -0700 (PDT)
+Received: by 10.236.186.73 with SMTP id v49mr16338329yhm.48.1343084630318;
+        Mon, 23 Jul 2012 16:03:50 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLm0_O-xAhDVsLeABRoEbV3ISw@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id w42si13156824yhd.109.2012.07.23.16.03.50
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 23 Jul 2012 16:03:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLm0_O-xAhDVsLeABRoEbV3ISw@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLm0_O-xAhDVsLeABRoEbV3ISw@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCLm0_O-xAhDVsLeABRoEbV3ISw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yenr11 with SMTP id r11sf13923387yen.7
+        for <headius@headius.com>; Mon, 23 Jul 2012 16:03:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=dOPrZc3b45JXPdteTocUXddkLds9VufqnmprvYzIKU8=;
+        b=B7nJr9joyFIou6uSJ3h0Mtu3SuCafo7NE3doWDzyy9XCC2jpxS+sBk3GQkbtlUM5WY
+         BDzR+cLqFhfIEyHgcs1zjU1PPExzBazZadS8sUtfSLgsCsHsyhxHDzM0IqEftb8Ic0ZM
+         R0dbeSwpBFGLXBwM8OQddN1lojAHWV8a2TSXA=
+Received: by 10.52.20.51 with SMTP id k19mr1751484vde.8.1343084629888;
+        Mon, 23 Jul 2012 16:03:49 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.21.207 with SMTP id x15ls4065387vde.1.gmail; Mon, 23 Jul
+ 2012 16:03:49 -0700 (PDT)
+Received: by 10.52.174.167 with SMTP id bt7mr1746945vdc.15.1343084629281;
+        Mon, 23 Jul 2012 16:03:49 -0700 (PDT)
+Date: Mon, 23 Jul 2012 16:03:48 -0700 (PDT)
+From: Jim Clarke <clarke@cs.utoronto.ca>
+To: ruby-ffi@googlegroups.com
+Message-Id: <b2b66ea9-f3ae-4499-9a94-6110c080d9ae@googlegroups.com>
+In-Reply-To: <7db16c17-3228-4e68-8c60-26329f848f71@googlegroups.com>
+References: <7f8e2f03-90cd-4c66-8346-3fa773335295@googlegroups.com>
+ <7db16c17-3228-4e68-8c60-26329f848f71@googlegroups.com>
+Subject: [ruby-ffi] Re: Install ffi on Mac gives trouble with asm insert
+MIME-Version: 1.0
+X-Original-Sender: clarke@cs.utoronto.ca
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ clarke@cs.utoronto.ca designates internal as permitted sender)
+ smtp.mail=clarke@cs.utoronto.ca; dkim=pass
+ header.i=@cs.utoronto.ca
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_203_30057513.1343084628485"
+
+------=_Part_203_30057513.1343084628485
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Works! A thousand thanks.
+
+(And a thousand apologies for not having seen the __asm__ possibility.)
+
+
+On Monday, 23 July 2012 18:27:06 UTC-4, Wayne Meissner wrote:
+>
+>
+> Try ffi-1.1.1.rc2 (install with: gem install ffi --pre)
+>
+>
+> On Tuesday, 24 July 2012 05:19:20 UTC+10, Jim Clarke wrote:
+>>
+>> The problem:  Installing ffi-1.1.0 on my Mac (system details below) 
+>> produces
+>> output including this error message:
+>>
+>> ---------
+>> $ gem install ffi
+>> Building native extensions.  This could take a while...
+>> ERROR:  Error installing ffi:
+>>         ERROR: Failed to build gem native extension.
+>>
+>>         /Users/clarke/.rvm/rubies/ruby-1.9.3-p194/bin/ruby extconf.rb
+>> checking for ffi_call() in -lffi... yes
+>> checking for ffi_prep_closure()... yes
+>> checking for ffi_raw_call()... yes
+>> checking for ffi_prep_raw_closure()... yes
+>> checking for rb_thread_blocking_region()... yes
+>> checking for ruby_native_thread_p()... yes
+>> checking for rb_thread_call_with_gvl()... yes
+>> creating extconf.h
+>> creating Makefile
+>>
+>> make
+>> [...]
+>> compiling MethodHandle.c
+>> MethodHandle.c:204: error: expected declaration specifiers or '...' 
+>> before string constant
+>> [...]
+>> make: *** [MethodHandle.o] Error 1
+>>
+>>
+>> Gem files will remain installed in 
+>> /Users/clarke/.rvm/gems/ruby-1.9.3-p194/gems/ffi-1.1.0 for inspection.
+>> Results logged to 
+>> /Users/clarke/.rvm/gems/ruby-1.9.3-p194/gems/ffi-1.1.0/ext/ffi_c/gem_make.out
+>> ---------
+>>
+>> Essentially the same error appeared with ffi-1.0.11. Given the line 
+>> number,
+>> it seems that the asm() insert is being rejected.
+>>
+>> My system:
+>> Mac OX X 10.7.4 (Lion)
+>> Xcode 4.3.3
+>> gcc: i686-apple-darwin11-llvm-gcc-4.2 (GCC) 4.2.1
+>>
+>> ---------
+>>
+>> Here are two changes, either one of which seems to allow make to run in 
+>> the ext directory.
+>> Both changes affect this line in ext/Makefile:
+>>
+>> CFLAGS   = -fno-common -std=c99 -pedantic -Wall -fno-common -pipe 
+>> -I/opt/local/lib/libffi-3.0.11/include   $(ARCH_FLAG)
+>>
+>> First fix: remove -std=c99
+>>
+>> *or*
+>>
+>> Second fix: replace -std=c99 with -std=gnu99
+>>
+>> Since I don't do much C programming on the Mac (and have never used asm 
+>> in a
+>> C program), and since I'm totally new to Ruby, I offer these fixes more 
+>> as guesses
+>> than as firm suggestions. However, Googling turned up one or two 
+>> unresolved
+>> queries about the same problem, so maybe I'm not alone?
+>>
+>> I'd be a little unhappy to try becoming my own ffi expert. Any chance of a
+>> more authoritative fix?
+>>
+>>
+------=_Part_203_30057513.1343084628485
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Works! A thousand thanks.<div><br></div><div>(And a thousand apologies for =
+not having seen the __asm__ possibility.)</div><div><br><br>On Monday, 23 J=
+uly 2012 18:27:06 UTC-4, Wayne Meissner  wrote:<blockquote class=3D"gmail_q=
+uote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;pad=
+ding-left: 1ex;"><div><br></div>Try ffi-1.1.1.rc2 (install with: gem instal=
+l ffi --pre)<div><br><br>On Tuesday, 24 July 2012 05:19:20 UTC+10, Jim Clar=
+ke  wrote:<blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0=
+.8ex;border-left:1px #ccc solid;padding-left:1ex"><div>The problem: &nbsp;I=
+nstalling ffi-1.1.0 on my Mac (system details below) produces</div><div>out=
+put including this error message:</div><div><br></div><div>---------</div><=
+div><span style=3D"font-family:'courier new',monospace">$ gem install ffi</=
+span><br></div><div><font face=3D"'courier new', monospace">Building native=
+ extensions. &nbsp;This could take a while...</font></div><div><font face=
+=3D"'courier new', monospace">ERROR: &nbsp;Error installing ffi:</font></di=
+v><div><font face=3D"'courier new', monospace">&nbsp; &nbsp; &nbsp; &nbsp; =
+ERROR: Failed to build gem native extension.</font></div><div><font face=3D=
+"'courier new', monospace"><br></font></div><div><font face=3D"'courier new=
+', monospace">&nbsp; &nbsp; &nbsp; &nbsp; /Users/clarke/.rvm/rubies/<wbr>ru=
+by-1.9.3-p194/bin/ruby extconf.rb</font></div><div><font face=3D"'courier n=
+ew', monospace">checking for ffi_call() in -lffi... yes</font></div><div><f=
+ont face=3D"'courier new', monospace">checking for ffi_prep_closure()... ye=
+s</font></div><div><font face=3D"'courier new', monospace">checking for ffi=
+_raw_call()... yes</font></div><div><font face=3D"'courier new', monospace"=
+>checking for ffi_prep_raw_closure()... yes</font></div><div><font face=3D"=
+'courier new', monospace">checking for rb_thread_blocking_region()... yes</=
+font></div><div><font face=3D"'courier new', monospace">checking for ruby_n=
+ative_thread_p()... yes</font></div><div><font face=3D"'courier new', monos=
+pace">checking for rb_thread_call_with_gvl()... yes</font></div><div><font =
+face=3D"'courier new', monospace">creating extconf.h</font></div><div><font=
+ face=3D"'courier new', monospace">creating Makefile</font></div><div><font=
+ face=3D"'courier new', monospace"><br></font></div><div><font face=3D"'cou=
+rier new', monospace">make</font></div><div><font face=3D"'courier new', mo=
+nospace">[...]</font></div><div><font face=3D"'courier new', monospace">com=
+piling MethodHandle.c</font></div><div><font face=3D"'courier new', monospa=
+ce">MethodHandle.c:204: error: expected declaration specifiers or '...' bef=
+ore string constant</font></div><div><font face=3D"'courier new', monospace=
+">[...]</font></div><div><font face=3D"'courier new', monospace">make: *** =
+[MethodHandle.o] Error 1</font></div><div><font face=3D"'courier new', mono=
+space"><br></font></div><div><font face=3D"'courier new', monospace"><br></=
+font></div><div><font face=3D"'courier new', monospace">Gem files will rema=
+in installed in /Users/clarke/.rvm/gems/ruby-<wbr>1.9.3-p194/gems/ffi-1.1.0=
+ for inspection.</font></div><div><font face=3D"'courier new', monospace">R=
+esults logged to /Users/clarke/.rvm/gems/ruby-<wbr>1.9.3-p194/gems/ffi-1.1.=
+0/ext/<wbr>ffi_c/gem_make.out</font></div><div>---------<br></div><div><br>=
+</div><div>Essentially the same error appeared with ffi-1.0.11. Given the l=
+ine number,</div><div>it seems that the asm() insert is being rejected.</di=
+v><div><br></div><div>My system:</div><div>Mac OX X 10.7.4 (Lion)</div><div=
+>Xcode 4.3.3</div><div>gcc: i686-apple-darwin11-llvm-gcc-<wbr>4.2 (GCC) 4.2=
+.1</div><div><br></div><div>---------</div><div><br></div><div>Here are two=
+ changes, either one of which seems to allow make to run in the ext directo=
+ry.</div><div>Both changes affect&nbsp;this line in ext/Makefile:</div><div=
+><br></div><div><font face=3D"'courier new', monospace">CFLAGS &nbsp; =3D -=
+fno-common -std=3Dc99 -pedantic -Wall -fno-common -pipe -I/opt/local/lib/li=
+bffi-3.0.<wbr>11/include &nbsp; $(ARCH_FLAG)</font></div><div><br></div><di=
+v>First fix: remove <font face=3D"'courier new', monospace">-std=3Dc99</fon=
+t></div><div><br></div><div><i><b>or</b></i></div><div><br></div><div>Secon=
+d fix: replace&nbsp;<span style=3D"font-family:'courier new',monospace">-st=
+d=3Dc99</span>&nbsp;with <font face=3D"'courier new', monospace">-std=3Dgnu=
+99</font></div><div><br></div><div>Since I don't do much C programming on t=
+he Mac (and have never used asm in a</div><div>C program), and since I'm to=
+tally new to Ruby, I offer these fixes&nbsp;more as guesses</div><div>than =
+as firm suggestions. However, Googling turned up one or&nbsp;two unresolved=
+</div><div>queries about the same problem, so maybe I'm not alone?</div><di=
+v><br></div><div>I'd be a little unhappy to try becoming my own ffi expert.=
+ Any chance of a</div><div>more authoritative fix?</div><div><br></div></bl=
+ockquote></div></blockquote></div>
+------=_Part_203_30057513.1343084628485--

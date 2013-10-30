@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [Q] search paths for loading libraries</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [Q] search paths for loading libraries</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/10 5:41 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">+1 to scoping it per-module. I had a feeling that idea was only half-baked :)<div><br></div><div><div class="gmail_quote">On Thu, May 6, 2010 at 3:38 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;"><div class="im">On 7 May 2010 08:31, Jeremy Voorhis &lt;<a href="mailto:jvoorhis@gmail.com">jvoorhis@gmail.com</a>&gt; wrote:<br>
+
+&gt; Is it only possible to specify complete, absolute paths to libraries for<br>
+&gt; ffi_lib? An api similar to Ruby&#39;s $: would be convenient for adding<br>
+&gt; directories to the load path, like FFI.load_paths &lt;&lt; &#39;/usr/local/lib&#39;.<br>
+<br>
+</div>It would be fairly trivial to add ffi_library_path on a per-module<br>
+basis.  I&#39;m not sure whether adding it globally is such a good idea -<br>
+one library can potentially screw another one over that way.<br>
+<br>
+If anyone wants to hack on it, look in lib/ffi/library.rb in the<br>
+ffi_lib method.  Both ruby-ffi and JRuby use the same code for that<br>
+section, so a patch for one should apply to the other.<br>
+</blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Value in gem-time and build-time testing?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Value in gem-time and build-time testing?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/6/09 2:13 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Is there any value in having "gem-time" spec-based testing as well as
+build-time testing?
+
+What I mean by this is, imagine you've just installed the latest FFI
+<b class="moz-txt-star"><span class="moz-txt-tag">*</span>binary<span class="moz-txt-tag">*</span></b> gem on your Win32 system.  You notice that the FFI gem has a
+spec directory and a Rakefile with a specs task.  You decide you'd
+like to run the developer created specs to get more comfortable with
+FFI.
+
+You decide to humor your OCD bad habits by the following from the FFI
+gem dir
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>spec spec
+</pre></blockquote><pre wrap>
+[boom] need win32console for coloring and get a LoadError due to
+missing build/libtest.dll from spec/ffi/spec_helper.rb:16:in
+`&lt;module:LibTest&gt;'
+
+All the spec support is currently targeted to having the build
+environment dependencies, which is great.
+
+But I'm wondering if something quick like adding a new task that
+allows one to run specs (even a smaller but still valid subset of the
+full suite) adds any value?  Probably could call spec with a creative
+Dir["..."] and should get rid of the rake-compiler and bones
+dependencies.  Probably don't want to have libtest.dll as part of the
+binary gem unless you want to build fat-binary support for both
+libtest and ffi_c.so
+
+So, is there any value in the effort even if it is only a "feel good"
+tool for those just beginning with FFI?  Could also be part of an "FFI
+ready" check post gem install.
+
+Jon
+
+
+</pre></div></body>
+</html>
+</table></div>

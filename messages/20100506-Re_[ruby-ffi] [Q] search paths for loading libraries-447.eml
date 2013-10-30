@@ -1,0 +1,139 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.226.5 with SMTP id y5cs57376ybg;
+        Thu, 6 May 2010 15:41:51 -0700 (PDT)
+Received: by 10.213.37.67 with SMTP id w3mr3719019ebd.69.1273185710928;
+        Thu, 06 May 2010 15:41:50 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERCpi43fBBoEUhQVrw@googlegroups.com>
+Received: from mail-yw0-f149.google.com (mail-yw0-f149.google.com [209.85.211.149])
+        by mx.google.com with ESMTP id 22si1332623ewy.36.2010.05.06.15.41.49;
+        Thu, 06 May 2010 15:41:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERCpi43fBBoEUhQVrw@googlegroups.com designates 209.85.211.149 as permitted sender) client-ip=209.85.211.149;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERCpi43fBBoEUhQVrw@googlegroups.com designates 209.85.211.149 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERCpi43fBBoEUhQVrw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh13 with SMTP id 13sf284241ywh.22
+        for <headius@headius.com>; Thu, 06 May 2010 15:41:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=hCUwMqgZHBhYqW4nD1DISt+2S/LuJ879Hnvq4JisqFI=;
+        b=S9JognWrFUv/4XKzwQo/Wd628X7edZYxJlHs6MOm9fwSB6enChq5VtySnyl+cDmYHv
+         mR+RQmsnMhEjoaKmJ8O7Q7zB09V3Uvka/RU6KKmwY/DMtti97heAcITvzoHcsOcaCbll
+         cnWTRuYvPzTHSQIZStMX3ArmBUA/K5ocNw2Ig=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=m70bN2kye6IJhHxMRqyKo49Qjm9V4QUcBK9XrGl4ITB/lJ8e8ooE9KHWr9k2fY6F3M
+         zdDS+s+tCFQA/MQ/L+fjwp+JSiwr1eEDMqsPru4qmKZPQahZP70bIcGhCmIY+NfUWPnQ
+         ddl7ZV+SvdXbXJJ0zP2d1yLrXGykMSYoN6/2I=
+Received: by 10.100.234.18 with SMTP id g18mr848896anh.22.1273185705088;
+        Thu, 06 May 2010 15:41:45 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.170.19 with SMTP id x19ls5338856ano.0.p; Thu, 06 May 2010 
+	15:41:44 -0700 (PDT)
+Received: by 10.101.207.2 with SMTP id j2mr6683855anq.23.1273185704628;
+        Thu, 06 May 2010 15:41:44 -0700 (PDT)
+Received: by 10.101.207.2 with SMTP id j2mr6683853anq.23.1273185704592;
+        Thu, 06 May 2010 15:41:44 -0700 (PDT)
+Return-Path: <jvoorhis@gmail.com>
+Received: from mail-gw0-f54.google.com (mail-gw0-f54.google.com [74.125.83.54])
+        by gmr-mx.google.com with ESMTP id k1si2448565ani.5.2010.05.06.15.41.43;
+        Thu, 06 May 2010 15:41:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 74.125.83.54 as permitted sender) client-ip=74.125.83.54;
+Received: by gwj21 with SMTP id 21so310359gwj.41
+        for <ruby-ffi@googlegroups.com>; Thu, 06 May 2010 15:41:43 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.183.7 with SMTP id k7mr178454agp.32.1273185703226; Thu, 06 
+	May 2010 15:41:43 -0700 (PDT)
+Received: by 10.90.83.7 with HTTP; Thu, 6 May 2010 15:41:43 -0700 (PDT)
+In-Reply-To: <t2k4ccee321005061538o8cc73453y27220017514cee1a@mail.gmail.com>
+References: <F00D5192-ED75-4A6A-BE66-A8B203915C08@mac.com>
+	 <o2i4ccee321005061526w3b872f1dyce9dc561f693b257@mail.gmail.com>
+	 <x2o94e476fd1005061531ye84e474fgaef7777d7ef48536@mail.gmail.com>
+	 <t2k4ccee321005061538o8cc73453y27220017514cee1a@mail.gmail.com>
+Date: Thu, 6 May 2010 15:41:43 -0700
+Message-ID: <z2w94e476fd1005061541s71c77e72hf3ffd475fd52df67@mail.gmail.com>
+Subject: Re: [ruby-ffi] [Q] search paths for loading libraries
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jvoorhis@gmail.com designates 74.125.83.54 as permitted sender) 
+	smtp.mail=jvoorhis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jvoorhis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016e6464f3492f4f50485f4a5c7
+
+--0016e6464f3492f4f50485f4a5c7
+Content-Type: text/plain; charset=UTF-8
+
++1 to scoping it per-module. I had a feeling that idea was only half-baked
+:)
+
+On Thu, May 6, 2010 at 3:38 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+> On 7 May 2010 08:31, Jeremy Voorhis <jvoorhis@gmail.com> wrote:
+> > Is it only possible to specify complete, absolute paths to libraries for
+> > ffi_lib? An api similar to Ruby's $: would be convenient for adding
+> > directories to the load path, like FFI.load_paths << '/usr/local/lib'.
+>
+> It would be fairly trivial to add ffi_library_path on a per-module
+> basis.  I'm not sure whether adding it globally is such a good idea -
+> one library can potentially screw another one over that way.
+>
+> If anyone wants to hack on it, look in lib/ffi/library.rb in the
+> ffi_lib method.  Both ruby-ffi and JRuby use the same code for that
+> section, so a patch for one should apply to the other.
+>
+
+--0016e6464f3492f4f50485f4a5c7
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
++1 to scoping it per-module. I had a feeling that idea was only half-baked =
+:)<div><br></div><div><div class=3D"gmail_quote">On Thu, May 6, 2010 at 3:3=
+8 PM, Wayne Meissner <span dir=3D"ltr">&lt;<a href=3D"mailto:wmeissner@gmai=
+l.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;"><div class=3D"im">On 7 May 2010 08:31, Jere=
+my Voorhis &lt;<a href=3D"mailto:jvoorhis@gmail.com">jvoorhis@gmail.com</a>=
+&gt; wrote:<br>
+
+&gt; Is it only possible to specify complete, absolute paths to libraries f=
+or<br>
+&gt; ffi_lib? An api similar to Ruby&#39;s $: would be convenient for addin=
+g<br>
+&gt; directories to the load path, like FFI.load_paths &lt;&lt; &#39;/usr/l=
+ocal/lib&#39;.<br>
+<br>
+</div>It would be fairly trivial to add ffi_library_path on a per-module<br=
+>
+basis. =C2=A0I&#39;m not sure whether adding it globally is such a good ide=
+a -<br>
+one library can potentially screw another one over that way.<br>
+<br>
+If anyone wants to hack on it, look in lib/ffi/library.rb in the<br>
+ffi_lib method. =C2=A0Both ruby-ffi and JRuby use the same code for that<br=
+>
+section, so a patch for one should apply to the other.<br>
+</blockquote></div><br></div>
+
+--0016e6464f3492f4f50485f4a5c7--

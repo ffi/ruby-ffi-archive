@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs453985fam;
+        Wed, 5 Jan 2011 05:52:04 -0800 (PST)
+Received: by 10.103.238.7 with SMTP id p7mr1725170mur.62.1294235523869;
+        Wed, 05 Jan 2011 05:52:03 -0800 (PST)
+Return-Path: <ruby-ffi+bncCO2O6dmYGhCC75HpBBoEP30HKA@googlegroups.com>
+Received: from mail-fx0-f62.google.com (mail-fx0-f62.google.com [209.85.161.62])
+        by mx.google.com with ESMTP id e7si1464998faa.185.2011.01.05.05.52.02;
+        Wed, 05 Jan 2011 05:52:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO2O6dmYGhCC75HpBBoEP30HKA@googlegroups.com designates 209.85.161.62 as permitted sender) client-ip=209.85.161.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO2O6dmYGhCC75HpBBoEP30HKA@googlegroups.com designates 209.85.161.62 as permitted sender) smtp.mail=ruby-ffi+bncCO2O6dmYGhCC75HpBBoEP30HKA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by fxm6 with SMTP id 6sf5604167fxm.7
+        for <headius@headius.com>; Wed, 05 Jan 2011 05:52:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=4+lNCC+uULHZNOYQZc6Qwrgko+UasEDdc41eSb1+AUY=;
+        b=Vtp/5txCQ62yntXjpIxum+fzCjWDQxCi7DmG17qrRH9xkwVx904WtxThhu8lJjvh5T
+         kOWOF1YeHKqaS5tvvs1C908wHXGvrzpMP7C3gG3RfeCPhGqh5LV4FFHBJdA6jnsa9iID
+         qjTvivlHchDeiGtKynJR4FtTJpJLP/AkJ2G80=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=NNV7IYMPPRF2PTnEIIV+65ouMOzgH3kCeGo24GOBoQ8nQd4jiBu3kk1G66pNECSclE
+         QrQRS44vOyHT0DSLCWow5apOLn4f+5N9ls2BwCuUmBGhOkfUCxnze115ug3XNWmNr7Kg
+         rlvdSKT52XuTc22xHUIM+uqW17C0sJYfuWiT0=
+Received: by 10.223.105.133 with SMTP id t5mr1444435fao.17.1294235522179;
+        Wed, 05 Jan 2011 05:52:02 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.18.198 with SMTP id x6ls6671114bka.2.p; Wed, 05 Jan 2011
+ 05:52:01 -0800 (PST)
+Received: by 10.204.33.19 with SMTP id f19mr1371557bkd.16.1294235521446;
+        Wed, 05 Jan 2011 05:52:01 -0800 (PST)
+Received: by 10.204.33.19 with SMTP id f19mr1371556bkd.16.1294235521430;
+        Wed, 05 Jan 2011 05:52:01 -0800 (PST)
+Received: from mail-fx0-f49.google.com (mail-fx0-f49.google.com [209.85.161.49])
+        by gmr-mx.google.com with ESMTP id n19si4325290bks.1.2011.01.05.05.52.00;
+        Wed, 05 Jan 2011 05:52:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of zevarito@gmail.com designates 209.85.161.49 as permitted sender) client-ip=209.85.161.49;
+Received: by fxm19 with SMTP id 19so14925242fxm.22
+        for <ruby-ffi@googlegroups.com>; Wed, 05 Jan 2011 05:52:00 -0800 (PST)
+Received: by 10.223.93.140 with SMTP id v12mr1290768fam.96.1294235520115; Wed,
+ 05 Jan 2011 05:52:00 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.223.2.132 with HTTP; Wed, 5 Jan 2011 05:51:39 -0800 (PST)
+In-Reply-To: <27609662.2929.1294188954795.JavaMail.geo-discussion-forums@prnp16>
+References: <AANLkTi=xpDSLc78295-Xczig6eZOvUTGhowgvc=+0u7w@mail.gmail.com> <27609662.2929.1294188954795.JavaMail.geo-discussion-forums@prnp16>
+From: Alvaro <zevarito@gmail.com>
+Date: Wed, 5 Jan 2011 11:51:39 -0200
+Message-ID: <AANLkTi=J3FYct8sgenHCz-TEHbjdnBgopGcDYJmTbaeE@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: zevarito@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of zevarito@gmail.com designates 209.85.161.49 as permitted sender)
+ smtp.mail=zevarito@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+2011/1/4 Wayne Meissner <wmeissner@gmail.com>:
+> On Wednesday, January 5, 2011 6:11:56 AM UTC+10, Alvaro wrote:
+>>
+>> Hi,
+>>
+>> I wonder if there is something that needs to be done after call to
+>> FFI::MemoryPointer.new
+>> to free the memory, my extension has memory leaks and it only happens
+>> with the binding
+>> and not with the original C lib.
+>
+> As Chuck says, when the last strong reference to an FFI object is removed=
+,
+> it becomes eligible for collection - so you most likely have a persistent
+> reference to the memory pointer that is keeping it alive.
+> All objects defined in ruby-ffi follow that pattern - they are auto-relea=
+se
+> by default. =C2=A0You can set autorelease =3D false on MemoryPointer inst=
+ances
+> which means the memory can _never_ be freed, but that is probably a rare
+> occurrence.
+> That does not apply to pointers allocated via mapping in say malloc or
+> calloc from libc - those have to be manually managed.
+>
+>
+>
+>
+
+I understand your point about how it works the garbage collection.
+Is a kind strange that the C lib purely don't have leaks but with the
+FFI binding it has and I couldn't find the reason yet, may be is
+inherited to ruby, I've tested it with Ree, Mri and JRuby without
+success.
+
+I will continue trying to figure out what is happening, thanks for
+your comments.
+
+--=20
+Alvaro

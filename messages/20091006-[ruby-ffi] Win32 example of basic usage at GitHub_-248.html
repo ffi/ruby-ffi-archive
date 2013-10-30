@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Win32 example of basic usage at GitHub?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Win32 example of basic usage at GitHub?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/6/09 11:46 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Would you mind if I updated
+
+<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/basic-usage">http://wiki.github.com/ffi/ffi/basic-usage</a>
+
+...with a section below "Hello, World using FFI" with code (and some
+blah blah) like the following (assuming this is the correct basic
+usage for calling typical Win32 API fcns):
+
+require 'ffi'
+
+module HelloWin32
+  extend FFI::Library
+
+  ffi_lib :user32
+  ffi_convention :stdcall
+
+  attach_function :message_box, :MessageBoxA,
+[ :pointer, :string, :string, :uint ], :int
+end
+
+rc = HelloWin32.message_box nil, 'Hello Win32 World!', 'FFI Win32
+Example', 1
+puts "Return code: #{rc}"
+
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

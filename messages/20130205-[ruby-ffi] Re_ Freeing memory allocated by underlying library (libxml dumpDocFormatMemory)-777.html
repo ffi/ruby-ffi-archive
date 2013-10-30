@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Paul Hinze <paul.t.hinze@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/5/13 5:59 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><br>Thanks for getting back to me, Wayne.<br><div><br></div><div>On Tuesday, February 5, 2013 3:22:49 PM UTC-7, Wayne Meissner wrote:<br><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">You're correct that MemoryPointer#free won't do anything for you - it only frees the memory allocated for itself.<div><br></div><div>From looking at other C based examples, it should be as simple as adding the following (after reading result from the strptr):</div><div><br></div><div>&nbsp; C::LibXML.xmlFree(strptr) unless strptr.null?<br></div></blockquote><div><br></div><div>Okay this is the direction I was headed in, but whenever I call either xmlFree or xmlMalloc, ruby (latest 1.9.3, but also tried ree for fun) crashes and burns like so:</div><div><br></div><div>https://gist.github.com/phinze/f2f89ce8864b66d3e0f9</div></div><div><br></div><div>Here's where I bind the functions - It's pretty straightforward:</div><div><br></div><div>https://github.com/phinze/xml_security/blob/39d4cb62776b28d6fce1b8d8fd277a4d2339158c/lib/xml_security/c/lib_xml.rb#L20-L21</div><div><br></div><div>And here's a really simple test case that blows up on the xmlMalloc call:</div><div><br></div><div>https://github.com/phinze/xml_security/blob/bdbe54d0f2c1c05bcace7cf29e3f1b0c1b274368/spec/xml_security/c/lib_xml_spec.rb</div><div><br></div><div>Now, libxml2 does some funky stuff with its memory management functions [1], which means that the function declarations in the code have several layers of indirection built in. I'm wondering if it's possible that this is confusing to the FFI layer.</div><div><br></div><div>If you'd like, I can extract this into a more isolated test case for you, but I wanted first to get a feel for whether or not this could possibly be an FFI issue.</div><div><br></div><div>I'm thinking a decent workaround is to just reach over to libc's malloc/free, which I'll be working on in parallel to this investigation. Still, it'd be nice to get to the bottom of this.</div><div><br></div><div>Thanks for your time,</div><div><br></div><div>Paul</div><div><br></div><div>[1]&nbsp;http://www.xmlsoft.org/xmlmem.html</div><div><br></div><div><br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

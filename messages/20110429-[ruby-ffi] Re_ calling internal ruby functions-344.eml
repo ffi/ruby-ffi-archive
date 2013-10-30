@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs11545agb;
+        Fri, 29 Apr 2011 15:31:21 -0700 (PDT)
+Received: by 10.236.78.36 with SMTP id f24mr6994349yhe.250.1304116281032;
+        Fri, 29 Apr 2011 15:31:21 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPTAuvbIChCy-OztBBoEouvXjg@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id g72si10255212yhc.199.2011.04.29.15.31.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 29 Apr 2011 15:31:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPTAuvbIChCy-OztBBoEouvXjg@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPTAuvbIChCy-OztBBoEouvXjg@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCPTAuvbIChCy-OztBBoEouvXjg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywj3 with SMTP id 3sf9885030ywj.7
+        for <headius@headius.com>; Fri, 29 Apr 2011 15:31:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=mMS43lzyE2tkxT7xhF3LBnoQ0w22PazteAWRMQj8uTw=;
+        b=amI/FXlIlQyeV2jHR8BCD9noVoxfJ2JJ4CntMOgMsJgq8THdMBERKEGflFPnPR6iuV
+         1uIyDB4SjbhIXd0Wq3AJl+RlbbAtDQ2e1hVyokcuTI07FrNspzxNtKpu+2YIvPs2HNku
+         YDu/NqOVrCFHMZiAB9EjT5allbEe7Oc+zEZpM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=OiPZtngBxZNVXkKGIQWj3j0TqzWi2A01YPWwhfh8Oo1hNwpXZ3p7swHo8jbWF9xgyC
+         KznlY56KBlwIGbePBer9eyDicCdDmhbOO3xFeRP0kTCbMppi4g6Je62LWmV5RpKWaUUy
+         GliEGBRaVLMg+zNeBu0ChIbJCS7SrGYDMXItE=
+Received: by 10.236.125.167 with SMTP id z27mr626928yhh.53.1304116274323;
+        Fri, 29 Apr 2011 15:31:14 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.190.24 with SMTP id s24ls408991anp.3.gmail; Fri, 29 Apr
+ 2011 15:31:13 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.198.24 with SMTP id a24mr560712anq.23.1304116273051; Fri,
+ 29 Apr 2011 15:31:13 -0700 (PDT)
+Received: by r20g2000yqd.googlegroups.com with HTTP; Fri, 29 Apr 2011 15:31:13
+ -0700 (PDT)
+Date: Fri, 29 Apr 2011 15:31:13 -0700 (PDT)
+In-Reply-To: <18694276.1786.1304113161285.JavaMail.geo-discussion-forums@prok25>
+X-IP: 98.156.13.180
+References: <18694276.1786.1304113161285.JavaMail.geo-discussion-forums@prok25>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us)
+ AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1,gzip(gfe)
+Message-ID: <85052b2f-85ea-4686-bc2e-751acf1a9754@r20g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: calling internal ruby functions
+From: mixtli <ronmcclain75@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: ronmcclain75@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Thanks for the info.  I was using select before, but or course  it
+would block
+the whole vm.  Didn't know about the @blocking thing.  I'll give that
+a try.
+
+

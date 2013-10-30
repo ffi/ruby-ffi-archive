@@ -1,0 +1,68 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] need help loading a library</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] need help loading a library</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/25/11 2:55 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Mon, Apr 25, 2011 at 4:50 PM, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to get my ffi-rzmq gem running on Windows (Windows 7 x64). Using DevKit from the RubyInstaller project I was able to successfully build a 32-bit version of the zeromq library. I created a /c/usr/local path and installed the library to that location. Additionally, I installed the ffi gem with 'ruby -S gem install ffi --platform=ruby' where ruby is 1.9.1-p430 so that it would be built using DevKit.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>When I tried to require the ffi-rzmq gem, it failed on the call to #ffi_lib. The errors are listed in the pastie.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://gist.github.com/941051">https://gist.github.com/941051</a>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+libzmq.dll needs to be in the PATH, try copying that file to Ruby\bin
+or adding the directory where libzmq.dll lives to the PATH.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>At /usr/local/lib there is a file named libzmq.dll.a and libzmq.la. I tried copying the <b class="moz-txt-star"><span class="moz-txt-tag">*</span>dll<span class="moz-txt-tag">*</span></b> file to the local working directory and trying again. It didn't work and complained about not being able to find the file.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+/usr/local or even /usr/local/lib are not in the PATH.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On a lark I renamed libzmq.dll.a to libzmq.dll and tried again. This time it found the library file but Windows throws up a dialog box with the following text:
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+.a are linking libraries, are not shared libraries. you got the
+expected outcome: failure.
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>z:\mygit\ffi-rzmq\examples\libzmq.DLL is either not designed to run on Windows or it contains an error. Try installing the program again using the original installation media or contact your system administrator or the software vendor for support.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I also tried it with JRuby 1.5.5. It's output is here at <a class="moz-txt-link-freetext" href="https://gist.github.com/941074">https://gist.github.com/941074</a>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+That is very weird.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>What am I doing wrong here? Any suggestions for further troubleshooting this issue?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+I haven't invested time in test latest version of zeromq to see why is all this.
+
+Will try once I get home and let you know. At first seems to be that
+the generated shared librari (dll) might not be compatible with the
+FFI gem, but let's see.
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

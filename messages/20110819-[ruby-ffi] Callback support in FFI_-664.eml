@@ -1,0 +1,65 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs3747eea;
+        Fri, 19 Aug 2011 03:43:15 -0700 (PDT)
+Received: by 10.52.180.194 with SMTP id dq2mr1968621vdc.105.1313750594909;
+        Fri, 19 Aug 2011 03:43:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCODBv_nyDBC8_LjyBBoE8rTuxg@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id ck9si7100517vdc.117.2011.08.19.03.43.13
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 19 Aug 2011 03:43:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCODBv_nyDBC8_LjyBBoE8rTuxg@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCODBv_nyDBC8_LjyBBoE8rTuxg@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCODBv_nyDBC8_LjyBBoE8rTuxg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf3073541qwj.7
+        for <headius@headius.com>; Fri, 19 Aug 2011 03:43:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=2YYdYBzobOMnwfO7JfkWCu0gp1NI2L8S+jJqMtADz8c=;
+        b=xO+GrtvwRycK1waUelt5nfJR4zI/D/cgSiEFP6iqrSy6C7Lq0Qf92yJf9eyQanVqV/
+         HPEd5OcUzNArScwZgi9mbQrLvuyV9RB2jhmPPyWEtJRv2tZtqs6WUtMEA0xiKG8nb6q6
+         mTJqWdC13PJL2HTjdFDFg/LptlWM9TfjUR1uQ=
+Received: by 10.224.178.68 with SMTP id bl4mr188484qab.34.1313750588383;
+        Fri, 19 Aug 2011 03:43:08 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.185.146 with SMTP id co18ls5905240qab.5.gmail; Fri, 19 Aug
+ 2011 03:43:07 -0700 (PDT)
+Received: by 10.224.31.5 with SMTP id w5mr194181qac.1.1313750586972;
+        Fri, 19 Aug 2011 03:43:06 -0700 (PDT)
+Received: by 10.224.196.69 with SMTP id ef5msqab;
+        Fri, 19 Aug 2011 02:02:39 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.214.9 with SMTP id gy9mr105383qab.20.1313744559629; Fri,
+ 19 Aug 2011 02:02:39 -0700 (PDT)
+Received: by w11g2000vbp.googlegroups.com with HTTP; Fri, 19 Aug 2011 02:02:39
+ -0700 (PDT)
+Date: Fri, 19 Aug 2011 02:02:39 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <2fb9247d-4e75-4ce8-baf1-83831b17e505@w11g2000vbp.googlegroups.com>
+Subject: [ruby-ffi] Callback support in FFI?
+From: przemo_li <an.przemek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: an.przemek@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm trying to implement freeGLUT bindings. Is it possible? I need to
+declare function that takes callback function without any parameters.
+Any luck with FFI?
+
+PS add info about callback in wiki!

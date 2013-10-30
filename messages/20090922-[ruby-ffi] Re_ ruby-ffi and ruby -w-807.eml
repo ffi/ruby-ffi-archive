@@ -1,0 +1,89 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs994qaj;
+        Mon, 21 Sep 2009 22:50:50 -0700 (PDT)
+Received: by 10.115.39.11 with SMTP id r11mr965602waj.152.1253598649429;
+        Mon, 21 Sep 2009 22:50:49 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pz0-f155.google.com (mail-pz0-f155.google.com [209.85.222.155])
+        by mx.google.com with ESMTP id 15si2971935pzk.12.2009.09.21.22.50.48;
+        Mon, 21 Sep 2009 22:50:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.155 as permitted sender) client-ip=209.85.222.155;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.222.155 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk27 with SMTP id 27so694347pzk.13
+        for <headius@headius.com>; Mon, 21 Sep 2009 22:50:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type:reply-to:sender
+         :precedence:x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=XM+VgtTtBclfjvoU8LDBSRnb7dZmWm4ZQgr+iGczEqE=;
+        b=wb61Txj39SP6QKCx5TdDqsUMsxKvseclIemus+BUOyHQGd/2iUpls/zlpILwFl4xuw
+         eCCYfSonj76S26ExTRW3O5i67+kiU1vUnZv/RHldagpyB4X87KcSpfVFArLwSQzgxZOk
+         8lOLFL9C7PvJDdGkxIrpCy1ipV9LWy7r2xsuY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=2F8DhR7JkjZBQTniPu0jla4HiHH99C23EaeieeOaTIZX8klSSq2Q33ZAdxuqQZgD10
+         tt/bJ3klqwEwWiXXL7lO4k/NtZJprUyOzFwkrc4OGxRJSwYYEDkZUcoBjrNI/3j+I0u9
+         mTVYLv5pW6Xz+ap7CL2t/53iSxSCeTpDUUCV8=
+Received: by 10.142.1.37 with SMTP id 37mr12287wfa.31.1253598646659;
+        Mon, 21 Sep 2009 22:50:46 -0700 (PDT)
+Received: by 10.106.139.12 with SMTP id m12gr38prd.0;
+	Mon, 21 Sep 2009 22:50:46 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.142.75.18 with SMTP id x18mr44084wfa.18.1253598645469; Mon, 21 Sep 2009 22:50:45 -0700 (PDT)
+Received: by 10.142.75.18 with SMTP id x18mr44083wfa.18.1253598645453; Mon, 21 Sep 2009 22:50:45 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f176.google.com (mail-pz0-f176.google.com [209.85.222.176]) by gmr-mx.google.com with ESMTP id 4si151884pxi.10.2009.09.21.22.50.44; Mon, 21 Sep 2009 22:50:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.176 as permitted sender) client-ip=209.85.222.176;
+Received: by pzk6 with SMTP id 6so3075608pzk.17 for <ruby-ffi@googlegroups.com>; Mon, 21 Sep 2009 22:50:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type; bh=v8pcCUcMfp60GStNWWjOhe+baytov21jAIrkvOE3cIs=; b=qG1ZISOCU2MWDtotzpivY1BuQYXQrzZmy6cPhy9AidnedDG9yN6iKZgp70kgBZkjD9 xnJtLfpTsAdDy8QLLU8UXc4q3CzG/iFNb+Ig2OJLusRQPbPwZCrE96orYWsXkgEJqC8x UbbWuL3e7g+8X3avoZvAUnf1VAFov6yEUAA/c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type; b=FJCq30VxJxXqVzFZr9n7yW0fSjtUM/rDpw3mqg2ulXD31761FS4+RMLbf5DWAnsLVC PqPutbT4HPaP7Ou2Ma9jODyGDeSjOC80u7lxNgAq1UA8/L8TPFeUotxy6d0sX/hA0Rit 1M/W83t2GxGOg1DQKu9xCxfv3xZjYsyeAy6x8=
+MIME-Version: 1.0
+Received: by 10.140.147.21 with SMTP id u21mr19985rvd.250.1253598644361; Mon,  21 Sep 2009 22:50:44 -0700 (PDT)
+In-Reply-To: <983752850909212217i48440c6eu55d64313fa1463b6@mail.gmail.com>
+References: <983752850909212217i48440c6eu55d64313fa1463b6@mail.gmail.com>
+Date: Tue, 22 Sep 2009 15:50:44 +1000
+Message-ID: <4ccee320909212250s65b6dadfp6bedcc9c85d2679c@mail.gmail.com>
+Subject: [ruby-ffi] Re: ruby-ffi and ruby -w
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+2009/9/22 John Mettraux <jmettraux@gmail.com>:
+>
+> Hi,
+>
+> I've written code leveraging ruby-ffi and lately people have been
+> complaining about running it with ruby -w. I cleaned my code but I'm
+> left with things like :
+>
+> ---8<---
+> ---
+>
+> Is there a way to minimize that warning output ? There is one warning
+> output per method attached.
+
+They should be fixed now.  At least that script runs clean with -w for me

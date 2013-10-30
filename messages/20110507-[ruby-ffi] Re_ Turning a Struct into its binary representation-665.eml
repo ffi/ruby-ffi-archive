@@ -1,0 +1,196 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs30864agb;
+        Sat, 7 May 2011 20:27:20 -0700 (PDT)
+Received: by 10.68.31.136 with SMTP id a8mr6865799pbi.358.1304825239570;
+        Sat, 07 May 2011 20:27:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCRm5juBBoET31JGA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id d29si16495056wfj.88.2011.05.07.20.27.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 07 May 2011 20:27:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCRm5juBBoET31JGA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCRm5juBBoET31JGA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCRm5juBBoET31JGA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk10 with SMTP id 10sf3976165pzk.7
+        for <headius@headius.com>; Sat, 07 May 2011 20:27:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=dQ4wq50MYMavx3MvGamZWRil4cd9npNRZtSQIeFJ8f0=;
+        b=iUMA+AFB3huKlvQdJV4PW5wNB1Vx4rBX2B5+mPnx0ONAX2kV1eb/8iyNk6DzkZe9iK
+         bIUaEuwaVyXS6hxhA2xycWAQKNoPK/8Cy2CZJp6aSlJrhIpGqCtdfjtX5mTAx6aVRDjK
+         Zs+GYRVQRnhRjyf1t1xu0DEqHB5wmI0ayDihE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=nfFFJKFwHNTy+uQqbWt//qwrKGfbwqV4Osm0z1iC+ATsApyINojujGXm7Dcuk00aE5
+         +FyU6GbDBJneGh9sR0j+RHINc40krp226SJ8f0+wChEkLD+LlDXwu1/jkCzLGy9sN0e3
+         dv2ad3bGTb9HZ7hUvTZXqmC3bkcqVo1P8U2Hw=
+Received: by 10.68.34.97 with SMTP id y1mr592683pbi.5.1304825233502;
+        Sat, 07 May 2011 20:27:13 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.12.138 with SMTP id y10ls1355732pbb.3.gmail; Sat, 07 May
+ 2011 20:27:13 -0700 (PDT)
+Received: by 10.68.69.82 with SMTP id c18mr280557pbu.36.1304825233044;
+        Sat, 07 May 2011 20:27:13 -0700 (PDT)
+Date: Sat, 7 May 2011 20:27:12 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <10871427.2955.1304825232327.JavaMail.geo-discussion-forums@prhx20>
+In-Reply-To: <3335346f-8b1f-4462-9222-f1e39612a634@k22g2000yqh.googlegroups.com>
+Subject: [ruby-ffi] Re: Turning a Struct into its binary representation
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2954_7824756.1304825232325"
+
+------=_Part_2954_7824756.1304825232325
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+
+On Friday, 6 May 2011 23:39:09 UTC+10, candlerb wrote:
+>
+> (1) What's the most direct way to get the binary representation of 
+> 'f'? Eventually I found: 
+>
+>     f.pointer.get_bytes(0, Foo.size) 
+>
+> This was made a bit awkward because I was looking for 'read' methods, 
+> and there was no 'read_bytes'. It turns out there are a handful for 
+> methods which have "get" but no "read" equivalent: 
+>
+
+Some of those (the float32/float64 ones) are only there for backwards compat 
+- get/read_float and get/read_double are the preferred  way).
+
+The missing read_bytes and read_array_of_string will be fixed shortly.
+
+>
+> (2) Suppose I want to create a packed structure which is a contiguous 
+> array of Foos. I found an example for InlineArrayOfStructs, but not 
+> how to make an array of structs at the top level. 
+>
+
+Have a read of:
+
+https://groups.google.com/d/msg/ruby-ffi/2JxDNdXlcTc/GP2gbjtatqAJ
+
+If you can figure it out from that thread, *please* add a wiki page on it.
+ 
+
+> (3) What's the difference between FFI::Pointer, FFI::MemoryPointer and 
+> FFI::Buffer? 
+>
+> This one is a bit tricky to explain.  
+
+tl;dr - use FFI::MemoryPointer and you code will work fine, but may be a 
+little slower on JRuby than it need be.
+
+Long, hand wavy explanation:  Its very VM dependent whether Buffer works 
+better than Pointer in certain circumstances.  
+
+On JRuby, there are two types of memory used by FFI - native memory at a 
+fixed address (i.e. what a Pointer or MemoryPointer refers to), and the 
+memory where ruby objects themselves are allocated (e.g. Fixnum, String, 
+Buffer).  This latter type is very fast to allocate and access from ruby 
+code, but needs to be copied to/from temporary native memory to be accessed 
+from native code, as the JVM does not provide direct access to the memory 
+contents.
+
+On the other hand, FFI::MemoryPointer, whilst it can be accessed directly by 
+native code, and still reasonably fast from ruby code, has horrendous 
+management overhead on JRuby - its just the way GC is tuned on the VM - java 
+objects are very fast and lightweight, but the overhead of managing the 
+lifecycle of native objects is huge.
+
+One obvious use where FFI::Buffer is a clear win, is for small, single-use 
+native memory areas (e.g. the 'length' pointer in getsockopt).  It is up to 
+an order of magnitude (10x) faster to use a FFI::Buffer which gets copied 
+to/from native memory for that single use, than it is to use a 
+FFI::MemoryPointer and handle the allocation/release management overhead.
+
+But, as you can see, its not very obvious to the casual programmer when 
+using FFI::Buffer will lead to a speed improvement, which is why I usually 
+say "just use FFI::MemoryPointer and be happy" these days.
+
+
+ 
+
+------=_Part_2954_7824756.1304825232325
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Friday, 6 May 2011 23:39:09 UTC+10, candlerb  wrote:<blockquote =
+class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1p=
+x #ccc solid;padding-left: 1ex;">(1) What's the most direct way to get the =
+binary representation of
+<br>'f'? Eventually I found:
+<br>
+<br>&nbsp; &nbsp; f.pointer.get_bytes(0, Foo.size)
+<br>
+<br>This was made a bit awkward because I was looking for 'read' methods,
+<br>and there was no 'read_bytes'. It turns out there are a handful for
+<br>methods which have "get" but no "read" equivalent:
+<br></blockquote><div><br></div><div>Some of those (the float32/float64 one=
+s) are only there for backwards compat - get/read_float and get/read_double=
+ are the preferred &nbsp;way).</div><div><br></div><div>The missing read_by=
+tes and read_array_of_string will be fixed shortly.</div><blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;"><br>(2) Suppose I want to create a packed struc=
+ture which is a contiguous
+<br>array of Foos. I found an example for InlineArrayOfStructs, but not
+<br>how to make an array of structs at the top level.
+<br></blockquote><div><br></div><div>Have a read of:</div><div><br></div><d=
+iv>https://groups.google.com/d/msg/ruby-ffi/2JxDNdXlcTc/GP2gbjtatqAJ</div><=
+div><br></div><div>If you can figure it out from that thread, *please* add =
+a wiki page on it.</div><div>&nbsp;</div><blockquote class=3D"gmail_quote" =
+style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-l=
+eft: 1ex;">(3) What's the difference between FFI::Pointer, FFI::MemoryPoint=
+er and
+<br>FFI::Buffer?
+<br><br></blockquote><div>This one is a bit tricky to explain. &nbsp;</div>=
+<div><br></div><div>tl;dr - use FFI::MemoryPointer and you code will work f=
+ine, but may be a little slower on JRuby than it need be.</div><div><br></d=
+iv><div>Long, hand wavy explanation: &nbsp;Its very VM dependent whether Bu=
+ffer works better than Pointer in certain circumstances. &nbsp;</div><div><=
+br></div><div>On JRuby, there are two types of memory used by FFI - native =
+memory at a fixed address (i.e. what a Pointer or MemoryPointer refers to),=
+ and the memory where ruby objects themselves are allocated (e.g. Fixnum, S=
+tring, Buffer). &nbsp;This latter type is very fast to allocate and access =
+from ruby code, but needs to be copied to/from temporary native memory to b=
+e accessed from native code, as the JVM does not provide direct access to t=
+he memory contents.</div><div><br></div><div>On the other hand, FFI::Memory=
+Pointer, whilst it can be accessed directly by native code, and still reaso=
+nably fast from ruby code, has horrendous management overhead on JRuby - it=
+s just the way GC is tuned on the VM - java objects are very fast and light=
+weight, but the overhead of managing the lifecycle of native objects is hug=
+e.</div><div><br></div><div>One obvious use where FFI::Buffer is a clear wi=
+n, is for small, single-use native memory areas (e.g. the 'length' pointer =
+in getsockopt). &nbsp;It is up to an order of magnitude (10x) faster to use=
+ a FFI::Buffer which gets copied to/from native memory for that single use,=
+ than it is to use a FFI::MemoryPointer and handle the allocation/release m=
+anagement overhead.</div><div><br></div><div>But, as you can see, its not v=
+ery obvious to the casual programmer when using FFI::Buffer will lead to a =
+speed improvement, which is why I usually say "just use FFI::MemoryPointer =
+and be happy" these days.</div><div><br></div><div><br></div><div>&nbsp;</d=
+iv>
+------=_Part_2954_7824756.1304825232325--

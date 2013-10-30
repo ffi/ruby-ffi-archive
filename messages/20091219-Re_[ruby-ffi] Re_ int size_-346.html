@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: int size?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: int size?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/09 6:48 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/19 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>LP64 (used by unix) says that long, long long, pointer are 64bit,
+<span class="moz-txt-citetags">&gt;&gt; </span>everything else is the same as 32bit.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Interesting.
+<span class="moz-txt-citetags">&gt; </span>So ruby's "Fixnum" must internally be using a long...
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>(1&lt;&lt;61).class
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; Fixnum # on 32 bit, BigNum
+</pre></blockquote><pre wrap>
+
+Yes.   But that is only on CRuby.  JRuby always has 64bit fixnums.
+
+If you want to examine various native type metadata, you can use the
+FFI::Type classes.  See <a class="moz-txt-link-freetext" href="http://ffi.github.com/api/FFI/Type.html">http://ffi.github.com/api/FFI/Type.html</a>
+
+(that api doc is still very much a WiP and is an experiment to try out
+yardoc, which is why its not linked from anywhere).
+</pre></div></body>
+</html>
+</table></div>

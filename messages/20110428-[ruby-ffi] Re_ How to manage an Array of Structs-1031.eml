@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs335776agb;
+        Thu, 28 Apr 2011 11:39:29 -0700 (PDT)
+Received: by 10.42.200.133 with SMTP id ew5mr4817801icb.182.1304015968994;
+        Thu, 28 Apr 2011 11:39:28 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKH6psKSHBDZ6ObtBBoEx0wOyQ@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id c21si6244706ibh.38.2011.04.28.11.39.27
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 28 Apr 2011 11:39:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKH6psKSHBDZ6ObtBBoEx0wOyQ@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKH6psKSHBDZ6ObtBBoEx0wOyQ@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCKH6psKSHBDZ6ObtBBoEx0wOyQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf1933826pwj.7
+        for <headius@headius.com>; Thu, 28 Apr 2011 11:39:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=gLAwDUqh6FyzsLeD748EIPTq8B6mTN3YurdxIJ9BrF0=;
+        b=cwBuu8gSPi2ybTroO0Cywg8795AS8bxfAkye1+V8/sRywCHQQKPbkf4MQAMsJ9p1Wx
+         pTdv9KeqSNsvISlrMXc9mdmV2PyauTVSAvscGTJFrRaHZhQ+7m+4fTn9RvyTAMYt85/D
+         49j2rzIAddqqZhK/VPwpO8ftH2c422a7t13d8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=PCWAzDhYXiIgqhvN7LSTcUm1IAS8ia2YdQgQtbUgDZOVP3HK3o3RMasMbkFpLIAqLx
+         tmCS6x3ckA3eT7dClG1gHkr6GH/FUPIECpzb16DfyeCWfv6RT2uVlZVmbr3Ssn/71O3A
+         CK1skp6/TB8NC0O1EpHuUydEiIieDj4iWP/s0=
+Received: by 10.68.46.229 with SMTP id y5mr179763pbm.9.1304015961781;
+        Thu, 28 Apr 2011 11:39:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.39.41 with SMTP id m9ls2612033pbk.2.gmail; Thu, 28 Apr 2011
+ 11:39:21 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.5.168 with SMTP id t8mr273209pbt.4.1304015961439; Thu, 28
+ Apr 2011 11:39:21 -0700 (PDT)
+Received: by d19g2000prh.googlegroups.com with HTTP; Thu, 28 Apr 2011 11:39:21
+ -0700 (PDT)
+Date: Thu, 28 Apr 2011 11:39:21 -0700 (PDT)
+In-Reply-To: <15325380.1445.1303999160149.JavaMail.geo-discussion-forums@prcm34>
+X-IP: 171.64.109.95
+References: <15325380.1445.1303999160149.JavaMail.geo-discussion-forums@prcm34>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us)
+ AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1,gzip(gfe)
+Message-ID: <50c6f20d-6545-4c2d-9a4d-451208a243cd@d19g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: How to manage an Array of Structs
+From: P4010 <paolo.bosetti@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: paolo.bosetti@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Whoa, Wayne, this is super-cool. I'm starting to understand FFI
+tricks, it's terrific.
+
+For whom of interest, the IPC class I'm working on is currently
+available here in a (documented) draft form: https://gist.github.com/946970
+
+Cheers,
+-P.

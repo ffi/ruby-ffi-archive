@@ -1,0 +1,95 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI check &amp; questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI check &amp; questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeffrey Jones <jjones@toppan-f.co.jp></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/27/12 6:43 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode">Hi Matjis,
+<br>
+<br>I could have sworn I already checked the header file for a definition 
+but I obviously missed something
+<br>
+<br>The code is
+<br>
+<br>typedef enum {
+<br>&nbsp;&nbsp;&nbsp; EPSoutput,
+<br>&nbsp;&nbsp;&nbsp; TIFFoutput,
+<br>&nbsp;&nbsp;&nbsp; JPEGoutput,
+<br>&nbsp;&nbsp;&nbsp; BMPoutput,
+<br>&nbsp;&nbsp;&nbsp; PNGoutput,
+<br>&nbsp;&nbsp;&nbsp; RAWoutput,
+<br>&nbsp;&nbsp;&nbsp; PDFoutput,
+<br>&nbsp;&nbsp;&nbsp; GIFoutput,
+<br>} OutputTypeCode;
+<br>
+<br>So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+curiosity but the allocation is still 4Gb.
+<br>
+<br>Regarding checking if picBuf is null. I added a check immediately after 
+the malloc and the pointer is indeed null.
+<br>If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+not null but them of course the
+<br>get_pagemem method fails.
+<br>
+<br>I have no idea why I am getting a return value of 4Gb from the 
+get_pagememsize(iC) method. I was hoping there
+<br>was some obvious mistake (type conversion or something) I was making but 
+if nothing obvious springs out to
+<br>more experienced eyes then I am not sure.
+<br>
+<br>Regards,
+<br>
+<br>Jeff
+<br>
+<br>
+<br>
+<br>On 28/02/12 01:14, Matijs van Zuijlen wrote:
+<br><blockquote type=cite style="color: #000000;">Hi Jeffrey,
+<br>
+<br>On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+<br><blockquote type=cite style="color: #000000;">I am in the process of looking at using the following library from ruby
+<br>(<a class="moz-txt-link-freetext" href="http://www.datalogics.com/products/pdf2img/">http://www.datalogics.com/products/pdf2img/</a>) using FFI but have run 
+into a few
+<br>issues mainly due to my lack of FFI experience and general lack of C++.
+<br>
+<br>[...]
+<br>
+<br>The following Gist has the example C++ code (Posted with permission) 
+and my Ruby
+<br>code along side some example output. <a class="moz-txt-link-freetext" href="https://gist.github.com/1920005">https://gist.github.com/1920005</a>
+<br>
+<br>[...]
+<br>
+<br>On line 22 of the ruby file I have defined the second argument as an 
+:int, this
+<br>is probably wrong but it suffices for the moment I think. I assume 
+the real
+<br>value is an Enumeration, struct or something along those lines. It is 
+not
+<br>documented so I will ask the original developers.
+<br></blockquote>
+<br>You should take a look at the file 'pdf2imglib.h', to see what the 
+values of that enumeration are. In particular, what integer value 
+corresponds to GIFoutput.
+<br>
+<br><blockquote type=cite style="color: #000000;">Questions:
+<br>
+<br>1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+this is
+<br>obviously wrong, does anyone know why? (I assume I have messed 
+something up
+<br>somewhere)
+<br></blockquote>
+<br>Perhaps setting the output type to 0 is wrong. I'm not sure what 
+output type would demand 4GB, though.
+<br>
+<br><blockquote type=cite style="color: #000000;">2. Can anyone see any other obvious mistakes on my part?
+<br></blockquote>
+<br>I'm guessing allocating 4GB is not going very well. Do check the that 
+the resulting pointer isn't null, i.e., with picBuf.null?
+<br>
+<br>Regards,
+<br></blockquote></div></body>
+</html>
+</table></div>

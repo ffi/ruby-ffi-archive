@@ -1,0 +1,52 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: What is the best way to convert a Fixnum to a :pointer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: What is the best way to convert a Fixnum to a :pointer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Brett Blackham <brett.blackham@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/16/09 8:40 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+
+So MemoryPointer is like calling malloc and returning a pointer to
+it.
+
+I had tried just sending address to Pointer.new in hopes that it could
+handle an Int as well as an existing pointer. But it doesn't appear to
+work.
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>require 'ffi'
+</pre></blockquote></blockquote><pre wrap>
+=&gt; true
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>address = FFI::Pointer.new(5)
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;Native Pointer address=0x5&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>p = FFI::Pointer.new(address)
+</pre></blockquote></blockquote><pre wrap>
+TypeError: can't convert FFI::Pointer into Integer
+        from (irb):4:in `initialize'
+        from (irb):4:in `new'
+        from (irb):4
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>address = FFI::MemoryPointer :pointer
+</pre></blockquote></blockquote><pre wrap>
+NoMethodError: undefined method `MemoryPointer' for FFI:Module
+        from (irb):5
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>address = FFI::MemoryPointer.new :pointer
+</pre></blockquote></blockquote><pre wrap>
+=&gt; #&lt;MemoryPointer address=0x155f140 size=8&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>p = FFI::Pointer.new(address)
+</pre></blockquote></blockquote><pre wrap>
+TypeError: can't convert FFI::MemoryPointer into Integer
+        from (irb):7:in `initialize'
+        from (irb):7:in `new'
+        from (irb):7
+</pre></div></body>
+</html>
+</table></div>

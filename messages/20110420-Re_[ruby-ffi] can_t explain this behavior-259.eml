@@ -1,0 +1,124 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.198.7 with SMTP id v7cs119718anf;
+        Wed, 20 Apr 2011 15:30:19 -0700 (PDT)
+Received: by 10.150.94.18 with SMTP id r18mr6908371ybb.422.1303338618894;
+        Wed, 20 Apr 2011 15:30:18 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJLrrPi9EhD1vL3tBBoEeGtJaA@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id w8si4674940ybe.89.2011.04.20.15.30.18
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 20 Apr 2011 15:30:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhD1vL3tBBoEeGtJaA@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhD1vL3tBBoEeGtJaA@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCJLrrPi9EhD1vL3tBBoEeGtJaA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf3615883gxk.7
+        for <headius@headius.com>; Wed, 20 Apr 2011 15:30:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=Gx7tnMqjvWh95JHdmIr9v1z2+FXuNzQLkRa5WJYkYiY=;
+        b=3rRJGRljkGn0c5O4fLcWkx2DPfAYxw9xS2KZnvI3qiOnZzmEAW5o8Y1XTx9ThnUwsy
+         fxlI/1mh/hMY8StKvZ6kscDLlT/lRRnkdtCc7Ak3LVqah65GdySakq31LmPGzNfSIN3o
+         H7N3n3YLjAroDmdD2pNFBgzMFfelZIZ78s8yQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=qjkZz93cLRt0AJ7oIo2ER+ArN+0cXWjo7VUC+viwkcKgW9Wv4HNfCeueQIlIjtqyB/
+         teBm50It32DcGhXQ6pYMOl3AtgRENA23UkgQENFRXqiK3qP7Ly5T0fDG4QK2c8DvXBhq
+         KUwiK0NiNcGE//wAX3PpXY8V478nSPEm6ADkM=
+Received: by 10.236.78.134 with SMTP id g6mr809612yhe.63.1303338613376;
+        Wed, 20 Apr 2011 15:30:13 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.13.196 with SMTP id d4ls1810820iba.0.gmail; Wed, 20 Apr
+ 2011 15:30:12 -0700 (PDT)
+Received: by 10.231.206.6 with SMTP id fs6mr3748468ibb.12.1303338612866;
+        Wed, 20 Apr 2011 15:30:12 -0700 (PDT)
+Received: by 10.231.206.6 with SMTP id fs6mr3748466ibb.12.1303338612828;
+        Wed, 20 Apr 2011 15:30:12 -0700 (PDT)
+Received: from mail-iy0-f172.google.com (mail-iy0-f172.google.com [209.85.210.172])
+        by gmr-mx.google.com with ESMTPS id r31si309978ibu.6.2011.04.20.15.30.11
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 20 Apr 2011 15:30:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shurikk@gmail.com designates 209.85.210.172 as permitted sender) client-ip=209.85.210.172;
+Received: by iye19 with SMTP id 19so1647044iye.17
+        for <ruby-ffi@googlegroups.com>; Wed, 20 Apr 2011 15:30:11 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.231.142.32 with SMTP id o32mr6090247ibu.143.1303338611703;
+ Wed, 20 Apr 2011 15:30:11 -0700 (PDT)
+Received: by 10.231.34.5 with HTTP; Wed, 20 Apr 2011 15:30:11 -0700 (PDT)
+In-Reply-To: <BD5B1BA2-E784-41DD-82AB-2A3063CC2A47@mac.com>
+References: <527e0f31-eb4b-4145-9495-d2c04422519e@j25g2000vbr.googlegroups.com>
+	<BD5B1BA2-E784-41DD-82AB-2A3063CC2A47@mac.com>
+Date: Wed, 20 Apr 2011 15:30:11 -0700
+Message-ID: <BANLkTik39=B99aX-2Ls2YtfYs3gS9mwLSQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] can't explain this behavior
+From: Alexander Kabanov <shurikk@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: shurikk@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of shurikk@gmail.com designates 209.85.210.172 as permitted sender)
+ smtp.mail=shurikk@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Wed, Apr 20, 2011 at 1:25 PM, Chuck Remes <cremes.devlist@mac.com> wrote=
+:
+[skip]
+>> sometimes function call works as expected, sometimes it doesn't, I
+>> can't explain why. adding removing few lines of code (random "puts"
+>> calls etc.) will change the function call behavior (will work 20% or
+>> 100% of times). am I supposed to maintain memory pointers somehow
+>> (i.e. malloc/free) or my .so lib has bad implementation (i know it's
+>> used in other places without any issues)?
+>
+> Please pastie the errors you are getting particularly if MRI is crashing.=
+ You say it doesn't work up to 80% of the time, but what does "does not wor=
+k" mean in this case?
+
+it's not crushing, there is no errors, function call might not return
+anything or might work as expected and return expected result. minor
+changes to the script, like few more comments or "puts" to debug
+something will change the script behavior, feels like some kind of
+memory allocation issue but I'm not sure.
+
+>> I tried to use LibC approach described on wiki page using malloc, same
+>> deal.
+>>
+>> ruby 1.8.7 (2010-12-23 patchlevel 330) [i386-linux] RHEL 5.4
+>> ffi (1.0.7)
+
+> This might be your issue. I think that 1.8.x support is "best effort" and=
+ no longer a target. Try your code again with 1.9.2 and see if it functions=
+ more reliably. Alternately, try your code with some other ruby runtimes (J=
+Ruby, Rubinius) that have FFI support and see if they provide additional de=
+tails in their errors. Those other runtimes could greatly aid in debugging.
+
+Let me try with 1.9.2. Is there a way I can debug this to provide more
+info (i.e. with gdb or something else)?
+
+Thanks
+
+--Alex

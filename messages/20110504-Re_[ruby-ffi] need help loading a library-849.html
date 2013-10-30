@@ -1,0 +1,63 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] need help loading a library</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] need help loading a library</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/4/11 8:00 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Wed, May 4, 2011 at 9:30 PM, Dominic Sisneros <a class="moz-txt-link-rfc2396E" href="mailto:dsisnero@gmail.com">&lt;dsisnero@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Can someone write up the steps needed to get 0mq working on windows?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Steps are easy:
+
+1) You need RubyInstaller and it's DevKit, instructions for that are
+in RubyInstaller website:
+
+<a class="moz-txt-link-freetext" href="http://rubyinstaller.org/downloads">http://rubyinstaller.org/downloads</a>
+
+2) Start a command prompt and invoke devkitvars.bat found inside the
+folder you installed DevKit, this will give you access to MinGW tools.
+
+3) Download 0mq source somewhere and extract (eg C:\src\zeromq)
+
+4) compile it using the following commands:
+
+C:\&gt; cd C:\src\zeromq
+C:\&gt; sh configure --prefix=C:/zeromq
+C:\&gt; make
+C:\&gt; make install
+
+Note the use of forwardslash in the second command. The above commands
+will take a long time to complete, but once its done, you will find
+inside C:\zeromq folder the binaries (bin, lib, include).
+
+5) Copy the result binaries
+
+Now you can copy the DLL from inside bin into a directory in your PATH
+and use it.
+
+6) Don't forget the additional dependencies
+
+Don't forge to copy libstdc++-6.dll and libgcc_s_sjlj-1.dll from
+DevKit MinGW into the same folder you copied  libzmq.dll.
+
+To know where these DLLs are, you can use where, eg:
+
+C:\&gt; where libstdc++-6.dll
+C:\Users\Luis\Tools\DevKit\4.5.1\mingw\bin\libstdc++-6.dll
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

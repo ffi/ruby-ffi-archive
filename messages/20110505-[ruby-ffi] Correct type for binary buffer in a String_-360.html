@@ -1,0 +1,73 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Correct type for binary buffer in a String?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Correct type for binary buffer in a String?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>candlerb <bcandler100@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/11 7:44 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi, I'm just getting started with FFI. I'd like to check what's the
+right type to use when passing a String as a binary buffer. The
+following code doesn't work:
+
+# (1) built-in way
+require 'socket'
+s = Socket.new(Socket::AF_INET, Socket::SOCK_DGRAM, 0)
+p s.getsockopt(Socket::IPPROTO_IP, Socket::IP_TTL)
+
+# (2) FFI way
+require 'ffi'
+
+module Foo
+  extend FFI::Library
+  ffi_lib 'c'
+  attach_function :getsockopt,
+[:int, :int, :int, :buffer_inout, :size_t], :int
+end
+
+buf = "xxxxxxxx"
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buf.bytesize)  ## NOPE
+p buf
+
+The FFI getsockopt call is returning -1, and the buffer is unchanged.
+(Supplementary question: how do I get at 'errno' in this case?)
+
+It's the same if I use :string or :pointer instead of :buffer_inout.
+
+Clearly this particular getsockopt call doesn't need a buffer_inout,
+but there are cases where getsockopt <b class="moz-txt-star"><span class="moz-txt-tag">*</span>does<span class="moz-txt-tag">*</span></b> receive data and return
+results in the same buffer, and ruby's built-in getsockopt doesn't
+support this - <a class="moz-txt-link-freetext" href="http://redmine.ruby-lang.org/issues/4645">http://redmine.ruby-lang.org/issues/4645</a>
+
+Specifically I'm looking at iptables. Sample code from the iptables
+utility is below.
+
+Many thanks,
+
+Brian.
+
+---- libiptc/libiptc.c ----
+
+TC_INIT(const char *tablename)
+{
+...
+        sockfd = socket(TC_AF, SOCK_RAW, IPPROTO_RAW);
+        if (sockfd &lt; 0)
+                return NULL;
+
+retry:
+        s = sizeof(info);
+
+        strcpy(info.name, tablename);
+        if (getsockopt(sockfd, TC_IPPROTO, SO_GET_INFO, &amp;info, &amp;s) &lt;
+0) {
+                close(sockfd);
+                return NULL;
+        }
+
+        DEBUGP("valid_hooks=0x%08x, num_entries=%u, size=%u\n",
+                info.valid_hooks, info.num_entries, info.size);
+</pre></div></body>
+</html>
+</table></div>

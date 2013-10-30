@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Alvaro <zevarito@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/5/11 7:51 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+2011/1/4 Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Wednesday, January 5, 2011 6:11:56 AM UTC+10, Alvaro wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I wonder if there is something that needs to be done after call to
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI::MemoryPointer.new
+<span class="moz-txt-citetags">&gt;&gt; </span>to free the memory, my extension has memory leaks and it only happens
+<span class="moz-txt-citetags">&gt;&gt; </span>with the binding
+<span class="moz-txt-citetags">&gt;&gt; </span>and not with the original C lib.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>As Chuck says, when the last strong reference to an FFI object is removed,
+<span class="moz-txt-citetags">&gt; </span>it becomes eligible for collection - so you most likely have a persistent
+<span class="moz-txt-citetags">&gt; </span>reference to the memory pointer that is keeping it alive.
+<span class="moz-txt-citetags">&gt; </span>All objects defined in ruby-ffi follow that pattern - they are auto-release
+<span class="moz-txt-citetags">&gt; </span>by default.  You can set autorelease = false on MemoryPointer instances
+<span class="moz-txt-citetags">&gt; </span>which means the memory can <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>never<span class="moz-txt-tag">_</span></span> be freed, but that is probably a rare
+<span class="moz-txt-citetags">&gt; </span>occurrence.
+<span class="moz-txt-citetags">&gt; </span>That does not apply to pointers allocated via mapping in say malloc or
+<span class="moz-txt-citetags">&gt; </span>calloc from libc - those have to be manually managed.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+I understand your point about how it works the garbage collection.
+Is a kind strange that the C lib purely don't have leaks but with the
+FFI binding it has and I couldn't find the reason yet, may be is
+inherited to ruby, I've tested it with Ree, Mri and JRuby without
+success.
+
+I will continue trying to figure out what is happening, thanks for
+your comments.
+
+<div class="moz-txt-sig">-- 
+Alvaro
+</div></pre></div></body>
+</html>
+</table></div>

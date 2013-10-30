@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Troubles with Daemon Kit and FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Troubles with Daemon Kit and FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Arvicco <arvitallian@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/5/10 10:51 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello all,
+
+I'm having trouble to marry Daemon Kit and FFI under Cygwin (Yes,
+daemons work well under Cygwin until I try to use FFI).
+
+I've generated default daemon_kit skeleton and wrote simple proof-of-
+concept daemon in libexec:
+<a class="moz-txt-link-freetext" href="http://gist.github.com/611727">http://gist.github.com/611727</a>
+
+It just defines Win32 API function using FFI (vanilla FFI wiki
+example) and then tries to call this function.
+
+The trouble is, everything seems to work just fine when the daemon
+binary is invoked with "my_daemon run" but when it is called with
+"my_daemon start"(requesting daemonization), it just dies upon FFI
+function call. Silently, without leaving any trace. No exceptions
+(yes, I tried to catch them), nothing logged... it just disappears.
+
+Did anyone try to use FFI like this? Am I missing something here? Any
+help/tips would be greatly appreciated...
+
+Regards,
+Arvicco
+</pre></div></body>
+</html>
+</table></div>

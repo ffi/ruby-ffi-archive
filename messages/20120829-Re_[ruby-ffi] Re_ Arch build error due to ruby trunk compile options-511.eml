@@ -1,0 +1,482 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.72.202 with SMTP id f10csp177230obv;
+        Wed, 29 Aug 2012 05:07:37 -0700 (PDT)
+Received: by 10.50.160.195 with SMTP id xm3mr1321994igb.12.1346242057055;
+        Wed, 29 Aug 2012 05:07:37 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCIjPiBBRoE9uFhWg@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id xk1si9746562igb.12.2012.08.29.05.07.36
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 29 Aug 2012 05:07:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCIjPiBBRoE9uFhWg@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCIjPiBBRoE9uFhWg@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCIjPiBBRoE9uFhWg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by iajr24 with SMTP id r24sf733282iaj.7
+        for <headius@headius.com>; Wed, 29 Aug 2012 05:07:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=yW2XptGZuL3UPrvKH62FI8kQcoXHdh44Fh+Nz9Ouazs=;
+        b=xXzSBvDFiH0cuBzhZn6k5QYOau9QWXd9LLLVJyhLG1f5QJcTHpwkJhHcLbnYRbHkB/
+         7QqQiWshwcZlWBZG/cKWmltd/ViJTq0KHmlCQfbYUroPJZgmxl+IBRV9LKZJE3XGPFM2
+         vfj1ZesNPAFBhMjDNfWVe1Kz2NKKbRp2rPe8mc3BIIUZiknJqQGFH7EiBsz9HHCaK2vj
+         qopfsK5Li50g3IHS4GwDlD63McxUvNgZgLUmqhjngWGmkyiY3LbPJiH5WqV5TZkOlFy+
+         vFBtyABXUD0th5jM3hZIF7/tmTSscTl3ytXKd6ApTUIvAUev5tqOatRe4Z/SE2vn+u7y
+         B9wg==
+Received: by 10.68.244.73 with SMTP id xe9mr163660pbc.10.1346242056602;
+        Wed, 29 Aug 2012 05:07:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.141.133 with SMTP id ro5ls5330568pbb.1.gmail; Wed, 29 Aug
+ 2012 05:07:36 -0700 (PDT)
+Received: by 10.68.232.9 with SMTP id tk9mr175581pbc.0.1346242056132;
+        Wed, 29 Aug 2012 05:07:36 -0700 (PDT)
+Date: Wed, 29 Aug 2012 05:07:35 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <9fceceb1-f556-4a59-b857-e6fd8b1bf2d4@googlegroups.com>
+In-Reply-To: <20120823122801.0dc8cd3381f5b87f37f0d8a0@gmail.com>
+References: <20120809161610.3f08ab62d25d18c6ddea91fc@gmail.com>
+ <cb9f4f35-2aed-4344-b55b-03739a7c8250@googlegroups.com>
+ <20120822160359.cba5593fa6711e858b8f8373@gmail.com>
+ <20120823122801.0dc8cd3381f5b87f37f0d8a0@gmail.com>
+Subject: Re: [ruby-ffi] Re: Arch build error due to ruby trunk compile options
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_296_17704378.1346242055537"
+
+------=_Part_296_17704378.1346242055537
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I pushed those changes in 1.2.0.dev4 and 1.1.6.pre1
+
+It'd be nice if 1.1.6.pre1 in particular got some testing love by people 
+running ruby-head.
+
+On Friday, 24 August 2012 02:28:01 UTC+10, Jon wrote:
+>
+> :) 
+>
+> [jon@archee ffi-git]$ git log -1 --oneline 
+> 20c243a Add back ffiStatus lvar to rbffi_MethodHandle_Init() 
+>
+> [jon@archee ffi-git]$ gem i pkg/ffi-1.2.0.devmaster.gem --user-install 
+> Building native extensions.  This could take a while... 
+> Successfully installed ffi-1.2.0.devmaster 
+> 1 gem installed 
+>
+>
+> > eek => MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in 
+> this function) 
+> > 
+> > 
+> > [jon@archee ~]$ gem i ffi --pre --user-install 
+> > Fetching: ffi-1.2.0.dev3.gem (100%) 
+> > Building native extensions.  This could take a while... 
+> > ERROR:  Error installing ffi: 
+> >         ERROR: Failed to build gem native extension. 
+> > 
+> >         /usr/local/bin/ruby extconf.rb 
+> > checking for ffi_call() in -lffi... yes 
+> > checking for ffi_prep_closure()... yes 
+> > checking for ffi_raw_call()... yes 
+> > checking for ffi_prep_raw_closure()... yes 
+> > checking for rb_thread_blocking_region()... yes 
+> > checking for ruby_native_thread_p()... yes 
+> > checking for rb_thread_call_with_gvl()... yes 
+> > checking for ffi_prep_cif_var()... yes 
+> > creating extconf.h 
+> > creating Makefile 
+> > 
+> > make 
+> > compiling Pointer.c 
+> > compiling Platform.c 
+> > compiling Types.c 
+> > compiling MappedType.c 
+> > compiling Buffer.c 
+> > compiling Call.c 
+> > Call.c: In function 'do_blocking_call': 
+> > Call.c:281:5: warning: 'rb_thread_blocking_region' is deprecated 
+> (declared at /usr/local/include/ruby-2.0.0/ruby/intern.h:823) 
+> [-Wdeprecated-declarations] 
+> > compiling LongDouble.c 
+> > compiling ClosurePool.c 
+> > compiling StructByReference.c 
+> > compiling ArrayType.c 
+> > compiling Variadic.c 
+> > compiling MemoryPointer.c 
+> > compiling Struct.c 
+> > compiling AbstractMemory.c 
+> > compiling MethodHandle.c 
+> > MethodHandle.c: In function 'rbffi_MethodHandle_Init': 
+> > MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in this 
+> function) 
+> > MethodHandle.c:340:5: note: each undeclared identifier is reported only 
+> once for each function it appears in 
+> > make: *** [MethodHandle.o] Error 1 
+> > 
+> > 
+> > 
+> > > Can you try 1.2.0.dev3 ?  It should eliminate the warnflags MRI puts 
+> in 
+> > > there. 
+> > > 
+> > > On Friday, 10 August 2012 06:16:10 UTC+10, Jon wrote: 
+> > > > 
+> > > > With ruby trunk the last few ffi gem releases have failed to build 
+> on my 
+> > > > Arch 3.4.7 32bit dev system with gcc 4.7.1 (20120721). 
+> > > > 
+> > > > Given the details and workaround info below, the root cause appears 
+> to be 
+> > > > recent `configure.in` ansi compliance mods: 
+> > > > 
+> > > >   https://github.com/ruby/ruby/blob/trunk/configure.in#L619-635 
+> > > > 
+> > > > Looks like others are running into as well 
+> > > > 
+> > > >   https://github.com/flori/json/issues/142 
+> > > > 
+> > > > While I've only briefly investigated, I don't have time to fully 
+> look into 
+> > > > it. But I don't want to forget about it. 
+> > > > 
+> > > > 
+> > > > 
+> > > > *** GEM UPDATE FAILURE *** 
+> > > > 
+> > > > [jon@archee ~]$ gem update ffi --user-install 
+> > > > Updating installed gems 
+> > > > Updating ffi 
+> > > > Fetching: ffi-1.1.5.gem (100%) 
+> > > > Building native extensions.  This could take a while... 
+> > > > ERROR:  Error installing ffi: 
+> > > >         ERROR: Failed to build gem native extension. 
+> > > > 
+> > > >         /usr/local/bin/ruby extconf.rb 
+> > > > checking for ffi_call() in -lffi... yes 
+> > > > checking for ffi_prep_closure()... yes 
+> > > > checking for ffi_raw_call()... yes 
+> > > > checking for ffi_prep_raw_closure()... yes 
+> > > > checking for rb_thread_blocking_region()... yes 
+> > > > checking for ruby_native_thread_p()... yes 
+> > > > checking for rb_thread_call_with_gvl()... yes 
+> > > > creating extconf.h 
+> > > > creating Makefile 
+> > > > 
+> > > > make 
+> > > > compiling Pointer.c 
+> > > > In file included from Pointer.c:34:0: 
+> > > > rbffi_endian.h:46:4: error: #error "Cannot determine the endian-ness 
+> of 
+> > > > this platform" 
+> > > > Pointer.c: In function 'ptr_order': 
+> > > > Pointer.c:339:59: error: 'BYTE_ORDER' undeclared (first use in this 
+> > > > function) 
+> > > > Pointer.c:339:59: note: each undeclared identifier is reported only 
+> once 
+> > > > for each function it appears in 
+> > > > Pointer.c:339:72: error: 'BIG_ENDIAN' undeclared (first use in this 
+> > > > function) 
+> > > > Pointer.c:351:25: error: 'LITTLE_ENDIAN' undeclared (first use in 
+> this 
+> > > > function) 
+> > > > Pointer.c:368:1: warning: control reaches end of non-void function 
+> > > > [-Wreturn-type] 
+> > > > make: *** [Pointer.o] Error 1 
+> > > > 
+> > > > 
+> > > > Gem files will remain installed in 
+> > > > /home/jon/.gem/ruby/2.0.0/gems/ffi-1.1.5 for inspection. 
+> > > > Results logged to 
+> > > > /home/jon/.gem/ruby/2.0.0/gems/ffi-1.1.5/ext/ffi_c/gem_make.out 
+> > > > Nothing to update 
+> > > > 
+> > > > 
+> > > > 
+> > > > *** WORKAROUND *** 
+> > > > 
+> > > > gem update ffi --user-install -- --with-cflags='--std=gnu99' 
+> > > > 
+> > > > 
+> > > > 
+> > > > *** SYSTEM INFO *** 
+> > > > 
+> > > > # rbconfig.rb contents: 
+> > > >   CONFIG["warnflags"] = "-Wall -Wextra -Wno-unused-parameter 
+> > > > -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers 
+> > > > -Wunused-variable -Werror=pointer-arith -Werror=write-strings 
+> > > > -Werror=declaration-after-statement 
+> -Werror=implicit-function-declaration 
+> > > > -ansi -std=iso9899:199409" 
+> > > >   CONFIG["WERRORFLAG"] = "-Werror" 
+> > > > 
+> > > > 
+> > > > [jon@archee ~]$ gem env 
+> > > > RubyGems Environment: 
+> > > >   - RUBYGEMS VERSION: 1.8.24 
+> > > >   - RUBY VERSION: 2.0.0 (2012-08-10 patchlevel -1) [i686-linux] 
+> > > >   - INSTALLATION DIRECTORY: /usr/local/lib/ruby/gems/2.0.0 
+> > > >   - RUBY EXECUTABLE: /usr/local/bin/ruby 
+> > > >   - EXECUTABLE DIRECTORY: /usr/local/bin 
+> > > >   - RUBYGEMS PLATFORMS: 
+> > > >     - ruby 
+> > > >     - x86-linux 
+> > > >   - GEM PATHS: 
+> > > >      - /usr/local/lib/ruby/gems/2.0.0 
+> > > >      - /home/jon/.gem/ruby/2.0.0 
+> > > >   - GEM CONFIGURATION: 
+> > > >      - :update_sources => true 
+> > > >      - :verbose => true 
+> > > >      - :benchmark => false 
+> > > >      - :backtrace => false 
+> > > >      - :bulk_threshold => 1000 
+> > > >      - :sources => ["http://rubygems.org"] 
+> > > >      - "gem" => "--no-ri --no-rdoc" 
+> > > >   - REMOTE SOURCES: 
+> > > >      - http://rubygems.org 
+> > > > 
+> > > > 
+> > > > Jon 
+> > > > 
+> > > > --- 
+> > > > Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+> > > > http://thecodeshop.github.com | http://jonforums.github.com/ 
+> > > > twitter: @jonforums 
+> > > > 
+> > 
+> > 
+> > Jon 
+> > 
+> > --- 
+> > Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+> > http://thecodeshop.github.com | http://jonforums.github.com/ 
+> > twitter: @jonforums 
+>
+>
+> Jon 
+>
+> --- 
+> Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+> http://thecodeshop.github.com | http://jonforums.github.com/ 
+> twitter: @jonforums 
+>
+
+------=_Part_296_17704378.1346242055537
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+I pushed those changes in 1.2.0.dev4 and 1.1.6.pre1<div><br></div><div>It'd be nice if 1.1.6.pre1 in particular got some testing love by people running ruby-head.<br><br>On Friday, 24 August 2012 02:28:01 UTC+10, Jon  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">:)
+<br>
+<br>[jon@archee ffi-git]$ git log -1 --oneline
+<br>20c243a Add back ffiStatus lvar to rbffi_MethodHandle_Init()
+<br>
+<br>[jon@archee ffi-git]$ gem i pkg/ffi-1.2.0.devmaster.gem --user-install
+<br>Building native extensions. &nbsp;This could take a while...
+<br>Successfully installed ffi-1.2.0.devmaster
+<br>1 gem installed
+<br>
+<br>
+<br>&gt; eek =&gt; MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in this function)
+<br>&gt; 
+<br>&gt; 
+<br>&gt; [jon@archee ~]$ gem i ffi --pre --user-install
+<br>&gt; Fetching: ffi-1.2.0.dev3.gem (100%)
+<br>&gt; Building native extensions. &nbsp;This could take a while...
+<br>&gt; ERROR: &nbsp;Error installing ffi:
+<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; ERROR: Failed to build gem native extension.
+<br>&gt; 
+<br>&gt; &nbsp; &nbsp; &nbsp; &nbsp; /usr/local/bin/ruby extconf.rb
+<br>&gt; checking for ffi_call() in -lffi... yes
+<br>&gt; checking for ffi_prep_closure()... yes
+<br>&gt; checking for ffi_raw_call()... yes
+<br>&gt; checking for ffi_prep_raw_closure()... yes
+<br>&gt; checking for rb_thread_blocking_region()... yes
+<br>&gt; checking for ruby_native_thread_p()... yes
+<br>&gt; checking for rb_thread_call_with_gvl()... yes
+<br>&gt; checking for ffi_prep_cif_var()... yes
+<br>&gt; creating extconf.h
+<br>&gt; creating Makefile
+<br>&gt; 
+<br>&gt; make
+<br>&gt; compiling Pointer.c
+<br>&gt; compiling Platform.c
+<br>&gt; compiling Types.c
+<br>&gt; compiling MappedType.c
+<br>&gt; compiling Buffer.c
+<br>&gt; compiling Call.c
+<br>&gt; Call.c: In function 'do_blocking_call':
+<br>&gt; Call.c:281:5: warning: 'rb_thread_blocking_region' is deprecated (declared at /usr/local/include/ruby-2.0.0/<wbr>ruby/intern.h:823) [-Wdeprecated-declarations]
+<br>&gt; compiling LongDouble.c
+<br>&gt; compiling ClosurePool.c
+<br>&gt; compiling StructByReference.c
+<br>&gt; compiling ArrayType.c
+<br>&gt; compiling Variadic.c
+<br>&gt; compiling MemoryPointer.c
+<br>&gt; compiling Struct.c
+<br>&gt; compiling AbstractMemory.c
+<br>&gt; compiling MethodHandle.c
+<br>&gt; MethodHandle.c: In function 'rbffi_MethodHandle_Init':
+<br>&gt; MethodHandle.c:340:5: error: 'ffiStatus' undeclared (first use in this function)
+<br>&gt; MethodHandle.c:340:5: note: each undeclared identifier is reported only once for each function it appears in
+<br>&gt; make: *** [MethodHandle.o] Error 1
+<br>&gt; 
+<br>&gt; 
+<br>&gt; 
+<br>&gt; &gt; Can you try 1.2.0.dev3 ? &nbsp;It should eliminate the warnflags MRI puts in 
+<br>&gt; &gt; there.
+<br>&gt; &gt; 
+<br>&gt; &gt; On Friday, 10 August 2012 06:16:10 UTC+10, Jon wrote:
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; With ruby trunk the last few ffi gem releases have failed to build on my 
+<br>&gt; &gt; &gt; Arch 3.4.7 32bit dev system with gcc 4.7.1 (20120721). 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; Given the details and workaround info below, the root cause appears to be 
+<br>&gt; &gt; &gt; recent `<a href="http://configure.in" target="_blank">configure.in</a>` ansi compliance mods: 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; &nbsp; <a href="https://github.com/ruby/ruby/blob/trunk/configure.in#L619-635" target="_blank">https://github.com/ruby/ruby/<wbr>blob/trunk/configure.in#L619-<wbr>635</a> 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; Looks like others are running into as well 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; &nbsp; <a href="https://github.com/flori/json/issues/142" target="_blank">https://github.com/flori/json/<wbr>issues/142</a> 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; While I've only briefly investigated, I don't have time to fully look into 
+<br>&gt; &gt; &gt; it. But I don't want to forget about it. 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; *** GEM UPDATE FAILURE *** 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; [jon@archee ~]$ gem update ffi --user-install 
+<br>&gt; &gt; &gt; Updating installed gems 
+<br>&gt; &gt; &gt; Updating ffi 
+<br>&gt; &gt; &gt; Fetching: ffi-1.1.5.gem (100%) 
+<br>&gt; &gt; &gt; Building native extensions. &nbsp;This could take a while... 
+<br>&gt; &gt; &gt; ERROR: &nbsp;Error installing ffi: 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp; &nbsp; ERROR: Failed to build gem native extension. 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp; &nbsp; /usr/local/bin/ruby extconf.rb 
+<br>&gt; &gt; &gt; checking for ffi_call() in -lffi... yes 
+<br>&gt; &gt; &gt; checking for ffi_prep_closure()... yes 
+<br>&gt; &gt; &gt; checking for ffi_raw_call()... yes 
+<br>&gt; &gt; &gt; checking for ffi_prep_raw_closure()... yes 
+<br>&gt; &gt; &gt; checking for rb_thread_blocking_region()... yes 
+<br>&gt; &gt; &gt; checking for ruby_native_thread_p()... yes 
+<br>&gt; &gt; &gt; checking for rb_thread_call_with_gvl()... yes 
+<br>&gt; &gt; &gt; creating extconf.h 
+<br>&gt; &gt; &gt; creating Makefile 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; make 
+<br>&gt; &gt; &gt; compiling Pointer.c 
+<br>&gt; &gt; &gt; In file included from Pointer.c:34:0: 
+<br>&gt; &gt; &gt; rbffi_endian.h:46:4: error: #error "Cannot determine the endian-ness of 
+<br>&gt; &gt; &gt; this platform" 
+<br>&gt; &gt; &gt; Pointer.c: In function 'ptr_order': 
+<br>&gt; &gt; &gt; Pointer.c:339:59: error: 'BYTE_ORDER' undeclared (first use in this 
+<br>&gt; &gt; &gt; function) 
+<br>&gt; &gt; &gt; Pointer.c:339:59: note: each undeclared identifier is reported only once 
+<br>&gt; &gt; &gt; for each function it appears in 
+<br>&gt; &gt; &gt; Pointer.c:339:72: error: 'BIG_ENDIAN' undeclared (first use in this 
+<br>&gt; &gt; &gt; function) 
+<br>&gt; &gt; &gt; Pointer.c:351:25: error: 'LITTLE_ENDIAN' undeclared (first use in this 
+<br>&gt; &gt; &gt; function) 
+<br>&gt; &gt; &gt; Pointer.c:368:1: warning: control reaches end of non-void function 
+<br>&gt; &gt; &gt; [-Wreturn-type] 
+<br>&gt; &gt; &gt; make: *** [Pointer.o] Error 1 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; Gem files will remain installed in 
+<br>&gt; &gt; &gt; /home/jon/.gem/ruby/2.0.0/<wbr>gems/ffi-1.1.5 for inspection. 
+<br>&gt; &gt; &gt; Results logged to 
+<br>&gt; &gt; &gt; /home/jon/.gem/ruby/2.0.0/<wbr>gems/ffi-1.1.5/ext/ffi_c/gem_<wbr>make.out 
+<br>&gt; &gt; &gt; Nothing to update 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; *** WORKAROUND *** 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; gem update ffi --user-install -- --with-cflags='--std=gnu99' 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; *** SYSTEM INFO *** 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; # rbconfig.rb contents: 
+<br>&gt; &gt; &gt; &nbsp; CONFIG["warnflags"] = "-Wall -Wextra -Wno-unused-parameter 
+<br>&gt; &gt; &gt; -Wno-parentheses -Wno-long-long -Wno-missing-field-<wbr>initializers 
+<br>&gt; &gt; &gt; -Wunused-variable -Werror=pointer-arith -Werror=write-strings 
+<br>&gt; &gt; &gt; -Werror=declaration-after-<wbr>statement -Werror=implicit-function-<wbr>declaration 
+<br>&gt; &gt; &gt; -ansi -std=iso9899:199409" 
+<br>&gt; &gt; &gt; &nbsp; CONFIG["WERRORFLAG"] = "-Werror" 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; [jon@archee ~]$ gem env 
+<br>&gt; &gt; &gt; RubyGems Environment: 
+<br>&gt; &gt; &gt; &nbsp; - RUBYGEMS VERSION: 1.8.24 
+<br>&gt; &gt; &gt; &nbsp; - RUBY VERSION: 2.0.0 (2012-08-10 patchlevel -1) [i686-linux] 
+<br>&gt; &gt; &gt; &nbsp; - INSTALLATION DIRECTORY: /usr/local/lib/ruby/gems/2.0.0 
+<br>&gt; &gt; &gt; &nbsp; - RUBY EXECUTABLE: /usr/local/bin/ruby 
+<br>&gt; &gt; &gt; &nbsp; - EXECUTABLE DIRECTORY: /usr/local/bin 
+<br>&gt; &gt; &gt; &nbsp; - RUBYGEMS PLATFORMS: 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; - ruby 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; - x86-linux 
+<br>&gt; &gt; &gt; &nbsp; - GEM PATHS: 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- /usr/local/lib/ruby/gems/2.0.0 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- /home/jon/.gem/ruby/2.0.0 
+<br>&gt; &gt; &gt; &nbsp; - GEM CONFIGURATION: 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :update_sources =&gt; true 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :verbose =&gt; true 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :benchmark =&gt; false 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :backtrace =&gt; false 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :bulk_threshold =&gt; 1000 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- :sources =&gt; ["<a href="http://rubygems.org" target="_blank">http://rubygems.org</a>"] 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- "gem" =&gt; "--no-ri --no-rdoc" 
+<br>&gt; &gt; &gt; &nbsp; - REMOTE SOURCES: 
+<br>&gt; &gt; &gt; &nbsp; &nbsp; &nbsp;- <a href="http://rubygems.org" target="_blank">http://rubygems.org</a> 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; Jon 
+<br>&gt; &gt; &gt;
+<br>&gt; &gt; &gt; --- 
+<br>&gt; &gt; &gt; Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat. 
+<br>&gt; &gt; &gt; <a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a> 
+<br>&gt; &gt; &gt; twitter: @jonforums 
+<br>&gt; &gt; &gt;
+<br>&gt; 
+<br>&gt; 
+<br>&gt; Jon
+<br>&gt; 
+<br>&gt; ---
+<br>&gt; Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br>&gt; <a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a>
+<br>&gt; twitter: @jonforums
+<br>
+<br>
+<br>Jon
+<br>
+<br>---
+<br>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br><a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a>
+<br>twitter: @jonforums
+<br></blockquote></div>
+------=_Part_296_17704378.1346242055537--

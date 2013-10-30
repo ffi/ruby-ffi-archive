@@ -1,0 +1,161 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs445166and;
+        Sat, 19 Dec 2009 20:04:11 -0800 (PST)
+Received: by 10.91.153.13 with SMTP id f13mr5834062ago.102.1261281850912;
+        Sat, 19 Dec 2009 20:04:10 -0800 (PST)
+Return-Path: <3OKItSw0JCFMC91zCAvx5NLLQ17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com>
+Received: from mail-vw0-f153.google.com (mail-vw0-f153.google.com [209.85.212.153])
+        by mx.google.com with ESMTP id 1si9911833gxk.14.2009.12.19.20.04.09;
+        Sat, 19 Dec 2009 20:04:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3OKItSw0JCFMC91zCAvx5NLLQ17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com designates 209.85.212.153 as permitted sender) client-ip=209.85.212.153;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3OKItSw0JCFMC91zCAvx5NLLQ17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com designates 209.85.212.153 as permitted sender) smtp.mail=3OKItSw0JCFMC91zCAvx5NLLQ17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws17 with SMTP id 17sf660722vws.13
+        for <headius@headius.com>; Sat, 19 Dec 2009 20:04:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=2VDD2en8PWWaS2ZfgCtlOFsvWiz3CTTf0vQWFz1vIuI=;
+        b=0Pwtb4rdB3GSwTT2H2OLPFM4e5gSk3qIVpPrhA1E8c8G6iQkysDTDXhvvWx2TUNGJZ
+         BtIKoN+zpTSmPIwlshpxnjEA/zn/sjv52jk7HcXirowWoMsB1tNzQcbfJDx7Z26HuS3t
+         H766WQmJHEvcDUB6msBmXVNyBxztZukStVzL8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=E/EHf3tkbv+Z5Xn/mLkq9OwtT3/aR41OUkkpOkUP2bXABPnWzIoDZzVBAIOrycL9VD
+         t+i+rTkPoEp/UE3sapb02GqM1SPpVY0dO79W89pMrnFoTiooOS85SjKkB3XQJdWJXBn8
+         EpTZ9oE1mrAQSfVkFXiKEAUMlJtCNM4+gJeVQ=
+Received: by 10.220.88.165 with SMTP id a37mr44215vcm.41.1261281848674;
+        Sat, 19 Dec 2009 20:04:08 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.78.37 with SMTP id i37ls203990vck.3.p; Sat, 19 Dec 2009 
+	20:04:07 -0800 (PST)
+Received: by 10.220.64.82 with SMTP id d18mr812620vci.5.1261281847808;
+        Sat, 19 Dec 2009 20:04:07 -0800 (PST)
+Received: by 10.220.64.82 with SMTP id d18mr812619vci.5.1261281847772;
+        Sat, 19 Dec 2009 20:04:07 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f148.google.com (mail-yx0-f148.google.com [209.85.210.148])
+        by gmr-mx.google.com with ESMTP id 24si625575ywh.15.2009.12.19.20.04.07;
+        Sat, 19 Dec 2009 20:04:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.148 as permitted sender) client-ip=209.85.210.148;
+Received: by mail-yx0-f148.google.com with SMTP id 12so8069133yxe.1
+        for <ruby-ffi@googlegroups.com>; Sat, 19 Dec 2009 20:04:07 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.172.17 with SMTP id u17mr300386ybe.46.1261281846796; Sat, 
+	19 Dec 2009 20:04:06 -0800 (PST)
+Date: Sat, 19 Dec 2009 20:04:06 -0800 (PST)
+In-Reply-To: <4ccee320912191554x79d00ecqbca293555561b09d@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com> 
+	<4ccee320912191554x79d00ecqbca293555561b09d@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <bf5638e0-5403-4362-9be0-4e8dc6bba84e@a21g2000yqc.googlegroups.com>
+Subject: [ruby-ffi] Re: struct questions
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.148 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/109da9d55f08ceaf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/feaac96fe66bef49
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+> Then currently the only easy way to fill it is:
+>
+> s[:title].to_ptr.put_string(0, "foo")
+>
+> Thats kinda ugly, so we should have an easier syntax.
+>
+> I have patches that make the following work for :char/:uchar arrays:
+>
+> s[:title] =3D "foo"
+> s[:title] =3D [ 'f'.ord, 'o'.ord, 'o'.ord ]
+> s[:title] =3D [ 1, 2, 3]
+>
+> The second form also works for all other array element types.
+
+That second one is a big scary because how does it know what the fill
+the rest in? (I guess zeroes would work though).
+
+>
+> The inverse also works for :char/:uchar arrays:
+>
+> s[:title].to_s # =3D> "foo"
+
++1
+
+> There are a couple of corner cases that need to be figured out though.
+> 1) What to do when a string + nul byte is larger than the array size
+> =A0 a) raise an error
+> =A0 b) do not terminate the string with a nul byte
+> =A0 c) truncate the string and terminate with a nul byte
+
+vote for a
+
+if they want b, they can do it by hand :)
+
+>> #<SnarlStruct field1: value1, field2: value2...>
+> I prefer this not happen. This would require all fields to be read, which=
+ is hardly cheap. Plus, reading a field can cause a segfault, so I'd prefer=
+ all field reads are explicit by the user.
+
+In retrospect I agree (plus if the fields are too long, you don't want
+to see them, anyway).
+
+How about something like what rails does...
+>> #<SnarlStruct (field1: type1, field2: type2, field3: type3)...>
+
+Also another question.
+
+When I first started using FFI::Struct's
+
+I anticipated being able to call methods, like
+a =3D Struct.new
+a.name =3D "hello there"
+
+(since that's how you access them in C, and they are certainly not
+hashes).  Would a patch for such be acceptable?
+
+> They were never designed to be subclassed, so I don't consider it a bug.
+
+That's fine--however currently it doesn't throw any warnings or
+anything if you use a subclass--it allows you to still set things like
+
+subclass_instance[:element] =3D 3
+
+then silently fails in marshalling, so I think something should could
+be done to help this be less of a confusion.
+
+-r

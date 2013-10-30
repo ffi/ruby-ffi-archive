@@ -1,0 +1,65 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/3/10 9:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Fri, Dec 3, 2010 at 7:57 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>btw, I <b class="moz-txt-star"><span class="moz-txt-tag">*</span>think<span class="moz-txt-tag">*</span></b> I fixed up the win32 build.  I couldn't test it, since
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm having issues getting rake-compiler to build a cross-ruby on my
+<span class="moz-txt-citetags">&gt; &gt; </span>machine ... and I have no win32 vm to run it in anyway.  But, if
+<span class="moz-txt-citetags">&gt; &gt; </span>anyone wants to try building out of master for win32 and letting me
+<span class="moz-txt-citetags">&gt; &gt; </span>know if it all works, that would be nice.
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now
+<span class="moz-txt-citetags">&gt; </span>getting this on the specs:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://gist.github.com/726989">https://gist.github.com/726989</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The problem is that is looking for strdup and not _strdup, perhaps the
+<span class="moz-txt-citetags">&gt; </span>problem is libffi?
+</pre></blockquote><pre wrap>
+
+
+whoa..you guys are quick!
+
+I've only had time to do the following with master, but seems that ffi_c.so builds fine with both 1.9.2p80 and 1.9.3dev (2010-12-03 trunk 30060) on my Win7 Ultimate 32-bit.  No testing yet. <span class="moz-smiley-s2" title=":("><span>:(</span></span>
+
+
+C:\Users\Jon\Documents\RubyDev\ffi-trunk\ext\ffi_c&gt;ruby -rdevkit extconf.rb
+Temporarily enhancing PATH to include DevKit...
+checking for rb_thread_blocking_region()... yes
+checking for ruby_thread_has_gvl_p()... yes
+checking for ruby_native_thread_p()... yes
+checking for rb_thread_call_with_gvl()... yes
+creating extconf.h
+creating Makefile
+
+
+C:\Users\Jon\Documents\RubyDev\ffi-trunk\ext\ffi_c&gt;make
+C:/ruby192/bin/ruby -e "puts 'EXPORTS', 'Init_ffi_c'"  &gt; ffi_c-i386-mingw32.def
+Configuring libffi
+....SNIP....
+gcc -shared -s -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o ClosurePool.o
+ DataConverter.o DynamicLibrary.o ffi.o Function.o FunctionInfo.o LastError.o MappedT
+ype.o MemoryPointer.o MethodHandle.o Platform.o Pointer.o Struct.o StructByReference.
+o StructByValue.o StructLayout.o Type.o Types.o Variadic.o -L. -LC:/ruby192/lib -L.
+-Wl,--enable-auto-image-base,--enable-auto-import ffi_c-i386-mingw32.def  /c/Users/Jo
+n/Documents/RubyDev/ffi-trunk/ext/ffi_c/libffi/.libs/libffi_convenience.a -lmsvcrt-ru
+by191  -lshell32 -lws2_32
+
+
+Jon
+
+---
+<a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+</pre></div></body>
+</html>
+</table></div>

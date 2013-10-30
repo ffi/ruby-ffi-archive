@@ -1,0 +1,63 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/09 7:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">
+<br>On 11/11/2009 12:10 AM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>2009/11/11 Bryan Kearney<a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+<br><blockquote type=cite style="color: #000000;">Passing a Single String by Reference
+<br>-------------------------------------
+<br>
+<br>Assume the method:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int aug_get(const augeas *aug, const char *path, const char **value);
+<br></blockquote>
+<br>[...]
+<br><blockquote type=cite style="color: #000000;">Passing an Array of Strings back by Reference
+<br>----------------------------------------------
+<br>
+<br>int aug_match(const augeas *aug, const char *path, char ***matches);
+<br></blockquote>
+<br>Since these are pretty common things in C (well, in those types of
+<br>apis), I've been wondering if adding a higher-level wrapper would make
+<br>it easier to read/less confusing to write.
+<br>
+<br>e.g.
+<br>&nbsp;&nbsp; ref = FFI::Reference.new :string
+<br>&nbsp;&nbsp; AugeasLib.aug_get("foo", "/bar", ref)
+<br>&nbsp;&nbsp; str = ref.get&nbsp; # returns a string, or nil for null
+<br>&nbsp;&nbsp; # do stuff with str as you would expect
+<br>
+<br>and
+<br>&nbsp;&nbsp; ref = FFI::Reference.new :string_array # or maybe Reference.new [ :string ]
+<br>&nbsp;&nbsp; AugeasLib.aug_match("foo", "/bar", ref)
+<br>&nbsp;&nbsp; str_ary = ref.get&nbsp; # pulls out all the strings and puts them in an
+<br>array, stopping at first null
+<br>&nbsp;&nbsp; str_ary.each { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code> # do stuff with each string }
+<br>
+<br>I think this adds a bit of clarity when reading, since it is easy to
+<br>spot that you're just passing in a reference that you expect the C
+<br>code to fill out, and not for some more generic pointer/memory use.
+<br></blockquote>
+<br>+1. Check out JNA ByReferenceClass and StringArray Class 
+<a class="moz-txt-link-freetext" href="https://jna.dev.java.net/nonav/javadoc/index.html">https://jna.dev.java.net/nonav/javadoc/index.html</a>. This makes it much 
+easier.
+<br>
+<br><blockquote type=cite style="color: #000000;">
+<br>This could all be implemented in a third-party gem, e.g. NiceFFI,
+<br>which would be preferable to putting it in ruby-ffi itself, since that
+<br>way it can evolve faster, and be used across both CRuby and JRuby.
+<br></blockquote>
+<br>I dont know the packaging issues for you reference, but I would really 
+like to see it combined. If the packaging makes that not possible, at 
+least document the two together.
+<br>
+<br>-- bk
+<br>
+<br>
+<br></div></body>
+</html>
+</table></div>

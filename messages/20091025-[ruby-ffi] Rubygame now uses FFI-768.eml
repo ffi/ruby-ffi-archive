@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.73.145 with SMTP id q17cs52782qaj;
+        Sun, 25 Oct 2009 11:45:33 -0700 (PDT)
+Received: by 10.101.90.20 with SMTP id s20mr8384797anl.61.1256496332402;
+        Sun, 25 Oct 2009 11:45:32 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 32si23126327yxe.36.2009.10.25.11.45.31;
+        Sun, 25 Oct 2009 11:45:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so8030894yxe.13
+        for <headius@headius.com>; Sun, 25 Oct 2009 11:45:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:from:date:message-id
+         :subject:to:content-type:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=RjtPKdy/iZkrvlK0S0XY2vGbi3TjCDu+JOqLdlKsyBE=;
+        b=xbjXkQ1KC8PgxK6+0bl2HtUxvjr6F/9bCPR8fKYEtCho/y4sfxjtx4Zy/B25+E9xGx
+         z+wOGlTSOSL+ky9ghCvrHIEEXGWUGlRD/BXY3lf7exAuQrgFgA9fzr79UZkE7b07GUnF
+         ymNhrfgMY69VuEzeDqnbtkY0JHSasuuJSXkNI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:from:date
+         :message-id:subject:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=3I+YzLW0TqlKwUpva351sxQY2Iemdlhte+UvidVYeLwG71lvnEu5K5ZEpqaSGPMDhl
+         TibZKxdz/QTWOK2QUuVI+nmfURJlf2gqDoR40IJZo3s1FtSKfxh8B4qRbHThD+8kH7Kn
+         SDCEjw9GvkWAmdyXQDoHO0KDZ4rEbCkTdvOlE=
+Received: by 10.150.19.3 with SMTP id 3mr201791ybs.32.1256496329860;
+        Sun, 25 Oct 2009 11:45:29 -0700 (PDT)
+Received: by 10.177.5.4 with SMTP id h4gr63yqi.0;
+	Sun, 25 Oct 2009 11:45:29 -0700 (PDT)
+X-Sender: jacius@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.101.95.20 with SMTP id x20mr10792707anl.24.1256496328852; Sun, 25 Oct 2009 11:45:28 -0700 (PDT)
+Received: by 10.101.95.20 with SMTP id x20mr10792706anl.24.1256496328829; Sun, 25 Oct 2009 11:45:28 -0700 (PDT)
+Return-Path: <jacius@gmail.com>
+Received: from mail-gx0-f210.google.com (mail-gx0-f210.google.com [209.85.217.210]) by gmr-mx.google.com with ESMTP id 24si946927ywh.7.2009.10.25.11.45.27; Sun, 25 Oct 2009 11:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jacius@gmail.com designates 209.85.217.210 as permitted sender) client-ip=209.85.217.210;
+Received: by gxk2 with SMTP id 2so5311483gxk.4 for <ruby-ffi@googlegroups.com>; Sun, 25 Oct 2009 11:45:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:from:date:message-id :subject:to:content-type; bh=UIrf8h7zp1BsJwunsX16DamPXlm9SJvunmMedWZlpGE=; b=FeEmcVSwkq20ZEzfeGJLbhMmWnxR6JGE8wCzycncj5+8PDN2Z9xuXLhguVsX5kavF9 iGu3bb+NFEUtCZMao1Bpn8WLf+m3t1d5iqevKkdthRKkmjlAgEf2tZLgrYjW/joUO5Ip zX9ZDyn3rsXtPJrB2g0Tjzh2SbAe2MD2OU270=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:from:date:message-id:subject:to:content-type; b=kU9ezgaPKxLwkmicoOS8HseZMM16cAzQub52z8uXazwxes9cZ6HAYEs56QuS7sbrZ4 qRMv56EEDw+MYp5x2vv2AdBP5DuggoBR3yK+sUX+/2jzdaFt2//YIFTD+XoI2QJPGblJ ZqG53cYWEIStdAptd++x8/zuk0zm59swdSi5g=
+MIME-Version: 1.0
+Received: by 10.101.80.14 with SMTP id h14mr405852anl.129.1256496327226; Sun,  25 Oct 2009 11:45:27 -0700 (PDT)
+From: John Croisant <jacius@gmail.com>
+Date: Sun, 25 Oct 2009 13:45:07 -0500
+Message-ID: <bf2f536c0910251145x5792b613xdbd15bfce9ddee5c@mail.gmail.com>
+Subject: [ruby-ffi] Rubygame now uses FFI
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Greetings, FFI-ers
+
+I've finally released the first FFI-powered version of Rubygame! I was
+able to completely eliminate all the C code for Rubygame, which has
+already made it a lot easier for users on all platforms to install,
+since no compilation is needed anymore. And of course, there's the
+added bonus for me of being able to develop in all Ruby. :-D
+
+You can read the full announcement on the Rubygame blog. (If you get
+an application error on my blog, please try again later. Rails has
+been acting up lately.)
+
+  http://blog.rubygame.org/articles/2009/10/24/rubygame-2-6-released
+
+Gems are available on Rubyforge ("gem install rubygame"), and are
+known to work on MatzRuby (1.8.6, 1.8.7, 1.9.1) as well as JRuby
+(1.3.1, 1.4.0RC2). However, JRuby users need to first install the ffi
+stub gem [1] to resolve the gem dependencies. Also, I'm afraid JRuby
+users on Mac are out of luck until a JRuby equivalent of RSDL [2] is
+written.
+
+  [1] http://github.com/ffi/ffi-jruby
+  [2] http://github.com/knu/rsdl
+
+I haven't been able to test it on Rubinius, but in theory it should
+work if the FFI interface is compatible. I'd love to hear reports of
+anyone who tries it on Rubinius.
+
+I created two other FFI-ish libraries to support the new Rubygame:
+Nice-FFI and Ruby-SDL-FFI. Nice-FFI is a helper library on top of FFI,
+which makes some things in FFI more convenient for me. As one example,
+it can automatically turn pointers returned from a function into
+struct instances of the appropriate class. Ruby-SDL-FFI uses Nice-FFI
+(and plain FFI) to interface with SDL and related libraries. Rubygame
+then uses Ruby-SDL-FFI instead of a compiled extension written in C.
+
+Overall, FFI has been great to work with, and I'm very happy that I
+switched to it! As I mentioned above, I was able to throw away the C
+code and now write everything in Ruby, which is a joy. Not only is it
+easier to write and maintain, it also works on more platforms and is
+much easier for users to install. Before, users had to have a compiler
+environment set up, or hope someone would create a binary gem for
+their OS, which was a huge barrier for Windows users.
+
+Plus, I can now do run-time detection of what libraries and features
+are available on the user's system, and even theoretically provide
+alternative back ends using different libraries. For example, I'm
+considering adding an OpenGL back end (using ffi-opengl, of course!),
+to provide faster rendering and better Mac support. Such a thing would
+have been much more difficult using a C extension, because the feature
+detection there is (usually) done at compile time, which is unreliable
+if compiled on one system and then distributed to others, such as with
+a binary gem.
+
+Anyway, I guess you can count me as a total FFI fanboy now! :-D
+
+Thanks to everyone for your wonderful work on FFI, both for MatzRuby
+and JRuby! It has made my programming life a lot easier, and easier
+for Rubygame users as well.
+
+- John

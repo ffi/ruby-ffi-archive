@@ -1,0 +1,102 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.85.195 with SMTP id p3cs5941fal;
+        Sat, 9 Apr 2011 09:40:08 -0700 (PDT)
+Received: by 10.236.66.81 with SMTP id g57mr4233538yhd.361.1302367207158;
+        Sat, 09 Apr 2011 09:40:07 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCK695Z6ZDxDgl4LtBBoE_dNK8Q@googlegroups.com>
+Received: from mail-yi0-f62.google.com (mail-yi0-f62.google.com [209.85.218.62])
+        by mx.google.com with ESMTPS id h41si9510352yhm.217.2011.04.09.09.40.05
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 09 Apr 2011 09:40:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxDgl4LtBBoE_dNK8Q@googlegroups.com designates 209.85.218.62 as permitted sender) client-ip=209.85.218.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxDgl4LtBBoE_dNK8Q@googlegroups.com designates 209.85.218.62 as permitted sender) smtp.mail=ruby-ffi+bncCK695Z6ZDxDgl4LtBBoE_dNK8Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yic15 with SMTP id 15sf11799432yic.7
+        for <headius@headius.com>; Sat, 09 Apr 2011 09:40:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=0NkfPjQdeLE6+lsXXTFqB1Qq1DG8KN3Bm2+1SV3do1s=;
+        b=Hm46fs5YNc5BGCHd6NSBPmLd4xDpfy12z7JC4etOl3kI6TEOy0t5ulu2uFYmE+0zu1
+         t+93Jsl//jHqMnTLZa4tJFARwPh4HHCCSjqpNdHYFdCTHTfgvxW3bgccLFwLhIbE7n6q
+         3W7BI8IT6mzs31KBL2hUScVF4jMsTS7MOB/pk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=vFFViSgcjFNsAT9H/BX+z4v+n5+kl1ZzdzznuvGLj+uo85TnVFE5SsIijdNFLrlcQ8
+         VX3x4Mh+VRvpgOld+QGKO7Heqs7TA+FRHwsGXja6HzReFkxa/c1+aSiUkQxxki066Bwn
+         o2f04hezEWwd0P44ZwdQ2PoUXwYTcJY9EYB28=
+Received: by 10.91.200.31 with SMTP id c31mr313949agq.7.1302367200625;
+        Sat, 09 Apr 2011 09:40:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.202.30 with SMTP id e30ls721489agq.1.p; Sat, 09 Apr 2011
+ 09:39:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.66.8 with SMTP id t8mr585515agk.10.1302367199703; Sat, 09
+ Apr 2011 09:39:59 -0700 (PDT)
+Received: by n10g2000yqf.googlegroups.com with HTTP; Sat, 9 Apr 2011 09:39:59
+ -0700 (PDT)
+Date: Sat, 9 Apr 2011 09:39:59 -0700 (PDT)
+In-Reply-To: <aab69ef6-a988-4188-928c-dc43eefce6db@i14g2000yqe.googlegroups.com>
+X-IP: 77.11.204.142
+References: <7f45dbbd-6337-4677-9a6a-8cb4abac5dab@r17g2000vbc.googlegroups.com>
+ <20110312095736.309914a5.jon.forums@gmail.com> <02905325-fd46-493d-b663-986872f980da@d19g2000yql.googlegroups.com>
+ <30738f47-b6e9-48e6-ae9b-e4c8d989d918@e21g2000yqe.googlegroups.com> <aab69ef6-a988-4188-928c-dc43eefce6db@i14g2000yqe.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64; rv:2.0) Gecko/20110321 Firefox/4.0,gzip(gfe)
+Message-ID: <32ba56c2-70be-48b8-af31-c5f31aae9f07@n10g2000yqf.googlegroups.com>
+Subject: [ruby-ffi] Re: FFI 1.0.6 fails to compile
+From: Quintus <sutniuq@gmx.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sutniuq@gmx.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+
+On 9 Apr., 18:30, Quintus <sutn...@gmx.net> wrote:
+> I fixed the problem by the following workaround:
+>
+> $ sudo ln -s /usr/src/linux-2.6.37-ARCH/include/asm-generic/* /usr/
+> include/asm-generic/
+>
+> That's not really a solution, but at least it works. Until the next
+> kernel upgrade. :-(
+>
+> Valete,
+> Quintus
+
+YEAH, I now got it correctly. For whatever reason, the linux-api-
+headers package wasn't installed correctly on my system. I did
+$ sudo pacman -S linux-api-headers
+$ cd
+$ sudo su
+# pacman -S linux-api-headers
+(the first one reported an error about the working directory and
+crashed (I suppose because my working directory was /usr/include/asm-
+generic), so I installed it a second time as pure root, without sudo.
+And now ffi installs absolutely fine.
+
+Thanks for everybody trying to get this resolved.
+ffi's great!
+
+Valete,
+Quintus

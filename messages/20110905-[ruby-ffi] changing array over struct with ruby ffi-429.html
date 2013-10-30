@@ -1,0 +1,57 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] changing array over struct with ruby ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] changing array over struct with ruby ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Dor Kalev <dor@dorkalev.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/5/11 11:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi there!
+I have this data
+
+typedef struct {
+  unsigned int size;
+  unsigned int e[8];
+} SmallAry;
+
+typedef struct {
+  unsigned int title;
+  SmallAry form;
+} Node;
+
+typedef struct {
+  Node * e;
+  unsigned int size;
+} NodeList;
+
+int foo(NodeList * states);
+
+
+module Foon
+  class SAry &lt; FFI::Struct
+    layout :size,  :pointer,
+           :e,     :pointer
+  end
+  class Node &lt; FFI::Struct
+    layout :title,  :int,
+           :e,      SAry
+  end
+  class NodeList &lt; FFI::Struct
+    layout :title,  :int,
+           :e,      :pointer
+  end
+  extend FFI::Library
+  ffi_lib "foon.so"
+  attach_function :create_object, [], :pointer
+  attach_function :foo, [ :pointer ], :int
+end
+
+I need foo to update the NodeList it gets and return it to Ruby so I
+can use it,
+help will be much appreciated.
+
+thanks,
+DK
+</pre></div></body>
+</html>
+</table></div>

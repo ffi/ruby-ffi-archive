@@ -1,0 +1,103 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs317148faj;
+        Tue, 30 Nov 2010 07:53:08 -0800 (PST)
+Received: by 10.142.126.14 with SMTP id y14mr7287424wfc.132.1291132387523;
+        Tue, 30 Nov 2010 07:53:07 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLeTq4HQChDgu9TnBBoEf0jmxA@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTP id m30si5879043vcr.3.2010.11.30.07.53.06;
+        Tue, 30 Nov 2010 07:53:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLeTq4HQChDgu9TnBBoEf0jmxA@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLeTq4HQChDgu9TnBBoEf0jmxA@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCLeTq4HQChDgu9TnBBoEf0jmxA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwk4 with SMTP id 4sf1428296qwk.7
+        for <headius@headius.com>; Tue, 30 Nov 2010 07:53:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=1J952XliTdllZF7dwIwI5Pd5Dy+RgQKDqbw6jE4G5Yw=;
+        b=tB44eNa5uygliVuxH3DhkVMrW+UVXLycMJ5r7Er1stQ7jrwGAEuAOtSvrQ7vLEheQc
+         ReQ9qy/R24TlINGdaLX2qsZtH4wwzWZpapZwWI7kc1/7x/CsbGV+2x7faNhsEAwkVEch
+         4TQdkHFOcsLfCDTRESboCbuXE4Zrm+czJBez8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=rjYYew3TeP2UTmKxmPOXKXDpgi5vB68VE8fTq8lLNpnZtmKP9/gMa3aRqFETrgqBti
+         YKSnSt1/x2d7J4J6Wf96dBdRWeGmCw67pLSJTR1WG/hKmRy6zHmKDBTCEU3zq9cZc6Fb
+         5IIlSTqFZfV4p3Fa6LKpZb0S+HH/6oZQrmpVg=
+Received: by 10.224.73.133 with SMTP id q5mr284321qaj.34.1291132384949;
+        Tue, 30 Nov 2010 07:53:04 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.173.135 with SMTP id p7ls578728qaz.0.p; Tue, 30 Nov 2010
+ 07:53:04 -0800 (PST)
+Received: by 10.224.73.133 with SMTP id q5mr693601qaj.0.1291132384579;
+        Tue, 30 Nov 2010 07:53:04 -0800 (PST)
+Received: by 10.224.73.133 with SMTP id q5mr693600qaj.0.1291132384532;
+        Tue, 30 Nov 2010 07:53:04 -0800 (PST)
+Received: from mail-vw0-f44.google.com (mail-vw0-f44.google.com [209.85.212.44])
+        by gmr-mx.google.com with ESMTP id u1si1363605qco.9.2010.11.30.07.53.03;
+        Tue, 30 Nov 2010 07:53:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.212.44 as permitted sender) client-ip=209.85.212.44;
+Received: by mail-vw0-f44.google.com with SMTP id 7so1903073vws.31
+        for <ruby-ffi@googlegroups.com>; Tue, 30 Nov 2010 07:53:03 -0800 (PST)
+Received: by 10.229.91.211 with SMTP id o19mr4510993qcm.87.1291132383290;
+        Tue, 30 Nov 2010 07:53:03 -0800 (PST)
+Received: from Red (rrcs-98-102-103-102.central.biz.rr.com [98.102.103.102])
+        by mx.google.com with ESMTPS id s28sm4087065qcp.9.2010.11.30.07.53.02
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 30 Nov 2010 07:53:02 -0800 (PST)
+Date: Tue, 30 Nov 2010 10:52:56 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] New release of FFI gem
+Message-Id: <20101130105256.d687602f.jon.forums@gmail.com>
+In-Reply-To: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+X-Mailer: Sylpheed 3.0.3 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jon.forums@gmail.com designates 209.85.212.44 as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> Ruby 1.9.2 is now the minimum supported ruby version, and MacOSX with
+> ruby and libffi built from macports is the only supported[1] platform.
+> 
+> I haven't tested this on other platforms *at all*, but it is likely to
+> work on Linux, and other, saner unixen.   Only the truly adventurous
+> would try it on windows[2].
+> 
+> [1] "supported" means if it breaks, I'll help fix it.  Everything
+> else, someone will need to send patches/github pull requests with
+> fixes, if it is broken.
+> 
+> [2] Windows will need someone to fix up the callback-on-non-ruby-
+> thread support.
+
+Are you planning to provide (but not officially support) 1.0.0 x86-mingw32 binary (1.9-only or fat?) gems or are you also looking for build patches for this?
+
+Jon
+---
+http://jonforums.github.com/

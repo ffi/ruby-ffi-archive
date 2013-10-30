@@ -1,0 +1,146 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs354552and;
+        Fri, 18 Dec 2009 01:22:56 -0800 (PST)
+Received: by 10.150.250.21 with SMTP id x21mr5811667ybh.181.1261128176283;
+        Fri, 18 Dec 2009 01:22:56 -0800 (PST)
+Return-Path: <37kkrSwYJCK4fSbOfRbQ.ff.QcafiPm-TTWUccUZSUfcidg.Qca@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 27si3993772ywh.108.2009.12.18.01.22.55;
+        Fri, 18 Dec 2009 01:22:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of 37kkrSwYJCK4fSbOfRbQ.ff.QcafiPm-TTWUccUZSUfcidg.Qca@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 37kkrSwYJCK4fSbOfRbQ.ff.QcafiPm-TTWUccUZSUfcidg.Qca@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=37kkrSwYJCK4fSbOfRbQ.ff.QcafiPm-TTWUccUZSUfcidg.Qca@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf7114644ywh.3
+        for <headius@headius.com>; Fri, 18 Dec 2009 01:22:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:reply-to:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=dcxTkCz3wWXDDbZt/cKQBJeoUsvMDFvcK5ehj9DNDyU=;
+        b=Gj/hsM0HyFWZtN1yOuTnDTmuonyxuN/9VZzKlMXbxAuK9Jucx/tqd+DRgq0gF2u3nS
+         LPlaysh2BYjp1RaZPtdxXgzqFqJFRwnzFUvMTW7Gp13zPIDXs+qmDi9q7UkIrPN2MVQA
+         KiHT80skbTWjF5MPxseRw4yglOvk/Pkkr5kgA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=XqQQS/hVUh/RnhdD13s6xqGSnaUIzFWngkBCGP5xhB0Z4s7A1V6Ppx7EmjSwG9wD+D
+         ePy6qbZ7FpkH2dVkzzHR9D5p5oAZqyxdDwyfvMWYGzJmuBohoZes97fIljFPTbnh+bN/
+         RuS+J1HnmSV3BT4pPWjHJQSFmwCw7Wi0IQxi4=
+Received: by 10.150.56.11 with SMTP id e11mr315118yba.47.1261128174097;
+        Fri, 18 Dec 2009 01:22:54 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.112.31 with SMTP id k31ls3556ybc.0.p; Fri, 18 Dec 2009 
+	01:22:52 -0800 (PST)
+Received: by 10.150.89.42 with SMTP id m42mr867279ybb.20.1261128172802;
+        Fri, 18 Dec 2009 01:22:52 -0800 (PST)
+Received: by 10.150.19.30 with SMTP id 30mr719466ybs.9.1261117141951;
+        Thu, 17 Dec 2009 22:19:01 -0800 (PST)
+Received: by 10.150.19.30 with SMTP id 30mr719465ybs.9.1261117141930;
+        Thu, 17 Dec 2009 22:19:01 -0800 (PST)
+Return-Path: <renard@nc.rr.com>
+Received: from mail-yx0-f140.google.com (mail-yx0-f140.google.com [209.85.210.140])
+        by gmr-mx.google.com with ESMTP id 19si363855ywh.6.2009.12.17.22.19.01;
+        Thu, 17 Dec 2009 22:19:01 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning renard@nc.rr.com does not designate 209.85.210.140 as permitted sender) client-ip=209.85.210.140;
+Received: by mail-yx0-f140.google.com with SMTP id 4so5162443yxe.32
+        for <ruby-ffi@googlegroups.com>; Thu, 17 Dec 2009 22:19:01 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.77.11 with SMTP id z11mr288138yba.67.1261117141806; Thu, 
+	17 Dec 2009 22:19:01 -0800 (PST)
+Date: Thu, 17 Dec 2009 22:19:01 -0800 (PST)
+In-Reply-To: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com>
+X-IP: 65.190.90.167
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-us) 
+	AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/531.21.10,gzip(gfe),gzip(gfe)
+Message-ID: <583b13c2-3add-417e-8a17-09c254633f53@e27g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: unable to find method?
+From: bbiker <renard@nc.rr.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/42cea597894184f
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+
+On Dec 17, 7:28=A0pm, rogerdpack <rogerpack2...@gmail.com> wrote:
+> Perhaps I'm missing something here...
+>
+> require 'ffi'
+>
+> module Hello
+> =A0 extend FFI::Library
+> =A0 ffi_lib 'user32'
+> =A0 attach_function 'FindWindow', [ :string, :string], :pointer # blows
+> up
+> end
+>
+> ref:http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx
+>
+> What might it be...?
+> -r
+
+'FindWindow' does not exists in user32.dll ... the following 4
+functions are in user32.dll although at I am at loss to explain the
+differences among them.
+
+FindWindowA
+FindWindowExA
+FindWindowExW
+FindWindowW
+
+This was my result from snippet:
+
+irb(main):002:0>
+irb(main):003:0* module Hello
+irb(main):004:1> extend FFI::Library
+irb(main):005:1> ffi_lib 'user32'
+irb(main):006:1> attach_function 'FindWindow',
+[ :string, :string], :pointer
+irb(main):007:1> end
+FFI::NotFoundError: Function 'FindWindow' not found in [user32]
+        from C:/Ruby19/lib/ruby/gems/1.9.1/gems/ffi-0.5.4-x86-mingw32/
+lib/ffi/library.rb:77:in `attach_function'
+        from (irb):6:in `<module:Hello>'
+        from (irb):3
+        from C:/Ruby19/bin/irb:12:in `<main>'
+
+This is the result when I used 'FindWindowW':
+
+irb(main):010:1> module Hello
+irb(main):011:1> extend FFI::Library
+irb(main):012:1> ffi_lib 'user32'
+irb(main):013:1> attach_function 'FindWindow',
+[ :string, :string], :pointer
+irb(main):014:1> end
+=3D> #<FFI::Pointer address=3D7E42C9C3>
+
+I suggest you go to: http://www.nirsoft.net/utils/dll_export_viewer.html
+and download their dll_export_viewer utility...it's free.
+
+Hope this helps.
+
+renard@nc.rr.com

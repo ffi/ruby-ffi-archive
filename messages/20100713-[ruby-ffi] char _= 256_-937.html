@@ -1,0 +1,25 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] char <= 256?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] char &lt;= 256?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>7/13/10 6:50 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all.  Got this recently.
+
+
+C:\dev\ruby\universal-scene-skipper\lib&gt;ruby mute.rb
+mute.rb:32:in `keybd_event': Value 173 outside char range (RangeError)
+        from mute.rb:32:in `&lt;module:Win&gt;'
+        from mute.rb:19:in `&lt;main&gt;'
+
+a bit surprising, since char types in C are quite happy to accept such
+numbers.  So is this a bug because of such? It appears that's it's
+ambiguous [1] so could go either way.
+Thanks!
+-r
+[1] <a class="moz-txt-link-freetext" href="http://en.wikipedia.org/wiki/C_syntax#Primitive_data_types">http://en.wikipedia.org/wiki/C_syntax#Primitive_data_types</a>
+</pre></div></body>
+</html>
+</table></div>

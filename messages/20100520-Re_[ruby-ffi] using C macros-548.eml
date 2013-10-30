@@ -1,0 +1,169 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs13330qcb;
+        Thu, 20 May 2010 17:02:08 -0700 (PDT)
+Received: by 10.150.240.7 with SMTP id n7mr2139671ybh.353.1274400128662;
+        Thu, 20 May 2010 17:02:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERD9mtffBBoEDkHdSA@googlegroups.com>
+Received: from mail-yw0-f151.google.com (mail-yw0-f151.google.com [209.85.211.151])
+        by mx.google.com with ESMTP id 28si1084750gxk.4.2010.05.20.17.02.07;
+        Thu, 20 May 2010 17:02:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERD9mtffBBoEDkHdSA@googlegroups.com designates 209.85.211.151 as permitted sender) client-ip=209.85.211.151;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERD9mtffBBoEDkHdSA@googlegroups.com designates 209.85.211.151 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERD9mtffBBoEDkHdSA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh15 with SMTP id 15sf396103ywh.7
+        for <headius@headius.com>; Thu, 20 May 2010 17:02:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=41jBvBlE2NZPsaR4pQfQQc8EWvNtAmV52RtEY8y8ouM=;
+        b=VMazQHipCxRBB7VMRIx9B/uDLqGgmAg3GBjuK4GJt2SdyDL7G2TO0K8SXqTO9cflyE
+         CXhF4bg7VBWzYHgtIVvIfC4JXjEjYVWJn2BHcdt27bSnVphWR/Mc9xa+alvqvh4hc3sB
+         1BpElwEMofykn0/1opLynlKjMk99gc8kvD1Zs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=EfqcDdqmhnP6sluHRWF3XAWw7tKQt7NTPVVVENkZh7Ka19QAlN6dSWh7z6+15UfHkP
+         5o+lFJ5MrHeiQjdlAwxGFCQwN19nOsh0iDFfVWV9RfdM7f4lwq8LUaYLZXIgSbRAgPSA
+         gNoe3W7ym+m3ggTACK8eNqfOcWC/DBvhw6MaY=
+Received: by 10.150.234.4 with SMTP id g4mr136321ybh.64.1274400125829;
+        Thu, 20 May 2010 17:02:05 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.93.13 with SMTP id v13ls593578ybl.2.p; Thu, 20 May 2010 
+	17:02:05 -0700 (PDT)
+Received: by 10.150.47.32 with SMTP id u32mr793659ybu.11.1274400125381;
+        Thu, 20 May 2010 17:02:05 -0700 (PDT)
+Received: by 10.150.47.32 with SMTP id u32mr793657ybu.11.1274400125323;
+        Thu, 20 May 2010 17:02:05 -0700 (PDT)
+Return-Path: <jvoorhis@gmail.com>
+Received: from mail-qy0-f188.google.com (mail-qy0-f188.google.com [209.85.221.188])
+        by gmr-mx.google.com with ESMTP id 19si49742ywh.4.2010.05.20.17.02.04;
+        Thu, 20 May 2010 17:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 209.85.221.188 as permitted sender) client-ip=209.85.221.188;
+Received: by mail-qy0-f188.google.com with SMTP id 26so712935qyk.28
+        for <ruby-ffi@googlegroups.com>; Thu, 20 May 2010 17:02:04 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.122.234 with SMTP id m42mr619342qar.305.1274400123391; 
+	Thu, 20 May 2010 17:02:03 -0700 (PDT)
+Received: by 10.229.217.206 with HTTP; Thu, 20 May 2010 17:02:03 -0700 (PDT)
+In-Reply-To: <AANLkTinBaC1sZzQqgRtT8YtMEcjWkLueDr4aXiUsu9mH@mail.gmail.com>
+References: <1e6828e4-4fbf-4b84-a0c8-b8f02cbf6e88@m33g2000vbi.googlegroups.com>
+	 <AANLkTinBaC1sZzQqgRtT8YtMEcjWkLueDr4aXiUsu9mH@mail.gmail.com>
+Date: Thu, 20 May 2010 17:02:03 -0700
+Message-ID: <AANLkTikKpPgNkyYfiWbL7gMKjRu0-vYWeJIunGL7KoJq@mail.gmail.com>
+Subject: Re: [ruby-ffi] using C macros
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jvoorhis@gmail.com designates 209.85.221.188 as permitted sender) 
+	smtp.mail=jvoorhis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jvoorhis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00c09f89939ba8135204870f66b2
+
+--00c09f89939ba8135204870f66b2
+Content-Type: text/plain; charset=UTF-8
+
+The same explanation also holds for static inline functions, which are more
+frustrating since they are often less trivial than macros. For non-trivial
+code, creating a support library in C and linking it with FFI has been a
+good approach for me.
+
+Best,
+
+Jeremy
+
+On Thu, May 20, 2010 at 4:57 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+> No, C macros are not present in the library as code, since they are
+> handled by the  C pre-processor.
+>
+> You could just implement ruby versions of those macros (they should be
+> pretty simple).
+>
+> On 21 May 2010 01:22, mixtli <ronmcclain75@gmail.com> wrote:
+> > Is it possible to access macros such as FD_SET and FD_ZERO?  I'm
+> > trying to wrap net-snmp, specifically the snmp_select_info function
+> > which is called in C like so:
+> >
+> >  int fds = 0, block = 1;
+> >  fd_set fdset;
+> >  struct timeval timeout;
+> >  FD_ZERO(&fdset);
+> >  snmp_select_info(&fds, &fdset, &timeout, &block);
+> >  fds = select(fds, &fdset, 0,0, block ? 0 : &timeout);
+> >  if(fds) { snmp_read(&fdset); } else { snmp_timeout(); }
+> >
+> >
+> > I've been trying to do it with ffi-inliner, but haven't had much
+> > luck.  Any pointers would be appreciated.
+> >
+> >
+>
+
+--00c09f89939ba8135204870f66b2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+The same explanation also holds for static inline functions, which are more=
+ frustrating since they are often less trivial than macros. For non-trivial=
+ code, creating a support library in C and linking it with FFI has been a g=
+ood approach for me.<div>
+<br></div><div>Best,</div><div><br></div><div>Jeremy<br><br><div class=3D"g=
+mail_quote">On Thu, May 20, 2010 at 4:57 PM, Wayne Meissner <span dir=3D"lt=
+r">&lt;<a href=3D"mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</=
+span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">No, C macros are not present in the library=
+ as code, since they are<br>
+handled by the =C2=A0C pre-processor.<br>
+<br>
+You could just implement ruby versions of those macros (they should be<br>
+pretty simple).<br>
+<div><div></div><div class=3D"h5"><br>
+On 21 May 2010 01:22, mixtli &lt;<a href=3D"mailto:ronmcclain75@gmail.com">=
+ronmcclain75@gmail.com</a>&gt; wrote:<br>
+&gt; Is it possible to access macros such as FD_SET and FD_ZERO? =C2=A0I&#3=
+9;m<br>
+&gt; trying to wrap net-snmp, specifically the snmp_select_info function<br=
+>
+&gt; which is called in C like so:<br>
+&gt;<br>
+&gt; =C2=A0int fds =3D 0, block =3D 1;<br>
+&gt; =C2=A0fd_set fdset;<br>
+&gt; =C2=A0struct timeval timeout;<br>
+&gt; =C2=A0FD_ZERO(&amp;fdset);<br>
+&gt; =C2=A0snmp_select_info(&amp;fds, &amp;fdset, &amp;timeout, &amp;block)=
+;<br>
+&gt; =C2=A0fds =3D select(fds, &amp;fdset, 0,0, block ? 0 : &amp;timeout);<=
+br>
+&gt; =C2=A0if(fds) { snmp_read(&amp;fdset); } else { snmp_timeout(); }<br>
+&gt;<br>
+&gt;<br>
+&gt; I&#39;ve been trying to do it with ffi-inliner, but haven&#39;t had mu=
+ch<br>
+&gt; luck. =C2=A0Any pointers would be appreciated.<br>
+&gt;<br>
+&gt;<br>
+</div></div></blockquote></div><br></div>
+
+--00c09f89939ba8135204870f66b2--

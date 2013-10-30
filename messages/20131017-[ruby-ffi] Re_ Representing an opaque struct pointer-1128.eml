@@ -1,0 +1,252 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.140.5 with SMTP id rc5csp160361igb;
+        Thu, 17 Oct 2013 18:26:09 -0700 (PDT)
+X-Received: by 10.49.25.47 with SMTP id z15mr450064qef.27.1382059568935;
+        Thu, 17 Oct 2013 18:26:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBL44QKJQKGQEPGMW3RA@googlegroups.com>
+Received: from mail-qc0-x23a.google.com (mail-qc0-x23a.google.com [2607:f8b0:400d:c01::23a])
+        by mx.google.com with ESMTPS id b15si39807305qen.99.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 17 Oct 2013 18:26:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBL44QKJQKGQEPGMW3RA@googlegroups.com designates 2607:f8b0:400d:c01::23a as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBL44QKJQKGQEPGMW3RA@googlegroups.com designates 2607:f8b0:400d:c01::23a as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBL44QKJQKGQEPGMW3RA@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qc0-f186.google.com with SMTP id u20sf535629qcx.3
+        for <headius@headius.com>; Thu, 17 Oct 2013 18:26:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=ZptY5hOCD/+WkSlbI6+KI8BRg0skN2Epns4UcUqXIY8=;
+        b=LSOtSDdwZzuH3SsTGKAZ1Fop6YCzbuNXcNTHh8HnrDj9+ZI/NOF6QTkdxW2U5LhgKt
+         2BYDWECSWxGZkInFgABPNr8NDuwRyAtShlXtWhUgtBljUL9EygTyfZVijorRqYDHr3dS
+         GRJmYffoJj87in5IX2mF1AgDN3o1pcWaBYUGj1MewNQ4FoqhrEdjbYn4r9WKlghkntIc
+         ZQlUExECEHG+aB5DbyYqrUg1qvaN7wux0ZekLoB3xkAfVvworHyROZkUVrG1hWdLcgqf
+         oGul0pp64owVAhcJv6jgVBR1L2kuADHyk6j/Gn0r7xfBnsV8tf9P2x9wpSsdxfCGKJ+E
+         HAsQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=ZptY5hOCD/+WkSlbI6+KI8BRg0skN2Epns4UcUqXIY8=;
+        b=rCvQgClmO87wf3j9qYpe9UqGyBoEQ5swDVGFcKmTyRFHTPXSwsrftyfJg74KHwxrtZ
+         NBSKLS8x+pqOmy8N3JoT4e2qGdUwz81l5CrB2sUFhbk5obFu5WLVi66B/JtCL0NPZvTW
+         5TPKnf1VKR221GX1K4uPKzYJOILEVCJ4DnzwkDuu/eXxuPHlTf98bNJRuqgPNf7kzEHX
+         VpXWNPHLlRtlkqS6SjJWh2OFa1JE6ZPAR97MP51eKp9LciRC7S/VtzBonphkRK/om/Tl
+         09uhtMhCY7rusSaB5kB+tN+6ZydFepPsbJ4yvHGdkA7YIDkny389x33oeaoebNxYW9gU
+         LDQA==
+X-Received: by 10.50.170.228 with SMTP id ap4mr6647igc.16.1382059568643;
+        Thu, 17 Oct 2013 18:26:08 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.130.34 with SMTP id ob2ls146209igb.39.gmail; Thu, 17 Oct
+ 2013 18:26:07 -0700 (PDT)
+X-Received: by 10.50.36.67 with SMTP id o3mr6505igj.1.1382059567865;
+        Thu, 17 Oct 2013 18:26:07 -0700 (PDT)
+Date: Thu, 17 Oct 2013 18:26:06 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <1843f6b3-814c-4a9d-9213-862f3dbda2e3@googlegroups.com>
+In-Reply-To: <e977d414-079c-4eab-a2b2-31fe2d07b0df@googlegroups.com>
+References: <CAGLuM14R1U=Ys9Y7kn4JgnzJfvp2GJBB51TBvudUkZTL1LTBhw@mail.gmail.com>
+ <626db9a2-797c-466c-954f-e318a05460cd@googlegroups.com>
+ <e977d414-079c-4eab-a2b2-31fe2d07b0df@googlegroups.com>
+Subject: [ruby-ffi] Re: Representing an opaque struct pointer
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_37_10762247.1382059566345"
+
+------=_Part_37_10762247.1382059566345
+Content-Type: text/plain; charset=ISO-8859-1
+
+Try this:
+
+pptr = FFI::MemoryPointer.new(:pointer)
+gme_open_file(path, pptr, 44100)
+emu = pptr.read_pointer
+gme_start_track(emu, 0)
+
+That would be the equivalent of the following C
+
+Music_Emu** pptr = (Music_Emu **) malloc(sizeof(Music_Emu *));
+gme_open_file(path, pptr, 44100);
+Music_Emu* emu = *pptr;
+free(pptr);
+gme_start_track(emu, 0);
+
+which is the same as:
+
+Music_Emu* emu;
+gme_open_file(path, &emu, 44100);
+gme_start_track(emu, 0);
+
+... just using malloc+free instead of the stack to manage the memory for 
+the pointer to the Music_Emu pointer.
+
+
+
+On Friday, 18 October 2013 07:41:15 UTC+11, Misty De Meo wrote:
+>
+> I realized after the fact that #get_pointer isn't doing what I expected; 
+> unfortunately I'm running into a different problem when creating a pointer 
+> from it via FFI::Pointer. My program segfaults when calling 
+> gme_start_track() immediately afterwards with the pointer from the first 
+> example.
+>
+> gme_open_file(path, FFI::Pointer.new(ptr), 44100)
+> gme_start_track(ptr, 0)
+>
+> Where gme_start_track() is defined as:
+>
+> gme_err_t gme_start_track( Music_Emu*, int index );
+> attach_function :gme_start_track, [ :pointer, :int ], :gme_err_t
+>
+> At a glance I'm not sure what's wrong here - it seems equivalent to the C 
+> sample I posted earlier.
+>
+> On Thursday, October 17, 2013 12:14:59 AM UTC-7, Misty De Meo wrote:
+>>
+>> To answer my own question...
+>>
+>> The opaque pointer is passed just by creating a new FFI::MemoryPointer of 
+>> type pointer, like so:
+>>
+>> ptr = FFI::MemoryPointer.new(:pointer)
+>> gme_open_file(path, ptr.get_pointer(0), 44100)
+>>
+>> That said, I'm having a little difficulty wrapping this particular 
+>> function - I'm sure I'm just passing one of the arguments wrong, but I'm 
+>> not quite sure what I'm doing wrong.
+>>
+>> I have the specific gme_open_file() function wrapped like this:
+>>
+>> attach_function :gme_open_file, [ :string, :pointer, :int ], :gme_err_t
+>>
+>> And called like above, where `path` is any string. It exits instantly 
+>> with a failed assert from the gme library, `require(path && out)` - 
+>> suggesting to me I'm passing one of the first two arguments incorrectly. My 
+>> test C program (https://gist.github.com/mistydemeo/f6e0c6e716b3e8a57939) 
+>> using the same function works fine.
+>>
+>> On Wednesday, October 16, 2013 8:57:42 PM UTC-7, Misty De Meo wrote:
+>>>
+>>> Apologies if this has been asked before - couldn't find it on the list 
+>>> archives or the wiki. 
+>>>
+>>> A library I'm using has an opaque struct (actually a pointer to a C++ 
+>>> object usable in pure C code), which is used in most of the functions 
+>>> in the public C API. How should I represent this in ffi? 
+>>>
+>>> For example, the definition and a function using it: 
+>>>
+>>> typedef struct Music_Emu Music_Emu; 
+>>>
+>>> gme_err_t gme_open_file( const char path [], Music_Emu** out, int 
+>>> sample_rate ); 
+>>>
+>>> Thanks, 
+>>> Misty 
+>>>
+>>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_37_10762247.1382059566345
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Try this:<div><br></div><div>pptr =3D FFI::MemoryPointer.n=
+ew(:pointer)</div><div>gme_open_file(path, pptr, 44100)</div><div>emu =3D p=
+ptr.read_pointer</div><div>gme_start_track(emu, 0)</div><div><br></div><div=
+>That would be the equivalent of the following C</div><div><br></div><div>M=
+usic_Emu** pptr =3D (Music_Emu&nbsp;**) malloc(sizeof(Music_Emu&nbsp;*));</=
+div><div>gme_open_file(path, pptr, 44100);</div><div>Music_Emu* emu =3D *pp=
+tr;</div><div>free(pptr);</div><div>gme_start_track(emu, 0);</div><div><br>=
+</div><div>which is the same as:</div><div><br></div><div>Music_Emu* emu;</=
+div><div>gme_open_file(path, &amp;emu, 44100);<br></div><div>gme_start_trac=
+k(emu, 0);<br></div><div><br></div><div>... just using malloc+free instead =
+of the stack to manage the memory for the pointer to the Music_Emu pointer.=
+</div><div><br></div><div><br><br>On Friday, 18 October 2013 07:41:15 UTC+1=
+1, Misty De Meo  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0=
+;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div di=
+r=3D"ltr">I realized after the fact that #get_pointer isn't doing what I ex=
+pected; unfortunately I'm running into a different problem when creating a =
+pointer from it via FFI::Pointer. My program segfaults when calling gme_sta=
+rt_track() immediately afterwards with the pointer from the first example.<=
+br><br>gme_open_file(path, FFI::Pointer.new(ptr), 44100)<br>gme_start_track=
+(ptr, 0)<br><br>Where gme_start_track() is defined as:<br><br>gme_err_t gme=
+_start_track( Music_Emu*, int index );<br>attach_function :gme_start_track,=
+ [ :pointer, :int ], :gme_err_t<br><br>At a glance I'm not sure what's wron=
+g here - it seems equivalent to the C sample I posted earlier.<br><br>On Th=
+ursday, October 17, 2013 12:14:59 AM UTC-7, Misty De Meo wrote:<blockquote =
+class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:1px #=
+ccc solid;padding-left:1ex"><div dir=3D"ltr">To answer my own question...<b=
+r><br>The opaque pointer is passed just by creating a new FFI::MemoryPointe=
+r of type pointer, like so:<br><br>ptr =3D FFI::MemoryPointer.new(:<wbr>poi=
+nter)<br>gme_open_file(path, ptr.get_pointer(0), 44100)<br><br>That said, I=
+'m having a little difficulty wrapping this particular function - I'm sure =
+I'm just passing one of the arguments wrong, but I'm not quite sure what I'=
+m doing wrong.<br><br>I have the specific gme_open_file() function wrapped =
+like this:<br><br>attach_function :gme_open_file, [ :string, :pointer, :int=
+ ], :gme_err_t<br><br>And called like above, where `path` is any string. It=
+ exits instantly with a failed assert from the gme library, `require(path &=
+amp;&amp; out)` - suggesting to me I'm passing one of the first two argumen=
+ts incorrectly. My test C program (<a href=3D"https://gist.github.com/misty=
+demeo/f6e0c6e716b3e8a57939" target=3D"_blank">https://gist.github.com/<wbr>=
+mistydemeo/<wbr>f6e0c6e716b3e8a57939</a>) using the same function works fin=
+e.<br><br>On Wednesday, October 16, 2013 8:57:42 PM UTC-7, Misty De Meo wro=
+te:<blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;bo=
+rder-left:1px #ccc solid;padding-left:1ex">Apologies if this has been asked=
+ before - couldn't find it on the list
+<br>archives or the wiki.
+<br>
+<br>A library I'm using has an opaque struct (actually a pointer to a C++
+<br>object usable in pure C code), which is used in most of the functions
+<br>in the public C API. How should I represent this in ffi?
+<br>
+<br>For example, the definition and a function using it:
+<br>
+<br>typedef struct Music_Emu Music_Emu;
+<br>
+<br>gme_err_t gme_open_file( const char path [], Music_Emu** out, int sampl=
+e_rate );
+<br>
+<br>Thanks,
+<br>Misty
+<br></blockquote></div></blockquote></div></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_37_10762247.1382059566345--

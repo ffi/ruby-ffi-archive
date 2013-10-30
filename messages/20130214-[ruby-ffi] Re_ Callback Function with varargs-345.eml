@@ -1,0 +1,143 @@
+X-Mozilla-Keys: notjunk $notjunk
+Delivered-To: headius@headius.com
+Received: by 10.152.6.106 with SMTP id z10csp251633laz;
+        Thu, 14 Feb 2013 19:52:30 -0800 (PST)
+X-Received: by 10.224.222.14 with SMTP id ie14mr1522584qab.61.1360900349519;
+        Thu, 14 Feb 2013 19:52:29 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBB7HB62EAKGQE3V2DUQA@googlegroups.com>
+Received: from mail-qa0-f64.google.com (mail-qa0-f64.google.com [209.85.216.64])
+        by mx.google.com with ESMTPS id n19si12665895qct.36.2013.02.14.19.52.29
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 14 Feb 2013 19:52:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7HB62EAKGQE3V2DUQA@googlegroups.com designates 209.85.216.64 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBB7HB62EAKGQE3V2DUQA@googlegroups.com designates 209.85.216.64 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBB7HB62EAKGQE3V2DUQA@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qa0-f64.google.com with SMTP id cr7sf137655qab.9
+        for <headius@headius.com>; Thu, 14 Feb 2013 19:52:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=y2URBizMgdjP6M9cuQkmLHGqRSWrABqXQc6NiPFMX0U=;
+        b=h4lANRt4bEkHDIcc97U8CXcnHiUJuJP9+yqi5MvHL2gbypSi9mkz+CB1+yzqsRKqUH
+         Q/IvH132XNMQe3wuSdCnwlc6U0txoa8vd2V73sF3wlrX8sP8IFWTmk8u9xtNQrPZtasT
+         M3kUiPZBqXBR1lkeDPVUW+R+vldHhk4YRcK6G77NGByiXMCpAw7obQjWchlt8gBwSRPM
+         +5lGRHdfHrkj12LyEycclQAnW/qNpKP6jfiNWJhY42bkLnGfBsG8CHEhQhAvTVfFizAJ
+         I0nX8x4HvMqa1WFtF08av02G8ubzwyE4D1W27dP4MHeAkEEsjJjKx41nsVyQkwI2JyWg
+         Hpcw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=y2URBizMgdjP6M9cuQkmLHGqRSWrABqXQc6NiPFMX0U=;
+        b=y56ai4HWCMpGxYdU6qGIkIvhq4rN4/0Lem/+OjlwS019/LnKwK6tpaIKbU6edNSa8I
+         ksmfOLU5QxlY4ML9XjqeJR/dkSFYcX4GgrSu/bbDx0HNG98i8XyM9HKV0LZRBuFOfJOK
+         l//NqsKgIG8qoW/bBvd2JnRNYjWqTBR5L1wTYchc2sTB0ZNntGniCdSIP2kAXjKoIhA3
+         41Fsrp/TIFaMr5qQxYK48wZdh7oIZ4xThEBAK6HeqDbyH2PhL1h3p8f9GXNCrOxuKJnF
+         P6rB90JvtyPUWQxk9a+cBnH8iAA3/S7zRp7OoSYwrjksrrXlxa6BppjXrAcopsGph7GA
+         8Myg==
+X-Received: by 10.49.94.129 with SMTP id dc1mr36249qeb.22.1360900348632;
+        Thu, 14 Feb 2013 19:52:28 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.117.167 with SMTP id kf7ls775311qeb.40.gmail; Thu, 14 Feb
+ 2013 19:52:28 -0800 (PST)
+X-Received: by 10.49.58.140 with SMTP id r12mr31994qeq.35.1360900348187;
+        Thu, 14 Feb 2013 19:52:28 -0800 (PST)
+Date: Thu, 14 Feb 2013 19:52:27 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <8c198549-0c5e-4ab0-9c3e-34449c22bf71@googlegroups.com>
+In-Reply-To: <3c2782d7-a4fd-4216-be46-b999463b00c1@googlegroups.com>
+References: <3c2782d7-a4fd-4216-be46-b999463b00c1@googlegroups.com>
+Subject: [ruby-ffi] Re: Callback Function with varargs
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1249_16277273.1360900347579"
+
+------=_Part_1249_16277273.1360900347579
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+FFI doesn't support varargs parameters in callbacks - I think the only way 
+to solve this is to write some C code to handle the varargs part and then 
+call the FFI callback.
+
+Have a look at ffi-compiler (https://github.com/ffi/ffi-compiler) if you 
+want to easy(ish) way to compile custom code to load with FFI.
+
+On Wednesday, 13 February 2013 08:49:53 UTC+10, Ole Olson wrote:
+>
+> Hi,
+>
+> I have to use a callback function with varargs (I already red issue #161).
+> I cannot avoid this because I cannot change the interface of the C Library.
+>
+> Do you have any idea, how to solve this problem ?
+>
+> Maybe define va_list as an parameter and split the elements in the 
+> implementation of the callback ?
+>
+> Thanks for help.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_1249_16277273.1360900347579
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div>FFI doesn't support varargs parameters in callbacks - I thin=
+k the only way to solve this is to write some C code to handle the varargs =
+part and then call the FFI callback.<div><br></div><div>Have a look at ffi-=
+compiler (https://github.com/ffi/ffi-compiler) if you want to easy(ish) way=
+ to compile custom code to load with FFI.<br><br>On Wednesday, 13 February =
+2013 08:49:53 UTC+10, Ole Olson  wrote:<blockquote class=3D"gmail_quote" st=
+yle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-lef=
+t: 1ex;">Hi,<br><br>I have to use a callback function with varargs (I alrea=
+dy red issue #161).<br>I cannot avoid this because I cannot change the inte=
+rface of the C Library.<br><br>Do you have any idea, how to solve this prob=
+lem ?<br><br>Maybe define va_list as an parameter and split the elements in=
+ the implementation of the callback ?<br><br>Thanks for help.</blockquote><=
+/div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_1249_16277273.1360900347579--

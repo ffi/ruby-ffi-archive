@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: long pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: long pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/20/12 4:46 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Do you mean, a C function with a signature something like:<div>&nbsp; &nbsp; void foo(long *l):</div><div><br></div><div>In that case, the corresponding ruby-ffi would be:</div><div>module MyLib</div><div>&nbsp; &nbsp; extend FFI::LIbrary</div><div>&nbsp; &nbsp; ffi_lib 'mylib'</div><div>&nbsp; &nbsp; attach_function :foo, [ :pointer ], :void<br></div><div>end</div><div><br></div><div>and you would invoke it like so:</div><div><br></div><div>&nbsp; &nbsp; ptr = FFI::MemoryPointer.new(:long)</div><div>&nbsp; &nbsp; ptr.write_long(0xdeadbeef)</div><div>&nbsp; &nbsp; MyLib.foo(ptr);</div><div><br></div><div>&nbsp; &nbsp; # now extract the value the C code filled in</div><div>&nbsp; &nbsp; l = ptr.read_long</div><div><br></div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

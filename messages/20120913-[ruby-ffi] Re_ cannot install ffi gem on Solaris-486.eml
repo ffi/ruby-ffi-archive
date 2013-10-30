@@ -1,0 +1,140 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.58.80 with SMTP id f16csp53574bkh;
+        Wed, 12 Sep 2012 23:12:21 -0700 (PDT)
+Received: by 10.50.186.132 with SMTP id fk4mr23072887igc.41.1347516740533;
+        Wed, 12 Sep 2012 23:12:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDX5XJEO2MJBBQ7SYWBAKGQETSSHLFY@googlegroups.com>
+Received: from mail-ie0-f190.google.com (mail-ie0-f190.google.com [209.85.223.190])
+        by mx.google.com with ESMTPS id i2si37662276icy.60.2012.09.12.23.12.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 12 Sep 2012 23:12:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDX5XJEO2MJBBQ7SYWBAKGQETSSHLFY@googlegroups.com designates 209.85.223.190 as permitted sender) client-ip=209.85.223.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBDX5XJEO2MJBBQ7SYWBAKGQETSSHLFY@googlegroups.com designates 209.85.223.190 as permitted sender) smtp.mail=ruby-ffi+bncBDX5XJEO2MJBBQ7SYWBAKGQETSSHLFY@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ieak11 with SMTP id k11sf2889585iea.7
+        for <headius@headius.com>; Wed, 12 Sep 2012 23:12:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=H31bCMlrozeQHv8h9FPzDxotDiGKMFtaCT8ZFkzReBg=;
+        b=Vg9lIEDx4pgaFu3cVlZ5zl39Vptph3CT3kB/xzQWmP5velq5fF/bTJZsGCY5Oc9neV
+         D93Y2HxbFa/PY/JwFcxc0gHbwu3sAhtTwsFi1ZX81tVe9YZWmlpbEzgCTs/ftJbJgWRs
+         N7HttFLDLtXvme2zevgmqeRdOUXw1+tAb//qapp4kYh2BXjLKo1KABNOEUaSjAp4ySB1
+         qQW3BcYo0yHBTGI1yFIXgxAJVMqWXf5LbCCG8vEotd0kJZ/0gnxmS5drHdEuVj7rCavl
+         1Gda05P2ksAHV2eIh0lf3FB6C/TJw6rJPTltTVpfqmOBS0H/yHncLm/OesqA9m1Y8t9z
+         XfLA==
+Received: by 10.236.185.130 with SMTP id u2mr55222yhm.0.1347516739483;
+        Wed, 12 Sep 2012 23:12:19 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.236.88.242 with SMTP id a78ls4224444yhf.6.gmail; Wed, 12 Sep
+ 2012 23:12:19 -0700 (PDT)
+Received: by 10.236.180.41 with SMTP id i29mr50727yhm.4.1347516739209;
+        Wed, 12 Sep 2012 23:12:19 -0700 (PDT)
+Date: Wed, 12 Sep 2012 23:12:18 -0700 (PDT)
+From: Eugene Zheganin <zheganin@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <b8fa9162-b106-41ab-b280-2728ae869f87@googlegroups.com>
+In-Reply-To: <2f921d96-f9e5-4bdd-acc1-cf04c5efcfa3@googlegroups.com>
+References: <2f921d96-f9e5-4bdd-acc1-cf04c5efcfa3@googlegroups.com>
+Subject: [ruby-ffi] Re: cannot install ffi gem on Solaris
+MIME-Version: 1.0
+X-Original-Sender: zheganin@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ zheganin@gmail.com designates internal as permitted sender)
+ smtp.mail=zheganin@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3500_7167020.1347516738644"
+
+------=_Part_3500_7167020.1347516738644
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi.
+
+It just looks like the tarball avalable in the rubygems.org distribution=20
+lacks this directory. Being downloaded from git I can successfully build=20
+the gem (rake says that everything is fine). I just don't understand why=20
+rake install tries to do the same thing in the pkg directory. I've just=20
+built the gem and all of it's libraries, why not just install the spec of=
+=20
+it ?
+
+=D1=81=D1=80=D0=B5=D0=B4=D0=B0, 12 =D1=81=D0=B5=D0=BD=D1=82=D1=8F=D0=B1=D1=
+=80=D1=8F 2012 =D0=B3., 12:09:27 UTC+6 =D0=BF=D0=BE=D0=BB=D1=8C=D0=B7=D0=BE=
+=D0=B2=D0=B0=D1=82=D0=B5=D0=BB=D1=8C Eugene Zheganin=20
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB:
+>
+> Hi.
+>
+> I use ruby 1.8.7.
+>
+> Is there any way to build ffi gem on solaris 10 ? I am able to build=20
+> ffi_c.so library and get rake to this point (inserting -m64 in one place,=
+=20
+> and -std=3Dc99 in another):
+>
+> [warn] YARD unavailable
+> install -c build/i386-solaris2.10/ffi_c/1.8.7/ffi_c.so lib/ffi_c.so
+> gmake -f libtest/GNUmakefile CPU=3Di386 OS=3Dsolaris=20
+> gmake: libtest/GNUmakefile: No such file or directory
+> gmake: *** No rule to make target `libtest/GNUmakefile'.  Stop.
+> rake aborted!
+> Command failed with status (2): [gmake -f libtest/GNUmakefile CPU=3Di386=
+=20
+> OS=3Ds...]
+>
+> Tasks: TOP =3D> default =3D> specs =3D> build/libtest.so
+> (See full trace by running task with --trace)
+>
+> But I don't see any libtest or GNUmakefile, so I'm pretty much stuck here=
+.
+>
+> Thanks.
+>
+
+------=_Part_3500_7167020.1347516738644
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi.<div><br></div><div>It just looks like the tarball avalable in the rubyg=
+ems.org&nbsp;distribution lacks this directory. Being downloaded from git I=
+ can successfully build the gem (rake says that everything is fine). I just=
+ don't understand why rake install tries to do the same thing in the pkg di=
+rectory. I've just built the gem and all of it's libraries, why not just in=
+stall the spec of it ?</div><div><br></div><div>=D1=81=D1=80=D0=B5=D0=B4=D0=
+=B0, 12 =D1=81=D0=B5=D0=BD=D1=82=D1=8F=D0=B1=D1=80=D1=8F 2012&nbsp;=D0=B3.,=
+ 12:09:27 UTC+6 =D0=BF=D0=BE=D0=BB=D1=8C=D0=B7=D0=BE=D0=B2=D0=B0=D1=82=D0=
+=B5=D0=BB=D1=8C Eugene Zheganin =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB:=
+<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;bor=
+der-left: 1px #ccc solid;padding-left: 1ex;">Hi.<div><br></div><div>I use r=
+uby 1.8.7.<br><div><br></div><div>Is there any way to build ffi gem on sola=
+ris 10 ? I am able to build ffi_c.so library and get rake to this point (in=
+serting -m64 in one place, and -std=3Dc99 in another):</div><div><br></div>=
+<div><div>[warn] YARD unavailable</div><div>install -c build/i386-solaris2.=
+10/ffi_c/<wbr>1.8.7/ffi_c.so lib/ffi_c.so</div><div>gmake -f libtest/GNUmak=
+efile CPU=3Di386 OS=3Dsolaris&nbsp;</div><div>gmake: libtest/GNUmakefile: N=
+o such file or directory</div><div>gmake: *** No rule to make target `libte=
+st/GNUmakefile'. &nbsp;Stop.</div><div>rake aborted!</div><div>Command fail=
+ed with status (2): [gmake -f libtest/GNUmakefile CPU=3Di386 OS=3Ds...]</di=
+v><div><br></div><div>Tasks: TOP =3D&gt; default =3D&gt; specs =3D&gt; buil=
+d/libtest.so</div><div>(See full trace by running task with --trace)</div><=
+/div><div><br></div><div>But I don't see any libtest or GNUmakefile, so I'm=
+ pretty much stuck here.</div><div><br></div><div>Thanks.</div></div></bloc=
+kquote></div>
+------=_Part_3500_7167020.1347516738644--

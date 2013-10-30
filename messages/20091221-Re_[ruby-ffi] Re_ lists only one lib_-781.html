@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: lists only one lib?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: lists only one lib?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 11:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 21, 2009, at 9:11 AM, Vladimir Sizikov wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi Luis,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On Mon, Dec 21, 2009 at 4:59 PM, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Wayne already answered to you that ffi_lib takes an array, multiple
+<span class="moz-txt-citetags">&gt;&gt; </span>invocations to append are not possible.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>From the perspective of a new FFI API user, these are all valid
+<span class="moz-txt-citetags">&gt; </span>questions with no immediate/clear answer:
+<span class="moz-txt-citetags">&gt; </span>- What would happen on subsequent ffi_lib call? Will it append, or
+<span class="moz-txt-citetags">&gt; </span>will it overwrite?
+<span class="moz-txt-citetags">&gt; </span>- Is that even legal? If legal, is that a good practice?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I know I had those questions when I was starting using FFI. <span class="moz-smiley-s1" title=":)"><span>:)</span></span> And I
+<span class="moz-txt-citetags">&gt; </span>was bugging Wayne with such questions as well... <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+<span class="moz-txt-citetags">&gt; </span>calls are not good. Well, maybe we should make that totally explicit,
+<span class="moz-txt-citetags">&gt; </span>and just don't allow to call ffi_lib the second time?
+</pre></blockquote><pre wrap>
+
+Probably best to have ffi_lib raise an exception if the libs are already set. That solves it nicely and keeps users from tripping up on this.
+
+ - Evan
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks,
+<span class="moz-txt-citetags">&gt; </span> --Vladimri
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

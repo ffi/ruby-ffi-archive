@@ -1,0 +1,54 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Crazy thought (wrapping rb_thread_blocking_region)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Crazy thought (wrapping rb_thread_blocking_region)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>v01d <phreakuencies@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 9:26 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+I'm a little interested in a possible future where Ruby could be used
+for heavy processing stuff (but by means of calling computationally
+heavy C code, and take advantage of multi-core processors by doing
+several of these calls in parallel native threads) and I just found
+out about Ruby's "rb_thread_blocking_region" C call.
+
+What came to my mind is that maybe FFI could be used here to make
+writing these type of parallelized Ruby extensions easier, by just
+doing something like:
+
+module RubyAPI
+  extend FFI::Library
+  attach_function :rb_thread_blocking_region,
+[ :pointer, :pointer, :pointer ], :void
+end
+
+then maybe I'm wrapping a HeavyComputationLibrary:
+
+module HeavyComputationLibrary
+  extend FFI::Library
+  attach_function :long_running_computation, [ :pointer ], :value
+  attach_function :unblock_computation, [ :pointer ], :void
+end
+
+and then do something like:
+RubyAPI.rb_thread_blocking_region
+(HeavyComputationLibrary.long_running_computation, data_ptr,
+HeavyComputationLibrary.unblock_computation)
+
+Obviously there are a couple of non-existing things here (like passing
+the function pointer of a C function (maybe there's already a way to
+do that?), usage of :value), but I wanted to ask if this is feasible
+or not.
+I think that something like this could ease writing parallel-aware
+Ruby extensions (maybe with some help of Ruby Inline) for existing C
+libraries. Then again, I may be wrong.
+
+Matt
+
+PS: I'm obviously talking about Ruby 1.9 and the function call defined
+here: <a class="moz-txt-link-freetext" href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252</a>
+
+</pre></div></body>
+</html>
+</table></div>

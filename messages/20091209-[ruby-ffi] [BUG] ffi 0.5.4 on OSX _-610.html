@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] [BUG] ffi 0.5.4 on OSX ?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] [BUG] ffi 0.5.4 on OSX ?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Hinegardner <jeremy@hinegardner.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 11:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I just tried updating to 0.5.4 and ended up with this:
+
+    <a class="moz-txt-link-freetext" href="http://pastie.org/736768">http://pastie.org/736768</a>
+
+Doing some digging into the code reveals that in the extconf.rb it fails
+to find the 'ffi.h' header, but the link tests for ffi_call and
+ffi_prep_closure succeed so libffi_ok is true in extconf.rb.
+When the extension builds, it fails because ffi.h is not in the include
+path.
+
+It looks to me as if ffi already exits on my OSX
+(/usr/include/ffi/ffi.h), but but it is version 2.1 instead of the
+shipped version 3.0.6 of ffi with gem version 0.5.4
+
+    % grep VERSION /usr/include/ffi/ffi*
+    /usr/include/ffi/fficonfig.h:#define PACKAGE_VERSION "2.1"
+    /usr/include/ffi/fficonfig.h:#define VERSION "2.1-pyobjc"
+
+Adding "/usr/include/ffi" to the find_header() call results in conflicts
+on the PACKAGE_BUGREPORT, PACKAGE_NAME, PACKAGE_STRING, PACKAGE_TARNAME,
+and PACKAGE_VERSION declarations.
+
+I was able to work around the issue for me with the attached patch, but
+it is probably not the correct way to deal with this issue.
+
+enjoy,
+
+-jeremy
+
+<div class="moz-txt-sig">-- 
+========================================================================
+ Jeremy Hinegardner                              <a class="moz-txt-link-abbreviated" href="mailto:jeremy@hinegardner.org">jeremy@hinegardner.org</a> 
+
+</div></pre></div><BR><FIELDSET CLASS="mimeAttachmentHeader"><LEGEND CLASS="mimeAttachmentHeaderName">header-detection-0.5.4.patch</LEGEND></FIELDSET><BR/><div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+diff --git a/ext/ffi_c/extconf.rb b/ext/ffi_c/extconf.rb
+index 08ef0b4..3786ad3 100644
+--- a/ext/ffi_c/extconf.rb
++++ b/ext/ffi_c/extconf.rb
+@@ -4,12 +4,13 @@ require 'rbconfig'
+ dir_config("ffi_c")
+ 
+ unless Config::CONFIG['host_os'] =~ /mswin32|mingw32/
+-  pkg_config("libffi") || find_header("ffi.h", "/usr/local/include", "/opt/local/include")
+-  have_ffi_call = have_library("ffi", "ffi_call", [ "ffi.h" ])
+-  have_prep_closure = have_func("ffi_prep_closure")
+-  libffi_ok = have_ffi_call &amp;&amp; have_prep_closure
+-  $defs &lt;&lt; "-DHAVE_LIBFFI" if libffi_ok
+-  $defs &lt;&lt; "-DHAVE_RAW_API" if have_func("ffi_raw_call") &amp;&amp; have_func("ffi_prep_raw_closure")
++  if pkg_config("libffi") || find_header("ffi.h", "/usr/local/include", "/opt/local/include") then
++    have_ffi_call = have_library("ffi", "ffi_call", [ "ffi.h" ])
++    have_prep_closure = have_func("ffi_prep_closure")
++    libffi_ok = have_ffi_call &amp;&amp; have_prep_closure
++    $defs &lt;&lt; "-DHAVE_LIBFFI" if libffi_ok
++    $defs &lt;&lt; "-DHAVE_RAW_API" if have_func("ffi_raw_call") &amp;&amp; have_func("ffi_prep_raw_closure")
++  end
+ end
+ have_func('rb_thread_blocking_region')
+ 
+</pre></div></body>
+</html>
+<br><fieldset class="mimeAttachmentHeader"><legend class="mimeAttachmentHeaderName">Attachments:</legend></fieldset><div class="mimeAttachmentWrap"><table class="mimeAttachmentTable"><tr><td class="mimeAttachmentFile">header-detection-0.5.4.patch</td><td class="mimeAttachmentSize">1.1 KB</td></tr></table></div>

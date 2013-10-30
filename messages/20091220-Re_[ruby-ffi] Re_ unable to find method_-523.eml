@@ -1,0 +1,122 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs462789and;
+        Sun, 20 Dec 2009 08:19:35 -0800 (PST)
+Received: by 10.90.58.21 with SMTP id g21mr5432112aga.54.1261325971969;
+        Sun, 20 Dec 2009 08:19:31 -0800 (PST)
+Return-Path: <3kU4uSwoJCFkCL9JC1M5E17D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 28si11094317gxk.62.2009.12.20.08.19.30;
+        Sun, 20 Dec 2009 08:19:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3kU4uSwoJCFkCL9JC1M5E17D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3kU4uSwoJCFkCL9JC1M5E17D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3kU4uSwoJCFkCL9JC1M5E17D19C.3FDIL2P-6697FF7C57IFLGJ.3FD@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf12894404ywh.3
+        for <headius@headius.com>; Sun, 20 Dec 2009 08:19:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=iz8HZXkF6BCqNp4qye35CN5R8toejDRfSfMMsMM2cpM=;
+        b=avnMDODlgIDMazDzyv3m6JpSlPyt9Q7ps+KBS+oXkA7S4LFhJG63pniha9Jg1/JOfx
+         uIz+1q0ltOUReg7jntD7kHVWtAMa4b5Gnx05Fp1xKvf0wraCacULdWF3Dnrs/Mg3Vq2v
+         5BKdioq+duu/5xdnhjI1JRAKEmgrpALRlbk8A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=vMuUwrL9O5TUjGZ9JTfGTqV54j1ckSwUwxss9gzpqYXjTF9Zki1T+LLCN0XIXqdoij
+         M0biVxs7xGvqRwB7fh06yiJBiNyBvrRVFdsPPVJs6+P+/V8HVVxtJgKjnTf1+NkEufhk
+         ft/Chcs2UD6LVJa38b9CdTntMPnOaKpc57f9w=
+Received: by 10.91.82.11 with SMTP id j11mr817157agl.13.1261325969913;
+        Sun, 20 Dec 2009 08:19:29 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.54.22 with SMTP id o22ls192551fag.3.p; Sun, 20 Dec 2009 
+	08:19:28 -0800 (PST)
+Received: by 10.223.74.90 with SMTP id t26mr242301faj.25.1261325968523;
+        Sun, 20 Dec 2009 08:19:28 -0800 (PST)
+Received: by 10.223.74.90 with SMTP id t26mr242300faj.25.1261325968501;
+        Sun, 20 Dec 2009 08:19:28 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f225.google.com (mail-fx0-f225.google.com [209.85.220.225])
+        by gmr-mx.google.com with ESMTP id 12si412282fxm.5.2009.12.20.08.19.27;
+        Sun, 20 Dec 2009 08:19:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.225 as permitted sender) client-ip=209.85.220.225;
+Received: by fxm25 with SMTP id 25so3604593fxm.6
+        for <ruby-ffi@googlegroups.com>; Sun, 20 Dec 2009 08:19:27 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.144.129 with SMTP id o1mr607656hba.62.1261325967152; Sun, 
+	20 Dec 2009 08:19:27 -0800 (PST)
+In-Reply-To: <a3999696-c6a9-4b96-aff0-251b21b39ebf@s31g2000yqs.googlegroups.com>
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com> 
+	<3454c9680912180025s288a8e81gb89913c0ce304d7e@mail.gmail.com> 
+	<20091218090513.a27833fc.jon.forums@gmail.com> <6d99087d-4325-4a6d-8196-f4a38d55ed62@l13g2000yqb.googlegroups.com> 
+	<4ccee320912190434s4bb0a1eeo35fcdcff6b15ac27@mail.gmail.com> 
+	<71166b3b0912190608y2a8118afma509f7657f35304@mail.gmail.com> 
+	<a3999696-c6a9-4b96-aff0-251b21b39ebf@s31g2000yqs.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Sun, 20 Dec 2009 13:19:07 -0300
+Message-ID: <71166b3b0912200819t19077410q8062cd5f0ec7cd10@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: unable to find method?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.225 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/6e6712f78eb175b0
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Dec 20, 2009 at 12:16 AM, rogerdpack <rogerdpack@gmail.com> wrote:
+>> > =A0ffi_convention :stdcall
+>>
+>> > before the attach_function call
+>>
+>> Confirmed, it works.
+>
+> Hmm.
+> Even with :stdcall mine is still segfaulting (1.9.1, 1.8.6)
+>
+> Could you try this code?
+> http://gist.github.com/260343
+>
+> Are you using ffi 0.5.4?
+>
+
+Yes, but doing things inside a module and calling from it.
+
+It works.
+
+What you did is extend Object with FFI::Library, dunno how that is going to=
+ end.
+
+I would recommend you stick your FFI calls and functions to modules in
+the future, and avoid bogus errors because of that.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

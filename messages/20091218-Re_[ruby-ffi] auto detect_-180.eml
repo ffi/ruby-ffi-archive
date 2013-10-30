@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs353409and;
+        Fri, 18 Dec 2009 00:55:42 -0800 (PST)
+Received: by 10.90.43.4 with SMTP id q4mr157128agq.31.1261126541640;
+        Fri, 18 Dec 2009 00:55:41 -0800 (PST)
+Return-Path: <3i0MrSwwJCEUmh66p.hukylhnthps.jvty1i5-mmpnvvnslnyv1wz.jvt@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 21si6168404gxk.25.2009.12.18.00.55.40;
+        Fri, 18 Dec 2009 00:55:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3i0MrSwwJCEUmh66p.hukylhnthps.jvty1i5-mmpnvvnslnyv1wz.jvt@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3i0MrSwwJCEUmh66p.hukylhnthps.jvty1i5-mmpnvvnslnyv1wz.jvt@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3i0MrSwwJCEUmh66p.hukylhnthps.jvty1i5-mmpnvvnslnyv1wz.jvt@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf7070565ywh.3
+        for <headius@headius.com>; Fri, 18 Dec 2009 00:55:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=05ijdvW8K817dOKFInNLm80TORq2FsDh0NMt+vO1MQM=;
+        b=tDKgyjn98NUCIAAWq26nxtfchSsw19d3LslrZllEEE/hnr5iHP59rAg9AYLvO7NrJU
+         Aq+MLoXHBtctNDPo3zf7a99oilwxLAfAdbuU/1nhQbmHeKuNq4pRM5OZ3g8xctIYmGp1
+         5o3H2n+Ma4tkGXxdOlOTI869Jf4Ynuv5821AI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=M9GWlsTKdcjtfHsR48OIkr2HLm1sPGp91lj2WlDLx27ZirL63s5uz356uX7mDIVNEP
+         uTefKbMR+NNKqobCx8mcbr0JoDZj0ZNBCEg/FhpygrJtRbqDOmZrl8KXsXObBQAkI7bP
+         ZrMO6XniSF+s1vgnVb3iC/QxJKCASnSbcBnG8=
+Received: by 10.90.141.19 with SMTP id o19mr512827agd.8.1261126539342;
+        Fri, 18 Dec 2009 00:55:39 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.13.214 with SMTP id d22ls4025bka.0.p; Fri, 18 Dec 2009 
+	00:55:37 -0800 (PST)
+Received: by 10.204.23.75 with SMTP id q11mr121457bkb.36.1261126537332;
+        Fri, 18 Dec 2009 00:55:37 -0800 (PST)
+Received: by 10.204.23.75 with SMTP id q11mr121456bkb.36.1261126537301;
+        Fri, 18 Dec 2009 00:55:37 -0800 (PST)
+Return-Path: <andrea.fazzi@alcacoop.it>
+Received: from mail-fx0-f210.google.com (mail-fx0-f210.google.com [209.85.220.210])
+        by gmr-mx.google.com with ESMTP id 11si229732bwz.3.2009.12.18.00.55.37;
+        Fri, 18 Dec 2009 00:55:37 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.210 is neither permitted nor denied by best guess record for domain of andrea.fazzi@alcacoop.it) client-ip=209.85.220.210;
+Received: by fxm2 with SMTP id 2so2768733fxm.5
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 00:55:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.168.230 with SMTP id l38mr340854hbe.37.1261126536874; Fri, 
+	18 Dec 2009 00:55:36 -0800 (PST)
+In-Reply-To: <4B2B3EC6.1050907@matijs.net>
+References: <4ce042d6-eab0-4ece-b3f1-6d103aff8d57@k4g2000yqb.googlegroups.com>
+	 <71166b3b0912171503g4bab2bf0ge739875e42e7c896@mail.gmail.com>
+	 <4B2B3EC6.1050907@matijs.net>
+Date: Fri, 18 Dec 2009 09:55:36 +0100
+Message-ID: <606cc3fa0912180055s14f02999tef9249600185ad3e@mail.gmail.com>
+Subject: Re: [ruby-ffi] auto detect?
+From: Andrea Fazzi <andrea.fazzi@alcacoop.it>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	209.85.220.210 is neither permitted nor denied by best guess record for 
+	domain of andrea.fazzi@alcacoop.it) smtp.mail=andrea.fazzi@alcacoop.it
+X-Original-Sender: fazzi.andrea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/12f93d775c2fe4c8
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/9e04780b9a7b2cb2
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+2009/12/18 Matijs van Zuijlen <matijs@matijs.net>:
+> Hi,
+>
+> Luis Lavena wrote:
+>> But you have ffi-swig generator:
+>>
+>> http://github.com/remogatto/ffi-swig-generator
+>
+> The description on that page says "[WARN] - src repo has been moved on
+> http://kenai.com/projects/ruby-ffi/sources/swig-generator/show This repo will be
+> removed soon!", but there is nothing there on kenai.com.
+>
+> Is that warning still valid?
+
+The current and official repo for the generator is now at:
+
+http://github.com/ffi/ffi-swig-generator
+
+Cheers,
+Andrea

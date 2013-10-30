@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/5/11 9:16 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Jan 5, 2011, at 7:51 AM, Alvaro wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I understand your point about how it works the garbage collection.
+<span class="moz-txt-citetags">&gt; </span>Is a kind strange that the C lib purely don't have leaks but with the
+<span class="moz-txt-citetags">&gt; </span>FFI binding it has and I couldn't find the reason yet, may be is
+<span class="moz-txt-citetags">&gt; </span>inherited to ruby, I've tested it with Ree, Mri and JRuby without
+<span class="moz-txt-citetags">&gt; </span>success.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I will continue trying to figure out what is happening, thanks for
+<span class="moz-txt-citetags">&gt; </span>your comments.
+</pre></blockquote><pre wrap>
+
+Is this code public and available online somewhere? If so, someone on this list may get curious and look at it too.
+
+It's possible, though unlikely, that the leak is in the FFI library. I had some massive leaks in a library I wrote using FFI, but I tracked 100% of them back to my own errors. There are now 0 leaks in the code (though I did find a few minor ones in each Ruby runtime).
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

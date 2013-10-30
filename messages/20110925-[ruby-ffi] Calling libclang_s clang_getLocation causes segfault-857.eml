@@ -1,0 +1,169 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.233 with SMTP id h9cs26898laf;
+        Sun, 25 Sep 2011 07:09:06 -0700 (PDT)
+Received: by 10.229.65.72 with SMTP id h8mr4195905qci.24.1316959745142;
+        Sun, 25 Sep 2011 07:09:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNyGtavUFhD76_zzBBoEQcq4pA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id h1si4168388qct.112.2011.09.25.07.09.04
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 25 Sep 2011 07:09:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNyGtavUFhD76_zzBBoEQcq4pA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNyGtavUFhD76_zzBBoEQcq4pA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCNyGtavUFhD76_zzBBoEQcq4pA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk32 with SMTP id 32sf8667782qyk.7
+        for <headius@headius.com>; Sun, 25 Sep 2011 07:09:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=DulcNJ1oKe7B3p3f7+KwTdZtO3JFebNLwsi9ndkZe2M=;
+        b=lP0xhgxXbEeGB0AHIl9E3NVIMECPRv5NMJfyA59XuYkiYFFYFvoTNrR442TTjOwgz0
+         Avb9d9PueXXVtF5fkjvAXihD7UBt427+oDNB8nyKylGZTUKJGzDQbADjFJLKH/RpnK/n
+         SFMYC5VM8REkGjgk4cSNg7pvqNyi1D6k/Izu4=
+Received: by 10.224.108.133 with SMTP id f5mr631154qap.42.1316959739632;
+        Sun, 25 Sep 2011 07:08:59 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.186.197 with SMTP id ct5ls9994932qab.2.gmail; Sun, 25 Sep
+ 2011 07:08:59 -0700 (PDT)
+Received: by 10.224.193.134 with SMTP id du6mr4002867qab.12.1316959739319;
+        Sun, 25 Sep 2011 07:08:59 -0700 (PDT)
+Received: by 10.224.181.73 with SMTP id bx9msqab;
+        Sun, 25 Sep 2011 06:49:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.197.133 with SMTP id ek5mr751565qab.43.1316958597937; Sun,
+ 25 Sep 2011 06:49:57 -0700 (PDT)
+Received: by q25g2000vbx.googlegroups.com with HTTP; Sun, 25 Sep 2011 06:49:57
+ -0700 (PDT)
+Date: Sun, 25 Sep 2011 06:49:57 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8)
+ AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.186 Safari/535.1,gzip(gfe)
+Message-ID: <303bf655-a7af-419f-8749-8d0b6d69ec8a@q25g2000vbx.googlegroups.com>
+Subject: [ruby-ffi] Calling libclang's clang_getLocation causes segfault
+From: shinichy <shin1.katayama@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: shin1.katayama@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+I'm trying to use libclang through ruby-ffi.
+But calling clang_getLocation causes segfault.
+Sample code and result are below.
+I ran similar c code and it worked fine.
+clang_getLocation specification is here.
+http://clang.llvm.org/doxygen/group__CINDEX__LOCATIONS.html#ga86d822034407d60d9e1f36e07cbc0f67
+
+require 'ffi'
+
+module Lib
+  extend FFI::Library
+
+  libs = ["clang"]
+
+  ffi_lib libs
+
+ 
+attach_function :create_index,                       :clang_createIndex,
+[:int,      :int],     :pointer
+
+  TranslationUnitFlags     = enum
+[:none, :detailed_preprocessing_record, :incomplete, :precompiled_preamble, :cache_completion_results]
+
+ 
+attach_function :parse_translation_unit,             :clang_parseTranslationUnit,
+[:pointer,  :string,   :pointer, :int, :pointer, :uint, :uint], :pointer
+
+  attach_function :get_file, :clang_getFile,
+[:pointer, :string], :pointer
+
+  attach_function :get_cursor, :clang_getCursor,
+[:pointer, :pointer], :pointer
+
+  class CXSourceLocation < FFI::Struct
+    layout :ptr_data, :pointer,
+           :int_data, :uint
+  end
+
+  attach_function :get_location, :clang_getLocation,
+[:pointer, :pointer, :uint, :uint], CXSourceLocation.by_value
+
+  def self.bitmask_from(enum, opts)
+    bitmask = 0
+
+    opts.each do |key, val|
+      next unless val
+
+      if int = enum[key]
+        bitmask |= int
+      else
+        raise Error, "unknown option: #{key.inspect}, expected one of
+#{enum.symbols}"
+      end
+    end
+
+    bitmask
+  end
+end
+
+def args_pointer_from(command_line_args)
+  args_pointer = FFI::MemoryPointer.new(:pointer)
+
+  strings = command_line_args.map do |arg|
+    FFI::MemoryPointer.from_string(arg.to_s)
+  end
+
+  args_pointer.put_array_of_pointer(0, strings) unless strings.empty?
+  args_pointer
+end
+
+def options_bitmask_from(opts)
+  Lib.bitmask_from Lib::TranslationUnitFlags, opts
+end
+
+filename = "/Users/shinichi/programming/ffi-clang/spec/fixtures/a.c"
+index = Lib.create_index(1, 1)
+tu = Lib.parse_translation_unit(index, filename,
+args_pointer_from([]), 0, nil, 0, options_bitmask_from({}))
+file = Lib.get_file(tu, filename)
+loc = Lib.get_location(tu, file, 3, 16) # causes segfault
+# cursor = Lib.get_cursor(tu, loc)
+
+### Result ###
+
+spec/get_location_test.rb:64: [BUG] Segmentation fault
+ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-darwin10.8.0]
+
+-- control frame ----------
+c:0004 p:---- s:0018 b:0018 l:000017 d:000017 CFUNC  :get_location
+c:0003 p:0181 s:0011 b:0011 l:0014e8 d:000b70 EVAL   spec/
+get_location_test.rb:64
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0014e8 d:0014e8 TOP
+---------------------------
+-- Ruby level backtrace information
+----------------------------------------
+spec/get_location_test.rb:64:in `<main>'
+spec/get_location_test.rb:64:in `get_location'
+
+-- C level backtrace information
+-------------------------------------------
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension
+libraries.
+Bug reports are welcome.
+For details: http://www.ruby-lang.org/bugreport.html

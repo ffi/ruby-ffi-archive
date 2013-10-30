@@ -1,0 +1,72 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs562243fam;
+        Sat, 8 Jan 2011 11:36:16 -0800 (PST)
+Received: by 10.231.191.16 with SMTP id dk16mr16269944ibb.23.1294515375565;
+        Sat, 08 Jan 2011 11:36:15 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIL02KzeDxCs-aLpBBoEJFAlHA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTP id mu18si62165964ibb.7.2011.01.08.11.36.13;
+        Sat, 08 Jan 2011 11:36:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIL02KzeDxCs-aLpBBoEJFAlHA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIL02KzeDxCs-aLpBBoEJFAlHA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCIL02KzeDxCs-aLpBBoEJFAlHA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk1 with SMTP id 1sf8253043pzk.7
+        for <headius@headius.com>; Sat, 08 Jan 2011 11:36:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=k9GXHijQRW7O2vSXd+7Jrf1CzZa8ABYqDpgcKob4eXc=;
+        b=DJ3Ij9OJuU8BIa4HmuGrOgsEgs9PzEWPAO/8qu/9WuGLz2da5RlWQJ/MIh5jLUDkhS
+         KBzPI6quFfJphuLyX3cNgKwSjDVGVO4FHQp5J1QyOskg6OQhqpt62k4JZm3aOVjklWz0
+         dW/u8PPLV1Y+AwlGerF0JM1JFIWDURnJK+Qyc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=Ersw1N7YsJNy5yeII0lqd2Az6KLvcKvmXFR+F0HwtRJj5Hov2WIInawFaydwZ1LNvH
+         9I+dNFFv9hEl+LTFu/oXzMAoRcAvlRr70F7LzblRBHkjsruUa+Gr36osRbZcZmxiCxTP
+         rlXAFRqhCc89iGUWgZfTNGz9SNUJfwVg04sd8=
+Received: by 10.142.248.35 with SMTP id v35mr199778wfh.34.1294515372377;
+        Sat, 08 Jan 2011 11:36:12 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.121.31 with SMTP id t31ls27528699wfc.3.p; Sat, 08 Jan 2011
+ 11:36:11 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.142.62.31 with SMTP id k31mr197146wfa.9.1294515371874; Sat, 08
+ Jan 2011 11:36:11 -0800 (PST)
+Received: by y19g2000prb.googlegroups.com with HTTP; Sat, 8 Jan 2011 11:36:11
+ -0800 (PST)
+Date: Sat, 8 Jan 2011 11:36:11 -0800 (PST)
+In-Reply-To: <4D28392E.6020509@matijs.net>
+X-IP: 24.22.33.109
+References: <dfb1edb8-66b3-4e3b-9ab1-f587c7368f02@o23g2000prh.googlegroups.com>
+ <4D28392E.6020509@matijs.net>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US;
+ rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13,gzip(gfe)
+Message-ID: <ce5c48a9-81d9-4abd-ba6a-6e16bd3f48ae@y19g2000prb.googlegroups.com>
+Subject: [ruby-ffi] Re: 'encoding' type?
+From: dubl <rmiddlehouse@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rmiddlehouse@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+hm, seems to work, though i dont know why. suppose i have to be more
+familar w c before getting any further. thanks Matijs!

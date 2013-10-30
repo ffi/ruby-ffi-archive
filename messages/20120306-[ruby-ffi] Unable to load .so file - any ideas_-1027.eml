@@ -1,0 +1,258 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.175.98 with SMTP id bz2csp110270obc;
+        Tue, 6 Mar 2012 12:35:35 -0800 (PST)
+Received: by 10.236.144.133 with SMTP id n5mr28801037yhj.54.1331066135264;
+        Tue, 06 Mar 2012 12:35:35 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIqvzZrJGxCT6tn6BBoEo30X6g@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id d9si21989455yhn.5.2012.03.06.12.35.35
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 06 Mar 2012 12:35:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIqvzZrJGxCT6tn6BBoEo30X6g@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIqvzZrJGxCT6tn6BBoEo30X6g@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCIqvzZrJGxCT6tn6BBoEo30X6g@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ghbg22 with SMTP id g22sf8444342ghb.7
+        for <headius@headius.com>; Tue, 06 Mar 2012 12:35:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=l3GwDQNvDsheh9Vmr4VBgawHAgMqwrVteCMzmGxaTSM=;
+        b=JDYt26g4OYCy+LtIavHvEVuTYgYAhfJjszYnDjRlKpk2141fltV/v6DArSxhRDucSj
+         Ae771MjfEWqwOz1/OyRZgNYku+ykLL4Q8y7q21SocrBZuEiwT4ZY1/ZBlpzN1TQXxHfM
+         xgB7yEoKQHMdwGmfaWjTfw4MlEP6LhG39fIeQ=
+Received: by 10.224.187.201 with SMTP id cx9mr1859qab.13.1331066131292;
+        Tue, 06 Mar 2012 12:35:31 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.188.82 with SMTP id cz18ls1841179qab.1.gmail; Tue, 06 Mar
+ 2012 12:35:30 -0800 (PST)
+Received: by 10.224.185.11 with SMTP id cm11mr27950qab.3.1331066130556;
+        Tue, 06 Mar 2012 12:35:30 -0800 (PST)
+Received: by 10.224.205.74 with SMTP id fp10msqab;
+        Tue, 6 Mar 2012 07:10:43 -0800 (PST)
+Received: by 10.236.183.234 with SMTP id q70mr1941169yhm.2.1331046643395;
+        Tue, 06 Mar 2012 07:10:43 -0800 (PST)
+Date: Tue, 6 Mar 2012 07:10:42 -0800 (PST)
+From: Tony Summerville <tsummerville@rarestep.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <14072510.211.1331046642686.JavaMail.geo-discussion-forums@ynlr19>
+Subject: [ruby-ffi] Unable to load .so file - any ideas?
+MIME-Version: 1.0
+X-Original-Sender: tsummerville@rarestep.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_210_12137291.1331046642684"
+X-Gm-Message-State: ALoCoQmivrK30PSrIW3DxuONC1XieV0TqUwTjD78Ahg7CPcDclRU3qrZjHWnIiriV2feNHDbDLYC
+
+------=_Part_210_12137291.1331046642684
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I'd really appreciate any help or thoughts on this issue.
+
+I'm trying to wrap a simple shared library in a Ruby Gem. The .so file was 
+precompiled by a 3rd-party vendor and I don't have access to the C source 
+files.
+
+I've installed FFI gem v1.0.11 and am able to get the basic "getpid" 
+example working perfectly, but when I try to load the .so file I get the 
+following error:
+
+ruby-1.9.2-p180 :001 > require "prova-vhm-raw2xml"
+LoadError: Could not open library 
+'/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so': 
+dlopen(/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so, 
+5): no suitable image found.  Did find:
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so: 
+unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 
+0x00
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/ffi-1.0.11/lib/ffi/library.rb:121:in 
+`block in ffi_lib'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/ffi-1.0.11/lib/ffi/library.rb:88:in 
+`map'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/ffi-1.0.11/lib/ffi/library.rb:88:in 
+`ffi_lib'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:9:in 
+`<module:Raw2Xml>'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:6:in 
+`<module:ProvaVHM>'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:5:in 
+`<module:Fleetio>'
+from 
+/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:4:in 
+`<top (required)>'
+from 
+/Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:60:in 
+`require'
+from 
+/Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:60:in 
+`rescue in require'
+from 
+/Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:35:in 
+`require'
+from (irb):1
+from /Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/bin/irb:16:in `<main>'
+
+Here's the relevant directories/files in my Ruby Gem:
+
+/prova-vhm-raw2xml
+  /lib
+    /prova-vhm-raw2xml.rb
+    /libZVLParser64
+      /libZVLParser64.so
+
+Here's the relevant code in prova-vhm-raw2xml.rb:
+
+require 'ffi'
+
+module ProvaVHM
+  module Raw2Xml
+    extend FFI::Library
+  
+    ffi_lib File.expand_path(File.dirname(__FILE__) + 
+'/libZVLParser64/libZVLParser64.so')
+  
+    # THIS WORKS FINE.
+    # ffi_lib FFI::Library::LIBC
+    # attach_function :getpid, [], :int
+  
+    def self.hi
+      puts "Hola!"
+    end
+  end
+end
+
+Other potentially relevant notes:
+- I'm on Mac OSX with 64 bit processor
+- The libZVLParser64.so was compiled for 64 bit architecture
+
+Anything obvious that I'm missing? I'm new to FFI and wrapping C libs with 
+Ruby in general, so I'm just not quite sure what I'm doing wrong. I've read 
+through all the documentation and looked through the Google Group but can't 
+figure out what the problem is.
+
+Thanks again for any help or insight you can provide!
+
+------=_Part_210_12137291.1331046642684
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+I'd really appreciate any help or thoughts on this issue.<div><br></div><di=
+v>I'm trying to wrap a simple shared library in a Ruby Gem. The <font face=
+=3D"'courier new', monospace">.so</font> file was precompiled by a 3rd-part=
+y vendor and I don't have access to the C source files.</div><div><br></div=
+><div>I've installed FFI gem v1.0.11 and am able to get the basic "<font fa=
+ce=3D"'courier new', monospace">getpid</font>" example working perfectly, b=
+ut when I try to load the <font face=3D"'courier new', monospace">.so</font=
+> file I get the following error:</div><div><br></div><div><font face=3D"'c=
+ourier new', monospace">ruby-1.9.2-p180 :001 &gt; require "prova-vhm-raw2xm=
+l"<br></font></div><div><div><font face=3D"'courier new', monospace">LoadEr=
+ror: Could not open library '/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@=
+prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLPar=
+ser64.so': dlopen(/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-r=
+aw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so, 5=
+): no suitable image found. &nbsp;Did find:</font></div><div><font face=3D"=
+'courier new', monospace"><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">=09</span>/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-r=
+aw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so: u=
+nknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 0x0=
+0</font></div><div><font face=3D"'courier new', monospace"><span class=3D"A=
+pple-tab-span" style=3D"white-space:pre">=09</span>from /Users/tsummerville=
+/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/ffi-1.0.11/lib/ffi/librar=
+y.rb:121:in `block in ffi_lib'</font></div><div><font face=3D"'courier new'=
+, monospace"><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09</=
+span>from /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/g=
+ems/ffi-1.0.11/lib/ffi/library.rb:88:in `map'</font></div><div><font face=
+=3D"'courier new', monospace"><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">=09</span>from /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@pr=
+ova-vhm-raw2xml/gems/ffi-1.0.11/lib/ffi/library.rb:88:in `ffi_lib'</font></=
+div><div><font face=3D"'courier new', monospace"><span class=3D"Apple-tab-s=
+pan" style=3D"white-space:pre">=09</span>from /Users/tsummerville/.rvm/gems=
+/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-v=
+hm-raw2xml.rb:9:in `&lt;module:Raw2Xml&gt;'</font></div><div><font face=3D"=
+'courier new', monospace"><span class=3D"Apple-tab-span" style=3D"white-spa=
+ce:pre">=09</span>from /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-=
+vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:6:in `&lt=
+;module:ProvaVHM&gt;'</font></div><div><font face=3D"'courier new', monospa=
+ce"><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>from=
+ /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova=
+-vhm-raw2xml-0.1.0/lib/prova-vhm-raw2xml.rb:5:in `&lt;module:Fleetio&gt;'</=
+font></div><div><font face=3D"'courier new', monospace"><span class=3D"Appl=
+e-tab-span" style=3D"white-space:pre">=09</span>from /Users/tsummerville/.r=
+vm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/=
+prova-vhm-raw2xml.rb:4:in `&lt;top (required)&gt;'</font></div><div><font f=
+ace=3D"'courier new', monospace"><span class=3D"Apple-tab-span" style=3D"wh=
+ite-space:pre">=09</span>from /Users/tsummerville/.rvm/rubies/ruby-1.9.2-p1=
+80/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:60:in `require'</fon=
+t></div><div><font face=3D"'courier new', monospace"><span class=3D"Apple-t=
+ab-span" style=3D"white-space:pre">=09</span>from /Users/tsummerville/.rvm/=
+rubies/ruby-1.9.2-p180/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:=
+60:in `rescue in require'</font></div><div><font face=3D"'courier new', mon=
+ospace"><span class=3D"Apple-tab-span" style=3D"white-space:pre">=09</span>=
+from /Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/site_ruby/1.9=
+.1/rubygems/custom_require.rb:35:in `require'</font></div><div><font face=
+=3D"'courier new', monospace"><span class=3D"Apple-tab-span" style=3D"white=
+-space:pre">=09</span>from (irb):1</font></div><div><font face=3D"'courier =
+new', monospace"><span class=3D"Apple-tab-span" style=3D"white-space:pre">=
+=09</span>from /Users/tsummerville/.rvm/rubies/ruby-1.9.2-p180/bin/irb:16:i=
+n `&lt;main&gt;'</font></div></div><div><br></div><div>Here's the relevant =
+directories/files in my Ruby Gem:</div><div><br></div><div><font face=3D"'c=
+ourier new', monospace">/prova-vhm-raw2xml</font></div><div><font face=3D"'=
+courier new', monospace">&nbsp; /lib</font></div><div><font face=3D"'courie=
+r new', monospace">&nbsp; &nbsp; /prova-vhm-raw2xml.rb</font></div><div><fo=
+nt face=3D"'courier new', monospace">&nbsp; &nbsp; /libZVLParser64</font></=
+div><div><font face=3D"'courier new', monospace">&nbsp; &nbsp; &nbsp; /libZ=
+VLParser64.so</font></div><div><br></div><div>Here's the relevant code in&n=
+bsp;<font face=3D"'courier new', monospace">prova-vhm-raw2xml.rb</font>:</d=
+iv><div><br></div><div><font face=3D"'courier new', monospace">require 'ffi=
+'<br></font></div><div><font face=3D"'courier new', monospace"><br></font><=
+/div><div><div><font face=3D"'courier new', monospace">module ProvaVHM</fon=
+t></div><div><font face=3D"'courier new', monospace">&nbsp; module Raw2Xml<=
+/font></div><div><font face=3D"'courier new', monospace">&nbsp; &nbsp; exte=
+nd FFI::Library</font></div><div><font face=3D"'courier new', monospace">&n=
+bsp;&nbsp;</font></div><div><font face=3D"'courier new', monospace">&nbsp; =
+&nbsp; ffi_lib File.expand_path(File.dirname(__FILE__) + '/libZVLParser64/l=
+ibZVLParser64.so')</font></div><div><font face=3D"'courier new', monospace"=
+>&nbsp;&nbsp;</font></div><div><font face=3D"'courier new', monospace">&nbs=
+p; &nbsp; # THIS WORKS FINE.</font></div><div><font face=3D"'courier new', =
+monospace">&nbsp; &nbsp; # ffi_lib FFI::Library::LIBC</font></div><div><fon=
+t face=3D"'courier new', monospace">&nbsp; &nbsp; # attach_function :getpid=
+, [], :int</font></div><div><font face=3D"'courier new', monospace">&nbsp;&=
+nbsp;</font></div><div><font face=3D"'courier new', monospace">&nbsp; &nbsp=
+; def self.hi</font></div><div><font face=3D"'courier new', monospace">&nbs=
+p; &nbsp; &nbsp; puts "Hola!"</font></div><div><font face=3D"'courier new',=
+ monospace">&nbsp; &nbsp; end</font></div><div><font face=3D"'courier new',=
+ monospace">&nbsp; end</font></div><div><font face=3D"'courier new', monosp=
+ace">end</font></div></div><div><font face=3D"'courier new', monospace"><br=
+></font></div><div><font face=3D"arial, sans-serif">Other potentially relev=
+ant notes:</font></div><div><font face=3D"arial, sans-serif">- I'm on Mac O=
+SX with 64 bit processor</font></div><div><font face=3D"arial, sans-serif">=
+- The&nbsp;</font><span style=3D"font-family: 'courier new', monospace; ">l=
+ibZVLParser64.so </span><font face=3D"arial, sans-serif">was compiled for 6=
+4 bit architecture</font></div><div><font face=3D"arial, sans-serif"><br></=
+font></div><div><font face=3D"arial, sans-serif">Anything obvious that I'm =
+missing? I'm new to FFI and wrapping C libs with Ruby in general, so I'm ju=
+st not quite sure what I'm doing wrong. I've read through all the documenta=
+tion and looked through the Google Group but can't figure out what the prob=
+lem is.</font></div><div><font face=3D"arial, sans-serif"><br></font></div>=
+<div><font face=3D"arial, sans-serif">Thanks again for any help or insight =
+you can provide!</font></div>
+------=_Part_210_12137291.1331046642684--

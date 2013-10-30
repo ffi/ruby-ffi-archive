@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: distributing c with gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: distributing c with gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/19/12 5:34 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">
+                <div>In reply to mixtli, yes auto tools are really that difficult!
+                </div><div><br></div><div>Since then, I merged a pull request from neelance for a new build system implemented with a Rakefile (https://github.com/jvoorhis/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile). This is added to the gemspec and everything Just Works. It's great to rely on FFI instead of the Ruby C API but still package library dependencies this way. Perhaps the boilerplate could be more streamlined...</div><div><br></div><div>Cheers,</div><div><br></div><div>Jeremy Voorhis</div>
+                <div></div>
+                 
+                <p style="color: #A0A0A8;">On Thursday, April 19, 2012 at 1:01 PM, Hampton Catlin wrote:</p>
+                <blockquote type="cite" style="border-left-style:solid;border-width:1px;margin-left:0px;padding-left:10px;">
+                    <span><div><div>I'm also super interested in this. I have a small C library that I'd rather just<div>bundle in with the gem and allow local compilation.</div><div><br></div><div>What mixtli described is what I would assume would work... but I don't know&nbsp;</div><div>how to actually make ffi see the code!</div><div><br></div><div>-hampton.<br><br>On Sunday, October 23, 2011 6:38:14 PM UTC-7, mixtli wrote:<blockquote type="cite"><div>Wow, is it really that difficult? &nbsp;I'd have thought it'd just be a
+<br>matter of setting up an extconf to build the extension and then
+<br>telling ffi somehow about the ext/foo directory as a library path.
+<br>
+<br>
+<br>On Oct 23, 1:52&nbsp;pm, Jeremy Voorhis &lt;<a>jvoor...@gmail.com</a>&gt; wrote:
+<br>&gt; &nbsp;I've tried to crack this one as well. After learning that RubyGems will build extensions using configure-make-install in addition to extconf.rb, I have a branch of ruby-llvm that uses the autotools to build and manage a shared library, but unfortunately haven't released it yet because of incompatibilities between autoconf versions on Mac and Ubuntu.
+<br>&gt;
+<br>&gt; You can see my approach athttps://<a href="http://github.com/jvoorhis/ruby-llvm/tree/support-lib" target="_blank">github.com/jvoorhis/<wbr>ruby-llvm/tree/support-lib</a>. If anyone is an autotools pro, or has a better idea, please help! :)
+<br>&gt;
+<br>&gt; Jeremy
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; On Sunday, October 23, 2011 at 2:49 AM, mixtli wrote:
+<br>&gt; &gt; &nbsp;I want to package up my c source with my gem, and call it from ffi.
+<br>&gt; &gt; How can I tell ffi to use a library packaged with the gem instead of
+<br>&gt; &gt; looking in the system libraries?</div></blockquote></div></div></div></span>
+                 
+                 
+                 
+                 
+                </blockquote>
+                 
+                <div>
+                    <br>
+                </div>
+            
+</div></body>
+</html>
+</table></div>

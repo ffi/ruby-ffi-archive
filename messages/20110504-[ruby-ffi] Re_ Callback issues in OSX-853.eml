@@ -1,0 +1,78 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs36177agb;
+        Wed, 4 May 2011 21:37:04 -0700 (PDT)
+Received: by 10.52.18.11 with SMTP id s11mr2331283vdd.269.1304570223340;
+        Wed, 04 May 2011 21:37:03 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIK5jujIBhDp0ojuBBoEJ10OGQ@googlegroups.com>
+Received: from mail-vx0-f190.google.com ([209.85.220.190])
+        by mx.google.com with ESMTPS id i16si1703755vbs.64.2011.05.04.21.37.03
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 04 May 2011 21:37:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIK5jujIBhDp0ojuBBoEJ10OGQ@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIK5jujIBhDp0ojuBBoEJ10OGQ@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCIK5jujIBhDp0ojuBBoEJ10OGQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vxb40 with SMTP id 40sf1563703vxb.7
+        for <headius@headius.com>; Wed, 04 May 2011 21:37:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=SzlADnHMtThctU8+ROM+DfhSffiZphKfiRKeaf0ASdo=;
+        b=nXlEDJq+eToxE61o9obHXKVMjeiSJqPX3P7nUZnOkBbAgJtl0eaUqyPb1wfHtaxKhG
+         DkUdedMG/4mcZou86X2USpLWoZLHv4o9AQAoGECnmXXS0KE5N09rLcFTGMO5shrCODZS
+         8zxZ5Mik80LWWIS+qwtRQGuXxDcKOATqK8qOk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=HJI2c7OD2eGwxAUqjMmIYPLZQb9ZhZpoOtDr35t6SUu0+8JedPpUE9ub7IzIEoiAW4
+         W/pxuowBMtd2rBVaG0bzZl/Xtsfu6D5rjmRl+Mmg3GmXM4bu6VcQc3MD0XX3QSI8PVUK
+         tS4o+IBzsU54jF847XTQUPGiuc+DkOJd87VIU=
+Received: by 10.220.184.167 with SMTP id ck39mr286009vcb.1.1304570217456;
+        Wed, 04 May 2011 21:36:57 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.173.66 with SMTP id o2ls240368vcz.5.gmail; Wed, 04 May
+ 2011 21:36:56 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.110.87 with SMTP id m23mr261447vcp.31.1304570216828; Wed,
+ 04 May 2011 21:36:56 -0700 (PDT)
+Received: by c26g2000vbq.googlegroups.com with HTTP; Wed, 4 May 2011 21:36:56
+ -0700 (PDT)
+Date: Wed, 4 May 2011 21:36:56 -0700 (PDT)
+In-Reply-To: <97dd4841-78a9-4fec-9bfc-7a7b454b8806@p6g2000vbn.googlegroups.com>
+X-IP: 76.15.194.193
+References: <97dd4841-78a9-4fec-9bfc-7a7b454b8806@p6g2000vbn.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_7)
+ AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.57 Safari/534.24,gzip(gfe)
+Message-ID: <ebd2faf5-703c-42e2-b83b-daa850b0de7c@c26g2000vbq.googlegroups.com>
+Subject: [ruby-ffi] Re: Callback issues in OSX
+From: Ari <ari.russo@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: ari.russo@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+the callback should read
+
+EventCallback = FFI::Function.new(:pointer,
+[:pointer, :pointer, :pointer]) do | newPackets_ptr, refCon_ptr,
+connRefCon_ptr |
+      puts "hello from the callback"
+end

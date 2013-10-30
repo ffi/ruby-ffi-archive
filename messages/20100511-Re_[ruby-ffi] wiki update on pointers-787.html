@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] wiki update on pointers</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] wiki update on pointers</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/10 12:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><font class="Apple-style-span" face="arial, helvetica, sans-serif"><font class="Apple-style-span" color="#330033">It looks correct to me, except in my experience, MemoryPointer makes it unnecessary to wrap malloc(). For example, instead of,</font></font><div>
+<font class="Apple-style-span" face="arial, helvetica, sans-serif"><font class="Apple-style-span" color="#330033">  </font></font><span class="Apple-style-span" style="font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" face="arial, helvetica, sans-serif"><font class="Apple-style-span" color="#330033">LibC.malloc(baz.first.size * baz.size)</font></font></span></div>
+<div><span class="Apple-style-span" style="font-family: arial, helvetica, sans-serif; font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" color="#330033">I would write,</font></span></div>
+<div><span class="Apple-style-span" style="font-family: arial, helvetica, sans-serif; font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" color="#330033">  MemoryPointer.new(baz.first.size * baz.size).</font></span></div>
+<div><span class="Apple-style-span" style="font-family: arial, helvetica, sans-serif; font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" color="#330033"><br></font></span></div><div><span class="Apple-style-span" style="font-family: arial, helvetica, sans-serif; font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" color="#330033">The block form of MemoryPointer is also useful for automatically freeing the pointer when finished.</font></span></div>
+<div><span class="Apple-style-span" style="font-family: arial, helvetica, sans-serif; font-size: 12px; line-height: 16px; white-space: pre; "><font class="Apple-style-span" color="#330033"><br></font></span></div><div><font class="Apple-style-span" color="#330033" face="arial, helvetica, sans-serif" size="3"><span class="Apple-style-span" style="font-size: 12px; line-height: 16px; white-space: pre;">MemoryPointer.new(baz.first.size * baz.size) do |p|</span></font></div>
+<div><font class="Apple-style-span" color="#330033" face="arial, helvetica, sans-serif" size="3"><span class="Apple-style-span" style="font-size: 12px; line-height: 16px; white-space: pre;">  p.write_array_of_int(baz)</span></font></div>
+<div><font class="Apple-style-span" color="#330033" face="arial, helvetica, sans-serif" size="3"><span class="Apple-style-span" style="font-size: 12px; line-height: 16px; white-space: pre;">  C.DoSomethingWithArrayOfInt(p)</span></font></div>
+<div><font class="Apple-style-span" color="#330033" face="arial, helvetica, sans-serif" size="3"><span class="Apple-style-span" style="font-size: 12px; line-height: 16px; white-space: pre;">end</span></font></div><div><br>
+</div><div>Best,</div><div><br></div><div>Jeremy</div><div><br><div class="gmail_quote">On Tue, May 11, 2010 at 9:02 AM, Chuck Remes <span dir="ltr">&lt;<a href="mailto:cremes.devlist@mac.com">cremes.devlist@mac.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">I just wrote an update to the wiki page on pointers at <a href="http://wiki.github.com/ffi/ffi/pointers" target="_blank">http://wiki.github.com/ffi/ffi/pointers</a><br>
+
+<br>
+I&#39;d appreciate it if someone more knowledgeable would check it over (the bottom section under the sub-heading) and verify that what I wrote is correct. It seems to be working for me but I&#39;ve been wrong before! :)<br>
+
+<font color="#888888"><br>
+cr<br>
+<br>
+</font></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs103918bkh;
+        Wed, 20 Oct 2010 20:58:18 -0700 (PDT)
+Received: by 10.150.190.20 with SMTP id n20mr2686736ybf.382.1287633497793;
+        Wed, 20 Oct 2010 20:58:17 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRDX9P7lBBoER7HD_Q@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTP id p13si19104900ybk.2.2010.10.20.20.58.16;
+        Wed, 20 Oct 2010 20:58:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRDX9P7lBBoER7HD_Q@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRDX9P7lBBoER7HD_Q@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRDX9P7lBBoER7HD_Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywa8 with SMTP id 8sf3487657ywa.7
+        for <headius@headius.com>; Wed, 20 Oct 2010 20:58:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=esa1RJ7ZHv3tO2lPUGLmnuWgYtniScF4K5g84is8dG4=;
+        b=7OXQGMWKpeOzpHD2y57Z/yGmujV9FZ04XCWCW2qfNqEB3VxMPealN/wGs/pAGpURnC
+         XL5DEV+ixaCLVod6zK7OT4ekz1jsHvtzKMTdw8sWgbyXPzl7oFcrzhnktMquHThNe8l9
+         qCaEx6YusHSwoCQOrHL7njCFcaBqVeTfP1jng=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=TzCP6SKJadapP2Mjx2B+Ew41ziUzGlZcLent/YoNy6XR3w8dsU89xU7KBGjrqNjiNn
+         wlsyiPseQ4jEU+vrlqjYIbos9yc8ZSXik7a6A1tXC6JFp5iCoCdr7xD21buP4hSJqyZ0
+         Ujv1b74ECbXwSPOcfqw0QeiHxh0IKkKIuuqt0=
+Received: by 10.90.96.19 with SMTP id t19mr78174agb.52.1287633495980;
+        Wed, 20 Oct 2010 20:58:15 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.201.1 with SMTP id d1ls240891agq.2.p; Wed, 20 Oct 2010
+ 20:58:15 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.69.18 with SMTP id r18mr81147aga.16.1287633495510; Wed, 20
+ Oct 2010 20:58:15 -0700 (PDT)
+Received: by s12g2000prs.googlegroups.com with HTTP; Wed, 20 Oct 2010 20:58:15
+ -0700 (PDT)
+Date: Wed, 20 Oct 2010 20:58:15 -0700 (PDT)
+In-Reply-To: <AANLkTikyfsK+rnB39F7Rf3vG4bLRwz_4QT6JcVvFhBJF@mail.gmail.com>
+X-IP: 174.31.65.79
+References: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+ <AANLkTik783R+H+quONriDia62AS6WRdtzwLEasEEW2Ym@mail.gmail.com>
+ <9586cd7d-ffbc-4255-8c73-adb575b9a5b8@u24g2000pru.googlegroups.com> <AANLkTikyfsK+rnB39F7Rf3vG4bLRwz_4QT6JcVvFhBJF@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <d77ca1d2-3ae8-4e1f-a712-666396bda2bd@s12g2000prs.googlegroups.com>
+Subject: [ruby-ffi] Re: Linked list of structs
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Thanks, I am starting to get the hang of it. One last problem
+remains(I hope).
+
+
+This struct is giving me fits
+
+struct pcap_pkthdr {
+	struct timeval ts;	/* time stamp */
+	bpf_u_int32 caplen;	/* length of portion present */
+	bpf_u_int32 len;	/* length this packet (off wire) */
+};
+
+
+A pointer of this gets passed into: const u_char*  pcap_next(pcap_t *,
+struct pcap_pkthdr *);
+
+attach_function :pcap_next,[:pointer,:pointer],:pointer
+
+I can apparently get caplen and len without issue, but the timeval
+field is reported as a pointer and any attempt to get at it results in
+a seg fault.
+
+
+ph_ptr = FFI::MemoryPointer.new :pointer,Header::Pcap_pkthdr.size,true
+pack=Header::Pcap_pkthdr.new ph_ptr
+pack[:ts]=TimeStamp::Timeval.new
+packet=Pcap::pcap_next @pcap_ptr,pack
+raise "no packet read" if packet.null?
+
+puts pack[:ts] #pointer object
+
+packet is not null, so it appears the packet is read properly(I
+haven't laid out the various header and payload structures yet.
+

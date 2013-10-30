@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Having trouble with a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Having trouble with a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Qwerty <qwerty123451910@hotmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/3/10 7:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thank you for your reply.
+
+1. Open suse 11.3 kernel: 2.6.34.7-0.5-desktop #1 SMP PREEMPT.
+Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz
+
+2. I tried it with JRuby 1.5.2 and got an error about pack being
+undefined. I tried the alias packed with no luck. The JRuby ffi gem
+directory only has 1 file ffi-0.6.3-java/lib/ffi.rb. Are the other
+files outside this directory? The docs only show the 3 methods defined
+in that file(Pointer), yet is doesn't complain about FFI::Struct.
+
+3. I would need to do some more testing but that seems to work.
+
+On Nov 3, 4:32 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Indeed, looks like a bug.  That should not be neccessary at all - that
+<span class="moz-txt-citetags">&gt; </span>struct should pack naturally.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>A couple of things:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>1) What OS/cpu is this on?
+<span class="moz-txt-citetags">&gt; </span>2) Can you try it on JRuby?
+<span class="moz-txt-citetags">&gt; </span>3) Can you try adding 'pack 1' before the layout line?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 4 November 2010 08:08, Qwerty <a class="moz-txt-link-rfc2396E" href="mailto:qwerty123451...@hotmail.com">&lt;qwerty123451...@hotmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I found a way around the problems I was having. Any field bigger than
+<span class="moz-txt-citetags">&gt; &gt; </span>8 bits I declare as [:uchar,x bytes]. Feels like an ugly hack to get
+<span class="moz-txt-citetags">&gt; &gt; </span>around what seems to be a pretty nasty bug
+</pre></div></body>
+</html>
+</table></div>

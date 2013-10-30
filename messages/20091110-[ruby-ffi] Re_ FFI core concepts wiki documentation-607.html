@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/10/09 11:10 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/11/11 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Passing a Single String by Reference
+<span class="moz-txt-citetags">&gt; </span>-------------------------------------
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Assume the method:
+<span class="moz-txt-citetags">&gt; </span>       int aug_get(const augeas *aug, const char *path, const char **value);
+</pre></blockquote><pre wrap>
+
+[...]
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Passing an Array of Strings back by Reference
+<span class="moz-txt-citetags">&gt; </span>----------------------------------------------
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>int aug_match(const augeas *aug, const char *path, char ***matches);
+</pre></blockquote><pre wrap>
+
+Since these are pretty common things in C (well, in those types of
+apis), I've been wondering if adding a higher-level wrapper would make
+it easier to read/less confusing to write.
+
+e.g.
+  ref = FFI::Reference.new :string
+  AugeasLib.aug_get("foo", "/bar", ref)
+  str = ref.get  # returns a string, or nil for null
+  # do stuff with str as you would expect
+
+and
+  ref = FFI::Reference.new :string_array # or maybe Reference.new [ :string ]
+  AugeasLib.aug_match("foo", "/bar", ref)
+  str_ary = ref.get  # pulls out all the strings and puts them in an
+array, stopping at first null
+  str_ary.each { <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code> # do stuff with each string }
+
+I think this adds a bit of clarity when reading, since it is easy to
+spot that you're just passing in a reference that you expect the C
+code to fill out, and not for some more generic pointer/memory use.
+
+This could all be implemented in a third-party gem, e.g. NiceFFI,
+which would be preferable to putting it in ruby-ffi itself, since that
+way it can evolve faster, and be used across both CRuby and JRuby.
+</pre></div></body>
+</html>
+</table></div>

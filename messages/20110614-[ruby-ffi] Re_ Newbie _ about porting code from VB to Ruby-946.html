@@ -1,0 +1,88 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Newbie ? about porting code from VB to Ruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Newbie ? about porting code from VB to Ruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>JesseFair <jfair9@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/14/11 12:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Charles,
+
+Thanks for taking the time to provide this solution. In my attempt to
+implement the solution I am recieving a return_code = 11 when
+attempting to connect to the Presentation Space. According to the
+documentation that return code means the following: WHLLUNAVAILABLE
+Connect request failed, specified session is unavailable (already in
+use).
+
+It appears I am able to run WinHLLAPIStartup because when I check the
+contents of data[:wVersion] &amp; data[:szDescription] they appear to be
+correct. I am attempting to connect to the Presentation Space with the
+below call:
+
+  # Connect to presentation Space
+  function.write_uint16(1)
+  string = "A"
+  length.write_uint16(1)
+  return_code.write_uint16(0)
+
+  hold = HLLAPI::WinHLLAPI(function, string, length, return_code)
+
+The above does not work and when I try to run other commands that
+require a connection to the Presentation Space I get a return code of
+1 or WHLLNOTCONNECTED. I am able to run other WinHLLAPI functions that
+dont require a connection to the presentation space such as pause.
+
+Once again thanks a bunch for your help.
+
+Thanks
+Jesse
+
+On Jun 8, 4:14 pm, Charles Strahan <a class="moz-txt-link-rfc2396E" href="mailto:charles.c.stra...@gmail.com">&lt;charles.c.stra...@gmail.com&gt;</a>
+wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi Jesse,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Welcome to the Ruby community!
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I think this will work for you:<a class="moz-txt-link-freetext" href="https://gist.github.com/1015672">https://gist.github.com/1015672</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I tried to annotate the sample as well as I could. If anything is unclear,
+<span class="moz-txt-citetags">&gt; </span>or doesn't work, please let me know.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Unfortunately, I do not have the HLLAPI lib to test with, so I had to base
+<span class="moz-txt-citetags">&gt; </span>that code off of the docs and some .NET samples.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>HTH,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-Charles
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-rfc2396E" href="https://gist.github.com/1015672">&lt;https://gist.github.com/1015672&gt;</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Wed, Jun 8, 2011 at 1:11 PM, JesseFair <a class="moz-txt-link-rfc2396E" href="mailto:jfa...@gmail.com">&lt;jfa...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I tried Win32API as well but cant find out how to pass the cutom data
+<span class="moz-txt-citetags">&gt; &gt; </span>type WHLLAPIDATA that the WinHLLAPIStartup function is expecting.
+<span class="moz-txt-citetags">&gt; &gt; </span>Being new to Ruby I cant find a way to construct something that acts
+<span class="moz-txt-citetags">&gt; &gt; </span>similar to the above code -.. i.e. custom data types. I was able to
+<span class="moz-txt-citetags">&gt; &gt; </span>get the examples up and working but they only use simple data types
+<span class="moz-txt-citetags">&gt; &gt; </span>such as int and string.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>On Jun 8, 1:18 am, candlerb <a class="moz-txt-link-rfc2396E" href="mailto:b.cand...@pobox.com">&lt;b.cand...@pobox.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>I am not a Windows expert, but have you tried looking at Win32API
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>instead of FFI? This may be all that you need. There are plenty of
+<span class="moz-txt-citetags">&gt; &gt; &gt; </span>examples if you google for them.
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://ww">http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://ww</a>...- Hide quoted text -
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- Show quoted text -
+</pre></div></body>
+</html>
+</table></div>

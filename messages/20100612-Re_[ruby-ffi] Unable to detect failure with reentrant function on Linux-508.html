@@ -1,0 +1,102 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Unable to detect failure with reentrant function on  Linux</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Unable to detect failure with reentrant function on  Linux</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/12/10 10:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+A couple of things:
+1) You should map getprotobynumber_r as:
+
+attach_function 'getprotobynumber_r', [:int, :pointer, :pointer,
+:long, :pointer], :int
+
+2) and call it like so:
+
+
+# getprotobynumber_r will use the buffer you pass in as the allocation
+area for the names
+# of the protocol, so allocate some native memory for it.
+
+namebuf  = FFI::MemoryPointer.new(:char, 1024, false)
+pstruct = ProtocolStruct.new
+ptr = FFI::MemoryPointer.new(:pointer)
+
+rc = getprotobynumber_r(protocol, pstruct, namebuf, 1024, qptr)
+
+3) a return val of 0 signifies success, and pstruct will be filled out
+with the data.  For non-zero returns, you should probably check errno,
+and raise an exception if it is anything other than the not-found
+case.
+
+return rc == 0 &amp;&amp; !qptr.get_pointer(0).null? ? pstruct[:p_name] : nil
+
+Note: the signature for getprotobynumber_r is different across linux,
+solaris and aix, so its a bit nasty, unless you only care about linux,
+or you have code for each of those cases.
+
+
+On 13 June 2010 12:38, Daniel Berger <a class="moz-txt-link-rfc2396E" href="mailto:djberg96@gmail.com">&lt;djberg96@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Ruby 1.8.6
+<span class="moz-txt-citetags">&gt; </span>FFI 0.6.3
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I cannot seem to detect a failure with getprotobynumber_r on Linux
+<span class="moz-txt-citetags">&gt; </span>when I intentionally pass it a bogus value. Instead, it returns the
+<span class="moz-txt-citetags">&gt; </span>last value of /etc/protocols.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>What am I doing wrong?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module Net
+<span class="moz-txt-citetags">&gt; </span> class Proto
+<span class="moz-txt-citetags">&gt; </span>   extend FFI::Library
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   unless RUBY_PLATFORM == 'java' &amp;&amp; JRUBY_VERSION.to_f &lt; 1.5
+<span class="moz-txt-citetags">&gt; </span>     ffi_lib(FFI::Library::LIBC)
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   class ProtocolStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>     layout(
+<span class="moz-txt-citetags">&gt; </span>       :p_name,    :string,
+<span class="moz-txt-citetags">&gt; </span>       :p_aliases, :pointer,
+<span class="moz-txt-citetags">&gt; </span>       :p_proto,   :int
+<span class="moz-txt-citetags">&gt; </span>     )
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   attach_function 'setprotoent', [:int], :void
+<span class="moz-txt-citetags">&gt; </span>   attach_function 'endprotoent', [], :void
+<span class="moz-txt-citetags">&gt; </span>   attach_function 'getprotobynumber_r',
+<span class="moz-txt-citetags">&gt; </span>[:int, :pointer, :string, :long, :pointer], :int
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   def self.getprotobynumber(protocol)
+<span class="moz-txt-citetags">&gt; </span>     raise TypeError unless protocol.is_a?(Integer)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>     pptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+<span class="moz-txt-citetags">&gt; </span>     qptr = FFI::MemoryPointer.new(ProtocolStruct.size)
+<span class="moz-txt-citetags">&gt; </span>     buf  = 1.chr * 1024
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>     begin
+<span class="moz-txt-citetags">&gt; </span>       setprotoent(0)
+<span class="moz-txt-citetags">&gt; </span>       int = getprotobynumber_r(protocol, pptr, buf, buf.size, qptr)
+<span class="moz-txt-citetags">&gt; </span>     ensure
+<span class="moz-txt-citetags">&gt; </span>       endprotoent()
+<span class="moz-txt-citetags">&gt; </span>     end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>     int &gt; 0 || qptr.null? ? nil : ProtocolStruct.new(pptr)[:p_name]
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>p Net::Proto.getprotobynumber(999999999) # should be nil
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Regards,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Dan
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI 1.0.6 fails to compile</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI 1.0.6 fails to compile</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/9/11 6:32 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I just found out that Ruby 1.8 gives a more descriptive error
+message:
+===================================
+$ sudo LANG=en_US.utf8 gem18 install ffi
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+        /opt/rubies/ruby-1.8.7-p334/bin/ruby18 extconf.rb
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... yes
+checking for ffi_prep_raw_closure()... yes
+checking for rb_thread_blocking_region()... no
+checking for ruby_thread_has_gvl_p()... no
+checking for ruby_native_thread_p()... no
+checking for rb_thread_call_with_gvl()... no
+creating extconf.h
+creating Makefile
+
+make
+gcc -I. -I. -I/opt/rubies/ruby-1.8.7-p334/lib/ruby/1.8/x86_64-linux -
+I. -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -g -O2  -fPIC  -I/usr/lib/
+libffi-3.0.9/include   -Wno-declaration-after-statement   -c
+DataConverter.c
+In file included from /usr/include/linux/param.h:4:0,
+                 from /usr/include/sys/param.h:28,
+                 from ./endian.h:4,
+                 from /usr/include/bits/waitstatus.h:65,
+                 from /usr/include/stdlib.h:43,
+                 from /opt/rubies/ruby-1.8.7-p334/lib/ruby/1.8/x86_64-
+linux/ruby.h:40,
+                 from DataConverter.c:2:
+/usr/include/asm/param.h:1:31: fatal error: asm-generic/param.h: No
+such file or directory
+compilation terminated.
+make: *** [DataConverter.o] Error 1
+
+
+Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.8.7-p334/lib<span class="moz-txt-tag">/</span></i>
+ruby/gems/1.8/gems/ffi-1.0.7 for inspection.
+Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.8.7-p334/lib/ruby/gems/1.8/gems<span class="moz-txt-tag">/</span></i>
+ffi-1.0.7/ext/ffi_c/gem_make.out
+
+===================================
+
+The informative part is this one:
+
+/usr/include/asm/param.h:1:31: fatal error: asm-generic/param.h: No
+such file or directory
+
+I saw a similar error when I compiled my Ruby, and wondered why
+various asm files are missing from my system. Since that day I had to
+compile my Ruby with "CFLAGS=-I/usr/src/linux-2.6.37-ARCH/include"
+appended to it, which worked but seemed ugly to me. Any clue on what
+is broken on my system?
+
+Vale,
+Quintus
+</pre></div></body>
+</html>
+</table></div>

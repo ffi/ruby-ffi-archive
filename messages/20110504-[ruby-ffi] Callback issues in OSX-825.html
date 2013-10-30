@@ -1,0 +1,59 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Callback issues in OSX</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Callback issues in OSX</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Ari <ari.russo@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/4/11 10:32 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+My setup is OSX 10.6.7
+ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-darwin10.7.0]
+
+Here is a collection of relevant code
+
+ffi_lib '<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>System/Library/Frameworks/CoreMIDI.framework/Versions<span class="moz-txt-tag">/</span></i>
+Current/CoreMIDI'
+
+I am passing this callback
+
+EventCallback = FFI::Function.new(:void,
+[:pointer, :pointer, :pointer]) do | newPackets_ptr, refCon_ptr,
+connRefCon_ptr |
+      puts "hello from the callback"
+end
+
+to this method:
+
+attach_function :MIDIInputPortCreate,
+[:pointer, :pointer, :pointer, :pointer, :pointer], :int
+
+MIDIInputPortCreate(@client, port_name, EventCallback, nil,
+endpoint_ptr)
+
+(which is returning 0 / no error)
+
+The print statement is never called, nor do I receive any errors or
+segfault.
+
+I have tried passing :blocking =&gt; true to FFI::Function.new...using a
+Proc instead, using instance variables instead of a constant. I've
+tried changing the number of parameters on EventCallback to see if I
+could force an exception but even that didn't result in anything.
+
+I am able to successfully interact with other methods in the system
+library--this callback is the only issue
+
+Here is a reference for the method I am passing the callback to:
+<a class="moz-txt-link-freetext" href="http://xmidi.com/docs/coremidi22.html">http://xmidi.com/docs/coremidi22.html</a>
+
+And for the callback:
+<a class="moz-txt-link-freetext" href="http://xmidi.com/docs/coremidi77.html">http://xmidi.com/docs/coremidi77.html</a>
+
+I can send more code if needed. I am hoping someone who has worked
+with ruby-ffi in OSX will see the issue right off the bat. I've worked
+with ffi in windows and linux before but this is new to me.
+
+Any ideas are of course appreciated. Thanks
+</pre></div></body>
+</html>
+</table></div>

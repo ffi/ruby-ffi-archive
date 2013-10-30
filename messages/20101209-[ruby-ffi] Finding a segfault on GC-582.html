@@ -1,0 +1,78 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Finding a segfault on GC</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Finding a segfault on GC</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;dark.panda&quot; &lt;dark.panda@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/10 8:21 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+G'day list!
+
+I've been working on writing an ffi interface to the GEOS library and
+have hit a brick wall trying to track down a weird memory issue. The
+interface for the library itself is available at <a class="moz-txt-link-freetext" href="https://github.com/dark-panda/ffi-geos">https://github.com/dark-panda/ffi-geos</a>
+. I've posted a smaller example of the issue I'm seeing as a gist up
+at <a class="moz-txt-link-freetext" href="https://gist.github.com/735620">https://gist.github.com/735620</a> , and I'm testing against the latest
+ffi master from github and Ruby 1.9.2-p0 on OSX using the latest GEOS
+svn trunk, although the same problem manifests itself in GEOS 3.2.2 as
+well.
+
+The GEOS library uses two callbacks for emitting notices and errors.
+The callbacks are set in the initGEOS_r function, and both have a
+prototype of "void (*)(const char *fmt, ...);".
+
+In the code in the aforementioned gist, I am purposely passing bad
+data to GEOSWKTReader_read_r to force the error_handler callback to
+fire. The callback in this case does nothing, and GEOSWKTReader_read_r
+will return a NULL pointer. However, when GC.start is called, we get a
+segfault. From the gdb backtrace:
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: 13 at address: 0x0000000000000000
+0x0000000100106932 in st_lookup (table=0x100043780, key=5912,
+value=0x7fff5fbfc808) at st.c:333
+333	            if ((st_data_t)table-&gt;bins[i*2] == key) {
+
+However, if you uncomment out the print statement in the error_handler
+callback, the segfault disappears. The print statement can contain any
+non-empty string and it will prevent the segfault.
+
+Other strangeness: moving the wkt_ptr lines inside of the 10.times
+loop produces one of several different errors at random...
+
+- sometimes a segfault occurs due to an EXC_BAD_ACCESS in
+callback_with_gvl in Function.c, line 558 ("Type* returnType = cbInfo-
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>returnType;").
+</pre></blockquote><pre wrap>
+
+- other times the code won't segfault but an exception will be raised.
+The exceptions will be one of the following:
+
+* undefined method `call' for "ParseException: Unknown type:
+'GIBBERISH'":String
+* undefined method `call' for #&lt;Array:0x00000102019278&gt;
+* undefined method `call' for "%s":String
+* method `call' called on hidden T_ARRAY object (0x00000101812980
+flags=0xa007 klass=0x0)
+
+The only real solution I've found so far is to modify the GEOS library
+code to allow the error and notice handlers to be set to NULL pointers
+and to do checks in the library to prevent the handlers from being
+called in such cases. This allows you to set the handlers to nil in
+Ruby code and all is well.
+
+Anyone have any ideas as to what's going on? I'm at my wits end at
+this point. Modifying GEOS itself might not be an option, but if
+there's something I can do in Ruby that would be awesome.
+
+For anyone interested, I've also started a thread on the geos-devel
+list here: <a class="moz-txt-link-freetext" href="http://lists.osgeo.org/pipermail/geos-devel/2010-December/005043.html">http://lists.osgeo.org/pipermail/geos-devel/2010-December/005043.html</a>
+.
+
+Cheers and thanks for reading list!
+
+J
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.193.169 with SMTP id hp9cs48095igc;
+        Wed, 9 Nov 2011 01:33:36 -0800 (PST)
+Received: by 10.224.221.143 with SMTP id ic15mr884925qab.41.1320831214720;
+        Wed, 09 Nov 2011 01:33:34 -0800 (PST)
+Return-Path: <ruby-ffi+bncCNf64-LMCxDqken1BBoEwOsbNA@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id gx10si2655109qab.95.2011.11.09.01.33.34
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 09 Nov 2011 01:33:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNf64-LMCxDqken1BBoEwOsbNA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNf64-LMCxDqken1BBoEwOsbNA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCNf64-LMCxDqken1BBoEwOsbNA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyl16 with SMTP id 16sf789208qyl.7
+        for <headius@headius.com>; Wed, 09 Nov 2011 01:33:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=oCigR82McCXsLTJaL1klljqISbMBUhXs7hx/GjY7o9E=;
+        b=yvBUWzyfpupQvFHOIs+fvxeHMzlRdXShan8OM3rSfpgTuaWcLmqPksZQKMNtFwkgfz
+         boiB4iNAMYSN2VxWg6q9WZJnA5IjKQADFpCs8LAuGy+PVfGkwXFt1riAV5m9NNC0rKMb
+         TIfugoFGVI0QEYCUv7TKZimWoDOmN9ITT9wTA=
+Received: by 10.229.67.141 with SMTP id r13mr4737qci.14.1320831210118;
+        Wed, 09 Nov 2011 01:33:30 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.188.82 with SMTP id cz18ls351519qab.1.gmail; Wed, 09 Nov
+ 2011 01:33:29 -0800 (PST)
+Received: by 10.224.186.7 with SMTP id cq7mr684879qab.4.1320831209762;
+        Wed, 09 Nov 2011 01:33:29 -0800 (PST)
+Received: by 10.224.137.13 with SMTP id u13msqat;
+        Tue, 8 Nov 2011 17:29:15 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.224.33.131 with SMTP id h3mr17045qad.16.1320802155502; Tue, 08
+ Nov 2011 17:29:15 -0800 (PST)
+Received: by s5g2000vbe.googlegroups.com with HTTP; Tue, 8 Nov 2011 17:29:15
+ -0800 (PST)
+Date: Tue, 8 Nov 2011 17:29:15 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/534.51.22 (KHTML, like Gecko) Version/5.1.1 Safari/534.51.22,gzip(gfe)
+Message-ID: <9fa64505-6ee9-458e-8a1f-e79f4d520ec0@s5g2000vbe.googlegroups.com>
+Subject: [ruby-ffi] Unable to compile on Lion
+From: Adrian <adrianbc@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: adrianbc@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+When trying to install the lib ffi as a ruby gem from bundler or brew
+i get the following output.. Has anybody run into this and found a
+solution?
+
+Adrian
+
+
+11.2.0 Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011;
+root:xnu-1699.24.8~1/RELEASE_X86_64 x86_64
+
+
+
+Installing ffi (1.0.9) with native extensions
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native
+extension.
+
+        /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/
+ruby extconf.rb
+checking for ffi.h in /usr/local/include... no
+checking for rb_thread_blocking_region()... no
+checking for ruby_thread_has_gvl_p()... no
+checking for ruby_native_thread_p()... no
+checking for rb_thread_call_with_gvl()... no
+creating extconf.h
+creating Makefile
+
+make
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --
+host.
+    If a cross compiler is detected then cross compile mode will be
+used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+recognized
+configure: error: /bin/sh /Users/adrian/.bundler/tmp/21514/gems/
+ffi-1.0.9/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --
+host.
+    If a cross compiler is detected then cross compile mode will be
+used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+recognized
+configure: error: /bin/sh /Users/adrian/.bundler/tmp/21514/gems/
+ffi-1.0.9/ext/ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** [/Users/adrian/.bundler/tmp/21514/gems/ffi-1.0.9/ext/ffi_c/
+libffi/.libs/libffi_convenience.a] Error 2
+
+
+Gem files will remain installed in /Users/adrian/.bundler/tmp/21514/
+gems/ffi-1.0.9 for inspection.
+Results logged to /Users/adrian/.bundler/tmp/21514/gems/ffi-1.0.9/ext/
+ffi_c/gem_make.out
+An error occured while installing ffi (1.0.9), and Bundler cannot
+continue.
+Make sure that `gem install ffi -v '1.0.9'` succeeds before bundling.

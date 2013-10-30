@@ -1,0 +1,121 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.52.131 with SMTP id t3csp33799obo;
+        Sat, 7 Apr 2012 20:36:16 -0700 (PDT)
+Received: by 10.68.212.69 with SMTP id ni5mr8110780pbc.39.1333856176263;
+        Sat, 07 Apr 2012 20:36:16 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMWq-bruBRCqj4T8BBoE1vdukA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id g8si13526482pbk.108.2012.04.07.20.36.16
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 07 Apr 2012 20:36:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMWq-bruBRCqj4T8BBoE1vdukA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMWq-bruBRCqj4T8BBoE1vdukA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCMWq-bruBRCqj4T8BBoE1vdukA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by dadp14 with SMTP id p14sf6514325dad.7
+        for <headius@headius.com>; Sat, 07 Apr 2012 20:36:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=GA+/Eetgb4jpqHUGjPMhq5x1OjwNwX1F9Nc49o/+t1w=;
+        b=641XxQGK8PkD9/ketyBgtjIt+iQVHE+Ac1cCcW5tLxeoJXKSK2MaMG2n4sv4ZxKWTj
+         SK996GKkJhPi1uhJOqgCNk7DRYn92emN/I7XXCrp9djGvV/9ZHTR55rOraWgIdenw5IA
+         mU1sRPQ0bvkIJbOHkzUnZY8gCejt5BZK9FUM0=
+Received: by 10.52.23.211 with SMTP id o19mr152248vdf.6.1333856170762;
+        Sat, 07 Apr 2012 20:36:10 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.185.71 with SMTP id fa7ls1933403vdc.5.gmail; Sat, 07 Apr
+ 2012 20:36:10 -0700 (PDT)
+Received: by 10.52.33.47 with SMTP id o15mr149239vdi.9.1333856169977;
+        Sat, 07 Apr 2012 20:36:09 -0700 (PDT)
+Date: Sat, 7 Apr 2012 20:36:09 -0700 (PDT)
+From: Nick Clark <nick4jesus@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <13002074.2414.1333856169084.JavaMail.geo-discussion-forums@yneo2>
+In-Reply-To: <31329715.815.1332952133992.JavaMail.geo-discussion-forums@vbhy1>
+References: <31329715.815.1332952133992.JavaMail.geo-discussion-forums@vbhy1>
+Subject: [ruby-ffi] Re: Cannot Open Mac Universal Library
+MIME-Version: 1.0
+X-Original-Sender: nick4jesus@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ nick4jesus@gmail.com designates internal as permitted sender)
+ smtp.mail=nick4jesus@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2413_14209549.1333856169083"
+
+------=_Part_2413_14209549.1333856169083
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Sorry for the delayed response. I wasn't getting reply notifications.
+
+P4010 and Wayne,
+
+The lib was not mine. I ended up writing the wrapper by hand as a ruby C 
+extension which does work.
+
+Thanks
+
+
+On Wednesday, March 28, 2012 12:28:53 PM UTC-4, Nick Clark wrote:
+>
+> I am trying to wrap a simple, three function SDK for use in ruby, but when 
+> I try to use FFI with it I get the following error:
+>
+> /Users/nick/.rvm/gems/ruby-1.9.3-p0-perf/gems/ffi-1.0.12.rc1/lib/ffi/library.rb:121:in 
+>> `block in ffi_lib': Could not open library 'lib/ext/libH-ITTSDK.so': 
+>> dlopen(lib/ext/libH-ITTSDK.so, 5): no suitable image found.  Did find: 
+>> (LoadError)
+>> lib/ext/libH-ITTSDK.so: unknown file type, first eight bytes: 0x21 0x3C 
+>> 0x61 0x72 0x63 0x68 0x3E 0x0A
+>
+>
+> I have A gist here:
+> https://gist.github.com/2227967
+>
+> Am I doing something wrong?
+>
+> Thanks
+>
+
+------=_Part_2413_14209549.1333856169083
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div>Sorry for the delayed response. I wasn't getting reply notifications.<=
+/div><div><br></div><div>P4010 and Wayne,</div><div><br></div><div>The lib =
+was not mine. I ended up writing the wrapper by hand as a ruby C extension =
+which does work.</div><div><br></div><div>Thanks</div><div><br></div><br>On=
+ Wednesday, March 28, 2012 12:28:53 PM UTC-4, Nick Clark wrote:<blockquote =
+class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1p=
+x #ccc solid;padding-left: 1ex;">I am trying to wrap a simple, three functi=
+on SDK for use in ruby, but when I try to use FFI with it I get the followi=
+ng error:<div><br></div><div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0.8ex;border-lef=
+t-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid;padd=
+ing-left:1ex">/Users/nick/.rvm/gems/ruby-1.<wbr>9.3-p0-perf/gems/ffi-1.0.12=
+.<wbr>rc1/lib/ffi/library.rb:121:in `block in ffi_lib': Could not open libr=
+ary 'lib/ext/libH-ITTSDK.so': dlopen(lib/ext/libH-ITTSDK.so, 5): no suitabl=
+e image found. &nbsp;Did find: (LoadError)<br><span style=3D"white-space:pr=
+e">=09</span>lib/ext/libH-ITTSDK.so: unknown file type, first eight bytes: =
+0x21 0x3C 0x61 0x72 0x63 0x68 0x3E 0x0A</blockquote><div><br><div><div>I ha=
+ve A gist here:</div><div><a href=3D"https://gist.github.com/2227967" targe=
+t=3D"_blank">https://gist.github.com/<wbr>2227967</a><br></div></div></div>=
+</div><div><br></div><div>Am I doing something wrong?</div><div><br></div><=
+div>Thanks</div></blockquote>
+------=_Part_2413_14209549.1333856169083--

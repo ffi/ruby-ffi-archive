@@ -1,0 +1,162 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs65950bkh;
+        Sat, 23 Oct 2010 08:33:39 -0700 (PDT)
+Received: by 10.216.191.215 with SMTP id g65mr869023wen.16.1287848019569;
+        Sat, 23 Oct 2010 08:33:39 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCICH0uSrDRDQgIzmBBoEjlT7VQ@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id p11si7949210wej.144.2010.10.23.08.33.38;
+        Sat, 23 Oct 2010 08:33:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDQgIzmBBoEjlT7VQ@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCICH0uSrDRDQgIzmBBoEjlT7VQ@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCICH0uSrDRDQgIzmBBoEjlT7VQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwb18 with SMTP id 18sf1661386wwb.7
+        for <headius@headius.com>; Sat, 23 Oct 2010 08:33:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=nnqqq8Coy7Y72CdCAsksp841th49hZor2UF6BLua0+0=;
+        b=zOwtbNjpbyf5Q5WfxjLwxdoxOxpQNNoLlG+cF9Wuuf1/XNWiWZDuupxdVuOW4oeIK5
+         n/Nyy0O+3TyinMMP9Cqk/b9ZmAtLtTAXRjJ7nRqTGaT80Pgy1ufwnjAkrKgGsuii7PYq
+         5tDXmseLWQVr9fC9EE+M7vQF8OWoA1+RTD7og=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=xXa6WBXvl59s7ZY8B1BRSQfnjidVfmYTEtF55RnYOiXhqS/SUgLGUdelxd7GE2hmAG
+         WCCICOMeKh8efywHzhs0qyeODOkQWCKY+HRIe04fKeLyrStf0wqLiZOzTGc/lcJVwpaj
+         0Z9UlvZDLPJGOXVls1G2OaN6wWhFvMt9JfJ3E=
+Received: by 10.216.237.9 with SMTP id x9mr647975weq.26.1287848016781;
+        Sat, 23 Oct 2010 08:33:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.216.198.162 with SMTP id v34ls2051576wen.3.p; Sat, 23 Oct 2010
+ 08:33:36 -0700 (PDT)
+Received: by 10.216.46.19 with SMTP id q19mr14402web.0.1287848016096;
+        Sat, 23 Oct 2010 08:33:36 -0700 (PDT)
+Received: by 10.216.46.19 with SMTP id q19mr14401web.0.1287848016072;
+        Sat, 23 Oct 2010 08:33:36 -0700 (PDT)
+Received: from mail-wy0-f172.google.com (mail-wy0-f172.google.com [74.125.82.172])
+        by gmr-mx.google.com with ESMTP id r4si1400559wec.6.2010.10.23.08.33.35;
+        Sat, 23 Oct 2010 08:33:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvandenberge@gmail.com designates 74.125.82.172 as permitted sender) client-ip=74.125.82.172;
+Received: by mail-wy0-f172.google.com with SMTP id 28so1872023wyb.31
+        for <ruby-ffi@googlegroups.com>; Sat, 23 Oct 2010 08:33:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.227.145.68 with SMTP id c4mr4411840wbv.42.1287848014848; Sat,
+ 23 Oct 2010 08:33:34 -0700 (PDT)
+Received: by 10.227.183.193 with HTTP; Sat, 23 Oct 2010 08:33:34 -0700 (PDT)
+In-Reply-To: <AANLkTi=vM8R=EcXFjyOmSzTme0P7VPDxUmK_QSSSNsA5@mail.gmail.com>
+References: <bdb5b2ca-5de9-49c0-9281-b5efc4b10e9d@j18g2000yqd.googlegroups.com>
+	<AANLkTim2Dx5GL5ZFpW0MCi+fT5U78y=-svOEgS2ft0Rv@mail.gmail.com>
+	<fd1caa93-ba45-4e0c-b2d8-9f7f05636c80@h7g2000yqn.googlegroups.com>
+	<AANLkTi=vM8R=EcXFjyOmSzTme0P7VPDxUmK_QSSSNsA5@mail.gmail.com>
+Date: Sat, 23 Oct 2010 11:33:34 -0400
+Message-ID: <AANLkTinZxH-+4yo6dV5i8Y3Rik=4-nGuNGJRAYCKnRsM@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Link to non-windows dlls
+From: Kevin Vanden Berge <kvandenberge@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: kvandenberge@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of kvandenberge@gmail.com designates 74.125.82.172 as permitted
+ sender) smtp.mail=kvandenberge@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016e65a01aa73235e04934a7bf4
+
+--0016e65a01aa73235e04934a7bf4
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) in th=
+e
+test_usb.rb script.  Changing the Send parameter from :pointer to :string
+has no effect on the outcome.  As for why I did pointer instead of string, =
+I
+have no good reason except that I saw an example of a wrapper to a C
+function that had a char* as parameter and it was done using :string and
+then another example showed it using :pointer another time.
+
+On Sat, Oct 23, 2010 at 11:25 AM, Luis Lavena <luislavena@gmail.com> wrote:
+
+> On Sat, Oct 23, 2010 at 12:18 PM, kvberge <kvandenberge@gmail.com> wrote:
+> > I can provide the c declarations to the functions I am attempting to
+> > wrap, but I cannot provide the dll because it is a dll for the company
+> > I work for and I am not allowed to supply the dll.
+> >
+>
+> Since I can't test it, why are you sending a :pointer instead of :string?
+>
+> In the C definition Send expects a string, but you're using a pointer
+> and not using FFI MemoryPointers to handle it.
+>
+> Also, will be great to know in which Ruby line the project segfault,
+> guess could be based on what I'm saying above.
+>
+> --
+> Luis Lavena
+> AREA 17
+> -
+> Perfection in design is achieved not when there is nothing more to add,
+> but rather when there is nothing more to take away.
+> Antoine de Saint-Exup=E9ry
+>
+
+--0016e65a01aa73235e04934a7bf4
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) in th=
+e test_usb.rb script. =A0Changing the Send parameter from :pointer to :stri=
+ng has no effect on the outcome. =A0As for why I did pointer instead of str=
+ing, I have no good reason except that I saw an example of a wrapper to a C=
+ function that had a char* as parameter and it was done using :string and t=
+hen another example showed it using :pointer another time.<br>
+<br><div class=3D"gmail_quote">On Sat, Oct 23, 2010 at 11:25 AM, Luis Laven=
+a <span dir=3D"ltr">&lt;<a href=3D"mailto:luislavena@gmail.com">luislavena@=
+gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+<div class=3D"im">On Sat, Oct 23, 2010 at 12:18 PM, kvberge &lt;<a href=3D"=
+mailto:kvandenberge@gmail.com">kvandenberge@gmail.com</a>&gt; wrote:<br>
+&gt; I can provide the c declarations to the functions I am attempting to<b=
+r>
+&gt; wrap, but I cannot provide the dll because it is a dll for the company=
+<br>
+&gt; I work for and I am not allowed to supply the dll.<br>
+&gt;<br>
+<br>
+</div>Since I can&#39;t test it, why are you sending a :pointer instead of =
+:string?<br>
+<br>
+In the C definition Send expects a string, but you&#39;re using a pointer<b=
+r>
+and not using FFI MemoryPointers to handle it.<br>
+<br>
+Also, will be great to know in which Ruby line the project segfault,<br>
+guess could be based on what I&#39;m saying above.<br>
+<font color=3D"#888888"><br>
+--<br>
+</font><div><div></div><div class=3D"h5">Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exup=E9ry<br>
+</div></div></blockquote></div><br>
+
+--0016e65a01aa73235e04934a7bf4--

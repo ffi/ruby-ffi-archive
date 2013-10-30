@@ -1,0 +1,89 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.187.11 with SMTP id k11cs287906wff;
+        Fri, 30 Oct 2009 07:14:16 -0700 (PDT)
+Received: by 10.101.75.3 with SMTP id c3mr1482987anl.97.1256912056070;
+        Fri, 30 Oct 2009 07:14:16 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yw0-f154.google.com (mail-yw0-f154.google.com [209.85.211.154])
+        by mx.google.com with ESMTP id 11si8410041yxe.6.2009.10.30.07.14.14;
+        Fri, 30 Oct 2009 07:14:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) client-ip=209.85.211.154;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh26 with SMTP id 26so3953518ywh.13
+        for <headius@headius.com>; Fri, 30 Oct 2009 07:14:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:content-type:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-google-approved
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=GFidD4CbKyZ5yYLj8KALtrNYQFIrbife1LhKXNP4agY=;
+        b=eftGcnbY75es7AN6S6xPo6PBFZz3eMp/iZAM/wy67xBoRyybbrjmyJ0PkJM4j8eHYa
+         BMH61czxfonR1SZZFxi5iE/IegrZ5vFPuQHBObypoCpu+CUBf7hG+LPk60iTljigr/Hs
+         Fv/MRnIoASz3O2ulLH/tRaowRh8vnfX+ebOyg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:content-type:date:x-ip
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-google-approved:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=tkWfcxRHPtGvYkBDB9zh1By2uDYRibaW0mmeJImPGog9gFrpIOtyAitoVJ9p6zIgUm
+         W1OsOSU0MpLA5Ra741aq6AoTf90Dke0aNEsubAZ1Xhjo8fGtF+E8F5qBMwdSIbZM5XRi
+         6hDqdcFHYh+1aDVt4ITDw7/q04lXq8+x/7xQA=
+Received: by 10.150.19.1 with SMTP id 1mr308342ybs.19.1256912052881;
+        Fri, 30 Oct 2009 07:14:12 -0700 (PDT)
+Received: by 10.177.105.17 with SMTP id h17gr75yqm.0;
+	Fri, 30 Oct 2009 07:14:12 -0700 (PDT)
+X-Sender: daniel.akerud@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ISO-8859-1
+Received: by 10.100.237.3 with SMTP id k3mr177763anh.33.1256904249323; Fri, 30  Oct 2009 05:04:09 -0700 (PDT)
+Date: Fri, 30 Oct 2009 05:04:09 -0700 (PDT)
+X-IP: 194.237.142.6
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Opera/9.80 (X11; Linux i686; U; en) Presto/2.2.15  Version/10.00,gzip(gfe),gzip(gfe)
+Message-ID: <608cd188-f201-42be-80bb-037449e3d374@m38g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] char array inside struct
+From: =?ISO-8859-1?Q?daniel_=E5kerud?= <daniel.akerud@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Google-Approved: wmeissner@gmail.com via web at 2009-10-30 14:14:12
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+I have a char array baked into a struct (not a pointer), and I just
+want a confirm that I do it the correct/intended way.
+
+struct {
+ uint8 Value;
+ uint8 String[SIZE_OF_ARRAY];
+} MyArray_t;
+
+class MyArray_t < FFI::Struct
+ layout  :Value,  :uint8,
+         :String, [:uint8, SIZE_OF_ARRAY]
+end
+
+my_array_struct = MyArray_t.new
+c_function(my_array_struct.pointer) #the c_function fills the char
+array
+str = my_array_struct[:String].to_s # is to_s the correct function to
+retrieve a string? read_string doesn't work.
+
+Thanks,
+/D
+

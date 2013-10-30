@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs552483fam;
+        Sat, 8 Jan 2011 02:05:52 -0800 (PST)
+Received: by 10.216.172.202 with SMTP id t52mr4170449wel.108.1294481151213;
+        Sat, 08 Jan 2011 02:05:51 -0800 (PST)
+Return-Path: <ruby-ffi+bncCP397LbnChD97aDpBBoEtvBxxg@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id k10si32939162wer.176.2011.01.08.02.05.50;
+        Sat, 08 Jan 2011 02:05:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCP397LbnChD97aDpBBoEtvBxxg@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCP397LbnChD97aDpBBoEtvBxxg@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCP397LbnChD97aDpBBoEtvBxxg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwe15 with SMTP id 15sf29205937wwe.7
+        for <headius@headius.com>; Sat, 08 Jan 2011 02:05:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:message-id:date:from
+         :user-agent:mime-version:to:subject:references:in-reply-to
+         :x-virus-scanned:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=NxYsxHDtrRBaU7rOi0PxmDuyo5Hd7VbGa7Li8YQw1+0=;
+        b=vBsOyG68mITKCSY3OI6xpLobiKLnPlZ9cgGKE4Dy+eneTJZ3SWE6egFibnXcSkZJcD
+         4c629pD4E5n9Z6utEV615YreZbbUCYFIjPrBRJMH/AvRcTinnkg2/wpPYstvDQyEOCB5
+         H6PySs6wYrqv2Kkzq5EZyJzTQtibOa2whA5z4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=gyt+YaffCPQ4n4/x339SIhcaNC5JBevK82rkk4ngCNhK6uqTzOOYlwSChsZpXjGBpc
+         lOZ1vojXoE6DtFADfJSWbdF24dx+VWZShJz+pa6td55ez9a/7oXaDXXoJaYRH8gunjQT
+         PKoF44Zo7KpAbiiN3p60aLGc0CW7OQYZMCdEM=
+Received: by 10.217.3.13 with SMTP id q13mr40218wes.5.1294481149692;
+        Sat, 08 Jan 2011 02:05:49 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.26.28 with SMTP id b28ls1177137eea.5.p; Sat, 08 Jan 2011
+ 02:05:49 -0800 (PST)
+Received: by 10.14.37.69 with SMTP id x45mr159268eea.16.1294481148912;
+        Sat, 08 Jan 2011 02:05:48 -0800 (PST)
+Received: by 10.14.37.69 with SMTP id x45mr159267eea.16.1294481148871;
+        Sat, 08 Jan 2011 02:05:48 -0800 (PST)
+Received: from smtp-vbr14.xs4all.nl (smtp-vbr14.xs4all.nl [194.109.24.34])
+        by gmr-mx.google.com with ESMTP id r17si1123005eeh.7.2011.01.08.02.05.48;
+        Sat, 08 Jan 2011 02:05:48 -0800 (PST)
+Received-SPF: neutral (google.com: 194.109.24.34 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.34;
+Received: from apricot.matijs.net (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr14.xs4all.nl (8.13.8/8.13.8) with ESMTP id p08A5leg038652
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Sat, 8 Jan 2011 11:05:48 +0100 (CET)
+	(envelope-from matijs@matijs.net)
+Received: from localhost ([127.0.0.1])
+	by apricot.matijs.net with esmtp (Exim 4.72)
+	(envelope-from <matijs@matijs.net>)
+	id 1PbVgB-0007D7-4d
+	for ruby-ffi@googlegroups.com; Sat, 08 Jan 2011 11:05:47 +0100
+Message-ID: <4D2836FA.3020802@matijs.net>
+Date: Sat, 08 Jan 2011 11:05:46 +0100
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.16) Gecko/20101226 Icedove/3.0.11
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] FFI 1.0.4
+References: <4D22F959.5030506@matijs.net> <24335598.2491.1294139513802.JavaMail.geo-discussion-forums@prje29> <AANLkTi=1r-mdut4Bt9L--uTP7jr9kThwxBOduk9uzwmg@mail.gmail.com> <AANLkTinZk=oBQM2_oY2O0HckAwt=zxF3yLbp+5KSEeTz@mail.gmail.com> <AANLkTikY6R-DcqGgDri8iO-M8S-3QkyJG302njCXq7JY@mail.gmail.com> <4D27800B.4020009@redhat.com>
+In-Reply-To: <4D27800B.4020009@redhat.com>
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 194.109.24.34 is neither permitted nor denied by best guess record for domain
+ of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+I can confirm this on a 64 bit Debian machine (ruby 1.8.7 (2010-08-16 patchlevel 
+302) [x86_64-linux]). A quick check confirms that this has been broken since 
+deferred callback processing was implemented for ruby 1.8.x (git commit 
+d086824b). Can anyone confirm whether this works on 32-bit linux?
+
+On 01/07/2011 10:05 PM, Bryan Kearney wrote:
+> I have tried to build on a 64 bit Fedora machine running ruby 1.8.7
+> (2010-12-23 patchlevel 330) [x86_64-linux] and it hangs in the tests at
+> "async callback". Any idea how to debug this?
+>
+> If you want to look at the srpm, it is at:
+>
+> http://bkearney.fedorapeople.org/rubygem-ffi-1.0.4-1.fc14.src.rpm
+>
+>
+> -- bk
+>
+
+-- 
+Matijs

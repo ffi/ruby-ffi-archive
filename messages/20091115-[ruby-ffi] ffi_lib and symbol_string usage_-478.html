@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ffi_lib and symbol/string usage?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ffi_lib and symbol/string usage?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/15/09 3:52 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+While doing a quick test of the novice win32 example from <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a> across jruby and mri 1.8 and 1.9, using
+
+ffi_lib :kernel32
+
+works as expected on 1.9 and fails on 1.8 due to 1.8's "File.basename" used in "map_library_name" on line 61 of
+
+<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/blob/master/lib/ffi/ffi.rb">http://github.com/ffi/ffi/blob/master/lib/ffi/ffi.rb</a>
+
+not accepting Symbol's.
+
+I've updated my examples on the wiki to use only String's, but am wondering if FFI core should be agnostic for the ffi_lib arg?
+
+I personally prefer the Symbol style but I don't really have strong feelings other than "keep lib loads fast."
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

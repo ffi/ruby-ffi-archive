@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] I can&#39;t figure out my memory leak</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] I can&#39;t figure out my memory leak</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/7/10 1:28 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On May 7, 2010, at 11:26 AM, Chuck Remes wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/chuckremes/ffi-rzmq">http://github.com/chuckremes/ffi-rzmq</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I have a tremendous memory leak in my FFI code. I'm pretty sure I know exactly where it is caused but I have no idea how to solve it. This gist shows the code in question.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://gist.github.com/393627">http://gist.github.com/393627</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The first gist block is where I think the memory leak lives. The second gist block is the definition of the leaking Struct and the definitions of the library functions.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Here's the sequence of events for the creation of a message where message is not nil (from the constructor).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>1. Allocate the Msg_t Struct.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2. Create a MemoryPointer from the message string to create the Msg_t payload.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>3. Hand off the Struct obj to the underlying library and tell the library the size needed to store the data.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>4. Hand off the MemoryPointer pointing to the message data to the underlying library. The library should now <b class="moz-txt-star"><span class="moz-txt-tag">*</span>own<span class="moz-txt-tag">*</span></b> the memory allocated in step #2 and manage it from here on.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>After a call is made to transmit OR receive the message obj, it calls Message#close. This makes a call to the underlying library to close the message and release its memory. This should release the memory that was allocated in #2 above. 
+</pre></blockquote><pre wrap>
+
+I made a little progress though the leak remains.
+
+I talked with the library author and he set me straight on one of the calls. In step #3 even though we hand off a buffer we allocated to contain the payload, the library does not handle its deallocation. The handoff now includes a function callback to handle the deallocation. All the callback does is "ptr.free".
+
+I have confirmed the callback is fired by having it print a statement. It is called for every message yet the leaking memory still grows at the same rate. <span class="moz-smiley-s2" title=":("><span>:(</span></span>
+
+I looked at the source code for FFI and see that a call to MemoryPointer#free calls xfree immediately. So I'm still at a loss to explain the leakage. I'll try analyzing the JRuby heap to see if there are orphaned objects and where they are coming from.
+
+cr
+
+
+</pre></div></body>
+</html>
+</table></div>

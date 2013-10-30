@@ -1,0 +1,147 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.73.145 with SMTP id q17cs225565qaj;
+        Wed, 21 Oct 2009 07:27:06 -0700 (PDT)
+Received: by 10.101.7.17 with SMTP id k17mr4679084ani.181.1256135225729;
+        Wed, 21 Oct 2009 07:27:05 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 33si8438177ywh.127.2009.10.21.07.27.04;
+        Wed, 21 Oct 2009 07:27:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so4567500yxe.13
+        for <headius@headius.com>; Wed, 21 Oct 2009 07:27:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=xLCvdlU4xXu7yk9FtGm046UF8BoCJSVjOe8JyRNhPqk=;
+        b=XTvSEfdqFAqHh7AP6kC16r25LKzAWQ4IQniiao+1P03f4aB2FtBwHFJneLsLIPMMtT
+         aja5r6bysyr7ikm4krO2a50qmwv4mXARHE/wT6M3ZmifwCQQ7niulFGjHpc+e93FbBqt
+         Cv8UwKYpTg16fImqM/ES/DAS/X4poVgd80DgE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=XAEJDqJ4+d5X/J7+5aqnQGmRAdhJOCOFwUX049+cZPpic800kLIbHY/B0vdyZt0r4X
+         496+z8rRONf3f+pvHdTEwaMcc3YAWGVPfvXz93ELs+wVUtJpQIrMCdhiaCbMkUcTQ5oX
+         4EkHc5IthEqyDo+xBmvgzEZ9vhFLgvL8X2jcg=
+Received: by 10.101.67.1 with SMTP id u1mr824215ank.10.1256135220486;
+        Wed, 21 Oct 2009 07:27:00 -0700 (PDT)
+Received: by 10.176.241.26 with SMTP id o26gr62yqh.0;
+	Wed, 21 Oct 2009 07:27:00 -0700 (PDT)
+X-Sender: liang.gimi@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.101.36.8 with SMTP id o8mr825441anj.27.1256135219971; Wed, 21  Oct 2009 07:26:59 -0700 (PDT)
+Date: Wed, 21 Oct 2009 07:26:59 -0700 (PDT)
+In-Reply-To: <4ccee320910201621u55a9ba1bvcea84a660fe49eab@mail.gmail.com>
+X-IP: 60.63.152.50
+References: <953aaf26-bb32-43e9-b31f-0d32a3b78837@33g2000vbe.googlegroups.com>  <f6117030-374b-4007-a7ab-fe2258e60b7c@y32g2000prd.googlegroups.com>  <4ccee320910201621u55a9ba1bvcea84a660fe49eab@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US)  AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.195.27 Safari/532.0,gzip(gfe),gzip(gfe)
+Message-ID: <edc63d8a-4d10-4c3a-9301-c3dd2907afcd@u16g2000pru.googlegroups.com>
+Subject: [ruby-ffi] Re: Basic question about types
+From: Gimi <liang.gimi@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Thank you very much Wayne, thank you for your so-detailed replies!
+
+For the 2nd question, I'd already known about :varargs and its usage.
+My question is how about a function which uses va_list as a parameter,
+like this:
+int vprintf ( const char * format, va_list arg );
+
+According to my test, it's impossible to do it in this way:
+#-- code --
+attach_function :vprintf, [:string, :varargs], :int
+# -- code end --
+
+As va_llist actually is void*,  so I guess I should do:
+#-- code --
+attach_function :vprintf, [:string, :pointer], :int
+#-- code end --
+But I don't know how to call it.
+
+Although it's not important to do that because there are always(i
+guess) a :varargs version for this kind of va_list-style-function, I
+just want to know is it possible to do this in Ruby-FFI.
+
+With many thanks!
+
+
+Sincerely,
+Gimi
+
+On Oct 21, 7:21=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> You specifiy variadic parameters as :varargs, and when you call the
+> function, you need to explicitly specify the type of the parameters.
+> e.g.
+> # this says printf takes a string parameter, followed by a variable
+> number of parameters
+> =A0 attach_function :printf, [ :string, :varargs ], :int
+>
+> # You don't need to specify the type of any fixed params, since it is par=
+t of
+> # the function signature, but you do need to for each varargs parameter
+>
+> LibC.printf("Hello, %s", :string, "World")
+>
+> 2009/10/21 Gimi <liang.g...@gmail.com>:
+>
+>
+>
+>
+>
+> > Hi, it's me again : )
+>
+> > I just wanna ask one more question, how to deal with the va_list
+> > parameter? Like the vprintf method, how to attach and call it?
+>
+> > With many thanks!
+> > Gimi
+>
+> > On Oct 20, 10:10=A0am, Gimi <liang.g...@gmail.com> wrote:
+> >> Hi all,
+>
+> >> I'm new to FFI, and I have a basic question about types. Assume there
+> >> is some C code like this:
+> >> # -- C code begin --
+> >> #if some situation
+> >> typedef sometype unsignedint
+> >> #else
+> >> typedef sometype int
+> >> #endif
+>
+> >> void some_function(sometype);
+> >> #-- C code end --
+>
+> >> So I mean when the types of parameters of a function are different in
+> >> different situations, how do I write the Ruby code?
+>
+> >> Any help will be greatly appreciated.
+>
+> >> Regards,

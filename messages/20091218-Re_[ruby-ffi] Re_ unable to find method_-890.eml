@@ -1,0 +1,134 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs385497and;
+        Fri, 18 Dec 2009 10:36:39 -0800 (PST)
+Received: by 10.142.249.24 with SMTP id w24mr237937wfh.325.1261161398685;
+        Fri, 18 Dec 2009 10:36:38 -0800 (PST)
+Return-Path: <3tMsrSwoJCPYjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 18si10213775pwi.37.2009.12.18.10.36.37;
+        Fri, 18 Dec 2009 10:36:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3tMsrSwoJCPYjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3tMsrSwoJCPYjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=3tMsrSwoJCPYjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi41 with SMTP id 41sf1318792pxi.23
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:36:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=2QBsKhiu1zombp3fEITlU2Ri5b7RujvizOrDja6e604=;
+        b=U1rSR3+rmSAcVjQrT0qEuxvTG8l21wZfE9nCBHdOxA9sY2V62EMckQmcPDZlntGgq7
+         c1ufipmz4kSQfhvpdLo8BiSU1brpWK6YGyJCTB2w89DoiQjrubn/z4p/lHVkCvl3NS1M
+         OmQ5Kw0EsyxFwC2QrHIXm5DuJ2lpwmj5DTR/g=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=cFJvDU3kj87egwUdJc6xBIFTU+nO85vquJqBfz20/iJe0zoaQ7R4hcK6BMR3Hi5occ
+         12wHV3T6G+BBzEZ3pQHrcjfwBqvuZrTQ7XHGX8uhfW6PKVSSeztccnkBiZGToD7QIip+
+         2czenx/xr7l4g9BE13ay+14tgfEsD6fQsHn0g=
+Received: by 10.115.67.15 with SMTP id u15mr490690wak.15.1261161396303;
+        Fri, 18 Dec 2009 10:36:36 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.115.116.23 with SMTP id t23ls6049wam.1.p; Fri, 18 Dec 2009 
+	10:36:35 -0800 (PST)
+Received: by 10.114.5.16 with SMTP id 16mr918434wae.15.1261161395379;
+        Fri, 18 Dec 2009 10:36:35 -0800 (PST)
+Received: by 10.114.5.16 with SMTP id 16mr918433wae.15.1261161395347;
+        Fri, 18 Dec 2009 10:36:35 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f220.google.com (mail-fx0-f220.google.com [209.85.220.220])
+        by gmr-mx.google.com with ESMTP id 19si711716pzk.4.2009.12.18.10.36.33;
+        Fri, 18 Dec 2009 10:36:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.220 as permitted sender) client-ip=209.85.220.220;
+Received: by fxm20 with SMTP id 20so3596623fxm.15
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:36:33 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.183.37 with SMTP id s37mr417395hbg.90.1261161393097; Fri, 
+	18 Dec 2009 10:36:33 -0800 (PST)
+In-Reply-To: <bdd37b0b-d359-40e9-a25f-c8ae96ddba74@9g2000yqa.googlegroups.com>
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com> 
+	<71166b3b0912180457x2a7ae4acndb604f9f7b3fa31@mail.gmail.com> 
+	<bdd37b0b-d359-40e9-a25f-c8ae96ddba74@9g2000yqa.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 18 Dec 2009 15:36:13 -0300
+Message-ID: <71166b3b0912181036x5c4a80f8y5ee440a9bceb2e7@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: unable to find method?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.220 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/f737233fd54534d4
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 18, 2009 at 3:10 PM, rogerdpack <rogerpack2005@gmail.com> wrote=
+:
+>
+>> > ref:http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx
+>>
+>> > What might it be...?
+>>
+>> FindWindow is an alias of FindWindowA or FindWindowW depending if
+>> unicode/wide condition was defined prior including the headers.
+>>
+>> So: there is no FindWindow, as pointed by others on this thread.
+>
+> Interesting.
+>
+> Thanks for the help.
+>
+> C:\>strings \WINDOWS\system32\user32.dll | grep =A0FindWindow
+> FindWindowA
+> FindWindowExA
+> FindWindowExW
+> FindWindowW
+>
+>
+> Any guesses as to how VB is able to accomplish its snippet?
+>
+> <DllImport("user32.dll", CharSet:=3DCharSet.Auto)> _
+> Public Shared Function FindWindow(ByVal lpClassName As String, ByVal
+> lpWindowName As String) As IntPtr
+> End Function
+>
+
+Magic is in CharSet... Depending in the character encoding NET is
+doing the magic of turning String to WideString for you,
+transparently.
+
+> Does it add a W or something, for us? (and ffi theoretically could,
+> too?)
+
+You're trying to compare apple to oranges.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

@@ -1,0 +1,102 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: XNI and FFI summary?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: XNI and FFI summary?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/5/13 11:03 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>When you get a free moment, please provide a quick summary of: 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; </span>  * XNI's main reason(s) for being 
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>At the moment, its an experiment in native interface design.  The aim is a 
+<span class="moz-txt-citetags">&gt; </span>stream-lined FFI+ffi-compiler combo, with some hard-coded conventions to 
+<span class="moz-txt-citetags">&gt; </span>make it easier to implement common patterns when writing extensions, whilst 
+<span class="moz-txt-citetags">&gt; </span>avoiding the "gigantic-ball-of-mud" that is the ruby C api.  But, XNI does 
+<span class="moz-txt-citetags">&gt; </span>not try to do everything - since you don't get access to Ruby VM internals, 
+<span class="moz-txt-citetags">&gt; </span>you wouldn't use it for e.g. implementing a new data structure.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>This is Jeremy's hitimes gem converted to use FFI+ffi-compiler:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b">https://github.com/wmeissner/hitimes/commit/b226af0498127a9e25f002b01db9230f68f93f7b</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>and converted to use XNI:
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5">https://github.com/wmeissner/hitimes/commit/9252959cebc6678a969ba672438ba4b11ff98ef5</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The XNI one has a bit less ruby boilerplate (XNI has the concept of a 
+<span class="moz-txt-citetags">&gt; </span>DataObject, which can have instance methods that automagically pass in 
+<span class="moz-txt-citetags">&gt; </span>'self' to native methods).  On the other hand, XNI excises a few FFI 
+<span class="moz-txt-citetags">&gt; </span>concepts - there is no Struct that you can wrap around existing native 
+<span class="moz-txt-citetags">&gt; </span>memory, nor MemoryPointer for generic native memory allocations.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>(as to why I used hitimes - its a fairly nicely written cext, it doesn't do 
+<span class="moz-txt-citetags">&gt; </span>anything super-complicated, but would be hard to implement in pure FFI due 
+<span class="moz-txt-citetags">&gt; </span>to the data structures and API calls it needs).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  * when should one prefer XNI over FFI? 
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>That's a really good question - "when you're unhappy with FFI+ffi-compiler" 
+<span class="moz-txt-citetags">&gt; </span>would be the pithy answer.  FFI isn't going away, so if people are happy 
+<span class="moz-txt-citetags">&gt; </span>with it, then I encourage them to keep using it.  At this point, FFI is 
+<span class="moz-txt-citetags">&gt; </span>stable and works.  On the other hand, if you're writing a gem from scratch, 
+<span class="moz-txt-citetags">&gt; </span>and you're going to end up writing a bunch of ruby boilerplate around a raw 
+<span class="moz-txt-citetags">&gt; </span>FFI api, and you'll need to use ffi-compiler to compile some native shims, 
+<span class="moz-txt-citetags">&gt; </span>then XNI might be worth a look.  At least once it is a bit more stable.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  * will XNI always utilize FFI? 
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>It will always utilize a ffi-like way of interfacing between the ruby VM 
+<span class="moz-txt-citetags">&gt; </span>and the native code (that is part of the design), but it won't always use 
+<span class="moz-txt-citetags">&gt; </span>the FFI gem.  There is a native backend for JRuby-1.7+, and I am currently 
+<span class="moz-txt-citetags">&gt; </span>working on a native CRuby backend.  There could also be a native backend 
+<span class="moz-txt-citetags">&gt; </span>for Topaz that uses ctypes (or whatever the RPython equivalent is).
+</pre></blockquote><pre wrap>
+
+Thanks. It sounds intruiging and I'm looking forward to digging into XNI and ffi-compiler.
+
+Awhile ago I'd looked into go's interop, python's cffi+libffi+pycparser+ply, luajit's ffi, and powershell's ability to intfc to Win32 via .NET's interop magic. While I liked the idea of copy-n-pasting normal C declarations as in the luajit and cffi simple examples
+
+  # luajit
+  local ffi = require("ffi")
+  ffi.cdef[[
+  int printf(const char *fmt, ...);
+  ]]
+
+  # python cffi
+  from cffi import FFI
+  ffi = FFI()
+  ffi.cdef("""
+        int printf(const char *fmt, ...);
+  """)
+
+I had a gut feeling that the extra complexity of implementing/maintaining C declaration parsing code may not be worth it. Given the types of setup questions on this list, and the setup info on the FFI wiki pages, what's your XNI perspective?
+
+Jon
+
+---
+Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<a class="moz-txt-link-freetext" href="http://thecodeshop.github.com">http://thecodeshop.github.com</a> | <a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+twitter: @jonforums
+
+<div class="moz-txt-sig">-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+
+
+</div></pre></div></body>
+</html>
+</table></div>

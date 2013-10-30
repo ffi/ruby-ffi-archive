@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.216.159.147 with SMTP id s19cs16650wek;
+        Sat, 9 Apr 2011 01:24:57 -0700 (PDT)
+Received: by 10.101.53.17 with SMTP id f17mr2082038ank.142.1302337495184;
+        Sat, 09 Apr 2011 01:24:55 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCK695Z6ZDxDRr4DtBBoETvIr2Q@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id e3si9209170ana.101.2011.04.09.01.24.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 09 Apr 2011 01:24:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxDRr4DtBBoETvIr2Q@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxDRr4DtBBoETvIr2Q@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCK695Z6ZDxDRr4DtBBoETvIr2Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd10 with SMTP id 10sf10996157gyd.7
+        for <headius@headius.com>; Sat, 09 Apr 2011 01:24:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=JnShLgj2VwQlE03siwVdPP99n2vNUfIWVWedU6qHg40=;
+        b=3azV6SM5XdwWehZC8PCpN1Oa/vPVb3ng6cM/4kqVVF/Q4JCceGAzsD7vyoaZkYQuqD
+         2GTBRV2rKyObppIcE7tmitPksGxGAKX9WAqEiOQG4xQHPeNBX2cFzr1bHFYn/ggU/odE
+         0jJXT7LGIJzL/0W3E4aPxFwVSJINm0Miv7e8I=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=Rs+NkK42bVUYsIf9XPD70EPM4poh7U2WPMuCJOS4MX46E96L0ZPf/HrRYM/rZTv4Cq
+         54qAosjgOCD11Q5NUlVHboEzjFv1mQeesGpVlSoXlIzq/5fKrzcNzbeL1dN0/GgxvwF1
+         E3kpMjN+jg6vm5LhuLG7gos1wR/cK6T/zZuO4=
+Received: by 10.91.168.2 with SMTP id v2mr514602ago.15.1302337489676;
+        Sat, 09 Apr 2011 01:24:49 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.204.38 with SMTP id g38ls683144agq.7.p; Sat, 09 Apr 2011
+ 01:24:49 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.200.27 with SMTP id c27mr512445agq.22.1302337489192; Sat,
+ 09 Apr 2011 01:24:49 -0700 (PDT)
+Received: by d19g2000yql.googlegroups.com with HTTP; Sat, 9 Apr 2011 01:24:49
+ -0700 (PDT)
+Date: Sat, 9 Apr 2011 01:24:49 -0700 (PDT)
+In-Reply-To: <20110312095736.309914a5.jon.forums@gmail.com>
+X-IP: 77.11.204.142
+References: <7f45dbbd-6337-4677-9a6a-8cb4abac5dab@r17g2000vbc.googlegroups.com>
+ <20110312095736.309914a5.jon.forums@gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64; rv:2.0) Gecko/20110321 Firefox/4.0,gzip(gfe)
+Message-ID: <02905325-fd46-493d-b663-986872f980da@d19g2000yql.googlegroups.com>
+Subject: [ruby-ffi] Re: FFI 1.0.6 fails to compile
+From: Quintus <sutniuq@gmx.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sutniuq@gmx.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm really sorry for replying *that* late, but I had much to do after
+I posted here and then forgot totally about this posting. Today I ran
+gem update and saw compiling ffi was failing again, which remembered
+me of this post. Sorry again.
+
+> Does arch linux split libraries into 'binary' and 'dev' versions like
+> Debian?  if so, you'll want to install the 'dev' version of libffi.
+
+No, it doesn't.
+
+> You'll also want to check that libffi is registered properly with pkg-config
+> by e.g.  running "pkg-config libffi --cflags"
+
+This says this:
+$ pkg-config libffi --cflags
+-I/usr/lib/libffi-3.0.9/include
+
+> Have you tried an uninstall/install cycle rather than update?
+I did, and it didn't work.
+
+> Does a --user-install work?
+No, it doesn't.
+
+All the other C extension gems I'm working with (nokogiri, RedCloth,
+etc.) install just fine, so it shouldn't be a bug in mkmf. I even
+tried editing mkmf to always make it detect a compilier (by returning
+true in have_devel), but then the command failed it couldn't find the
+ffi library.
+
+> That's odd as I'm running Arch 32-bit (via VirtualBox on Win7 32-bit) and the ffi-1.0.6 gem builds and installs fine
+
+My other computer runs 64bit Arch Linux and ffi installs fine on it.
+On the original computer I can't even reinstall the ffi gem that was
+previously installed. I think I'm going to try to build ffi directly
+from the sources, bypassing RubyGems...
+
+I really have no clue what's going on here. I appreciate any ideas.
+
+Valete,
+Quintus

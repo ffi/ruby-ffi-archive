@@ -1,0 +1,87 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.73.145 with SMTP id q17cs154587qaj;
+        Mon, 19 Oct 2009 20:38:21 -0700 (PDT)
+Received: by 10.150.127.6 with SMTP id z6mr9596773ybc.145.1256009901504;
+        Mon, 19 Oct 2009 20:38:21 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yw0-f154.google.com (mail-yw0-f154.google.com [209.85.211.154])
+        by mx.google.com with ESMTP id 33si6260374ywh.25.2009.10.19.20.38.20;
+        Mon, 19 Oct 2009 20:38:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) client-ip=209.85.211.154;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.211.154 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh26 with SMTP id 26so4126259ywh.13
+        for <headius@headius.com>; Mon, 19 Oct 2009 20:38:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:content-type:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-google-approved
+         :reply-to:sender:precedence:x-google-loop:mailing-list:list-id
+         :list-post:list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=5x+t6I/zlZUSCJbHms3uqjZjkZFHcgkfq4enKxL+u28=;
+        b=2Xa/Xc0FU7vB0w+niytKFDhIWaGf4p2SJ/NN+PJGyyq8CKGD5DH3NWprwE0mWNonAf
+         P6qS6YkJnrD0+CG/t7uaBn/KJ6IMP9j7kWt5hyZOCBunO1+y8Rh2oHxsehrBz5RMcfjr
+         OX5Rkvg5Hc+UYkoPI3Ke2x5lAvkOm0UaDJqsg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:content-type:date:x-ip
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-google-approved:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=pc1Dvx0jZ6cXcrRS0rcGqi6XmCG1oQmnIiAtd5UnHgGfss9jfLpOXRBMLeaXjG5Fgn
+         2aZOxRhuhaOoJ9MvXJUpbQD+dRiNF7p13gpu8BznMxngOIx6MBd57ZZ6V3EXnes13Ycs
+         eaTAE36Nbnp+BcSy9TcUDTQt+Kx0caSV3yKns=
+Received: by 10.90.11.17 with SMTP id 17mr318030agk.32.1256009898973;
+        Mon, 19 Oct 2009 20:38:18 -0700 (PDT)
+Received: by 10.176.181.37 with SMTP id d37gr58yqf.0;
+	Mon, 19 Oct 2009 20:38:08 -0700 (PDT)
+X-Sender: liang.gimi@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ISO-8859-1
+Received: by 10.101.36.8 with SMTP id o8mr632261anj.7.1256004620397; Mon, 19  Oct 2009 19:10:20 -0700 (PDT)
+Date: Mon, 19 Oct 2009 19:10:20 -0700 (PDT)
+X-IP: 216.113.12.98
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.3)  Gecko/20090824 Firefox/3.5.3,gzip(gfe),gzip(gfe)
+Message-ID: <953aaf26-bb32-43e9-b31f-0d32a3b78837@33g2000vbe.googlegroups.com>
+Subject: [ruby-ffi] Basic question about types
+From: Gimi <liang.gimi@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Google-Approved: wmeissner@gmail.com via web at 2009-10-20 03:38:08
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Hi all,
+
+I'm new to FFI, and I have a basic question about types. Assume there
+is some C code like this:
+# -- C code begin --
+#if some situation
+typedef sometype unsignedint
+#else
+typedef sometype int
+#endif
+
+void some_function(sometype);
+#-- C code end --
+
+So I mean when the types of parameters of a function are different in
+different situations, how do I write the Ruby code?
+
+Any help will be greatly appreciated.
+
+Regards,

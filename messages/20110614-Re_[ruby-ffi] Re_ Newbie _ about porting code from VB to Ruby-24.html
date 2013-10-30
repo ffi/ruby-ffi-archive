@@ -1,0 +1,83 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Newbie ? about porting code from VB to Ruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Newbie ? about porting code from VB to Ruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Charles Strahan <charles.c.strahan@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/14/11 5:59 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Jesse,<div><br></div><div>Have you ever successfully connected before (either from an end-user app, or some other custom code in another language)?</div><div><br></div><div>Just to troubleshoot, you might want to try connecting with the sample C# app here:</div>
+<div><a href="http://www.sdisw.com/tn3270/whllapi3270cs.htm">http://www.sdisw.com/tn3270/whllapi3270cs.htm</a><br><br></div><div>I&#39;ve compiled it save you some hassle - it should be attached as &quot;WHLLAPI3270CS.bmp&quot; (change the extension to &quot;.zip&quot;).</div>
+<div><br></div><div>Let me know if you have any luck.</div><div><br></div><div>-Charles</div><div><br></div><div><br><div class="gmail_quote">On Tue, Jun 14, 2011 at 12:27 PM, JesseFair <span dir="ltr">&lt;<a href="mailto:jfair9@gmail.com">jfair9@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">Hi Charles,<br>
+<br>
+Thanks for taking the time to provide this solution. In my attempt to<br>
+implement the solution I am recieving a return_code = 11 when<br>
+attempting to connect to the Presentation Space. According to the<br>
+documentation that return code means the following: WHLLUNAVAILABLE<br>
+Connect request failed, specified session is unavailable (already in<br>
+use).<br>
+<br>
+It appears I am able to run WinHLLAPIStartup because when I check the<br>
+contents of data[:wVersion] &amp; data[:szDescription] they appear to be<br>
+correct. I am attempting to connect to the Presentation Space with the<br>
+below call:<br>
+<br>
+  # Connect to presentation Space<br>
+  function.write_uint16(1)<br>
+  string = &quot;A&quot;<br>
+  length.write_uint16(1)<br>
+  return_code.write_uint16(0)<br>
+<br>
+  hold = HLLAPI::WinHLLAPI(function, string, length, return_code)<br>
+<br>
+The above does not work and when I try to run other commands that<br>
+require a connection to the Presentation Space I get a return code of<br>
+1 or WHLLNOTCONNECTED. I am able to run other WinHLLAPI functions that<br>
+dont require a connection to the presentation space such as pause.<br>
+<br>
+Once again thanks a bunch for your help.<br>
+<br>
+Thanks<br>
+Jesse<br>
+<br>
+On Jun 8, 4:14 pm, Charles Strahan &lt;<a href="mailto:charles.c.stra...@gmail.com">charles.c.stra...@gmail.com</a>&gt;<br>
+wrote:<br>
+<div class="im">&gt; Hi Jesse,<br>
+&gt;<br>
+&gt; Welcome to the Ruby community!<br>
+&gt;<br>
+&gt; I think this will work for you:<a href="https://gist.github.com/1015672" target="_blank">https://gist.github.com/1015672</a><br>
+&gt;<br>
+&gt; I tried to annotate the sample as well as I could. If anything is unclear,<br>
+&gt; or doesn&#39;t work, please let me know.<br>
+&gt;<br>
+&gt; Unfortunately, I do not have the HLLAPI lib to test with, so I had to base<br>
+&gt; that code off of the docs and some .NET samples.<br>
+&gt;<br>
+&gt; HTH,<br>
+&gt;<br>
+&gt; -Charles<br>
+&gt; &lt;<a href="https://gist.github.com/1015672" target="_blank">https://gist.github.com/1015672</a>&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+</div><div class="im">&gt; On Wed, Jun 8, 2011 at 1:11 PM, JesseFair &lt;<a href="mailto:jfa...@gmail.com">jfa...@gmail.com</a>&gt; wrote:<br>
+&gt; &gt; I tried Win32API as well but cant find out how to pass the cutom data<br>
+&gt; &gt; type WHLLAPIDATA that the WinHLLAPIStartup function is expecting.<br>
+&gt; &gt; Being new to Ruby I cant find a way to construct something that acts<br>
+&gt; &gt; similar to the above code -.. i.e. custom data types. I was able to<br>
+&gt; &gt; get the examples up and working but they only use simple data types<br>
+&gt; &gt; such as int and string.<br>
+&gt;<br>
+&gt; &gt; On Jun 8, 1:18 am, candlerb &lt;<a href="mailto:b.cand...@pobox.com">b.cand...@pobox.com</a>&gt; wrote:<br>
+&gt; &gt; &gt; I am not a Windows expert, but have you tried looking at Win32API<br>
+&gt; &gt; &gt; instead of FFI? This may be all that you need. There are plenty of<br>
+&gt; &gt; &gt; examples if you google for them.<br>
+&gt;<br>
+</div>&gt; &gt;<a href="http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://ww...-" target="_blank">http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://ww...-</a> Hide quoted text -<br>
+&gt;<br>
+&gt; - Show quoted text -</blockquote></div><br></div>
+
+</div><BR><FIELDSET CLASS="mimeAttachmentHeader"><LEGEND CLASS="mimeAttachmentHeaderName">WHLLAPI3270CS.bmp</LEGEND></FIELDSET><BR/><P><CENTER><IMG CLASS="moz-attached-image" shrinktofit="yes" SRC="imap://headius%40headius%2Ecom@imap.googlemail.com:993/fetch%3EUID%3E/Ruby/FFI%3E24?part=1.2&type=image/bmp&filename=WHLLAPI3270CS.bmp"></CENTER><P><br><hr><br><div style="font-size:12px;color:black;"><img src="data:image/gif;base64,R0lGODdhDwAPAOMAAP///zEwYmJlzQAAAPr6+vv7+/7+/vb29pyZ//39/YOBg////////////////////ywAAAAADwAPAAAESRDISUG4lQYr+s5bIEwDUWictA2GdBjhaAGDrKZzjYq3PgUw2co24+VGLYAAAesRLQklxoeiUDUI0qSj6EoH4Iuoq6B0PQJyJQIAOw==">
+<ul><li><a href="Attachments-4/WHLLAPI3270CS.bmp">Attachments-4/WHLLAPI3270CS.bmp</li></a></ul></div></body>
+</html>

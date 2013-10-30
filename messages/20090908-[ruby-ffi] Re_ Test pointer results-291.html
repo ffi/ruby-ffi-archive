@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Test pointer results</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Test pointer results</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/8/09 2:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+You can call Pointer#null? to check if it is null
+e.g.
+if snapshot.null?
+  return false
+end
+
+
+2009/9/8 Brett Blackham <a class="moz-txt-link-rfc2396E" href="mailto:brett.blackham@gmail.com">&lt;brett.blackham@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I have the following code:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> DWORD     = FFI::Type::UINT32
+<span class="moz-txt-citetags">&gt; </span> ...
+<span class="moz-txt-citetags">&gt; </span> ffi_lib 'kernel32'
+<span class="moz-txt-citetags">&gt; </span> attach_function :CreateToolhelp32Snapshot, [DWORD, DWORD], :pointer
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> snapshot = KERNEL32.CreateToolhelp32Snapshot
+<span class="moz-txt-citetags">&gt; </span>( Win32DebuggerDefines::TH32CS_SNAPTHREAD, @pid
+<span class="moz-txt-citetags">&gt; </span> if snapshot == nil
+<span class="moz-txt-citetags">&gt; </span>   return false
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> However, this code fails at "if snapshot == nil". It appears that
+<span class="moz-txt-citetags">&gt; </span>CreateToolhelp32Snapshot will always return a pointer. Even if @pid is
+<span class="moz-txt-citetags">&gt; </span>not a valid process ID. Additionally, FFI pointers don't like to be
+<span class="moz-txt-citetags">&gt; </span>compared to nil. Any thoughts on how I could test the results to
+<span class="moz-txt-citetags">&gt; </span>ensure the CreateToolhelp32Snapshot call worked?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

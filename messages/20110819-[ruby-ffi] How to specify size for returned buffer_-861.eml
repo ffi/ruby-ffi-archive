@@ -1,0 +1,119 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs37675eea;
+        Fri, 19 Aug 2011 23:51:02 -0700 (PDT)
+Received: by 10.229.186.208 with SMTP id ct16mr58385qcb.57.1313823061446;
+        Fri, 19 Aug 2011 23:51:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxDOsr3yBBoE6rvEEQ@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id c9si46165qcu.201.2011.08.19.23.50.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 19 Aug 2011 23:50:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDOsr3yBBoE6rvEEQ@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDOsr3yBBoE6rvEEQ@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxDOsr3yBBoE6rvEEQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf3770438qwj.7
+        for <headius@headius.com>; Fri, 19 Aug 2011 23:50:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=PyG0QBIbTahHlNlNokiDYFu6W1YQpCcJG2F84lJA/8M=;
+        b=phU6U3lX6HyF8Cl1EWma5ksYycCXJX5fD6mSrrtcDHlfdqRfaR2IhpaXnhzYzy6DTb
+         HVi9WIaptHtGohTWRaQFD9+5aLbeWLZyeZtTNZa//bmKICH1sjOGVYc24I+16LC5f0N/
+         /h68/u5IM8MOfoKXbJRkMuMtpZf92l9cYvfHY=
+Received: by 10.229.101.205 with SMTP id d13mr10764qco.7.1313823054488;
+        Fri, 19 Aug 2011 23:50:54 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.187.195 with SMTP id cx3ls8043960qab.0.gmail; Fri, 19 Aug
+ 2011 23:50:53 -0700 (PDT)
+Received: by 10.224.219.5 with SMTP id hs5mr97314qab.29.1313823053808;
+        Fri, 19 Aug 2011 23:50:53 -0700 (PDT)
+Received: by 10.224.113.6 with SMTP id y6msqap;
+        Fri, 19 Aug 2011 21:57:14 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.107.194 with SMTP id c2mr31997vcp.9.1313816233904; Fri, 19
+ Aug 2011 21:57:13 -0700 (PDT)
+Received: by p5g2000vbl.googlegroups.com with HTTP; Fri, 19 Aug 2011 21:57:13
+ -0700 (PDT)
+Date: Fri, 19 Aug 2011 21:57:13 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0,gzip(gfe)
+Message-ID: <ddd2bf7b-ecd4-4cea-9694-721194d096a8@p5g2000vbl.googlegroups.com>
+Subject: [ruby-ffi] How to specify size for returned buffer?
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm trying to wrap FreeImage (http://freeimage.sourceforge.net/) and
+it has this function:
+
+DLL_API BOOL DLL_CALLCONV FreeImage_AcquireMemory(FIMEMORY *stream,
+BYTE **data, DWORD *size_in_bytes);
+
+The way this works is you hand FreeImage a pointer (data) which it
+then allocates memory for and returns the size in the size_in_bytes
+out parameter.  I've attached example C code from the FreeImage docs
+in case it helps.
+
+So I'm not sure how to wrap this function.  So far I have this:
+
+FreeImage.attach_function('FreeImage_AcquireMemory',
+[:pointer, :pointer, :uint], :bool)
+
+buffer = MemoryPointer.new(:pointer)
+size_ptr = MemoryPointer.new(:uint)
+FreeImage.FreeImage_AcquireMemory(self, buffer, size);
+
+What I would then like to do is something like:
+
+buffer.size = size_ptr.read_pointer()
+
+But buffer doesn't have any such API.
+
+Any help appreciated.
+
+Thanks,
+
+Charlie
+------------
+void testAcquireMemIO(const char *lpszPathName) {
+  FIMEMORY *hmem = NULL;
+  // load a regular file
+  FREE_IMAGE_FORMAT fif = FreeImage_GetFileType(lpszPathName);
+  FIBITMAP *dib = FreeImage_Load(fif, lpszPathName, 0);
+
+  // open and allocate a memory stream
+  hmem = FreeImage_OpenMemory();
+
+  // save the image to a memory stream
+  FreeImage_SaveToMemory(FIF_PNG, dib, hmem, PNG_DEFAULT);
+  FreeImage_Unload(dib);
+
+  // get the buffer from the memory stream
+  BYTE *mem_buffer = NULL;
+  DWORD size_in_bytes = 0;
+  FreeImage_AcquireMemory(hmem, &mem_buffer, &size_in_bytes);
+
+  // save the buffer to a file stream
+  FILE *stream = fopen("buffer.png", "wb");
+  if(stream) {
+    fwrite(mem_buffer, sizeof(BYTE), size_in_bytes, stream);
+    fclose(stream);
+  }
+  // close and free the memory stream
+  FreeImage_CloseMemory(hmem);
+}

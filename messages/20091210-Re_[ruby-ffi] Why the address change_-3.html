@@ -1,0 +1,82 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Why the address change?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Why the address change?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/09 12:42 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+In print_pointer(), the 'ptr' variable is on the stack, so the address
+of it can change with every call, as it can with any stack variable.
+The same thing can happen in C.
+
+e.g. if you combined your C code with the following test harness, it
+would also print out different values for &amp;ptr.
+
+void indirect_print(void* ptr) { print_pointer(ptr); }
+
+int main(int argc, char **argv) {
+  void* ptr = (void*) (intptr_t) 0x1234;
+  print_pointer(ptr);
+  indirect_print(ptr);
+}
+
+
+The value of the pointer, which is the thing you are interested in,
+does not change.  Neither does it with FFI (as your output showed).
+
+
+2009/12/10 Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chiang@gmail.com">&lt;simon.a.chiang@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I've noticed the address of pointers can change when passed back into
+<span class="moz-txt-citetags">&gt; </span>an attached function multiple times.  How can I get the address to
+<span class="moz-txt-citetags">&gt; </span>stay the same?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>For example, say I have these functions:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> #include &lt;stdio.h&gt;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> void *get_pointer()
+<span class="moz-txt-citetags">&gt; </span> {
+<span class="moz-txt-citetags">&gt; </span>   void *ptr;
+<span class="moz-txt-citetags">&gt; </span>   return(ptr);
+<span class="moz-txt-citetags">&gt; </span> }
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> int print_pointer( void *ptr )
+<span class="moz-txt-citetags">&gt; </span> {
+<span class="moz-txt-citetags">&gt; </span>   printf("pointer: %p\naddress: %p\n", ptr, &amp;ptr);
+<span class="moz-txt-citetags">&gt; </span>   return(0);
+<span class="moz-txt-citetags">&gt; </span> }
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>And then I do this:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> module ExampleCode
+<span class="moz-txt-citetags">&gt; </span>   attach_function :get_pointer, [], :pointer
+<span class="moz-txt-citetags">&gt; </span>   attach_function :print_pointer, [:pointer], :int
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> ptr = ExampleCode.get_pointer()
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> puts
+<span class="moz-txt-citetags">&gt; </span> puts "First Time:"
+<span class="moz-txt-citetags">&gt; </span> ExampleCode.print_pointer(ptr)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> puts
+<span class="moz-txt-citetags">&gt; </span> puts "Second Time:"
+<span class="moz-txt-citetags">&gt; </span> ExampleCode.print_pointer(ptr)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I get this for an output:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> First Time:
+<span class="moz-txt-citetags">&gt; </span> pointer: 0x6249
+<span class="moz-txt-citetags">&gt; </span> address: 0x7fff5fbfef38
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> Second Time:
+<span class="moz-txt-citetags">&gt; </span> pointer: 0x6249
+<span class="moz-txt-citetags">&gt; </span> address: 0x7fff5fbfeef8
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm on OS X 10.6.2, using FFI 0.5.4.  Thanks!
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

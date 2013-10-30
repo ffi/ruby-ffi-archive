@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/09 8:21 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>1) Both FFI::Struct and FFI::ManagedStruct are able to be freed by the Ruby impl's GC. Overall GC semantics are no different that any other Ruby object GC'd by the specific Ruby impl.
+</pre></blockquote><pre wrap>
+
+My question is
+1) is the "struct's worth of memory" allocated when you call #new
+
+2) when you do struct[:member] = something
+
+does it actually set the bits within the struct right then, or at some
+later marshalling time?
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>You mean, like this?
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win">http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win</a>...
+</pre></blockquote><pre wrap>
+
+Ooh.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I should have added a footnote that just because it <b class="moz-txt-star"><span class="moz-txt-tag">*</span>can<span class="moz-txt-tag">*</span></b> be
+<span class="moz-txt-citetags">&gt; </span>collected, there is in fact no guarantee that objects are in fact ever
+<span class="moz-txt-citetags">&gt; </span>collected by the GC.  Depending on the implementation, there might not
+<span class="moz-txt-citetags">&gt; </span>be sufficient ruby/java memory pressure to cause a GC event, so the
+<span class="moz-txt-citetags">&gt; </span>objects are not collected, and the native memory is never freed.
+</pre></blockquote><pre wrap>
+
+In theory there is a guarantee that it will be collected
+"at_exit" [objects with finalizers are all called in an at_exit in
+MRI].
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Automated management of native memory is a no-win situation:
+<span class="moz-txt-citetags">&gt; </span>If we have it in FFI core, then people will (ab)use it and rely on it
+<span class="moz-txt-citetags">&gt; </span>when they really should not.
+</pre></blockquote><pre wrap>
+
+Requiring it always might be a bit stiff...
+
+-r
+</pre></div></body>
+</html>
+</table></div>

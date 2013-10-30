@@ -1,0 +1,123 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs319893agb;
+        Thu, 28 Apr 2011 07:00:27 -0700 (PDT)
+Received: by 10.231.81.18 with SMTP id v18mr2677760ibk.42.1303999226582;
+        Thu, 28 Apr 2011 07:00:26 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDz5eXtBBoE8ROiFQ@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTPS id 15si5550125ibb.122.2011.04.28.07.00.25
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 28 Apr 2011 07:00:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDz5eXtBBoE8ROiFQ@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDz5eXtBBoE8ROiFQ@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDz5eXtBBoE8ROiFQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg3 with SMTP id 3sf2404303pvg.7
+        for <headius@headius.com>; Thu, 28 Apr 2011 07:00:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=QPh/bNtg4TiX+j2ZjGKi1TZM3zYHVvrdlI1TGIhRSkA=;
+        b=BMOtA8PlxyAHV4z88Sj4HxpehTlZ6bcpIhJUbNCkEq2fmYZ0LPHMvA2JSdpefK9Pea
+         pncG7gET+O5y/KOTRahG4uZV4S8NZxZCpCH3phydMcEG6MZz7d+eRww+VnRSSxD00GVM
+         41+b30ikMyEDqJ3CoZeETXIU2s6Hwft3Xc3QQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=6yToipCLDFQSSMGexdU2n4Sg5VvSYhSqKpF+lHhC/lZehC8l4YVNFio3/Pp6nc/bhM
+         yLWVHZK6mL0ITqicSt3jEVKkzaWjBWaeKKw+K7vhwgVABDBA/qMRFPOvU8o33PMvX1pR
+         CPQLMqatRTiO4uQtmhlXh14KMCjskZiPLxsw4=
+Received: by 10.68.37.39 with SMTP id v7mr132364pbj.59.1303999219350;
+        Thu, 28 Apr 2011 07:00:19 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.8.3 with SMTP id n3ls2381869pba.3.gmail; Thu, 28 Apr 2011
+ 07:00:19 -0700 (PDT)
+Received: by 10.68.8.198 with SMTP id t6mr211487pba.6.1303999160610;
+        Thu, 28 Apr 2011 06:59:20 -0700 (PDT)
+Date: Thu, 28 Apr 2011 06:59:20 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <15325380.1445.1303999160149.JavaMail.geo-discussion-forums@prcm34>
+In-Reply-To: <BANLkTi=4g0tiHyy6AyyyzzpB6iRtjNxpsw@mail.gmail.com>
+Subject: Re: [ruby-ffi] How to manage an Array of Structs
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1444_1041065.1303999160148"
+
+------=_Part_1444_1041065.1303999160148
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Charles' answer is correct, except you don't need to copy the bytes in/out, 
+you can just cast the pointer to the Struct type:
+
+# access first element of array
+s0 = Shared::Sembuf.new(ops[0])
+s0[:sem_op] = 0x4321
+
+# access second element of array
+s1 = Shared::Sembuf.new(ops[1])
+s1[:sem_op] = 0x1234
+
+... etc
+
+That way, reads/writes to Struct fields will directly update the pointer you 
+allocated.
+
+
+
+------=_Part_1444_1041065.1303999160148
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<br><div>Charles' answer is correct, except you don't need to copy the byte=
+s in/out, you can just cast the pointer to the Struct type:</div><div><meta=
+ charset=3D"utf-8"><span class=3D"Apple-style-span" style=3D"border-collaps=
+e: collapse; "><br># access first element of&nbsp;<span class=3D"il" style=
+=3D"background-image: initial; background-attachment: initial; background-o=
+rigin: initial; background-clip: initial; background-color: rgb(207, 223, 2=
+29); color: rgb(82, 81, 81); background-position: initial initial; backgrou=
+nd-repeat: initial initial; ">array</span><br>s0 =3D&nbsp;</span><span clas=
+s=3D"Apple-style-span" style=3D"border-collapse: collapse; color: rgb(34, 3=
+4, 34); ">Shared:<wbr>:</span><span class=3D"Apple-style-span" style=3D"bor=
+der-collapse: collapse; ">Sembuf.new(ops[0])</span></div><div><span class=
+=3D"Apple-style-span" style=3D"border-collapse: collapse; ">s0[:sem_op] =3D=
+ 0x4321</span><br></div><div><span class=3D"Apple-style-span" style=3D"bord=
+er-collapse: collapse; "><br># access second element of&nbsp;<span class=3D=
+"il" style=3D"background-image: initial; background-attachment: initial; ba=
+ckground-origin: initial; background-clip: initial; background-color: rgb(2=
+07, 223, 229); color: rgb(82, 81, 81); background-position: initial initial=
+; background-repeat: initial initial; ">array</span><br>s1 =3D&nbsp;</span>=
+<span class=3D"Apple-style-span" style=3D"border-collapse: collapse; color:=
+ rgb(34, 34, 34); ">Shared:<wbr>:</span><span class=3D"Apple-style-span" st=
+yle=3D"border-collapse: collapse; ">Sembuf.new(ops[1])</span></div><meta ch=
+arset=3D"utf-8"><div><span class=3D"Apple-style-span" style=3D"border-colla=
+pse: collapse; ">s1[:sem_op] =3D 0x1234</span><br></div><div><span class=3D=
+"Apple-style-span" style=3D"border-collapse: collapse; "><br></span></div><=
+div><span class=3D"Apple-style-span" style=3D"border-collapse: collapse; ">=
+... etc</span></div><div><span class=3D"Apple-style-span" style=3D"border-c=
+ollapse: collapse; "><br></span></div><div><span class=3D"Apple-style-span"=
+ style=3D"border-collapse: collapse; ">That way, reads/writes to Struct fie=
+lds will directly update the pointer you allocated.</span></div><div><span =
+class=3D"Apple-style-span" style=3D"border-collapse: collapse; "><br></span=
+></div><div><span class=3D"Apple-style-span" style=3D"border-collapse: coll=
+apse; "><br></span></div>
+------=_Part_1444_1041065.1303999160148--

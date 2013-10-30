@@ -1,0 +1,80 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs26896agb;
+        Sat, 7 May 2011 14:29:55 -0700 (PDT)
+Received: by 10.142.221.1 with SMTP id t1mr2707896wfg.437.1304803794263;
+        Sat, 07 May 2011 14:29:54 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDM85buBBoEsrHNuQ@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id w12si15667746wfh.74.2011.05.07.14.29.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 07 May 2011 14:29:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDM85buBBoEsrHNuQ@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDM85buBBoEsrHNuQ@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDM85buBBoEsrHNuQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf3786984pwj.7
+        for <headius@headius.com>; Sat, 07 May 2011 14:29:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=oQ0u3YDPjdvQQm2EeW0FDsKS8nUnE+eRYc6nqkFia5Y=;
+        b=u1TO2mZanZB0tqDb568gC9uZBd1fmVz5Aazw3BlQ0bG7cacd/WWyIV2AkuC6K3KPXC
+         gXdTtYuVvQArRtTY8P+9ApAbMYe6EWp0LoyCmevCfibnQinj7mUAnpZ4F2XwW7ccbpIm
+         wV9Dp3OGniVxmX5eYHL/8GQxbu08yGKw2r+MU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=vflO1Mn0/fduZPCGZTgSfFQIDEIbj/784sBp7nUZuMwURtQn8L0nivrlWEHmYsSGTy
+         Jl9yfmXgB0teIQ5xeen7dnHmGiiaZnwQWk0Yp0sTI3fJ4B2R8EH7tZcAYp1SHA+f5w5A
+         0i2HZhPEUCOi7cGBEGJxZ1llqo9E+EhxGwjDM=
+Received: by 10.68.6.130 with SMTP id b2mr520288pba.38.1304803788271;
+        Sat, 07 May 2011 14:29:48 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.39.41 with SMTP id m9ls6658359pbk.2.gmail; Sat, 07 May 2011
+ 14:29:47 -0700 (PDT)
+Received: by 10.68.14.72 with SMTP id n8mr134749pbc.12.1304803787892;
+        Sat, 07 May 2011 14:29:47 -0700 (PDT)
+Date: Sat, 7 May 2011 14:29:47 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <15300420.2023.1304803787295.JavaMail.geo-discussion-forums@prfg19>
+In-Reply-To: <53c8ded3-22aa-4796-9ca9-e03c84e52c20@o7g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] Re: Getting a pointer from a String
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2022_28538249.1304803787294"
+
+------=_Part_2022_28538249.1304803787294
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+You can't get a pointer to a String, since thats not portable (i.e. not 
+possible on JRuby).
+
+The best you can do is use a MemoryPointer for the iov content, then copy 
+from there to a String.
+
+------=_Part_2022_28538249.1304803787294
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>You can't get a pointer to a String, since thats not portable (i.e. not possible on JRuby).</div><div><br></div><div>The best you can do is use a MemoryPointer for the iov content, then copy from there to a String.</div>
+------=_Part_2022_28538249.1304803787294--

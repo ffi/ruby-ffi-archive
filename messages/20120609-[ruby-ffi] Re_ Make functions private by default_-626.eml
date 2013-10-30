@@ -1,0 +1,76 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.239.15 with SMTP id m15csp52270wfh;
+        Sat, 9 Jun 2012 10:36:51 -0700 (PDT)
+Received: by 10.224.70.144 with SMTP id d16mr4084989qaj.45.1339263411643;
+        Sat, 09 Jun 2012 10:36:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMnq3cGqAxCzk87-BBoEgGU1EA@googlegroups.com>
+Received: from mail-qc0-f190.google.com (mail-qc0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id v18si3259056qct.190.2012.06.09.10.36.51
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 09 Jun 2012 10:36:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCzk87-BBoEgGU1EA@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCzk87-BBoEgGU1EA@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCMnq3cGqAxCzk87-BBoEgGU1EA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qcsr22 with SMTP id r22sf2024985qcs.7
+        for <headius@headius.com>; Sat, 09 Jun 2012 10:36:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=6Gk3zfgYVEIpMPtCQnRk/P9fWrR7Q053UZA5s8oVJFc=;
+        b=2y65DeKundxf3VzS6mLhu9e/kG6R4Iu9UPzAH1Gqjl06A+xwwKKUbmhu+RLd+MVBvF
+         frNkPOTa/itD7sZxM2Iug+0AkjLaII9LTUUM5Zmo32dAzrV06d0igbi+YS7K1C72rey2
+         sJitBRLoetQBB7z9yqret6A8jgRiWxPcO6Jy8=
+Received: by 10.52.34.8 with SMTP id v8mr701724vdi.5.1339263411011;
+        Sat, 09 Jun 2012 10:36:51 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.140.139 with SMTP id i11ls1507114vcu.1.gmail; Sat, 09 Jun
+ 2012 10:36:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.173.49 with SMTP id bh17mr703611vdc.2.1339263410642; Sat,
+ 09 Jun 2012 10:36:50 -0700 (PDT)
+Received: by x21g2000vbc.googlegroups.com with HTTP; Sat, 9 Jun 2012 10:36:50
+ -0700 (PDT)
+Date: Sat, 9 Jun 2012 10:36:50 -0700 (PDT)
+In-Reply-To: <4FD37159.7080400@matijs.net>
+References: <f1c6325f-5003-4feb-a3b1-cc64b7f5b663@p27g2000vbl.googlegroups.com>
+ <4FD37159.7080400@matijs.net>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5
+ (KHTML, like Gecko) Chrome/19.0.1084.52 Safari/536.5,gzip(gfe)
+Message-ID: <bf132c57-313b-4720-a372-141bd2e8e301@x21g2000vbc.googlegroups.com>
+Subject: [ruby-ffi] Re: Make functions private by default?
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: djberg96@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of djberg96@gmail.com designates internal as permitted sender)
+ smtp.mail=djberg96@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Jun 9, 9:52=A0am, Matijs van Zuijlen <mat...@matijs.net> wrote:
+> Hi Daniel,
+>
+> You can easily create a method attach_function_privately that combines th=
+e calls
+> to attach_function and private_class_method.
+
+This is true. :)
+
+Dan

@@ -1,0 +1,63 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Problem with AutoPointer and ManagedStruct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Problem with AutoPointer and ManagedStruct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>zenChild <dan.wanek@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/10 8:36 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm trying to use AutoPointer or ManagedStruct to free some memory for
+a gss_buffer_desc struct in the GSSAPI.  It seems I can free the
+object manually, but when wrapped in an AutoPointer or ManagedStruct I
+get a SegFault.
+
+This is working, but I need to be able to free the memory in an
+automatic fashion.
+
+# --------- Example One ---------
+class GssBufferDesc &lt; FFI::Struct
+  layout  :length =&gt; :size_t,
+          :value  =&gt; :pointer # pointer of :void
+end
+
+.... misc code
+
+output_token = LibGSSAPI::GssBufferDesc.new
+output_token[:length] = 0
+output_token[:value] = nil
+maj_stat = LibGSSAPI.gss_init_sec_context(...,
+output_token.pointer,...)
+
+... do work
+
+maj_stat = LibGSSAPI.gss_release_buffer(min_stat,
+output_token.pointer)
+# gss_release_buffer exists with success:w
+
+
+# --------- Example Two ---------  This example gets a SegFault
+
+class GssBufferT &lt; FFI::AutoPointer
+  def self.release(buffer_ptr)
+    puts "Releasing gss_buffer_t at #{buffer_ptr.address}" if $DEBUG
+    min_stat = FFI::MemoryPointer.new :uint32
+    maj_stat = LibGSSAPI.gss_release_buffer(min_stat, buffer_ptr)
+  end
+end
+
+.... misc code
+
+output_token = FFI::MemoryPointer.new :pointer
+maj_stat = LibGSSAPI.gss_init_sec_context(..., output_token, ...)
+LibGSSAPI::GssBufferT.new(output_token.get_pointer(0))
+
+# on exit the release method in GssBufferT causes a segfault and if I
+wrap it in a ManagedStruct the same thing happens.  Does anyone have
+any ideas for me?
+
+Cheers,
+
+Dan Wanek
+</pre></div></body>
+</html>
+</table></div>

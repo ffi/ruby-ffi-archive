@@ -1,0 +1,51 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] invalid ELF header on hello world example</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] invalid ELF header on hello world example</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/26/10 6:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Don't use 'libc' as the library, use FFI::Library::LIBC
+
+On linux, /usr/lib/libc.so is a linker script, not a library.  (you
+have to use libc.so.6, which is what FFI::Library::LIBC will be on
+linux)
+
+If thats in an example on the wiki, please correct it, or if its in
+the source tree, report and issue with a patch for it.
+
+
+On 27 May 2010 09:09, bwv549 <a class="moz-txt-link-rfc2396E" href="mailto:jtprince@gmail.com">&lt;jtprince@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>---
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>LIBC = 'libc'
+<span class="moz-txt-citetags">&gt; </span>module Hello
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> ffi_lib LIBC
+<span class="moz-txt-citetags">&gt; </span> attach_function 'puts', [ :string ], :int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Hello.puts("Hello, World")
+<span class="moz-txt-citetags">&gt; </span>---
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Gives me:
+<span class="moz-txt-citetags">&gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:61:in
+<span class="moz-txt-citetags">&gt; </span>`block in ffi_lib': Could not open library 'libc': libc: cannot open
+<span class="moz-txt-citetags">&gt; </span>shared object file: No such file or directory. Could not open library
+<span class="moz-txt-citetags">&gt; </span>'libc.so': /usr/lib/libc.so: invalid ELF header (LoadError)
+<span class="moz-txt-citetags">&gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:
+<span class="moz-txt-citetags">&gt; </span>43:in `map'
+<span class="moz-txt-citetags">&gt; </span>       from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:
+<span class="moz-txt-citetags">&gt; </span>43:in `ffi_lib'
+<span class="moz-txt-citetags">&gt; </span>       from hello.rb:7:in `&lt;module:Hello&gt;'
+<span class="moz-txt-citetags">&gt; </span>       from hello.rb:5:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Seems like it can see libc but says "invalid ELF header".  How do I
+<span class="moz-txt-citetags">&gt; </span>get hello world to run on linux?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

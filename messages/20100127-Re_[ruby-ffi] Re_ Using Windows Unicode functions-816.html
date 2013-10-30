@@ -1,0 +1,54 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Using Windows Unicode functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Using Windows Unicode functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/27/10 4:58 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Tue, Jan 26, 2010 at 5:36 PM, Quintus <a class="moz-txt-link-rfc2396E" href="mailto:sutniuq@gmx.net">&lt;sutniuq@gmx.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>That works! Thank you! So, here's the working code:
+<span class="moz-txt-citetags">&gt; </span>------------------------------------
+<span class="moz-txt-citetags">&gt; </span>#Encoding: UTF-8
+<span class="moz-txt-citetags">&gt; </span>require "ffi"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module Test
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> ffi_lib "user32"
+<span class="moz-txt-citetags">&gt; </span> ffi_convention :stdcall
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> attach_function :message_box, :MessageBoxW,
+<span class="moz-txt-citetags">&gt; </span>[:long, :buffer_in, :buffer_in, :int], :int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>string = "Test with umlaut: ä\0".encode("UTF-16LE") #MS expects double
+<span class="moz-txt-citetags">&gt; </span>NUL at a unicode string's end
+<span class="moz-txt-citetags">&gt; </span>Test.message_box(0, string, string, 0)
+<span class="moz-txt-citetags">&gt; </span>----------------------------------------
+<span class="moz-txt-citetags">&gt; </span>Tested with ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-
+<span class="moz-txt-citetags">&gt; </span>mingw32].
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Nice!
+
+Can someone ad a stub and details about Unicode Windows to the wiki?
+
+<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/">http://wiki.github.com/ffi/ffi/</a>
+
+This indeed is very helpful!
+
+Sorry for not being able to get into this, been very busy and traveling...
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

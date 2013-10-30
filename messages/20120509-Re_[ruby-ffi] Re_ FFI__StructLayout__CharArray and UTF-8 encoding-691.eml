@@ -1,0 +1,137 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp28457obj;
+        Tue, 8 May 2012 22:12:13 -0700 (PDT)
+Received: by 10.14.127.78 with SMTP id c54mr935820eei.8.1336540332355;
+        Tue, 08 May 2012 22:12:12 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxCr-af9BBoE1iqsxA@googlegroups.com>
+Received: from mail-ey0-f190.google.com (mail-ey0-f190.google.com [209.85.215.190])
+        by mx.google.com with ESMTPS id m44si465038eeh.59.2012.05.08.22.12.11
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 08 May 2012 22:12:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCr-af9BBoE1iqsxA@googlegroups.com designates 209.85.215.190 as permitted sender) client-ip=209.85.215.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCr-af9BBoE1iqsxA@googlegroups.com designates 209.85.215.190 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxCr-af9BBoE1iqsxA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by eaad1 with SMTP id d1sf10483810eaa.7
+        for <headius@headius.com>; Tue, 08 May 2012 22:12:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=93HFpjacYyXrFinsxnmFZa+OU4NxebwhxxsWw3zZ5Vw=;
+        b=tIx8WLTuMtkaS28xVe4WrtIr4RR+Q9O9DbyvrhvJzQvCLFNaJFr/HQtzHZLearIyEw
+         YeEhQnuEQa7tGO/8Vmmi8J0joqwfjg84z1Pm9dLyIFlPeVURTd8hi6Z5Ty4D1pJ0h5xL
+         YcBnXTJJIAqJZDDkMX0rESerolmjlX1wXLa7Q=
+Received: by 10.204.145.68 with SMTP id c4mr656201bkv.27.1336540331556;
+        Tue, 08 May 2012 22:12:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.130.88 with SMTP id r24ls3796644bks.4.gmail; Tue, 08 May
+ 2012 22:12:10 -0700 (PDT)
+Received: by 10.205.122.65 with SMTP id gf1mr2566692bkc.2.1336540330526;
+        Tue, 08 May 2012 22:12:10 -0700 (PDT)
+Received: by 10.205.122.65 with SMTP id gf1mr2566691bkc.2.1336540330494;
+        Tue, 08 May 2012 22:12:10 -0700 (PDT)
+Received: from mail-lb0-f176.google.com (mail-lb0-f176.google.com [209.85.217.176])
+        by gmr-mx.google.com with ESMTPS id p5si1807614bks.1.2012.05.08.22.12.10
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 08 May 2012 22:12:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of navaneethkn@gmail.com designates 209.85.217.176 as permitted sender) client-ip=209.85.217.176;
+Received: by lboj14 with SMTP id j14so4083263lbo.7
+        for <ruby-ffi@googlegroups.com>; Tue, 08 May 2012 22:12:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.112.54.37 with SMTP id g5mr971301lbp.104.1336540330034; Tue,
+ 08 May 2012 22:12:10 -0700 (PDT)
+Received: by 10.112.28.104 with HTTP; Tue, 8 May 2012 22:12:09 -0700 (PDT)
+In-Reply-To: <11314407.851.1336519555950.JavaMail.geo-discussion-forums@pbud15>
+References: <1157585.784.1336455289325.JavaMail.geo-discussion-forums@pbnf3>
+	<27740124.175.1336456157734.JavaMail.geo-discussion-forums@pbyy9>
+	<11314407.851.1336519555950.JavaMail.geo-discussion-forums@pbud15>
+Date: Wed, 9 May 2012 10:42:10 +0530
+Message-ID: <CAJSAyaVbWN0btUmy=cNc4xart0oWAve8K5u4GM30c+C7_oUFkQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: FFI::StructLayout::CharArray and UTF-8 encoding
+From: "Navaneeth.K.N" <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: navaneethkn@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of navaneethkn@gmail.com designates 209.85.217.176 as permitted
+ sender) smtp.mail=navaneethkn@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=bcaec55401c699865c04bf938b13
+
+--bcaec55401c699865c04bf938b13
+Content-Type: text/plain; charset=UTF-8
+
+Hello,
+
+On Wed, May 9, 2012 at 4:55 AM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+>
+>
+> On Tuesday, 8 May 2012 15:49:17 UTC+10, Navaneeth KN wrote:
+>>
+>>
+>> It looks like str.force_encoding('UTF-8') works well. But I am still
+>> ineterested  to know if there are any FFI way of specifying the encoding.
+>>
+>>
+> There's no way currently.  Can you add a section to the wiki about forcing
+> the string encoding like you did above?
+>
+
+Sure. Will do it.
+
+Do you think adding this as an extension to FFI::StructLayout::CharArray
+makes sense? In such cases ptr.read_string can do the desired encoding.
+read_string can take the encoding as a parameter or read from a
+configuration like,
+
+module Sample
+extend FFI::Library
+ffi_lib "sample.so"
+string_encoding "UTF-8"
+end
+
+Let me know what you think.
+
+Thanks
+Navaneeth
+
+--bcaec55401c699865c04bf938b13
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello,<br><br><div class=3D"gmail_quote">On Wed, May 9, 2012 at 4:55 AM, Wa=
+yne Meissner <span dir=3D"ltr">&lt;<a href=3D"mailto:wmeissner@gmail.com" t=
+arget=3D"_blank">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;=
+padding-left:1ex">
+<br><br>On Tuesday, 8 May 2012 15:49:17 UTC+10, Navaneeth KN  wrote:<blockq=
+uote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:=
+1px #ccc solid;padding-left:1ex"><div><br>It looks like str.force_encoding(=
+&#39;UTF-8&#39;) works well. But I am still ineterested=C2=A0 to know if th=
+ere are any FFI way of specifying the encoding.<br>
+<br></div></blockquote><div><br></div><div>There&#39;s no way currently. =
+=C2=A0Can you add a section to the wiki about forcing the string encoding l=
+ike you did above?</div></blockquote><div><br>Sure. Will do it. <br><br>Do =
+you think adding this as an extension to FFI::StructLayout::CharArray makes=
+ sense? In such cases ptr.read_string can do the desired encoding. read_str=
+ing can take the encoding as a parameter or read from a configuration like,=
+ <br>
+<br>module Sample<br>  extend FFI::Library<br>  ffi_lib &quot;sample.so&quo=
+t;<br>  string_encoding &quot;UTF-8&quot;<br>end<br></div></div><br>Let me =
+know what you think.<br><br>Thanks<br>Navaneeth<br clear=3D"all"><br><br>
+
+
+--bcaec55401c699865c04bf938b13--

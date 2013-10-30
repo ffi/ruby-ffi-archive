@@ -1,0 +1,172 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.67.198 with SMTP id s6cs263593qai;
+        Mon, 14 Sep 2009 07:25:11 -0700 (PDT)
+Received: by 10.114.68.14 with SMTP id q14mr11480388waa.103.1252938310883;
+        Mon, 14 Sep 2009 07:25:10 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-px0-f159.google.com (mail-px0-f159.google.com [209.85.216.159])
+        by mx.google.com with ESMTP id 36si8866983pxi.14.2009.09.14.07.25.09;
+        Mon, 14 Sep 2009 07:25:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.159 as permitted sender) client-ip=209.85.216.159;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.159 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi31 with SMTP id 31so1764917pxi.27
+        for <headius@headius.com>; Mon, 14 Sep 2009 07:25:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=7sdgX1pEDNw8m6/+PEEr0GuT0bkk9cJRChBfS9T0aq4=;
+        b=v3m9yN2Ji3uqLNVk7RMq8SlZB3O6/QFP3TLgQNTVUmTEcUOtRO04WWPpPKxMgO0Uiu
+         7Z0h4sQGbfKHBLxqzdZC01Vo8+gsGLqJ2pExNBGZpvxKRuaaSLE56RURBjAG/4cT+bFb
+         nkeMkrPmbc5140pUKHnTacpfa06BI075D/R6E=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=MV0MxOVb3zI32JF+HAtYhWS3VxOHDjtJfEjuZBCnRmfCa8YoSpDF6qQv6MK9xIKLNb
+         z+glkomILfXbdxcyGe4LVyvO9J0frdaUvEc42BJXLf0KBr/S4RmxRjqYFwEhoNPVsxIn
+         nh0uoYV3yHhxKg9su/eqJP3xpavlGuEGNocMo=
+Received: by 10.114.19.11 with SMTP id 11mr619840was.17.1252938307427;
+        Mon, 14 Sep 2009 07:25:07 -0700 (PDT)
+Received: by 10.107.100.3 with SMTP id c3gr20prm.0;
+	Mon, 14 Sep 2009 07:25:07 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.140.173.16 with SMTP id v16mr3019149rve.1.1252938306444; Mon, 14 Sep 2009 07:25:06 -0700 (PDT)
+Received: by 10.140.173.16 with SMTP id v16mr3019148rve.1.1252938306426; Mon, 14 Sep 2009 07:25:06 -0700 (PDT)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f196.google.com (mail-px0-f196.google.com [209.85.216.196]) by gmr-mx.google.com with ESMTP id 25si1615151pzk.3.2009.09.14.07.25.05; Mon, 14 Sep 2009 07:25:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.196 as permitted sender) client-ip=209.85.216.196;
+Received: by pxi34 with SMTP id 34so1792885pxi.16 for <ruby-ffi@googlegroups.com>; Mon, 14 Sep 2009 07:25:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=6fFiE86gyVxbqWFt8Sp9L/QrvutUPVJ5iuRlb5caqpY=; b=qlfxGGUtu4Sfvj8NaIoWlsekR/0VaubM7UEKVEIe5y6gEAwldGXtYqLR8uEqXSJYyN e21pzmyAxmjveOYpTQRWqLEUXcdMDLa5cCUSf1SgASbVO5ypo1rApyq+/CNUENeoHO3O BtcbmyaAjqt9yY0AKKMbMgecSlUWTBoGy+AMo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=ehHmT+dSFXFTKFg6DLcWmPDlj0kuGR+DwqW2wPq6ay2YYo5aHGyDNcDYvabbEJuVSh ZwjBmKE/ak7Q+bVSLoyyGBiLT0xDcZWCPMIs9qSW1AnP9jOr4x39wwXkSpExM4oCajyi 9wBIg2idzLo3qJ3fhNa38iwhWUpfCpm6KPmTg=
+MIME-Version: 1.0
+Received: by 10.141.33.21 with SMTP id l21mr894239rvj.88.1252938305188; Mon,  14 Sep 2009 07:25:05 -0700 (PDT)
+In-Reply-To: <531031b1-b784-4180-b341-3ab5cf6eaf7a@f20g2000prn.googlegroups.com>
+References: <531031b1-b784-4180-b341-3ab5cf6eaf7a@f20g2000prn.googlegroups.com>
+Date: Tue, 15 Sep 2009 00:25:05 +1000
+Message-ID: <4ccee320909140725s73a1eef1sf44ed87743afa2d0@mail.gmail.com>
+Subject: [ruby-ffi] Re: using :buffer_out with strings in ruby vs jruby
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+If that code is doing what I think it is doing, you have the direction wron=
+g.
+
+:buffer_out =3D=3D copy out from native memory to ruby memory
+:buffer_in =3D=3D copy in to native memory from ruby memory
+
+Think of them like IN and OUT parameter specifications.  IN means the
+data is passed IN to the function, OUT means the function can alter
+the value of the parameter.  INOUT means both.
+
+As to why the tests fail if you pass the string first, its because the
+string gets overwritten with garbage from native memory due to the OUT
+param spec.
+
+The tests work with :pointer, because it is basically the same as
+:buffer_inout when it comes to string and Buffer arguments - the data
+is first copied IN to native memory from ruby, then after the call,
+the native data is copied OUT from native memory to ruby,  overwriting
+the data with the same thing as was already there.
+
+2009/9/14 Aman Gupta <themastermind1@gmail.com>:
+>
+> I'm seeing different behavior on ruby vs jruby when passing in a
+> string as a :buffer_out argument:
+>
+> require 'rubygems'
+> require 'ffi'
+>
+> module GLib
+> =A0extend FFI::Library
+> =A0ffi_lib 'libglib-2.0'
+> =A0attach_function :g_memdup_buf, :g_memdup,
+> [ :buffer_out, :uint ], :pointer
+> =A0attach_function :g_memdup_ptr, :g_memdup,
+> [ :pointer, :uint ], :pointer
+>
+> =A0def self.test_memdup(arg_type, func_type)
+> =A0 =A0ostr =3D "a\0b\0c"
+>
+> =A0 =A0if arg_type =3D=3D :string
+> =A0 =A0 =A0arg =3D ostr.dup
+> =A0 =A0elsif arg_type =3D=3D :buffer
+> =A0 =A0 =A0arg =3D FFI::Buffer.new(ostr.size)
+> =A0 =A0 =A0arg.put_bytes(0, ostr)
+> =A0 =A0end
+>
+> =A0 =A0if func_type =3D=3D :buffer_out
+> =A0 =A0 =A0ret =3D GLib.g_memdup_buf(arg, arg.size)
+> =A0 =A0elsif func_type =3D=3D :pointer
+> =A0 =A0 =A0ret =3D GLib.g_memdup_ptr(arg, arg.size)
+> =A0 =A0end
+>
+> =A0 =A0rstr =3D ret.get_bytes(0, ostr.size)
+>
+> =A0 =A0p [arg_type, func_type, ostr, rstr, ostr =3D=3D rstr]
+> =A0end
+> end
+>
+> GLib.test_memdup(:buffer, :buffer_out)
+> GLib.test_memdup(:buffer, :pointer)
+> GLib.test_memdup(:string, :buffer_out)
+> GLib.test_memdup(:string, :pointer)
+>
+> $ ruby glib_memduptest.rb
+> [:buffer, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+> [:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+> [:string, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+> [:string, :pointer, "a\000b\000c", "a\000b\000c", true]
+>
+> $ jruby glib_memduptest.rb
+> [:buffer, :buffer_out, "a\000b\000c", "\300\370\177\260A", false]
+> [:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+> [:string, :buffer_out, "\001\000\000\000\270", "\001\000\000\000\270",
+> true]
+> [:string, :pointer, "\001\000\000\000\270", "\001\000\000\000\270",
+> true]
+>
+> I'm not really sure what's happening in the jruby case. If I use an
+> explicit FFI::Buffer with :pointer, it seems to work.
+>
+> What's really strange though, is that if you reverse the order in
+> which the tests happen (so the string versions execute first), they
+> all fail:
+>
+> GLib.test_memdup(:string, :buffer_out)
+> GLib.test_memdup(:string, :pointer)
+> GLib.test_memdup(:buffer, :buffer_out)
+> GLib.test_memdup(:buffer, :pointer)
+>
+> $ jruby glib_memduptest.rb
+> [:string, :buffer_out, "\300\370\177\260A", "\300\370\177\260A", true]
+> [:string, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+> [:buffer, :buffer_out, "\300\370\177\260A", "0\f\200\001@", false]
+> [:buffer, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+>

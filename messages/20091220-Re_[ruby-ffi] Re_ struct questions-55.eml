@@ -1,0 +1,172 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs461073and;
+        Sun, 20 Dec 2009 07:13:45 -0800 (PST)
+Received: by 10.150.25.30 with SMTP id 30mr9758257yby.83.1261322025658;
+        Sun, 20 Dec 2009 07:13:45 -0800 (PST)
+Return-Path: <3Jz8uSwcJCN8TIBXOfdHNBJM.DPNSVCZ-GGJHPPHMFHSPVQT.DPN@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 32si10318078yxe.104.2009.12.20.07.13.44;
+        Sun, 20 Dec 2009 07:13:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3Jz8uSwcJCN8TIBXOfdHNBJM.DPNSVCZ-GGJHPPHMFHSPVQT.DPN@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3Jz8uSwcJCN8TIBXOfdHNBJM.DPNSVCZ-GGJHPPHMFHSPVQT.DPN@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3Jz8uSwcJCN8TIBXOfdHNBJM.DPNSVCZ-GGJHPPHMFHSPVQT.DPN@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf9444935gxk.7
+        for <headius@headius.com>; Sun, 20 Dec 2009 07:13:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=MynqMiHa76dsZYMbedDGCAw6ofW6ZAu+yS8WI/7A02U=;
+        b=6euQ3YkHzni3oY+a8nHJ5sA84zdgADRGCtdLTLbybS0CFxn68t758yHTEqcD+LZKoy
+         oHFUII/GyAGDyF/low6g/vqLU0XvVjL89F4n/Y+nD5GtWvEGWf2KSnkym/ep52WsBAeQ
+         dcGg8AeQzpvXDAtEwkqDW5XSqIp7foB4hL1fQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=LuFzfWVMGYA6SyLinSxYe5H3tH9qdX1C0TfMLi6yomTeRQMGMToZIgs84NgGEyj12t
+         JRZA1GKS/ieRjxywiCt/yNoPKE1gxf3lPNCpBEIJf9dQZeIVqXoR7V8/EzhP8fgoH5VO
+         gfW89hks0flEw4biRit+AZSXLKMH7X85MHX4s=
+Received: by 10.91.84.17 with SMTP id m17mr155717agl.7.1261322023645;
+        Sun, 20 Dec 2009 07:13:43 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.151.83 with SMTP id b19ls265705bkw.2.p; Sun, 20 Dec 2009 
+	07:13:41 -0800 (PST)
+Received: by 10.204.174.209 with SMTP id u17mr206706bkz.9.1261322021076;
+        Sun, 20 Dec 2009 07:13:41 -0800 (PST)
+Received: by 10.204.174.209 with SMTP id u17mr206705bkz.9.1261322021050;
+        Sun, 20 Dec 2009 07:13:41 -0800 (PST)
+Return-Path: <shawn42@gmail.com>
+Received: from mail-bw0-f221.google.com (mail-bw0-f221.google.com [209.85.218.221])
+        by gmr-mx.google.com with ESMTP id 11si420923bwz.7.2009.12.20.07.13.40;
+        Sun, 20 Dec 2009 07:13:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of shawn42@gmail.com designates 209.85.218.221 as permitted sender) client-ip=209.85.218.221;
+Received: by mail-bw0-f221.google.com with SMTP id 21so3017930bwz.24
+        for <ruby-ffi@googlegroups.com>; Sun, 20 Dec 2009 07:13:40 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.204.7.197 with SMTP id e5mr4040950bke.184.1261322019853; Sun, 
+	20 Dec 2009 07:13:39 -0800 (PST)
+In-Reply-To: <4ccee320912192034v425b92d4i940f9bc3d8adf984@mail.gmail.com>
+References: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com> 
+	<4ccee320912191554x79d00ecqbca293555561b09d@mail.gmail.com> 
+	<bf5638e0-5403-4362-9be0-4e8dc6bba84e@a21g2000yqc.googlegroups.com> 
+	<4ccee320912192034v425b92d4i940f9bc3d8adf984@mail.gmail.com>
+From: Shawn Anderson <shawn42@gmail.com>
+Date: Sun, 20 Dec 2009 10:12:07 -0500
+Message-ID: <c410d2f20912200712m630b0374n34163260013b92b1@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: struct questions
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of shawn42@gmail.com designates 209.85.218.221 as permitted sender) 
+	smtp.mail=shawn42@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: shawn42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/109da9d55f08ceaf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/272ae0444db08c05
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0015174c3740f0d6fe047b2a6aac
+
+--0015174c3740f0d6fe047b2a6aac
+Content-Type: text/plain; charset=ISO-8859-1
+
+nice-ffi by jacius works for this too.
+
+On Sat, Dec 19, 2009 at 11:34 PM, Wayne Meissner <wmeissner@gmail.com>wrote:
+
+> 2009/12/20 rogerdpack <rogerpack2005@gmail.com>:
+> > When I first started using FFI::Struct's
+> >
+> > I anticipated being able to call methods, like
+> > a = Struct.new
+> > a.name = "hello there"
+> >
+> > (since that's how you access them in C, and they are certainly not
+> > hashes).  Would a patch for such be acceptable?
+>
+> I considered this at one point, but it leads to name clashes with
+> other methods you might want to call on a Struct instance - so you
+> have a namespace issue.
+>
+> e.g.
+>
+> class S < FFI::Struct
+>   layout :size, :int
+> end
+>
+> s = S.new
+>
+> What does s.size return?  The size of the struct, or the contents of
+> the native field called size?
+>
+> Using the [] method to access struct fields neatly avoids it.
+>
+> If you really want it, ffi-swig-generator generates accessor methods
+> like that for every field, but it should not be a part of ffi itself.
+>
+
+--0015174c3740f0d6fe047b2a6aac
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+nice-ffi by jacius works for this too.<br><br><div class=3D"gmail_quote">On=
+ Sat, Dec 19, 2009 at 11:34 PM, Wayne Meissner <span dir=3D"ltr">&lt;<a hre=
+f=3D"mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<=
+br>
+
+<blockquote class=3D"gmail_quote" style=3D"border-left: 1px solid rgb(204, =
+204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">2009/12/20 rogerd=
+pack &lt;<a href=3D"mailto:rogerpack2005@gmail.com">rogerpack2005@gmail.com=
+</a>&gt;:<br>
+
+
+<div class=3D"im">&gt; When I first started using FFI::Struct&#39;s<br>
+&gt;<br>
+&gt; I anticipated being able to call methods, like<br>
+&gt; a =3D Struct.new<br>
+&gt; <a href=3D"http://a.name" target=3D"_blank">a.name</a> =3D &quot;hello=
+ there&quot;<br>
+&gt;<br>
+&gt; (since that&#39;s how you access them in C, and they are certainly not=
+<br>
+&gt; hashes). =A0Would a patch for such be acceptable?<br>
+<br>
+</div>I considered this at one point, but it leads to name clashes with<br>
+other methods you might want to call on a Struct instance - so you<br>
+have a namespace issue.<br>
+<div class=3D"im"><br>
+e.g.<br>
+<br>
+class S &lt; FFI::Struct<br>
+</div> =A0layout :size, :int<br>
+end<br>
+<br>
+s =3D S.new<br>
+<br>
+What does s.size return? =A0The size of the struct, or the contents of<br>
+the native field called size?<br>
+<br>
+Using the [] method to access struct fields neatly avoids it.<br>
+<br>
+If you really want it, ffi-swig-generator generates accessor methods<br>
+like that for every field, but it should not be a part of ffi itself.<br>
+</blockquote></div><br>
+
+--0015174c3740f0d6fe047b2a6aac--

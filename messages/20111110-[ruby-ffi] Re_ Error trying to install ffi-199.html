@@ -1,0 +1,76 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Error trying to install ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Error trying to install ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Michael Cohen <michael.lee.cohen@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/10/11 6:16 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Okay, I found the problem and it has to do with Ruby's mkmf gem. The
+issue
+is when you try to build a C extension. The mkmf generates a Makefile
+to confirm a clean compile, such as the following:
+
+"<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/bin/gcc-4.2 -o conftest -I/Users/fc<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-
+p290/
+include/ruby-1.9.1/x86_64-darwin11.0.0 -I/Users/fc/.rvm/rubies/
+ruby-1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/Users/fc/.rvm/
+rubies/ruby-1.9.2-p290/include/ruby-1.9.1 -I. -D_XOPEN_SOURCE -
+D_DARWIN_C_SOURCE    -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-
+parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-
+initializers -Wshorten-64-to-32 -Wno-long-long  -fno-common -pipe
+conftest.c  -L. -L/Users/fc/.rvm/rubies/ruby-1.9.2-p290/lib -L.
+-
+lruby.1.9.1-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2:
+3: int main() {return 0;}
+/* end */
+
+The problem is that it's trying to make use of gcc-4.2. However, if
+you have xcode 4.2 installed there is no gcc-4.2. Rather you have
+llvm-
+gcc-4.2 installed in the /usr/bin directory. The moment you change
+gcc-4.2 to llvm-gcc-4.2 everything works. This will have to be
+brought
+up with the core Ruby team. If you have xcode 4.1 installed prior and
+did not uninstall it then you will also have gcc-4.2 installed.
+
+In any case, you can quickly resolve the problem by simply creating a
+symbolic link to llvm-gcc-4.2 to be gcc-4.2 in the /usr/bin
+directory.
+Then when you go ruby extconf.rb the ffi C extension will compile
+cleanly.
+
+-Mike
+
+On Nov 10, 10:43 am, Michael Cohen <a class="moz-txt-link-rfc2396E" href="mailto:michael.lee.co...@gmail.com">&lt;michael.lee.co...@gmail.com&gt;</a>
+wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to install the ffi gem but when I run the gem install command I
+<span class="moz-txt-citetags">&gt; </span>get the following error message:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Building native extensions.  This could take a while...
+<span class="moz-txt-citetags">&gt; </span>ERROR:  Error installing ffi:
+<span class="moz-txt-citetags">&gt; </span>ERROR: Failed to build gem native extension.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>        <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>Users/frozencanuck<span class="moz-txt-tag">/</span></i>.rvm/rubies/ruby-1.9.2-p290/bin/ruby extconf.rb
+<span class="moz-txt-citetags">&gt; </span>checking for ffi.h... *** extconf.rb failed ***
+<span class="moz-txt-citetags">&gt; </span>Could not create Makefile due to some reason, probably lack of
+<span class="moz-txt-citetags">&gt; </span>necessary libraries and/or headers.  Check the mkmf.log file for more
+<span class="moz-txt-citetags">&gt; </span>details.  You may need configuration options.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Any idea what is going on? I've tried to explicitly download v1.0.10 but I
+<span class="moz-txt-citetags">&gt; </span>get the same error message.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm using Ruby v1.9.2-p290 running on Mac OS X 10.7.2. I also have xcode
+<span class="moz-txt-citetags">&gt; </span>4.2 installed. Any meaningful thoughts on this would be appreciated.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-Mike
+</pre></div></body>
+</html>
+</table></div>

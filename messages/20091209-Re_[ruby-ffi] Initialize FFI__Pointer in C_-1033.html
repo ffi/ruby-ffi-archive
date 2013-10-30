@@ -1,0 +1,56 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Initialize FFI::Pointer in C?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Initialize FFI::Pointer in C?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 1:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Really, don't use the C api - it will break at some point, since it is
+not intended in any way to be a public api.
+
+Use a FFI callback to call from C to ruby.
+
+<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/examples">http://wiki.github.com/ffi/ffi/examples</a> has a callback example, as
+does <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a>
+
+
+
+2009/12/9 Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chiang@gmail.com">&lt;simon.a.chiang@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm building a callback to ruby from an extension and I would like to
+<span class="moz-txt-citetags">&gt; </span>pass back pointers much like an attached function that returns
+<span class="moz-txt-citetags">&gt; </span>a :pointer.  Basically something like this:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> int RubyCallback(void *thing)
+<span class="moz-txt-citetags">&gt; </span> {
+<span class="moz-txt-citetags">&gt; </span>   VALUE ffi_pointer = rbffi_Pointer_NewInstance(thing);
+<span class="moz-txt-citetags">&gt; </span>   VALUE ruby_module = rb_const_get(rb_cObject, rb_intern
+<span class="moz-txt-citetags">&gt; </span>("SomeModule"));
+<span class="moz-txt-citetags">&gt; </span>   VALUE ruby_result = rb_funcall(ruby_module, rb_intern("callback"),
+<span class="moz-txt-citetags">&gt; </span>1, ffi_pointer);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   long result = FIX2INT(ruby_result);
+<span class="moz-txt-citetags">&gt; </span>   return(result);
+<span class="moz-txt-citetags">&gt; </span> }
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>And then in ruby:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> module SomeModule
+<span class="moz-txt-citetags">&gt; </span>   module_function
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   def callback(ptr)
+<span class="moz-txt-citetags">&gt; </span>      ptr.inspect         # =&gt; shows this to be an FFI::Pointer
+<span class="moz-txt-citetags">&gt; </span>   end
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>A method like this works on OS X with ffi-0.5.0 (pre snow-lepoard,
+<span class="moz-txt-citetags">&gt; </span>I'll get the version if necessary) but results in a segfault on snow
+<span class="moz-txt-citetags">&gt; </span>leopard 10.6.2.  The segfault is triggered upon inspect.  I don't know
+<span class="moz-txt-citetags">&gt; </span>how FFI works... I really only got this working by taking a guess at
+<span class="moz-txt-citetags">&gt; </span>what rbffi_Pointer_NewInstance does.  Any ideas what's going wrong on
+<span class="moz-txt-citetags">&gt; </span>10.6.2 and/or how I can do this better?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

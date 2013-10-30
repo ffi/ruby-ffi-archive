@@ -1,0 +1,210 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.130.163 with SMTP id of3csp177232lab;
+        Thu, 18 Apr 2013 13:49:02 -0700 (PDT)
+X-Received: by 10.112.129.137 with SMTP id nw9mr6776805lbb.56.1366318142168;
+        Thu, 18 Apr 2013 13:49:02 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDB5RONMTAIRBO5YYGFQKGQEEJ6NZ6Y@googlegroups.com>
+Received: from mail-la0-x23b.google.com (mail-la0-x23b.google.com [2a00:1450:4010:c03::23b])
+        by mx.google.com with ESMTPS id l9si4209850lah.81.2013.04.18.13.49.02
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 18 Apr 2013 13:49:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDB5RONMTAIRBO5YYGFQKGQEEJ6NZ6Y@googlegroups.com designates 2a00:1450:4010:c03::23b as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDB5RONMTAIRBO5YYGFQKGQEEJ6NZ6Y@googlegroups.com designates 2a00:1450:4010:c03::23b as permitted sender) smtp.mail=ruby-ffi+bncBDB5RONMTAIRBO5YYGFQKGQEEJ6NZ6Y@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-la0-f59.google.com with SMTP id fr10sf823995lab.4
+        for <headius@headius.com>; Thu, 18 Apr 2013 13:49:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:received-spf:mime-version
+         :x-received:in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=NksaIf7jJL0Ff/kJhuUe81YQZ/PydP0282CyW5K8jwk=;
+        b=AynHMoYgDRxDQCwmfZzxrdp9qvIiJUDKMqjaJQFLUxsw4l9/1HfBwLqyBsgYoXQTA1
+         QyVHzvN9skb1oc/KBEtotD4JUhXkcMpqdkAGH0bd+vVtw3NPOl3+mbqcusN6fTX6ECa3
+         RY2N6xjOCCJjHySo0pp+e0eGNZxgdtdZFQQmbnNWFTzN6IE7PpRvocfaUXCmnEI0MGA4
+         g5KZ+z9k3b/E71WEws5cw9Vbd8e3NJAPq6c37ml46eDfd363Wx69zYIL1Brzjukc6Bsv
+         9S+CEBMHo4QBy0iSwuSR5wUOa5W3omtGGlPeSfxXNXI1diEgSp7z/IpbYR+Br4NXTvgo
+         oNyw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:received-spf:mime-version
+         :x-received:in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=NksaIf7jJL0Ff/kJhuUe81YQZ/PydP0282CyW5K8jwk=;
+        b=qyTEZWZykKfPrNYXAVQdDWqf6/XWEoMHvsgxWeLN/zv+UhziYmOHX/Z07qby59hA18
+         EzIJPnEe6R4oH1dq/E5mEIcKotpY5a1+S36cEX1b0OXPuen/KWZjmSrTEt2WwyB9AbH1
+         bxBDe+1496o9eKcvUay7PB8/gRT+1/h7CUVpDIg2lu17uzjGzgeGrBRxDDPZ/RxXMd+4
+         O7KRwXczGS6MJaSN3J8c/XgvBHWdT1IRT3Xd6H+O6KezlxszOvLtdGNq3jY7fZIKFbKy
+         6NPwreBCR16AS662h3K4sigBGZ8iuILtlm/PJHjq8DpXI5UIQiyo6ystBwakGQqMph0s
+         yjtA==
+X-Received: by 10.180.76.108 with SMTP id j12mr1630454wiw.3.1366318141646;
+        Thu, 18 Apr 2013 13:49:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.83.104 with SMTP id p8ls11518wiy.46.gmail; Thu, 18 Apr
+ 2013 13:48:59 -0700 (PDT)
+X-Received: by 10.205.35.136 with SMTP id sw8mr310956bkb.5.1366318139082;
+        Thu, 18 Apr 2013 13:48:59 -0700 (PDT)
+Received: from mail-bk0-x236.google.com (mail-bk0-x236.google.com [2a00:1450:4008:c01::236])
+        by gmr-mx.google.com with ESMTPS id u1si1033107bkv.1.2013.04.18.13.48.59
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 18 Apr 2013 13:48:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 2a00:1450:4008:c01::236 as permitted sender) client-ip=2a00:1450:4008:c01::236;
+Received: by mail-bk0-f54.google.com with SMTP id q16so1451123bkw.41
+        for <ruby-ffi@googlegroups.com>; Thu, 18 Apr 2013 13:48:59 -0700 (PDT)
+MIME-Version: 1.0
+X-Received: by 10.205.101.193 with SMTP id db1mr4655372bkc.60.1366318138942;
+ Thu, 18 Apr 2013 13:48:58 -0700 (PDT)
+Received: by 10.204.34.135 with HTTP; Thu, 18 Apr 2013 13:48:58 -0700 (PDT)
+In-Reply-To: <25fcd5cd-2241-4ebe-9061-bd081ca1d850@m4g2000yqi.googlegroups.com>
+References: <25fcd5cd-2241-4ebe-9061-bd081ca1d850@m4g2000yqi.googlegroups.com>
+Date: Thu, 18 Apr 2013 13:48:58 -0700
+Message-ID: <CADgS1nmkRD9VEFjY7LwHa+wp1YH5=dWDvSqh-N-VsBnVNtN=iw@mail.gmail.com>
+Subject: Re: [ruby-ffi] Cross-platform C code packaged in a gem
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: jvoorhis@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of jvoorhis@gmail.com designates 2a00:1450:4008:c01::236
+ as permitted sender) smtp.mail=jvoorhis@gmail.com;       dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=f46d041c43b252a6a004daa8bb1e
+
+--f46d041c43b252a6a004daa8bb1e
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi Hugo,
+
+Ruby-LLVM does exactly this for the support library. We let rubygems build
+the extension by invoking rake. Here are the relevant bits.
+
+   - declare the extension:
+   https://github.com/ruby-llvm/ruby-llvm/blob/master/ruby-llvm.gemspec#L22
+   - define Rakefile for build process:
+   https://github.com/ruby-llvm/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile
+   - loading the library by its relative path:
+   https://github.com/ruby-llvm/ruby-llvm/blob/master/lib/llvm/support.rb#L15-L17
+
+HTH,
+
+
+On Thu, Apr 18, 2013 at 1:01 PM, Hugo Frappier <hugo@cekoya.com> wrote:
+
+> Was anyone able to package cross-platform C code in a gem and loading
+> it with FFI?
+>
+> I'm having a hard time compiling and linking the code (especially on
+> Windows) using extconf.rb.  I looked at all the github FFI projects
+> (the one listed on the Wiki) and none of them seems to be doing
+> something similar.
+>
+> Thanks
+>
+> --
+>
+> ---
+> You received this message because you are subscribed to the Google Groups
+> "ruby-ffi" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to ruby-ffi+unsubscribe@googlegroups.com.
+> For more options, visit https://groups.google.com/groups/opt_out.
+>
+>
+>
+
+
+-- 
+Jeremy Voorhis
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+--f46d041c43b252a6a004daa8bb1e
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi Hugo,<div><br></div><div style>Ruby-LLVM does exactly t=
+his for the support library. We let rubygems build the extension by invokin=
+g rake. Here are the relevant bits.</div><div style><ul style><li style>dec=
+lare the extension: <a href=3D"https://github.com/ruby-llvm/ruby-llvm/blob/=
+master/ruby-llvm.gemspec#L22">https://github.com/ruby-llvm/ruby-llvm/blob/m=
+aster/ruby-llvm.gemspec#L22</a></li>
+<li style>define Rakefile for build process:=A0<a href=3D"https://github.co=
+m/ruby-llvm/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile">https://g=
+ithub.com/ruby-llvm/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile</a=
+></li>
+<li style>loading the library by its relative path:=A0<a href=3D"https://gi=
+thub.com/ruby-llvm/ruby-llvm/blob/master/lib/llvm/support.rb#L15-L17">https=
+://github.com/ruby-llvm/ruby-llvm/blob/master/lib/llvm/support.rb#L15-L17</=
+a><br>
+</li></ul></div><div style>HTH,</div></div><div class=3D"gmail_extra"><br><=
+br><div class=3D"gmail_quote">On Thu, Apr 18, 2013 at 1:01 PM, Hugo Frappie=
+r <span dir=3D"ltr">&lt;<a href=3D"mailto:hugo@cekoya.com" target=3D"_blank=
+">hugo@cekoya.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">Was anyone able to package cross-platform C =
+code in a gem and loading<br>
+it with FFI?<br>
+<br>
+I&#39;m having a hard time compiling and linking the code (especially on<br=
+>
+Windows) using extconf.rb. =A0I looked at all the github FFI projects<br>
+(the one listed on the Wiki) and none of them seems to be doing<br>
+something similar.<br>
+<br>
+Thanks<br>
+<span class=3D"HOEnZb"><font color=3D"#888888"><br>
+--<br>
+<br>
+---<br>
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:ruby-ffi%2Bunsubscribe@googlegroups.com">ruby-ffi=
++unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+" target=3D"_blank">https://groups.google.com/groups/opt_out</a>.<br>
+<br>
+<br>
+</font></span></blockquote></div><br><br clear=3D"all"><div><br></div>-- <b=
+r><div dir=3D"ltr">Jeremy Voorhis<br></div>
+</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+--f46d041c43b252a6a004daa8bb1e--

@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] newbie question ffi on OsX</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] newbie question ffi on OsX</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>macarthy <justin.maccarthy@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/7/10 3:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+
+Can someone explain this error ? Obviously an architecture mismatch of
+some sort, how does one got about fixing this? Or compile libmylib as
+a different arch (or as several ? )
+
+
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:61:in
+`ffi_lib': Could not open library 'libmylib.dylib':
+dlopen(libmylib.dylib, 9): no suitable image found.  Did find:
+(LoadError)
+
+/usr/local/lib/libmylib.dylib: mach-o, but wrong architecture. Could
+not open library 'libmylib': dlopen(libmylib, 9): image not found
+        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+43:in `map'
+        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+43:in `ffi_lib'
+        from xxx.rb:14
+
+otool gives me this ...
+
+ otool -h /usr/local/lib/libmylib.dylib
+
+/usr/local/lib/libmylib.dylib:
+Mach header
+      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds
+flags
+ 0xfeedface       7          3  0x00          6    20       2404
+0x00118085
+
+Thanks
+</pre></div></body>
+</html>
+</table></div>

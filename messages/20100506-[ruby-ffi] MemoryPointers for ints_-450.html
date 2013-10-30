@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] MemoryPointers for ints?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] MemoryPointers for ints?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/10 12:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'm just getting started with FFI, so forgive the newbie questions.
+
+I have a function prototype like so:
+
+int zmq_setsockopt (void *socket, int option_name, const void *option_value, size_t option_len);
+
+I've wrapped the library containing this function using the following #attach_function call:
+
+attach_function :zmq_setsockopt, [:pointer, :int, :pointer, :int], :int
+
+In C, this is called like this:
+
+setsockopt (context, ZMQ_SUBSCRIBE, "xy.z\x00", 5);
+
+OR
+
+int64_t rate = 10000;
+setsockopt (context, ZMQ_RATE, &amp;rate, sizeof (rate));
+
+In my ruby code, I think I need to create a MemoryPointer of some kind to pass as the 3rd parameter. The examples show the third parameter is sometimes an integer (100) or a string ("topic.string").
+
+I know how to create a pointer from a string using MemoryPointer.from_string("topic.string") but I don't see how to handle the case when an integer is passed in.
+
+Related to this, I don't see how to execute #sizeof.
+
+I promise to update the wiki if the answers can prove generally useful.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

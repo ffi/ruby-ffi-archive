@@ -1,0 +1,25 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Value in gem-time and build-time testing?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Value in gem-time and build-time testing?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/6/09 3:31 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Probably don't want to have libtest.dll as part of the binary gem unless you want to build fat-binary support for both libtest and ffi_c.so
+</pre></blockquote><pre wrap>
+
+Oops.  Just looked at spec/ffi/spec_helper.rb and the libtest subdir
+from your repo.  Looks like libtest has no deps on Ruby, so scratch my
+fat-binry comment for libtest <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+So would the key issue with bundling libtest.dll in a binary gem be
+ensuring it was compiled against the same MSVCRT version as Ruby and/
+or ffi_c.so?
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

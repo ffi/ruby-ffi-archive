@@ -1,0 +1,122 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs496123fam;
+        Thu, 6 Jan 2011 08:41:34 -0800 (PST)
+Received: by 10.147.83.17 with SMTP id k17mr34700721yal.9.1294332093139;
+        Thu, 06 Jan 2011 08:41:33 -0800 (PST)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhC64ZfpBBoEeSG-DA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTP id i25si50955280anh.150.2011.01.06.08.41.31;
+        Thu, 06 Jan 2011 08:41:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC64ZfpBBoEeSG-DA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC64ZfpBBoEeSG-DA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhC64ZfpBBoEeSG-DA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk1 with SMTP id 1sf7576476pzk.7
+        for <headius@headius.com>; Thu, 06 Jan 2011 08:41:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=QBlU2GXgr/65l26zxNuATOexSnhbbFn4xt5SAlIG2Q0=;
+        b=fRYx8t01QUtzacKAsL2YCrEEsesnMbiRTy+e55Fsb2EctZV7oQTsUntNpdGvffG7oC
+         DCJlH6eMjM2QYS+Owg/4UNc4Rk+ph78nW4MmMLrmNJ9xzz9S01rEtuU0e2dYWjFNxsbY
+         3HLNOm5tQljiCrlN1gmZZ/TyB+E/zkFksfCh0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=NhPS3YKtfUwcIERUVIJ01duCmyoPQDRZ1rnmFf5Sn9byKhiAbcGXBxyXlvqgig2vjd
+         TUKIj4TIbKRnUZI5wujuYb0BoSxQMFKwQ0PWYIvGtHNra6e+NHn8t+tMiUqhESQJnlY0
+         I5kATppSb3bVunYvovL4i8oF5rmiFDa/M2L4g=
+Received: by 10.142.152.27 with SMTP id z27mr77057wfd.31.1294332090039;
+        Thu, 06 Jan 2011 08:41:30 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.97.18 with SMTP id u18ls1270868wfb.2.p; Thu, 06 Jan 2011
+ 08:41:29 -0800 (PST)
+Received: by 10.142.13.14 with SMTP id 14mr916950wfm.38.1294332089288;
+        Thu, 06 Jan 2011 08:41:29 -0800 (PST)
+Received: by 10.142.13.14 with SMTP id 14mr916949wfm.38.1294332089263;
+        Thu, 06 Jan 2011 08:41:29 -0800 (PST)
+Received: from asmtpout026.mac.com (asmtpout026.mac.com [17.148.16.101])
+        by gmr-mx.google.com with ESMTP id w13si1158852wfh.7.2011.01.06.08.41.29;
+        Thu, 06 Jan 2011 08:41:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted sender) client-ip=17.148.16.101;
+MIME-version: 1.0
+Received: from [192.168.1.100]
+ (c-71-239-242-179.hsd1.il.comcast.net [71.239.242.179])
+ by asmtp026.mac.com (Sun Java(tm) System Messaging Server 6.3-7.04 (built Sep
+ 26 2008; 64bit)) with ESMTPSA id <0LEM00MNO10S9Z10@asmtp026.mac.com> for
+ ruby-ffi@googlegroups.com; Thu, 06 Jan 2011 08:41:18 -0800 (PST)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1010190000 definitions=main-1101060050
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2011-01-06_08:2011-01-06,2011-01-06,1970-01-01 signatures=0
+Subject: Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <AANLkTi=RRYra+biveDvor4D1JwVkF5Mmrx89G395N1O5@mail.gmail.com>
+Date: Thu, 06 Jan 2011 10:41:15 -0600
+Message-id: <4DABE4D3-3FC4-4749-AEBF-4AB31A0CACC3@mac.com>
+References: <AANLkTi=xpDSLc78295-Xczig6eZOvUTGhowgvc=+0u7w@mail.gmail.com>
+ <27609662.2929.1294188954795.JavaMail.geo-discussion-forums@prnp16>
+ <AANLkTi=J3FYct8sgenHCz-TEHbjdnBgopGcDYJmTbaeE@mail.gmail.com>
+ <CB82D07C-300A-4C5D-9E27-26B0E7E3DDD3@mac.com>
+ <AANLkTi=RRYra+biveDvor4D1JwVkF5Mmrx89G395N1O5@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted
+ sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+
+On Jan 5, 2011, at 11:38 AM, Alvaro wrote:
+
+> 2011/1/5 Chuck Remes <cremes.devlist@mac.com>:
+>> 
+>> On Jan 5, 2011, at 7:51 AM, Alvaro wrote:
+>> 
+>>> I understand your point about how it works the garbage collection.
+>>> Is a kind strange that the C lib purely don't have leaks but with the
+>>> FFI binding it has and I couldn't find the reason yet, may be is
+>>> inherited to ruby, I've tested it with Ree, Mri and JRuby without
+>>> success.
+>>> 
+>>> I will continue trying to figure out what is happening, thanks for
+>>> your comments.
+>> 
+>> Is this code public and available online somewhere? If so, someone on this list may get curious and look at it too.
+>> 
+>> It's possible, though unlikely, that the leak is in the FFI library. I had some massive leaks in a library I wrote using FFI, but I tracked 100% of them back to my own errors. There are now 0 leaks in the code (though I did find a few minor ones in each Ruby runtime).
+> 
+> The code is not public available, but I am pasting it here:
+> http://pastie.org/private/lj5wqnlxdxwbe6ghjlpg
+
+I recommend running your code under rubinius and using its heap dump to see where you are holding on to Ruby object references. Make sure you install at least version 1.2.0 (or master) and run "rbx docs" which will bring up a browser window (on OSX) with the latest documentation. Take a look at section 13 (Tools) and read through the memory analysis item.
+
+I recommend taking a snapshot of your program after it has had 20 seconds or so to "warm up" and then do a second heap dump after the memory leak is obvious. Follow the documentation to get details on your object counts. Hopefully that will point you to the code that is holding onto references and causing your "leak."
+
+cr
+

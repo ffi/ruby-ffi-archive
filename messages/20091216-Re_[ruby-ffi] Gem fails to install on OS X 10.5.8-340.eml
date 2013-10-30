@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs267428and;
+        Wed, 16 Dec 2009 16:20:49 -0800 (PST)
+Received: by 10.101.180.10 with SMTP id h10mr2706451anp.95.1261009249796;
+        Wed, 16 Dec 2009 16:20:49 -0800 (PST)
+Return-Path: <3X3kpSwsJCE0s32p0s.qp00v1px0.r3169qD-uuxv33v0tv63947.r31@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 30si2797200yxe.54.2009.12.16.16.20.48;
+        Wed, 16 Dec 2009 16:20:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3X3kpSwsJCE0s32p0s.qp00v1px0.r3169qD-uuxv33v0tv63947.r31@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3X3kpSwsJCE0s32p0s.qp00v1px0.r3169qD-uuxv33v0tv63947.r31@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3X3kpSwsJCE0s32p0s.qp00v1px0.r3169qD-uuxv33v0tv63947.r31@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf3975406ywh.3
+        for <headius@headius.com>; Wed, 16 Dec 2009 16:20:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=PcAYdw31ijLz9eLMVbiTtPj3re1QbT1o4NAmyf7qDpM=;
+        b=r8Rtv5f0tDaMyZJ/HGqOGjdHU4+lq+oQAdG4rRiUYzW7cqWvmxbCHVLOPfA8IDtBMF
+         O1f2e5O47TcUeA+nTdFvSEZgARS3a8ocO56pqVzjMo13D/YC/8jlJeZFdwLtZ07M7m7c
+         bDIoVK3mqZBp/2Dhf16owE94BTG3ie1DmTOHs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=cUZ/bIMvFhZU8vfr0aIHj8Eb1z/iljjGoWyHGOwro390dlpCSrvCINcJH/O7+yFikH
+         GkyTZX/E2H5LJh1x1JCQdSvfyKnn9imyOm49pJ5/2pWN7fy54YOWhesYvI1qWhU4GFz7
+         kt2iEJ2211TmNU+4y8UtVy2EYvanG+0BFi23A=
+Received: by 10.91.63.35 with SMTP id q35mr131313agk.12.1261009247621;
+        Wed, 16 Dec 2009 16:20:47 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.213.3.206 with SMTP id 14ls12210ebo.0.p; Wed, 16 Dec 2009 
+	16:20:46 -0800 (PST)
+Received: by 10.213.37.201 with SMTP id y9mr249827ebd.16.1261009246365;
+        Wed, 16 Dec 2009 16:20:46 -0800 (PST)
+Received: by 10.213.37.201 with SMTP id y9mr249826ebd.16.1261009246344;
+        Wed, 16 Dec 2009 16:20:46 -0800 (PST)
+Return-Path: <donald.ball@gmail.com>
+Received: from mail-ew0-f216.google.com (mail-ew0-f216.google.com [209.85.219.216])
+        by gmr-mx.google.com with ESMTP id 12si176686ewy.14.2009.12.16.16.20.45;
+        Wed, 16 Dec 2009 16:20:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of donald.ball@gmail.com designates 209.85.219.216 as permitted sender) client-ip=209.85.219.216;
+Received: by ewy8 with SMTP id 8so1628841ewy.35
+        for <ruby-ffi@googlegroups.com>; Wed, 16 Dec 2009 16:20:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.216.88.140 with SMTP id a12mr684261wef.157.1261009245018; Wed, 
+	16 Dec 2009 16:20:45 -0800 (PST)
+In-Reply-To: <p0624080fc74f0e3e3b3e@10.11.12.210>
+References: <b78d2d0e-e437-4905-a991-b2daba64b90f@t42g2000vba.googlegroups.com>
+	 <1eaa74a80912161049x66f4c202p11d41352afdc0a33@mail.gmail.com>
+	 <p0624080fc74f0e3e3b3e@10.11.12.210>
+Date: Wed, 16 Dec 2009 19:20:44 -0500
+Message-ID: <1eaa74a80912161620x41f96914uedab19be158daa46@mail.gmail.com>
+Subject: Re: [ruby-ffi] Gem fails to install on OS X 10.5.8
+From: Donald Ball <donald.ball@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of donald.ball@gmail.com designates 209.85.219.216 as permitted 
+	sender) smtp.mail=donald.ball@gmail.com; dkim=pass (test mode) 
+	header.i=@gmail.com
+X-Original-Sender: donald.ball@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ae127f410ad41a34
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/1bd80c0c207964d6
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+port installing libffi did the trick. That perhaps ought to have been
+obvious, but perhaps making it an explicitly checked precondition of
+the build script might help others.
+
+- donald

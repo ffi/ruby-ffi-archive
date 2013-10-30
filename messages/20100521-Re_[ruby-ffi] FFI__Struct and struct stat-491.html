@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] FFI::Struct and struct stat</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] FFI::Struct and struct stat</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/21/10 3:10 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You should be able to do padding just by inserting fields of the
+correct type, the same as the C struct does.
+
+Declaring one struct to handle both 64bit and 32bit might be
+difficult, but this is ruby, so you can just choose which one you want
+at start time (based on the FFI::Platform info, perhaps), and then
+always use that one.
+
+
+
+On 19 May 2010 19:45, Christoph Kappel <a class="moz-txt-link-rfc2396E" href="mailto:unexist@dorfelite.net">&lt;unexist@dorfelite.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hello,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I am having some problems with creating a FFI::Struct for struct stat
+<span class="moz-txt-citetags">&gt; </span>(usr/include/bits/stat.h), the problem is besides the many ifdefs
+<span class="moz-txt-citetags">&gt; </span>related to x86/x86_64 the padding fields. I doubt that I can use the
+<span class="moz-txt-citetags">&gt; </span>struct generator, because these padding fields are inside ifdefs too.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Did anyone of you came across similar problems?
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

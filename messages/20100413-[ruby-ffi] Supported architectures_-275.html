@@ -1,0 +1,62 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Supported architectures?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Supported architectures?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>micah <micaho@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/13/10 12:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+
+When I uploaded ffi to Debian, it was automatically sent to the Debian
+buildd network, where a build was attempted on all the different
+architectures that Debian supports. Many of these failed, a few of
+them succeeded.
+
+I will disable the builds on these failing architectures, but am
+available to do anything to try and help debug the failures. What
+architectures the project aims to support?
+
+The ones that succeeded were: amd64, i386, powerpc, and sparc.
+
+The ones that failed were: alpha, armel, hppa, ia64, mipsel, s390,
+kfreebsd_amd64 and kfreebsd_i386.
+
+The alpha, armel, hppa, ia64, mipsel, s390 architectures all had this
+build error:
+
+cc -I. -I. -I/usr/lib/ruby/1.8/alpha-linux -I/build/buildd-libffi-
+ruby_0.6.2debian-5-alpha-WnppY4/libffi-ruby-0.6.2debian/ext/ffi_c -
+DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -mieee -fno-strict-aliasing -g -
+g -O2  -fPIC   -c Platform.c
+Platform.c:28:2: error: #error "Unknown cpu type"
+Platform.c: In function 'rbffi_Platform_Init':
+Platform.c:57: error: 'CPU' undeclared (first use in this function)
+Platform.c:57: error: (Each undeclared identifier is reported only
+once
+Platform.c:57: error: for each function it appears in.)
+make[1]: *** [Platform.o] Error 1
+
+kfreebsd_amd64 and kfreebsd_i386 both gave this error:
+make[1]: Entering directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c'
+cc -I. -I. -I/usr/lib/ruby/1.8/x86_64-kfreebsd-gnu -I/build/buildd-
+libffi-ruby_0.6.2debian-5-kfreebsd-amd64-gPYTzl/libffi-
+ruby-0.6.2debian/ext/ffi_c -DRUBY_EXTCONF_H=\"extconf.h\"    -fPIC -
+fno-strict-aliasing -g -g -O2  -fPIC   -c Variadic.c
+In file included from /usr/include/sys/types.h:217,
+                 from /usr/include/sys/param.h:42,
+                 from Variadic.c:28:
+./endian.h:37:4: error: #error "Cannot determine the endian-ness of
+this platform"
+make[1]: *** [Variadic.o] Error 1
+make[1]: Leaving directory `/build/buildd-libffi-ruby_0.6.2debian-5-
+kfreebsd-amd64-gPYTzl/libffi-ruby-0.6.2debian/ext/ffi_c
+
+
+
+<div class="moz-txt-sig">-- 
+To unsubscribe, reply using "remove me" as the subject.
+</div></pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs6107eea;
+        Fri, 19 Aug 2011 04:48:43 -0700 (PDT)
+Received: by 10.52.112.130 with SMTP id iq2mr2093897vdb.137.1313754522611;
+        Fri, 19 Aug 2011 04:48:42 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCODBv_nyDBCVm7nyBBoESOHTkg@googlegroups.com>
+Received: from mail-vx0-f190.google.com ([209.85.220.190])
+        by mx.google.com with ESMTPS id t8si1960980vcv.93.2011.08.19.04.48.42
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 19 Aug 2011 04:48:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCODBv_nyDBCVm7nyBBoESOHTkg@googlegroups.com designates 209.85.220.190 as permitted sender) client-ip=209.85.220.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCODBv_nyDBCVm7nyBBoESOHTkg@googlegroups.com designates 209.85.220.190 as permitted sender) smtp.mail=ruby-ffi+bncCODBv_nyDBCVm7nyBBoESOHTkg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vxj3 with SMTP id 3sf3876043vxj.7
+        for <headius@headius.com>; Fri, 19 Aug 2011 04:48:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=r+A+Ev9E9SPjSmNeX2eGFWzxm/Tv76R1hWb7uVcSLfs=;
+        b=Z41piJOQ9X4JPWINuVqTdaLmX58DvYshgc2F245+0NtrQlHle/m238nMx4LDUj6Qli
+         X+GMQMFOd7zjbE8kTBYaVOkFb4f7yjTm92QdFxf6OqqW5g+qthXtb7HzSIiRQww977k0
+         xfmt6cfBSS5NLtqBtjvYeX+RXkITkl4jT6/rs=
+Received: by 10.220.202.139 with SMTP id fe11mr595831vcb.28.1313754517367;
+        Fri, 19 Aug 2011 04:48:37 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.22.136 with SMTP id n8ls6542267vcb.3.gmail; Fri, 19 Aug
+ 2011 04:48:36 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.191.74 with SMTP id dl10mr563900vcb.55.1313754516192; Fri,
+ 19 Aug 2011 04:48:36 -0700 (PDT)
+Received: by q1g2000vbj.googlegroups.com with HTTP; Fri, 19 Aug 2011 04:48:36
+ -0700 (PDT)
+Date: Fri, 19 Aug 2011 04:48:36 -0700 (PDT)
+In-Reply-To: <01eac197-1cdd-4fbb-a2f4-02ee60679d05@d8g2000prf.googlegroups.com>
+References: <2fb9247d-4e75-4ce8-baf1-83831b17e505@w11g2000vbp.googlegroups.com>
+ <01eac197-1cdd-4fbb-a2f4-02ee60679d05@d8g2000prf.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0,gzip(gfe)
+Message-ID: <660cc6bb-e30d-4c20-89bd-45dbb73fdd07@q1g2000vbj.googlegroups.com>
+Subject: [ruby-ffi] Re: Callback support in FFI?
+From: przemo_li <an.przemek@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: an.przemek@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ an.przemek@gmail.com designates internal as permitted sender)
+ smtp.mail=an.przemek@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Aghhh!
+Do not know how I could missed it. BIG thx!
+
+BTW will it also work
+method(ruby_method_name).to_proc
+for suppling call back to C-function?
+
+
+On Aug 19, 12:46=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> There is a qsort example which takes callbacks athttps://github.com/ffi/f=
+fi/blob/master/samples/qsort.rband some more
+> examples inhttps://github.com/ffi/ffi/wiki/Examples
+>
+> On Aug 19, 7:02=A0pm, przemo_li <an.prze...@gmail.com> wrote:
+>
+>
+>
+>
+>
+>
+>
+> > I'm trying to implement freeGLUT bindings. Is it possible? I need to
+> > declare function that takes callback function without any parameters.
+> > Any luck with FFI?
+>
+> > PS add info about callback in wiki!

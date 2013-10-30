@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Using Windows Unicode functions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Using Windows Unicode functions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/19/10 11:41 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I think you're refering to these lines?
+-----------------------------------
+buffer.force_encoding("UTF-16LE")
+puts buffer.encode("ISO-8859-1").rstrip #Everything displayed correct
+-----------------------------------
+If I comment them out, that hasn't any effect. I still get the same
+error.
+If it had, I'd been wondering why, because they don't change the
+"buffer"
+object (besides the encoding tag, of course).
+
+Marvin
+
+On 19 Jan., 11:40, rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerdp...@gmail.com">&lt;rogerdp...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>t2.rb:32:in `message_box': string contains null byte (ArgumentError)
+<span class="moz-txt-citetags">&gt; &gt; </span>  from t2.rb:32:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt; &gt; </span>-------------------------------------
+<span class="moz-txt-citetags">&gt; &gt; </span>An UTF-16LE encoded string <b class="moz-txt-star"><span class="moz-txt-tag">*</span>contains<span class="moz-txt-tag">*</span></b> NUL bytes, I know--but I want to
+<span class="moz-txt-citetags">&gt; &gt; </span>use Unicode functions, so: How to do that?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Try taking out the test for null byte and see if it "passes like a
+<span class="moz-txt-citetags">&gt; </span>champ"?
+<span class="moz-txt-citetags">&gt; </span>-r
+</pre></div></body>
+</html>
+</table></div>

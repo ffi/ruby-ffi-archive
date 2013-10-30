@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Correct type for binary buffer in a String?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Correct type for binary buffer in a String?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>candlerb <bcandler100@googlemail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/11 3:09 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+OK, I was being stupid. The last arg to getsockopt is a <b class="moz-txt-star"><span class="moz-txt-tag">*</span>pointer<span class="moz-txt-tag">*</span></b> to
+the buflen. Here is a working version using FFI::Buffer:
+
+-------------------------------------
+require 'ffi'
+
+module Foo
+  extend FFI::Library
+  ffi_lib FFI::Library::LIBC
+  attach_function :getsockopt,
+[:int, :int, :int, :buffer_inout, :buffer_inout], :int
+end
+
+require 'socket'
+s = Socket.new(Socket::AF_INET, Socket::SOCK_DGRAM, 0)
+
+buf = FFI::Buffer.new :int
+buflen = FFI::Buffer.new :socklen_t
+buflen.put_int(0, buf.total)
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buflen)
+p buf.get_int(0)
+-------------------------------------
+
+Now, I also tried it using plain String instead of FFI::Buffer, and it
+works. However if Ruby is sharing the underlying string storage
+between multiple strings (copy-on-write) then aliasing happens:
+
+str = "xxxx"
+buf = str.dup
+buflen = [buf.bytesize].pack("I")
+puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+buflen)
+p buf  # "@\000\000\000"
+p str  # "@\000\000\000" as well!!
+
+Is that intentional? Perhaps if the argument is :buffer_inout then FFI
+should call rb_str_modify on the string first?
+
+Regards,
+
+Brian.
+</pre></div></body>
+</html>
+</table></div>

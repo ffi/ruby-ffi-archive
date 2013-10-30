@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs181805agb;
+        Wed, 11 May 2011 14:06:39 -0700 (PDT)
+Received: by 10.42.174.69 with SMTP id u5mr3410283icz.452.1305147998526;
+        Wed, 11 May 2011 14:06:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhDW9KvuBBoEcbxKLQ@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTPS id y10si1159616ibm.80.2011.05.11.14.06.37
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 11 May 2011 14:06:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDW9KvuBBoEcbxKLQ@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhDW9KvuBBoEcbxKLQ@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhDW9KvuBBoEcbxKLQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg3 with SMTP id 3sf829747pvg.7
+        for <headius@headius.com>; Wed, 11 May 2011 14:06:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :x-proofpoint-virus-version:x-proofpoint-spam-details:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-transfer-encoding:content-type;
+        bh=XYsqaJrppKHURZ0SQXggKN+DGM11FwfnOb2mMfrFa0M=;
+        b=S244uCBh3we882satOJhBoxTw3W5CpCFu9DFJzCHT6+pti5tHQXdmWqBoxl9xevhha
+         9aEIBg8F1+Esq3aExtJzh8ayD9t4nNzt/1bv9auKs+kHOqO1BPzpZ0/w5DL1g08lVqul
+         LgXMc6JpyTmzdIOG+97ASSY+p3c9zF8wVhWHc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-virus-version
+         :x-proofpoint-spam-details:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        b=jD2tKI1F1Oi6B8dMPG1MzvLHKDFCHLom67qa8HQY98/N9Fy4y7XwFBLyFHMqd3SGcJ
+         J4ztRojXFWoRE6IXPVDnRQT/JqeijCL4caeubZaOzvq/PqTWml0xCHWbj4caWDnsprlj
+         nkzbmPlXWjUS5YibCC6MZcnIl4IQO+V53g8/M=
+Received: by 10.68.13.231 with SMTP id k7mr1139262pbc.16.1305147990779;
+        Wed, 11 May 2011 14:06:30 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.13.233 with SMTP id k9ls668667pbc.3.gmail; Wed, 11 May 2011
+ 14:06:30 -0700 (PDT)
+Received: by 10.68.59.71 with SMTP id x7mr1556505pbq.103.1305147990397;
+        Wed, 11 May 2011 14:06:30 -0700 (PDT)
+Received: by 10.68.59.71 with SMTP id x7mr1556504pbq.103.1305147990386;
+        Wed, 11 May 2011 14:06:30 -0700 (PDT)
+Received: from asmtpout022.mac.com (asmtpout022.mac.com [17.148.16.97])
+        by gmr-mx.google.com with ESMTP id z6si146866pbc.8.2011.05.11.14.06.30;
+        Wed, 11 May 2011 14:06:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.97 as permitted sender) client-ip=17.148.16.97;
+MIME-version: 1.0
+Received: from [192.168.1.100]
+ (c-67-184-219-59.hsd1.il.comcast.net [67.184.219.59])
+ by asmtp022.mac.com (Oracle Communications Messaging Exchange Server 7u4-20.01
+ 64bit (built Nov 21 2010)) with ESMTPSA id <0LL1002FQULLPY80@asmtp022.mac.com>
+ for ruby-ffi@googlegroups.com; Wed, 11 May 2011 14:05:48 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2011-05-11_08:2011-05-11,2011-05-11,1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1012030000 definitions=main-1105110145
+Subject: Re: [ruby-ffi] gem install ffi fails to build native extensions
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <af55c6c5-c584-4ad2-a109-facb362992be@k3g2000prl.googlegroups.com>
+Date: Wed, 11 May 2011 16:05:45 -0500
+Message-id: <0DA8E00C-00EF-42F1-BF56-DCB7EC600D44@mac.com>
+References: <af55c6c5-c584-4ad2-a109-facb362992be@k3g2000prl.googlegroups.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.97 as permitted sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+
+
+On May 11, 2011, at 11:01 AM, lil'b wrote:
+
+> Good morning everyone,
+> 
+> When I try to install the FFI gem on my engineyard instance, I get the
+> following failure:
+> 
+> <snip>
+> i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+> include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+> lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+> DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+> march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+> fPIC -Wno-declaration-after-statement   -o Types.o -c Types.c
+> i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+> include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+> lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+> DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+> march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+> fPIC -Wno-declaration-after-statement   -o LastError.o -c LastError.c
+> i686-pc-linux-gnu-gcc -shared -o ffi_c.so ClosurePool.o
+> DynamicLibrary.o Platform.o ffi.o Thread.o MethodHandle.o
+> StructLayout.o FunctionInfo.o Buffer.o StructByValue.o Variadic.o
+> DataConverter.o ArrayType.o MappedType.o Struct.o Function.o Pointer.o
+> Type.o Call.o MemoryPointer.o StructByReference.o AbstractMemory.o
+> Types.o LastError.o -L. -L/usr/lib -Wl,-R/usr/lib -L. -Wl,-O1,--hash-
+> style=gnu -rdynamic -Wl,-export-dynamic -Wl,--no-undefined   /usr/lib/
+> ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/.libs/
+> libffi_convenience.a -Wl,-R -Wl,/usr/lib -L/usr/lib -lruby19  -
+> lpthread -lrt -ldl -lcrypt -lm   -lc
+> AbstractMemory.o: In function `memory_get_array_of_ulong':
+> AbstractMemory.c:(.text+0x40c9): undefined reference to
+> `__builtin_bswap32'
+> AbstractMemory.o: In function `memory_put_array_of_ulong':
+> AbstractMemory.c:(.text+0x425c): undefined reference to
+> `__builtin_bswap32'
+> <snip>
+
+You are probably best off contacting engineyard support for help.
+
+cr
+

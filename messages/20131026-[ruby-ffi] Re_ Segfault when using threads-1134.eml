@@ -1,0 +1,388 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp36644laa;
+        Sat, 26 Oct 2013 14:47:28 -0700 (PDT)
+X-Received: by 10.236.14.202 with SMTP id d50mr9986504yhd.47.1382824048280;
+        Sat, 26 Oct 2013 14:47:28 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBSXQWCJQKGQE3IWGUXI@googlegroups.com>
+Received: from mail-gg0-f185.google.com (mail-gg0-f185.google.com [209.85.161.185])
+        by mx.google.com with ESMTPS id t30si5653200yhb.172.2013.10.26.14.47.26
+        for <headius@headius.com>
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 26 Oct 2013 14:47:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBSXQWCJQKGQE3IWGUXI@googlegroups.com designates 209.85.161.185 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBSXQWCJQKGQE3IWGUXI@googlegroups.com designates 209.85.161.185 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBSXQWCJQKGQE3IWGUXI@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-gg0-f185.google.com with SMTP id r4sf534803ggn.12
+        for <headius@headius.com>; Sat, 26 Oct 2013 14:46:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Br47tJfvdWIWqo0uSYm2xx2n1yOisbWXkVOc0kGf5BQ=;
+        b=sXbSGRmvbFlUIOcftPCJAsJyp2HG82GaEiOwvcw53OLLxIO6Z0+P158JsmHq+QaOhe
+         o2ANz04zE9mZIzwplsR24+KMZcC0eOtioVPV6e8L4DEdeGEkPbsTIXpV1Zqqkx9wUSXR
+         QsopF7loAMckdRGMFYarRhB0HCP0268JevKKk6c04NcYRTpLVVpkEYsg44NlpA7XOrd1
+         uN4oMuOasYZi4w67tgvQjve/c/qsBFAvK5NAt40majBbd7gWwrTOi8SR4jmWppz/NUco
+         58JndBy5rgd72KiPz64MhpJIOVdD0TmT+5nvAx8sYA4qqM4XiGBbOasgRkJvLzf/2Q1u
+         SbXg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Br47tJfvdWIWqo0uSYm2xx2n1yOisbWXkVOc0kGf5BQ=;
+        b=k8tKKO6IA7Nui79ZKly1t25+YCwVk/kuju3FWNv8xkCkpMIcNTvr9XHWLPBzMrAzym
+         gYcUUeds/RMJKUpcz9ziMevWdt5W/fc4CV2siRj9P1iOH8ysZERwyChxO4MDQFJD3INY
+         sax1/fmykcoEJC1DSr9GDiXAqUE+6ef5DSXblW/YvI0YZ+6Wy6Lm8fqanZIYi1tCmDOW
+         uKkYqzZIawLBUfToIu/oXDjoFjOk8pi1Tr/aLFZMOXsEBGkbBowMUQu+XbQ7FDlLYqv6
+         wVlwdexUEng9v7As3Z43RCkhvcbabj+iabD2+sT97ydIHfpUrM9ui4LxvqRAdfg8Iww5
+         aucg==
+X-Received: by 10.50.111.200 with SMTP id ik8mr61464igb.7.1382824011628;
+        Sat, 26 Oct 2013 14:46:51 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.225.6 with SMTP id rg6ls1028253igc.25.gmail; Sat, 26 Oct
+ 2013 14:46:50 -0700 (PDT)
+X-Received: by 10.50.112.193 with SMTP id is1mr61694igb.3.1382824010580;
+        Sat, 26 Oct 2013 14:46:50 -0700 (PDT)
+Date: Sat, 26 Oct 2013 14:46:49 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <35597ddf-c6d8-400f-9f8e-80b728b1aeb8@googlegroups.com>
+In-Reply-To: <9653d653-7259-46bb-8844-9adff1fb803c@googlegroups.com>
+References: <c7bff424-0ba4-41ce-9424-b6c045174fac@googlegroups.com>
+ <9fb78255-b89a-4eec-a6ea-47d700d339f8@googlegroups.com>
+ <9653d653-7259-46bb-8844-9adff1fb803c@googlegroups.com>
+Subject: [ruby-ffi] Re: Segfault when using threads
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1356_12169238.1382824009031"
+
+------=_Part_1356_12169238.1382824009031
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+The amount of debug info you provided, made it easy to track down whether 
+other people had hit the same thing in other languages.
+
+But, I think you're boned.  Try and push to get that patch included in 
+corosync, since thats the only real solution.
+
+You *could* do something like compiling a lib that runs the dispatch thread 
+on a custom pthread with an increased stack, but then you run into the 
+tricky situation of other threads also hitting that code path, and blowing 
+up.
+
+On Sunday, 27 October 2013 07:15:41 UTC+11, patrick...@gmail.com wrote:
+>
+> I could have sworn when I tried doing everything on the thread that it 
+> worked. But I just tried it again and it segfaults.
+>
+> When I look at ruby's source code, it looks like it allocates a 512kb 
+> stack for threads. When I go into corosync and look at the size of the 
+> buffer it's allocating on the stack, it's 1mb.
+> So the reason it works on the main thread is that the main thread has an 
+> 8mb stack.
+>
+> I don't suppose there's any way to work around this behavior? If not I'm 
+> fairly well hosed and can only run cpg_dispatch on the main thread :-(
+>
+> Thank you for that. I don't know that I would have found that otherwise.
+>
+> -Patrick
+>
+>
+> On Saturday, October 26, 2013 8:06:14 AM UTC-4, Wayne Meissner wrote:
+>>
+>>
+>> Try moving all the initialization into the new thread as well, to isolate 
+>> any cross-threading issues (some libraries have thread-local data, so if 
+>> you init an object on one thread, but access from another, it could be only 
+>> partially initialized).
+>>
+>> If that *still* segfaults, then it could be the library - see 
+>> http://lists.corosync.org/pipermail/discuss/2013-April/002514.html
+>>  - non-main threads get a smaller and fixed size stack, whereas the main 
+>> thread gets a growable stack.
+>>
+>>
+>>
+>>
+>> On Saturday, 26 October 2013 16:15:25 UTC+11, patrick...@gmail.com wrote:
+>>>
+>>> Ok, the subject probably sounds like I've got some variable not being 
+>>> locked or whatnot, but I highly doubt that's the case :-)
+>>>
+>>> So, what I've got going on is that I'm developing a gem for interfacing 
+>>> with corosync <http://corosync.github.io/corosync/>. In single threaded 
+>>> mode, it works perfectly. But as soon as I call the corosync library from 
+>>> within a thread, it blows up (sigsegv). The interesting part is that in my 
+>>> test case, I'm not even doing anything in the main thread other than 
+>>> waiting for the new thread to complete. No modifying of shared variables or 
+>>> anything.
+>>>
+>>> This is the code:
+>>>
+>>>> require 'corosync/cpg'
+>>>> cpg = Corosync::CPG.new('mygroup')
+>>>> #cpg.dispatch(0) # this line runs perfectly
+>>>> Thread.new { cpg.dispatch(0) }.join # this line segfaults
+>>>
+>>>
+>>> Move the comment from line 3 to line 4 and it runs fine.
+>>>
+>>> This is the ruby stack trace:
+>>>
+>>>> test.rb:4:in `block in <main>'
+>>>> /home/phemmer/git/ruby-corosync/lib/corosync/cpg.rb:145:in `dispatch'
+>>>> /home/phemmer/git/ruby-corosync/lib/corosync/cpg.rb:145:in 
+>>>> `cpg_dispatch'
+>>>
+>>>
+>>>
+>>> When I throw GDB on it, this is what the stack trace looks like:
+>>>
+>>>> [New Thread 0x7ffff7ff9700 (LWP 30441)]
+>>>> [New Thread 0x7ffff7ecf700 (LWP 30442)]
+>>>> [New Thread 0x7fffeef7b700 (LWP 30443)]
+>>>> Program received signal SIGSEGV, Segmentation fault.
+>>>> [Switching to Thread 0x7fffeef7b700 (LWP 30443)]
+>>>> 0x00007fffefae4c86 in hdb_handle_get (instance=0x7fffeee78580, 
+>>>> handle_in=7749363892505018368, 
+>>>>     handle_database=0x7fffefce7060 <cpg_handle_t_db>) at 
+>>>> ../include/corosync/hdb.h:110
+>>>> 110 ../include/corosync/hdb.h: No such file or directory.
+>>>> (gdb) where
+>>>> #0  0x00007fffefae4c86 in hdb_handle_get (instance=0x7fffeee78580, 
+>>>> handle_in=7749363892505018368, 
+>>>>     handle_database=0x7fffefce7060 <cpg_handle_t_db>) at 
+>>>> ../include/corosync/hdb.h:110
+>>>> #1  cpg_dispatch (handle=7749363892505018368, 
+>>>> dispatch_types=CS_DISPATCH_ONE_NONBLOCKING)
+>>>>     at cpg.c:357
+>>>> #2  0x00007fffefef1010 in ffi_call_unix64 () from /usr/lib64/libffi.so.6
+>>>> #3  0x00007fffefef0a8a in ffi_call () from /usr/lib64/libffi.so.6
+>>>> #4  0x00007ffff0101f3e in rbffi_CallFunction ()
+>>>>    from /home/phemmer/.gem/ruby/1.9.1/gems/ffi-1.9.0/lib/ffi_c.so
+>>>> #5  0x00007ffff0105956 in custom_trampoline ()
+>>>>    from /home/phemmer/.gem/ruby/1.9.1/gems/ffi-1.9.0/lib/ffi_c.so
+>>>> #6  0x00007ffff7af9898 in call_cfunc (func=0x7ffff7fee0d8, 
+>>>> recv=9748160, len=-1, argc=2, 
+>>>>     argv=0x7fffeef7c070) at vm_insnhelper.c:317
+>>>> #7  0x00007ffff7afa1b6 in vm_call_cfunc (th=0x837840, 
+>>>> reg_cfp=0x7fffef07beb0, num=2, recv=9748160, 
+>>>>     blockptr=0x0, me=0x87c420) at vm_insnhelper.c:404
+>>>> #8  0x00007ffff7afa893 in vm_call_method (th=0x837840, 
+>>>> cfp=0x7fffef07beb0, num=2, blockptr=0x0, 
+>>>>     flag=0, id=15088, me=0x87c420, recv=9748160) at vm_insnhelper.c:530
+>>>> #9  0x00007ffff7b001ab in vm_exec_core (th=0x837840, initial=0) at 
+>>>> insns.def:1018
+>>>> #10 0x00007ffff7b0d5a5 in vm_exec (th=0x837840) at vm.c:1236
+>>>> #11 0x00007ffff7b0beff in invoke_block_from_c (th=0x837840, 
+>>>> block=0x607ad0, self=6711000, argc=0, 
+>>>>     argv=0xa8e7e8, blockptr=0x0, cref=0x0) at vm.c:640
+>>>> #12 0x00007ffff7b0c111 in rb_vm_invoke_proc (th=0x837840, 
+>>>> proc=0x607ad0, self=6711000, argc=0, 
+>>>>     argv=0xa8e7e8, blockptr=0x0) at vm.c:686
+>>>> #13 0x00007ffff7b12eaa in thread_start_func_2 (th=0x837840, 
+>>>> stack_start=0x7fffeef7c000)
+>>>>     at thread.c:466
+>>>> #14 0x00007ffff7b11b88 in thread_start_func_1 (th_ptr=0x837840) at 
+>>>> thread_pthread.c:657
+>>>> #15 0x00007ffff73ba03a in start_thread () from /lib64/libpthread.so.0
+>>>> #16 0x00007ffff76b740d in clone () from /lib64/libc.so.6
+>>>
+>>> (hdb_handle_get hdb.h:110 is found here<https://github.com/corosync/corosync/blob/v2.3.2/include/corosync/hdb.h#L110>
+>>> )
+>>> (cpg_dispatch cpg.c:357 is found here<https://github.com/corosync/corosync/blob/v2.3.2/lib/cpg.c#L357>
+>>> )
+>>>
+>>>
+>>> The corosync gem currently lives at 
+>>> http://github.com/phemmer/ruby-corosync
+>>> For the libraries, I'm running libffi 3.0.11, corosync 2.3.2<https://github.com/corosync/corosync/tree/v2.3.2>, 
+>>> and libqb 0.14.4 <https://github.com/ClusterLabs/libqb/tree/v0.14.4>.
+>>> I'm using MRI ruby 1.9.3p448 and ffi gem 1.9.0.
+>>>
+>>> Any ideas and help would be appreciated. I've been pounding my head on 
+>>> the desk all day long.
+>>>
+>>> -Patrick
+>>>
+>>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_1356_12169238.1382824009031
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><br></div>The amount of debug info you provided, made=
+ it easy to track down whether other people had hit the same thing in other=
+ languages.<div><br></div><div>But, I think you're boned. &nbsp;Try and pus=
+h to get that patch included in corosync, since thats the only real solutio=
+n.</div><div><br></div><div>You *could* do something like compiling a lib t=
+hat runs the dispatch thread on a custom pthread with an increased stack, b=
+ut then you run into the tricky situation of other threads also hitting tha=
+t code path, and blowing up.<br><br>On Sunday, 27 October 2013 07:15:41 UTC=
++11, patrick...@gmail.com  wrote:<blockquote class=3D"gmail_quote" style=3D=
+"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex=
+;"><div dir=3D"ltr"><div>I could have sworn when I tried doing everything o=
+n the thread that it worked. But I just tried it again and it segfaults.</d=
+iv><div><br></div><div>When I look at ruby's source code, it looks like it =
+allocates a 512kb stack for threads. When I go into corosync and look at th=
+e size of the buffer it's allocating on the stack, it's 1mb.</div><div>So t=
+he reason it works on the main thread is that the main thread has an 8mb st=
+ack.</div><div><br></div><div>I don't suppose there's any way to work aroun=
+d this behavior? If not I'm fairly well hosed and can only run cpg_dispatch=
+ on the main thread :-(</div><div><br></div><div>Thank you for that. I don'=
+t know that I would have found that otherwise.<br></div><div><br></div><div=
+>-Patrick</div><div><br></div><div><br>On Saturday, October 26, 2013 8:06:1=
+4 AM UTC-4, Wayne Meissner wrote:<blockquote class=3D"gmail_quote" style=3D=
+"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><d=
+iv dir=3D"ltr"><div><br></div><div>Try moving all the initialization into t=
+he new thread as well, to isolate any cross-threading issues (some librarie=
+s have thread-local data, so if you init an object on one thread, but acces=
+s from another, it could be only partially initialized).</div><div><br></di=
+v><div>If that *still* segfaults, then it could be the library - see <a hre=
+f=3D"http://lists.corosync.org/pipermail/discuss/2013-April/002514.html" ta=
+rget=3D"_blank">http://lists.corosync.org/<wbr>pipermail/discuss/2013-April=
+/<wbr>002514.html</a></div><div>&nbsp;- non-main threads get a smaller and =
+fixed size stack, whereas the main thread gets a growable stack.</div><div>=
+<br></div><div><br></div><div><br><br>On Saturday, 26 October 2013 16:15:25=
+ UTC+11, <a>patrick...@gmail.com</a>  wrote:<blockquote class=3D"gmail_quot=
+e" style=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex"><div dir=3D"ltr">Ok, the subject probably sounds like I've got som=
+e variable not being locked or whatnot, but I highly doubt that's the case =
+:-)<div><br></div><div>So, what I've got going on is that I'm developing a =
+gem for interfacing with <a href=3D"http://corosync.github.io/corosync/" ta=
+rget=3D"_blank">corosync</a>. In single threaded mode, it works perfectly. =
+But as soon as I call the corosync library from within a thread, it blows u=
+p (sigsegv). The interesting part is that in my test case, I'm not even doi=
+ng anything in the main thread other than waiting for the new thread to com=
+plete. No modifying of shared variables or anything.</div><div><br></div><d=
+iv>This is the code:</div><div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(204,204=
+,204);border-left-style:solid;padding-left:1ex"><font face=3D"courier new, =
+monospace" color=3D"#660000">require 'corosync/cpg'<br></font><font face=3D=
+"courier new, monospace" color=3D"#660000">cpg =3D Corosync::CPG.new('mygro=
+up')<br></font><font face=3D"courier new, monospace" color=3D"#660000">#cpg=
+.dispatch(0) # this line runs perfectly<br></font><font face=3D"courier new=
+, monospace" color=3D"#660000">Thread.new { cpg.dispatch(0) }.join # this l=
+ine segfaults</font></blockquote></div><div><br></div><div>Move the comment=
+ from line 3 to line 4 and it runs fine.</div><div><br></div><div>This is t=
+he ruby stack trace:</div><div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(204,204=
+,204);border-left-style:solid;padding-left:1ex"><font face=3D"courier new, =
+monospace"><font color=3D"#660000">test.rb:4:in `block in &lt;main&gt;'<br>=
+</font><font color=3D"#660000">/home/phemmer/git/ruby-<wbr>corosync/lib/cor=
+osync/cpg.rb:<wbr>145:in `dispatch'<br></font><font color=3D"#660000">/home=
+/phemmer/git/ruby-<wbr>corosync/lib/corosync/cpg.rb:<wbr>145:in `cpg_dispat=
+ch'</font></font></blockquote></div><div><br></div><div><br></div><div>When=
+ I throw GDB on it, this is what the stack trace looks like:</div><div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
+-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid;paddi=
+ng-left:1ex"><font face=3D"courier new, monospace"><font color=3D"#660000">=
+[New Thread 0x7ffff7ff9700 (LWP 30441)]<br></font><font color=3D"#660000">[=
+New Thread 0x7ffff7ecf700 (LWP 30442)]<br></font><font color=3D"#660000">[N=
+ew Thread 0x7fffeef7b700 (LWP 30443)]</font><font color=3D"#660000"><br></f=
+ont><font color=3D"#660000">Program received signal SIGSEGV, Segmentation f=
+ault.<br></font><font color=3D"#660000">[Switching to Thread 0x7fffeef7b700=
+ (LWP 30443)]<br></font><font color=3D"#660000">0x00007fffefae4c86 in hdb_h=
+andle_get (instance=3D0x7fffeee78580, handle_in=3D7749363892505018368,<wbr>=
+&nbsp;<br></font><font color=3D"#660000">&nbsp; &nbsp; handle_database=3D0x=
+7fffefce7060 &lt;cpg_handle_t_db&gt;) at ../include/corosync/hdb.h:110<br><=
+/font><font color=3D"#660000">110<span style=3D"white-space:pre">	</span>..=
+/include/corosync/hdb.h: No such file or directory.<br></font><font color=
+=3D"#660000">(gdb) where<br></font><font color=3D"#660000">#0 &nbsp;0x00007=
+fffefae4c86 in hdb_handle_get (instance=3D0x7fffeee78580, handle_in=3D77493=
+63892505018368,<wbr>&nbsp;<br></font><font color=3D"#660000">&nbsp; &nbsp; =
+handle_database=3D0x7fffefce7060 &lt;cpg_handle_t_db&gt;) at ../include/cor=
+osync/hdb.h:110<br></font><font color=3D"#660000">#1 &nbsp;cpg_dispatch (ha=
+ndle=3D7749363892505018368, dispatch_types=3DCS_DISPATCH_<wbr>ONE_NONBLOCKI=
+NG)<br></font><font color=3D"#660000">&nbsp; &nbsp; at cpg.c:357<br></font>=
+<font color=3D"#660000">#2 &nbsp;0x00007fffefef1010 in ffi_call_unix64 () f=
+rom /usr/lib64/libffi.so.6<br></font><font color=3D"#660000">#3 &nbsp;0x000=
+07fffefef0a8a in ffi_call () from /usr/lib64/libffi.so.6<br></font><font co=
+lor=3D"#660000">#4 &nbsp;0x00007ffff0101f3e in rbffi_CallFunction ()<br></f=
+ont><font color=3D"#660000">&nbsp; &nbsp;from /home/phemmer/.gem/ruby/1.9.1=
+/<wbr>gems/ffi-1.9.0/lib/ffi_c.so<br></font><font color=3D"#660000">#5 &nbs=
+p;0x00007ffff0105956 in custom_trampoline ()<br></font><font color=3D"#6600=
+00">&nbsp; &nbsp;from /home/phemmer/.gem/ruby/1.9.1/<wbr>gems/ffi-1.9.0/lib=
+/ffi_c.so<br></font><font color=3D"#660000">#6 &nbsp;0x00007ffff7af9898 in =
+call_cfunc (func=3D0x7ffff7fee0d8, recv=3D9748160, len=3D-1, argc=3D2,&nbsp=
+;<br></font><font color=3D"#660000">&nbsp; &nbsp; argv=3D0x7fffeef7c070) at=
+ vm_insnhelper.c:317<br></font><font color=3D"#660000">#7 &nbsp;0x00007ffff=
+7afa1b6 in vm_call_cfunc (th=3D0x837840, reg_cfp=3D0x7fffef07beb0, num=3D2,=
+ recv=3D9748160,&nbsp;<br></font><font color=3D"#660000">&nbsp; &nbsp; bloc=
+kptr=3D0x0, me=3D0x87c420) at vm_insnhelper.c:404<br></font><font color=3D"=
+#660000">#8 &nbsp;0x00007ffff7afa893 in vm_call_method (th=3D0x837840, cfp=
+=3D0x7fffef07beb0, num=3D2, blockptr=3D0x0,&nbsp;<br></font><font color=3D"=
+#660000">&nbsp; &nbsp; flag=3D0, id=3D15088, me=3D0x87c420, recv=3D9748160)=
+ at vm_insnhelper.c:530<br></font><font color=3D"#660000">#9 &nbsp;0x00007f=
+fff7b001ab in vm_exec_core (th=3D0x837840, initial=3D0) at insns.def:1018<b=
+r></font><font color=3D"#660000">#10 0x00007ffff7b0d5a5 in vm_exec (th=3D0x=
+837840) at vm.c:1236<br></font><font color=3D"#660000">#11 0x00007ffff7b0be=
+ff in invoke_block_from_c (th=3D0x837840, block=3D0x607ad0, self=3D6711000,=
+ argc=3D0,&nbsp;<br></font><font color=3D"#660000">&nbsp; &nbsp; argv=3D0xa=
+8e7e8, blockptr=3D0x0, cref=3D0x0) at vm.c:640<br></font><font color=3D"#66=
+0000">#12 0x00007ffff7b0c111 in rb_vm_invoke_proc (th=3D0x837840, proc=3D0x=
+607ad0, self=3D6711000, argc=3D0,&nbsp;<br></font><font color=3D"#660000">&=
+nbsp; &nbsp; argv=3D0xa8e7e8, blockptr=3D0x0) at vm.c:686<br></font><font c=
+olor=3D"#660000">#13 0x00007ffff7b12eaa in thread_start_func_2 (th=3D0x8378=
+40, stack_start=3D0x7fffeef7c000)<br></font><font color=3D"#660000">&nbsp; =
+&nbsp; at thread.c:466<br></font><font color=3D"#660000">#14 0x00007ffff7b1=
+1b88 in thread_start_func_1 (th_ptr=3D0x837840) at thread_pthread.c:657<br>=
+</font><font color=3D"#660000">#15 0x00007ffff73ba03a in start_thread () fr=
+om /lib64/libpthread.so.0<br></font><font color=3D"#660000">#16 0x00007ffff=
+76b740d in clone () from /lib64/libc.so.6</font></font></blockquote></div><=
+div>(hdb_handle_get hdb.h:110 is found <a href=3D"https://github.com/corosy=
+nc/corosync/blob/v2.3.2/include/corosync/hdb.h#L110" target=3D"_blank">here=
+</a>)<br></div><div>(cpg_dispatch&nbsp;cpg.c:357 is found <a href=3D"https:=
+//github.com/corosync/corosync/blob/v2.3.2/lib/cpg.c#L357" target=3D"_blank=
+">here</a>)<br></div><div><br></div><div><br></div><div>The corosync gem cu=
+rrently lives at <a href=3D"http://github.com/phemmer/ruby-corosync" target=
+=3D"_blank">http://github.com/phemmer/<wbr>ruby-corosync</a></div><div>For =
+the libraries, I'm running libffi 3.0.11,&nbsp;<a href=3D"https://github.co=
+m/corosync/corosync/tree/v2.3.2" target=3D"_blank">corosync 2.3.2</a>, and =
+<a href=3D"https://github.com/ClusterLabs/libqb/tree/v0.14.4" target=3D"_bl=
+ank">libqb 0.14.4</a>.</div><div>I'm using MRI ruby 1.9.3p448 and ffi gem 1=
+.9.0.</div><div><br></div><div>Any ideas and help would be appreciated. I'v=
+e been pounding my head on the desk all day long.</div><div><br></div><div>=
+-Patrick</div></div></blockquote></div></div></blockquote></div></div></blo=
+ckquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_1356_12169238.1382824009031--

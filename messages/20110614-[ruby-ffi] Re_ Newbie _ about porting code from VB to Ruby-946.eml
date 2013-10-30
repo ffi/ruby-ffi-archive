@@ -1,0 +1,147 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.120.17 with SMTP id s17cs32694agc;
+        Tue, 14 Jun 2011 10:45:10 -0700 (PDT)
+Received: by 10.236.79.226 with SMTP id i62mr9530894yhe.282.1308073509894;
+        Tue, 14 Jun 2011 10:45:09 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMC-paeAExCdtN7vBBoEoK8nyw@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id e1si24962338yhh.70.2011.06.14.10.45.09
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 14 Jun 2011 10:45:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMC-paeAExCdtN7vBBoEoK8nyw@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMC-paeAExCdtN7vBBoEoK8nyw@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCMC-paeAExCdtN7vBBoEoK8nyw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywp31 with SMTP id 31sf16830925ywp.7
+        for <headius@headius.com>; Tue, 14 Jun 2011 10:45:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=vP659o9CKCKCOFCduuylk4yRpI1XbfCZpT9ZnhfYvL0=;
+        b=zsh9NBDuZA5oqb5OZLDQ7VFdtUSYfFrG8YfxEiDWUJsUEbcgc3aVXFrYqe8kV2fZO6
+         hFmhW16gLc8KwazCp7K5z5aPETp2EPeEYyrY8lbmveHhSiBVUFEd6RA++tQeQ5Gwum9P
+         B23lEsjvcD8wUpsmzQfuOnrECL1qgzmxxMF7Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=iM0+RxU5TJWg0IkJVvMq6dkn0zNK5hCbztM4RKNfh7baKjxFPJvHZD5h/b3w2uk8kz
+         iIh0o2kDiCYnenSwQRutn+3ExYxseywa3X+klRD0iE8U2rV2ggQpl0+WzkQSyXiDhl4I
+         /DgvdfFu/e0qBJHy6PQus8BroxptLGnTrhlOY=
+Received: by 10.91.182.3 with SMTP id j3mr710659agp.21.1308072477706;
+        Tue, 14 Jun 2011 10:27:57 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.212.20 with SMTP id o20ls943989anq.3.gmail; Tue, 14 Jun
+ 2011 10:27:57 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.24.3 with SMTP id b3mr619404anj.30.1308072476993; Tue, 14
+ Jun 2011 10:27:56 -0700 (PDT)
+Received: by r20g2000yqd.googlegroups.com with HTTP; Tue, 14 Jun 2011 10:27:56
+ -0700 (PDT)
+Date: Tue, 14 Jun 2011 10:27:56 -0700 (PDT)
+In-Reply-To: <BANLkTikPb0D6HXrBP70ZmjsdPysvVhEceQ@mail.gmail.com>
+References: <2ea50fbd-bd24-4ad7-b04c-bc5f936d520e@f31g2000pri.googlegroups.com>
+ <cd9eaa65-e044-41a9-8f84-fca5e20d0a03@gh5g2000vbb.googlegroups.com>
+ <db6028fa-9027-412c-8f67-ad32571f94e3@z7g2000prh.googlegroups.com> <BANLkTikPb0D6HXrBP70ZmjsdPysvVhEceQ@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1;
+ Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152;
+ .NET CLR 3.5.30729; InfoPath.2),gzip(gfe)
+Message-ID: <ef882a67-22ee-4876-a045-220af674796f@r20g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Newbie ? about porting code from VB to Ruby
+From: JesseFair <jfair9@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jfair9@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi Charles,
+
+Thanks for taking the time to provide this solution. In my attempt to
+implement the solution I am recieving a return_code =3D 11 when
+attempting to connect to the Presentation Space. According to the
+documentation that return code means the following: WHLLUNAVAILABLE
+Connect request failed, specified session is unavailable (already in
+use).
+
+It appears I am able to run WinHLLAPIStartup because when I check the
+contents of data[:wVersion] & data[:szDescription] they appear to be
+correct. I am attempting to connect to the Presentation Space with the
+below call:
+
+  # Connect to presentation Space
+  function.write_uint16(1)
+  string =3D "A"
+  length.write_uint16(1)
+  return_code.write_uint16(0)
+
+  hold =3D HLLAPI::WinHLLAPI(function, string, length, return_code)
+
+The above does not work and when I try to run other commands that
+require a connection to the Presentation Space I get a return code of
+1 or WHLLNOTCONNECTED. I am able to run other WinHLLAPI functions that
+dont require a connection to the presentation space such as pause.
+
+Once again thanks a bunch for your help.
+
+Thanks
+Jesse
+
+On Jun 8, 4:14=A0pm, Charles Strahan <charles.c.stra...@gmail.com>
+wrote:
+> Hi Jesse,
+>
+> Welcome to the Ruby community!
+>
+> I think this will work for you:https://gist.github.com/1015672
+>
+> I tried to annotate the sample as well as I could. If anything is unclear=
+,
+> or doesn't work, please let me know.
+>
+> Unfortunately, I do not have the HLLAPI lib to test with, so I had to bas=
+e
+> that code off of the docs and some .NET samples.
+>
+> HTH,
+>
+> -Charles
+> <https://gist.github.com/1015672>
+>
+>
+>
+> On Wed, Jun 8, 2011 at 1:11 PM, JesseFair <jfa...@gmail.com> wrote:
+> > I tried Win32API as well but cant find out how to pass the cutom data
+> > type WHLLAPIDATA that the WinHLLAPIStartup function is expecting.
+> > Being new to Ruby I cant find a way to construct something that acts
+> > similar to the above code -.. i.e. custom data types. I was able to
+> > get the examples up and working but they only use simple data types
+> > such as int and string.
+>
+> > On Jun 8, 1:18 am, candlerb <b.cand...@pobox.com> wrote:
+> > > I am not a Windows expert, but have you tried looking at Win32API
+> > > instead of FFI? This may be all that you need. There are plenty of
+> > > examples if you google for them.
+>
+> >http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://ww...=
+- Hide quoted text -
+>
+> - Show quoted text -

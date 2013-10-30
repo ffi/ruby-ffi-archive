@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 2:59 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Check out Pointer#get_array_of_type. You can also do it with FFI::Pointer arithmetic.<div><br></div><div>Jeremy<br><br><div class="gmail_quote">On Thu, May 20, 2010 at 12:04 PM, DA <span dir="ltr">&lt;<a href="mailto:drew.avis@gmail.com">drew.avis@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;"><div class="im">On Thu, May 20, 2010 at 2:48 PM, Chuck Remes &lt;<a href="mailto:cremes.devlist@mac.com">cremes.devlist@mac.com</a>&gt; wrote:<br>
+
+<br>
+&gt; That looks kind of funky to me. In the F_TextItemsT C struct, it shows *val which is just a single pointer. There is no array of pointers to read from at that location. I believe the syntax for arrays of pointers are more like:<br>
+
+&gt;<br>
+&gt; struct {<br>
+&gt;  int len;<br>
+&gt;  item_t **list;<br>
+&gt; }<br>
+&gt;<br>
+&gt; Note the double-asterisk.<br>
+&gt;<br>
+&gt; Have you written this in C to see how to get each F_TextItemT?<br>
+<br>
+</div>Hi Chuck, you&#39;re right, that pointer is for an array of F_TextItemT,<br>
+*not* an array of pointers to F_TextItemT.<br>
+<br>
+The c code looks like this:<br>
+<br>
+tis = F_ApiGetText(docId, flowId, FTI_String | FTI_LineEnd);<br>
+/* Traverse text items and print strings and line ends. */<br>
+for (i=0; i&lt;tis.len; i++)<br>
+{<br>
+ip = &amp;tis.val[i];<br>
+if (ip-&gt;dataType == FTI_String)<br>
+F_Printf(NULL,&quot;%s&quot;, ip-&gt;u.sdata);<br>
+else F_Printf(NULL,&quot;\n&quot;);<br>
+}<br>
+<br>
+So I guess I need the equivalent of &quot;get_array_of_struct&quot;?  I can&#39;t<br>
+find an example for this case (array of struct) on the wiki.  Any<br>
+ideas?<br>
+<br>
+Thanks,<br>
+<font color="#888888">Drew<br>
+</font></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

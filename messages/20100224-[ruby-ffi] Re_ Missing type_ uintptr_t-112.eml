@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.165.131 with SMTP id i3cs2200vcy;
+        Wed, 24 Feb 2010 13:33:17 -0800 (PST)
+Received: by 10.150.251.16 with SMTP id y16mr167609ybh.188.1267047196697;
+        Wed, 24 Feb 2010 13:33:16 -0800 (PST)
+Return-Path: <3GpuFSw0JCIY1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@groups.bounces.google.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id 4si10438735ywh.73.2010.02.24.13.33.15;
+        Wed, 24 Feb 2010 13:33:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3GpuFSw0JCIY1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@groups.bounces.google.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3GpuFSw0JCIY1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@groups.bounces.google.com designates 209.85.160.190 as permitted sender) smtp.mail=3GpuFSw0JCIY1yqo1zkmuCAAFqwksv.myw14l8-ppsqyyqvoq1y4z2.myw@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd5 with SMTP id 5sf2917772gyd.7
+        for <headius@headius.com>; Wed, 24 Feb 2010 13:33:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=/QD+wsCvfFNTS2IL2TLUNpNZvun6OlB2B2lZIgbD06c=;
+        b=ZRotfm7s93GbOMx84Eji8ScLHZy2cC3aCLAxhlfDfCCZXdZBU6l5o/s7eVOE1MGLCz
+         5NBNzOUIdZvjBtbEu9zFcIvyIuZrV746U6ZPd2ew1o6eBrOs/mifoSwKH2ey2kBOj3l1
+         YqZ1yxaZrdtyge7ix1Fqh0srsTOh6e5pLv0Ec=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=tXHcCN+FvAgG3Olqp3IQ8hLmFjweXUTpyV6A5oKOlu95AbDLu/7LKF1IJIdycj3pY1
+         /OhaCBsFiQa4Mw+8fEXO8+NHjMMZqwOHF5UBZjhig7q5z0pfyKZVFwIh3kFWdwbsv470
+         h/UHRbvtDdLiuiCAMLa2cWiAVO0sHyrk6muN8=
+Received: by 10.101.141.11 with SMTP id t11mr13746ann.55.1267047194324;
+        Wed, 24 Feb 2010 13:33:14 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.11.6 with SMTP id o6ls2484521agi.3.p; Wed, 24 Feb 2010 
+	13:33:13 -0800 (PST)
+Received: by 10.90.37.22 with SMTP id k22mr558321agk.0.1267047192414;
+        Wed, 24 Feb 2010 13:33:12 -0800 (PST)
+Received: by 10.90.37.22 with SMTP id k22mr558320agk.0.1267047192375;
+        Wed, 24 Feb 2010 13:33:12 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f146.google.com (mail-yx0-f146.google.com [209.85.210.146])
+        by gmr-mx.google.com with ESMTP id 12si492205gxk.10.2010.02.24.13.33.12;
+        Wed, 24 Feb 2010 13:33:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.146 as permitted sender) client-ip=209.85.210.146;
+Received: by mail-yx0-f146.google.com with SMTP id 10so3262633yxe.7
+        for <ruby-ffi@googlegroups.com>; Wed, 24 Feb 2010 13:33:12 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.134.16 with SMTP id l16mr16399ann.16.1267047192265; Wed, 
+	24 Feb 2010 13:33:12 -0800 (PST)
+Date: Wed, 24 Feb 2010 13:33:12 -0800 (PST)
+In-Reply-To: <1d704c18-b043-408a-bdaa-22aa0076507a@a5g2000yqi.googlegroups.com>
+X-IP: 216.49.181.128
+References: <1d704c18-b043-408a-bdaa-22aa0076507a@a5g2000yqi.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/533.1 (KHTML, like Gecko) Chrome/5.0.322.2 Safari/533.1,gzip(gfe),gzip(gfe)
+Message-ID: <3958b3a2-57d2-4493-8e44-87203c17b2c1@g28g2000yqh.googlegroups.com>
+Subject: [ruby-ffi] Re: Missing type: uintptr_t
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.146 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/842df5615186a4ef
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4b10e3128677c4ca
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> It seems the type uintptr_t isn't supported by ruby-ffi. intptr_t is
+> supported by :__intptr_t (should be renamed, it's a bit awkward), but
+> there is neither :uintptr_t nor :__uintptr_t.
+
+Shouldn't those all the same as just straight pointer?
+Maybe what you're asking for is something like read_uint?
+-r

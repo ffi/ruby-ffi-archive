@@ -1,0 +1,18 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Is there any way we can use string type as return  parameter?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Is there any way we can use string type as return  parameter?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jesús García Sáez &lt;blaxter@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/29/10 12:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Hi,<br><br>when is it posible to define a &quot;string&quot; type safely? I think, the only situation is for const char * input parameter. Because otherwise we are gonna have memory leaks.<br><br>For example, for a function like:<br>
+
+<br>char *foo();<br><br>if we attach it with:<br><br>attach_function :foo, :foo, [], :string<br><br>We are gonna have a nice memory leak because nobody is gonna release that string. When we call &quot;foo&quot; method in ruby, we get a String object, we cannot (or I don&#39;t know how) get the actual char pointer to release it (either from ruby or with another attached function where we pass the pointer and that function calls free, delete o whatever is necessary).<br>
+
+<p></p>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words &quot;REMOVE ME&quot; as the subject.<br />
+
+</div></body>
+</html>
+</table></div>

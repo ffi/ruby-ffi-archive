@@ -1,0 +1,67 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] easier syntax</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] easier syntax</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Michael Fellinger <m.fellinger@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 2:23 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+On Sat, Dec 12, 2009 at 8:20 AM, Evan Phoenix <a class="moz-txt-link-rfc2396E" href="mailto:evan@fallingsnow.net">&lt;evan@fallingsnow.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I don't see any benefit of this over the existing syntax.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I must advise against changing things like this at this stage in the game. The FFI implementations are already a bit diverged, and adding something like this would only serve to completely destabilize any cross impl. using of FFI.
+</pre></blockquote><pre wrap>
+
+Not to mention that one can simply implement a different method that
+takes arguments like this in a few lines.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> - Evan
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Dec 11, 2009, at 3:17 PM, rogerdpack wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Perhaps it would be possible to allow for named paramters to an ffi
+<span class="moz-txt-citetags">&gt;&gt; </span>call, like
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :returns =&gt; :int
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>or
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :takes =&gt; :int
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>or
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :returns
+<span class="moz-txt-citetags">&gt;&gt; </span>=&gt; :int, :name =&gt; 'puts_c' # use this ruby name
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>or
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>attach_function 'puts', [:string, :string] =&gt; :int # two string
+<span class="moz-txt-citetags">&gt;&gt; </span>parameters return an int
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>That would make it possible to write the examples a lot more readable.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>An example lib that does the named parameters on the fly is
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/maca/arguments">http://github.com/maca/arguments</a>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Thoughts?
+<span class="moz-txt-citetags">&gt;&gt; </span>-r
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+
+
+<div class="moz-txt-sig">-- 
+Michael Fellinger
+CTO, The Rubyists, LLC
+972-996-5199
+</div></pre></div></body>
+</html>
+</table></div>

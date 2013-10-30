@@ -1,0 +1,107 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: AutoPointer on an array of structs corrupts the structs values</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: AutoPointer on an array of structs corrupts the structs values</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Maurizio De Santis <desantis.maurizio@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/26/13 7:08 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">It works fine, thank you!<br><br><div>--<div><br>Maurizio De Santis</div></div>
+<br><br><div class="gmail_quote">2013/3/26 Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span><br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+Its not exactly corrupting the memory, it is just that when you access the second, etc element of the array, it is stepping by 1 byte, instead of <span style="font-family:&#39;courier new&#39;,monospace">GTop::MemoryMapEntry.size.</span><div>
+
+<br></div><div>Its a bug, but since it is broken on both MRI and JRuby, you&#39;ll need to do a work-around.</div><div><br></div><div>Instead of this:</div><div class="im"><div><span style="font-family:&#39;courier new&#39;,monospace">    ssi = GTop::MemoryMapEntry.new(ss_</span><u></u><span style="font-family:&#39;courier new&#39;,monospace">pointer[i])</span></div>
+
+<div><font face="courier new, monospace"><br></font></div></div><div><font face="courier new, monospace">use:</font></div><div><font face="courier new, monospace">    </font><span style="font-family:&#39;courier new&#39;,monospace">ssi = GTop::MemoryMapEntry.new(ss_</span><u></u><span style="font-family:&#39;courier new&#39;,monospace">pointer + (i * </span><span style="font-family:&#39;courier new&#39;,monospace">GTop::MemoryMapEntry.size</span><span style="font-family:&#39;courier new&#39;,monospace">))</span></div>
+
+<div class="HOEnZb"><div class="h5"><div><br></div><div><br>On Tuesday, 26 March 2013 10:23:47 UTC+10, Maurizio De Santis  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+Hello,<br><br>I have an issue using <span style="font-family:courier new,monospace">FFI::AutoPointer</span> on an array of structs.<br><br>This is the C function declaration:<br><br><pre><a href="https://developer.gnome.org/libgtop/stable/libgtop-procmap.html#glibtop-map-entry" target="_blank">glibtop_map_entry</a> * glibtop_get_proc_map (<a href="https://developer.gnome.org/libgtop/stable/libgtop-procmap.html#glibtop-proc-map" target="_blank">glibtop_proc_map</a> *buf, pid_t pid);<br>
+
+<br><span style="font-family:arial,sans-serif">The returned value is an array of <span style="font-family:courier new,monospace">glibtop_map_entry</span> structs should be freed using<span style="font-family:courier new,monospace"><span style="font-family:arial,sans-serif"> </span>g_free</span> .</span><br>
+
+</pre><br>If I declare the pointer to the  array of structs entries using<span style="font-family:courier new,monospace"><span style="font-family:arial,sans-serif"> </span>FFI::Pointer</span>, everything works fine, and the output of the structs is correct:<br>
+
+<br><br><span style="font-family:courier new,monospace">s = GTop::ProcessMemoryMaps.new<br>addr = GTop.process_memory_maps(s, Process.pid)<br>ss_pointer = FFI::Pointer.new(GTop::<u></u>MemoryMapEntry, addr)<br>s[:number].times do |i|<br>
+
+  ssi = GTop::MemoryMapEntry.new(ss_<u></u>pointer[i])<br>  p Hash[ ssi.members.map { |m| [ m, ssi[m].is_a?(FFI::<u></u>StructLayout::CharArray) ? ssi[m].to_s.force_encoding(&#39;<u></u>UTF-8&#39;) : ssi[m] ] } ]<br>end<br>
+
+GTop::GLib.g_free ss_pointer</span><br><br><br>This is a part the ouput:<br><br><br><span style="font-family:courier new,monospace">{:flags=&gt;8191, :start=&gt;140496509870080, :end=&gt;140496510115840, :offset=&gt;0, :perm=&gt;21, :inode=&gt;2494196, :device=&gt;2054, :size=&gt;245760, :rss=&gt;8192, :shared_clean=&gt;8192, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;/lib/x86_64-linux-<u></u>gnu/libpcre.so.3.13.1&quot;}<br>
+
+{:flags=&gt;8191, :start=&gt;140496510115840, :end=&gt;140496512208896, :offset=&gt;245760, :perm=&gt;16, :inode=&gt;2494196, :device=&gt;2054, :size=&gt;2093056, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;/lib/x86_64-linux-<u></u>gnu/libpcre.so.3.13.1&quot;}<br>
+
+{:flags=&gt;8191, :start=&gt;140496512208896, :end=&gt;140496512212992, :offset=&gt;241664, :perm=&gt;17, :inode=&gt;2494196, :device=&gt;2054, :size=&gt;4096, :rss=&gt;4096, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;4096, :filename=&gt;&quot;/lib/x86_64-linux-<u></u>gnu/libpcre.so.3.13.1&quot;}<br>
+
+[...]<br>{:flags=&gt;8191, :start=&gt;140496599904256, :end=&gt;140496620888064, :offset=&gt;0, :perm=&gt;19, :inode=&gt;0, :device=&gt;0, :size=&gt;20983808, :rss=&gt;20844544, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;20844544, :filename=&gt;&quot;[heap]&quot;}<br>
+
+{:flags=&gt;8191, :start=&gt;140737331818496, :end=&gt;140737331953664, :offset=&gt;0, :perm=&gt;19, :inode=&gt;0, :device=&gt;0, :size=&gt;139264, :rss=&gt;49152, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;49152, :filename=&gt;&quot;[stack]&quot;}<br>
+
+{:flags=&gt;8191, :start=&gt;140737332150272, :end=&gt;140737332154368, :offset=&gt;0, :perm=&gt;21, :inode=&gt;0, :device=&gt;0, :size=&gt;4096, :rss=&gt;4096, :shared_clean=&gt;4096, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;[vdso]&quot;}<br>
+
+{:flags=&gt;8191, :start=&gt;18446744073699065856, :end=&gt;18446744073699069952, :offset=&gt;0, :perm=&gt;21, :inode=&gt;0, :device=&gt;0, :size=&gt;4096, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;[vsyscall]&quot;}</span><br>
+
+<br><br>However, when I use <span style="font-family:courier new,monospace">FFI::AutoPointer</span>:<br><br><br><span style="font-family:courier new,monospace">s = GTop::ProcessMemoryMaps.new<br>addr = GTop.process_memory_maps(s, Process.pid)<br>
+
+pre_ss_pointer = FFI::Pointer.new(GTop::<u></u>MemoryMapEntry, addr)<br>ss_pointer = FFI::AutoPointer.new pre_ss_pointer, GTop::GLib.method(:g_free)<br>s[:number].times do |i|<br>  ssi = GTop::MemoryMapEntry.new(ss_<u></u>pointer[i])<br>
+
+  p Hash[ ssi.members.map { |m| [ m, ssi[m].is_a?(FFI::<u></u>StructLayout::CharArray) ? ssi[m].to_s.force_encoding(&#39;<u></u>UTF-8&#39;) : ssi[m] ] } ]<br>end</span><br><br><br>the output is corrupted:<br><br><span style="font-family:courier new,monospace"><br>
+
+{:flags=&gt;8191, :start=&gt;140185021132800, :end=&gt;140185021378560, :offset=&gt;0, :perm=&gt;21, :inode=&gt;2494196, :device=&gt;2054, :size=&gt;245760, :rss=&gt;8192, :shared_clean=&gt;8192, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;/lib/x86_64-linux-<u></u>gnu/libpcre.so.3.13.1&quot;}<br>
+
+{:flags=&gt;31, :start=&gt;547597738800, :end=&gt;547597739760, :offset=&gt;1513209474796486656, :perm=&gt;17582052945254416384, :inode=&gt;432345564227577358, :device=&gt;8, :size=&gt;960, :rss=&gt;32, :shared_clean=&gt;32, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;<u></u>3386706919782612992, :filename=&gt;&quot;lib/x86_64-linux-<u></u>gnu/libpcre.so.3.13.1&quot;}<br>
+
+[...]<br>{:flags=&gt;0, :start=&gt;1376256, :end=&gt;163459629056, :offset=&gt;134610944, :perm=&gt;16106127360, :inode=&gt;536870912, :device=&gt;536870912, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;<u></u>8660248813382860800, :private_clean=&gt;<u></u>7596496373740942904, :private_dirty=&gt;<u></u>3419760881481315694, :filename=&gt;&quot;libpcre.so.3.13.1&quot;<u></u>}<br>
+
+{:flags=&gt;0, :start=&gt;5376, :end=&gt;638514176, :offset=&gt;525824, :perm=&gt;62914560, :inode=&gt;2097152, :device=&gt;2097152, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;<u></u>4069054363051241216, :private_clean=&gt;<u></u>7956009158131998518, :private_dirty=&gt;<u></u>7795578597039503477, :filename=&gt;&quot;ibpcre.so.3.13.1&quot;}<br>
+
+{:flags=&gt;0, :start=&gt;21, :end=&gt;2494196, :offset=&gt;2054, :perm=&gt;245760, :inode=&gt;8192, :device=&gt;8192, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;<u></u>3907004821653777455, :private_clean=&gt;<u></u>8461816663211521631, :private_dirty=&gt;<u></u>7596498852877118840, :filename=&gt;&quot;bpcre.so.3.13.1&quot;}<br>
+
+[...]<br>{:flags=&gt;3543826231318490725, :start=&gt;3223091, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;3688780367150412590, :start=&gt;12590, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;3329058624053866355, :start=&gt;49, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;3543826243108679279, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;13843071262143278, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;54074497117747, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;211228504366, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;825111345, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;3223091, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}<br>
+
+{:flags=&gt;12590, :start=&gt;0, :end=&gt;0, :offset=&gt;0, :perm=&gt;0, :inode=&gt;0, :device=&gt;0, :size=&gt;0, :rss=&gt;0, :shared_clean=&gt;0, :shared_dirty=&gt;0, :private_clean=&gt;0, :private_dirty=&gt;0, :filename=&gt;&quot;&quot;}</span><br>
+
+<br>As you can see, the struct values &quot;get chewed&quot; from entry to entry.<br><br>Is it a known issue?<br></blockquote></div>
+
+<p></p>
+
+-- <br>
+ <br>
+--- <br>
+You received this message because you are subscribed to a topic in the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this topic, visit <a href="https://groups.google.com/d/topic/ruby-ffi/gOU_DxCjOTM/unsubscribe?hl=en" target="_blank">https://groups.google.com/d/topic/ruby-ffi/gOU_DxCjOTM/unsubscribe?hl=en</a>.<br>
+To unsubscribe from this group and all its topics, send an email to <a href="mailto:ruby-ffi%2Bunsubscribe@googlegroups.com" target="_blank">ruby-ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/groups/opt_out</a>.<br>
+ <br>
+ <br>
+</div></div></blockquote></div><br>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

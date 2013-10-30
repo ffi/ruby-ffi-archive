@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Ruby callbacks from C code from a separate thread, hangs.</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Ruby callbacks from C code from a separate thread, hangs.</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Avishek Sen Gupta <avishek.sen.gupta@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/30/12 1:52 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><p style="margin-bottom: 15px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; line-height: 20px; background-color: rgb(251, 251, 251);">Hello!<br>I'm currently working on some code where I'm utilising FFI::Function objects referenced by function pointers in a C struct. The C code expects the callbacks to be synchronous; however, a few times, the call is made from a separate thread.<br>This leads FFI to grab a mutex and wait for the callback's done property to be set to true. However, my callbacks return values in a synchronous fashion. Thus, the FFI call hangs as it keeps spinning waiting for the (supposedly) asynchronous callback to complete.<br>What would you suggest I do to signal the end of the callback in the Ruby code?</p><p style="margin-top: 15px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; line-height: 20px; background-color: rgb(251, 251, 251); margin-bottom: 0px !important;">Thanks!</p>
+</div></body>
+</html>
+</table></div>

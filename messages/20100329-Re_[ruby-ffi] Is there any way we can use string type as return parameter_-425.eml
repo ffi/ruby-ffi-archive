@@ -1,0 +1,143 @@
+Delivered-To: headius@headius.com
+Received: by 10.151.141.21 with SMTP id t21cs73861ybn;
+        Mon, 29 Mar 2010 12:20:24 -0700 (PDT)
+Received: by 10.114.189.6 with SMTP id m6mr234029waf.57.1269890423927;
+        Mon, 29 Mar 2010 12:20:23 -0700 (PDT)
+Return-Path: <3dP2wSwQPCG4QhMZRMXXUZSeZai.ZQfdgNk-RRUSaaSXQSdagbe.OaY@groups.bounces.google.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id bk2si10085456ibb.21.2010.03.29.12.20.22;
+        Mon, 29 Mar 2010 12:20:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3dP2wSwQPCG4QhMZRMXXUZSeZai.ZQfdgNk-RRUSaaSXQSdagbe.OaY@groups.bounces.google.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3dP2wSwQPCG4QhMZRMXXUZSeZai.ZQfdgNk-RRUSaaSXQSdagbe.OaY@groups.bounces.google.com designates 209.85.160.190 as permitted sender) smtp.mail=3dP2wSwQPCG4QhMZRMXXUZSeZai.ZQfdgNk-RRUSaaSXQSdagbe.OaY@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyc15 with SMTP id 15sf19534264gyc.7
+        for <headius@headius.com>; Mon, 29 Mar 2010 12:20:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=reOv/l//r3UJsWPdHE88z8BznlSx951lFmzzYZwcvew=;
+        b=gYUpWNooSUD9UpU1EgpadtTX1gMwYzPLT6nxL60xRSGRubP1nWYa8JrMtGhOqd8yV7
+         5+soev+YfFNnlLt4aJjdceibk5YOmFmXR9gN3VQidv1flv921srtSB6xm4P6tbSZ0lIU
+         mz5tBfO7oB0IfhARZhS7KAIeqj/5r4OdemLAw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=bsP0GMZe/4Fr3WInbN5+19K0JVhkYtU4KAfQ9T6jKVbh6FKXP1P0E15yf21huP9KOq
+         LUc4LubcSgb7hI2Wm3PZACm994usOj1XmEBh2Zp0bKfajk2cTBOSvgX7dKhBk+cca38v
+         TGcYFf6joTeyQTvXUhCilWML8vFGN+7FCRQH8=
+Received: by 10.101.138.35 with SMTP id q35mr108384ann.66.1269890420582;
+        Mon, 29 Mar 2010 12:20:20 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.204.223 with SMTP id fn31ls587174ibb.1.p; Mon, 29 Mar 2010 
+	12:20:19 -0700 (PDT)
+Received: by 10.231.190.134 with SMTP id di6mr338975ibb.15.1269890419089;
+        Mon, 29 Mar 2010 12:20:19 -0700 (PDT)
+Received: by 10.231.190.134 with SMTP id di6mr338974ibb.15.1269890419058;
+        Mon, 29 Mar 2010 12:20:19 -0700 (PDT)
+Return-Path: <evan@fallingsnow.net>
+Received: from elle.fallingsnow.net (elle.fallingsnow.net [67.43.164.196])
+        by gmr-mx.google.com with ESMTP id 19si584710iwn.6.2010.03.29.12.20.18;
+        Mon, 29 Mar 2010 12:20:18 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 as permitted sender) client-ip=67.43.164.196;
+Received: from cpe-76-170-133-160.socal.res.rr.com ([76.170.133.160] helo=[10.0.1.200])
+	by elle.fallingsnow.net with esmtpa (Exim 4.69)
+	(envelope-from <evan@fallingsnow.net>)
+	id 1NwKVR-0002FT-Lg
+	for ruby-ffi@googlegroups.com; Mon, 29 Mar 2010 12:20:18 -0700
+Mime-Version: 1.0 (Apple Message framework v1077)
+From: Evan Phoenix <evan@fallingsnow.net>
+In-Reply-To: <4ccee321003291207y6c75c4d3x26eb981eceda8552@mail.gmail.com>
+Date: Mon, 29 Mar 2010 12:20:13 -0700
+Message-Id: <65723562-7642-4104-89D3-50C569DB1F9A@fallingsnow.net>
+References: <1a2dd4711003291023i3fcd1b0bl847da833aeb6f3ae@mail.gmail.com> <4ccee321003291207y6c75c4d3x26eb981eceda8552@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1077)
+X-SA-Exim-Connect-IP: 76.170.133.160
+X-SA-Exim-Mail-From: evan@fallingsnow.net
+X-Spam-Checker-Version: SpamAssassin 3.2.5 (2008-06-10) on elle.fallingsnow.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.2 required=5.0 tests=ALL_TRUSTED,AWL,BAYES_00
+	autolearn=ham version=3.2.5
+Subject: Re: [ruby-ffi] Is there any way we can use string type as return  
+	parameter?
+X-SA-Exim-Version: 4.2.1 (built Wed, 25 Jun 2008 17:14:11 +0000)
+X-SA-Exim-Scanned: Yes (on elle.fallingsnow.net)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 
+	as permitted sender) smtp.mail=evan@fallingsnow.net
+X-Original-Sender: evan@fallingsnow.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/54f8558cb8661a3b
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/32dc027cb0d32c3a
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On Mar 29, 2010, at 12:07 PM, Wayne Meissner wrote:
+
+> 2010/3/30 Jes=FAs Garc=EDa S=E1ez <blaxter@gmail.com>:
+>> Hi,
+>>=20
+>> when is it posible to define a "string" type safely? I think, the only
+>> situation is for const char * input parameter. Because otherwise we are
+>> gonna have memory leaks.
+>>=20
+>> For example, for a function like:
+>>=20
+>> char *foo();
+>>=20
+>> if we attach it with:
+>>=20
+>> attach_function :foo, :foo, [], :string
+>>=20
+>> We are gonna have a nice memory leak because nobody is gonna release tha=
+t
+>> string. When we call "foo" method in ruby, we get a String object, we ca=
+nnot
+>> (or I don't know how) get the actual char pointer to release it (either =
+from
+>> ruby or with another attached function where we pass the pointer and tha=
+t
+>> function calls free, delete o whatever is necessary).
+>=20
+> The only way to do this currently is to declare the return type as
+> :pointer, read the string yourself, and explicitly free the pointer
+> using the appropriate native method.
+
+Does ruby-ffi not support the :strptr type? It's in the original FFI spec.
+
+ - Evan
+
+>=20
+> To unsubscribe from this group, send email to ruby-ffi+unsubscribegoogleg=
+roups.com or reply to this email with the words "REMOVE ME" as the subject.
+>=20
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words "REMOVE ME" as the subject.

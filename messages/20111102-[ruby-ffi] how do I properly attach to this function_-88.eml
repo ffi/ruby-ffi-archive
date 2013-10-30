@@ -1,0 +1,99 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs130553igc;
+        Thu, 3 Nov 2011 14:44:44 -0700 (PDT)
+Received: by 10.236.124.17 with SMTP id w17mr15704315yhh.126.1320356440725;
+        Thu, 03 Nov 2011 14:40:40 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKqqpduKBBDUlMz1BBoEO65uTg@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id v8si8649202yhm.94.2011.11.03.14.40.40
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 03 Nov 2011 14:40:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKqqpduKBBDUlMz1BBoEO65uTg@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKqqpduKBBDUlMz1BBoEO65uTg@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCKqqpduKBBDUlMz1BBoEO65uTg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ggnj1 with SMTP id j1sf3483941ggn.7
+        for <headius@headius.com>; Thu, 03 Nov 2011 14:40:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=s4MUvlwd3fk8OdfHc7ZqEPBDZMcEDUr5NBZmg3f9yo0=;
+        b=uoQxvNdkPxbo1y0lh/E2pFyIgzXpmG4pM+T+bu9qEYjINO67PIO0KmP1i4zJK0BSYZ
+         2NCBZoHSYcz5IM+7CtGJDZt/VzMOHiFbzLy8LJUQmLjgr6yYh5lNV493TNs7r6R3gJyj
+         DaEEKmJHwN6aZ6miq27PuhtbifJA2gsETIiJY=
+Received: by 10.236.22.225 with SMTP id t61mr3821501yht.16.1320356436626;
+        Thu, 03 Nov 2011 14:40:36 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.2.12 with SMTP id e12ls4879431ani.3.gmail; Thu, 03 Nov
+ 2011 14:40:35 -0700 (PDT)
+Received: by 10.236.156.98 with SMTP id l62mr16642021yhk.4.1320356435498;
+        Thu, 03 Nov 2011 14:40:35 -0700 (PDT)
+Received: by 10.150.69.1 with SMTP id r1msyba;
+        Wed, 2 Nov 2011 16:24:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.11.226 with SMTP id t2mr1045713pbb.20.1320276292224; Wed,
+ 02 Nov 2011 16:24:52 -0700 (PDT)
+Received: by j36g2000prh.googlegroups.com with HTTP; Wed, 2 Nov 2011 16:24:52
+ -0700 (PDT)
+Date: Wed, 2 Nov 2011 16:24:52 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.106 Safari/535.2,gzip(gfe)
+Message-ID: <05d71913-19cb-4d72-a2b2-39ba17a59fc4@j36g2000prh.googlegroups.com>
+Subject: [ruby-ffi] how do I properly attach to this function?
+From: Jason Toy <jasontoy@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jasontoy@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I have a function  that is called like this in a c ++ app:
+   CompactLangDet::DetectLanguage( .....)
+
+I see that C++ symbols are not visible in C so I ran nm on the library
+to see the names of the functions:
+0000000000002820 T
+__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb
+00000000000028a0 T __ZN14CompactLangDet21DetectLanguageVersionEv
+0000000000004440 T
+__ZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15DetectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_Pb
+000000000013b180 s
+__ZZN18CompactLangDetImpl24DetectLanguageSummaryV25EPKN14CompactLangDet15DetectionTablesEPKcibbbS5_i8LanguagebiS6_PS6_PiPdS8_PbE18default_cld_tables
+
+
+So I tried running:
+
+require 'ffi'
+module MyLib
+  extend FFI::Library
+  ffi_lib "#{Dir.pwd}/cld.so"
+   #attach_function "CompactLangDet::DetectLanguage",
+[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:double,:int,:bool ], :int
+   attach_function
+"__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb",
+[ :int, :buffer_in,:int,:bool,:bool,:bool,:bool,:buffer_in,:int,:int,:int,:int,:double,:int,:bool ], :int
+end
+
+
+but I still get an error:
+FFI::NotFoundError: Function
+'__ZN14CompactLangDet14DetectLanguageEPKNS_15DetectionTablesEPKcibbbbS4_i8LanguagePS5_PiPdS7_Pb'
+not found in [/Users/jtoy/sandbox/ccld/cld.so]
+	from /Users/jtoy/.rbenv/versions/1.9.3-preview1/lib/ruby/gems/1.9.1/
+gems/ffi-1.0.10/lib/ffi/library.rb:247:in `attach_function'
+
+
+
+What is the correct way for me to reference this function?

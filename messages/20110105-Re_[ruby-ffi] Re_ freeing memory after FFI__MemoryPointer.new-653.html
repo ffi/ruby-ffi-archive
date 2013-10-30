@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Alvaro <zevarito@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/5/11 11:38 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+2011/1/5 Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Jan 5, 2011, at 7:51 AM, Alvaro wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I understand your point about how it works the garbage collection.
+<span class="moz-txt-citetags">&gt;&gt; </span>Is a kind strange that the C lib purely don't have leaks but with the
+<span class="moz-txt-citetags">&gt;&gt; </span>FFI binding it has and I couldn't find the reason yet, may be is
+<span class="moz-txt-citetags">&gt;&gt; </span>inherited to ruby, I've tested it with Ree, Mri and JRuby without
+<span class="moz-txt-citetags">&gt;&gt; </span>success.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I will continue trying to figure out what is happening, thanks for
+<span class="moz-txt-citetags">&gt;&gt; </span>your comments.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is this code public and available online somewhere? If so, someone on this list may get curious and look at it too.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>It's possible, though unlikely, that the leak is in the FFI library. I had some massive leaks in a library I wrote using FFI, but I tracked 100% of them back to my own errors. There are now 0 leaks in the code (though I did find a few minor ones in each Ruby runtime).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+The code is not public available, but I am pasting it here:
+<a class="moz-txt-link-freetext" href="http://pastie.org/private/lj5wqnlxdxwbe6ghjlpg">http://pastie.org/private/lj5wqnlxdxwbe6ghjlpg</a>
+
+<div class="moz-txt-sig">-- 
+Alvaro
+</div></pre></div></body>
+</html>
+</table></div>

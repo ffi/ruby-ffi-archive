@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.135.9 with SMTP id l9cs58547qct;
+        Sun, 16 Oct 2011 15:40:40 -0700 (PDT)
+Received: by 10.100.233.21 with SMTP id f21mr3579195anh.44.1318804840454;
+        Sun, 16 Oct 2011 15:40:40 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDjuu30BBoEJByEwg@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id j12si4573649and.57.2011.10.16.15.40.40
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 16 Oct 2011 15:40:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDjuu30BBoEJByEwg@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDjuu30BBoEJByEwg@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDjuu30BBoEJByEwg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd5 with SMTP id 5sf7271248gyd.7
+        for <headius@headius.com>; Sun, 16 Oct 2011 15:40:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=Lq7HAryApFgBiUDLmlU2M0Hv3V6zv50agWEb9I4S1+Q=;
+        b=e596xzC6oHR8IjX3MOCM/wbWn969dkDEnUE/X6o7hh2COFauMHuLzZXCxjdC1mO98F
+         Sw/G+Xlgcggx3Y666TN/HhL9YF90iXgciZgEnKiDim0Yag+6fw36ogG122HIQCC9KL6C
+         tLt2djkPNk3lerDIA3fUNeJOS6GDloykyvx1k=
+Received: by 10.150.13.4 with SMTP id 4mr4009469ybm.0.1318804835272;
+        Sun, 16 Oct 2011 15:40:35 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.56.20 with SMTP id e20ls21185004ana.5.gmail; Sun, 16 Oct
+ 2011 15:40:34 -0700 (PDT)
+Received: by 10.146.240.10 with SMTP id n10mr920043yah.3.1318804834910;
+        Sun, 16 Oct 2011 15:40:34 -0700 (PDT)
+Date: Sun, 16 Oct 2011 15:40:33 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <21087008.988.1318804833954.JavaMail.geo-discussion-forums@prng5>
+In-Reply-To: <fb07792b-54c1-4461-b9c1-25d3a8989b9b@n18g2000vbv.googlegroups.com>
+References: <fb07792b-54c1-4461-b9c1-25d3a8989b9b@n18g2000vbv.googlegroups.com>
+Subject: [ruby-ffi] Re: ffi not compiling on mac osx?!
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_987_18415985.1318804833953"
+
+------=_Part_987_18415985.1318804833953
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+That would be due to the whitespace in the build directory path.
+
+Try with ruby-ffi master (at least 
+commit 7fbd829ee74b9c6fa340f9ddffd82514078ff9e5).
+
+
+
+------=_Part_987_18415985.1318804833953
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+That would be due to the whitespace in the build directory path.<div><br></div><div>Try with ruby-ffi master (at least commit&nbsp;7fbd829ee74b9c6fa340f9ddffd82514078ff9e5).</div><div><br></div><div><br></div>
+------=_Part_987_18415985.1318804833953--

@@ -1,0 +1,273 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp174448laa;
+        Mon, 30 Sep 2013 21:20:40 -0700 (PDT)
+X-Received: by 10.66.141.39 with SMTP id rl7mr31576594pab.46.1380601239049;
+        Mon, 30 Sep 2013 21:20:39 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBFM3VGJAKGQEW3GMVUI@googlegroups.com>
+Received: from mail-pd0-x240.google.com (mail-pd0-x240.google.com [2607:f8b0:400e:c02::240])
+        by mx.google.com with ESMTPS id sj5si2958662pab.23.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 30 Sep 2013 21:20:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBFM3VGJAKGQEW3GMVUI@googlegroups.com designates 2607:f8b0:400e:c02::240 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBFM3VGJAKGQEW3GMVUI@googlegroups.com designates 2607:f8b0:400e:c02::240 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBFM3VGJAKGQEW3GMVUI@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pd0-f192.google.com with SMTP id z10sf1419945pdj.19
+        for <headius@headius.com>; Mon, 30 Sep 2013 21:20:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=ikqB5LHU6DBcG9cYBq7TV4RuenJENLw/oBazqs27Eqs=;
+        b=vQCgPBHGx8ABc+0mBcYSKLED/ZNlUQDt2yp/c/F24MoyJN+pPMGv1NJqquibAT2BkY
+         uoHVwTHdM0tfZ1baSoSEChmxgP3AjSWgFtjjJLEr5XeBN9X96TNqfuAzS7Z7n1Dt7Rni
+         7vLp+bTT+CyVEoQ5xUbZ12+v1Ck7BZ8gDCFrXu7wGS1FbiV+yJUFU6LJr8LVANs0mes/
+         XWbLl6upqkE6jJW9/9aQB6TNYR36Z1rBHaka8oYrUEP2hdogDBknMEkkPYGQIyZfJwiy
+         lglCF04FrUU4AxllCaHySGvuRTVrY0tX29bBPWrmLKP90U5RVsv10Hwl7wEdJ+HjlBFO
+         uKRw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=ikqB5LHU6DBcG9cYBq7TV4RuenJENLw/oBazqs27Eqs=;
+        b=mdIl2qDsNKaIojYcECErD2AdLG6Eq5/vSnK+Sbn+SqtYkI0NDi4sH/ejuYKySa5luG
+         DSZE6wO/XiTQV6g+niopTDK6PNk4O8y8RGq9r43ZNAKiMFOQcNvHT8FM0DVoXMR9FYqk
+         l6EouCFftiXumyBhro1+9G9d9j/jpbDHyLyOR9+wkBfNGgv/InI8qkDOclB1kZTY8hJQ
+         9sdKC7plVi3Qbg9NBbEsOj2BlwaqGZCdTcf4iZWWHe4/+AxS03Xa2ppiMXZ+fE2mELEe
+         7EanI+ypZAZbuuODjOkhxXw0sJUBk4SjYiNhl5uQo+P3SvHD3wTdbUWBkGiU58CT9pms
+         uUlQ==
+X-Received: by 10.50.111.200 with SMTP id ik8mr586795igb.7.1380601238195;
+        Mon, 30 Sep 2013 21:20:38 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.72.14 with SMTP id z14ls2304100igu.38.gmail; Mon, 30 Sep
+ 2013 21:20:37 -0700 (PDT)
+X-Received: by 10.50.111.200 with SMTP id ik8mr586794igb.7.1380601237771;
+        Mon, 30 Sep 2013 21:20:37 -0700 (PDT)
+Date: Mon, 30 Sep 2013 21:20:36 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <f0a672dd-6203-492c-9bc8-12130dda3c29@googlegroups.com>
+In-Reply-To: <523F46F3.1070005@matijs.net>
+References: <523ECEE1.4060406@matijs.net>
+ <523F46F3.1070005@matijs.net>
+Subject: Re: [ruby-ffi] DataConverter for callback type
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2897_21424649.1380601236407"
+
+------=_Part_2897_21424649.1380601236407
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+Hmm.  There are a couple of ways of doing it:
+- making a DataConverter that has a native_type of a Type::Function 
+actually *work* instead of crashing the VM (or failing with an error on 
+JRuby)
+- allowing FFI::Function.new() to take a call context and a function 
+pointer/proc/block instead of a separate rtype and param_type array for 
+efficiency.
+
+In the meantime, you can probably achieve what you want.
+e.g.
+
+module QSort
+  extend FFI::Library
+  ffi_lib 'c'
+
+  module Comparator
+    RTYPE = FFI::Type::SINT
+    PARAM_TYPES =  [ FFI::Type::POINTER, FFI::Type::POINTER ].freeze
+    extend FFI::DataConverter
+
+    def self.native_type
+      FFI::Type::POINTER
+    end
+
+    def self.to_native(value, ctx)
+      FFI::Function.new(RTYPE, PARAM_TYPES, value)
+    end
+  end
+  attach_function :qsort, [ :pointer, :size_t, :size_t, Comparator ], :void
+end
+
+ptr = FFI::MemoryPointer.new(:int, 2)
+ptr[0].write_int(2)
+ptr[1].write_int(1)
+puts "unsorted=#{ptr.get_array_of_int(0, 2)}"
+QSort.qsort(ptr, 2, 4, ->(p1, p2) { i1, i2 = p1.read_int, p2.read_int;  i1 
+< i2 ? -1 : i1 > i2 ? 1 : 0 })
+puts "sorted=#{ptr.get_array_of_int(0, 2)}"
+
+
+On Monday, 23 September 2013 05:37:23 UTC+10, Matijs van Zuijlen wrote:
+>
+> I've been digging a little further, and it seems that the 
+> rbffi_Function_ForProc 
+> function defined in Function.c does exactly what I want, since I have a 
+> FFI::FunctionType (i.e., self::Callback), and a Proc (the value argument 
+> of 
+> #to_native), and I would like to turn this into a FFI::Function. 
+>
+> Would it be possible to expose this function to Ruby? 
+>
+> On 22/09/13 13:05, Matijs van Zuijlen wrote: 
+> > Hello, 
+> > 
+> > I'm trying to create a DataConverter that represents a callback 
+> function. The 
+> > code basically boils down to this: 
+> > 
+> > module Lib 
+> >   include FFI::Library 
+> >   ffi_lib 'some-library' 
+> > end 
+> > 
+> > class Foo < Proc 
+> >   extend FFI::DataConverter 
+> > 
+> >   Callback = Lib.callback ... # usual call to FFI::Library.callback 
+> > 
+> >   def self.native_type 
+> >     self::Callback 
+> >   end 
+> > end 
+> > 
+> > [The reason I'm doing this is that I want to wrap procs passed from ruby 
+> in some 
+> > argument conversion code using a method defined on, in this case, Foo] 
+> > 
+> > Now, I'm unable to figure out what the definition of Foo.to_native 
+> should be. 
+> > Foo::Callback is of type FFI::FunctionType, which doesn't have a 
+> to_native method. 
+> > 
+> > Any ideas? 
+> > 
+> > Thanks and regards, 
+> > 
+>
+>
+> -- 
+> Matijs 
+>
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_2897_21424649.1380601236407
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><br></div>Hmm. &nbsp;There are a couple of ways of do=
+ing it:<div>- making a DataConverter that has a native_type of a Type::Func=
+tion actually *work* instead of crashing the VM (or failing with an error o=
+n JRuby)</div><div>- allowing FFI::Function.new() to take a call context an=
+d a function pointer/proc/block instead of a separate rtype and param_type =
+array for efficiency.</div><div><br></div><div>In the meantime, you can pro=
+bably achieve what you want.</div><div>e.g.</div><div><div><br></div><div>m=
+odule QSort</div><div>&nbsp; extend FFI::Library</div><div>&nbsp; ffi_lib '=
+c'</div><div><br></div><div>&nbsp; module Comparator</div><div>&nbsp; &nbsp=
+; RTYPE =3D FFI::Type::SINT</div><div>&nbsp; &nbsp; PARAM_TYPES =3D &nbsp;[=
+ FFI::Type::POINTER, FFI::Type::POINTER ].freeze</div><div>&nbsp; &nbsp; ex=
+tend FFI::DataConverter</div><div><br></div><div>&nbsp; &nbsp; def self.nat=
+ive_type</div><div>&nbsp; &nbsp; &nbsp; FFI::Type::POINTER</div><div>&nbsp;=
+ &nbsp; end</div><div><br></div><div>&nbsp; &nbsp; def self.to_native(value=
+, ctx)</div><div>&nbsp; &nbsp; &nbsp; FFI::Function.new(RTYPE, PARAM_TYPES,=
+ value)</div><div>&nbsp; &nbsp; end</div><div>&nbsp; end</div><div>&nbsp; a=
+ttach_function :qsort, [ :pointer, :size_t, :size_t, Comparator ], :void</d=
+iv><div>end</div><div><br></div><div>ptr =3D FFI::MemoryPointer.new(:int, 2=
+)</div><div>ptr[0].write_int(2)</div><div>ptr[1].write_int(1)</div><div>put=
+s "unsorted=3D#{ptr.get_array_of_int(0, 2)}"</div><div>QSort.qsort(ptr, 2, =
+4, -&gt;(p1, p2) { i1, i2 =3D p1.read_int, p2.read_int; &nbsp;i1 &lt; i2 ? =
+-1 : i1 &gt; i2 ? 1 : 0 })</div><div>puts "sorted=3D#{ptr.get_array_of_int(=
+0, 2)}"</div><div><br></div><br>On Monday, 23 September 2013 05:37:23 UTC+1=
+0, Matijs van Zuijlen  wrote:<blockquote class=3D"gmail_quote" style=3D"mar=
+gin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">I=
+'ve been digging a little further, and it seems that the rbffi_Function_For=
+Proc
+<br>function defined in Function.c does exactly what I want, since I have a
+<br>FFI::FunctionType (i.e., self::Callback), and a Proc (the value argumen=
+t of
+<br>#to_native), and I would like to turn this into a FFI::Function.
+<br>
+<br>Would it be possible to expose this function to Ruby?
+<br>
+<br>On 22/09/13 13:05, Matijs van Zuijlen wrote:
+<br>&gt; Hello,
+<br>&gt;=20
+<br>&gt; I'm trying to create a DataConverter that represents a callback fu=
+nction. The
+<br>&gt; code basically boils down to this:
+<br>&gt;=20
+<br>&gt; module Lib
+<br>&gt; &nbsp; include FFI::Library
+<br>&gt; &nbsp; ffi_lib 'some-library'
+<br>&gt; end
+<br>&gt;=20
+<br>&gt; class Foo &lt; Proc
+<br>&gt; &nbsp; extend FFI::DataConverter
+<br>&gt;=20
+<br>&gt; &nbsp; Callback =3D Lib.callback ... # usual call to FFI::Library.=
+callback
+<br>&gt;=20
+<br>&gt; &nbsp; def self.native_type
+<br>&gt; &nbsp; &nbsp; self::Callback
+<br>&gt; &nbsp; end
+<br>&gt; end
+<br>&gt;=20
+<br>&gt; [The reason I'm doing this is that I want to wrap procs passed fro=
+m ruby in some
+<br>&gt; argument conversion code using a method defined on, in this case, =
+Foo]
+<br>&gt;=20
+<br>&gt; Now, I'm unable to figure out what the definition of Foo.to_native=
+ should be.
+<br>&gt; Foo::Callback is of type FFI::FunctionType, which doesn't have a t=
+o_native method.
+<br>&gt;=20
+<br>&gt; Any ideas?
+<br>&gt;=20
+<br>&gt; Thanks and regards,
+<br>&gt;=20
+<br>
+<br>
+<br>--=20
+<br>Matijs
+<br>
+<br></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_2897_21424649.1380601236407--

@@ -1,0 +1,66 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] AutoPointer#free incorrect?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] AutoPointer#free incorrect?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>cfis <cfis@savagexi.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/30/11 2:24 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Unless I'm missing something, it looks to me that the implementation
+of #free is not correct.  I am wrapping FreeImage and have code like
+this:
+
+class Bitmap
+    def self.release(ptr) #:nodoc:
+      FreeImage.FreeImage_Unload(ptr)
+    end
+end
+
+Now I load an image:
+
+ bitmap = load_some_bitmap
+
+In time it will get GC'ed, but let's say I want to force the issue:
+
+  bitmap.free
+
+That calls AutoPointer#free
+
+    def free
+      @releaser.free
+    end
+
+Which in turn calls Releaser#free:
+
+      def free
+        raise RuntimeError.new("pointer already freed") unless @ptr
+        @autorelease = false
+        @ptr = nil
+        @proc = nil
+      end
+
+Notice that the bitmap was not freed.  Worse, the bitmap will never be
+freed because @autorelease is now false. Take a look at the finalizer:
+
+    class DefaultReleaser &lt; Releaser
+      def call(*args)
+        @proc.release(@ptr) if @autorelease &amp;&amp; @ptr
+      end
+    end
+
+I think the free method should be:
+
+      def free
+        raise RuntimeError.new("pointer already freed") unless @ptr
+        @proc.release(@ptr)
+        @autorelease = false
+        @ptr = nil
+        @proc = nil
+      end
+
+Thanks,
+
+Charlie
+</pre></div></body>
+</html>
+</table></div>

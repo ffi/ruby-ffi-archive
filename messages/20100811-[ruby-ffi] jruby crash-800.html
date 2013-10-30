@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] jruby crash</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] jruby crash</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/11/10 6:44 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Anybody have any pointers on what might be happening with this jruby
+ffi crash?
+
+<a class="moz-txt-link-freetext" href="http://jira.codehaus.org/browse/JRUBY-4916">http://jira.codehaus.org/browse/JRUBY-4916</a>
+
+Basically using the enumerate windows win32api several times in jruby
+results in:
+
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x01b7b7c3, pid=3372,
+tid=5564
+#
+# JRE version: 6.0_18-b07
+# Java VM: Java HotSpot(TM) Client VM (16.0-b13 mixed mode, sharing
+windows-x86 )
+# Problematic frame:
+# J  com.kenai.jffi.Foreign.invokeArrayReturnInt(J[B)I
+
+also reproducible with this: <a class="moz-txt-link-freetext" href="http://gist.github.com/518855">http://gist.github.com/518855</a>
+
+Seems to work fine with MRI.
+Thanks.
+</pre></div></body>
+</html>
+</table></div>

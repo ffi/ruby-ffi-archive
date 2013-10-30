@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Passing Windows VARIANT by value leads to segfault</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Passing Windows VARIANT by value leads to segfault</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephan Schwab <sns@caimito.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/18/11 12:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi!
+
+Given this code:
+
+get_accState      = FFI::Function.new(:uint32, [:pointer,
+Variant.by_value, :pointer], i_accessible_vtbl[:get_accState])
+variant_out       = Variant.new
+
+variant_in = Variant.new
+variant_init(variant_in)
+variant_in[:vt] = Constants::VT_I4   # 0x3
+variant_in[:lVal] = 0  # CHILDID_SELF
+
+acc_state_result  = get_accState.call(i_accessible, variant_in,
+variant_out)
+fail "Can't query for button state. HRESULT = 0x" +
+acc_state_result.to_s(16) unless acc_state_result == Constants::S_OK
+# S_OK = 0
+
+I get a segmentation fault when calling get_accState.call()
+
+The method get_accState() allows me to skip the second parameter and
+pass in NULL instead. If I do that (after changing the parameter type
+to a pointer and using 'nil') the function returns S_OK and does not
+crash.
+
+What might be the reason for the segmentation fault given this code?
+
+Stephan
+</pre></div></body>
+</html>
+</table></div>

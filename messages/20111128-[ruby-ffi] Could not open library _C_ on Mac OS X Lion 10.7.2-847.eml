@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.203.34 with SMTP id kn2cs384430igc;
+        Mon, 28 Nov 2011 00:22:46 -0800 (PST)
+Received: by 10.236.161.65 with SMTP id v41mr61023124yhk.42.1322468565277;
+        Mon, 28 Nov 2011 00:22:45 -0800 (PST)
+Return-Path: <ruby-ffi+bncCInJufzkGhDRic32BBoEgO4hUA@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTPS id i7si25540544yhe.91.2011.11.28.00.22.45
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 28 Nov 2011 00:22:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCInJufzkGhDRic32BBoEgO4hUA@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCInJufzkGhDRic32BBoEgO4hUA@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCInJufzkGhDRic32BBoEgO4hUA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yenq6 with SMTP id q6sf990679yen.7
+        for <headius@headius.com>; Mon, 28 Nov 2011 00:22:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:reply-to:to:message-id:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=wb+X2TgSjC6ZcwdOPfABGQFKUaRoTswj0MPttodKpwM=;
+        b=NzUPzJqvwgLK4SKj7fGIfUt+uJ/6Z/4vswA2wTGK9DEIR6H+Imngevx1aL8+eNMMKm
+         JsJjA5aHlBUnD+y/NmbWgSq/5oFQfw2jGwutF/RU5BEM8Zm97ursETSOyaAYkd6QHef4
+         wXx17SGXJCtsI24knYab5mxlGRtLC4Qo8cq78=
+Received: by 10.236.175.2 with SMTP id y2mr9568850yhl.4.1322468561433;
+        Mon, 28 Nov 2011 00:22:41 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.55.11 with SMTP id h11ls19167682ank.4.gmail; Mon, 28 Nov
+ 2011 00:22:41 -0800 (PST)
+Received: by 10.101.15.15 with SMTP id s15mr9319663ani.16.1322468561024;
+        Mon, 28 Nov 2011 00:22:41 -0800 (PST)
+Received: by 10.150.195.7 with SMTP id s7msybf;
+        Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Received: by 10.100.75.7 with SMTP id x7mr1504938ana.53.1322467728673;
+        Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Received: by 10.100.75.7 with SMTP id x7mr1504937ana.53.1322467728658;
+        Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Received: from mail-iy0-f185.google.com (mail-iy0-f185.google.com [209.85.210.185])
+        by gmr-mx.google.com with ESMTPS id vc5si6498533icb.1.2011.11.28.00.08.48
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of winfield301@gmail.com designates 209.85.210.185 as permitted sender) client-ip=209.85.210.185;
+Received: by mail-iy0-f185.google.com with SMTP id o4so10491279iae.12
+        for <ruby-ffi@googlegroups.com>; Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Received: by 10.50.236.6 with SMTP id uq6mr5686520igc.4.1322467728600;
+        Mon, 28 Nov 2011 00:08:48 -0800 (PST)
+Date: Mon, 28 Nov 2011 00:08:47 -0800 (PST)
+From: =?UTF-8?B?5p2l6K+6?= <winfield301@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <16641328.602.1322467727624.JavaMail.geo-discussion-forums@prmr38>
+Subject: [ruby-ffi] Could not open library 'C' on Mac OS X Lion 10.7.2
+MIME-Version: 1.0
+X-Original-Sender: winfield301@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of winfield301@gmail.com designates 209.85.210.185 as permitted
+ sender) smtp.mail=winfield301@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_601_16349063.1322467727622"
+
+------=_Part_601_16349063.1322467727622
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi, guys
+
+  I have the following code copied from the ruby-ffi github page. I have 
+Xcode installed. tested both in ruby ruby-1.8.7-p352 [ i686 ] and 
+ruby-1.9.2-p180 [ x86_64 ]
+  but got the error: 
+
+  gems/ffi-1.0.11/lib/ffi/library.rb:121:in `block in ffi_lib': Could not 
+open library 'c': dlopen(c, 5): image not found. (LoadError)
+Could not open library 'libc.dylib': dlopen(libc.dylib, 5): image not found
+
+  the code:
+
+  require 'rubygems'
+  require 'ffi'
+
+  module MyLib
+    extend FFI::Library
+    ffi_lib 'c'
+    attach_function :puts, [ :string ], :int
+  end
+
+  MyLib.puts 'Hello boys using libc!'
+
+------=_Part_601_16349063.1322467727622
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<div>Hi, guys</div><div><br></div><div>&nbsp; I have the following code copied from the ruby-ffi github page. I have Xcode installed. tested both in ruby ruby-1.8.7-p352 [ i686 ] and ruby-1.9.2-p180 [ x86_64 ]</div><div>&nbsp; but got the error:&nbsp;</div><div><br></div><div>&nbsp;&nbsp;gems/ffi-1.0.11/lib/ffi/library.rb:121:in `block in ffi_lib': Could not open library 'c': dlopen(c, 5): image not found. (LoadError)</div><div>Could not open library 'libc.dylib': dlopen(libc.dylib, 5): image not found</div><div><br></div><div>&nbsp;&nbsp;the code:</div><div><br></div><div>&nbsp; require 'rubygems'</div><div>&nbsp; require 'ffi'</div><div><br></div><div>&nbsp; module MyLib</div><div>&nbsp; &nbsp; extend FFI::Library</div><div>&nbsp; &nbsp; ffi_lib 'c'</div><div>&nbsp; &nbsp; attach_function :puts, [ :string ], :int</div><div>&nbsp; end</div><div><br></div><div>&nbsp; MyLib.puts 'Hello boys using libc!'</div>
+------=_Part_601_16349063.1322467727622--

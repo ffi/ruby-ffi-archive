@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Ernest Prabhakar <ernest.prabhakar@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/16/09 12:57 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Victor,
+
+On Dec 15, 2009, at 10:21 PM, Victor Costan wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Is it feasible to make "FFI.add_sys_types" available on all platforms
+<span class="moz-txt-citetags">&gt; </span>if it's implemented at runtime?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm thinking ideally the ffi gem will come prebuilt, at least for OSX
+<span class="moz-txt-citetags">&gt; </span>and Windows, so users might not have Xcode / mingw / Vistual Studio.
+<span class="moz-txt-citetags">&gt; </span>To me, the biggest advantage of using ffi is not having to deal with
+<span class="moz-txt-citetags">&gt; </span>all the extension building stuff on a per-gem basis.
+</pre></blockquote><pre wrap>
+
+I'm pretty sure the "alternate" Ruby implementations (JRuby, Rubinius, MacRuby) will provide FFI as part of their core packages.  Whether MRI 1.9 is harder to say, but one can hope.
+
+However, there's still the issue that any gems which use FII still need an underlying C library. For cases where the gem is just a wrapper around a commonly used library that is already installed (e.g., libxml on Mac OS X) that would avoid the need for a compiler.  However, for less common libraries (e.g., redis), and especially on Windows, I'm afraid you'll still need a compiler to get all the goodies. <span class="moz-smiley-s2" title=":-("><span>:-(</span></span>
+
+-- Ernie P.
+
+</pre></div></body>
+</html>
+</table></div>

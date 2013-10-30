@@ -1,0 +1,135 @@
+Delivered-To: headius@headius.com
+Received: by 10.140.141.17 with SMTP id o17cs1377rvd;
+        Wed, 26 Aug 2009 14:50:43 -0700 (PDT)
+Received: by 10.229.111.195 with SMTP id t3mr2627241qcp.44.1251323442292;
+        Wed, 26 Aug 2009 14:50:42 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-gx0-f194.google.com (mail-gx0-f194.google.com [209.85.217.194])
+        by mx.google.com with ESMTP id 36si3435933yxe.55.2009.08.26.14.50.41;
+        Wed, 26 Aug 2009 14:50:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.217.194 as permitted sender) client-ip=209.85.217.194;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.217.194 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk18 with SMTP id 18so777988gxk.16
+        for <headius@headius.com>; Wed, 26 Aug 2009 14:50:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=ilvs8tcRrA1+KKQvNbow1BYq87WSvGzgDTQ/R9kPUNw=;
+        b=U2rzHkbldBPJoYU5HXxJBicnzPAipQzt/98BX5fwmbK6FxCcNu1EBVHAGs5NMQDxOw
+         7lqbO5V0/bTLXJ4Qg4rdOtWJfxKtaxlXccA4puq9K3wrCGp6mr0zbpiY9Ruo5JVBuB69
+         DjLIME/P1eF0g+VhTB9QKnCGSESiIQsVd53ow=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=GEgwiBdYXfEWJXxXMJGjTvzcPoaMHXEh4s7BHUASKe54lANOiFh0nddOf6ZYK1Zi/q
+         hkV1ROO3ikmu9SfFqsDD0wq1qDTX/dz21G3insv4qwj3jKY6VEbB9noQoMStCaQn9M1l
+         2vh2IWWPaxPP0eOomw2lyKcMQ+H7mwKDOR2/g=
+Received: by 10.229.31.2 with SMTP id w2mr709804qcc.5.1251323439398;
+        Wed, 26 Aug 2009 14:50:39 -0700 (PDT)
+Received: by 10.230.6.197 with SMTP id a5gr13vba.0;
+	Wed, 26 Aug 2009 14:50:39 -0700 (PDT)
+X-Sender: evan@fallingsnow.net
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.100.193.12 with SMTP id q12mr3992211anf.5.1251323438539; Wed,  26 Aug 2009 14:50:38 -0700 (PDT)
+Date: Wed, 26 Aug 2009 14:50:38 -0700 (PDT)
+In-Reply-To: <4ccee320908211640haf09f67g9a5b60d04b6f9a21@mail.gmail.com>
+X-IP: 76.168.228.203
+References: <2a41a5bb-7107-4a41-8d6d-3cb7f1ec4057@32g2000yqj.googlegroups.com>  <4ccee320908211640haf09f67g9a5b60d04b6f9a21@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us)  AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9,gzip(gfe),gzip(gfe)
+Message-ID: <2c17be1b-960e-41ac-98a4-12c105378bae@j9g2000prh.googlegroups.com>
+Subject: [ruby-ffi] Re: initialize :strings in structs
+From: Evan Phoenix <evan@fallingsnow.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+
+
+On Aug 21, 4:40=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Its a Ruby FFI problem.
+>
+> The problem is that to set a string in a C struct (which is just a
+> pointer to some native memory), you need to allocate & manage the
+> deallocation of native memory. =A0Automatically managing the
+> deallocation so the memory is not freed prematurely (and crashing the
+> VM), nor kept indefinitely (a memory leak) is a bit tricky, so we
+> punted on it and pushed that back up to the FFI API user.
+>
+> So, to be able to set string fields, you need to declare them as
+> :pointer, and manage the memory yourself via a MemoryPointer, or
+> mapping in malloc()/free() and using them.
+>
+> Thats no exactly convenient, but for now, its what you have to do.
+>
+> Note: JRuby works around this by attaching the string memory ownership
+> to the Struct ruby instance. =A0I'm not exactly sure if this is the best
+> way to do it, since it hides the allocation/deallocation in a
+> potentially dangerous way - when the ruby object gets collected, the
+> memory gets freed, and if that struct got passed to native code that
+> kept references to the strings, then that memory gets freed, and the
+> next time the native code accesses those memory locations, everything
+> goes *boom*, and its hard to figure out why.
+
+The JRuby special case should probably be removed, since it lets
+people write FFI code that works on JRuby, but not anywhere else.
+You've hit the nail on the head, the problem isn't solvable except by
+the user, so all implementations need to delegate to the FFI user to
+solve this.
+
+ - Evan
+
+>
+> 2009/8/22 Jan <jan.ber...@gmail.com>:
+>
+>
+>
+>
+>
+> > hey all,
+>
+> > is it possible (with NiceFFI) to initialize strings inside a struct?
+> > e.g.
+>
+> > class Config < NiceFFI::Struct
+> > =A0 =A0layout(:api_version, :int,
+> > =A0 =A0 =A0:cache_location, :string
+> > =A0 =A0 =A0:settings_location, :string
+> > =A0 )
+>
+> > Config.new(:api_version=3D>1, :cache_location=3D>"/tmp")
+>
+> > I get
+>
+> > /Library/Ruby/Gems/1.8/gems/nice-ffi-0.1/lib/nice-ffi/nicestruct.rb:
+> > 380:in `[]=3D': Cannot set :string fields (ArgumentError)
+>
+> > is this a problem with FFI in general or could support for this added?
+>
+> > =A0thanks,
+>
+> > =A0 jan

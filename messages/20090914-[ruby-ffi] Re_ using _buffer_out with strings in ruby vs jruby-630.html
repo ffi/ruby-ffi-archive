@@ -1,0 +1,122 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: using :buffer_out with strings in ruby vs jruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: using :buffer_out with strings in ruby vs jruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Aman Gupta <themastermind1@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/14/09 2:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Thanks, changing it to :buffer_in works as expected.
+
+When I create an explicit Buffer and pass it in using :pointer, the
+memory allocated for that buffer is freed when the ruby object is
+garbage collected. What happens when I pass in a string as :buffer_in
+instead? The contents of the string are copied into a temporary
+buffer, but when is the buffer freed? or does it live on the stack?
+
+  Aman
+
+On Mon, Sep 14, 2009 at 7:25 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If that code is doing what I think it is doing, you have the direction wrong.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>:buffer_out == copy out from native memory to ruby memory
+<span class="moz-txt-citetags">&gt; </span>:buffer_in == copy in to native memory from ruby memory
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Think of them like IN and OUT parameter specifications.  IN means the
+<span class="moz-txt-citetags">&gt; </span>data is passed IN to the function, OUT means the function can alter
+<span class="moz-txt-citetags">&gt; </span>the value of the parameter.  INOUT means both.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>As to why the tests fail if you pass the string first, its because the
+<span class="moz-txt-citetags">&gt; </span>string gets overwritten with garbage from native memory due to the OUT
+<span class="moz-txt-citetags">&gt; </span>param spec.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The tests work with :pointer, because it is basically the same as
+<span class="moz-txt-citetags">&gt; </span>:buffer_inout when it comes to string and Buffer arguments - the data
+<span class="moz-txt-citetags">&gt; </span>is first copied IN to native memory from ruby, then after the call,
+<span class="moz-txt-citetags">&gt; </span>the native data is copied OUT from native memory to ruby,  overwriting
+<span class="moz-txt-citetags">&gt; </span>the data with the same thing as was already there.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/9/14 Aman Gupta <a class="moz-txt-link-rfc2396E" href="mailto:themastermind1@gmail.com">&lt;themastermind1@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm seeing different behavior on ruby vs jruby when passing in a
+<span class="moz-txt-citetags">&gt;&gt; </span>string as a :buffer_out argument:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>require 'rubygems'
+<span class="moz-txt-citetags">&gt;&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>module GLib
+<span class="moz-txt-citetags">&gt;&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt;&gt; </span> ffi_lib 'libglib-2.0'
+<span class="moz-txt-citetags">&gt;&gt; </span> attach_function :g_memdup_buf, :g_memdup,
+<span class="moz-txt-citetags">&gt;&gt; </span>[ :buffer_out, :uint ], :pointer
+<span class="moz-txt-citetags">&gt;&gt; </span> attach_function :g_memdup_ptr, :g_memdup,
+<span class="moz-txt-citetags">&gt;&gt; </span>[ :pointer, :uint ], :pointer
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> def self.test_memdup(arg_type, func_type)
+<span class="moz-txt-citetags">&gt;&gt; </span>   ostr = "a\0b\0c"
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>   if arg_type == :string
+<span class="moz-txt-citetags">&gt;&gt; </span>     arg = ostr.dup
+<span class="moz-txt-citetags">&gt;&gt; </span>   elsif arg_type == :buffer
+<span class="moz-txt-citetags">&gt;&gt; </span>     arg = FFI::Buffer.new(ostr.size)
+<span class="moz-txt-citetags">&gt;&gt; </span>     arg.put_bytes(0, ostr)
+<span class="moz-txt-citetags">&gt;&gt; </span>   end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>   if func_type == :buffer_out
+<span class="moz-txt-citetags">&gt;&gt; </span>     ret = GLib.g_memdup_buf(arg, arg.size)
+<span class="moz-txt-citetags">&gt;&gt; </span>   elsif func_type == :pointer
+<span class="moz-txt-citetags">&gt;&gt; </span>     ret = GLib.g_memdup_ptr(arg, arg.size)
+<span class="moz-txt-citetags">&gt;&gt; </span>   end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>   rstr = ret.get_bytes(0, ostr.size)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>   p [arg_type, func_type, ostr, rstr, ostr == rstr]
+<span class="moz-txt-citetags">&gt;&gt; </span> end
+<span class="moz-txt-citetags">&gt;&gt; </span>end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:buffer, :buffer_out)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:buffer, :pointer)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:string, :buffer_out)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:string, :pointer)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>$ ruby glib_memduptest.rb
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :pointer, "a\000b\000c", "a\000b\000c", true]
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>$ jruby glib_memduptest.rb
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :buffer_out, "a\000b\000c", "\300\370\177\260A", false]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :buffer_out, "\001\000\000\000\270", "\001\000\000\000\270",
+<span class="moz-txt-citetags">&gt;&gt; </span>true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :pointer, "\001\000\000\000\270", "\001\000\000\000\270",
+<span class="moz-txt-citetags">&gt;&gt; </span>true]
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm not really sure what's happening in the jruby case. If I use an
+<span class="moz-txt-citetags">&gt;&gt; </span>explicit FFI::Buffer with :pointer, it seems to work.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>What's really strange though, is that if you reverse the order in
+<span class="moz-txt-citetags">&gt;&gt; </span>which the tests happen (so the string versions execute first), they
+<span class="moz-txt-citetags">&gt;&gt; </span>all fail:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:string, :buffer_out)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:string, :pointer)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:buffer, :buffer_out)
+<span class="moz-txt-citetags">&gt;&gt; </span>GLib.test_memdup(:buffer, :pointer)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>$ jruby glib_memduptest.rb
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :buffer_out, "\300\370\177\260A", "\300\370\177\260A", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:string, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :buffer_out, "\300\370\177\260A", "0\f\200\001@", false]
+<span class="moz-txt-citetags">&gt;&gt; </span>[:buffer, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

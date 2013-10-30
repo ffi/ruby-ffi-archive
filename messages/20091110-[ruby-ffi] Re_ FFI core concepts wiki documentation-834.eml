@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs174912wfg;
+        Tue, 10 Nov 2009 09:20:03 -0800 (PST)
+Received: by 10.101.11.23 with SMTP id o23mr565876ani.9.1257873602413;
+        Tue, 10 Nov 2009 09:20:02 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 38si1321935ywh.106.2009.11.10.09.20.01;
+        Tue, 10 Nov 2009 09:20:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so277157yxe.13
+        for <headius@headius.com>; Tue, 10 Nov 2009 09:20:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:received:received:date:from:to:subject
+         :message-id:in-reply-to:references:x-mailer:mime-version
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=6nJ2YP0wyNPV9mShsf0qI8AzKOCPfMjo1FUQFnZTlFM=;
+        b=YArx47Ozs2IesowRgXxdaAEB6YfxMphA7EBmMJ4Dn5LnDvJj5lRAZfH8NT6Q8nTVQh
+         at+68ZZqloq18EgWN5I851h91V3A6VkGmaJ/TdK9qrjnVxgR3hAjdsLrM7e897d1lI9I
+         aWCvp5NMsGVKdJr4bT+sVe0s2++ovOK3knC/M=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=PFBRi/VPX7duBqFQMWp00NUbaMF5KDAN5nzvMqU5BYoB2WgUWgrs84ayZFKMVxpQgi
+         vtM1BPTdF9Ia7psQflX38gXjCr8Fz85w2sbV7YbcVhqkf78zk9sabtmw/OHmJHhvVYBX
+         FMrUcnc/P8NLSTemLwcu+Zj7El85DQS5a9K+M=
+Received: by 10.101.58.9 with SMTP id l9mr37994ank.4.1257873599191;
+        Tue, 10 Nov 2009 09:19:59 -0800 (PST)
+Received: by 10.176.149.32 with SMTP id w32gr101yqd.0;
+	Tue, 10 Nov 2009 09:19:59 -0800 (PST)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.204.19.131 with SMTP id a3mr13704bkb.3.1257873598603; Tue, 10 Nov 2009 09:19:58 -0800 (PST)
+Received: by 10.204.19.131 with SMTP id a3mr13703bkb.3.1257873598540; Tue, 10 Nov 2009 09:19:58 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from fg-out-1718.google.com (fg-out-1718.google.com [72.14.220.158]) by gmr-mx.google.com with ESMTP id 18si52673bwz.13.2009.11.10.09.19.57; Tue, 10 Nov 2009 09:19:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 72.14.220.158 as permitted sender) client-ip=72.14.220.158;
+Received: by fg-out-1718.google.com with SMTP id e12so1145790fga.11 for <ruby-ffi@googlegroups.com>; Tue, 10 Nov 2009 09:19:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:received:received:date:from:to:subject :message-id:in-reply-to:references:x-mailer:mime-version :content-type:content-transfer-encoding; bh=QDV78dTem6dykd3ZifcUUqI3Gn/S7ao3Ft0jiLV0/XI=; b=UK1AbeS0R2dhD/e/iVqgNanOr02lnD6KfGubNg0mU+afVaPJ1PXBfsp184mF0IJHp5 fEDZeBLqpKbIkQh+XW2bSXd4nB6vKNIHwybt0t3DxicqR/uqQyhNWvXEIqgNKYfrpgt+ 1yRFX3ulcgJ8DMaAKUDAYVQz6w9HZl8UXkcnM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=date:from:to:subject:message-id:in-reply-to:references:x-mailer :mime-version:content-type:content-transfer-encoding; b=IcQT2UAxw6wclRKLrfKZmvG9QxlEJDfjpemvP3Hyyq3sxe9JtU7WmyQRuxhGOlQklN zxU5zMp5jZTROFjWRiS28mjvPTRUOo+SNTN9jb/IzlyPcrYfw654V3K4tI175fwuZm/d sQb9L479ihIxHtQqPOqUe/mM4A6x495J+bLC0=
+Received: by 10.87.62.6 with SMTP id p6mr344630fgk.10.1257873597274; Tue, 10 Nov 2009 09:19:57 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250]) by mx.google.com with ESMTPS id e20sm2455857fga.25.2009.11.10.09.19.55 (version=TLSv1/SSLv3 cipher=RC4-MD5); Tue, 10 Nov 2009 09:19:55 -0800 (PST)
+Date: Tue, 10 Nov 2009 12:19:28 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] Re: FFI core concepts wiki documentation
+Message-Id: <20091110121928.e7219040.jon.forums@gmail.com>
+In-Reply-To: <4AF988AD.8010401@redhat.com>
+References: <20091107162455.ca8a2cd5.jon.forums@gmail.com> <4AF988AD.8010401@redhat.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+> For me, it is about the examples. I would suggest adding some better 
+> doco around passing items by reference and arrays. I admit I am weak at 
+> C, so making the jump between a char*** and an array of strings was not 
+> intuitive. The JNA website [1]  gives in doco examples to explain the 
+> 
+> [1] https://jna.dev.java.net/#pointers
+
+Agreed on the need for more examples.  It would be great if you could summarize your recent augeas char** and char*** discussions into an example and update the wiki.
+
+I find the following combination potent for quickly getting up to speed:
+* a good core concepts description
+* plenty of relevant examples
+* struggle-to-learn-it-on-your-own-for-awhile
+* a responsive mailing list 
+
+...and I believe a little work on the first two will really pay off.
+
+FWIW, I'm in the process of starting a Windows API specific page at http://wiki.github.com/ffi/ffi/windows-examples and have finally become happier with the side-by-side colorized layout. Let's see if it works across browsers and the Ruby pink isn't too much on the eyes.
+
+It will be interesting to see if this side-by-side formatting combined with the 3 categories of difficulty level will be helpful once there are a few more examples.
+
+BTW, please feel free to jump in and help out with http://wiki.github.com/ffi/ffi/core-concepts if the spirit moves you :)
+
+Jon

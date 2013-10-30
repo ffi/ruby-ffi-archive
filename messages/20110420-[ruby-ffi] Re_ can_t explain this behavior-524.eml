@@ -1,0 +1,146 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.198.7 with SMTP id v7cs123232anf;
+        Wed, 20 Apr 2011 18:25:58 -0700 (PDT)
+Received: by 10.68.28.133 with SMTP id b5mr11016545pbh.264.1303349157124;
+        Wed, 20 Apr 2011 18:25:57 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCfj77tBBoEErRVaw@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTPS id o4si4399238pbn.156.2011.04.20.18.25.56
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 20 Apr 2011 18:25:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCfj77tBBoEErRVaw@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCfj77tBBoEErRVaw@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCfj77tBBoEErRVaw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvg3 with SMTP id 3sf639124pvg.7
+        for <headius@headius.com>; Wed, 20 Apr 2011 18:25:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=XzShNH7m8iV+vifpCXfTjt4ohdx5jrZezA6ariisVqc=;
+        b=62USTDOxHL2rQdviCf4BjCV+CsnVl7XMzQZgjOftWqhQ2hc/ElkTDlU6FGTg7IS1gH
+         4ZIEQxbZcDegVsnt9Y6et/Wy4Uf2hs2YPbKijfktjGgGyZzOGidBRRldUog+BYDw3xbO
+         V8Za/s/OmZp+BbYzY1/HnYwx7dlnGL2+CMryc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=4nr2E4WGnxk7HhXeJozP5kA2Onna5ZHYhEudtEUZGJl5Nvx9kvQNMKNFBGRwtz8Tzy
+         IH59C5RgJFm51P8bESl7iRTBGmd49eFxjMmfNUQJVfFy07ccc5ikd+YcNE2cXmnIu1iS
+         FyllXVIzFoljUgNI0QFmkdny88uYo1wZ/U0iM=
+Received: by 10.68.20.98 with SMTP id m2mr479168pbe.80.1303349151595;
+        Wed, 20 Apr 2011 18:25:51 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.1.5 with SMTP id 5ls3621801pbi.1.gmail; Wed, 20 Apr 2011
+ 18:25:51 -0700 (PDT)
+Received: by 10.68.44.6 with SMTP id a6mr485208pbm.70.1303349151244;
+        Wed, 20 Apr 2011 18:25:51 -0700 (PDT)
+Date: Wed, 20 Apr 2011 18:25:50 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <9985573.923.1303349150141.JavaMail.geo-discussion-forums@prhu33>
+In-Reply-To: <527e0f31-eb4b-4145-9495-d2c04422519e@j25g2000vbr.googlegroups.com>
+Subject: [ruby-ffi] Re: can't explain this behavior
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_922_17080273.1303349150139"
+
+------=_Part_922_17080273.1303349150139
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+I suspect the problem is this:
+  - pointer to result size (int) 
+
+
+
+You should allocate it thusly:
+
+    a3 = FFI::MemoryPointer.new(:int, 1, false)
+    a3.write_int(a2.size)
+
+If that C function is doing a conversion from an input string to an output 
+string, the 'result size' probably needs to be initialized to the maximum 
+size of the output string, and after the function is called, it will contain 
+the actual number of bytes used in the output buffer.  Thats a pretty common 
+idiom, and one of the most common things people get wrong.
+
+*The reason why it sometimes worked, and sometimes did not was because the 
+'output size' was full of random garbage, since you were not initializing 
+the a3 memory, so occasionally it would contain a positive integer value.*
+*
+*
+*
+*
+
+------=_Part_922_17080273.1303349150139
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<br><div>I suspect the problem is this:</div><div><span class=3D"Apple-styl=
+e-span" style=3D"color: rgb(34, 34, 34); ">&nbsp;&nbsp;- pointer to result =
+size (int)&nbsp;</span><br></div><div><span class=3D"Apple-style-span" styl=
+e=3D"color: rgb(34, 34, 34); "><br></span></div><div><font class=3D"Apple-s=
+tyle-span" color=3D"#222222"><br></font></div><div><span class=3D"Apple-sty=
+le-span" style=3D"color: rgb(34, 34, 34); "><br></span></div><div><span cla=
+ss=3D"Apple-style-span" style=3D"color: rgb(34, 34, 34); ">You should alloc=
+ate it thusly:</span></div><div><span class=3D"Apple-style-span" style=3D"c=
+olor: rgb(34, 34, 34); "><br></span></div><div><span class=3D"Apple-style-s=
+pan" style=3D"font-family: monospace; font-size: 12px; line-height: 19px; "=
+><font class=3D"Apple-style-span" color=3D"#181818">&nbsp;&nbsp; &nbsp;a3 =
+=3D&nbsp;</font><span class=3D"re2" style=3D"color: rgb(102, 102, 255); fon=
+t-weight: bold; ">FFI::MemoryPointer</span><font class=3D"Apple-style-span"=
+ color=3D"#181818">.</font><span class=3D"me1" style=3D"color: rgb(153, 0, =
+204); ">new</span><span class=3D"br0" style=3D"color: rgb(0, 102, 0); font-=
+weight: bold; ">(</span><span class=3D"br0" style=3D"font-weight: bold; "><=
+font class=3D"Apple-style-span" color=3D"#006666">:int</font></span><font c=
+lass=3D"Apple-style-span" color=3D"#181818">,&nbsp;</font><span class=3D"nu=
+0" style=3D"color: rgb(0, 102, 102); ">1</span><font class=3D"Apple-style-s=
+pan" color=3D"#181818">,&nbsp;</font><span class=3D"kw2" style=3D"color: rg=
+b(0, 0, 255); font-weight: bold; ">false</span><span class=3D"br0" style=3D=
+"color: rgb(0, 102, 0); font-weight: bold; ">)</span></span><br></div><div>=
+<span class=3D"Apple-style-span" style=3D"font-family: monospace; font-size=
+: 12px; line-height: 19px; "><span class=3D"br0" style=3D"color: rgb(0, 102=
+, 0); font-weight: bold; ">&nbsp;&nbsp; &nbsp;a3.write_int(a2.size)</span><=
+/span></div><div><span class=3D"Apple-style-span" style=3D"font-family: mon=
+ospace; font-size: 12px; line-height: 19px; "><span class=3D"br0" style=3D"=
+color: rgb(0, 102, 0); font-weight: bold; "><br></span></span></div><div><s=
+pan class=3D"Apple-style-span" style=3D"font-family: monospace; font-size: =
+12px; line-height: 19px; "><span class=3D"br0" style=3D"color: rgb(0, 102, =
+0); font-weight: bold; ">If that C function is doing a conversion from an i=
+nput string to an output string, the 'result size' probably needs to be ini=
+tialized to the maximum size of the output string, and after the function i=
+s called, it will contain the actual number of bytes used in the output buf=
+fer. &nbsp;Thats a pretty common idiom, and one of the most common things p=
+eople get wrong.</span></span></div><div><span class=3D"Apple-style-span" s=
+tyle=3D"font-family: monospace; font-size: 12px; line-height: 19px; "><span=
+ class=3D"br0" style=3D"color: rgb(0, 102, 0); font-weight: bold; "><br></s=
+pan></span></div><div><font class=3D"Apple-style-span" color=3D"#006600" fa=
+ce=3D"monospace"><span class=3D"Apple-style-span" style=3D"font-size: 12px;=
+ line-height: 19px;"><b>The reason why it sometimes worked, and sometimes d=
+id not was because the 'output size' was full of random garbage, since you =
+were not initializing the a3 memory, so occasionally it would contain a pos=
+itive integer value.</b></span></font></div><div><font class=3D"Apple-style=
+-span" color=3D"#006600" face=3D"monospace"><span class=3D"Apple-style-span=
+" style=3D"font-size: 12px; line-height: 19px;"><b><br></b></span></font></=
+div><div><font class=3D"Apple-style-span" color=3D"#006600" face=3D"monospa=
+ce"><span class=3D"Apple-style-span" style=3D"font-size: 12px; line-height:=
+ 19px;"><b><br></b></span></font></div>
+------=_Part_922_17080273.1303349150139--

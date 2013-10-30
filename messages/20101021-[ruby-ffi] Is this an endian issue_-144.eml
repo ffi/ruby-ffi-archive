@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs147716bkh;
+        Thu, 21 Oct 2010 17:50:11 -0700 (PDT)
+Received: by 10.151.44.11 with SMTP id w11mr4823193ybj.197.1287708610184;
+        Thu, 21 Oct 2010 17:50:10 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRC_v4PmBBoEtizJNw@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTP id 52si5278018yhl.110.2010.10.21.17.50.08;
+        Thu, 21 Oct 2010 17:50:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRC_v4PmBBoEtizJNw@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRC_v4PmBBoEtizJNw@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRC_v4PmBBoEtizJNw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi18 with SMTP id 18sf81859pxi.7
+        for <headius@headius.com>; Thu, 21 Oct 2010 17:50:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=vzgD/xEL/5mW/jfhd9mukpcbNFXtWlC/NGlJdGlPxlQ=;
+        b=OdpnweXW+sG7jzM07HsI/Mu8kvxeOpeRu8jcp9zdUhFsPryITgmtKucDDgyg40iWZI
+         9iwHEE5u+zyfkeuWRB3iDtB1ezpnecBRkJVVs9NlAVu8lgMQnoBWL9iOyYODt8kmzvGx
+         blakfWWsEvqUCLcA1ZqXTiptYlQNywCdhAawI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=GvJLTTlevzixfkgEVVg4pV8pKc4LZsBiDVMVrn5EICXLG42Lnfl0uGqHJnRqFAemrO
+         N03zwQbrWXUBjZhTsI53+fwp2hOOgeDMxufvOvPRs6zw9hu7T9MC+HaYNFaXb9iwgvCs
+         6f4mCeQY7QndYqcoFb/qCL8KKK2i+joN+M280=
+Received: by 10.142.195.21 with SMTP id s21mr109511wff.1.1287708607152;
+        Thu, 21 Oct 2010 17:50:07 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.199.19 with SMTP id w19ls3973863wff.1.p; Thu, 21 Oct 2010
+ 17:50:06 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.142.149.26 with SMTP id w26mr109189wfd.20.1287708606818; Thu,
+ 21 Oct 2010 17:50:06 -0700 (PDT)
+Received: by a4g2000prm.googlegroups.com with HTTP; Thu, 21 Oct 2010 17:50:06
+ -0700 (PDT)
+Date: Thu, 21 Oct 2010 17:50:06 -0700 (PDT)
+X-IP: 174.31.65.79
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <dcb54236-97e1-45ec-ad62-4194a6cf1b0d@a4g2000prm.googlegroups.com>
+Subject: [ruby-ffi] Is this an endian issue?
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am not sure if this is an endian issue.
+
+This is the struct
+
+struct sniff_ethernet {
+		u_char ether_dhost[ETHER_ADDR_LEN]; /* Destination host address */
+		u_char ether_shost[ETHER_ADDR_LEN]; /* Source host address */
+		u_short ether_type; /* IP? ARP? RARP? etc */
+	};
+
+
+The EFF Struct
+
+class Ethernet_header < FFI::Struct
+    layout :dhost,[:uchar,6],:shost,[:uchar,6],:type,:short
+  end
+
+packet=Pcap::pcap_next @pcap_ptr,pack
+  eth_ptr = Pcap::Ethernet_header.new packet
+  eth_ptr[:shost].each {|c| puts c}
+  puts eth_ptr[:type] #prints 8
+
+packet is a uchar* and the first 14 bytes is the ethernet header.
+shost and dhost hold the correct ethernet addresses.  The value I am
+expecting is 2048(0x0800) and I am getting 8, which is what makes me
+think it is an endian problem.

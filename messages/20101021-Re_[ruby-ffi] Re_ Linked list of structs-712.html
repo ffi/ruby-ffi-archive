@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Linked list of structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Linked list of structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/21/10 12:57 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Off the top of my head, that one should be laid out something like:
+
+
+class Pcap_pkthdr&lt; FFI::Struct
+  layout :ts, TimeStamp::Timeval.by_value,
+     :caplen, :int,
+     :len, :int
+end
+
+The important bit is the ".by_value" bit - that makes the Pcap_pkthdr
+struct include the Timeval struct inline, not a pointer to it.
+
+Then you can just use it as normal:
+pack=Header::Pcap_pkthdr.new ph_ptr
+
+# Note, you don't need to create an instance of Timeval, as
+Pcap_pkthdr contains one inline.
+pack[:ts][:tv_sec] = 0xcafebeef
+pack[:ts][:tv_usec] = 0xfee1dead
+
+
+On 21 October 2010 13:58, Qwerty <a class="moz-txt-link-rfc2396E" href="mailto:qwerty123451910@hotmail.com">&lt;qwerty123451910@hotmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Thanks, I am starting to get the hang of it. One last problem
+<span class="moz-txt-citetags">&gt; </span>remains(I hope).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This struct is giving me fits
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>struct pcap_pkthdr {
+<span class="moz-txt-citetags">&gt; </span>       struct timeval ts;      /* time stamp */
+<span class="moz-txt-citetags">&gt; </span>       bpf_u_int32 caplen;     /* length of portion present */
+<span class="moz-txt-citetags">&gt; </span>       bpf_u_int32 len;        /* length this packet (off wire) */
+<span class="moz-txt-citetags">&gt; </span>};
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>A pointer of this gets passed into: const u_char*  pcap_next(pcap_t *,
+<span class="moz-txt-citetags">&gt; </span>struct pcap_pkthdr *);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>attach_function :pcap_next,[:pointer,:pointer],:pointer
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I can apparently get caplen and len without issue, but the timeval
+<span class="moz-txt-citetags">&gt; </span>field is reported as a pointer and any attempt to get at it results in
+<span class="moz-txt-citetags">&gt; </span>a seg fault.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ph_ptr = FFI::MemoryPointer.new :pointer,Header::Pcap_pkthdr.size,true
+<span class="moz-txt-citetags">&gt; </span>pack=Header::Pcap_pkthdr.new ph_ptr
+<span class="moz-txt-citetags">&gt; </span>pack[:ts]=TimeStamp::Timeval.new
+<span class="moz-txt-citetags">&gt; </span>packet=Pcap::pcap_next @pcap_ptr,pack
+<span class="moz-txt-citetags">&gt; </span>raise "no packet read" if packet.null?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>puts pack[:ts] #pointer object
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>packet is not null, so it appears the packet is read properly(I
+<span class="moz-txt-citetags">&gt; </span>haven't laid out the various header and payload structures yet.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

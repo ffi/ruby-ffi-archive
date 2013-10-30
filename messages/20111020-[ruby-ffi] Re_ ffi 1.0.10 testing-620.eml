@@ -1,0 +1,128 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.38.198 with SMTP id i6cs157128obk;
+        Thu, 20 Oct 2011 12:56:23 -0700 (PDT)
+Received: by 10.236.75.170 with SMTP id z30mr17996631yhd.27.1319140582263;
+        Thu, 20 Oct 2011 12:56:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS_nLSTFRDh-YH1BBoEf5Ve2w@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id h48si10061356yhk.104.2011.10.20.12.56.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 20 Oct 2011 12:56:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS_nLSTFRDh-YH1BBoEf5Ve2w@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS_nLSTFRDh-YH1BBoEf5Ve2w@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS_nLSTFRDh-YH1BBoEf5Ve2w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyd5 with SMTP id 5sf7568971gyd.7
+        for <headius@headius.com>; Thu, 20 Oct 2011 12:56:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=8c/wl53MVgqZGoHWpaTr58OTA2xcUopuL7ybc0gWG4I=;
+        b=JKAd4bag4NSNHAx2yRl1Ps1kp5QeMOWAFf4Ic3MvGO9/wqzOhZQLhC/eRwrUk+3Qfu
+         CKdjYuLJd8dzeLfLw7cPIxMstmslZrrWvfsewjkkrmhZvEuQzEcwqRDfUBU+GEoVumyk
+         KwMvQynfmnkveNfEJhGpRMq1A7ayZQwAvEVIA=
+Received: by 10.151.146.6 with SMTP id y6mr2323876ybn.18.1319140577313;
+        Thu, 20 Oct 2011 12:56:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.163.13 with SMTP id q13ls15455243ano.0.gmail; Thu, 20 Oct
+ 2011 12:56:16 -0700 (PDT)
+Received: by 10.101.133.31 with SMTP id k31mr3249822ann.34.1319140576225;
+        Thu, 20 Oct 2011 12:56:16 -0700 (PDT)
+Received: by 10.150.17.23 with SMTP id 23msybq;
+        Thu, 20 Oct 2011 10:02:41 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.147.57.17 with SMTP id j17mr836461yak.24.1319130161519; Thu,
+ 20 Oct 2011 10:02:41 -0700 (PDT)
+Received: by 20g2000yqz.googlegroups.com with HTTP; Thu, 20 Oct 2011 10:02:41
+ -0700 (PDT)
+Date: Thu, 20 Oct 2011 10:02:41 -0700 (PDT)
+In-Reply-To: <875642a4-e441-4e3c-bceb-1083dd91ff27@f1g2000pre.googlegroups.com>
+References: <875642a4-e441-4e3c-bceb-1083dd91ff27@f1g2000pre.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.30 (KHTML,
+ like Gecko) Ubuntu/10.04 Chromium/12.0.742.112 Chrome/12.0.742.112 Safari/534.30,gzip(gfe)
+Message-ID: <3230ac98-1a9f-4bd6-8432-5bd504031d27@20g2000yqz.googlegroups.com>
+Subject: [ruby-ffi] Re: ffi 1.0.10 testing
+From: rohit <rohit.namjoshi@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rohit.namjoshi@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Upgrading to 1.0.10 breaks JRuby/Rails app.
+
+Ubuntu 10.04
+Rails 3.0.9
+JRuby 1.6.4 in 1.8.7 mode
+
+Any idea what might be causing this?
+Thanks, Rohit
+
+NameError: uninitialized constant FFI
+  const_missing at org/jruby/RubyModule.java:2569
+         (root) at /home/rohit/.rvm/rubies/jruby-1.6.4/lib/ruby/
+site_ruby/shared/syslog.rb:18
+        require at org/jruby/RubyKernel.java:1038
+       require? at /home/rohit/.rvm/rubies/jruby-1.6.4/lib/ruby/
+site_ruby/shared/syslog.rb:122
+         (root) at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+logging-1.6.1/lib/logging.rb:13
+        require at org/jruby/RubyKernel.java:1038
+        require at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+logging-1.6.1/lib/logging.rb:68
+           each at org/jruby/RubyArray.java:1603
+        require at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler/runtime.rb:66
+           each at org/jruby/RubyArray.java:1603
+        require at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler/runtime.rb:55
+        require at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler.rb:122
+         (root) at /home/rohit/projects/vulcan/reporting/config/
+application.rb:14
+        require at org/jruby/RubyKernel.java:1038
+         (root) at /home/rohit/projects/vulcan/reporting/config/
+application.rb:28
+            tap at org/jruby/RubyKernel.java:1803
+         (root) at /home/rohit/.rvm/gems/jruby-1.6.4/gems/
+railties-3.0.9/lib/rails/commands.rb:27
+        require at org/jruby/RubyKernel.java:1038
+         (root) at script/rails:10
+
+
+On Aug 23, 6:29=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Can people please test ffi-master on your favourite ruby version?
+>
+> Things fixed since 1.0.9:
+>
+> - should now work on 1.9.3 (ruby_thread_has_gvl_p no longer exported)
+> - installs on non-MRI rubies
+> - compiles using VC++ toolchain on win32 (Charlie Savage)
+> - a lot of API documentation (Kim Burgestrand)
+> - other win32/win64 mingw fixes (Luis Lavena)
+> - better handling of linker scripts on linux (aniederl)
+> - ext/ffi_c/StructLayout.c fixes (Chikanaga Tomoyuki)
+> - Size lookup for MemoryPointer.new and Buffer.new type
+> (e.g. :int, :long, etc) parameters now much faster.
+> - FFI::Buffer.new for small sizes (<=3D 8 bytes) types now approx 30%
+> faster.
+>
+> I especially would like people to test on 1.9.3-preview1 (or later
+> 1.9.3 builds/source), since I want the release to work out-of-the-box
+> on 1.9.3.

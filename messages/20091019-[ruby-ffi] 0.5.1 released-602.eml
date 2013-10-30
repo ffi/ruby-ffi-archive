@@ -1,0 +1,71 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.73.145 with SMTP id q17cs115458qaj;
+        Mon, 19 Oct 2009 02:40:22 -0700 (PDT)
+Received: by 10.224.63.196 with SMTP id c4mr2491288qai.183.1255945222719;
+        Mon, 19 Oct 2009 02:40:22 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-vw0-f142.google.com (mail-vw0-f142.google.com [209.85.212.142])
+        by mx.google.com with ESMTP id 42si11129547qyk.132.2009.10.19.02.40.21;
+        Mon, 19 Oct 2009 02:40:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.142 as permitted sender) client-ip=209.85.212.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws6 with SMTP id 6so4170034vws.13
+        for <headius@headius.com>; Mon, 19 Oct 2009 02:40:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=kgRPGjtU5BIsGH8gTWcpTR6zbTs1Nf7gIgi/cPfRa+Q=;
+        b=Fqc7cY5wk7ArVvXe5Xhbsk/aYxD3k6cJzponjBGycYy0/LMBWxFr6sEz9Wqu26bfqi
+         DshId8hzPYFw2L9PyvK1ul9aMe8/IGkvbLRb8xQXhUFBqiyQ2QrX3j+tzDOhwWyfCyVk
+         gFq1Fk93ABNUKHjQ645gQ+5sk8CVb+D/uesHg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=XqPEaiA7I14JnJdxoxwsz7Dg/WSzwR9zO1HNoEYXPUrkADpl3KK+psTX9SOg/fa7wt
+         MeipDeqYh77yCQsKKESpF2xubdv+Fz6CEQTOV6FyEh+O0rhVMnJMtEb0f5F+QHEOI3/1
+         r9bVVt26Wn9nFQbLzB3TPTeyhuXonY09Vo8uE=
+Received: by 10.220.65.98 with SMTP id h34mr274569vci.20.1255945220076;
+        Mon, 19 Oct 2009 02:40:20 -0700 (PDT)
+Received: by 10.177.117.7 with SMTP id u7gr57yqm.0;
+	Mon, 19 Oct 2009 02:40:20 -0700 (PDT)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.45.39 with SMTP id s39mr546941ybs.11.1255945219695; Mon,  19 Oct 2009 02:40:19 -0700 (PDT)
+Date: Mon, 19 Oct 2009 02:40:19 -0700 (PDT)
+X-IP: 121.91.160.193
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; SunOS i86pc; en-US; rv:1.9.1.2)  Gecko/20090803 Firefox/3.5.2,gzip(gfe),gzip(gfe)
+Message-ID: <ca6d0e29-46f6-47c4-8a15-f5a5b16eb738@y28g2000prd.googlegroups.com>
+Subject: [ruby-ffi] 0.5.1 released
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+
+This is a bug fix release for variadic functions which return
+structures by value.  It should also build clean on RHEL now.
+
+
+

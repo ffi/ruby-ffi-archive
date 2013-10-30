@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/1/10 11:38 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Are you planning to provide (but not officially support) 1.0.0 x86-mingw32 binary (1.9-only or fat?) gems or are you also looking for build patches for this?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Looking at the stats, a not in-significant number of people install
+<span class="moz-txt-citetags">&gt; </span>the mingw32 binary packages, so it looks like I will upload a binary
+<span class="moz-txt-citetags">&gt; </span>for that.  Before I do that, I'll need someone else to at least run
+<span class="moz-txt-citetags">&gt; </span>the specs against a rake-compiler built mingw32 version, to make sure
+<span class="moz-txt-citetags">&gt; </span>it actually ... works.  That will require someone to fix the
+<span class="moz-txt-citetags">&gt; </span>async-callback stuff in Function.c to work on win32.  (I'm assuming it
+<span class="moz-txt-citetags">&gt; </span>doesn't even compile at all at the moment).
+</pre></blockquote><pre wrap>
+
+Understood and I think your darwinistic focus is a good choice. If the mingw32 (fat or otherwise) binary is truly valued, patches should eventually flow, right? <span class="moz-smiley-s3" title=";)"><span>;)</span></span>
+
+I see what you mean re: Function.c.  Doing a "gem install ffi --platform=ruby" using DevKit on 1.9.3dev errors out on 'async_cb_{mutex,cond,call,wait}' and then 'struct gvl_callback'.  I want to look into it.
+
+As your focus appears to be 1.9.2+, are you thinking that future mingw32 binary gems will <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>not<span class="moz-txt-tag">_</span></span> be fat?
+
+FWIW, I think as long as FFI can be built/installed on Windows using the DevKit, the fat gem is a nice-to-have if it can't be supported. There's only so much one person has time to do.
+
+Jon
+---
+<a class="moz-txt-link-freetext" href="http://jonforums.github.com/">http://jonforums.github.com/</a>
+</pre></div></body>
+</html>
+</table></div>

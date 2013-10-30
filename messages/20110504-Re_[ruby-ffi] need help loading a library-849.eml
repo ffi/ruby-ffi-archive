@@ -1,0 +1,137 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs32598agb;
+        Wed, 4 May 2011 18:01:17 -0700 (PDT)
+Received: by 10.223.52.7 with SMTP id f7mr2070699fag.16.1304557276678;
+        Wed, 04 May 2011 18:01:16 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDV7YfuBBoEoadRiA@googlegroups.com>
+Received: from mail-fx0-f62.google.com (mail-fx0-f62.google.com [209.85.161.62])
+        by mx.google.com with ESMTPS id e10si2972680fak.150.2011.05.04.18.01.15
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 04 May 2011 18:01:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDV7YfuBBoEoadRiA@googlegroups.com designates 209.85.161.62 as permitted sender) client-ip=209.85.161.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDV7YfuBBoEoadRiA@googlegroups.com designates 209.85.161.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDV7YfuBBoEoadRiA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by fxm17 with SMTP id 17sf1820675fxm.7
+        for <headius@headius.com>; Wed, 04 May 2011 18:01:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=MSoxnvefdLHUwCB/kKeiNGeGFzWUCsOF59c4bxjvjHM=;
+        b=IBCbqs/8+bm+yUK/7+EY1GLj0ox09oDzMIkVIGJ9SpQDZq3/a8voAbzZ42RZil71CK
+         v+XyskJh0OmcwkOwnnJVxtRYDG5PhW2Xf8dilTRae5BG97E5O7rzZrY5RMDNn3p6iZKV
+         KMstDhPXWUKD/L6p1fjwWD+Q6MxU/6MjZ4wXo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=qe9I5uQEICauGLxxesXT4FxDuWqyxmfA57bgaI4ifvoPp7bDtSB6h4u3qgLiQjNSBI
+         h+OB9wI2s+sdAHUZ3HAksE6hMUZsSPLecij6U8WqbLcT347Xc43PunHV+J1mjWeXd5QZ
+         /ixHkBethuo8x8v8Ze0U2gQ8n7XRj6MGHia5c=
+Received: by 10.223.100.79 with SMTP id x15mr341868fan.1.1304557269614;
+        Wed, 04 May 2011 18:01:09 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.35.21 with SMTP id n21ls171213bkd.1.gmail; Wed, 04 May
+ 2011 18:01:08 -0700 (PDT)
+Received: by 10.204.113.14 with SMTP id y14mr162391bkp.11.1304557268468;
+        Wed, 04 May 2011 18:01:08 -0700 (PDT)
+Received: by 10.204.113.14 with SMTP id y14mr162390bkp.11.1304557268435;
+        Wed, 04 May 2011 18:01:08 -0700 (PDT)
+Received: from mail-fx0-f48.google.com (mail-fx0-f48.google.com [209.85.161.48])
+        by gmr-mx.google.com with ESMTPS id e15si308609bke.1.2011.05.04.18.01.08
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 04 May 2011 18:01:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.161.48 as permitted sender) client-ip=209.85.161.48;
+Received: by mail-fx0-f48.google.com with SMTP id 7so2209769fxm.35
+        for <ruby-ffi@googlegroups.com>; Wed, 04 May 2011 18:01:08 -0700 (PDT)
+Received: by 10.223.55.200 with SMTP id v8mr1159064fag.82.1304557268176; Wed,
+ 04 May 2011 18:01:08 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.121.17 with HTTP; Wed, 4 May 2011 18:00:47 -0700 (PDT)
+In-Reply-To: <BANLkTinQ56w6FHzHXVRJFEJ-V_sjYSUqRA@mail.gmail.com>
+References: <86A00FC7-FC17-4340-91D9-AC489F8651A1@mac.com> <BANLkTik2_Ydh0-h1ihohT8zWFf44vwA4kA@mail.gmail.com>
+ <BE3DDE80-6E52-452A-A464-77D15A3E2897@mac.com> <BANLkTi=e_vVfYATLi=jDDyb+DCiqfPszSA@mail.gmail.com>
+ <C4C3AA81-6905-45E3-A7AD-50BB46DFFDBD@mac.com> <BBF8C544-B8CF-4288-BAEE-4AF6D87F978F@mac.com>
+ <BANLkTinR976Vfdi8pdMQZen17dRDMXbZ-Q@mail.gmail.com> <BANLkTinQ56w6FHzHXVRJFEJ-V_sjYSUqRA@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 4 May 2011 22:00:47 -0300
+Message-ID: <BANLkTi=hn1mz2WcQ+QaCwhwhqEDafSLkjQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] need help loading a library
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.161.48 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, May 4, 2011 at 9:30 PM, Dominic Sisneros <dsisnero@gmail.com> wrote=
+:
+>
+> Can someone write up the steps needed to get 0mq working on windows?
+>
+
+Steps are easy:
+
+1) You need RubyInstaller and it's DevKit, instructions for that are
+in RubyInstaller website:
+
+http://rubyinstaller.org/downloads
+
+2) Start a command prompt and invoke devkitvars.bat found inside the
+folder you installed DevKit, this will give you access to MinGW tools.
+
+3) Download 0mq source somewhere and extract (eg C:\src\zeromq)
+
+4) compile it using the following commands:
+
+C:\> cd C:\src\zeromq
+C:\> sh configure --prefix=3DC:/zeromq
+C:\> make
+C:\> make install
+
+Note the use of forwardslash in the second command. The above commands
+will take a long time to complete, but once its done, you will find
+inside C:\zeromq folder the binaries (bin, lib, include).
+
+5) Copy the result binaries
+
+Now you can copy the DLL from inside bin into a directory in your PATH
+and use it.
+
+6) Don't forget the additional dependencies
+
+Don't forge to copy libstdc++-6.dll and libgcc_s_sjlj-1.dll from
+DevKit MinGW into the same folder you copied  libzmq.dll.
+
+To know where these DLLs are, you can use where, eg:
+
+C:\> where libstdc++-6.dll
+C:\Users\Luis\Tools\DevKit\4.5.1\mingw\bin\libstdc++-6.dll
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

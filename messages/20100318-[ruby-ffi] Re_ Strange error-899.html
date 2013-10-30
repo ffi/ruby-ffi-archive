@@ -1,0 +1,57 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Strange error</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Strange error</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Peter <peter.schrammel@gmx.de></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/18/10 3:32 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Ups sorry wrong error code:
+
+...gems/ruby-1.9.2-head%avruby/gems/ffi-0.6.3/lib/ffi/types.rb:47:in
+`find_type': Unable to resolve type 'int' (TypeError)
+
+using rvm with 1.9.2 head
+
+On 18 Mrz., 21:25, Peter <a class="moz-txt-link-rfc2396E" href="mailto:peter.schram...@gmx.de">&lt;peter.schram...@gmx.de&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>I'm playing around with ffi and stumbled over a strange error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module XosdRaw
+<span class="moz-txt-citetags">&gt; </span>    extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>    ffi_lib 'xosd'
+<span class="moz-txt-citetags">&gt; </span>    enum :command, [:percentage,:string,:printf,:slider]
+<span class="moz-txt-citetags">&gt; </span>    attach_function :xosd_display,
+<span class="moz-txt-citetags">&gt; </span>[:pointer,:int,:command,:varargs],:int
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>gets me this error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ruby: symbol lookup error: <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/popel<span class="moz-txt-tag">/</span></i>.gem/ruby/1.8/gems/ffi-0.6.3/
+<span class="moz-txt-citetags">&gt; </span>lib/ffi_c.so: undefined symbol: rb_intern2
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>it seems that the lookup of type fails. I patched types.rb
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>def self.find_type(name, type_map = nil)
+<span class="moz-txt-citetags">&gt; </span>    type_map = TypeDefs if type_map.nil?
+<span class="moz-txt-citetags">&gt; </span>    code = type_map[name]
+<span class="moz-txt-citetags">&gt; </span>    code = TypeDefs[name] unless code  #&lt;------added this line
+<span class="moz-txt-citetags">&gt; </span>    code = name if !code &amp;&amp; name.kind_of?(FFI::Type)
+<span class="moz-txt-citetags">&gt; </span>    raise TypeError, "Unable to resolve type '#{name}'" unless code
+<span class="moz-txt-citetags">&gt; </span>    return code
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Now it works. I don't know if this is the right way (perhaps I did
+<span class="moz-txt-citetags">&gt; </span>something completly stupid) but perhaps some of you can have a look at
+<span class="moz-txt-citetags">&gt; </span>this.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>THX
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Peter
+</pre></blockquote><pre wrap>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

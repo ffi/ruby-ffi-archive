@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs451426fam;
+        Wed, 5 Jan 2011 03:55:52 -0800 (PST)
+Received: by 10.227.175.74 with SMTP id w10mr6605346wbz.163.1294228551977;
+        Wed, 05 Jan 2011 03:55:51 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDFuJHpBBoEpomw-w@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id x24si28677165wbx.38.2011.01.05.03.55.50;
+        Wed, 05 Jan 2011 03:55:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDFuJHpBBoEpomw-w@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDFuJHpBBoEpomw-w@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDFuJHpBBoEpomw-w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyg36 with SMTP id 36sf24042982wyg.7
+        for <headius@headius.com>; Wed, 05 Jan 2011 03:55:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=LeKD6WbJTQjp+MSnooBAhLuj2bSSAclcBvieVo0jmfE=;
+        b=B3hBDyoIb1bQ2HrfM84aMdlAUyWK5LhwDqi2ysbP6zwKpyGWbCmPmpnU8pWJF82Ljr
+         nmF0HkKuHf1HQ/L2tU3O/NEJ5bvczgZQS1V64EL9kcpgW4f/SITcVR7aqNAhWObN+gxK
+         3ypEdCzZQaWG9szpL9QR1D9jeGCvOEIR0Q+zE=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=V+R46/m1n2VQssyAQqGT/NqWEXiECcoZtipAbENlwZmQn42HE3keBY0yxTnNSLq3CH
+         hpfh1l/kHAjPKUM/5FVYCqndzKVWnHjirmaSm9K6quhwdBlwVDhnO3xcj+W2qpynqsTw
+         XnH7hpvYM9z5Wg2XDxz7C7CZxqYwJWm76uais=
+Received: by 10.216.183.148 with SMTP id q20mr3066901wem.20.1294228549818;
+        Wed, 05 Jan 2011 03:55:49 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.10.153 with SMTP id 25ls1021792eev.3.p; Wed, 05 Jan 2011
+ 03:55:49 -0800 (PST)
+Received: by 10.14.37.138 with SMTP id y10mr87483eea.4.1294228549135;
+        Wed, 05 Jan 2011 03:55:49 -0800 (PST)
+Received: by 10.14.37.138 with SMTP id y10mr87482eea.4.1294228549119;
+        Wed, 05 Jan 2011 03:55:49 -0800 (PST)
+Received: from mail-ew0-f66.google.com (mail-ew0-f66.google.com [209.85.215.66])
+        by gmr-mx.google.com with ESMTP id t6si156676eeh.0.2011.01.05.03.55.48;
+        Wed, 05 Jan 2011 03:55:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.66 as permitted sender) client-ip=209.85.215.66;
+Received: by ewy24 with SMTP id 24so2079633ewy.9
+        for <ruby-ffi@googlegroups.com>; Wed, 05 Jan 2011 03:55:48 -0800 (PST)
+Received: by 10.213.16.137 with SMTP id o9mr3348916eba.31.1294228547946; Wed,
+ 05 Jan 2011 03:55:47 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.102.7 with HTTP; Wed, 5 Jan 2011 03:55:27 -0800 (PST)
+In-Reply-To: <AANLkTinZk=oBQM2_oY2O0HckAwt=zxF3yLbp+5KSEeTz@mail.gmail.com>
+References: <4D22F959.5030506@matijs.net> <24335598.2491.1294139513802.JavaMail.geo-discussion-forums@prje29>
+ <AANLkTi=1r-mdut4Bt9L--uTP7jr9kThwxBOduk9uzwmg@mail.gmail.com> <AANLkTinZk=oBQM2_oY2O0HckAwt=zxF3yLbp+5KSEeTz@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Wed, 5 Jan 2011 08:55:27 -0300
+Message-ID: <AANLkTikY6R-DcqGgDri8iO-M8S-3QkyJG302njCXq7JY@mail.gmail.com>
+Subject: Re: [ruby-ffi] FFI 1.0.4
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.66 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Jan 5, 2011 at 3:29 AM, Charles Oliver Nutter
+<headius@headius.com> wrote:
+> Yes, we can set up a CI job for FFI on Windows. We'll probably need to
+> get an appropriate C Ruby build there, I assume? Let me know what you
+> recommend.
+>
+
+My recommendation could be biased... but RubyInstaller 1.8.7-p330 and
+RubyInstaller 1.9.2-p136 should work ;-)
+
+If all this goes to the Win2008 machine I discussed with Nick, then I
+can put all the needed stuff there for you and email you when is done.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

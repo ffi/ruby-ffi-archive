@@ -1,0 +1,152 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs47302faj;
+        Fri, 3 Dec 2010 07:12:26 -0800 (PST)
+Received: by 10.142.211.15 with SMTP id j15mr2037644wfg.284.1291389145526;
+        Fri, 03 Dec 2010 07:12:25 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLeTq4HQChDXkeTnBBoEF4VtgQ@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id f23si4163183qcq.34.2010.12.03.07.12.24
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Fri, 03 Dec 2010 07:12:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLeTq4HQChDXkeTnBBoEF4VtgQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLeTq4HQChDXkeTnBBoEF4VtgQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCLeTq4HQChDXkeTnBBoEF4VtgQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk12 with SMTP id 12sf21370549qyk.7
+        for <headius@headius.com>; Fri, 03 Dec 2010 07:12:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=reKxgDxcvcpdY1BZm5oAWVuIpEmhwXZVrbPDn1STWO4=;
+        b=F8zppgOb/VoEmq/xlZ30K6B8ESgSO2FBBL19hHsL1BbtQle5CBGQf4DBGCZAbMH6LT
+         iKVB/y3cLPCaNrRthoFYnX3ZvZElUizwwmrKnZcSBAOMd3om5w2px1fUn08KB1ZEV/hQ
+         9MjlpmQIGGMD8pthr/ail0DTmbftFRqzsRXC8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=E7jx7t4CSiGX4vSrreOBWoHycHdv5bntiWQ3q6MFt1MUhqAsvqbaFoPtgfg3hzpKcN
+         XeFfdiBSUAsfVaJAHexHjteLxU2915jebHpsFP+arrc3wTvSrDkO4CIVKV2oXhpwYQrE
+         UMkr3i5e6SWcXjW2Hav1bn1mbebXbSSebAoDU=
+Received: by 10.224.47.143 with SMTP id n15mr98814qaf.31.1291389143720;
+        Fri, 03 Dec 2010 07:12:23 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.3.2 with SMTP id 2ls1814070qal.7.p; Fri, 03 Dec 2010
+ 07:12:22 -0800 (PST)
+Received: by 10.224.60.212 with SMTP id q20mr202665qah.16.1291389142698;
+        Fri, 03 Dec 2010 07:12:22 -0800 (PST)
+Received: by 10.224.60.212 with SMTP id q20mr202664qah.16.1291389142681;
+        Fri, 03 Dec 2010 07:12:22 -0800 (PST)
+Received: from mail-qw0-f47.google.com (mail-qw0-f47.google.com [209.85.216.47])
+        by gmr-mx.google.com with ESMTP id 19si417921qci.12.2010.12.03.07.12.21;
+        Fri, 03 Dec 2010 07:12:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.216.47 as permitted sender) client-ip=209.85.216.47;
+Received: by mail-qw0-f47.google.com with SMTP id 5so8310855qwg.34
+        for <ruby-ffi@googlegroups.com>; Fri, 03 Dec 2010 07:12:21 -0800 (PST)
+Received: by 10.224.67.18 with SMTP id p18mr1441722qai.20.1291389140521;
+        Fri, 03 Dec 2010 07:12:20 -0800 (PST)
+Received: from Red (rrcs-98-102-103-102.central.biz.rr.com [98.102.103.102])
+        by mx.google.com with ESMTPS id t35sm1284288qco.18.2010.12.03.07.12.16
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Fri, 03 Dec 2010 07:12:16 -0800 (PST)
+Date: Fri, 3 Dec 2010 10:12:19 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] New release of FFI gem
+Message-Id: <20101203101219.701499fe.jon.forums@gmail.com>
+In-Reply-To: <AANLkTimk_+qqiP2zkx50AfNi+Dr7ggXJ9bXO7+TaVjGo@mail.gmail.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+	<20101130105256.d687602f.jon.forums@gmail.com>
+	<AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+	<20101201123846.5c4724b5.jon.forums@gmail.com>
+	<AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+	<AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+	<AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+	<AANLkTimk_+qqiP2zkx50AfNi+Dr7ggXJ9bXO7+TaVjGo@mail.gmail.com>
+X-Mailer: Sylpheed 3.0.3 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Sender: jon.forums@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jon.forums@gmail.com designates 209.85.216.47 as permitted sender)
+ smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> On Fri, Dec 3, 2010 at 7:57 AM, Wayne Meissner <wmeissner@gmail.com> wrot=
+e:
+> >
+> > btw, I *think* I fixed up the win32 build. =A0I couldn't test it, since
+> > I'm having issues getting rake-compiler to build a cross-ruby on my
+> > machine ... and I have no win32 vm to run it in anyway. =A0But, if
+> > anyone wants to try building out of master for win32 and letting me
+> > know if it all works, that would be nice.
+> >
+>=20
+> I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now
+> getting this on the specs:
+>=20
+> https://gist.github.com/726989
+>=20
+> The problem is that is looking for strdup and not _strdup, perhaps the
+> problem is libffi?
+
+
+whoa..you guys are quick!
+
+I've only had time to do the following with master, but seems that ffi_c.so=
+ builds fine with both 1.9.2p80 and 1.9.3dev (2010-12-03 trunk 30060) on my=
+ Win7 Ultimate 32-bit.  No testing yet. :(
+
+
+C:\Users\Jon\Documents\RubyDev\ffi-trunk\ext\ffi_c>ruby -rdevkit extconf.rb
+Temporarily enhancing PATH to include DevKit...
+checking for rb_thread_blocking_region()... yes
+checking for ruby_thread_has_gvl_p()... yes
+checking for ruby_native_thread_p()... yes
+checking for rb_thread_call_with_gvl()... yes
+creating extconf.h
+creating Makefile
+
+
+C:\Users\Jon\Documents\RubyDev\ffi-trunk\ext\ffi_c>make
+C:/ruby192/bin/ruby -e "puts 'EXPORTS', 'Init_ffi_c'"  > ffi_c-i386-mingw32=
+.def
+Configuring libffi
+....SNIP....
+gcc -shared -s -o ffi_c.so AbstractMemory.o ArrayType.o Buffer.o Call.o Clo=
+surePool.o
+ DataConverter.o DynamicLibrary.o ffi.o Function.o FunctionInfo.o LastError=
+.o MappedT
+ype.o MemoryPointer.o MethodHandle.o Platform.o Pointer.o Struct.o StructBy=
+Reference.
+o StructByValue.o StructLayout.o Type.o Types.o Variadic.o -L. -LC:/ruby192=
+/lib -L.
+-Wl,--enable-auto-image-base,--enable-auto-import ffi_c-i386-mingw32.def  /=
+c/Users/Jo
+n/Documents/RubyDev/ffi-trunk/ext/ffi_c/libffi/.libs/libffi_convenience.a -=
+lmsvcrt-ru
+by191  -lshell32 -lws2_32
+
+
+Jon
+
+---
+http://jonforums.github.com/

@@ -1,0 +1,115 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs40513igc;
+        Mon, 31 Oct 2011 17:25:47 -0700 (PDT)
+Received: by 10.204.15.194 with SMTP id l2mr12761914bka.83.1320107145685;
+        Mon, 31 Oct 2011 17:25:45 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPWhsY2GBBCF-bz1BBoEOgs4Og@googlegroups.com>
+Received: from mail-bw0-f62.google.com (mail-bw0-f62.google.com [209.85.214.62])
+        by mx.google.com with ESMTPS id s11si10121933bke.47.2011.10.31.17.25.45
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 31 Oct 2011 17:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCF-bz1BBoEOgs4Og@googlegroups.com designates 209.85.214.62 as permitted sender) client-ip=209.85.214.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCF-bz1BBoEOgs4Og@googlegroups.com designates 209.85.214.62 as permitted sender) smtp.mail=ruby-ffi+bncCPWhsY2GBBCF-bz1BBoEOgs4Og@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by bkbzv3 with SMTP id zv3sf5809205bkb.7
+        for <headius@headius.com>; Mon, 31 Oct 2011 17:25:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=hBTMzO/xwwBpCh3GpFfhojLN1dzyj34qbrhAKyjKuFY=;
+        b=qeNYdqSFBEbS4+0KJcSXBGTiQoCchDdr35vpUX/FJEetUgvDQNHl9PX/HyJlAWUYmo
+         iSS596cWsQfXI4ej1zjLNkk9SdN/7StD+dczp6ve8bnSuW3qnGWefy8E+nkbyTt5+iVV
+         CI6F2o4WJE2yU+Qmgvcb4/e8YvVl15SpQQ+04=
+Received: by 10.204.140.10 with SMTP id g10mr806187bku.12.1320107141178;
+        Mon, 31 Oct 2011 17:25:41 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.33.136 with SMTP id h8ls1896406bkd.0.gmail; Mon, 31 Oct
+ 2011 17:25:40 -0700 (PDT)
+Received: by 10.204.132.193 with SMTP id c1mr1489304bkt.4.1320107140355;
+        Mon, 31 Oct 2011 17:25:40 -0700 (PDT)
+Received: by 10.204.132.193 with SMTP id c1mr1489303bkt.4.1320107140333;
+        Mon, 31 Oct 2011 17:25:40 -0700 (PDT)
+Received: from mail-fx0-f44.google.com (mail-fx0-f44.google.com [209.85.161.44])
+        by gmr-mx.google.com with ESMTPS id f1si4795243fae.1.2011.10.31.17.25.40
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 31 Oct 2011 17:25:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 209.85.161.44 as permitted sender) client-ip=209.85.161.44;
+Received: by faas12 with SMTP id s12so6196724faa.3
+        for <ruby-ffi@googlegroups.com>; Mon, 31 Oct 2011 17:25:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.76.11 with SMTP id a11mr32925715fak.1.1320107140166; Mon,
+ 31 Oct 2011 17:25:40 -0700 (PDT)
+Received: by 10.152.37.8 with HTTP; Mon, 31 Oct 2011 17:25:40 -0700 (PDT)
+In-Reply-To: <8622166.1035.1319936823940.JavaMail.geo-discussion-forums@prep8>
+References: <CAD_Zexq+S2gvRYE741XPkz=LUg3PinAPyWzmz1_BMJ07O7H5aA@mail.gmail.com>
+	<8622166.1035.1319936823940.JavaMail.geo-discussion-forums@prep8>
+Date: Mon, 31 Oct 2011 19:25:40 -0500
+Message-ID: <CAD_ZexqaG1AgCtjsgpGos7v_g8fTQ2bN=q0bj8ufU17mVW__fQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Inline Callbacks
+From: Charles Strahan <charles.c.strahan@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: charles.c.strahan@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of charles.c.strahan@gmail.com designates 209.85.161.44 as permitted
+ sender) smtp.mail=charles.c.strahan@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00151747b9b827b44304b0a16558
+
+--00151747b9b827b44304b0a16558
+Content-Type: text/plain; charset=ISO-8859-1
+
+Awesome! Thank you Wayne, that makes perfect sense.
+
+Cheers,
+-Charles
+
+On Sat, Oct 29, 2011 at 8:07 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+>
+> Blocks-as-callbacks work only for the case where there is exactly one
+> callback parameter specified for the function, when the function is called
+> with a block, and the number of arguments passed is one less than the
+> number specified, then pass the block as the callback.
+>
+> Its in Call.c, line 86.
+>
+> Not supported for varargs functions.
+>
+>
+>
+>
+>
+
+--00151747b9b827b44304b0a16558
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Awesome! Thank you Wayne, that makes perfect sense.<br><br>Cheers,<div>-Cha=
+rles<br><br><div class=3D"gmail_quote">On Sat, Oct 29, 2011 at 8:07 PM, Way=
+ne Meissner <span dir=3D"ltr">&lt;<a href=3D"mailto:wmeissner@gmail.com">wm=
+eissner@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;"><br><div>Blocks-as-callbacks work only for =
+the case where there is exactly one callback parameter specified for the fu=
+nction, when the function is called with a block, and the number of argumen=
+ts passed is one less than the number specified, then pass the block as the=
+ callback.</div>
+<div><br></div><div>Its in Call.c, line 86.</div><div><br></div><div>Not su=
+pported for varargs functions.</div><div><br></div><div><br></div><div><br>=
+</div><div><br></div></blockquote></div><br></div>
+
+--00151747b9b827b44304b0a16558--

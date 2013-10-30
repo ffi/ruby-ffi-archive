@@ -1,0 +1,190 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp99183obb;
+        Tue, 21 Feb 2012 16:24:36 -0800 (PST)
+Received: by 10.101.131.10 with SMTP id i10mr4169618ann.72.1329870275903;
+        Tue, 21 Feb 2012 16:24:35 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id s61si24802111yhn.140.2012.02.21.16.24.35
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 21 Feb 2012 16:24:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yhpp34 with SMTP id p34sf11434118yhp.7
+        for <headius@headius.com>; Tue, 21 Feb 2012 16:24:35 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC_65D6BBoEFZVBaw@googlegroups.com designates 10.68.130.163 as permitted sender) client-ip=10.68.130.163;
+Received: from mr.google.com ([10.68.130.163])
+        by 10.68.130.163 with SMTP id of3mr20659776pbb.10.1329870275676 (num_hops = 1);
+        Tue, 21 Feb 2012 16:24:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=MK7WI0s7oPk4otkAZEmPnZKtV8d4UwlyAVUEVG5LO3E=;
+        b=zZfPKUtHo7/UqIbteLiPWQXgl5mZ8ygaTtyu8Ielvu+G9ikq8gOGWKoiKlZ7qupH4d
+         Msh7JD/WLZ5gBGAMxh4QzM/oB+7obEQQMHMQq5Oh4qy7Z2rE6ypXrEezhsItKYdPDWte
+         XZzT1qg9MJ0aYO/tY5jM6XtSAbtkZ3+mfwZqw=
+Received: by 10.68.130.163 with SMTP id of3mr5678859pbb.10.1329870271190;
+        Tue, 21 Feb 2012 16:24:31 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.216.162 with SMTP id or2ls19464260pbc.8.gmail; Tue, 21 Feb
+ 2012 16:24:30 -0800 (PST)
+Received: by 10.68.189.229 with SMTP id gl5mr5644488pbc.18.1329870270983;
+        Tue, 21 Feb 2012 16:24:30 -0800 (PST)
+Date: Tue, 21 Feb 2012 16:24:29 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <18026632.2.1329870270065.JavaMail.geo-discussion-forums@pbwe7>
+In-Reply-To: <CADS6wmfUL95L4LqQE-Ssi4c2gFBjVvGBe7N=CC545u-kUP7C=g@mail.gmail.com>
+References: <CADS6wmfUL95L4LqQE-Ssi4c2gFBjVvGBe7N=CC545u-kUP7C=g@mail.gmail.com>
+Subject: [ruby-ffi] Re: Unsure how to proceed using type defined in header
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1_9756015.1329870270016"
+
+------=_Part_1_9756015.1329870270016
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The typedef should work fine.  You may find though, that for some 
+functions, you will need to pass the address of a pointer.
+e.g. pam_start()
+
+that would be attached as:
+    attach_function :pam_start, [ :string, :string, :pointer, :pointer ], 
+:int
+
+and called like so:
+
+  ppamh = FFI::MemoryPointer.new(:pointer)
+  LibPam.pam_start("my_service", "my_user", conv, ppamh)
+  pamh = ppamh.read_pointer
+
+  # Now use pamh as the pam_handle_t arg to any other pam function.
+
+
+On Wednesday, February 22, 2012 9:59:19 AM UTC+10, jason wrote:
+>
+> Hi all,
+>
+> I'm in the process of porting the rpam gem over to FFI (I ported the gem 
+> from 1.8 to 1.9 a while back, this seemed like the logical next step). One 
+> thing I'm having trouble finding documentation on is handling user-defined 
+> types from the header when the type being aliased is private to the 
+> library. 
+>
+> So for instance, in security/pam_appl.h, we have:
+>
+>
+> /*
+>  * This is a blind structure; users aren't allowed to see inside a
+>  * pam_handle_t, so we don't define struct _pam_handle here.  This is
+>  * defined in a file private to the PAM library.  (i.e., it's private
+>  * to PAM service modules, too!)
+>  */
+> typedef struct _pam_handle pam_handle_t;
+>
+> My first guess is to define a class inheriting from FFI::Struct, but since 
+> I don't know its layout, I'm not sure how to proceed.
+>
+> In the C version, it gets initialized as a null pointer, so I then thought 
+> I could do `typdef :pointer, :pam_handle_t`, but this also seems wrong.
+>
+> Grateful for any suggestions.
+>
+> Thanks,
+>
+> Jason Lewis
+>
+> Email          jasonlewis.x@gmail.com     
+>
+> Twitter        @canweriotnow <http://twitter.com/canweriotnow>
+>
+> Blog            http://duckpunching.github.com/<http://duckpunching.wordpress.com/>
+>
+>
+------=_Part_1_9756015.1329870270016
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+The typedef should work fine. &nbsp;You may find though, that for some func=
+tions, you will need to pass the address of a pointer.<div>e.g. pam_start()=
+</div><div><br></div><div>that would be attached as:</div><div>&nbsp; &nbsp=
+; attach_function :pam_start, [ :string, :string, :pointer, :pointer ], :in=
+t</div><div><br></div><div>and called like so:</div><div><br></div><div>&nb=
+sp; ppamh =3D FFI::MemoryPointer.new(:pointer)</div><div>&nbsp; LibPam.pam_=
+start("my_service", "my_user", conv, ppamh)</div><div>&nbsp; pamh =3D ppamh=
+.read_pointer</div><div><br></div><div>&nbsp; # Now use pamh as the pam_han=
+dle_t arg to any other pam function.</div><div><br></div><div><br></div><di=
+v>On Wednesday, February 22, 2012 9:59:19 AM UTC+10, jason wrote:<blockquot=
+e class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: =
+1px #ccc solid;padding-left: 1ex;"><div><div>Hi all,</div><div><br></div><d=
+iv>I'm in the process of porting the rpam gem over to FFI (I ported the gem=
+ from 1.8 to 1.9 a while back, this seemed like the logical next step). One=
+ thing I'm having trouble finding documentation on is handling user-defined=
+ types from the header when the type being aliased is private to the librar=
+y.&nbsp;</div>
+
+<div><br></div><div>So for instance, in security/pam_appl.h, we have:</div>=
+<div><br></div><div><br></div><div><font face=3D"'courier new', monospace">=
+/*</font></div><div><font face=3D"'courier new', monospace">&nbsp;* This is=
+ a blind structure; users aren't allowed to see inside a</font></div>
+
+<div><font face=3D"'courier new', monospace">&nbsp;* pam_handle_t, so we do=
+n't define struct _pam_handle here. &nbsp;This is</font></div><div><font fa=
+ce=3D"'courier new', monospace">&nbsp;* defined in a file private to the PA=
+M library. &nbsp;(i.e., it's private</font></div>
+
+<div><font face=3D"'courier new', monospace">&nbsp;* to PAM service modules=
+, too!)</font></div><div><font face=3D"'courier new', monospace">&nbsp;*/</=
+font></div><div><font face=3D"'courier new', monospace">typedef struct _pam=
+_handle pam_handle_t;</font></div>
+
+</div><div><font face=3D"'courier new', monospace"><br></font></div><div><f=
+ont face=3D"arial, helvetica, sans-serif">My first guess is to define a cla=
+ss inheriting from FFI::Struct, but since I don't know its layout, I'm not =
+sure how to proceed.</font></div>
+
+<div><font face=3D"arial, helvetica, sans-serif"><br></font></div><div><fon=
+t face=3D"arial, helvetica, sans-serif">In the C version, it gets initializ=
+ed as a null pointer, so I then thought I could do `typdef :pointer, :pam_h=
+andle_t`, but this also seems wrong.</font></div>
+
+<div><font face=3D"arial, helvetica, sans-serif"><br></font></div><div><fon=
+t face=3D"arial, helvetica, sans-serif">Grateful for any suggestions.</font=
+></div><div><font face=3D"arial, helvetica, sans-serif"><br></font></div><d=
+iv>
+
+<font face=3D"arial, helvetica, sans-serif">Thanks,</font></div><br clear=
+=3D"all">Jason Lewis<br><br>Email&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href=
+=3D"mailto:jasonlewis.x@gmail.com" target=3D"_blank">jasonlewis.x@gmail.com=
+</a>&nbsp; &nbsp;&nbsp;&nbsp;<div><br></div><div>Twitter &nbsp; &nbsp; &nbs=
+p; &nbsp;<a href=3D"http://twitter.com/canweriotnow" target=3D"_blank">@can=
+weriotnow</a><br>
+
+<br>Blog &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href=3D"http://duckpun=
+ching.wordpress.com/" target=3D"_blank">http://duckpunching.github.<wbr>com=
+/</a></div><br>
+</blockquote></div>
+------=_Part_1_9756015.1329870270016--

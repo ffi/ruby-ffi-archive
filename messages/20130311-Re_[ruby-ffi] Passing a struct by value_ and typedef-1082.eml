@@ -1,0 +1,1669 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp99832laf;
+        Mon, 11 Mar 2013 18:01:43 -0700 (PDT)
+X-Received: by 10.180.74.131 with SMTP id t3mr16201831wiv.23.1363050102229;
+        Mon, 11 Mar 2013 18:01:42 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDF6F5MASYDRB5P47GEQKGQEPHJ3UNI@googlegroups.com>
+Received: from mail-wg0-f60.google.com (mail-wg0-f60.google.com [74.125.82.60])
+        by mx.google.com with ESMTPS id et7si5135132wib.62.2013.03.11.18.01.42
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 11 Mar 2013 18:01:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRB5P47GEQKGQEPHJ3UNI@googlegroups.com designates 74.125.82.45 as permitted sender) client-ip=74.125.82.45;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDF6F5MASYDRB5P47GEQKGQEPHJ3UNI@googlegroups.com designates 74.125.82.45 as permitted sender) smtp.mail=ruby-ffi+bncBDF6F5MASYDRB5P47GEQKGQEPHJ3UNI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-wg0-f60.google.com with SMTP id ds1sf1811651wgb.15
+        for <headius@headius.com>; Mon, 11 Mar 2013 18:01:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:received-spf:x-received
+         :mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=wEylbdtw0CFrLlOn/w9xWjnjsVwM00PGM7geFhwqO0c=;
+        b=QdPcXX63Qdpr54jJLF/IqP7JbsbhPriz5cY8Ua5QehC7jKcKve9eYEuYxgXOzmgPe7
+         +1endtjMg7GRUtxbkrXumjgPwPecd/Et0M60fwUBM0+dSDee2j965bo9mwxLYX+ZEBD8
+         8iv+W3eOl7uvHm/5BcV9GNcf13IHOdgGJUjYvj8OghccWR8JZxbtjKfkr49FC1xYpzLi
+         zw+Cb9X0bAwFUKmgvA3HlJUaTpc44eKReZNNXGmTJ2Q7r7OrUUCStEXgXnQGnYDqHM9U
+         lAK5p/4Ou/YX2iji6XBG5mj8EciVUWe8jic02GYmtpcNFNGldNo7MQeLNoke8jb9sogj
+         EdHg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:received-spf:x-received
+         :mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=wEylbdtw0CFrLlOn/w9xWjnjsVwM00PGM7geFhwqO0c=;
+        b=YR8WsXB9mk7iExTPjaI6Y3nElJ1+zw90/vvrjPPCdoWhCMzjS6+2TQ18hv2HmnygwA
+         tyAZ8Sk3uyaq4bCPZPVDY5xLjkGqvHCAZecnCl6lEh3vyqdz9dVVSaGQAGHXDY81WGXR
+         +zFC+yNlsDqcQJ3qJKwEp2A+jOAknYb700Lbc25dnJPo2vWi+mM+vcNkuBo6alKdwrN8
+         NlgQf8U3wuGiq3BcitKm+vvBSP9veN0/O4QmUfMMs3pafhgMW/1z4uZLQkBHCnILq9hK
+         mdExMZrqFDRtYY+BmOaUBwgSy0g2CixsYaQRLQthDO0VrmrSim1JzEmYOySQNxJDwhIS
+         4R0w==
+X-Received: by 10.180.78.197 with SMTP id d5mr1108498wix.13.1363050101880;
+        Mon, 11 Mar 2013 18:01:41 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.80.162 with SMTP id s2ls816791wix.42.canary; Mon, 11 Mar
+ 2013 18:01:41 -0700 (PDT)
+X-Received: by 10.180.183.180 with SMTP id en20mr2703239wic.3.1363050101060;
+        Mon, 11 Mar 2013 18:01:41 -0700 (PDT)
+Received: from mail-wg0-f45.google.com (mail-wg0-f45.google.com [74.125.82.45])
+        by gmr-mx.google.com with ESMTPS id y5si580896wiv.3.2013.03.11.18.01.41
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 11 Mar 2013 18:01:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desantis.maurizio@gmail.com designates 74.125.82.45 as permitted sender) client-ip=74.125.82.45;
+Received: by mail-wg0-f45.google.com with SMTP id dq12so5756749wgb.24
+        for <ruby-ffi@googlegroups.com>; Mon, 11 Mar 2013 18:01:41 -0700 (PDT)
+X-Received: by 10.194.122.131 with SMTP id ls3mr22964591wjb.55.1363050100888;
+ Mon, 11 Mar 2013 18:01:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.216.1.78 with HTTP; Mon, 11 Mar 2013 18:01:20 -0700 (PDT)
+In-Reply-To: <fdaedba3-35e6-4d4f-9c2a-59ecc0ff4c10@googlegroups.com>
+References: <4a4d0927-7aea-4469-aa6f-d7763c7a2610@googlegroups.com>
+ <5132B5C7.6070604@gmail.com> <CA+_M_JcXJ-wd1ZvqH7C3Xdk7QWTW=z+MvxLfNYPgPC2QgeT3og@mail.gmail.com>
+ <5132D072.9060604@gmail.com> <CA+_M_Jf_ccD8O+9Pt90dBYy7KEvXgrFsjkBnzoax_SPBSmdbcA@mail.gmail.com>
+ <CA+_M_JckNW58+dmW8Lza_XoXZskQ54A8Bx+oOp6ZOyFEJrjv=w@mail.gmail.com>
+ <5133FCC2.6040403@gmail.com> <e12edc65-9eab-4390-a263-38c47720dfbd@googlegroups.com>
+ <CA+_M_Jc2x-Xof4Kc=dscvnvMr1pvkC5tjyusnZCQFLW=GStpUQ@mail.gmail.com> <fdaedba3-35e6-4d4f-9c2a-59ecc0ff4c10@googlegroups.com>
+From: Maurizio De Santis <desantis.maurizio@gmail.com>
+Date: Tue, 12 Mar 2013 02:01:20 +0100
+Message-ID: <CA+_M_Jf8-282ptwQZua_QY7OPisrG4uJ3jooAFo+udqZfHFN=g@mail.gmail.com>
+Subject: Re: [ruby-ffi] Passing a struct by value, and typedef
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: desantis.maurizio@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of desantis.maurizio@gmail.com designates 74.125.82.45 as
+ permitted sender) smtp.mail=desantis.maurizio@gmail.com;       dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=089e01229032131b1004d7afd59e
+
+--089e01229032131b1004d7afd59e
+Content-Type: text/plain; charset=ISO-8859-1
+
+uhm, libglib-2.0.so ... I forgot the dash!!!! >.< thank you!!!
+
+Ok, now I am at a good point: I think I'm managing an array of ints
+correctly, included a custom free! \o/
+Could you please confirm it? I'm interested above all at the part of the
+pointer, if I managed them correctly, and if I used AutoPointer correctly
+(the :g_free part included). It should be correct, but maybe you have some
+suggestions.
+
+This is glibtop_get_proclist:
+
+unsigned * glibtop_get_proclist (glibtop_proclist *buf, gint64 which,
+gint64 arg)
+
+
+glibtop_proclist is a struct, while the returned value is an array of uint
+of glibtop_proclist.number length, and it should be freed with g_free .
+
+Here is my code (if you want you can see the full library at
+https://github.com/ProGNOMmers/gtop ):
+
+module GTop
+  extend FFI::Library
+  ffi_lib 'libgtop-2.0'
+  typedef :int64,  :gint64
+  typedef :uint64, :guint64
+  typedef :ulong,  :uintptr_t
+  attach_function :process_list, :glibtop_get_proclist, [:pointer, :gint64,
+:gint64], :uintptr_t
+
+  module GLib
+    extend FFI::Library
+    ffi_lib 'libglib-2.0'
+    typedef :pointer, :gpointer
+    attach_function :g_free, [:gpointer], :void
+  end
+end
+
+s = GTop::ProcessList.new
+addr = GTop.process_list(s, 0, 0)
+ptr = FFI::Pointer.new(:pointer, addr)
+ap = FFI::AutoPointer.new ptr, GTop::GLib.method(:g_free)
+if ap.null?
+  'ap is null'
+else
+  p ap.read_array_of_uint(s[:number])
+end
+p Hash[ s.members.map { |m| [ m, s[m] ] } ]
+
+Thank you!
+
+--
+
+Maurizio De Santis
+
+
+2013/3/11 Wayne Meissner <wmeissner@gmail.com>
+
+>
+> Isn't it libglib-2.0.so ?
+>
+> i.e. try:
+>
+>   ffi_lib 'glib-2.0'
+>
+> If you just want to try and see if a library can be found by FFI, use this:
+>
+>   ruby -rffi -e 'FFI::DynamicLibrary.open("libglib-2.0.so",
+> FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_LOCAL)'
+>
+>
+> As for the pointer result, NULL is handled fine - just use Pointer#null?
+> to check if the return value is NULL.
+>
+>
+> On Monday, 11 March 2013 02:50:27 UTC+10, Maurizio De Santis wrote:
+>
+>> Thank you, the porting is going well; if you want you can see the
+>> progress at https://github.com/**ProGNOMmers/gtop<https://github.com/ProGNOMmers/gtop>.
+>>
+>> Now I have some troubles: I need to use g_free from glib, so I tried to
+>> wrap it:
+>>
+>> require 'gtop'
+>>
+>> module GTop
+>>   module GLib
+>>     extend FFI::Library
+>>     ffi_lib 'libglib2.0'
+>>
+>>     typedef :pointer, :gpointer
+>>
+>>     attach_function :g_free, [:gpointer], :void
+>>   end
+>> end
+>>
+>> On my pc libglib2.0.so is located inside /usr/lib/x86_64-linux-gnu/ ,
+>> which should be found since it is inside the ld paths, which on my machine
+>> are
+>>
+>> # Multiarch support
+>> /lib/i386-linux-gnu
+>> /usr/lib/i386-linux-gnu
+>> /lib/i686-linux-gnu
+>> /usr/lib/i686-linux-gnu
+>> # libc default configuration
+>> /usr/local/lib
+>> /usr/lib/nvidia-settings
+>> # Multiarch support
+>> /lib/x86_64-linux-gnu
+>> /usr/lib/x86_64-linux-gnu
+>> /usr/lib/x86_64-linux-gnu/mesa
+>>
+>> but I get a LoadError:
+>>
+>> Could not open library 'libglib2.0': libglib2.0: cannot open shared
+>> object file: No such file or directory.
+>> Could not open library 'libglib2.0.so': libglib2.0.so: cannot open
+>> shared object file: No such file or directory
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/ffi-1.4.0/lib/ffi/**library.rb:123:in `block in ffi_lib'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/ffi-1.4.0/lib/ffi/**library.rb:90:in `map'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/ffi-1.4.0/lib/ffi/**library.rb:90:in `ffi_lib'
+>> /home/user/github/me/gtop/lib/**gtop/glib.rb:6:in `<module:GLib>'
+>> /home/user/github/me/gtop/lib/**gtop/glib.rb:4:in `<module:GTop>'
+>> /home/user/github/me/gtop/lib/**gtop/glib.rb:3:in `<top (required)>'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/site_ruby/2.0.**
+>> 0/rubygems/core_ext/kernel_**require.rb:45:in `require'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/site_ruby/2.0.**
+>> 0/rubygems/core_ext/kernel_**require.rb:45:in `require'
+>> /home/user/github/me/gtop/lib/**gtop.rb:7:in `<module:GTop>'
+>> /home/user/github/me/gtop/lib/**gtop.rb:3:in `<top (required)>'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/site_ruby/2.0.**
+>> 0/rubygems/core_ext/kernel_**require.rb:45:in `require'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/site_ruby/2.0.**
+>> 0/rubygems/core_ext/kernel_**require.rb:45:in `require'
+>> /home/user/github/me/gtop/**Rakefile:4:in `block in <top (required)>'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:228:in `call'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:228:in `block in execute'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:223:in `each'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:223:in `execute'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:166:in `block in
+>> invoke_with_call_chain'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/2.0.0/monitor.**rb:211:in
+>> `mon_synchronize'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:159:in `invoke_with_call_chain'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**task.rb:152:in `invoke'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:143:in `invoke_task'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:101:in `block (2 levels) in
+>> top_level'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:101:in `each'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:101:in `block in top_level'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:110:in `run_with_threads'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:95:in `top_level'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:73:in `block in run'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:160:in
+>> `standard_exception_handling'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/lib/rake/**application.rb:70:in `run'
+>> /home/user/.rbenv/versions/2.**0.0-p0/lib/ruby/gems/2.0.0/**
+>> gems/rake-10.0.3/bin/rake:33:**in `<top (required)>'
+>> /home/user/.rbenv/versions/2.**0.0-p0/bin/rake:23:in `load'
+>> /home/user/.rbenv/versions/2.**0.0-p0/bin/rake:23:in `<main>'
+>>
+>> I tried to set LD_LIBRARY_PATH too, but without success.
+>>
+>> Oh, and I have another doubt: gpointer is the return value of
+>> `glibtop_get_proclist', and can be either `NULL' on error or a `unsigned *'
+>> list of pids.
+>> I defined it as :pointer, it is correct? could the NULL value give
+>> problems? should I manage it?
+>>
+>> --
+>>
+>> Maurizio De Santis
+>>
+>>
+>> 2013/3/5 Wayne Meissner <wmei...@gmail.com>
+>>
+>>>
+>>> :buffer_in, and :buffer_out are optimization hints for VMs when they
+>>> need to copy data from VM heap memory to native memory:
+>>>
+>>> :buffer_in means "allocate some temporary native memory, copy the
+>>> contents of this object to it, then pass the temporary memory address to
+>>> the function"
+>>>
+>>> :buffer_out means "allocate some temporary native memory, pass that
+>>> address to the function, then afterwards, copy the contents of the
+>>> temporary memory area back to the VM heap object"
+>>>
+>>> :pointer and :buffer_inout are analogous and mean "do both of the above"
+>>> - i.e. copies both in to and out of the temporary memory area.
+>>>
+>>> If you're using a MemoryPointer as your memory (as Struct does), then it
+>>> is already native, so it doesn't matter, so you can just use :pointer.
+>>>
+>>> The original rationale behind the :buffer_in and :buffer_out directives
+>>> was that allocating VM heap objects is really cheap, and most VMs have a
+>>> very hard time managing native memory allocations.  So from an
+>>> implementation point of view, it was better to bias towards VM heap
+>>> allocations and copy data in/out of temporary native memory.  Thats where
+>>> FFI::Buffer came from - it was VM heap memory that was always copied
+>>> to/from native memory when passed as a parameter.
+>>>
+>>> In practice, people found it difficult and confusing to understand, so I
+>>> just made native allocation management work as best it could in JRuby-1.7.
+>>>
+>>>
+>>> tl;dr - just use :pointer - it will work just fine, at an occasional
+>>> minor performance penalty.
+>>>
+>>>
+>>> On Monday, 4 March 2013 11:45:38 UTC+10, Postmodern wrote:
+>>>
+>>>>  You want :pointer in this case. I believe :buffer_out is a meant as a
+>>>> hint to FFI that data will be written back into an Array of chars/ints.
+>>>>
+>>>> On 03/03/2013 05:41 PM, Maurizio De Santis wrote:
+>>>>
+>>>>  Another question: glibtop_get_cpu takes a struct as parameter, and
+>>>> fills it with informations about cpu.
+>>>>
+>>>>  I declared it as
+>>>>
+>>>> attach_function :glibtop_get_cpu, [:pointer], :void
+>>>>
+>>>>  I think I can substitute :pointer with :buffer_out , am I right?
+>>>>
+>>>> --
+>>>>
+>>>> Maurizio De Santis
+>>>>
+>>>>
+>>>> 2013/3/4 Maurizio De Santis <desantis...@gmail.com>
+>>>>
+>>>>> Thank you a lot, your suggestions are precious.
+>>>>>
+>>>>> --
+>>>>>
+>>>>> Maurizio De Santis
+>>>>>
+>>>>>
+>>>>> 2013/3/3 postmodern <postmod...@gmail.com>
+>>>>>
+>>>>>>  You can simplify that code to just:
+>>>>>>
+>>>>>> a = LibGtop::GlibtopCpu.new
+>>>>>> LibGtop.glibtop_get_cpu(a)
+>>>>>> p a[:frequency]
+>>>>>>
+>>>>>>  This will allocate memory for a GlibtopCpu struct, pass the pointer
+>>>>>> to the memory to glibtop_get_cpu and access to the struct field within the
+>>>>>> memory. Once you are done with the "a" variable, Ruby will just GC it and
+>>>>>> FFI will free the underlying memory.
+>>>>>>
+>>>>>>
+>>>>>> On 03/02/2013 07:54 PM, Maurizio De Santis wrote:
+>>>>>>
+>>>>>>  Thank you. Now, the code runs without errors:
+>>>>>>
+>>>>>> require 'ffi'
+>>>>>>
+>>>>>> module LibGtop
+>>>>>>
+>>>>>>   extend FFI::Library
+>>>>>>   ffi_lib 'libgtop-2.0'
+>>>>>>
+>>>>>>   typedef :uint64, :guint64
+>>>>>>
+>>>>>>   attach_function :glibtop_get_cpu, [:pointer], :void
+>>>>>>
+>>>>>>   class GlibtopCpu < FFI::Struct
+>>>>>>     layout :flags,         :guint64,
+>>>>>>            :total,         :guint64,
+>>>>>>            :user,          :guint64,
+>>>>>>            :nice,          :guint64,
+>>>>>>            :sys,           :guint64,
+>>>>>>            :idle,          :guint64,
+>>>>>>            :iowait,        :guint64,
+>>>>>>            :irq,           :guint64,
+>>>>>>            :softirq,       :guint64,
+>>>>>>            :frequency,     :guint64,
+>>>>>>            :xcpu_total,   [:guint64, 32],
+>>>>>>            :xcpu_user,    [:guint64, 32],
+>>>>>>            :xcpu_nice,    [:guint64, 32],
+>>>>>>            :xcpu_sys,     [:guint64, 32],
+>>>>>>            :xcpu_idle,    [:guint64, 32],
+>>>>>>            :xcpu_iowait,  [:guint64, 32],
+>>>>>>            :xcpu_irq,     [:guint64, 32],
+>>>>>>            :xcpu_softirq, [:guint64, 32],
+>>>>>>            :xcpu_flags,    :guint64
+>>>>>>   end
+>>>>>>
+>>>>>> end
+>>>>>>
+>>>>>>
+>>>>>> # taken from https://github.com/ffi/ffi/**wik**i/Structs<https://github.com/ffi/ffi/wiki/Structs>
+>>>>>> pointer = FFI::MemoryPointer.new :uint64, LibGtop::GlibtopCpu.size,
+>>>>>> true
+>>>>>> a = LibGtop::GlibtopCpu.new pointer
+>>>>>> LibGtop.glibtop_get_cpu(a)
+>>>>>> p a[:frequency]
+>>>>>>
+>>>>>>  Another question: I initialized the pointer with clear = true,
+>>>>>> because the struct pointed by the pointer gets filled by glibtop_get_cpu,
+>>>>>> and then must be managed by Ruby, since glibtop_get_cpu just fills
+>>>>>> the struct. Am I wrong?
+>>>>>>
+>>>>>> --
+>>>>>>
+>>>>>> Maurizio De Santis
+>>>>>>
+>>>>>>
+>>>>>> 2013/3/3 postmodern <postmod...@gmail.com>
+>>>>>>
+>>>>>>>  You need to find out guint64's underlying type, and create the
+>>>>>>> typedef in Ruby:
+>>>>>>>
+>>>>>>>  module LibGtop
+>>>>>>>   extend FFI::Library
+>>>>>>>
+>>>>>>>   typedef :uint64, :guint64
+>>>>>>> end
+>>>>>>>
+>>>>>>>
+>>>>>>> On 03/02/2013 06:06 PM, Maurizio De Santis wrote:
+>>>>>>>
+>>>>>>>  I am writing a libgtop2 wrapper using ffi in order to learn how to
+>>>>>>> use ffi; I am new to ffi, so I have a lot of doubts.
+>>>>>>>
+>>>>>>> libgtop2 lets get system and processes informations (cpu usage,
+>>>>>>> memory usage, ...).
+>>>>>>>
+>>>>>>> Here some informations about glibtop_get_cpu:
+>>>>>>>
+>>>>>>> Library function `glibtop_get_cpu':
+>>>>>>>
+>>>>>>>      void glibtop_get_cpu (glibtop_cpu *buf);
+>>>>>>>      void glibtop_get_cpu_l (glibtop *server, glibtop_cpu *buf);
+>>>>>>>
+>>>>>>>    Declaration of `glibtop_cpu' in `<glibtop/cpu.h>':
+>>>>>>>
+>>>>>>>      typedef struct _glibtop_cpu     glibtop_cpu;
+>>>>>>>
+>>>>>>>      struct _glibtop_cpu
+>>>>>>>      {
+>>>>>>>          guint64   flags,
+>>>>>>>              total,
+>>>>>>>              user,
+>>>>>>>              nice,
+>>>>>>>              sys,
+>>>>>>>              idle,
+>>>>>>>              iowait,
+>>>>>>>              irq,
+>>>>>>>              softirq,
+>>>>>>>              frequency,
+>>>>>>>              xcpu_total [GLIBTOP_NCPU],
+>>>>>>>              xcpu_user [GLIBTOP_NCPU],
+>>>>>>>              xcpu_nice [GLIBTOP_NCPU],
+>>>>>>>              xcpu_sys  [GLIBTOP_NCPU],
+>>>>>>>              xcpu_idle [GLIBTOP_NCPU],
+>>>>>>>              xcpu_iowait [GLIBTOP_NCPU],
+>>>>>>>              xcpu_irq [GLIBTOP_NCPU],
+>>>>>>>              xcpu_softirq [GLIBTOP_NCPU],
+>>>>>>>              xcpu_flags;
+>>>>>>>      };
+>>>>>>>
+>>>>>>> ...
+>>>>>>>
+>>>>>>>
+>>>>>>> Here is what I wrote:
+>>>>>>>
+>>>>>>> require 'ffi'
+>>>>>>>
+>>>>>>> class GlibtopCpu < FFI::Struct
+>>>>>>>   layout :flags,        :guint64,
+>>>>>>>          :total,        :guint64,
+>>>>>>>          :user,         :guint64,
+>>>>>>>          :nice,         :guint64,
+>>>>>>>          :sys,          :guint64,
+>>>>>>>          :idle,         :guint64,
+>>>>>>>          :iowait,       :guint64,
+>>>>>>>          :irq,          :guint64,
+>>>>>>>          :softirq,      :guint64,
+>>>>>>>          :frequency,    :guint64,
+>>>>>>>          :xcpu_total,   :guint64,
+>>>>>>>          :xcpu_user,    :guint64,
+>>>>>>>          :xcpu_nice,    :guint64,
+>>>>>>>          :xcpu_sys,     :guint64,
+>>>>>>>          :xcpu_idle,    :guint64,
+>>>>>>>          :xcpu_iowait,  :guint64,
+>>>>>>>          :xcpu_irq,     :guint64,
+>>>>>>>          :xcpu_softirq, :guint64,
+>>>>>>>          :xcpu_flags,   :guint64
+>>>>>>> end
+>>>>>>>
+>>>>>>> module LibGtop
+>>>>>>>
+>>>>>>>   extend FFI::Library
+>>>>>>>   ffi_lib 'libgtop-2.0'
+>>>>>>>   attach_function :glibtop_get_cpu, [:pointer], :void
+>>>>>>>
+>>>>>>> end
+>>>>>>>
+>>>>>>> # taken from https://github.com/ffi/ffi/**wik**i/Structs<https://github.com/ffi/ffi/wiki/Structs>
+>>>>>>> pointer = FFI::MemoryPointer.new :byte, GlibtopCpu.size, false
+>>>>>>> a = GlibtopCpu.new pointer
+>>>>>>> p LibGtop.glibtop_get_cpu(a)
+>>>>>>>
+>>>>>>> Executing this gives (unsurprisingly) an error:
+>>>>>>>
+>>>>>>> $ ruby lib/lib_gtop.rb
+>>>>>>> /home/izietto/.rbenv/versions/****2.0.0-p0/lib/ruby/gems/2.0.0/**g**
+>>>>>>> ems/ffi-1.4.0/lib/ffi/types.**rb**:57:in `find_type': unable to
+>>>>>>> resolve type 'guint64' (TypeError)
+>>>>>>>     from /home/izietto/.rbenv/versions/****
+>>>>>>> 2.0.0-p0/lib/ruby/gems/2.0.0/**g**ems/ffi-1.4.0/lib/ffi/struct.**r**b:316:in
+>>>>>>> `find_type'
+>>>>>>>     from /home/izietto/.rbenv/versions/****
+>>>>>>> 2.0.0-p0/lib/ruby/gems/2.0.0/**g**ems/ffi-1.4.0/lib/ffi/struct.**r**b:309:in
+>>>>>>> `find_field_type'
+>>>>>>>     from /home/izietto/.rbenv/versions/****
+>>>>>>> 2.0.0-p0/lib/ruby/gems/2.0.0/**g**ems/ffi-1.4.0/lib/ffi/struct.**r**b:351:in
+>>>>>>> `array_layout'
+>>>>>>>     from /home/izietto/.rbenv/versions/****
+>>>>>>> 2.0.0-p0/lib/ruby/gems/2.0.0/**g**ems/ffi-1.4.0/lib/ffi/struct.**r**b:261:in
+>>>>>>> `layout'
+>>>>>>>     from lib/lib_gtop.rb:4:in `<class:GlibtopCpu>'
+>>>>>>>     from lib/lib_gtop.rb:3:in `<main>'
+>>>>>>>
+>>>>>>> It doesn't find the guint64 type; how should I declare it?
+>>>>>>>
+>>>>>>> Also: xcpu_total, xcpu_user are arrays... how should I declare them?
+>>>>>>>
+>>>>>>> Finally... if someone could give me an explanation and an example of
+>>>>>>> how to implement the bind to glibtop_get_cpu, I would appreciate it very
+>>>>>>> much :) --
+>>>>>>>
+>>>>>>> ---
+>>>>>>>  You received this message because you are subscribed to the Google
+>>>>>>> Groups "ruby-ffi" group.
+>>>>>>> To unsubscribe from this group and stop receiving emails from it,
+>>>>>>> send an email to ruby-ffi+u...@**googlegroups.com**.
+>>>>>>>
+>>>>>>> For more options, visit https://groups.google.com/**grou**ps/opt_out<https://groups.google.com/groups/opt_out>
+>>>>>>> .
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> --
+>>>>>>> Blog: http://postmodern.github.com/
+>>>>>>> GitHub: https://github.com/postmodern
+>>>>>>> Twitter: @postmodern_mod3
+>>>>>>> PGP: 0xB9515E77
+>>>>>>>
+>>>>>>>
+>>>>>>  --
+>>>>>>
+>>>>>> ---
+>>>>>> You received this message because you are subscribed to the Google
+>>>>>> Groups "ruby-ffi" group.
+>>>>>> To unsubscribe from this group and stop receiving emails from it,
+>>>>>> send an email to ruby-ffi+u...@**googlegroups.com**.
+>>>>>>
+>>>>>> For more options, visit https://groups.google.com/**grou**ps/opt_out<https://groups.google.com/groups/opt_out>
+>>>>>> .
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> --
+>>>>>> Blog: http://postmodern.github.com/
+>>>>>> GitHub: https://github.com/postmodern
+>>>>>> Twitter: @postmodern_mod3
+>>>>>> PGP: 0xB9515E77
+>>>>>>
+>>>>>>
+>>>>>
+>>>>  --
+>>>>
+>>>> ---
+>>>> You received this message because you are subscribed to the Google
+>>>> Groups "ruby-ffi" group.
+>>>> To unsubscribe from this group and stop receiving emails from it, send
+>>>> an email to ruby-ffi+u...@**googlegroups.com**.
+>>>>
+>>>> For more options, visit https://groups.google.com/**grou**ps/opt_out<https://groups.google.com/groups/opt_out>
+>>>> .
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> --
+>>>> Blog: http://postmodern.github.com/
+>>>> GitHub: https://github.com/postmodern
+>>>> Twitter: @postmodern_mod3
+>>>> PGP: 0xB9515E77
+>>>>
+>>>>   --
+>>>
+>>> ---
+>>> You received this message because you are subscribed to a topic in the
+>>> Google Groups "ruby-ffi" group.
+>>> To unsubscribe from this topic, visit https://groups.google.com/d/**
+>>> topic/ruby-ffi/sG-TsAHcWiM/**unsubscribe?hl=en<https://groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=en>
+>>> .
+>>>  To unsubscribe from this group and all its topics, send an email to
+>>> ruby-ffi+u...@**googlegroups.com.
+>>>
+>>> For more options, visit https://groups.google.com/**groups/opt_out<https://groups.google.com/groups/opt_out>
+>>> .
+>>>
+>>>
+>>>
+>>
+>>  --
+>
+>
+> ---
+> You received this message because you are subscribed to a topic in the
+> Google Groups "ruby-ffi" group.
+> To unsubscribe from this topic, visit
+> https://groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=en.
+> To unsubscribe from this group and all its topics, send an email to
+> ruby-ffi+unsubscribe@googlegroups.com.
+> For more options, visit https://groups.google.com/groups/opt_out.
+>
+>
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+--089e01229032131b1004d7afd59e
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div><div>uhm, <a href=3D"http://libglib-2.0.so">libg=
+lib-2.0.so</a> ... I forgot the dash!!!! &gt;.&lt; thank you!!!</div><div><=
+br></div><div>Ok, now I am at a good point: I think I&#39;m managing an arr=
+ay of ints correctly, included a custom free! \o/</div>
+
+<div>Could you please confirm it? I&#39;m interested above all at the part =
+of the pointer, if I managed them correctly, and if I used AutoPointer corr=
+ectly (the :g_free part included). It should be correct, but maybe you have=
+ some suggestions.</div>
+
+<div><br></div><div>This is <font face=3D"courier new, monospace">glibtop_g=
+et_proclist</font>:</div><div><br></div></div></div></div><blockquote style=
+=3D"margin:0 0 0 40px;border:none;padding:0px"><div dir=3D"ltr"><div><div><=
+div>
+
+<font face=3D"courier new, monospace">unsigned * glibtop_get_proclist (glib=
+top_proclist *buf, gint64 which, gint64 arg)</font></div></div></div></div>=
+</blockquote><div dir=3D"ltr"><div><br></div><div><font face=3D"courier new=
+, monospace">glibtop_proclist</font> is a struct, while the returned value =
+is an array of uint of <font face=3D"courier new, monospace">glibtop_procli=
+st.number</font> length, and it should be freed with <font face=3D"courier =
+new, monospace">g_free</font> .</div>
+
+<div><br></div><div>Here is my code (if you want you can see the full libra=
+ry at <a href=3D"https://github.com/ProGNOMmers/gtop">https://github.com/Pr=
+oGNOMmers/gtop</a> ):</div><div><br></div><div><font face=3D"courier new, m=
+onospace">module GTop</font></div>
+
+<div><font face=3D"courier new, monospace">=A0 extend FFI::Library</font></=
+div><div><font face=3D"courier new, monospace">=A0 ffi_lib &#39;libgtop-2.0=
+&#39;</font></div><div><font face=3D"courier new, monospace">=A0 typedef :i=
+nt64, =A0:gint64</font></div>
+
+<div><font face=3D"courier new, monospace">=A0 typedef :uint64, :guint64</f=
+ont></div><div><font face=3D"courier new, monospace">=A0 typedef :ulong, =
+=A0:uintptr_t</font></div><div><font face=3D"courier new, monospace">=A0 at=
+tach_function :process_list, :glibtop_get_proclist, [:pointer, :gint64, :gi=
+nt64], :uintptr_t</font></div>
+
+<div><font face=3D"courier new, monospace"><br></font></div><div><font face=
+=3D"courier new, monospace">=A0 module GLib</font></div><div><font face=3D"=
+courier new, monospace">=A0 =A0 extend FFI::Library</font></div><div><font =
+face=3D"courier new, monospace">=A0 =A0 ffi_lib &#39;libglib-2.0&#39;</font=
+></div>
+
+<div><font face=3D"courier new, monospace">=A0 =A0 typedef :pointer, :gpoin=
+ter</font></div><div><font face=3D"courier new, monospace">=A0 =A0 attach_f=
+unction :g_free, [:gpointer], :void</font></div><div><font face=3D"courier =
+new, monospace">=A0 end</font></div>
+
+<div><font face=3D"courier new, monospace">end</font></div><div><font face=
+=3D"courier new, monospace"><br></font></div><div><font face=3D"courier new=
+, monospace">s =3D GTop::ProcessList.new</font></div><div><font face=3D"cou=
+rier new, monospace">addr =3D GTop.process_list(s, 0, 0)</font></div>
+
+<div><font face=3D"courier new, monospace">ptr =3D FFI::Pointer.new(:pointe=
+r, addr)</font></div><div><font face=3D"courier new, monospace">ap =3D FFI:=
+:AutoPointer.new ptr, GTop::GLib.method(:g_free)</font></div><div><font fac=
+e=3D"courier new, monospace">if ap.null?</font></div>
+
+<div><font face=3D"courier new, monospace">=A0 &#39;ap is null&#39;</font><=
+/div><div><font face=3D"courier new, monospace">else</font></div><div><font=
+ face=3D"courier new, monospace">=A0 p ap.read_array_of_uint(s[:number])</f=
+ont></div>
+
+<div><font face=3D"courier new, monospace">end</font></div><div><font face=
+=3D"courier new, monospace">p Hash[ s.members.map { |m| [ m, s[m] ] } ]</fo=
+nt></div><div><br></div><div>Thank you!</div></div><div class=3D"gmail_extr=
+a">
+
+
+<br clear=3D"all"><div>--<div><br>Maurizio De Santis</div></div>
+<br><br><div class=3D"gmail_quote">2013/3/11 Wayne Meissner <span dir=3D"lt=
+r">&lt;<a href=3D"mailto:wmeissner@gmail.com" target=3D"_blank">wmeissner@g=
+mail.com</a>&gt;</span><br><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+
+<div><br></div>Isn&#39;t it <a href=3D"http://libglib-2.0.so" target=3D"_bl=
+ank">libglib-2.0.so</a> ?<div><br></div><div>i.e. try:</div><div><br></div>=
+<div>=A0 ffi_lib &#39;glib-2.0&#39;</div><div><br></div><div>If you just wa=
+nt to try and see if a library can be found by FFI, use this:</div>
+
+
+
+<div><br></div><div>=A0 ruby -rffi -e &#39;FFI::DynamicLibrary.open(&quot;<=
+a href=3D"http://libglib-2.0.so" target=3D"_blank">libglib-2.0.so</a>&quot;=
+, FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_LOCAL)&#39;<br=
+>
+
+
+</div>
+<div><br></div><div><br></div><div>As for the pointer result, NULL is handl=
+ed fine - just use Pointer#null? to check if the return value is NULL.</div=
+><div><div><div><br><br>On Monday, 11 March 2013 02:50:27 UTC+10, Maurizio =
+De Santis  wrote:</div>
+
+
+
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex=
+;border-left:1px #ccc solid;padding-left:1ex"><div><div><div dir=3D"ltr"><d=
+iv><div>Thank you, the porting is going well; if you want you can see the p=
+rogress at <a href=3D"https://github.com/ProGNOMmers/gtop" target=3D"_blank=
+">https://github.com/<u></u>ProGNOMmers/gtop</a> .<br>
+
+
+
+<br></div>Now I have some troubles: I need to use <span style=3D"font-famil=
+y:courier new,monospace">g_free</span> from <span style=3D"font-family:cour=
+ier new,monospace">glib</span>, so I tried to wrap it:<br>
+
+<br><span style=3D"font-family:courier new,monospace">require &#39;gtop&#39=
+;<br><br>module GTop<br>=A0 module GLib<br>=A0=A0=A0 extend FFI::Library<br=
+>=A0=A0=A0 ffi_lib &#39;libglib2.0&#39;<br><br>=A0=A0=A0 typedef :pointer, =
+:gpointer<br><br>
+
+
+
+
+=A0=A0=A0 attach_function :g_free, [:gpointer], :void<br>
+=A0 end<br>end</span><br><br>On my pc <a href=3D"http://libglib2.0.so" targ=
+et=3D"_blank">libglib2.0.so</a> is located inside /usr/lib/x86_64-linux-gnu=
+/ , which should be found since it is inside the ld paths, which on my mach=
+ine are<br>
+
+
+
+<br><span style=3D"font-family:courier new,monospace"># Multiarch support<b=
+r>
+
+/lib/i386-linux-gnu<br>/usr/lib/i386-linux-gnu<br>/lib/i686-linux-gnu<br>/u=
+sr/lib/i686-linux-gnu<br># libc default configuration<br>/usr/local/lib<br>=
+/usr/lib/nvidia-settings<br># Multiarch support<br>/lib/x86_64-linux-gnu<br=
+>
+
+
+
+
+
+/usr/lib/x86_64-linux-gnu<br>/usr/lib/x86_64-linux-gnu/mesa</span><br><br><=
+/div><div>but I get a LoadError:<br><br><span style=3D"font-family:courier =
+new,monospace">Could not open library &#39;libglib2.0&#39;: libglib2.0: can=
+not open shared object file: No such file or directory.<br>
+
+
+
+
+
+Could not open library &#39;<a href=3D"http://libglib2.0.so" target=3D"_bla=
+nk">libglib2.0.so</a>&#39;: <a href=3D"http://libglib2.0.so" target=3D"_bla=
+nk">libglib2.0.so</a>: cannot open shared object file: No such file or dire=
+ctory<br>
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+ffi-1.4.0/lib/ffi/<u></u>library.rb:123:in `block in ffi_lib&#39;<br>
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+ffi-1.4.0/lib/ffi/<u></u>library.rb:90:in `map&#39;<br>/home/user/.rbenv/ve=
+rsions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/ffi-1.4.0/lib/ffi/<u=
+></u>library.rb:90:in `ffi_lib&#39;<br>
+
+
+
+
+
+/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:6:in `&lt;module:GLib&gt;=
+&#39;<br>/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:4:in `&lt;module=
+:GTop&gt;&#39;<br>/home/user/github/me/gtop/lib/<u></u>gtop/glib.rb:3:in `&=
+lt;top (required)&gt;&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/=
+rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>/home/use=
+r/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/rubygems/=
+core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>
+
+
+
+
+
+/home/user/github/me/gtop/lib/<u></u>gtop.rb:7:in `&lt;module:GTop&gt;&#39;=
+<br>/home/user/github/me/gtop/lib/<u></u>gtop.rb:3:in `&lt;top (required)&g=
+t;&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.=
+0.<u></u>0/rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<b=
+r>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/site_ruby/2.0.<u></u>0/=
+rubygems/core_ext/kernel_<u></u>require.rb:45:in `require&#39;<br>/home/use=
+r/github/me/gtop/<u></u>Rakefile:4:in `block in &lt;top (required)&gt;&#39;=
+<br>
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>task.rb:228:in `call&#39;<br>
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>task.rb:228:in `block in execute&#39;<br>/home/=
+user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-1=
+0.0.3/lib/rake/<u></u>task.rb:223:in `each&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>task.rb:223:in `execute&#39;<br>/home/user/.rbe=
+nv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib=
+/rake/<u></u>task.rb:166:in `block in invoke_with_call_chain&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/2.0.0/monitor.<u></u>rb=
+:211:in `mon_synchronize&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0=
+/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>task.rb:159:in=
+ `invoke_with_call_chain&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>task.rb:152:in `invoke&#39;<br>/home/user/.rben=
+v/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10.0.3/lib/=
+rake/<u></u>application.rb:143:in `invoke_task&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>application.rb:101:in `block (2 levels) in top_=
+level&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.=
+0/<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:101:in `each&#39;<=
+br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>application.rb:101:in `block in top_level&#39;<=
+br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>ge=
+ms/rake-10.0.3/lib/rake/<u></u>application.rb:110:in `run_with_threads&#39;=
+<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>application.rb:95:in `top_level&#39;<br>/home/u=
+ser/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/rake-10=
+.0.3/lib/rake/<u></u>application.rb:73:in `block in run&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/lib/rake/<u></u>application.rb:160:in `standard_exception_handl=
+ing&#39;<br>/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/=
+<u></u>gems/rake-10.0.3/lib/rake/<u></u>application.rb:70:in `run&#39;<br>
+
+
+
+
+
+/home/user/.rbenv/versions/2.<u></u>0.0-p0/lib/ruby/gems/2.0.0/<u></u>gems/=
+rake-10.0.3/bin/rake:33:<u></u>in `&lt;top (required)&gt;&#39;<br>/home/use=
+r/.rbenv/versions/2.<u></u>0.0-p0/bin/rake:23:in `load&#39;<br>/home/user/.=
+rbenv/versions/2.<u></u>0.0-p0/bin/rake:23:in `&lt;main&gt;&#39;</span><br>
+
+
+
+
+
+<br></div><div>I tried to set LD_LIBRARY_PATH too, but without success.<br>=
+<br></div><div>Oh, and I have another doubt: gpointer is the return value o=
+f `glibtop_get_proclist&#39;, and can be either `NULL&#39; on error or a `u=
+nsigned *&#39; list of pids.<br>
+
+
+
+
+
+</div><div>I defined it as :pointer, it is correct? could the NULL value gi=
+ve problems? should I manage it?<br></div></div></div></div><div><br clear=
+=3D"all"><div>--<div><br>Maurizio De Santis</div></div>
+<br><br><div class=3D"gmail_quote">2013/3/5 Wayne Meissner <span dir=3D"ltr=
+">&lt;<a>wmei...@gmail.com</a>&gt;</span><br><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
+><div>
+
+
+
+<div>
+
+<div><br></div>:buffer_in, and :buffer_out are optimization hints for VMs w=
+hen they need to copy data from VM heap memory to native memory:<div><br></=
+div><div>:buffer_in means &quot;allocate some temporary native memory, copy=
+ the contents of this object to it, then pass the temporary memory address =
+to the function&quot;</div>
+
+
+
+
+
+<div><br></div><div><div>:buffer_out means &quot;allocate some temporary na=
+tive memory, pass that address to the function, then afterwards, copy the c=
+ontents of the temporary memory area back to the VM heap object&quot;</div>
+
+
+
+
+
+</div><div><br></div><div>:pointer and :buffer_inout are analogous and mean=
+ &quot;do both of the above&quot; - i.e. copies both in to and out of the t=
+emporary memory area.</div><div><br></div><div>If you&#39;re using a Memory=
+Pointer as your memory (as Struct does), then it is already native, so it d=
+oesn&#39;t matter, so you can just use :pointer.</div>
+
+
+
+
+
+<div><br></div><div>The original rationale behind the :buffer_in and :buffe=
+r_out directives was that allocating VM heap objects is really cheap, and m=
+ost VMs have a very hard time managing native memory allocations. =A0So fro=
+m an implementation point of view, it was better to bias towards VM heap al=
+locations and copy data in/out of temporary native memory. =A0Thats where F=
+FI::Buffer came from - it was VM heap memory that was always copied to/from=
+ native memory when passed as a parameter.</div>
+
+
+
+
+
+<div><br></div><div>In practice, people found it difficult and confusing to=
+ understand, so I just made native allocation management work as best it co=
+uld in JRuby-1.7.</div><div><br></div><div><br></div><div>tl;dr - just use =
+:pointer - it will work just fine, at an occasional minor performance penal=
+ty.</div>
+
+
+
+
+
+<div><br></div><div><br></div><div><div>On Monday, 4 March 2013 11:45:38 UT=
+C+10, Postmodern  wrote:</div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+
+ =20
+   =20
+ =20
+  <div bgcolor=3D"#FFFFFF" text=3D"#000000"><div>
+    <div>You want :pointer in this case. I
+      believe :buffer_out is a meant as a hint to FFI that data will be
+      written back into an Array of chars/ints.<br>
+      <br>
+      On 03/03/2013 05:41 PM, Maurizio De Santis wrote:<br>
+    </div>
+    </div><blockquote type=3D"cite"><div>
+      <div dir=3D"ltr">
+        <div>
+          <div>Another question: <span style=3D"font-family:courier new,mon=
+ospace">glibtop_get_cpu</span> takes a struct as
+            parameter, and fills it with informations about cpu.<br>
+            <br>
+          </div>
+          I declared it as <br>
+          <br>
+          <span style=3D"font-family:courier new,monospace">attach_function
+            :glibtop_get_cpu, [:pointer], :void</span><br>
+          <br>
+        </div>
+        I think I can substitute <span style=3D"font-family:courier new,mon=
+ospace">:pointer</span> with <span style=3D"font-family:courier new,monospa=
+ce">:buffer_out</span> ,
+        am I right?<br>
+      </div>
+      </div><div><br clear=3D"all">
+        <div>--
+          <div><br>
+            Maurizio De Santis</div>
+        </div>
+        <br>
+        <br>
+        <div class=3D"gmail_quote">2013/3/4 Maurizio De Santis <span dir=3D=
+"ltr">&lt;<a>desantis...@gmail.com</a>&gt;</span><br>
+          <blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
+er-left:1px #ccc solid;padding-left:1ex"><div>
+            <div dir=3D"ltr">Thank you a lot, your suggestions are
+              precious.<br>
+            </div>
+            </div><div>
+              <div>
+                <div><br clear=3D"all">
+                  <div>--
+                    <div><br>
+                      Maurizio De Santis</div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class=3D"gmail_quote">2013/3/3 postmodern <span dir=
+=3D"ltr">&lt;<a>postmod...@gmail.com</a>&gt;</span><br>
+                    <blockquote class=3D"gmail_quote" style=3D"margin:0 0 0=
+ .8ex;border-left:1px #ccc solid;padding-left:1ex">
+                      <div bgcolor=3D"#FFFFFF" text=3D"#000000"><div><div>
+                        <div>You can simplify that code to just:<br>
+                          <blockquote>
+                            <pre><span style=3D"font-family:courier new,mon=
+ospace">a =3D LibGtop::GlibtopCpu.new
+LibGtop.glibtop_get_cpu(a)
+p a[:frequency]</span></pre>
+                          </blockquote>
+                          This will allocate memory for a GlibtopCpu
+                          struct, pass the pointer to the memory to
+                          glibtop_get_cpu and access to the struct field
+                          within the memory. Once you are done with the
+                          &quot;a&quot; variable, Ruby will just GC it and =
+FFI
+                          will free the underlying memory.
+                          <div>
+                            <div><br>
+                              <br>
+                              On 03/02/2013 07:54 PM, Maurizio De Santis
+                              wrote:<br>
+                            </div>
+                          </div>
+                        </div>
+                        </div></div><div>
+                          <div>
+                            <blockquote type=3D"cite"><div><div>
+                              <div dir=3D"ltr">
+                                <div>
+                                  <div>Thank you. Now, the code runs
+                                    without errors:<br>
+                                    <br>
+                                    <span style=3D"font-family:courier new,=
+monospace">require &#39;ffi&#39;<br>
+                                      <br>
+                                      module LibGtop<br>
+                                      =A0 <br>
+                                      =A0 extend FFI::Library<br>
+                                      =A0 ffi_lib &#39;libgtop-2.0&#39;<br>
+                                      <br>
+                                      =A0 typedef :uint64, :guint64<br>
+                                      <br>
+                                      =A0 attach_function
+                                      :glibtop_get_cpu, [:pointer],
+                                      :void<br>
+                                      <br>
+                                      =A0 class GlibtopCpu &lt;
+                                      FFI::Struct<br>
+                                      =A0=A0=A0 layout :flags,=A0=A0=A0=A0=
+=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :total=
+,=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :user,=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :nice,=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :sys,=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :idle,=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :iowai=
+t,=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :irq,=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :softi=
+rq,=A0=A0=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :frequ=
+ency,=A0=A0=A0=A0
+                                      :guint64,<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+total,=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+user,=A0=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+nice,=A0=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+sys,=A0=A0=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+idle,=A0=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+iowait,=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+irq,=A0=A0=A0=A0
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+softirq,
+                                      [:guint64, 32],<br>
+                                      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 :xcpu_=
+flags,=A0=A0=A0
+                                      :guint64<br>
+                                      =A0 end<br>
+                                      <br>
+                                      end<br>
+                                      <br>
+                                      <br>
+                                      # taken from <a href=3D"https://githu=
+b.com/ffi/ffi/wiki/Structs" target=3D"_blank">https://github.com/ffi/ffi/<u=
+></u>wik<u></u>i/Structs</a><br>
+                                      pointer =3D FFI::MemoryPointer.new
+                                      :uint64, LibGtop::GlibtopCpu.size,
+                                      true<br>
+                                      a =3D LibGtop::GlibtopCpu.new
+                                      pointer<br>
+                                      LibGtop.glibtop_get_cpu(a)<br>
+                                      p a[:frequency]</span><br>
+                                    <br>
+                                  </div>
+                                  Another question: I initialized the
+                                  pointer with <span style=3D"font-family:c=
+ourier new,monospace">clear =3D true</span>,
+                                  because the struct pointed by the
+                                  pointer gets filled by
+                                  glibtop_get_cpu, and then must be
+                                  managed by Ruby, since <span style=3D"fon=
+t-family:courier new,monospace">glibtop_get_cpu<font face=3D"arial,helvetic=
+a,sans-serif">
+                                      just fills the struct. Am I wrong?</f=
+ont></span><br>
+                                </div>
+                              </div>
+                              </div></div><div><br clear=3D"all">
+                                <div>--
+                                  <div><br>
+                                    Maurizio De Santis</div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class=3D"gmail_quote">2013/3/3
+                                  postmodern <span dir=3D"ltr">&lt;<a>postm=
+od...@gmail.com</a>&gt;</span><br>
+                                  <blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+                                    <div bgcolor=3D"#FFFFFF" text=3D"#00000=
+0"><div><div>
+                                      <div>You need to find out
+                                        guint64&#39;s underlying type, and
+                                        create the typedef in Ruby:<br>
+                                        <br>
+                                        <blockquote>
+                                          <pre>module <span style=3D"font-f=
+amily:courier new,monospace">LibGtop</span>
+  extend FFI::Library
+
+  typedef :uint64, :guint64
+end
+</pre>
+                                        </blockquote>
+                                        <div>
+                                          <div> <br>
+                                            On 03/02/2013 06:06 PM,
+                                            Maurizio De Santis wrote:<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div></div><blockquote type=3D"cite"=
+><div><div>
+                                        <div>
+                                          <div>I am writing a libgtop2
+                                            wrapper using ffi in order
+                                            to learn how to use ffi; I
+                                            am new to ffi, so I have a
+                                            lot of doubts.<br>
+                                            <br>
+                                            libgtop2 lets get system and
+                                            processes informations (cpu
+                                            usage, memory usage, ...).<br>
+                                            <br>
+                                            Here some informations about
+                                            <span style=3D"font-family:cour=
+ier new,monospace">glibtop_get_cpu</span>:<br>
+                                            <br>
+                                            <span style=3D"font-family:cour=
+ier new,monospace">Library
+                                              function
+                                              `glibtop_get_cpu&#39;:<br>
+                                              <br>
+                                              =A0=A0=A0=A0 void glibtop_get=
+_cpu
+                                              (glibtop_cpu *buf);<br>
+                                              =A0=A0=A0=A0 void
+                                              glibtop_get_cpu_l (glibtop
+                                              *server, glibtop_cpu
+                                              *buf);<br>
+                                              <br>
+                                              =A0=A0 Declaration of
+                                              `glibtop_cpu&#39; in
+                                              `&lt;glibtop/cpu.h&gt;&#39;:<=
+br>
+                                              <br>
+                                              =A0=A0=A0=A0 typedef struct
+                                              _glibtop_cpu=A0=A0=A0=A0
+                                              glibtop_cpu;<br>
+                                              <br>
+                                              =A0=A0=A0=A0 struct _glibtop_=
+cpu<br>
+                                              =A0=A0=A0=A0 {<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 guin=
+t64=A0=A0 flags,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 total,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 user,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 nice,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 sys,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 idle,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 iowait,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 irq,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 softirq,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 frequency,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_total
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_user
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_nice
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_sys=A0
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_idle
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_iowait
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_irq
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_softirq
+                                              [GLIBTOP_NCPU],<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0 xcpu_flags;<br>
+                                              =A0=A0=A0=A0 };<br>
+                                              <br>
+                                              ...</span><br>
+                                            <br>
+                                            <br>
+                                            Here is what I wrote:<br>
+                                            <span style=3D"font-family:cour=
+ier new,monospace"><br>
+                                              require &#39;ffi&#39;<br>
+                                              <br>
+                                              class GlibtopCpu &lt;
+                                              FFI::Struct<br>
+                                              =A0 layout :flags,=A0=A0=A0=
+=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :tot=
+al,=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :use=
+r,=A0=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :nic=
+e,=A0=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :sys=
+,=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :idl=
+e,=A0=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :iow=
+ait,=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :irq=
+,=A0=A0=A0=A0=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :sof=
+tirq,=A0=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :fre=
+quency,=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_total,=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_user,=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_nice,=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_sys,=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_idle,=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_iowait,=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_irq,=A0=A0=A0=A0
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_softirq,
+                                              :guint64,<br>
+                                              =A0=A0=A0=A0=A0=A0=A0=A0 :xcp=
+u_flags,=A0=A0
+                                              :guint64<br>
+                                              end<br>
+                                              <br>
+                                              module LibGtop<br>
+                                              =A0 <br>
+                                              =A0 extend FFI::Library<br>
+                                              =A0 ffi_lib &#39;libgtop-2.0&=
+#39;<br>
+                                              =A0 attach_function
+                                              :glibtop_get_cpu,
+                                              [:pointer], :void<br>
+                                              <br>
+                                              end<br>
+                                              <br>
+                                              # taken from <a href=3D"https=
+://github.com/ffi/ffi/wiki/Structs" target=3D"_blank">https://github.com/ff=
+i/ffi/<u></u>wik<u></u>i/Structs</a><br>
+                                              pointer =3D
+                                              FFI::MemoryPointer.new
+                                              :byte, GlibtopCpu.size,
+                                              false<br>
+                                              a =3D GlibtopCpu.new pointer<=
+br>
+                                              p
+                                              LibGtop.glibtop_get_cpu(a)</s=
+pan><br>
+                                            <br>
+                                            Executing this gives
+                                            (unsurprisingly) an error:<br>
+                                            <br>
+                                            <span style=3D"font-family:cour=
+ier new,monospace">$ ruby
+                                              lib/lib_gtop.rb <br>
+                                              /home/izietto/.rbenv/versions=
+/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/li=
+b/ffi/types.<u></u>rb<u></u>:57:in
+
+
+                                              `find_type&#39;: unable to
+                                              resolve type &#39;guint64&#39=
+;
+                                              (TypeError)<br>
+                                              =A0=A0=A0 from
+                                              /home/izietto/.rbenv/versions=
+/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/li=
+b/ffi/struct.<u></u>r<u></u>b:316:in
+
+
+                                              `find_type&#39;<br>
+                                              =A0=A0=A0 from
+                                              /home/izietto/.rbenv/versions=
+/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/li=
+b/ffi/struct.<u></u>r<u></u>b:309:in
+
+
+                                              `find_field_type&#39;<br>
+                                              =A0=A0=A0 from
+                                              /home/izietto/.rbenv/versions=
+/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/li=
+b/ffi/struct.<u></u>r<u></u>b:351:in
+
+
+                                              `array_layout&#39;<br>
+                                              =A0=A0=A0 from
+                                              /home/izietto/.rbenv/versions=
+/<u></u><u></u>2.0.0-p0/lib/ruby/gems/2.0.0/<u></u>g<u></u>ems/ffi-1.4.0/li=
+b/ffi/struct.<u></u>r<u></u>b:261:in
+
+
+                                              `layout&#39;<br>
+                                              =A0=A0=A0 from
+                                              lib/lib_gtop.rb:4:in
+                                              `&lt;class:GlibtopCpu&gt;&#39=
+;<br>
+                                              =A0=A0=A0 from
+                                              lib/lib_gtop.rb:3:in
+                                              `&lt;main&gt;&#39;</span><br>
+                                            <br>
+                                            It doesn&#39;t find the <span s=
+tyle=3D"font-family:courier new,monospace">guint64</span>
+                                            type; how should I declare
+                                            it?<br>
+                                            <br>
+                                            Also: <span style=3D"font-famil=
+y:courier new,monospace">xcpu_total,
+                                              xcpu_user<span style=3D"font-=
+family:arial,sans-serif">
+                                                are arrays... how should
+                                                I declare them?<br>
+                                                <br>
+                                                Finally... if someone
+                                                could give me an
+                                                explanation and an
+                                                example of how to
+                                                implement the bind to
+                                                glibtop_get_cpu, I would
+                                                appreciate it very much
+                                                :)</span></span> -- <br>
+                                            =A0<br>
+                                            --- <br>
+                                          </div>
+                                        </div>
+                                        You received this message
+                                        because you are subscribed to
+                                        the Google Groups &quot;ruby-ffi&qu=
+ot;
+                                        group.<br></div></div>
+                                        To unsubscribe from this group
+                                        and stop receiving emails from
+                                        it, send an email to <a>ruby-ffi+u.=
+..@<u></u>googlegroups.com</a><u></u>.
+                                        <div><div><br>
+                                          For more options, visit <a href=
+=3D"https://groups.google.com/groups/opt_out" target=3D"_blank">https://gro=
+ups.google.com/<u></u>grou<u></u>ps/opt_out</a>.<br>
+                                          =A0<br>
+                                          =A0<br>
+                                        </div>
+                                      </div></blockquote><div>
+                                      <span><font color=3D"#888888"> <br>
+                                          <br>
+                                          <pre cols=3D"72">--=20
+Blog: <a href=3D"http://postmodern.github.com/" target=3D"_blank">http://po=
+stmodern.github.com/</a>
+GitHub: <a href=3D"https://github.com/postmodern" target=3D"_blank">https:/=
+/github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+                                        </font></span></div></div>
+                                  </blockquote>
+                                </div>
+                                <br>
+                              </div><div>
+                              -- <br>
+                              =A0<br>
+                              --- <br>
+                              You received this message because you are
+                              subscribed to the Google Groups &quot;ruby-ff=
+i&quot;
+                              group.<br></div>
+                              To unsubscribe from this group and stop
+                              receiving emails from it, send an email to
+                              <a>ruby-ffi+u...@<u></u>googlegroups.com</a><=
+u></u>.<div><br>
+                              For more options, visit <a href=3D"https://gr=
+oups.google.com/groups/opt_out" target=3D"_blank">https://groups.google.com=
+/<u></u>grou<u></u>ps/opt_out</a>.<br>
+                              =A0<br>
+                              =A0<br>
+                            </div></blockquote><div>
+                            <br>
+                            <br>
+                            <pre cols=3D"72">--=20
+Blog: <a href=3D"http://postmodern.github.com/" target=3D"_blank">http://po=
+stmodern.github.com/</a>
+GitHub: <a href=3D"https://github.com/postmodern" target=3D"_blank">https:/=
+/github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+                          </div></div>
+                        </div>
+                      </div>
+                    </blockquote>
+                  </div>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+        <br>
+      </div><div>
+      -- <br>
+      =A0<br>
+      --- <br>
+      You received this message because you are subscribed to the Google
+      Groups &quot;ruby-ffi&quot; group.<br></div>
+      To unsubscribe from this group and stop receiving emails from it,
+      send an email to <a>ruby-ffi+u...@<u></u>googlegroups.com</a><u></u>.=
+<div><br>
+      For more options, visit <a href=3D"https://groups.google.com/groups/o=
+pt_out" target=3D"_blank">https://groups.google.com/<u></u>grou<u></u>ps/op=
+t_out</a>.<br>
+      =A0<br>
+      =A0<br>
+    </div></blockquote><div>
+    <br>
+    <br>
+    <pre cols=3D"72">--=20
+Blog: <a href=3D"http://postmodern.github.com/" target=3D"_blank">http://po=
+stmodern.github.com/</a>
+GitHub: <a href=3D"https://github.com/postmodern" target=3D"_blank">https:/=
+/github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+  </div></div><span><font color=3D"#888888">
+
+</font></span></blockquote></div></div></div><span><font color=3D"#888888">=
+<div><div>
+
+<p></p>
+
+-- <br>
+=A0<br>
+--- <br>
+You received this message because you are subscribed to a topic in the Goog=
+le Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this topic, visit <a href=3D"https://groups.google.com/=
+d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=3Den" target=3D"_blank">https:/=
+/groups.google.com/d/<u></u>topic/ruby-ffi/sG-TsAHcWiM/<u></u>unsubscribe?h=
+l=3Den</a>.<br>
+
+
+
+</div></div>
+To unsubscribe from this group and all its topics, send an email to <a>ruby=
+-ffi+u...@<u></u>googlegroups.com</a>.</font></span><div><div><div>
+
+<br>
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+" target=3D"_blank">https://groups.google.com/<u></u>groups/opt_out</a>.<br=
+>
+=A0<br>
+=A0<br>
+</div></div></div></blockquote></div><br></div>
+</blockquote></div>
+
+<p></p>
+
+-- <br>
+=A0<div><div><br>
+--- <br>
+You received this message because you are subscribed to a topic in the Goog=
+le Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this topic, visit <a href=3D"https://groups.google.com/=
+d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=3Den" target=3D"_blank">https:/=
+/groups.google.com/d/topic/ruby-ffi/sG-TsAHcWiM/unsubscribe?hl=3Den</a>.<br=
+>
+To unsubscribe from this group and all its topics, send an email to <a href=
+=3D"mailto:ruby-ffi%2Bunsubscribe@googlegroups.com" target=3D"_blank">ruby-=
+ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+" target=3D"_blank">https://groups.google.com/groups/opt_out</a>.<br>
+=A0<br>
+=A0<br>
+</div></div></blockquote></div><br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+--089e01229032131b1004d7afd59e--

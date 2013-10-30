@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs452757and;
+        Sun, 20 Dec 2009 01:53:41 -0800 (PST)
+Received: by 10.114.105.15 with SMTP id d15mr4005292wac.18.1261302820536;
+        Sun, 20 Dec 2009 01:53:40 -0800 (PST)
+Return-Path: <3IvQtSwgJCI8EB1I137Ez5t14.v75ADuH-yy1z77z4xzA7D8B.v75@listserv.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 27si6638458pzk.9.2009.12.20.01.53.39;
+        Sun, 20 Dec 2009 01:53:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3IvQtSwgJCI8EB1I137Ez5t14.v75ADuH-yy1z77z4xzA7D8B.v75@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3IvQtSwgJCI8EB1I137Ez5t14.v75ADuH-yy1z77z4xzA7D8B.v75@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=3IvQtSwgJCI8EB1I137Ez5t14.v75ADuH-yy1z77z4xzA7D8B.v75@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi41 with SMTP id 41sf1758945pxi.23
+        for <headius@headius.com>; Sun, 20 Dec 2009 01:53:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type;
+        bh=DjW8ErQMd5fD8fEtCiWJfxoyKx0uPBgQ9GiVqVksgZE=;
+        b=rHvqnnOsAEUj2ZRmaaV6R4tdzBdeIsr0xbpeYCwY4XNLA5DgEZVpwe6LjCcdS8YZCs
+         d1STY/p+Ag/az+TXYqZw7dnYtXyhXqW2fGc/nUt9AraI83gQbZhQA0uvrF3eleAKr5aE
+         OXK8FX/3d2K1TVAtNBxI1XzOVdbwq0IQq8ilo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        b=xLz4bcJkoO5KaH+xuB+7GKbsNVXEiSg2GSntI76xKHgve9Sr7ny5j8kYRqn3mOfwaN
+         F4UMeNVjOtjzKQ+pAHGCYHiAzacbrnqoSXzZXE31vfKS67BvKsW2Zv+7sCpTPt70bMuI
+         1egzCNDsmoMny8Ny4QCrlLy966XLcCoEihNJ8=
+Received: by 10.115.81.10 with SMTP id i10mr715134wal.26.1261302818166;
+        Sun, 20 Dec 2009 01:53:38 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.248.2 with SMTP id v2ls274063wah.2.p; Sun, 20 Dec 2009 
+	01:53:37 -0800 (PST)
+Received: by 10.114.5.19 with SMTP id 19mr1327478wae.8.1261302817315;
+        Sun, 20 Dec 2009 01:53:37 -0800 (PST)
+Received: by 10.114.5.19 with SMTP id 19mr1327477wae.8.1261302817290;
+        Sun, 20 Dec 2009 01:53:37 -0800 (PST)
+Return-Path: <vsizikov@gmail.com>
+Received: from mail-ew0-f216.google.com (mail-ew0-f216.google.com [209.85.219.216])
+        by gmr-mx.google.com with ESMTP id 1si1217395pxi.5.2009.12.20.01.53.35;
+        Sun, 20 Dec 2009 01:53:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of vsizikov@gmail.com designates 209.85.219.216 as permitted sender) client-ip=209.85.219.216;
+Received: by ewy8 with SMTP id 8so5544335ewy.15
+        for <ruby-ffi@googlegroups.com>; Sun, 20 Dec 2009 01:53:35 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.216.89.195 with SMTP id c45mr2139959wef.38.1261302815046; Sun, 
+	20 Dec 2009 01:53:35 -0800 (PST)
+In-Reply-To: <3454c9680912200148o49a7e4baxcbb8a1f9ad2dee2f@mail.gmail.com>
+References: <51b3741a-22cf-45b0-bebb-d47c8df92e57@g26g2000yqe.googlegroups.com>
+	 <3454c9680912180025s288a8e81gb89913c0ce304d7e@mail.gmail.com>
+	 <20091218090513.a27833fc.jon.forums@gmail.com>
+	 <6d99087d-4325-4a6d-8196-f4a38d55ed62@l13g2000yqb.googlegroups.com>
+	 <4ccee320912190434s4bb0a1eeo35fcdcff6b15ac27@mail.gmail.com>
+	 <71166b3b0912190608y2a8118afma509f7657f35304@mail.gmail.com>
+	 <a3999696-c6a9-4b96-aff0-251b21b39ebf@s31g2000yqs.googlegroups.com>
+	 <3454c9680912200148o49a7e4baxcbb8a1f9ad2dee2f@mail.gmail.com>
+Date: Sun, 20 Dec 2009 10:53:34 +0100
+Message-ID: <3454c9680912200153g3066afd4i922f53afde413011@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: unable to find method?
+From: Vladimir Sizikov <vsizikov@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of vsizikov@gmail.com designates 209.85.219.216 as permitted sender) 
+	smtp.mail=vsizikov@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: vsizikov@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3ba3f9702566bcf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/64238d1aed6ae718
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On Sun, Dec 20, 2009 at 10:48 AM, Vladimir Sizikov <vsizikov@gmail.com> wrote:
+> Same here, the sample crashes on MRI 1.8.6 (mingw) and 1.8.7 (mswin).
+> But works just fine with JRuby 1.5.0.dev. :)
+
+But I think this is not a good practice doing extend FFI::Library
+right at the *top* level.
+Once I wrapped this top-level stuff into a standalone library class,
+everything started to work with MRI as well.
+
+Thanks,
+  --Vladimir

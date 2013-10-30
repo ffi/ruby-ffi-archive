@@ -1,0 +1,20 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Performance help</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Performance help</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Shawn Anderson <shawn42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/31/09 1:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">I&#39;m seeing my ffi version of chipmunk bindings are about 10 times slower.  Can any experts take a look and tell me if I&#39;m doing something wrong?<br><br><a href="http://github.com/shawn42/chipmunk-ffi">http://github.com/shawn42/chipmunk-ffi</a><br>
+
+<br>you will need ffi 0.6 and nice-ffi 0.2 and chipmunk built from svn ( <a href="http://code.google.com/p/chipmunk-physics/source/checkout">http://code.google.com/p/chipmunk-physics/source/checkout</a> )<br><br>/Shawn<br>
+
+<br>perf test:<br><br>require &#39;rubygems&#39;<br>require &#39;benchmark&#39;<br><br>n = 10000<br>Benchmark.bm do |x|<br>  # old bindings<br>  require &#39;chipmunk&#39;<br>  x.report(&quot;cp vec2    &quot;) {<br>    n.times do<br>
+
+      vec2(4,3)<br>    end<br>  }<br>  x.report(&quot;cp vec2 sub&quot;) {<br>    n.times do<br>      vec2(4,3)-vec2(5,6)<br>    end<br>  }<br>  # new bindings<br>  require &#39;chipmunk-ffi&#39;<br>  x.report(&quot;cp-ffi vec2&quot;) {<br>
+
+    n.times do<br>      vec2(4,3)<br>    end<br>  }<br>  x.report(&quot;cp vec2 ffi sub&quot;) {<br>    n.times do<br>      vec2(4,3)-vec2(5,6)<br>    end<br>  }<br>end<br>
+
+</div></body>
+</html>
+</table></div>

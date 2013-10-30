@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Standardizing the FFI specs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Standardizing the FFI specs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/15/09 9:27 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I think that it is in the best interest of FFI, if it is truly to be a cross implementation API, that all new API additions stop and we begin to formalize a 1.0 API.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>This would allow us a clean, consistent target for all implementations. In addition, it would simplify what to spec.
+</pre></blockquote><pre wrap>
+
+
+As part of the cross impl API coordination and updated specs, what should be the API and usage example documentation plan?
+
+From my perspective there are at least three key areas to be considered:
+
+1) The actual code that impl's the API and the accompanying specs
+2) The comments embedded in (1)
+3) FFI project documentation
+
+Point (1) is mostly mute as the code (and code style) should speak for itself.  Point (2) is likely addressed by agreeing on what minimal comments should be included and (hopefully) standardizing on <a class="moz-txt-link-freetext" href="http://yardoc.org">http://yardoc.org</a>.
+
+I think point (3) is much more interesting in the bigger picture of enabling wider usage of FFI across impl's by enabling developers of different experience levels to quickly get up to speed on using the API.
+
+While I believe the definitive behavioral documentation will always be the actual source and the specs source, relying on just this form of doco is a very poor idea.  I've personally flip-flopped over the years on this issue as everyone ramps up a bit differently, but I strongly believe in the following...
+
+* Core developers identify and communicate the fundamental concepts and objects (e.g. - Types, GC, Struct, MemoryPointer, Buffer, etc).  Specifically, the core developers should ensure that doco like <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/core-concepts">http://wiki.github.com/ffi/ffi/core-concepts</a> is valid and has the right conceptual scope.
+
+* Core developers provide enough code/spec comments so that non-core "enthusiast" developers can easily generate higher-level documentation and examples.  Specifically, doco like <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/examples">http://wiki.github.com/ffi/ffi/examples</a> and <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/windows-examples">http://wiki.github.com/ffi/ffi/windows-examples</a> and <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/enums">http://wiki.github.com/ffi/ffi/enums</a> benefits from the more experienced users among us.
+
+* Users contribute back to the project by enhancing and maintaining a projects doco.  GitHub provides great tools for this with their wiki and user/project pages (<a class="moz-txt-link-freetext" href="http://pages.github.com/">http://pages.github.com/</a>)  How many times do we as users ask a question on the ML, get an answer from one of the core developers who took the time to provide a detailed response, and then we fail to contribute back by summarizing and capturing the response in the project wiki pages?
+
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

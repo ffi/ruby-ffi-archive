@@ -1,0 +1,115 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.54.212 with SMTP id r20cs35137bkg;
+        Tue, 21 Sep 2010 14:24:16 -0700 (PDT)
+Received: by 10.151.148.15 with SMTP id a15mr15131ybo.123.1285104255475;
+        Tue, 21 Sep 2010 14:24:15 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKv5_JnsDxD9xOTkBBoEWi4JtA@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id p21si10036475ybk.87.2010.09.21.14.24.14;
+        Tue, 21 Sep 2010 14:24:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKv5_JnsDxD9xOTkBBoEWi4JtA@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKv5_JnsDxD9xOTkBBoEWi4JtA@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCKv5_JnsDxD9xOTkBBoEWi4JtA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyh3 with SMTP id 3sf6496472gyh.7
+        for <headius@headius.com>; Tue, 21 Sep 2010 14:24:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=hDqzjctZLidGhsAgsF5fC8NPZaVdByGpXx24hbxpRoo=;
+        b=TxmGOaIcZaEsHAlgY6JwcvdBSMNBTQZLfLEQskiIHiuJOsCl9IQxlgTnU7igzFmsnk
+         Tcb66WOubrcOob9htaneuXTo81wZoCIQ0g0TsEnXtzcQcT6uFzBA2VF+Z0tS/1QrQGBi
+         dXzlT9StN/eVn76wIQaYTbIP+CO8ynWpK+7Rg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=MN+uUcg/kruc4t3NK/WOareUtyUwSUVl63y1dV4BrMPV+0C2a998B5UNJoSf2xLY/P
+         XyujSeFmv32xGkhAX5BGlvIX9wATRS/febKSrQnd+GLh+AEPhMj44kTfz4y6GDZBDVpo
+         6fT5JERzvliwNN8YXOkpC8WHxBvdMW64fgYis=
+Received: by 10.91.42.38 with SMTP id u38mr1464555agj.50.1285104253589;
+        Tue, 21 Sep 2010 14:24:13 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.103.16 with SMTP id a16ls4008agc.3.p; Tue, 21 Sep 2010
+ 14:24:13 -0700 (PDT)
+Received: by 10.150.52.11 with SMTP id z11mr7507ybz.4.1285104253353;
+        Tue, 21 Sep 2010 14:24:13 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.179.34 with SMTP id g34mr410467anp.55.1285094730700; Tue,
+ 21 Sep 2010 11:45:30 -0700 (PDT)
+Received: by e20g2000vbn.googlegroups.com with HTTP; Tue, 21 Sep 2010 11:45:30
+ -0700 (PDT)
+Date: Tue, 21 Sep 2010 11:45:30 -0700 (PDT)
+X-IP: 86.142.159.104
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US;
+ rv:1.9.1.11) Gecko/20100701 Firefox/3.5.11,gzip(gfe)
+Message-ID: <dc045c56-9d59-42b4-a3aa-350ccfec139e@e20g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] ffi not compiling on mac os x??
+From: Linux_cat <sarndeepnijjar@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sarndeepnijjar@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+error output:
+
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+extconf.rb
+checking for ffi_call() in -lffi... no
+checking for ffi_raw_call()... no
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --
+host.
+    If a cross compiler is detected then cross compile mode will be
+used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+recognized
+configure: error: /bin/sh /Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext/
+ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+Configuring libffi for rch
+configure: WARNING: If you wanted to set the --build type, don't use --
+host.
+    If a cross compiler is detected then cross compile mode will be
+used.
+Invalid configuration `rch-apple-darwin': machine `rch-apple' not
+recognized
+configure: error: /bin/sh /Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext/
+ffi_c/libffi/config.sub rch-apple-darwin failed
+make[1]: *** No targets specified and no makefile found.  Stop.
+make: *** [/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext/ffi_c/
+libffi/.libs/libffi_convenience.a] Error 2
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/
+ffi-0.6.3 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext/ffi_c/
+gem_make.out
+
+
+
+any ideas?

@@ -1,0 +1,204 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.51.207 with SMTP id e15cs77329bkg;
+        Thu, 2 Sep 2010 14:44:38 -0700 (PDT)
+Received: by 10.90.33.15 with SMTP id g15mr114365agg.97.1283463864548;
+        Thu, 02 Sep 2010 14:44:24 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIrlxJa3GxC2tYDkBBoEZgfevA@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTP id z10si1544496vcl.146.2010.09.02.14.44.23;
+        Thu, 02 Sep 2010 14:44:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxC2tYDkBBoEZgfevA@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxC2tYDkBBoEZgfevA@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCIrlxJa3GxC2tYDkBBoEZgfevA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws14 with SMTP id 14sf396142vws.7
+        for <headius@headius.com>; Thu, 02 Sep 2010 14:44:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=xqvivvbsiI8iv1QlpD5xADtzbQY0yhu9l2U0UqR1r2Q=;
+        b=1vk7y69VGTBu1PdiVfT/lcx27va6IoNxc4SVF8727WsxkHR1EymxPTU48m0wtezl12
+         /rxz5Ne5ny3a+KOkRziwdcSOJ5lBsXHvJ9B9bfIV2K7RsXB0RIAtwLj2Vbsqvu0D4tj5
+         1NH53thVwUg+KzKRvM73Fu23J1V15F+GTosR4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=4GP1U+IYxHqgUiPZ4FFc62oFb7t7Cl0sn+pVKHoOjnFaWvJyMP+fToQA563twaDR/T
+         F4mDK30ZRrGfRkjADcw40fMDpd+8WMci9dHXKsj1Ex1KsykuGNgjDFdFES2aVbBJjz4o
+         pXMpRY8jrEwpKi7r52iVXFPPwW7rrrymN7/O8=
+Received: by 10.220.123.103 with SMTP id o39mr290913vcr.45.1283463862595;
+        Thu, 02 Sep 2010 14:44:22 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.101.41 with SMTP id a41ls347088vco.2.p; Thu, 02 Sep 2010
+ 14:44:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.117.14 with SMTP id u14mr687525anm.65.1283463861936; Thu,
+ 02 Sep 2010 14:44:21 -0700 (PDT)
+Received: by t20g2000yqa.googlegroups.com with HTTP; Thu, 2 Sep 2010 14:44:21
+ -0700 (PDT)
+Date: Thu, 2 Sep 2010 14:44:21 -0700 (PDT)
+In-Reply-To: <AANLkTimkDH=fX3sCtjY+3H+phDJ-jSG1pYZj3wybjq+n@mail.gmail.com>
+X-IP: 97.124.68.247
+References: <857a7e34-f026-467d-87d0-3a18b81a1b35@i13g2000yqd.googlegroups.com>
+ <AANLkTimkDH=fX3sCtjY+3H+phDJ-jSG1pYZj3wybjq+n@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8,gzip(gfe)
+Message-ID: <03791e87-4fd4-433a-9c76-dc3830316202@t20g2000yqa.googlegroups.com>
+Subject: [ruby-ffi] Re: Help for Beginner - Compiling C Extension on Windows
+From: Karl <threadhead@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: threadhead@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On Sep 2, 11:28=A0am, Luis Lavena <luislav...@gmail.com> wrote:
+> On Thu, Sep 2, 2010 at 1:22 PM, Karl <threadh...@gmail.com> wrote:
+> > Boring Background:
+> > Let me say first that I'm no Windows expert and it's been 20 years
+> > since I last compiled anything I wrote in C. But I need to access an
+> > API on a Windows machine (controls a DAQ board) from Ruby. So I'm
+> > trying to get the first steps down, compiling a C lib I can access
+> > through ruby.
+>
+> > Also, I apologize if this is the wrong place to post, but it seems
+> > that this is the only forum that C extension writers on windows
+> > frequent.
+>
+> Hello Karl
+>
+> Ruby FFI aims to replace the need to compile an extension to access a
+> library, please see the wiki:
+>
+> http://wiki.github.com/ffi/ffi
+>
+> With examples to access Windows API.
+
+Yes, and I plan on using it. But I still need to create some custom C
+code to process the 2M-10M data points generated by the DAQ board. I
+could do it in ruby, but the speed would be very poor as I need to de-
+bounce the analog input readings.
+
+> Going to respond your question anyhow, but please read the wiki.
+
+And I did, many times. I even went to the point of doing everything on
+my ubuntu box and everything works exactly as expected. Just when I
+try it on WIN does is fail.
+
+> > Can't Compile Simple C DLL:
+> > Installed Ruby 1.8.7-p302 from rubyinstaller.org (used the .exe).
+> > Installed DevKit-4.5.0-20100819-1536-sfx.exe from rubyinstaller.org
+> > Performed the devkit install, all it working (installing gems that
+> > require compiling work)
+>
+> > Also tried setup up 'fstab' using this site
+> >http://geeksharp.com/2010/01/18/windows-ruby-native-gems-1-9-1/but
+> > nothing he shows looks remotely like my installation. So I set C:
+> > \devkit\etc\fstab to:
+> > =A0C:/devkit/mingw/lib/gcc/mingw32/4.5.0 =A0/mingw
+>
+> You don't need to modify the fstab.
+>
+>
+>
+>
+>
+>
+>
+> > Trying to compile the following:
+> > #stree.c
+> > #include <ruby.h>
+>
+> > static VALUE hello_world(VALUE klass)
+> > {
+> > =A0return rb_str_new2("hello world");
+> > }
+>
+> > void Init_stree()
+> > {
+> > =A0VALUE mStree =3D rb_define_module("Stree");
+> > =A0rb_define_singleton_method(mStree, "hello_world", hello_world, 0);
+> > }
+>
+> > #extconf.rb
+> > require 'mkmf'
+> > create_makefile('stree/stree')
+>
+> > On the win machine I run: ruby extconf.rb
+> > =A0creates the Makefile, no errors
+>
+> > I run: 'make' and receive the following:
+> > =A0Compile the C Code to a DLL
+> > =A0'cl' is not recognized as an internal or external command, operable
+> > program or batch file.
+> > =A0Could Not Find C:\rails\ext_test\stree\ext\stree\*.obj
+> > =A0Done.
+>
+> You're using the wrong ruby to compile. Basically you're running Ruby
+> compiled with mswin32 (Visual C) instead of RubyInstaller.
+>
+> It trying to look for cl indicates that rbconfig used by your ruby
+> installation came from mswin32 version.
+>
+> So, either you installed RubyInstaller on top of another Ruby, or you
+> modified anything in your installation.
+>
+> Please try a clean Ruby+DevKit installation.
+>
+> Also, please read the instructions at our wiki for details on DevKit
+> installation.
+>
+> http://github.com/oneclick/rubyinstaller/wiki/Development-Kit
+
+Honestly, I would have asked here unless I had read the wiki and tried
+this many, many times.
+
+Completely removed c:\ruby197 and c:\devkit, also remove all reference
+in system environment PATH.
+
+Installed ruby 1.8.7 with rubyinstaller.org.
+
+Installed devkit following the instruction on the wiki, to the letter.
+Ran .\devkitvars.bat
+
+Did a 'gem install thin --platform=3Druby' just to make sure things
+compile... no errors.
+
+Back my source directory: ruby extconf.rb (no errors)
+
+Ran 'make' and I get the exact same error as above.
+
+
+BTW, I do have VS8 Express installed. Is that causing the issue?
+
+Also, I did a system search for ruby.exe and only one in c:\ruby187 is
+found.
+
+And I checked my rbconfig.rb (I can past the entire content if that
+helps), all the references I see are to i585-pc-mingw32, mingw32, gcc,
+but
+   CONFIG["RUBY_SO_NAME"] =3D "msvcrt-ruby18"
+
+That's the only reference not to mingw32 I see.
+
+
+So, I'm still where I started.

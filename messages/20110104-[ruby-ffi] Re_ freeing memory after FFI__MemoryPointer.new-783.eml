@@ -1,0 +1,114 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs439348fam;
+        Tue, 4 Jan 2011 16:55:58 -0800 (PST)
+Received: by 10.151.98.18 with SMTP id a18mr20351345ybm.203.1294188957539;
+        Tue, 04 Jan 2011 16:55:57 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCbg4_pBBoEnxnNXw@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTP id v9si38477963ybe.31.2011.01.04.16.55.56;
+        Tue, 04 Jan 2011 16:55:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCbg4_pBBoEnxnNXw@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCbg4_pBBoEnxnNXw@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCbg4_pBBoEnxnNXw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk1 with SMTP id 1sf16108602gxk.7
+        for <headius@headius.com>; Tue, 04 Jan 2011 16:55:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:date
+         :from:reply-to:to:message-id:in-reply-to:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=txwA1QJmD6/ImzOB3sH2PXiwdGCn1MC0yFwLav5bd6w=;
+        b=dEI2/IhVI3ule2NKRpzzpUKPV4BpeynglW3X6nB+jjGGnfLvzQr1sOO5UEPTZQSBnL
+         6Wg2MApeyi4NVbXgsxyuswt3b2RHF9BZGKdda5782OuBvcR2SS60jDafRCEo0YCuQPwA
+         fG+PfyICEsVNLgmY6BpGV1CXrTUwYwzXSokwQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=Z56xIoPW7gvT4GRyRheCgi1VrVXw8HNyG+Rz4pUP5rd9xGyTU1Hl+pDG0HSri6mTqV
+         ONuaMSBcFYlntIH9Obk5JQqD/mOCJQ1eyYNiuTtCpWs47mVkmfbO1LMIpOBulw6WvGVn
+         sZ7mcezXUuEsgI5U3asIZUqdwqvyW7MU/eO2Y=
+Received: by 10.90.83.13 with SMTP id g13mr2559agb.11.1294188955549;
+        Tue, 04 Jan 2011 16:55:55 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.6.21 with SMTP id 21ls3775929agf.5.p; Tue, 04 Jan 2011
+ 16:55:55 -0800 (PST)
+Received: by 10.91.189.20 with SMTP id r20mr2889agp.50.1294188955235;
+        Tue, 04 Jan 2011 16:55:55 -0800 (PST)
+Date: Tue, 4 Jan 2011 16:55:54 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <27609662.2929.1294188954795.JavaMail.geo-discussion-forums@prnp16>
+In-Reply-To: <AANLkTi=xpDSLc78295-Xczig6eZOvUTGhowgvc=+0u7w@mail.gmail.com>
+Subject: [ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2928_30481532.1294188954793"
+
+------=_Part_2928_30481532.1294188954793
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+On Wednesday, January 5, 2011 6:11:56 AM UTC+10, Alvaro wrote:
+>
+> Hi,
+>
+> I wonder if there is something that needs to be done after call to
+> FFI::MemoryPointer.new
+> to free the memory, my extension has memory leaks and it only happens
+> with the binding
+> and not with the original C lib.
+>
+
+As Chuck says, when the last strong reference to an FFI object is removed, 
+it becomes eligible for collection - so you most likely have a persistent 
+reference to the memory pointer that is keeping it alive.
+
+All objects defined in ruby-ffi follow that pattern - they are auto-release 
+by default.  You can set autorelease = false on MemoryPointer instances 
+which means the memory can _never_ be freed, but that is probably a rare 
+occurrence.
+
+That does not apply to pointers allocated via mapping in say malloc or 
+calloc from libc - those have to be manually managed.
+
+
+
+
+
+------=_Part_2928_30481532.1294188954793
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Wednesday, January 5, 2011 6:11:56 AM UTC+10, Alvaro wrote:<blockquote c=
+lass=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px=
+ #ccc solid;padding-left: 1ex;">Hi,<p>I wonder if there is something that n=
+eeds to be done after call to<br>FFI::MemoryPointer.new<br>to free the memo=
+ry, my extension has memory leaks and it only happens<br>with the binding<b=
+r>and not with the original C lib.</p></blockquote><div><br></div><div>As C=
+huck says, when the last strong reference to an FFI object is removed, it b=
+ecomes eligible for collection - so you most likely have a persistent refer=
+ence to the memory pointer that is keeping it alive.</div><div><br></div><d=
+iv>All objects defined in ruby-ffi follow that pattern - they are auto-rele=
+ase by default. &nbsp;You can set autorelease =3D false on MemoryPointer in=
+stances which means the memory can _never_ be freed, but that is probably a=
+ rare occurrence.</div><div><br></div><div>That does not apply to pointers =
+allocated via mapping in say malloc or calloc from libc - those have to be =
+manually managed.</div><div><br></div><div><br></div><div><br></div><div><b=
+r></div>
+------=_Part_2928_30481532.1294188954793--

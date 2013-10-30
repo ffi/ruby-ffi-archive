@@ -1,0 +1,76 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.196.201 with SMTP id io9cs86395igc;
+        Tue, 15 Nov 2011 08:19:55 -0800 (PST)
+Received: by 10.224.194.193 with SMTP id dz1mr17909470qab.98.1321373994210;
+        Tue, 15 Nov 2011 08:19:54 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIDDkti1HBCmoor2BBoE55So4Q@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id hp8si13945815qab.10.2011.11.15.08.19.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 15 Nov 2011 08:19:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIDDkti1HBCmoor2BBoE55So4Q@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIDDkti1HBCmoor2BBoE55So4Q@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCIDDkti1HBCmoor2BBoE55So4Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyl16 with SMTP id 16sf4538651qyl.7
+        for <headius@headius.com>; Tue, 15 Nov 2011 08:19:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=KpsylKBvTzlJ2DvhVA+BPEuOXwhH6Yn63C3H6KB0m6Y=;
+        b=uGEVH6lMuGq3I6FBMhcC+oH9uZQa+K/nfiAU4swNWfLJ0q2XzMT460dL5k3tPppaPF
+         K5i60oy+EI0e0NNgOB+YOeETWXCaaijw193IerLfysR3WKENqoIeLxSShGlFIzRw26ps
+         5wR81V/UPf4GUC+iVHMaMr+6vrU6D0nN+x0xk=
+Received: by 10.229.191.16 with SMTP id dk16mr183561qcb.1.1321373990069;
+        Tue, 15 Nov 2011 08:19:50 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.56.134 with SMTP id y6ls4765261qcg.1.gmail; Tue, 15 Nov
+ 2011 08:19:49 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.1.207 with SMTP id 15mr467822qcg.23.1321373989281; Tue, 15
+ Nov 2011 08:19:49 -0800 (PST)
+Received: by n6g2000vbg.googlegroups.com with HTTP; Tue, 15 Nov 2011 08:19:49
+ -0800 (PST)
+Date: Tue, 15 Nov 2011 08:19:49 -0800 (PST)
+In-Reply-To: <4EBCEF2E.6090004@matijs.net>
+References: <fea43bfd-4e67-4526-a166-b1925cf56b96@g7g2000vbv.googlegroups.com> <4EBCEF2E.6090004@matijs.net>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20111114 Firefox/7.0.1,gzip(gfe)
+Message-ID: <0f1a25d5-83b7-467b-9a75-fac7a27cf40e@n6g2000vbg.googlegroups.com>
+Subject: [ruby-ffi] Re: Catching signals with trap.
+From: "meh." <meh.ffff@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: meh.ffff@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ meh.ffff@gmail.com designates internal as permitted sender)
+ smtp.mail=meh.ffff@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Nov 11, 10:47=A0am, Matijs van Zuijlen <mat...@matijs.net> wrote:
+> Have you considered binding and using XCB? Or even skipping the C part an=
+d
+> implementing the X protocol in Ruby? The old RubyX11 library did this, an=
+d you
+> could probably generate something straight from XML, which is how XCB is =
+generated.
+
+Yes, I considered this, but I prefer binding to Xlib first, I will
+probably implement an implementation that uses the protocol too, but
+it's low in the priority list.

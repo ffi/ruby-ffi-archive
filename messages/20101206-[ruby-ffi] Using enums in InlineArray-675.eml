@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs129828fam;
+        Mon, 6 Dec 2010 10:51:44 -0800 (PST)
+Received: by 10.229.91.3 with SMTP id k3mr4717123qcm.280.1291661504075;
+        Mon, 06 Dec 2010 10:51:44 -0800 (PST)
+Return-Path: <ruby-ffi+bncCI-bkIeSBhC-4fTnBBoEfWXS_w@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id f23si11383512qcs.112.2010.12.06.10.51.42
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Mon, 06 Dec 2010 10:51:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCI-bkIeSBhC-4fTnBBoEfWXS_w@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCI-bkIeSBhC-4fTnBBoEfWXS_w@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCI-bkIeSBhC-4fTnBBoEfWXS_w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk12 with SMTP id 12sf29554402qyk.7
+        for <headius@headius.com>; Mon, 06 Dec 2010 10:51:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=eDTuUXhE3/SD9YIWx3KAixirDpmg0rGZO+1XL1WyTWE=;
+        b=0u+kv07xCaLL4N/W9Z7np89jL4v55xdN6spP1HHwAjTe0OeZy/lErOhqJwZDaX4IYB
+         pcXgf7LD3O9WKEaAPxYfn1WtOz6cGqIonmNUa4DqWot6J5Ehw55xoDh2TKp3jimV5Wqa
+         9WSOHkgLiEo6Sv4yfRlXBNH4jdE2xjIGD4tSY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=1GjUzsaajJf/eaUD6aTuBdnMCfQg5ghVVy6vzGhjKyqHfn0iX1J1cSYHxYrFVAUK47
+         Z3wRNyaq+5P7zhXQWaPhJgzWnlvI692a+yUnDdWXw8DGZ0kUMs+RC+YLAb3z2elAKOzF
+         PVQPlHEo0QrvSjyl9+xCjtoTm3KHgU1R/raio=
+Received: by 10.224.11.143 with SMTP id t15mr306670qat.24.1291661502189;
+        Mon, 06 Dec 2010 10:51:42 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.3.230 with SMTP id 38ls761069qao.0.p; Mon, 06 Dec 2010
+ 10:51:41 -0800 (PST)
+Received: by 10.224.60.210 with SMTP id q18mr644306qah.6.1291661501860;
+        Mon, 06 Dec 2010 10:51:41 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.220.183.4 with SMTP id ce4mr59770vcb.40.1291654374059; Mon, 06
+ Dec 2010 08:52:54 -0800 (PST)
+Received: by b25g2000vbz.googlegroups.com with HTTP; Mon, 6 Dec 2010 08:52:54
+ -0800 (PST)
+Date: Mon, 6 Dec 2010 08:52:54 -0800 (PST)
+X-IP: 94.254.196.65
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/534.3
+ (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3,gzip(gfe)
+Message-ID: <e24c7446-166f-466c-9316-b01b4bec6bca@b25g2000vbz.googlegroups.com>
+Subject: [ruby-ffi] Using enums in InlineArray
+From: edek <edek123456@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: edek123456@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+in my project I've got complex structure, that contains an array of
+enums.
+
+So I define named enum type and pass it to my struct layout.
+
+This structure is referenced in another structure.
+
+When I read my structure, FFI automatically creates object of type
+FFI::Struct::InlineArray.
+
+Unfortunately, when I try to read its contents I got following error:
+`each': get not supported for FFI::Enum (ArgumentError)
+
+It works well when I switch type to :uint32 - I can read integers.
+
+Is there any way to use enums in this place? That would be obviously
+much more ellegant. If it is not supported yet, could you give me any
+advice where I can extend FFI's functionality in this matter?
+
+Thank you,
+
+Marcin

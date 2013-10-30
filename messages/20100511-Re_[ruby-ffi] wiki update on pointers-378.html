@@ -1,0 +1,63 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] wiki update on pointers</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] wiki update on pointers</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/10 5:33 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+It looks pretty good.
+
+A couple of nits:
+
+1) The LibC module can just use:
+   ffi_lib FFI::Library::LIBC
+
+ffi knows that means "whatever the libc on this system is supposed to
+be", since its a pretty common library people want to map in, and the
+name differs across platforms (e.g. on linux, its libc.so.6, macos is
+libc.dylib, windows is msvcrt.dll, aix is something weird, etc.
+
+2) The first arg to MemoryPointer.new can in fact be either a symbol,
+or anything that responds to #size.
+e.g.
+  class S &lt; FFI::Struct
+    layout :i, :int
+  end
+  FFI::MemoryPointer.new(S, 1, false)  # Will allocate space for one
+instance of S, without clearing the memory first
+
+3) The bit at the top about copying pointers is ... confusing.  A
+pointer is merely a Fixnum that holds a native memory address, so
+there is no need to do anything special to "copy" a pointer - just
+assign it to a like you would any other Fixnum.  Think of "Pointer" as
+"fixnum with methods to read/write the native memory at the address".
+
+The example:
+
+b = MemoryPointer.new(:pointer).write_pointer(some_pointer.read_pointer)
+
+Doesn't do what you think.  It reads a pointer from the memory
+pointed-to by some_pointer, allocates a new chunk of memory, and
+writes that pointer value into that memory - it doesn't copy the value
+of some_pointer to a new pointer.
+
+
+
+
+
+
+
+
+On 12 May 2010 02:02, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I just wrote an update to the wiki page on pointers at <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/pointers">http://wiki.github.com/ffi/ffi/pointers</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'd appreciate it if someone more knowledgeable would check it over (the bottom section under the sub-heading) and verify that what I wrote is correct. It seems to be working for me but I've been wrong before! <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

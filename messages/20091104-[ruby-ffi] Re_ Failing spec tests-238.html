@@ -1,0 +1,62 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Failing spec tests</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Failing spec tests</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/4/09 4:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">On 11/02/2009 02:39 PM, Bryan Kearney wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>On 11/02/2009 02:17 PM, Mike Dalessio wrote:
+<br><blockquote type=cite style="color: #000000;">You shouldn't worry about these fails. However, I'm curious what version
+<br>of Ruby you are running.
+<br></blockquote>
+<br>I am running
+<br>
+<br>ruby 1.8.6 (2009-06-08 patchlevel 369) [x86_64-linux]
+<br>
+<br>
+<br><blockquote type=cite style="color: #000000;">
+<br>If nobody objects, I'll change the "wiggle room" to 5.
+<br></blockquote>
+<br>I am fine with that
+<br>
+<br>-- bk
+<br></blockquote>
+<br>BTW.. there are 2 wiggle room settings. I think you only got one. See 
+the attached patch.
+<br>
+<br>-- bk
+<br>
+<br>
+<br>
+<br></div><BR><FIELDSET CLASS="mimeAttachmentHeader"><LEGEND CLASS="mimeAttachmentHeaderName">Wiggle_Room_Increase.patch</LEGEND></FIELDSET><BR/><div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+diff --git a/spec/ffi/managed_struct_spec.rb b/spec/ffi/managed_struct_spec.rb
+index 9b0423c..ef63bc2 100644
+--- a/spec/ffi/managed_struct_spec.rb
++++ b/spec/ffi/managed_struct_spec.rb
+@@ -45,7 +45,7 @@ describe "Managed Struct" do
+     end
+ 
+     loop_count = 30
+-    wiggle_room = 2
++    wiggle_room = 5
+ 
+     PleaseReleaseMe.should_receive(:release).at_least(loop_count-wiggle_room).times
+     loop_count.times do
+diff --git a/spec/ffi/pointer_spec.rb b/spec/ffi/pointer_spec.rb
+index 44563f1..190471e 100644
+--- a/spec/ffi/pointer_spec.rb
++++ b/spec/ffi/pointer_spec.rb
+@@ -107,7 +107,7 @@ end
+ 
+ describe "AutoPointer" do
+   loop_count = 30
+-  wiggle_room = 2 # GC rarely cleans up all objects. we can get most of them, and that's enough to determine if the basic functionality is working.
++  wiggle_room = 5 # GC rarely cleans up all objects. we can get most of them, and that's enough to determine if the basic functionality is working.
+   magic = 0x12345678
+ 
+   class AutoPointerTestHelper
+</pre></div><br><hr><br><div style="font-size:12px;color:black;"><img src="data:image/gif;base64,R0lGODdhDwAPAOMAAP///zEwYmJlzQAAAPr6+vv7+/7+/vb29pyZ//39/YOBg////////////////////ywAAAAADwAPAAAESRDISUG4lQYr+s5bIEwDUWictA2GdBjhaAGDrKZzjYq3PgUw2co24+VGLYAAAesRLQklxoeiUDUI0qSj6EoH4Iuoq6B0PQJyJQIAOw==">
+<ul><li><a href="Attachments-2/Wiggle_Room_Increase.patch">Attachments-2/Wiggle_Room_Increase.patch</li></a></ul></div></body>
+</html>

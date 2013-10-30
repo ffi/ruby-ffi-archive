@@ -1,0 +1,148 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs513983and;
+        Mon, 21 Dec 2009 09:39:05 -0800 (PST)
+Received: by 10.101.175.37 with SMTP id c37mr746233anp.102.1261417145050;
+        Mon, 21 Dec 2009 09:39:05 -0800 (PST)
+Return-Path: <3trIvSwoJCOMQZNXQFaJSFLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 38si8175594ywh.4.2009.12.21.09.39.03;
+        Mon, 21 Dec 2009 09:39:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3trIvSwoJCOMQZNXQFaJSFLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3trIvSwoJCOMQZNXQFaJSFLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3trIvSwoJCOMQZNXQFaJSFLRFNQ.HTRWZGd-KKNLTTLQJLWTZUX.HTR@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf15649098ywh.3
+        for <headius@headius.com>; Mon, 21 Dec 2009 09:39:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=Mni0sHH7Exp6Rs1sD5Rz2vAoVrU//Z9qRBAHstbTNm0=;
+        b=KCwVMZfOz/eTZM6kpcIwTCL9KSslj6dy8qNgwG6q7h3MHYIByfMv0Frv3upcc0WXF5
+         IVwYN6f6bzLhSCC5e0pyS/y8AK/tjvyA0tLvNOYxWcda12KYD1LSI9oAZI14IZR8tAvs
+         neriwchgah6pABh7O2R2H9NvpTywCv856KOkY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=haijuN34iyrh0h+ccPKYjXJSC/21RttD0ONgkl5ZtZpdvc7KYgbRtakILVgAd7Jlt7
+         M9XZOg41HI4raQXxajAV+aNBzlohPM2RtnhC5/5NxpalWDSjtms4mvx8l9lh+BAmXbKK
+         MDwd3WdAB+YpMFtDZFbp3sJO8T/nDf8bpP2DM=
+Received: by 10.90.60.2 with SMTP id i2mr92458aga.16.1261417142971;
+        Mon, 21 Dec 2009 09:39:02 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.98.89 with SMTP id p25ls355905fan.2.p; Mon, 21 Dec 2009 
+	09:39:02 -0800 (PST)
+Received: by 10.223.15.79 with SMTP id j15mr294993faa.21.1261417141717;
+        Mon, 21 Dec 2009 09:39:01 -0800 (PST)
+Received: by 10.223.15.79 with SMTP id j15mr294992faa.21.1261417141695;
+        Mon, 21 Dec 2009 09:39:01 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f213.google.com (mail-fx0-f213.google.com [209.85.220.213])
+        by gmr-mx.google.com with ESMTP id 11si504258fxm.10.2009.12.21.09.39.00;
+        Mon, 21 Dec 2009 09:39:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.213 as permitted sender) client-ip=209.85.220.213;
+Received: by mail-fx0-f213.google.com with SMTP id 5so5434850fxm.8
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 09:39:00 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.143.219 with SMTP id l27mr823214hba.162.1261417140441; 
+	Mon, 21 Dec 2009 09:39:00 -0800 (PST)
+In-Reply-To: <3454c9680912210911u59888c63m6c5b94c13b77f11a@mail.gmail.com>
+References: <7bd41ce4-17fa-44f3-88a4-51e939589e31@e27g2000yqd.googlegroups.com> 
+	<4ccee320912190435r785388eaoabb0c81b39c6a51@mail.gmail.com> 
+	<3c2f449c-7ff7-478e-b7be-69831ae9d3df@m26g2000yqb.googlegroups.com> 
+	<71166b3b0912210759m1c992119of973c5b9de1b07fd@mail.gmail.com> 
+	<3454c9680912210911u59888c63m6c5b94c13b77f11a@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Mon, 21 Dec 2009 14:38:40 -0300
+Message-ID: <71166b3b0912210938r69e74aa5ye5ce965a79fe7f32@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: lists only one lib?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.213 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/742b249d67b7cd3e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/5fb0891f125c19b0
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 21, 2009 at 2:11 PM, Vladimir Sizikov <vsizikov@gmail.com> wrot=
+e:
+> Hi Luis,
+>
+> On Mon, Dec 21, 2009 at 4:59 PM, Luis Lavena <luislavena@gmail.com> wrote=
+:
+>> Wayne already answered to you that ffi_lib takes an array, multiple
+>> invocations to append are not possible.
+>
+> From the perspective of a new FFI API user, these are all valid
+> questions with no immediate/clear answer:
+> - What would happen on subsequent ffi_lib call? Will it append, or
+> will it overwrite?
+
+This was answered previously in the group, asked by Roger and answered
+by Wayne about it.
+
+> - Is that even legal? If legal, is that a good practice?
+
+This was answered too.
+
+>
+> I know I had those questions when I was starting using FFI. :) And I
+> was bugging Wayne with such questions as well... :)
+>
+
+Me too, but I believe that posts should be scanned.
+
+Both questions from Roger were asked by him before, both got answers
+from Wayne (ffi_lib) and Jon and myself for FindWindow call under
+Windows.
+
+If he is going to ask again those, ignoring the previous comments
+generated by us on that subject, I consider that either our answers
+weren't clear or he didn't pay attention to the time we invested in
+answering.
+
+> Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+> calls are not good. Well, maybe we should make that totally explicit,
+> and just don't allow to call ffi_lib the second time?
+>
+
+Indeed, is not clear the usage from the documentation due the lack of
+one example.
+
+As for accumulative calls, I'm not fond to them since I don't see the purpo=
+se.
+
+If Roger stated better his questions and sample for us to comprehend I
+would have answered differently.
+
+Regards,
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

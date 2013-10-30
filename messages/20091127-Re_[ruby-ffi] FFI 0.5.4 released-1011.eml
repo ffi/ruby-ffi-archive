@@ -1,0 +1,104 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.52.18 with SMTP id z18cs189625wfz;
+        Fri, 27 Nov 2009 14:45:59 -0800 (PST)
+Received: by 10.114.188.37 with SMTP id l37mr2436776waf.221.1259361959678;
+        Fri, 27 Nov 2009 14:45:59 -0800 (PST)
+Return-Path: <3pVYQSwkJCFcLB37HHC3G5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 28si3584955pzk.27.2009.11.27.14.45.58;
+        Fri, 27 Nov 2009 14:45:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3pVYQSwkJCFcLB37HHC3G5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3pVYQSwkJCFcLB37HHC3G5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=3pVYQSwkJCFcLB37HHC3G5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by pxi41 with SMTP id 41sf420181pxi.23
+        for <headius@headius.com>; Fri, 27 Nov 2009 14:45:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=x0G+XzyoJn3tpcrUJEFXgZz23IwyflhzAOGV1otxXYk=;
+        b=d0ExOCW/AuV8umr1e5QDjQo4t5Cae96A2UdRlYDpU+UjQUVb//Hpd7VkbpKk24za1j
+         vNV/Vq0MPOVjkHs+iOnaRQGFRtWZALhSsUf26hVhI50hbNgH4MzgCBzOrnEHtqZE2AB0
+         4fd6l9qu5bCYNG5UQpf6P51CtRCiexqzvH920=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:list-unsubscribe
+         :list-subscribe:content-type;
+        b=FF4zozPv4kHvpskLkpp671O00uPiDST05Drc8lJ/pFPSWXG1wRQPLS9R+oT82/yNoU
+         NmEzxNNBsMg0NQBtGOkIesDEs91Wb3bxQhmGZsZr6qENZt9A/MkS88MzT6lblm2UQDri
+         +pDRKb2WHC2rW/54xaC16CWyXPIZON0hsS7go=
+Received: by 10.115.39.9 with SMTP id r9mr91512waj.4.1259361957457;
+        Fri, 27 Nov 2009 14:45:57 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.187.1 with SMTP id k1ls1249983waf.0.p; Fri, 27 Nov 2009 
+	14:45:56 -0800 (PST)
+Received: by 10.115.134.11 with SMTP id l11mr290704wan.2.1259361956789;
+        Fri, 27 Nov 2009 14:45:56 -0800 (PST)
+Received: by 10.115.134.11 with SMTP id l11mr290703wan.2.1259361956770;
+        Fri, 27 Nov 2009 14:45:56 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f186.google.com (mail-pz0-f186.google.com [209.85.222.186])
+        by gmr-mx.google.com with ESMTP id 24si254988pzk.2.2009.11.27.14.45.55;
+        Fri, 27 Nov 2009 14:45:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.186 as permitted sender) client-ip=209.85.222.186;
+Received: by mail-pz0-f186.google.com with SMTP id 16so1266861pzk.1
+        for <ruby-ffi@googlegroups.com>; Fri, 27 Nov 2009 14:45:55 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.126.13 with SMTP id y13mr18906rvc.247.1259361955634; Fri, 
+	27 Nov 2009 14:45:55 -0800 (PST)
+In-Reply-To: <71166b3b0911271422w6dc7ef58p2f8a0bc8ef7aada9@mail.gmail.com>
+References: <4ccee320911271417v4c7c0fc8xb745bd6db43d1c0b@mail.gmail.com>
+	 <71166b3b0911271422w6dc7ef58p2f8a0bc8ef7aada9@mail.gmail.com>
+Date: Sat, 28 Nov 2009 08:45:55 +1000
+Message-ID: <4ccee320911271445s2b930bc7n141885c7a39e3ca5@mail.gmail.com>
+Subject: Re: [ruby-ffi] FFI 0.5.4 released
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.186 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/bd48c9159b78db0a
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/6be2f360352d02eb
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+2009/11/28 Luis Lavena <luislavena@gmail.com>:
+> On Fri, Nov 27, 2009 at 7:17 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+>> This one is just a bugfix in extconf.rb when appending to $CFLAGS
+>>
+>> Also note, as of this release, I have started pushing to gemcutter
+>> instead of rubyforge, so to install, you'll need to install gemcutter,
+>> tumble and install ffi.
+>>
+>
+> There is no longer the need to set gemcutter as a source of gems. Now
+> that gems.rubyforge.org is Gemcutter, pushes to Gemcutter will be
+> available to any user using updated RubyGems.
+
+
+Ah cool.  Things have been changing so fast in this area, I wasn't
+sure what the current status was.
+
+Thanks for testing the windows versions!
+
+>
+> ==> Somehow Rake is being marked as a runtime dependency instead of development?
+
+Yeh, looks like it.  The gem spec needs a bit of a cleanup.

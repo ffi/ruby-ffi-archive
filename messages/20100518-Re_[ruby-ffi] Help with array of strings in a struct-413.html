@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Help with array of strings in a struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Help with array of strings in a struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>DA <drew.avis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/18/10 9:21 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Thu, May 13, 2010 at 11:27 PM, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Wow, lots of information here.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Let's try to break it down a bit.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Let's eliminate the #compact call. Without it, can you successfully read and access those members?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Do you know that the read to strings[:len], attributes[:len] should output 337? Is that right or a guess?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You have a lot going on here. Please simplify it or the diagnosis may be wrong.
+</pre></blockquote><pre wrap>
+
+Hi Chuck, thanks for the reply, and sorry for the info overload, I was
+trying to give enough context.
+
+I removed compact, and it still crashed.  I confirmed that the :len
+value of 337 was correct.  Then I realized the example from the wiki
+was for a char*** pointer, and in my case it was char**.  When I
+remove the first "read_pointer()", and called get_array_of_string() on
+strings[:val] directly, it worked as expected.
+
+Regards,
+Drew
+</pre></div></body>
+</html>
+</table></div>

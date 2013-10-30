@@ -1,0 +1,55 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] gem install ffi fails to build native extensions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] gem install ffi fails to build native extensions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;lil&#39;b&quot; &lt;abeillewright@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/11 11:01 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Good morning everyone,
+
+When I try to install the FFI gem on my engineyard instance, I get the
+following failure:
+
+&lt;snip&gt;
+i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+fPIC -Wno-declaration-after-statement   -o Types.o -c Types.c
+i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+fPIC -Wno-declaration-after-statement   -o LastError.o -c LastError.c
+i686-pc-linux-gnu-gcc -shared -o ffi_c.so ClosurePool.o
+DynamicLibrary.o Platform.o ffi.o Thread.o MethodHandle.o
+StructLayout.o FunctionInfo.o Buffer.o StructByValue.o Variadic.o
+DataConverter.o ArrayType.o MappedType.o Struct.o Function.o Pointer.o
+Type.o Call.o MemoryPointer.o StructByReference.o AbstractMemory.o
+Types.o LastError.o -L. -L/usr/lib -Wl,-R/usr/lib -L. -Wl,-O1,--hash-
+style=gnu -rdynamic -Wl,-export-dynamic -Wl,--no-undefined   <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/.libs/
+libffi_convenience.a -Wl,-R -Wl,/usr/lib -L/usr/lib -lruby19  -
+lpthread -lrt -ldl -lcrypt -lm   -lc
+AbstractMemory.o: In function `memory_get_array_of_ulong':
+AbstractMemory.c:(.text+0x40c9): undefined reference to
+`__builtin_bswap32'
+AbstractMemory.o: In function `memory_put_array_of_ulong':
+AbstractMemory.c:(.text+0x425c): undefined reference to
+`__builtin_bswap32'
+&lt;snip&gt;
+
+gcc version:
+
+deploy@domU-12-31-39-0C-C0-A2 ~ $ gcc --version
+gcc (GCC) 4.1.2 (Gentoo 4.1.2 p1.1)
+
+please help.
+
+~b
+</pre></div></body>
+</html>
+</table></div>

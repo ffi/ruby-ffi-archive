@@ -1,0 +1,72 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: require error: no such file to load -- ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: require error: no such file to load -- ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Lu Liu <nudtlliu@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/8/09 7:50 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+many thanks!
+
+i also found the answer from <a class="moz-txt-link-freetext" href="http://docs.rubygems.org/read/chapter/3#page70">http://docs.rubygems.org/read/chapter/3#page70</a>.
+
+On Oct 8, 2:32 pm, Aman Gupta <a class="moz-txt-link-rfc2396E" href="mailto:themastermi...@gmail.com">&lt;themastermi...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>require 'rubygems'
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Thu, Oct 8, 2009 at 5:25 AM, Lu Liu <a class="moz-txt-link-rfc2396E" href="mailto:nudtl...@gmail.com">&lt;nudtl...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hi all,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I have successfully installed ffi-0.5.0. But when I tried require
+<span class="moz-txt-citetags">&gt; &gt; </span>'ffi' in irb, it reported LoadError: no such file to load -- ffi. I
+<span class="moz-txt-citetags">&gt; &gt; </span>have no idea why this happens.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Actually, the installation process was not so smooth either. When I
+<span class="moz-txt-citetags">&gt; &gt; </span>tried sudo gem install ffi, it reported such an error:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>rake RUBYARCHDIR=<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/lib/gems/1.8/gems/ffi-0.5.0/lib RUBYLIBDIR=/var<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>lib/gems/1.8/gems/ffi-0.5.0/lib
+<span class="moz-txt-citetags">&gt; &gt; </span>sh: rake: command not found
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>but I found this post (<a class="moz-txt-link-freetext" href="http://bugs.debian.org/cgi-bin/bugreport.cgi">http://bugs.debian.org/cgi-bin/bugreport.cgi</a>?
+<span class="moz-txt-citetags">&gt; &gt; </span>bug=529663), added a symbolic link to rake in /usr/bin, and solved the
+<span class="moz-txt-citetags">&gt; &gt; </span>installation problem. I am not sure if this is also a bug of RubyGem
+<span class="moz-txt-citetags">&gt; &gt; </span>on Ubuntu.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>However, the require command can not find 'ffi' even though I tried
+<span class="moz-txt-citetags">&gt; &gt; </span>both of the two ways of ffi installation (directly gem install and the
+<span class="moz-txt-citetags">&gt; &gt; </span>git way mentioned in this post:
+<span class="moz-txt-citetags">&gt; &gt;</span><a class="moz-txt-link-freetext" href="http://groups.google.com/group/ruby-ffi/browse_thread/thread/e46d8a6a">http://groups.google.com/group/ruby-ffi/browse_thread/thread/e46d8a6a</a>...).
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Any suggestions? e.g. how can I check if the 'ffi' is in the list that
+<span class="moz-txt-citetags">&gt; &gt; </span>ruby require command can find?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>BTW: i just tried the require 'ffi' in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/lib/gems/1.8/gems<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>ffi-0.5.0/lib with irb, it worked. but in other directories, no.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thanks a lot!
+</pre></div></body>
+</html>
+</table></div>

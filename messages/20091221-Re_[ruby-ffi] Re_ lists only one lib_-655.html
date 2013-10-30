@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: lists only one lib?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: lists only one lib?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Vladimir Sizikov <vsizikov@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 11:11 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Luis,
+
+On Mon, Dec 21, 2009 at 4:59 PM, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Wayne already answered to you that ffi_lib takes an array, multiple
+<span class="moz-txt-citetags">&gt; </span>invocations to append are not possible.
+</pre></blockquote><pre wrap>
+
+From the perspective of a new FFI API user, these are all valid
+questions with no immediate/clear answer:
+- What would happen on subsequent ffi_lib call? Will it append, or
+will it overwrite?
+- Is that even legal? If legal, is that a good practice?
+
+I know I had those questions when I was starting using FFI. <span class="moz-smiley-s1" title=":)"><span>:)</span></span> And I
+was bugging Wayne with such questions as well... <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+calls are not good. Well, maybe we should make that totally explicit,
+and just don't allow to call ffi_lib the second time?
+
+Thanks,
+  --Vladimri
+</pre></div></body>
+</html>
+</table></div>

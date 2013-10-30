@@ -1,0 +1,82 @@
+Delivered-To: headius@headius.com
+Received: by 10.14.28.203 with SMTP id g51cs57443eea;
+        Sat, 20 Aug 2011 16:17:10 -0700 (PDT)
+Received: by 10.52.27.204 with SMTP id v12mr831347vdg.173.1313882228851;
+        Sat, 20 Aug 2011 16:17:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxDugMHyBBoEZHWy5A@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id d19si2888182vcd.102.2011.08.20.16.17.07
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 20 Aug 2011 16:17:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDugMHyBBoEZHWy5A@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDugMHyBBoEZHWy5A@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxDugMHyBBoEZHWy5A@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyg14 with SMTP id 14sf3055564qyg.7
+        for <headius@headius.com>; Sat, 20 Aug 2011 16:17:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=RoXozWs/+NaZkYrgZSuUVKB0MMF+TfDdy4FCGD/man4=;
+        b=E4sdMQml3VbOUtJvhNU/rc/4QJVBxR9kmhnbfngafUmABH7VpSWtUMYBRfVgu1/PA5
+         L+2vfhzIqLKqLfhiZdL8UcFVD7vqAVQLUnRmL5mpGZDBKFXgFl/hEMOkm66nQMMOO17K
+         MTLXf2WjKld97+Jy97tx1ZyGteN7gi0QYMYN8=
+Received: by 10.229.31.136 with SMTP id y8mr72726qcc.41.1313882222445;
+        Sat, 20 Aug 2011 16:17:02 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.187.195 with SMTP id cx3ls9211473qab.0.gmail; Sat, 20 Aug
+ 2011 16:17:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.201.133 with SMTP id fa5mr116503qab.28.1313882221651; Sat,
+ 20 Aug 2011 16:17:01 -0700 (PDT)
+Received: by w11g2000vbp.googlegroups.com with HTTP; Sat, 20 Aug 2011 16:17:01
+ -0700 (PDT)
+Date: Sat, 20 Aug 2011 16:17:01 -0700 (PDT)
+In-Reply-To: <b76446bf-a514-4611-8212-b3e76847e410@e10g2000yqo.googlegroups.com>
+References: <ddd2bf7b-ecd4-4cea-9694-721194d096a8@p5g2000vbl.googlegroups.com> <b76446bf-a514-4611-8212-b3e76847e410@e10g2000yqo.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0,gzip(gfe)
+Message-ID: <09ba5a1b-5c4b-418a-9197-cc5608073a8e@w11g2000vbp.googlegroups.com>
+Subject: [ruby-ffi] Re: How to specify size for returned buffer?
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+On Aug 20, 1:59=A0am, przemo_li <an.prze...@gmail.com> wrote:
+> Why do you need "buffer" having ".size". Cant you pack both variables
+> into class instance that do "anything" you want buffer to do?
+
+Reading the ruby-ffi Pointer class source code, on any access to the
+underlying memory it has a bound check which needs to know the size to
+work correctly.  If the pointer thinks the size is zero, you can't get
+the underlying data.  And since this is image data, there isn't a null
+character to signify its end.
+
+So I need to tell the pointer how long its buffer is - and I'm not
+sure how to do that.
+
+Thanks,
+
+Charlie

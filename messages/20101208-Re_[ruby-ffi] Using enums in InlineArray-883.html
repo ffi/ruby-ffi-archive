@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Using enums in InlineArray</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Using enums in InlineArray</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/8/10 5:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+This should be fixed on master now (and also JRuby master).  Give it a
+try and let me know if it works.
+
+
+On 7 December 2010 02:52, edek <a class="moz-txt-link-rfc2396E" href="mailto:edek123456@gmail.com">&lt;edek123456@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>in my project I've got complex structure, that contains an array of
+<span class="moz-txt-citetags">&gt; </span>enums.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So I define named enum type and pass it to my struct layout.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This structure is referenced in another structure.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>When I read my structure, FFI automatically creates object of type
+<span class="moz-txt-citetags">&gt; </span>FFI::Struct::InlineArray.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Unfortunately, when I try to read its contents I got following error:
+<span class="moz-txt-citetags">&gt; </span>`each': get not supported for FFI::Enum (ArgumentError)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>It works well when I switch type to :uint32 - I can read integers.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Is there any way to use enums in this place? That would be obviously
+<span class="moz-txt-citetags">&gt; </span>much more ellegant. If it is not supported yet, could you give me any
+<span class="moz-txt-citetags">&gt; </span>advice where I can extend FFI's functionality in this matter?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thank you,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Marcin
+</pre></div></body>
+</html>
+</table></div>

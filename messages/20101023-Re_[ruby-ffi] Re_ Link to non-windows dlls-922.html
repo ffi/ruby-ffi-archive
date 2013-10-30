@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Link to non-windows dlls</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Link to non-windows dlls</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kevin Vanden Berge <kvandenberge@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/23/10 10:51 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">I think I&#39;m missing something...<div>&quot;<span class="Apple-style-span" style="font-family: helvetica, arial, freesans, clean, sans-serif; font-size: 14px; color: rgb(51, 51, 51); line-height: 21px; ">Traditionally with pointers you’ll have a method, like <code style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px !important; padding-right: 0.2em !important; padding-bottom: 0px !important; padding-left: 0.2em !important; font: normal normal normal 12px/normal Monaco, &#39;Courier New&#39;, &#39;DejaVu Sans Mono&#39;, &#39;Bitstream Vera Sans Mono&#39;, monospace; line-height: 1.4em; font-size: 12px !important; background-color: rgb(248, 248, 255) !important; color: rgb(68, 68, 68) !important; border-top-width: 1px !important; border-right-width: 1px !important; border-bottom-width: 1px !important; border-left-width: 1px !important; border-top-style: solid !important; border-right-style: solid !important; border-bottom-style: solid !important; border-left-style: solid !important; border-top-color: rgb(222, 222, 222) !important; border-right-color: rgb(222, 222, 222) !important; border-bottom-color: rgb(222, 222, 222) !important; border-left-color: rgb(222, 222, 222) !important; ">attach_function :GetForeGroundWindow, [ ], :pointer</code><br style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height: 1.4em; ">
+What this returns to you is a pointer that, probably, some other library is managing. You don’t need to release this pointer or anything.&quot;</span></div><div><font class="Apple-style-span" color="#333333" face="helvetica, arial, freesans, clean, sans-serif" size="4"><span class="Apple-style-span" style="font-size: 14px; line-height: 21px;"><br>
+</span></font></div><div><font class="Apple-style-span" color="#333333" face="helvetica, arial, freesans, clean, sans-serif" size="4"><span class="Apple-style-span" style="font-size: 14px; line-height: 21px;">I took that to mean I don&#39;t have to do anything special for it.  Are you suggesting I do something like:</span></font></div>
+<div><font class="Apple-style-span" color="#333333" face="helvetica, arial, freesans, clean, sans-serif" size="4"><span class="Apple-style-span" style="font-size: 14px; line-height: 21px;"><br></span></font></div><div><font class="Apple-style-span" color="#333333" face="helvetica, arial, freesans, clean, sans-serif" size="4"><span class="Apple-style-span" style="font-size: 14px; line-height: 21px;">buf = MemoryPointer.new(1024)</span></font></div>
+<div><font class="Apple-style-span" color="#333333" face="helvetica, arial, freesans, clean, sans-serif" size="4"><span class="Apple-style-span" style="font-size: 14px; line-height: 21px;">buf = UsbLibrary.Receive(a,1000)<br>
+</span></font><br><div class="gmail_quote">On Sat, Oct 23, 2010 at 11:41 AM, Luis Lavena <span dir="ltr">&lt;<a href="mailto:luislavena@gmail.com">luislavena@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+<div class="im">On Sat, Oct 23, 2010 at 12:33 PM, Kevin Vanden Berge<br>
+&lt;<a href="mailto:kvandenberge@gmail.com">kvandenberge@gmail.com</a>&gt; wrote:<br>
+&gt; The SegFault occurs when I put the call of UsbLibrary.Receive(a,1000) in the<br>
+&gt; test_usb.rb script.  Changing the Send parameter from :pointer to :string<br>
+&gt; has no effect on the outcome.  As for why I did pointer instead of string, I<br>
+&gt; have no good reason except that I saw an example of a wrapper to a C<br>
+&gt; function that had a char* as parameter and it was done using :string and<br>
+&gt; then another example showed it using :pointer another time.<br>
+&gt;<br>
+<br>
+</div>For you to receive in a pointer you need to allocate memory for that buffer.<br>
+<br>
+<a href="http://github.com/ffi/ffi/wiki/Pointers" target="_blank">http://github.com/ffi/ffi/wiki/Pointers</a><br>
+<font color="#888888"><br>
+--<br>
+</font><div><div></div><div class="h5">Luis Lavena<br>
+AREA 17<br>
+-<br>
+Perfection in design is achieved not when there is nothing more to add,<br>
+but rather when there is nothing more to take away.<br>
+Antoine de Saint-Exupéry<br>
+</div></div></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

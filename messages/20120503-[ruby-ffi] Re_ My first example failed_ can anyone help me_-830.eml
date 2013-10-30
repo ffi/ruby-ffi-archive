@@ -1,0 +1,201 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp61726obj;
+        Thu, 3 May 2012 03:02:07 -0700 (PDT)
+Received: by 10.182.48.67 with SMTP id j3mr1734962obn.65.1336039327049;
+        Thu, 03 May 2012 03:02:07 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCer4n9BBoETcdWtQ@googlegroups.com>
+Received: from mail-ob0-f190.google.com (mail-ob0-f190.google.com [209.85.214.190])
+        by mx.google.com with ESMTPS id k9si2612539obd.20.2012.05.03.03.02.06
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 03 May 2012 03:02:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCer4n9BBoETcdWtQ@googlegroups.com designates 209.85.214.190 as permitted sender) client-ip=209.85.214.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCer4n9BBoETcdWtQ@googlegroups.com designates 209.85.214.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCer4n9BBoETcdWtQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by obqv19 with SMTP id v19sf5059807obq.7
+        for <headius@headius.com>; Thu, 03 May 2012 03:02:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Bsywl0eNZXsNaZSc/GA0dCmhCYwPnwqpvFoOGz3bErc=;
+        b=JgJWR9S8cVVFoTCCwJyluc0X5r1ImdyeoPLQ64aH8zrXNkw3ABeYHwjAw25twIjtS9
+         vxcARIILZ65SSDzPUa38isFQ7QBsf37YUL/k0KtZYNOBM/8upqmlN61C4NyC72pdKQcn
+         sZf6ar/TnFvrM5Mkyn2Z0CpdqBQa/ERP1ygiE=
+Received: by 10.68.131.8 with SMTP id oi8mr97565pbb.12.1336039326726;
+        Thu, 03 May 2012 03:02:06 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.75.45 with SMTP id z13ls3634001pbv.7.gmail; Thu, 03 May
+ 2012 03:02:06 -0700 (PDT)
+Received: by 10.68.218.68 with SMTP id pe4mr210321pbc.4.1336039326403;
+        Thu, 03 May 2012 03:02:06 -0700 (PDT)
+Date: Thu, 3 May 2012 03:02:05 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <32508109.877.1336039325835.JavaMail.geo-discussion-forums@pbfk7>
+In-Reply-To: <125321c0-cb8b-42f9-96eb-fc5bb9194d28@l4g2000pbv.googlegroups.com>
+References: <125321c0-cb8b-42f9-96eb-fc5bb9194d28@l4g2000pbv.googlegroups.com>
+Subject: [ruby-ffi] Re: My first example failed, can anyone help me?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_876_18461164.1336039325834"
+
+------=_Part_876_18461164.1336039325834
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+You need to declare the native function as 'extern "C"'
+
+e.g.
+
+extern "C" void hello();
+
+
+
+On Thursday, May 3, 2012 6:43:45 PM UTC+10, win kiwi wrote:
+>
+> I write a c header file: 
+>
+> hello.h 
+> ------------------------------- 
+> extern void hello(); 
+> ------------------------------- 
+>
+> souce file: hello.cpp 
+> ------------------------------ 
+> #include "hello.h" 
+> #include <stdio.h> 
+>
+> void hello() { 
+>         printf("hello"); 
+> } 
+> ------------------------------ 
+>
+> I use this command to generate .so in ubuntu: 
+>
+> g++ -O -fpic -shared -o hello.so hello.cpp 
+>
+>
+> Now, the hello.so is under my directory. 
+>
+> I write a ruby file: helloLib.rb: 
+> ----------------------------- 
+> require 'ffi' 
+> module HelloLib 
+>         extend FFI::Library 
+>         ffi_lib File.dirname(__FILE__) + "/hello.so" 
+>         attach_function :hello, [], :void 
+> end 
+> ---------------------------- 
+>
+> then, I write codes to call this wrapper 
+>
+> hellotest.rb 
+> ------------------------------- 
+> require 'rubygems' 
+> require 'ffi' 
+> require 'helloLib' 
+>
+> HelloLib.hello() 
+> ------------------------------- 
+>
+> I type : ruby ./hellotest.rb at the console . get following error 
+> information: 
+>
+>
+> /var/lib/gems/1.8/gems/ffi-1.0.11/lib/ffi/library.rb:249:in 
+> `attach_function': Function 'hello' not found in [./hello.so] 
+> (FFI::NotFoundError) 
+>         from ./helloLib.rb:5 
+>         from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in 
+> `gem_original_require' 
+>         from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require' 
+>         from ./hellotest.rb:3 
+>
+>
+> Can any one give me suggestion? Thank you.
+
+
+------=_Part_876_18461164.1336039325834
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+You need to declare the native function as 'extern "C"'<div><br></div><div>e.g.</div><div><br></div><div>extern "C" void hello();</div><div><br></div><div><br><br>On Thursday, May 3, 2012 6:43:45 PM UTC+10, win kiwi wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">I write a c header file:
+<br>
+<br>hello.h
+<br>------------------------------<wbr>-
+<br>extern void hello();
+<br>------------------------------<wbr>-
+<br>
+<br>souce file: hello.cpp
+<br>------------------------------
+<br>#include "hello.h"
+<br>#include &lt;stdio.h&gt;
+<br>
+<br>void hello() {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("hello");
+<br>}
+<br>------------------------------
+<br>
+<br>I use this command to generate .so in ubuntu:
+<br>
+<br>g++ -O -fpic -shared -o hello.so hello.cpp
+<br>
+<br>
+<br>Now, the hello.so is under my directory.
+<br>
+<br>I write a ruby file: helloLib.rb:
+<br>-----------------------------
+<br>require 'ffi'
+<br>module HelloLib
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extend FFI::Library
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ffi_lib File.dirname(__FILE__) + "/hello.so"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attach_function :hello, [], :void
+<br>end
+<br>----------------------------
+<br>
+<br>then, I write codes to call this wrapper
+<br>
+<br>hellotest.rb
+<br>------------------------------<wbr>-
+<br>require 'rubygems'
+<br>require 'ffi'
+<br>require 'helloLib'
+<br>
+<br>HelloLib.hello()
+<br>------------------------------<wbr>-
+<br>
+<br>I type : ruby ./hellotest.rb at the console . get following error
+<br>information:
+<br>
+<br>
+<br>/var/lib/gems/1.8/gems/ffi-1.<wbr>0.11/lib/ffi/library.rb:249:in
+<br>`attach_function': Function 'hello' not found in [./hello.so]
+<br>(FFI::NotFoundError)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from ./helloLib.rb:5
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from /usr/lib/ruby/1.8/rubygems/<wbr>custom_require.rb:31:in
+<br>`gem_original_require'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from /usr/lib/ruby/1.8/rubygems/<wbr>custom_require.rb:31:in `require'
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from ./hellotest.rb:3
+<br>
+<br>
+<br>Can any one give me suggestion? Thank you.</blockquote></div>
+------=_Part_876_18461164.1336039325834--

@@ -1,0 +1,109 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs532193and;
+        Mon, 21 Dec 2009 15:47:28 -0800 (PST)
+Received: by 10.142.118.27 with SMTP id q27mr5286883wfc.313.1261439247582;
+        Mon, 21 Dec 2009 15:47:27 -0800 (PST)
+Return-Path: <3DQkwSwkJCJEH7z3DD8zC17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 10si8209558pxi.41.2009.12.21.15.47.26;
+        Mon, 21 Dec 2009 15:47:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3DQkwSwkJCJEH7z3DD8zC17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3DQkwSwkJCJEH7z3DD8zC17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com designates 209.85.222.148 as permitted sender) smtp.mail=3DQkwSwkJCJEH7z3DD8zC17v36.x97CFwJ-00319916z1C9FAD.x97@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk12 with SMTP id 12sf2173860pzk.13
+        for <headius@headius.com>; Mon, 21 Dec 2009 15:47:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=aHYckjaYTIQge6e8S7BxekA7mCuzSXxUfh+PzXvuqko=;
+        b=zjQTrDfRv7BiTfJmsQmRH/VC9LbU+pTZq2PPNEA9daWTU44Kh/JfaEFhqSFCbPCHB/
+         gnAM/Sn/MM/jdCbNfN02pkgWqJAIKFvgvXxXNDJ8Wi6LUReUOGzg8ftdU2MOGzFM6Cs9
+         CUEWAtnKJGcMGhjwuzwrKlbhtEX/YSZFC2tcY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=DiOqCRVTnzUDdFJD6MxFNb6nYhKD0DdUreaMhZVg1x3C+c6gd0GdPF6V5G/GAZGRvU
+         Ch54WO4adheCVJm1XXu7jJYlhppzE2bwR7ZP71sloFeZmRSoXKuRiNU5At346LJseL7V
+         8p4vmLMjCzYFG7nH5B2PWYrb0AEulGPrDum1k=
+Received: by 10.142.248.29 with SMTP id v29mr671494wfh.12.1261439245055;
+        Mon, 21 Dec 2009 15:47:25 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.154.13 with SMTP id g13ls701494wfo.0.p; Mon, 21 Dec 2009 
+	15:47:24 -0800 (PST)
+Received: by 10.142.59.12 with SMTP id h12mr1527581wfa.14.1261439244063;
+        Mon, 21 Dec 2009 15:47:24 -0800 (PST)
+Received: by 10.142.59.12 with SMTP id h12mr1527580wfa.14.1261439244030;
+        Mon, 21 Dec 2009 15:47:24 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pw0-f48.google.com (mail-pw0-f48.google.com [209.85.160.48])
+        by gmr-mx.google.com with ESMTP id 19si1457316pzk.12.2009.12.21.15.47.23;
+        Mon, 21 Dec 2009 15:47:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.160.48 as permitted sender) client-ip=209.85.160.48;
+Received: by pwi6 with SMTP id 6so4094750pwi.27
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 15:47:23 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.91.9 with SMTP id t9mr1123441rvl.127.1261439242899; Mon, 
+	21 Dec 2009 15:47:22 -0800 (PST)
+In-Reply-To: <4c8621ca-bd47-4e6b-98ef-10507e52f54a@t42g2000yqd.googlegroups.com>
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+	 <4ccee320912211400t18af822coe605c5353cea0950@mail.gmail.com>
+	 <4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+	 <4c8621ca-bd47-4e6b-98ef-10507e52f54a@t42g2000yqd.googlegroups.com>
+Date: Tue, 22 Dec 2009 09:47:22 +1000
+Message-ID: <4ccee320912211547u3714d68djba2f188af6969532@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.160.48 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/ae9edb08abd0a8fd
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+2009/12/22 rogerdpack <rogerpack2005@gmail.com>:
+>> I should have added a footnote that just because it *can* be
+>> collected, there is in fact no guarantee that objects are in fact ever
+>> collected by the GC. =A0Depending on the implementation, there might not
+>> be sufficient ruby/java memory pressure to cause a GC event, so the
+>> objects are not collected, and the native memory is never freed.
+>
+> Is there a #destroy method?
+
+There is a #free method on both AutoPointer and MemoryPointer to
+explicitly free them.
+
+
+> Also a question.
+> In the old dl world there was dl/win32 which was a dl implementation
+> of Win32API. =A0Would there be any interest in seeing an FFI port of the
+> same?
+
+You mean, like this?
+http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32API.=
+rb?rev=3D498a8743a12ed64e3fa6f994318caf62dfa73aa5

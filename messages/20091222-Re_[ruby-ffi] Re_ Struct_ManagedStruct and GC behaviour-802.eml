@@ -1,0 +1,109 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs566020and;
+        Tue, 22 Dec 2009 06:25:36 -0800 (PST)
+Received: by 10.90.17.24 with SMTP id 24mr498148agq.102.1261491935750;
+        Tue, 22 Dec 2009 06:25:35 -0800 (PST)
+Return-Path: <33dYwSwoJCDAVaZ.RadgYeSYMUX.OaYdgNk-RRUSaaSXQSdagbe.OaY@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 17si13492520yxe.100.2009.12.22.06.25.34;
+        Tue, 22 Dec 2009 06:25:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of 33dYwSwoJCDAVaZ.RadgYeSYMUX.OaYdgNk-RRUSaaSXQSdagbe.OaY@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 33dYwSwoJCDAVaZ.RadgYeSYMUX.OaYdgNk-RRUSaaSXQSdagbe.OaY@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=33dYwSwoJCDAVaZ.RadgYeSYMUX.OaYdgNk-RRUSaaSXQSdagbe.OaY@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf4833934yxe.13
+        for <headius@headius.com>; Tue, 22 Dec 2009 06:25:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=JegZ2cGhj4OEsmD3bbti2jsJmjzmAUMsKJX/3qxsLLs=;
+        b=BGugUbPWPXL/dpok7GrFmjSCMTh5pI4xEohZFM9W1W8w3I2rqlzuarpeBXqakM7xXY
+         z36kCx3OrKxtIu1kF07x4oZXm/XdMDEIANLS8u3jUCYNIyGATkvS5UMaANtbmCef6IeM
+         b/I2rewqA2Km4amaheHFqsXApT7sAxoE3N3eY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=0MQrULon7X3XupYC54I6NGSWyuCblWqdK2RbTPD4Noo6hAwCL1O5mLHJXrGEwWKFuZ
+         1qlZIyL3D1chvokj5IAc6JrrLKOnNvaH5Tq7Jp9cxTDL0/i8K8YNAQV/pPRp+Mdth06J
+         l+HsKOBloOWp38/zeBPe/IpU+HtqbRIcQvquI=
+Received: by 10.150.4.37 with SMTP id 37mr631715ybd.14.1261491933599;
+        Tue, 22 Dec 2009 06:25:33 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.42.9 with SMTP id p9ls248809ybp.3.p; Tue, 22 Dec 2009 
+	06:25:32 -0800 (PST)
+Received: by 10.151.87.15 with SMTP id p15mr9317074ybl.26.1261491932770;
+        Tue, 22 Dec 2009 06:25:32 -0800 (PST)
+Received: by 10.151.87.15 with SMTP id p15mr9317068ybl.26.1261491932280;
+        Tue, 22 Dec 2009 06:25:32 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-gx0-f226.google.com (mail-gx0-f226.google.com [209.85.217.226])
+        by gmr-mx.google.com with ESMTP id 18si974116ywh.5.2009.12.22.06.25.31;
+        Tue, 22 Dec 2009 06:25:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.217.226 as permitted sender) client-ip=209.85.217.226;
+Received: by mail-gx0-f226.google.com with SMTP id 26so6378219gxk.19
+        for <ruby-ffi@googlegroups.com>; Tue, 22 Dec 2009 06:25:31 -0800 (PST)
+Received: by 10.150.117.14 with SMTP id p14mr13636380ybc.76.1261491931191;
+        Tue, 22 Dec 2009 06:25:31 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 20sm5560202iwn.1.2009.12.22.06.25.29
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 22 Dec 2009 06:25:30 -0800 (PST)
+Date: Tue, 22 Dec 2009 09:25:26 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour
+Message-Id: <20091222092526.e153a68d.jon.forums@gmail.com>
+In-Reply-To: <4ccee320912211547u3714d68djba2f188af6969532@mail.gmail.com>
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+	<4ccee320912211400t18af822coe605c5353cea0950@mail.gmail.com>
+	<4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+	<4c8621ca-bd47-4e6b-98ef-10507e52f54a@t42g2000yqd.googlegroups.com>
+	<4ccee320912211547u3714d68djba2f188af6969532@mail.gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.217.226 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/8ee430a56487315f
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> > Also a question.
+> > In the old dl world there was dl/win32 which was a dl implementation
+> > of Win32API. =A0Would there be any interest in seeing an FFI port of the
+> > same?
+>=20
+> You mean, like this?
+> http://kenai.com/projects/jruby/sources/main/content/lib/ruby/1.8/Win32AP=
+I.rb?rev=3D498a8743a12ed64e3fa6f994318caf62dfa73aa5
+
+Very nice.  Ah, another thing to add to the old to-look-at list ;)
+
+Should line 2 match for mingw in addition to mswin?
+
+Jon

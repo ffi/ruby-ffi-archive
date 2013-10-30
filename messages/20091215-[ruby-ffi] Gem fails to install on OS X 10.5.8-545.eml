@@ -1,0 +1,143 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs206355and;
+        Tue, 15 Dec 2009 16:38:55 -0800 (PST)
+Received: by 10.90.11.37 with SMTP id 37mr424918agk.82.1260923934898;
+        Tue, 15 Dec 2009 16:38:54 -0800 (PST)
+Return-Path: <3HCwoSwsJCLsepobme.cbmmhnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 6si1719858yxe.75.2009.12.15.16.38.53;
+        Tue, 15 Dec 2009 16:38:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3HCwoSwsJCLsepobme.cbmmhnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3HCwoSwsJCLsepobme.cbmmhnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3HCwoSwsJCLsepobme.cbmmhnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf968659yxe.13
+        for <headius@headius.com>; Tue, 15 Dec 2009 16:38:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        bh=AdEFSBAX0o8BNvQ7NQQ0PBURi9DssGY2UfM4Nxt6vTU=;
+        b=nSNgOkTniAvkI+N2lKGy1vdlZhrnFNkfpQGS4SRHrbmrqyAHNM5ApdAIMVKilnFI9R
+         kOD3C5SvelcACHqzAKLXxQS0dZzpkxJdOC988uwDSM8ibhGiKBHkk/99cbElsLuVdPnd
+         WlJQfcgUguRo9vswRWXi9rhHARu6t30lHeaVk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:x-thread-url
+         :x-message-url:sender:list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=FdPwaUdHTHYoFCAgAG27EkoK4QYCMF/AhvJo5Cirp0ME6MTQ30lk4u22WjbtFS0rRH
+         WQuEHHPDGmjiH5TNiqxn+MIB7mQLzUpl+zf43dqbPS48FoOFKZDkXjBvFRxYgFzbsS1k
+         YWFYTWF7VfYlPSSrOEdkn3AK7uirp6dcsrQp0=
+Received: by 10.150.174.12 with SMTP id w12mr14708ybe.85.1260923932766;
+        Tue, 15 Dec 2009 16:38:52 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.129.26 with SMTP id b26ls159013ybd.1.p; Tue, 15 Dec 2009 
+	16:38:52 -0800 (PST)
+Received: by 10.150.5.23 with SMTP id 23mr411185ybe.21.1260923931913;
+        Tue, 15 Dec 2009 16:38:51 -0800 (PST)
+Received: by 10.90.207.15 with SMTP id e15mr500138agg.1.1260923538453;
+        Tue, 15 Dec 2009 16:32:18 -0800 (PST)
+Received: by 10.90.207.15 with SMTP id e15mr500135agg.1.1260923538423;
+        Tue, 15 Dec 2009 16:32:18 -0800 (PST)
+Return-Path: <donald.ball@gmail.com>
+Received: from mail-yw0-f138.google.com (mail-yw0-f138.google.com [209.85.211.138])
+        by gmr-mx.google.com with ESMTP id 18si52263ywh.5.2009.12.15.16.32.18;
+        Tue, 15 Dec 2009 16:32:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of donald.ball@gmail.com designates 209.85.211.138 as permitted sender) client-ip=209.85.211.138;
+Received: by mail-yw0-f138.google.com with SMTP id 2so968699ywh.27
+        for <ruby-ffi@googlegroups.com>; Tue, 15 Dec 2009 16:32:18 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.141.7 with SMTP id t7mr12150ann.29.1260923538384; Tue, 15 
+	Dec 2009 16:32:18 -0800 (PST)
+Date: Tue, 15 Dec 2009 16:32:18 -0800 (PST)
+X-IP: 96.233.238.122
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; 
+	rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5,gzip(gfe),gzip(gfe)
+Message-ID: <b78d2d0e-e437-4905-a991-b2daba64b90f@t42g2000vba.googlegroups.com>
+Subject: [ruby-ffi] Gem fails to install on OS X 10.5.8
+From: Donald <donald.ball@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ae127f410ad41a34
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/207983530defee31
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+>> donald-balls-macbook-pro:serp dball$ sudo gem install ffi
+Password:
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+/opt/local/bin/ruby extconf.rb
+checking for ffi.h in /usr/local/include,/opt/local/include... no
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... no
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+/usr/bin/gcc-4.0 -I. -I. -I/opt/local/lib/ruby/1.8/i686-darwin9 -I. -
+DRUBY_EXTCONF_H=3D\"extconf.h\" -I/opt/local/include -D_XOPEN_SOURCE -
+D_DARWIN_C_SOURCE  -I/opt/local/include -fno-common -O2  -fno-common -
+pipe -fno-common  -Werror -Wunused -Wformat -Wimplicit -Wreturn-type
+-c AbstractMemory.c
+In file included from AbstractMemory.h:37,
+                 from AbstractMemory.c:36:
+Types.h:74:17: error: ffi.h: No such file or directory
+In file included from Types.h:75,
+                 from AbstractMemory.h:37,
+                 from AbstractMemory.c:36:
+Type.h:44: error: syntax error before =91ffi_type=92
+cc1: warnings being treated as errors
+Type.h:44: warning: no semicolon at end of struct or union
+In file included from AbstractMemory.c:36:
+AbstractMemory.h: In function =91memory_get_op=92:
+AbstractMemory.h:115: error: dereferencing pointer to incomplete type
+In file included from AbstractMemory.c:38:
+Function.h: At top level:
+Function.h:45: error: field =91type=92 has incomplete type
+Function.h:52: error: syntax error before =91ffi_type=92
+Function.h:52: warning: no semicolon at end of struct or union
+Function.h:53: warning: type defaults to =91int=92 in declaration of
+=91ffiParameterTypes=92
+Function.h:53: warning: data definition has no type or storage class
+Function.h:54: error: syntax error before =91ffi_cif=92
+Function.h:54: warning: type defaults to =91int=92 in declaration of
+=91ffi_cif=92
+Function.h:54: warning: data definition has no type or storage class
+Function.h:59: error: syntax error before =91abi=92
+Function.h:59: warning: type defaults to =91int=92 in declaration of =91abi=
+=92
+Function.h:59: warning: data definition has no type or storage class
+Function.h:66: error: syntax error before =91}=92 token
+make: *** [AbstractMemory.o] Error 1
+
+
+Gem files will remain installed in /opt/local/lib/ruby/gems/1.8/gems/
+ffi-0.5.4 for inspection.
+Results logged to /opt/local/lib/ruby/gems/1.8/gems/ffi-0.5.4/ext/
+ffi_c/gem_make.out
+
+donald-balls-macbook-pro:serp dball$ ruby -v
+ruby 1.8.7 (2008-08-11 patchlevel 72) [i686-darwin9]

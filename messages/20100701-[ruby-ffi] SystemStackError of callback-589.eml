@@ -1,0 +1,166 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.237.6 with SMTP id km6cs88315qcb;
+        Thu, 1 Jul 2010 15:39:05 -0700 (PDT)
+Received: by 10.114.106.15 with SMTP id e15mr258665wac.38.1278023944428;
+        Thu, 01 Jul 2010 15:39:04 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOPwnuq5CxCGsrThBBoE0UE1wQ@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTP id c24si264032rvf.7.2010.07.01.15.39.03;
+        Thu, 01 Jul 2010 15:39:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOPwnuq5CxCGsrThBBoE0UE1wQ@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOPwnuq5CxCGsrThBBoE0UE1wQ@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCOPwnuq5CxCGsrThBBoE0UE1wQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwi6 with SMTP id 6sf614401pwi.7
+        for <headius@headius.com>; Thu, 01 Jul 2010 15:39:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=MyVOUIkmzb1J+bz5v4nO90QdbgiBln6nVQuhVs4Q5Qo=;
+        b=Uf7vYXC4UwmMsLxN2ONgSPb2FGU7zOD3gu0pCdJ6CjV28xtqrr5QT0qPqnj/JkXg1I
+         muVowYdnVhKWkA1cip0ijR6zHfR5J+CsIWnjLCe4VFrt4nqPYwFj3LZcuXNVKgZ+F4EY
+         k48dz4Q5dAe7RtUoHZp+rm1wgB79I34Fflw18=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=7CONTl8PAJQwW+L+vP1qA6iodTs61Y/JUab85y9UbabYW7WQ/vz1aBxntzq0JPudtw
+         PZZ+IlH4HM/WoqRxWm9s9zSoKWYdc0PnXrOP5Git72zdvFJ2JHLel1b7IO36yABXwGvH
+         EAIAus/hwoj38ahkQR6L7RUmIy3x2CgwQFHZ8=
+Received: by 10.142.118.11 with SMTP id q11mr4105wfc.34.1278023942543;
+        Thu, 01 Jul 2010 15:39:02 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.21.25 with SMTP id y25ls151668wfi.1.p; Thu, 01 Jul 2010 
+	15:39:02 -0700 (PDT)
+Received: by 10.142.142.18 with SMTP id p18mr41045wfd.16.1278023941769;
+        Thu, 01 Jul 2010 15:39:01 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.21.24 with SMTP id 24mr14195agu.16.1277995222525; Thu, 01 
+	Jul 2010 07:40:22 -0700 (PDT)
+Received: by q12g2000yqj.googlegroups.com with HTTP; Thu, 1 Jul 2010 07:40:22 
+	-0700 (PDT)
+Date: Thu, 1 Jul 2010 07:40:22 -0700 (PDT)
+X-IP: 113.41.123.217
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-US) 
+	AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.70 Safari/533.4,gzip(gfe)
+Message-ID: <6905b8dc-36ca-465d-a910-aa0a90561e9b@q12g2000yqj.googlegroups.com>
+Subject: [ruby-ffi] SystemStackError of callback
+From: tlayboy <tlayboy@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: tlayboy@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all,
+
+I am in troble with SystemStackError of callback.
+Does anyone know why this error is occured?
+
+My code is like this.
+
+############################
+C library
+############################
+typedef void (*callback)(int, void *);
+pthread_t thread;
+struct cb_info info;
+
+struct cb_info {
+	callback cb;
+	int data;
+	void *p;
+};
+
+void *call(void *data)
+{
+	struct cb_info *info = (struct cb_info *)data;
+	info->cb(info->data, info->p);
+}
+
+void async_call(callback cb, unsigned int data, void *p)
+{
+	int ret;
+
+	info.cb = rcb;
+	info.data = data;
+	info.p = p;
+
+	if ((ret = pthread_create(&thread, NULL, call, (void *)&info)) != 0)
+{
+		perror("ptherad_create");
+		exit(EXIT_FAILURE);
+	}
+}
+
+############################
+Ruby Code
+############################
+p = FFI::MemoryPointer.new(:int)
+p.write_int(2)
+
+async_call(1, p) do |a, b|
+	100.times do |d|
+		puts a, b.read_int
+	end
+end
+
+############################
+Output
+############################
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+/usr/lib/ruby/1.8/pp.rb:133:in `pp': stack level too deep
+(SystemStackError)
+	from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:119:in `guard_inspect_key'
+	from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:60:in `pp'
+	from /usr/lib/ruby/1.8/pp.rb:59:in `each'
+	from /usr/lib/ruby/1.8/pp.rb:59:in `pp'
+	from libcb.rb:35
+	from (eval):6:in `call'
+	from (eval):6:in `async_call'
+	from libcb.rb:34
+	from libcb.rb:33:in `times'
+	from libcb.rb:33
+
+thank you,

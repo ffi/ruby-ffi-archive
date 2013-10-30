@@ -1,0 +1,117 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp100470laa;
+        Sat, 12 Oct 2013 05:06:01 -0700 (PDT)
+X-Received: by 10.224.67.3 with SMTP id p3mr1196208qai.98.1381579561168;
+        Sat, 12 Oct 2013 05:06:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBC4MV5HFZUFRBKHW4SJAKGQERDWTSMQ@googlegroups.com>
+Received: from mail-qe0-x23c.google.com (mail-qe0-x23c.google.com [2607:f8b0:400d:c02::23c])
+        by mx.google.com with ESMTPS id gb7si25815054qeb.129.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 12 Oct 2013 05:06:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBC4MV5HFZUFRBKHW4SJAKGQERDWTSMQ@googlegroups.com designates 2607:f8b0:400d:c02::23c as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBC4MV5HFZUFRBKHW4SJAKGQERDWTSMQ@googlegroups.com designates 2607:f8b0:400d:c02::23c as permitted sender) smtp.mail=ruby-ffi+bncBC4MV5HFZUFRBKHW4SJAKGQERDWTSMQ@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-qe0-f60.google.com with SMTP id ff1sf846441qeb.15
+        for <headius@headius.com>; Sat, 12 Oct 2013 05:06:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=2b5+XH+tKPy+xmCt0O71brqPo4gcRNI3MEome9K6KxA=;
+        b=RrrGI47MhPF/t9kH41Pafsxo8jLsMBAILFaU159pVhiuAcHu0itKR8DAuVarECMWhx
+         D1ZI9dmul/ClkDE3uS4pNc9n+vtnO3f24rr1q/qlUgLqKxFe/3cjo4ezyt4uL3oG2YZW
+         bodwpn39S/mU9B4ZnX1sK0ROXtKUNvscjbv6oMc+pn4MDDik1OFqTC4VQG0VtdcSNQRd
+         iCMiVFNOsWUM83CywcHW7cJVOP1oFB0XlPdMlE1TpijZAs6dN3IO0Zog6vW+0eQ5ZvKV
+         BLJ4vyaKf9anDC7W2MZU1dORZK6Wkr4OuHEfI5MZoiXfNYATI0W03Ydj14VFEJbfhOfh
+         2VFw==
+X-Received: by 10.50.67.17 with SMTP id j17mr214122igt.8.1381579560333;
+        Sat, 12 Oct 2013 05:06:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.41.100 with SMTP id e4ls1144887igl.9.canary; Sat, 12 Oct
+ 2013 05:05:59 -0700 (PDT)
+X-Received: by 10.66.162.134 with SMTP id ya6mr9045702pab.7.1381579559903;
+        Sat, 12 Oct 2013 05:05:59 -0700 (PDT)
+Received: by 10.50.73.1 with SMTP id h1msigv;
+        Sat, 12 Oct 2013 04:44:49 -0700 (PDT)
+X-Received: by 10.50.171.169 with SMTP id av9mr212112igc.11.1381578289753;
+        Sat, 12 Oct 2013 04:44:49 -0700 (PDT)
+Date: Sat, 12 Oct 2013 04:44:48 -0700 (PDT)
+From: Misty De Meo <mistydemeo@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <8f18f2ef-b612-4f83-8482-62cb9ea8f033@googlegroups.com>
+Subject: [ruby-ffi] Describing an anonymous union
+MIME-Version: 1.0
+X-Original-Sender: mistydemeo@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1317_30390997.1381578288878"
+
+------=_Part_1317_30390997.1381578288878
+Content-Type: text/plain; charset=ISO-8859-1
+
+How can I represent an anonymous union in FFI?
+
+A struct I'm wrapping has the following structure:
+
+struct uade_notification {
+    enum uade_notification_type type;
+    union {
+        char *msg;
+        struct uade_notification_song_end song_end;
+    };
+};
+
+I can create a union using FFI::Union of course, but I'm not sure how to 
+represent that in a struct layout. Is assigning it an arbitrary name the 
+right way to go?
+
+Best,
+Misty
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_1317_30390997.1381578288878
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">How can I represent an anonymous union in FFI?<br><br>A st=
+ruct I'm wrapping has the following structure:<br><br>struct uade_notificat=
+ion {<br>&nbsp;&nbsp;&nbsp; enum uade_notification_type type;<br>&nbsp;&nbs=
+p;&nbsp; union {<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; char *msg;<br>&nb=
+sp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; struct uade_notification_song_end song_e=
+nd;<br>&nbsp;&nbsp;&nbsp; };<br>};<br><br>I can create a union using FFI::U=
+nion of course, but I'm not sure how to represent that in a struct layout. =
+Is assigning it an arbitrary name the right way to go?<br><br>Best,<br>Mist=
+y<br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_1317_30390997.1381578288878--

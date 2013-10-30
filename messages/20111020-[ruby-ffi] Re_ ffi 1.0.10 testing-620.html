@@ -1,0 +1,75 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: ffi 1.0.10 testing</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: ffi 1.0.10 testing</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rohit <rohit.namjoshi@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/20/11 12:02 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+Upgrading to 1.0.10 breaks JRuby/Rails app.
+
+Ubuntu 10.04
+Rails 3.0.9
+JRuby 1.6.4 in 1.8.7 mode
+
+Any idea what might be causing this?
+Thanks, Rohit
+
+NameError: uninitialized constant FFI
+  const_missing at org/jruby/RubyModule.java:2569
+         (root) at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/rubies/jruby-1.6.4/lib/ruby/
+site_ruby/shared/syslog.rb:18
+        require at org/jruby/RubyKernel.java:1038
+       require? at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/rubies/jruby-1.6.4/lib/ruby/
+site_ruby/shared/syslog.rb:122
+         (root) at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+logging-1.6.1/lib/logging.rb:13
+        require at org/jruby/RubyKernel.java:1038
+        require at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+logging-1.6.1/lib/logging.rb:68
+           each at org/jruby/RubyArray.java:1603
+        require at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler/runtime.rb:66
+           each at org/jruby/RubyArray.java:1603
+        require at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler/runtime.rb:55
+        require at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+bundler-1.0.21/lib/bundler.rb:122
+         (root) at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit/projects/vulcan/reporting/config<span class="moz-txt-tag">/</span></i>
+application.rb:14
+        require at org/jruby/RubyKernel.java:1038
+         (root) at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit/projects/vulcan/reporting/config<span class="moz-txt-tag">/</span></i>
+application.rb:28
+            tap at org/jruby/RubyKernel.java:1803
+         (root) at <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/rohit<span class="moz-txt-tag">/</span></i>.rvm/gems/jruby-1.6.4/gems/
+railties-3.0.9/lib/rails/commands.rb:27
+        require at org/jruby/RubyKernel.java:1038
+         (root) at script/rails:10
+
+
+On Aug 23, 6:29 am, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Can people please test ffi-master on your favourite ruby version?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Things fixed since 1.0.9:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- should now work on 1.9.3 (ruby_thread_has_gvl_p no longer exported)
+<span class="moz-txt-citetags">&gt; </span>- installs on non-MRI rubies
+<span class="moz-txt-citetags">&gt; </span>- compiles using VC++ toolchain on win32 (Charlie Savage)
+<span class="moz-txt-citetags">&gt; </span>- a lot of API documentation (Kim Burgestrand)
+<span class="moz-txt-citetags">&gt; </span>- other win32/win64 mingw fixes (Luis Lavena)
+<span class="moz-txt-citetags">&gt; </span>- better handling of linker scripts on linux (aniederl)
+<span class="moz-txt-citetags">&gt; </span>- ext/ffi_c/StructLayout.c fixes (Chikanaga Tomoyuki)
+<span class="moz-txt-citetags">&gt; </span>- Size lookup for MemoryPointer.new and Buffer.new type
+<span class="moz-txt-citetags">&gt; </span>(e.g. :int, :long, etc) parameters now much faster.
+<span class="moz-txt-citetags">&gt; </span>- FFI::Buffer.new for small sizes (&lt;= 8 bytes) types now approx 30%
+<span class="moz-txt-citetags">&gt; </span>faster.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I especially would like people to test on 1.9.3-preview1 (or later
+<span class="moz-txt-citetags">&gt; </span>1.9.3 builds/source), since I want the release to work out-of-the-box
+<span class="moz-txt-citetags">&gt; </span>on 1.9.3.
+</pre></div></body>
+</html>
+</table></div>

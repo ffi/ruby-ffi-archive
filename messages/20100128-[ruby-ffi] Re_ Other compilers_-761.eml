@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs932413anc;
+        Thu, 28 Jan 2010 08:17:38 -0800 (PST)
+Received: by 10.150.119.17 with SMTP id r17mr13588177ybc.9.1264695457334;
+        Thu, 28 Jan 2010 08:17:37 -0800 (PST)
+Return-Path: <3nrhhSwgJCAQhnfivkDAkqemp.gsqvyf2-jjmksskpikvsytw.gsq@groups.bounces.google.com>
+Received: from mail-yw0-f168.google.com (mail-yw0-f168.google.com [209.85.211.168])
+        by mx.google.com with ESMTP id 36si2015073ywh.120.2010.01.28.08.17.36;
+        Thu, 28 Jan 2010 08:17:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3nrhhSwgJCAQhnfivkDAkqemp.gsqvyf2-jjmksskpikvsytw.gsq@groups.bounces.google.com designates 209.85.211.168 as permitted sender) client-ip=209.85.211.168;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3nrhhSwgJCAQhnfivkDAkqemp.gsqvyf2-jjmksskpikvsytw.gsq@groups.bounces.google.com designates 209.85.211.168 as permitted sender) smtp.mail=3nrhhSwgJCAQhnfivkDAkqemp.gsqvyf2-jjmksskpikvsytw.gsq@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh40 with SMTP id 40sf2021259ywh.26
+        for <headius@headius.com>; Thu, 28 Jan 2010 08:17:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=NbEVt3yfu6ktKbrQYObtW7m2mFyTpDl4Iae20RczdOM=;
+        b=AcseiTvmV7PrFHNkpzlmYZc805sRr/9aLAsUqJwHZgj+mm4SNMOEw6uR2O4HT7ihk1
+         tsyljnRpFbW15hhq/FQDdR4X46eBZs84MwNNar5W2b/n+wSfzelOFHWfzN3weMIdRceS
+         58AO76HP5j9gBLH4RwjXFkkv5vzNqyCtyVZoQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=XwbW7SGjIG4JzcJg7ZZCp9Rg0pgMD6Lrie/VvUTJuDJvffpxoCC0zGA2x/yBVQQdcU
+         c1+UfUvzsL/PvEq8PSdLnIANH1pvI3o6bXxJdt6FmBqkfMqIU5mNWnJ5blDUoN0Ou/v/
+         DwBJxJRkthdjt1xNcmsj0BkRLYmi13zy9J/+Q=
+Received: by 10.151.116.20 with SMTP id t20mr282840ybm.40.1264695454883;
+        Thu, 28 Jan 2010 08:17:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.16.12 with SMTP id t12ls718666ybi.1.p; Thu, 28 Jan 2010 
+	08:17:34 -0800 (PST)
+Received: by 10.150.47.17 with SMTP id u17mr8125715ybu.27.1264695453984;
+        Thu, 28 Jan 2010 08:17:33 -0800 (PST)
+Received: by 10.150.47.17 with SMTP id u17mr8125714ybu.27.1264695453961;
+        Thu, 28 Jan 2010 08:17:33 -0800 (PST)
+Return-Path: <djberg96@gmail.com>
+Received: from mail-yw0-f167.google.com (mail-yw0-f167.google.com [209.85.211.167])
+        by gmr-mx.google.com with ESMTP id 19si107664ywh.10.2010.01.28.08.17.33;
+        Thu, 28 Jan 2010 08:17:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of djberg96@gmail.com designates 209.85.211.167 as permitted sender) client-ip=209.85.211.167;
+Received: by mail-yw0-f167.google.com with SMTP id 39so2547195ywh.18
+        for <ruby-ffi@googlegroups.com>; Thu, 28 Jan 2010 08:17:33 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.106.6 with SMTP id i6mr768887anm.10.1264695453853; Thu, 28 
+	Jan 2010 08:17:33 -0800 (PST)
+Date: Thu, 28 Jan 2010 08:17:33 -0800 (PST)
+In-Reply-To: <4ccee321001241606u3ba21b65x127fdcc3bdaccf2e@mail.gmail.com>
+X-IP: 128.117.65.66
+References: <d1d846ab-3511-48e8-89b1-1b52aa69c472@m16g2000yqc.googlegroups.com> 
+	<4ccee321001241606u3ba21b65x127fdcc3bdaccf2e@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; 
+	rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7,gzip(gfe),gzip(gfe)
+Message-ID: <ab94f1ed-c615-401a-b186-423e971510bc@p13g2000pre.googlegroups.com>
+Subject: [ruby-ffi] Re: Other compilers?
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of djberg96@gmail.com designates 209.85.211.167 as permitted sender) 
+	smtp.mail=djberg96@gmail.com
+X-Original-Sender: djberg96@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3980eb9fc5849a8
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/e91c183b7acb9e15
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Are there any plans to support other compilers? Or does FFI use some
+GNU specific extensions?
+
+Regards,
+
+Dan
+
+On Jan 24, 5:06=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> Yes, it requires the GNU toolchain.
+>
+> 2010/1/17 Daniel Berger <djber...@gmail.com>:
+>
+> > Hi,
+>
+> > Is it safe to say that ffi requires the GNU toolchain? I can't get it
+> > to build with the Sun Studio compiler, and I haven't tried with MS VC+
+> > +, but I wanted to ask before I tried that.
+>
+> > Regards,
+>
+> > Dan

@@ -1,0 +1,121 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.44.67 with SMTP id c3csp146829lbm;
+        Tue, 15 Jan 2013 16:14:13 -0800 (PST)
+X-Received: by 10.60.168.198 with SMTP id zy6mr57606698oeb.89.1358295253086;
+        Tue, 15 Jan 2013 16:14:13 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBU7B26DQKGQEHX73JRI@googlegroups.com>
+Received: from mail-ob0-f189.google.com (mail-ob0-f189.google.com [209.85.214.189])
+        by mx.google.com with ESMTPS id d9si18684965obz.179.2013.01.15.16.14.12
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 15 Jan 2013 16:14:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBU7B26DQKGQEHX73JRI@googlegroups.com designates 209.85.214.189 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBU7B26DQKGQEHX73JRI@googlegroups.com designates 209.85.214.189 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBU7B26DQKGQEHX73JRI@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ob0-f189.google.com with SMTP id xn12sf444603obc.6
+        for <headius@headius.com>; Tue, 15 Jan 2013 16:14:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=3YOdEeel2zOSqt8oqoI8jo9BmHglJSu42wlSANY+9xw=;
+        b=YIGKnX5bmciOW2BeO0f7UiEdTaeQN+HQjhWAFSYaGuSbR0Kcp2EJ9WkwFxbgOFuzJ5
+         EE7bar6+YaGQVeUlMYR0b8kYZTRHaY0MFe04FSCY9FB+yVb/UTQQdtBQbbJNSCuTczDZ
+         ayQjoG5zmDGo5Pw/xlRACT0Y/DLx3BZBeSVDeL+XMQy26B+wqElvhGZkX7HB8ON9k4qi
+         BUOxImKIUEWwdBz+4o4q89dRTeNowB1HnGsr73UfYuHNmj3H/N3fujWkqO35FGP99UWp
+         cDackJqrUOJkNMqHGUqUlvTBN3V8wG51cXA8RckgeJg3WSNaQxPNcSLOHX/pCqnRnlFZ
+         +/Yw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=3YOdEeel2zOSqt8oqoI8jo9BmHglJSu42wlSANY+9xw=;
+        b=J2RM4P4yWtIV4nLG/oylTCjAYmqvZQIPjJ7/EYF/pUfLlNkE/2cAJX7ObWyYm3sYtz
+         JXDUH88yzfojuyJp2Xfw+eGka5PyKYgSKDpRfclAMJ7f48tqKet65LcAcdIjRrkF5OXb
+         mwkm8YWJKnRKG5D8ZFq+jInzRoogGiOtMvPZasCrpRma+Zt1B1xw/qBne1+3yAWNUr+a
+         J0Md0sm1pxkmvNj/8einT2mbB4OMBH3nAdv3mGFoLZTWsAtxuMurP9hIy/Si/xrq6LlL
+         rN3Al5AamiZiTXaKvposlnngtPix+wzLgQeiiXqvyjuqDu6XUAxqPhB7exgdVDUG1HQk
+         995g==
+X-Received: by 10.50.151.175 with SMTP id ur15mr1303802igb.0.1358295252252;
+        Tue, 15 Jan 2013 16:14:12 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.51.201 with SMTP id m9ls685501igo.24.gmail; Tue, 15 Jan
+ 2013 16:14:11 -0800 (PST)
+X-Received: by 10.50.203.9 with SMTP id km9mr1339339igc.7.1358295251687;
+        Tue, 15 Jan 2013 16:14:11 -0800 (PST)
+Date: Tue, 15 Jan 2013 16:14:11 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <762a51bd-b182-41cc-9b10-6bc5b7c859be@googlegroups.com>
+In-Reply-To: <CAN_J9auN8UhekbN8Rv9eznEx6QGFSCste6zAfd7hh+6fpifUsw@mail.gmail.com>
+References: <826e1999-3748-4f19-a833-6e47d7b5e37f@googlegroups.com>
+ <CAN_J9auN8UhekbN8Rv9eznEx6QGFSCste6zAfd7hh+6fpifUsw@mail.gmail.com>
+Subject: Re: [ruby-ffi] [ANN] ffi-compiler 0.0.1
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_47_8265269.1358295251124"
+
+------=_Part_47_8265269.1358295251124
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+On Wednesday, 16 January 2013 10:09:39 UTC+11, Luis Lavena wrote:
+
+> Noticed in the example that result of compilation is left in the ext 
+> folder. Assume that is to avoid clash wih ruby trying to load the shared 
+> library?
+>
+
+You're reading too much intent into a quick&dirty late night hack :-)
+
+It leaves the library where it is because that was the simplest thing that 
+worked.  Once it worked as a proof of concept, I shipped it, as I figured 
+we can refine it as we go.
+
+I think for the next version, I'll move to a rake task style, rather than 
+generating a Rakefile (i.e. similar to what ruby-llvm does).  It increases 
+the transparency of what is happening, which will make it easier to debug 
+when things don't work.  The current way is based on the idea of "build 
+something like mkmf, but for FFI".
+
+
+
+------=_Part_47_8265269.1358295251124
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On Wednesday, 16 January 2013 10:09:39 UTC+11, Luis Lavena  wrote:<br><bloc=
+kquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-l=
+eft: 1px #ccc solid;padding-left: 1ex;"><p>Noticed in the example that resu=
+lt of compilation is left in the ext folder. Assume that is to avoid clash =
+wih ruby trying to load the shared library?<br></p></blockquote><div><br></=
+div><div>You're reading too much intent into a quick&amp;dirty late night h=
+ack :-)</div><div><br></div><div>It leaves the library where it is because =
+that was the simplest thing that worked. &nbsp;Once it worked as a proof of=
+ concept, I shipped it, as I figured we can refine it as we go.</div><div><=
+br></div><div>I think for the next version, I'll move to a rake task style,=
+ rather than generating a Rakefile (i.e. similar to what ruby-llvm does). &=
+nbsp;It increases the transparency of what is happening, which will make it=
+ easier to debug when things don't work. &nbsp;The current way is based on =
+the idea of "build something like mkmf, but for FFI".</div><div><br></div><=
+div><br></div>
+------=_Part_47_8265269.1358295251124--

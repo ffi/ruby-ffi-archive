@@ -1,0 +1,108 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs383219and;
+        Fri, 18 Dec 2009 10:04:10 -0800 (PST)
+Received: by 10.150.29.2 with SMTP id c2mr6726800ybc.311.1261159449838;
+        Fri, 18 Dec 2009 10:04:09 -0800 (PST)
+Return-Path: <3F8QrSw0JCFIB80yB9uw4MKKP06u25.w86BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com>
+Received: from mail-gx0-f197.google.com (mail-gx0-f197.google.com [209.85.217.197])
+        by mx.google.com with ESMTP id 8si4529851ywh.42.2009.12.18.10.04.08;
+        Fri, 18 Dec 2009 10:04:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3F8QrSw0JCFIB80yB9uw4MKKP06u25.w86BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) client-ip=209.85.217.197;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3F8QrSw0JCFIB80yB9uw4MKKP06u25.w86BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com designates 209.85.217.197 as permitted sender) smtp.mail=3F8QrSw0JCFIB80yB9uw4MKKP06u25.w86BEvI-zz208805y0B8E9C.w86@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk21 with SMTP id 21sf5950229gxk.7
+        for <headius@headius.com>; Fri, 18 Dec 2009 10:04:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=bh1MmHN0UVoufvejDi8PkIN1nGpVzoVEsW34PBbduOg=;
+        b=tOgfBf/BbTFZ/F+TW9Jnwa6XpVxZANN7nRRZUtdyuLG5IHFxNzMOlPzFnnZE9Mvvqd
+         tvL7dyYYNkYozRlv0TarWAn039MvoXpYAAeZk+Yzyvf5RvMIRjf/4j6aUQMhBokHW38g
+         UHFiI07jJbgadN1rw9cmfUQRvpdryML5VwkPo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=RzSNVpj/1I8UmkrvpcN0NEvgsmNY0kysQOoeYlfB6IQUYHJeTXFu9ZS/uRmW5V7tsq
+         3GPinOlgdGE/r2B+FfHj7Kp17CdZErSMiNLhRdfi3LAJS7PzTDq8RROhwpdJF8x86rSr
+         Z/k2Df5VrAZqq4IXQAv5Bos6mwO0gR32OMLM0=
+Received: by 10.150.128.34 with SMTP id a34mr347633ybd.48.1261159447604;
+        Fri, 18 Dec 2009 10:04:07 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.39.12 with SMTP id m12ls13859ybm.2.p; Fri, 18 Dec 2009 
+	10:04:06 -0800 (PST)
+Received: by 10.150.3.30 with SMTP id 30mr1431152ybc.0.1261159446144;
+        Fri, 18 Dec 2009 10:04:06 -0800 (PST)
+Received: by 10.150.3.30 with SMTP id 30mr1431149ybc.0.1261159446111;
+        Fri, 18 Dec 2009 10:04:06 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-gx0-f203.google.com (mail-gx0-f203.google.com [209.85.217.203])
+        by gmr-mx.google.com with ESMTP id 25si382766yxe.13.2009.12.18.10.04.06;
+        Fri, 18 Dec 2009 10:04:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.217.203 as permitted sender) client-ip=209.85.217.203;
+Received: by mail-gx0-f203.google.com with SMTP id 27so6515867gxk.10
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 10:04:06 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.165.27 with SMTP id s27mr65139ano.15.1261159446064; Fri, 
+	18 Dec 2009 10:04:06 -0800 (PST)
+Date: Fri, 18 Dec 2009 10:04:05 -0800 (PST)
+In-Reply-To: <4ccee320912171641q65258b4fmce2cd864b231c5f1@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <1b8c6f0c-e50e-4ffa-9299-8ed6bda540fe@26g2000yqo.googlegroups.com> 
+	<4ccee320912171641q65258b4fmce2cd864b231c5f1@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <c69d8a8f-ad80-4d4d-8a68-2a1bc5ade0cd@p8g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Re: Automatic Struct Layout
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.217.203 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/2294588e96c46a8c
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/8b6c1d57de817b08
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> It does, the wiki just hasn't been updated ... in about a year - so
+> feel free to fix it up.
+
+Cool, thanks.
+
+> That will calculate the offset of :b automatically for you, and take
+> into account 32bit vs 64bit, minimum alignments, tail padding, etc.
+
+Question
+How does ffi deal with #pragma pack in msvc?
+
+ex:
+gc.c:#pragma pack(push, 1) /* magic for reducing sizeof(RVALUE): 24 ->
+20 */
+Just wondering.
+Thanks.
+-r

@@ -1,0 +1,201 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs95200ane;
+        Wed, 6 Jan 2010 12:43:13 -0800 (PST)
+Received: by 10.100.244.21 with SMTP id r21mr10887378anh.92.1262810592923;
+        Wed, 06 Jan 2010 12:43:12 -0800 (PST)
+Return-Path: <33vVESwUPCGQLCOGUITCaUQHVKPE.EQOTWDa-HHKIQQINGITQWRU.EQO@listserv.bounces.google.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 7si19845301gxk.53.2010.01.06.12.43.11;
+        Wed, 06 Jan 2010 12:43:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of 33vVESwUPCGQLCOGUITCaUQHVKPE.EQOTWDa-HHKIQQINGITQWRU.EQO@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 33vVESwUPCGQLCOGUITCaUQHVKPE.EQOTWDa-HHKIQQINGITQWRU.EQO@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) smtp.mail=33vVESwUPCGQLCOGUITCaUQHVKPE.EQOTWDa-HHKIQQINGITQWRU.EQO@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42sf51177683yxe.22
+        for <headius@headius.com>; Wed, 06 Jan 2010 12:43:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        bh=8p1AuA4MHJEG/1juGskA+ZQKqQmHeRx8hxSp/hsMe5c=;
+        b=lsjsCpTUp3LC+OFJkDDwhtq1NWJjh8PJ9FBUIHr3S/0kH63tUuaa67m4gpepzXuMJa
+         Wt404WyO56mCmE+/FDvUshQlAU+ifWSNtuHuQxthOrfZt1wNRO683hkrAyPENMFXar1f
+         VsaLZs9CVR4JsH/4NmkzLvsGLEjn8Dx+vXFps=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=J6nKsQuHphKZfhDv/odS36wICAPpiJsGyeOoG/3eXtdDxOzMHxYKHWYLMfc9GnF15M
+         un+EzrZU5cdDCACMSkHuvb2zJyR47EKSFDpZdRsutrZ4c6aKH4FTuSfU+YVBqwVm5qfo
+         XszL3YDN1feT8m6tTU5eZ+y6FJKkNMgmdQbgw=
+Received: by 10.150.172.13 with SMTP id u13mr1302700ybe.25.1262810590874;
+        Wed, 06 Jan 2010 12:43:10 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.59.36 with SMTP id h36ls41772aga.3.p; Wed, 06 Jan 2010 
+	12:43:09 -0800 (PST)
+Received: by 10.90.9.33 with SMTP id 33mr26880131agi.14.1262810589475;
+        Wed, 06 Jan 2010 12:43:09 -0800 (PST)
+Received: by 10.90.9.33 with SMTP id 33mr26880129agi.14.1262810589439;
+        Wed, 06 Jan 2010 12:43:09 -0800 (PST)
+Return-Path: <james@graysoftinc.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by gmr-mx.google.com with ESMTP id 19si2466556yxe.2.2010.01.06.12.43.09;
+        Wed, 06 Jan 2010 12:43:09 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.211.144 is neither permitted nor denied by best guess record for domain of james@graysoftinc.com) client-ip=209.85.211.144;
+Received: by mail-yw0-f144.google.com with SMTP id 8so51339764ywh.3
+        for <ruby-ffi@googlegroups.com>; Wed, 06 Jan 2010 12:43:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.16.3 with SMTP id t3mr1055049ybi.37.1262810589268; Wed, 06 
+	Jan 2010 12:43:09 -0800 (PST)
+Date: Wed, 6 Jan 2010 12:43:09 -0800 (PST)
+In-Reply-To: <71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com>
+X-IP: 72.198.101.76
+References: <bd5613e0-04a8-45d5-8fd1-e6550cf11dd7@q4g2000yqm.googlegroups.com> 
+	<71166b3b1001061038v70c253eajee397a0d56f6a20f@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-us) 
+	AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/531.21.10,gzip(gfe),gzip(gfe)
+Message-ID: <35cb33c3-0326-4be6-851a-5a349d3416f0@c3g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Pointer Freeing Bug
+From: JEG2 <james@graysoftinc.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	209.85.211.144 is neither permitted nor denied by best guess record for 
+	domain of james@graysoftinc.com) smtp.mail=james@graysoftinc.com
+X-Original-Sender: james@graysoftinc.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/9f891a35886cb969
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/75c3e4ef3c846c1b
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Jan 6, 12:38=A0pm, Luis Lavena <luislav...@gmail.com> wrote:
+> What about forcing the garbage collect process on each spec?
+
+This was a great tip that led me straight to the issue.  Thanks for
+the idea.
+
+The problem was a callback I had setup (call() and func() are a
+trivial FFI DSL I made):
+
+        call :name    =3D> :TCPDPROC,
+             :args    =3D> [:pointer, :int, :pointer, :pointer],
+             :returns =3D> :pointer
+        func :name    =3D> :putproc,
+             :args    =3D>
+[:pointer, :pointer, :int, :pointer, :int, :TCPDPROC,
+                          :pointer],
+             :returns =3D> :bool
+
+and was using like this:
+
+        callback =3D lambda { |old_value_pointer, old_size,
+returned_size, _|
+          old_value   =3D old_value_pointer.get_bytes(0, old_size)
+          replacement =3D yield(key, old_value, value).to_s
+          returned_size.put_int(0, replacement.size)
+          FFI::MemoryPointer.from_string(replacement)
+        }
+        try(:putproc, k, k.size, v, v.size, callback, nil)
+
+The problem seems to be the FFI::MemoryPointer allocation.  Tokyo
+Cabinet says in the documentation that it will free the returned
+pointer:
+
+/* Store a record into a hash database object with a duplication
+handler.
+   `hdb' specifies the hash database object connected as a writer.
+   `kbuf' specifies the pointer to the region of the key.
+   `ksiz' specifies the size of the region of the key.
+   `vbuf' specifies the pointer to the region of the value.  `NULL'
+means that record addition is
+   ommited if there is no corresponding record.
+   `vsiz' specifies the size of the region of the value.
+   `proc' specifies the pointer to the callback function to process
+duplication.  It receives
+   four parameters.  The first parameter is the pointer to the region
+of the value.  The second
+   parameter is the size of the region of the value.  The third
+parameter is the pointer to the
+   variable into which the size of the region of the return value is
+assigned.  The fourth
+   parameter is the pointer to the optional opaque object.  It returns
+the pointer to the result
+   object allocated with `malloc'.  It is released by the caller.  If
+it is `NULL', the record is
+   not modified.  If it is `(void *)-1', the record is removed.
+   `op' specifies an arbitrary pointer to be given as a parameter of
+the callback function.  If
+   it is not needed, `NULL' can be specified.
+   If successful, the return value is true, else, it is false.
+   Note that the callback function can not perform any database
+operation because the function
+   is called in the critical section guarded by the same locks of
+database operations. */
+bool tchdbputproc(TCHDB *hdb, const void *kbuf, int ksiz, const void
+*vbuf, int vsiz,
+                  TCPDPROC proc, void *op);
+
+I'm assuming it does free it, and then FFI tries to free the same
+already freed pointer.
+
+I was able to "fix" the issue using this code:
+
+        callback =3D lambda { |old_value_pointer, old_size,
+returned_size, _|
+          old_value   =3D old_value_pointer.get_bytes(0, old_size)
+          replacement =3D yield(key, old_value, value).to_s
+          returned_size.put_int(0, replacement.size)
+          pointer =3D Utilities.malloc(replacement.size)
+          pointer.put_bytes(0, replacement)
+          pointer
+        }
+        try(:putproc, k, k.size, v, v.size, callback, nil)
+
+The Utilities.malloc() call is an FFI function wrapping tcmalloc():
+
+/* Allocate a region on memory.
+   `size' specifies the size of the region.
+   The return value is the pointer to the allocated region.
+   This function handles failure of memory allocation implicitly.
+Because the region of the
+   return value is allocated with the `malloc' call, it should be
+released with the `free' call
+   when it is no longer in use. */
+void *tcmalloc(size_t size);
+
+It seems to work, but I wasn't sure how to define the size_t
+parameter.  I assumed it's an unsigned long and defined it as such:
+
+    func :name    =3D> :malloc,
+         :args    =3D> :ulong,
+         :returns =3D> :pointer
+
+Can I really count on that though?  Is it portable?
+
+Is there a better way for me to define a pointer that FFI won't try to
+free?  I originally tried using FFI::Pointer (instead of
+FFI::MemoryPointer), but I couldn't seem to make that work.
+
+Again, thanks for the advice.
+
+James Edward Gray II

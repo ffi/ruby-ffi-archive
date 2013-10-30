@@ -1,0 +1,199 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp105532laf;
+        Mon, 25 Feb 2013 13:49:57 -0800 (PST)
+X-Received: by 10.42.48.147 with SMTP id s19mr5090985icf.18.1361828996908;
+        Mon, 25 Feb 2013 13:49:56 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBA5ZV6EQKGQELGGB55A@googlegroups.com>
+Received: from mail-ie0-x240.google.com (ie-in-x0240.1e100.net [2607:f8b0:4001:c03::240])
+        by mx.google.com with ESMTPS id q5si11567479igl.59.2013.02.25.13.49.56
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 25 Feb 2013 13:49:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBA5ZV6EQKGQELGGB55A@googlegroups.com designates 2607:f8b0:4001:c03::240 as permitted sender) client-ip=2607:f8b0:4001:c03::240;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBA5ZV6EQKGQELGGB55A@googlegroups.com designates 2607:f8b0:4001:c03::240 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBA5ZV6EQKGQELGGB55A@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-ie0-f192.google.com with SMTP id 10sf1686385ied.9
+        for <headius@headius.com>; Mon, 25 Feb 2013 13:49:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=+Y+422RjXdGN9bTisSi4/BbrjGc9CO37A4l14F2RFf8=;
+        b=n368lqJV8BG2UlQH4i45JPzt0vKKDn3dasmMQY+UemhmnrjO0pjlwGQYBlZMSCFDA5
+         kg96tQT0nN2Klhj4r0Q06CiU3bJx76LOVIyVamqEkKqAZiQ4iSL26LlbVK90XOr/Eepp
+         PMQdafjh/2ca9zQttH+SRFZ24IjXnPSGRVWzhqtVVK2Ya64neLq/evyipAc+INDPo8u6
+         kU5OD5sXd2gDQ8hwt6RXSZFCgyKDxIUfx6JoKcGSL1+Yh6iQqRUnFINu9RgYHd2poCUy
+         4XRxuVks5w55Hb3/IwiZat6R186JkBuSVPE5MZLSXp6BSojK/8FYorlIcKXuMFGGmSIq
+         2rtg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=+Y+422RjXdGN9bTisSi4/BbrjGc9CO37A4l14F2RFf8=;
+        b=WSL9L0USTayREvcc/z8hvtvO66C1yraaL4VcJTgYF3bv7Mu4VfjX7ATqXMepbBZTlP
+         aTKrP2mkOkrwQlqCRhWxxbRd4/xHtMKzqOseQDURFWCzVsDKl4+a4X9Z81UTV35tfA0i
+         qtyVmR/ggc2VGWpjkk+f0AzXKyW7MRUqFlbilDW/0nOy1sTSjhghZXGd1XdTP9lX9eIV
+         HjOGxhXYmyYZbSGJejP10ZPlIdx88jhTQa4A+D+GBxEGBMQ7Im39TjS6craJDuAHOLOO
+         56W074XLRYrysjcymQ84xaYt3X1l7sfu31vFtHsSKJFDKmVyu3y1Zx+4AXQ+vMTadZsW
+         nIvg==
+X-Received: by 10.49.116.1 with SMTP id js1mr1221088qeb.19.1361828995749;
+        Mon, 25 Feb 2013 13:49:55 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.3.138 with SMTP id c10ls1351457qec.54.gmail; Mon, 25 Feb
+ 2013 13:49:55 -0800 (PST)
+X-Received: by 10.49.71.169 with SMTP id w9mr1196792qeu.7.1361828995048;
+        Mon, 25 Feb 2013 13:49:55 -0800 (PST)
+Date: Mon, 25 Feb 2013 13:49:54 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <8afec17d-041e-47a9-9cca-5da9a41bf299@googlegroups.com>
+In-Reply-To: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+References: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+Subject: [ruby-ffi] Re: Possible issues with Ruby FFI on ARM processor
+ (Raspberry PI)
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_897_30959984.1361828994743"
+
+------=_Part_897_30959984.1361828994743
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+
+Off the top of my head, a couple of issues could be:
+
+1) data sizes/layout.  Verify that the sizes of all your FFI structs match=
+=20
+the C ones, and that the sizes & offsets of members match.
+
+2) Given it only crashes on exit, it could be some sort of GC/finalizer=20
+interaction.  Set all the MemoryPointer instances, including the ones=20
+backing the structs to autorelease=3Dfalse - this causes FFI to disown the=
+=20
+memory, so it won't try to free it.
+
+Do the same for any strings you pass in to the API - :string parameters in=
+=20
+particular could be a problem if the library persists the pointer passed in=
+=20
+instead of copying the string contents - :string params are temporary - the=
+=20
+memory allocated only lasts until the function returns.
+
+3) Endian-ness issues in ruby-ffi itself.  Is that arm arch big-endian or=
+=20
+little-endian?
+
+On Monday, 25 February 2013 00:24:00 UTC+10, Kim Burgestrand wrote:
+>
+> I=92ve been having some issues running one of my gems (
+> http://rubygems.org/gems/spotify) successfully on Raspberry PI, using the=
+=20
+> soft float debian =93weezy=94 OS, downloadable from=20
+> http://www.raspberrypi.org/downloads on cruby 1.9.3 (ruby 1.9.3p385=20
+> (2013-02-06 revision 39114) [armv6l-linux-eabi]).
+>
+> I=92ve been troubleshooting some, and created one example written in C, a=
+nd=20
+> one equivalent example written in Ruby using FFI. My suspicion was that=
+=20
+> they would behave identically, but the ruby code will sometimes segfault =
+on=20
+> exit, while the C code does not.
+>
+> Now, I=92m not entirely certain that the two examples are completely=20
+> equivalent, so I=92d be grateful for any pair of critical eyes on the two=
+=20
+> code samples: https://gist.github.com/Burgestrand/7b691591af20c29d6849
+>
+> My questions are:
+>
+> 1. Are the two (C vs. Ruby) samples really equivalent?
+> 2. Any ideas for further troubleshooting?
+>
+> =97 Kim
+>
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_897_30959984.1361828994743
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div>Off the top of my head, a couple of issues could be:<div><br=
+></div><div>1) data sizes/layout. &nbsp;Verify that the sizes of all your F=
+FI structs match the C ones, and that the sizes &amp; offsets of members ma=
+tch.</div><div><br></div><div>2) Given it only crashes on exit, it could be=
+ some sort of GC/finalizer interaction. &nbsp;Set all the MemoryPointer ins=
+tances, including the ones backing the structs to autorelease=3Dfalse - thi=
+s causes FFI to disown the memory, so it won't try to free it.</div><div><b=
+r></div><div>Do the same for any strings you pass in to the API - :string p=
+arameters in particular could be a problem if the library persists the poin=
+ter passed in instead of copying the string contents - :string params are t=
+emporary - the memory allocated only lasts until the function returns.</div=
+><div><br></div><div>3) Endian-ness issues in ruby-ffi itself. &nbsp;Is tha=
+t arm arch big-endian or little-endian?<br><br>On Monday, 25 February 2013 =
+00:24:00 UTC+10, Kim Burgestrand  wrote:<blockquote class=3D"gmail_quote" s=
+tyle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-le=
+ft: 1ex;">I=92ve been having some issues running one of my gems (<a href=3D=
+"http://rubygems.org/gems/spotify" target=3D"_blank">http://rubygems.org/ge=
+ms/<wbr>spotify</a>) successfully on Raspberry PI, using the soft float deb=
+ian =93weezy=94 OS, downloadable from&nbsp;<a href=3D"http://www.raspberryp=
+i.org/downloads" target=3D"_blank">http://www.raspberrypi.<wbr>org/download=
+s</a> on cruby 1.9.3 (ruby 1.9.3p385 (2013-02-06 revision 39114) [armv6l-li=
+nux-eabi]).<div><br></div><div>I=92ve been troubleshooting some, and create=
+d one example written in C, and one equivalent example written in Ruby usin=
+g FFI. My suspicion was that they would behave identically, but the ruby co=
+de will sometimes segfault on exit, while the C code does not.</div><div><b=
+r></div><div>Now, I=92m not entirely certain that the two examples are comp=
+letely equivalent, so I=92d be grateful for any pair of critical eyes on th=
+e two code samples:&nbsp;<a href=3D"https://gist.github.com/Burgestrand/7b6=
+91591af20c29d6849" target=3D"_blank">https://gist.github.<wbr>com/Burgestra=
+nd/<wbr>7b691591af20c29d6849</a></div><div><br></div><div>My questions are:=
+</div><div><br></div><div>1. Are the two (C vs. Ruby) samples really equiva=
+lent?</div><div>2. Any ideas for further troubleshooting?</div><div><br></d=
+iv><div>=97 Kim</div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_897_30959984.1361828994743--

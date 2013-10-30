@@ -1,0 +1,118 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs37239lae;
+        Sun, 4 Sep 2011 16:19:10 -0700 (PDT)
+Received: by 10.229.43.147 with SMTP id w19mr2579035qce.171.1315178349467;
+        Sun, 04 Sep 2011 16:19:09 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxDnjpDzBBoEaNxzqQ@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id q8si1615397qct.61.2011.09.04.16.19.08
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 04 Sep 2011 16:19:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDnjpDzBBoEaNxzqQ@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxDnjpDzBBoEaNxzqQ@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxDnjpDzBBoEaNxzqQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf3299378qwj.7
+        for <headius@headius.com>; Sun, 04 Sep 2011 16:19:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=+w2GtDpdNH4n7ukgbaktVBjEeSbvyrIfk19fM4a3aAE=;
+        b=F0H9dZZU6PouHnMj77aEiyKJ2vP+FKDf5OIamIOAcWYO+wTsPgg27ELMUuRCjFkq1w
+         YynvHIHPWHPyq5AyvjIYSilfYcF3hCDNhvbwHXgL0Y+U47Qrm6SeXOybbHDx4UWY/iSq
+         +pQdRNxaSFkzFNdCC9Vfx5DQ/W/0QGdaMcv+Y=
+Received: by 10.224.174.201 with SMTP id u9mr287026qaz.0.1315178343252;
+        Sun, 04 Sep 2011 16:19:03 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.196.134 with SMTP id eg6ls4164008qab.6.gmail; Sun, 04 Sep
+ 2011 16:19:02 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.201.131 with SMTP id fa3mr277815qab.46.1315178342214; Sun,
+ 04 Sep 2011 16:19:02 -0700 (PDT)
+Received: by fi7g2000vbb.googlegroups.com with HTTP; Sun, 4 Sep 2011 16:19:02
+ -0700 (PDT)
+Date: Sun, 4 Sep 2011 16:19:02 -0700 (PDT)
+In-Reply-To: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+References: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.1) Gecko/20100101 Firefox/6.0.1,gzip(gfe)
+Message-ID: <1ec13c6c-86c5-4a9e-98d6-afe4ad6accbb@fi7g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Re: attach_function a bit draconian
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thinking about this a bit more, maybe another approach is to explicity
+support version sin FFI.  So:
+
+attach_function(:new_function, [], :int, :version =3D> '1.1')
+
+Then:
+
+module FFI
+module Library  def
+
+On Sep 4, 3:19=A0pm, cfis <c...@savagexi.com> wrote:
+> I've written a ffi wrapper for the free image library, which is here:
+>
+> http://cfis.github.com/free-image-ruby/
+>
+> The problem is that I've coded against the latest version of
+> FreeImage, and most linux distributions have older versions
+> installed. =A0Thus when I try to load the gem it fails since
+> attach_function throws an error because the older versions don't have
+> all the functions.
+>
+> This isn't what I want - the older versions work perfectly fine, they
+> just don't include as much functionality. =A0So instead of blowing up, I
+> would prefer if FFI throw a warning message but continue loading the
+> library.
+>
+> If a user does call one of these unimplemented functions, then FFI
+> should throw an error and allows the wrapping library to customize
+> that message to say something useful (sorry, to use this function you
+> need to upgrade to a newer version of freeimage).
+>
+> I can think of lots of ways of doing this, here is one possibility:
+>
+> * If a function is not implemented, instead of throwing an error, wrap
+> it with a NotImplemented function (to go along with Function and
+> Variadic).
+>
+> * When a NotImplemented function is called, throw an error. =A0This
+> could:
+> =A0 =A0 - Just hard-code an error, not allow customization
+> =A0 =A0 - Call a method on library, not_implemented, that developers coul=
+d
+> override
+> =A0 =A0 - Call a proc which would be passed to attach_function which woul=
+d
+> be called
+>
+> I lean towards the 2nd choice, but don't feel very strongly about it.
+>
+> Does this sound like an idea that could be accepted to FFI? =A0If so,
+> I'll code up a patch for review.
+>
+> Thanks - Charlie

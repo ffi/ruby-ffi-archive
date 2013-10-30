@@ -1,0 +1,173 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp306835obj;
+        Mon, 7 May 2012 14:12:01 -0700 (PDT)
+Received: by 10.236.173.6 with SMTP id u6mr21193239yhl.130.1336425120896;
+        Mon, 07 May 2012 14:12:00 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxCg9aD9BBoEIS0rcQ@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id u6si6813898ani.151.2012.05.07.14.12.00
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 07 May 2012 14:12:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCg9aD9BBoEIS0rcQ@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCg9aD9BBoEIS0rcQ@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxCg9aD9BBoEIS0rcQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yhkk61 with SMTP id k61sf5743336yhk.7
+        for <headius@headius.com>; Mon, 07 May 2012 14:12:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=CvKRkFPzcLtikBZgMwRjX0PlfI78oSBgFEkvDvDPxDc=;
+        b=d4JnXUXd67SpjspZZLpK9s92vLF88lD+ZNvnoISoLTnD626uQ1h5i+sWVwZ38oXPza
+         Rq7y8K/Bh4XbZwTfFtI9XYZ4f8aN0rPzNIYzcHg4VpTNW+IKruNSjuPN2Fynwrea/UEc
+         vWBjAy5rRq+/cD15qfO0f1A8mAxsNHmzDWFOI=
+Received: by 10.50.173.70 with SMTP id bi6mr1545121igc.6.1336425120544;
+        Mon, 07 May 2012 14:12:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.49.81 with SMTP id u17ls1659020ibf.6.gmail; Mon, 07 May
+ 2012 14:12:00 -0700 (PDT)
+Received: by 10.50.214.102 with SMTP id nz6mr12258998igc.4.1336425120106;
+        Mon, 07 May 2012 14:12:00 -0700 (PDT)
+Received: by 10.50.151.242 with SMTP id ut18msigb;
+        Mon, 7 May 2012 10:55:36 -0700 (PDT)
+Received: by 10.68.225.132 with SMTP id rk4mr1812361pbc.14.1336413335998;
+        Mon, 07 May 2012 10:55:35 -0700 (PDT)
+Date: Mon, 7 May 2012 10:55:35 -0700 (PDT)
+From: Navaneeth KN <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <6133187.2.1336413335460.JavaMail.geo-discussion-forums@pboc1>
+Subject: [ruby-ffi] Iterating a linked list
+MIME-Version: 1.0
+X-Original-Sender: navaneethkn@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1_24045812.1336413335448"
+
+------=_Part_1_24045812.1336413335448
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+I recently started using FFI and I have to say it is one of the best 
+libraries I have ever used. Very neat syntax and performance. Thanks for 
+such a great library. 
+
+Everything was working fine for me untill I got to iterate over a linked 
+list. I am getting a segmentation fault when used from FFI. My C code works 
+well and all tests are passing. My C function is like,
+
+extern int
+get_all_tokens(
+    object *handle,
+    int token_type,
+    struct token **tokens
+);
+
+This function points the head of the linked list to "tokens" variable. Here 
+is my FFI code.
+
+  token_ptr = FFI::MemoryPointer.new :pointer
+  done = Library.get_all_tokens($handle.get_pointer(0), 1, token_ptr);
+  if done != 0
+    error_message = Library.get_last_error($handle.get_pointer(0))
+    error error_message
+    return
+  end
+
+  ptr = token_ptr.read_pointer
+  
+  until ptr.null?
+    item = Library::Token.new(ptr)
+    puts item[:pattern] ----> Fails here
+    ptr = item[:next]
+  end
+
+My C structure looks like,
+
+struct token {
+    int type, match_type;
+    char tag[TOKEN_TAG_MAX];
+    char pattern[SYMBOL_MAX];
+    char value1[SYMBOL_MAX];
+    char value2[SYMBOL_MAX];
+    int children;
+    struct token* next;
+};
+
+And here is the FFI equivalent one,
+
+  class Token < FFI::Struct
+    layout :type, :int,
+           :match_type, :int,
+           :tag, :string,
+           :pattern, :string,
+           :value1, :string,
+           :value2, :string,
+           :children, :int,
+           :next,  :pointer
+  end
+
+When running this program, I am getting 
+
+[BUG] Segmentation fault
+ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]
+
+Any clue to resolve this issue would be helpful. 
+
+Thanks
+Navaneeth
+
+
+------=_Part_1_24045812.1336413335448
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello,<br><br>I recently started using FFI and I have to say it is one of t=
+he best libraries I have ever used. Very neat syntax and performance. Thank=
+s for such a great library. <br><br>Everything was working fine for me unti=
+ll I got to iterate over a linked list. I am getting a segmentation fault w=
+hen used from FFI. My C code works well and all tests are passing. My C fun=
+ction is like,<br><br>extern int<br>get_all_tokens(<br>&nbsp;&nbsp;&nbsp; o=
+bject *handle,<br>&nbsp;&nbsp;&nbsp; int token_type,<br>&nbsp;&nbsp;&nbsp; =
+struct token **tokens<br>);<br><br>This function points the head of the lin=
+ked list to "tokens" variable. Here is my FFI code.<br><br>&nbsp; token_ptr=
+ =3D FFI::MemoryPointer.new :pointer<br>&nbsp; done =3D Library.get_all_tok=
+ens($handle.get_pointer(0), 1, token_ptr);<br>&nbsp; if done !=3D 0<br>&nbs=
+p;&nbsp;&nbsp; error_message =3D Library.get_last_error($handle.get_pointer=
+(0))<br>&nbsp;&nbsp;&nbsp; error error_message<br>&nbsp;&nbsp;&nbsp; return=
+<br>&nbsp; end<br><br>&nbsp; ptr =3D token_ptr.read_pointer<br>&nbsp; <br>&=
+nbsp; until ptr.null?<br>&nbsp;&nbsp;&nbsp; item =3D Library::Token.new(ptr=
+)<br>&nbsp;&nbsp;&nbsp; puts item[:pattern] ----&gt; Fails here<br>&nbsp;&n=
+bsp;&nbsp; ptr =3D item[:next]<br>&nbsp; end<br><br>My C structure looks li=
+ke,<br><br>struct token {<br>&nbsp;&nbsp;&nbsp; int type, match_type;<br>&n=
+bsp;&nbsp;&nbsp; char tag[TOKEN_TAG_MAX];<br>&nbsp;&nbsp;&nbsp; char patter=
+n[SYMBOL_MAX];<br>&nbsp;&nbsp;&nbsp; char value1[SYMBOL_MAX];<br>&nbsp;&nbs=
+p;&nbsp; char value2[SYMBOL_MAX];<br>&nbsp;&nbsp;&nbsp; int children;<br>&n=
+bsp;&nbsp;&nbsp; struct token* next;<br>};<br><br>And here is the FFI equiv=
+alent one,<br><br>&nbsp; class Token &lt; FFI::Struct<br>&nbsp;&nbsp;&nbsp;=
+ layout :type, :int,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; :match_type, :int,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp; :tag, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp; :pattern, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :value1, :string,<br>&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :value2, :string,<br>&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :children, :int,<br>&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :next,&nbsp; :pointer<br>=
+&nbsp; end<br><br>When running this program, I am getting <br><br>[BUG] Seg=
+mentation fault<br>ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux=
+]<br><br>Any clue to resolve this issue would be helpful. <br><br>Thanks<br=
+>Navaneeth<br><br>
+------=_Part_1_24045812.1336413335448--

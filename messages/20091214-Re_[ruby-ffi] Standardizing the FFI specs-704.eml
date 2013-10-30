@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs142485and;
+        Mon, 14 Dec 2009 16:54:31 -0800 (PST)
+Received: by 10.140.247.15 with SMTP id u15mr3909088rvh.91.1260838471024;
+        Mon, 14 Dec 2009 16:54:31 -0800 (PST)
+Return-Path: <3Rd4mSxAJCJU3GC3HI.EGz06z9zG5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 15si5036699pwi.30.2009.12.14.16.54.30;
+        Mon, 14 Dec 2009 16:54:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3Rd4mSxAJCJU3GC3HI.EGz06z9zG5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3Rd4mSxAJCJU3GC3HI.EGz06z9zG5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) smtp.mail=3Rd4mSxAJCJU3GC3HI.EGz06z9zG5Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@listserv.bounces.google.com
+Received: by pwj20 with SMTP id 20sf2145186pwj.27
+        for <headius@headius.com>; Mon, 14 Dec 2009 16:54:30 -0800 (PST)
+Received: by 10.141.124.7 with SMTP id b7mr297858rvn.6.1260838469737;
+        Mon, 14 Dec 2009 16:54:29 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.141.213.29 with SMTP id p29ls1687398rvq.3.p; Mon, 14 Dec 2009 
+	16:54:29 -0800 (PST)
+Received: by 10.141.124.15 with SMTP id b15mr1113769rvn.8.1260838469017;
+        Mon, 14 Dec 2009 16:54:29 -0800 (PST)
+Received: by 10.141.124.15 with SMTP id b15mr1113768rvn.8.1260838468991;
+        Mon, 14 Dec 2009 16:54:28 -0800 (PST)
+Return-Path: <ernest.prabhakar@gmail.com>
+Received: from mail-out3.apple.com (mail-out3.apple.com [17.254.13.22])
+        by gmr-mx.google.com with ESMTP id 18si1105200pzk.13.2009.12.14.16.54.28;
+        Mon, 14 Dec 2009 16:54:28 -0800 (PST)
+Received-SPF: neutral (google.com: 17.254.13.22 is neither permitted nor denied by domain of ernest.prabhakar@gmail.com) client-ip=17.254.13.22;
+Received: from relay16.apple.com (relay16.apple.com [17.128.113.55])
+	by mail-out3.apple.com (Postfix) with ESMTP id 9C0887CF8825
+	for <ruby-ffi@googlegroups.com>; Mon, 14 Dec 2009 16:54:28 -0800 (PST)
+X-AuditID: 11807137-b7bd4ae000000f0d-50-4b26de44c15c
+Received: from et.apple.com (et.apple.com [17.151.62.12])
+	by relay16.apple.com (Apple SCV relay) with SMTP id C2.ED.03853.44ED62B4; Mon, 14 Dec 2009 16:54:28 -0800 (PST)
+MIME-version: 1.0
+Received: from selfserve.apple.com (selfserve.apple.com [17.203.40.11])
+ by et.apple.com
+ (Sun Java(tm) System Messaging Server 6.3-7.04 (built Sep 26 2008; 32bit))
+ with ESMTPSA id <0KUO00LVE56SNQ60@et.apple.com> for ruby-ffi@googlegroups.com;
+ Mon, 14 Dec 2009 16:54:28 -0800 (PST)
+Subject: Re: [ruby-ffi] Standardizing the FFI specs
+From: Ernest Prabhakar <ernest.prabhakar@gmail.com>
+In-reply-to: <4ccee320912141605s6d31bb57q19dc1ae6d84fcafd@mail.gmail.com>
+Date: Mon, 14 Dec 2009 16:54:28 -0800
+Message-id: <958C678A-0132-4865-98A2-0124421C7F54@gmail.com>
+References: <20091210050131.GF18652@hinegardner.org>
+ <4ccee320912092211y5436f813j6f40e2a33e7d9c62@mail.gmail.com>
+ <20091210164632.GH18652@hinegardner.org>
+ <639B95D4-BE42-4AFC-87E9-DFFDC577ABAD@gmail.com>
+ <618c07250912141539p52fc4ba7ja669b38a1d14f20a@mail.gmail.com>
+ <70D04CDF-C495-4E02-9117-ECAF9D466903@gmail.com>
+ <4ccee320912141605s6d31bb57q19dc1ae6d84fcafd@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1077)
+X-Brightmail-Tracker: AAAAAQAAAZE=
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	17.254.13.22 is neither permitted nor denied by domain of 
+	ernest.prabhakar@gmail.com) smtp.mail=ernest.prabhakar@gmail.com
+X-Original-Sender: ernest.prabhakar@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/e9a24d52f776ab04
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/47fc561426eadf1b
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+On Dec 14, 2009, at 4:05 PM, Wayne Meissner wrote:
+
+> 2009/12/15 Ernest Prabhakar <ernest.prabhakar@gmail.com>:
+>> I've started by filing a bug:
+>> http://kenai.com/jira/browse/RUBY_FFI-47
+> 
+> Can you refile that one on github (http://github.com/ffi/ffi/issues) ?
+
+http://github.com/ffi/ffi/issues/#issue/20
+
+> The kenai site is just there for legacy reasons (there are still a lot
+> of sites that point to it), and will probably be getting removed
+> real-soon-now-ish.
+
+Whew.  github is much nicer, thanks.   :-)
+
+Filed one last bug in case somebody else is similarly confused: http://kenai.com/jira/browse/RUBY_FFI-48

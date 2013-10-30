@@ -1,0 +1,46 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Fun at Fedora 12</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Fun at Fedora 12</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/23/09 7:17 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">On 11/22/2009 05:55 PM, Dmitry A. Ustalov wrote:
+<br><blockquote type=cite style="color: #000000;">Hello! I'm trying to install ffi gem on my Fedora 12:
+<br>
+<br>eveel@notazik{~}% sudo gem install ffi
+<br>Building native extensions.&nbsp; This could take a while...
+<br>ERROR:&nbsp; Error installing ffi:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;ERROR: Failed to build gem native extension.
+<br>...
+<br>make
+<br>gcc -I. -I. -I/usr/lib/ruby/1.8/i386-linux -I. -I/usr/lib/ruby/gems/
+<br>1.8/gems/ffi-0.5.3/ext/ffi_c/libffi/include -DRUBY_EXTCONF_H=
+<br>\"extconf.h\"&nbsp; -D_FILE_OFFSET_BITS=64 -fPIC -O2 -g -pipe -Wall -Wp,-
+<br>D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-
+<br>size=4 -m32 -march=i686 -mtune=atom -fasynchronous-unwind-tables -fno-
+<br>strict-aliasing&nbsp; -fPIC-Werror -Wunused -Wformat -Wimplicit -Wreturn-
+<br>type&nbsp;&nbsp; -c Call.c
+<br>cc1: error: unrecognized command line option "-fPIC-Werror"
+<br>make: *** [Call.o] Error 1
+<br>
+<br>It's really sad. Perhaps, trouble is in file ext/ffi_c/extconf.rb:
+<br>$CFLAGS&lt;&lt;&nbsp; "-mwin32 " if Config::CONFIG['host_os'] =~ <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>cygwin<span class="moz-txt-tag">/</span></i>
+<br>$CFLAGS&lt;&lt;&nbsp; "-Werror -Wunused -Wformat -Wimplicit -Wreturn-type"
+<br>maybe we need put a space character before -Werror gcc key?
+<br>
+<br>Thanks.
+<br></blockquote>give this a try:
+<br>
+<br><a class="moz-txt-link-freetext" href="http://bkearney.fedorapeople.org/rubygem-ffi-0.5.2-1.fc11.src.rpm">http://bkearney.fedorapeople.org/rubygem-ffi-0.5.2-1.fc11.src.rpm</a>
+<br>
+<br>You can rebuild the srpm and the install the rpm. If you happen to be a 
+packaged, I need a package approval for:
+<br>
+<br><a class="moz-txt-link-freetext" href="https://bugzilla.redhat.com/show_bug.cgi?id=533291">https://bugzilla.redhat.com/show_bug.cgi?id=533291</a>
+<br>
+<br>-- bk
+<br>
+<br></div></body>
+</html>
+</table></div>

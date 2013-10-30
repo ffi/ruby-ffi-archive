@@ -1,0 +1,110 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs944335anc;
+        Thu, 28 Jan 2010 11:59:35 -0800 (PST)
+Received: by 10.224.98.71 with SMTP id p7mr6514106qan.331.1264708773287;
+        Thu, 28 Jan 2010 11:59:33 -0800 (PST)
+Return-Path: <3ouxhSwoJCDwhml.dmpskqekYgj.amkpsZw-ddgemmejcepmsnq.amk@groups.bounces.google.com>
+Received: from mail-qy0-f141.google.com (mail-qy0-f141.google.com [209.85.221.141])
+        by mx.google.com with ESMTP id 40si2399429qyk.127.2010.01.28.11.59.32;
+        Thu, 28 Jan 2010 11:59:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3ouxhSwoJCDwhml.dmpskqekYgj.amkpsZw-ddgemmejcepmsnq.amk@groups.bounces.google.com designates 209.85.221.141 as permitted sender) client-ip=209.85.221.141;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3ouxhSwoJCDwhml.dmpskqekYgj.amkpsZw-ddgemmejcepmsnq.amk@groups.bounces.google.com designates 209.85.221.141 as permitted sender) smtp.mail=3ouxhSwoJCDwhml.dmpskqekYgj.amkpsZw-ddgemmejcepmsnq.amk@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk5 with SMTP id 5sf734462qyk.3
+        for <headius@headius.com>; Thu, 28 Jan 2010 11:59:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=JCCnwrdqEHreQm6BtbmOPV16DohdVgMsJ+DBz5CJL78=;
+        b=z3yfx4RF1gDr21prJs9jNNrDN39jc0DvRZD90zWuVAOdxUVGMhkFutXlp7eL/T418j
+         WQDnqUIz29pqaQ6IYIQKQSs1dcS6n0BnaWgogb8LCEfs8BUVuyCQ52srkBMlgAqnMJBG
+         ZDQeZb57M6798pTbfKLx1Z4ufH6mfFncl8Sng=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=YuHWyMBuoTYcDhGPXcs2KrHP56yvAGcPn6EqbmsRzwCh2r7t4X4d7nKlD7to1qfu43
+         8+IU0DQ1KbY8O060EVmeax/hKKLM8sPGhg140AmuI5BjG6+jx1mRdqmBVoDsL9ndkAyc
+         hN/1soFSO+rSO3Ky1NGsXZVanaC/pHLKRBNKY=
+Received: by 10.229.111.83 with SMTP id r19mr68452qcp.15.1264708770928;
+        Thu, 28 Jan 2010 11:59:30 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.127.67 with SMTP id f3ls226608qcs.3.p; Thu, 28 Jan 2010 
+	11:59:29 -0800 (PST)
+Received: by 10.229.115.65 with SMTP id h1mr493645qcq.23.1264708769778;
+        Thu, 28 Jan 2010 11:59:29 -0800 (PST)
+Received: by 10.229.115.65 with SMTP id h1mr493644qcq.23.1264708769650;
+        Thu, 28 Jan 2010 11:59:29 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-qy0-f183.google.com (mail-qy0-f183.google.com [209.85.221.183])
+        by gmr-mx.google.com with ESMTP id 18si174079qyk.9.2010.01.28.11.59.28;
+        Thu, 28 Jan 2010 11:59:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.221.183 as permitted sender) client-ip=209.85.221.183;
+Received: by qyk13 with SMTP id 13so605938qyk.31
+        for <ruby-ffi@googlegroups.com>; Thu, 28 Jan 2010 11:59:28 -0800 (PST)
+Received: by 10.224.115.145 with SMTP id i17mr6566139qaq.103.1264708768140;
+        Thu, 28 Jan 2010 11:59:28 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 5sm4734107qwg.48.2010.01.28.11.59.25
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Thu, 28 Jan 2010 11:59:25 -0800 (PST)
+Date: Thu, 28 Jan 2010 14:58:55 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Re: Using Windows Unicode functions
+Message-Id: <20100128145855.1f23ec7e.jon.forums@gmail.com>
+In-Reply-To: <571aaacb-83dc-46af-a837-ea698dc31657@b2g2000yqi.googlegroups.com>
+References: <9ef47d23-21f0-4657-ac94-3cf8d7725016@a32g2000yqm.googlegroups.com>
+	<4ccee321001241612k70d81dbdgbf8b097b550c040f@mail.gmail.com>
+	<571aaacb-83dc-46af-a837-ea698dc31657@b2g2000yqi.googlegroups.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.221.183 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/ada0ea99600b7fa1
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/d2b33365135f2845
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+Nice!
+
+I minor tweaked the code and have added it to the wiki http://wiki.github.com/ffi/ffi/windows-examples#intermediate  Review and revise as needed.
+
+I removed the file encoding comment so as not to imply it's required, and I tweaked the function signature and invocation to be a bit closer to the MessageBox API documentation.
+
+Probably makes sense to try 'jcode' with MRI 1.8 and see if it can be made to work.  The code doesn't work with JRuby 1.4.0 using --1.9 due to undefined "String#encode" and I haven't yet tried JRuby 1.5.
+
+ From the FFI API perspective, can the Ruby string code be de-uglied with a combination of some clever #ifdef compile-time and runtime check magic?
+
+A new type binary blob type similar to :buffer_in but skips over the null-byte checking and encodes to UTF-16LE behind the scenes?  Something like :unicode_string or :win_wide_string?  Could the new type also be made applicable to both Windows UTF-16 and *nix UTF-8/locale environments?
+
+Haven't thought about windows SBCS, DBCS, and MBCS C runtime code page issues, but having an explicit type to help with Unicode WinAPI's could be helpful and less error prone.
+
+??
+
+Jon

@@ -1,0 +1,115 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.52.18 with SMTP id z18cs189865wfz;
+        Fri, 27 Nov 2009 15:02:33 -0800 (PST)
+Received: by 10.150.251.40 with SMTP id y40mr2604674ybh.202.1259362952983;
+        Fri, 27 Nov 2009 15:02:32 -0800 (PST)
+Return-Path: <3hloQSwoJCDwjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 7si2775648gxk.53.2009.11.27.15.02.31;
+        Fri, 27 Nov 2009 15:02:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3hloQSwoJCDwjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3hloQSwoJCDwjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3hloQSwoJCDwjsgqjYtclYekYgj.amkpsZw-ddgemmejcepmsnq.amk@listserv.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by ywh8 with SMTP id 8sf5155933ywh.3
+        for <headius@headius.com>; Fri, 27 Nov 2009 15:02:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=VfGnS7e4/cuWFfrJ/LDrfAyWTU0q7zUuR7gJGPAytgY=;
+        b=FJO71lPyCnJpOCDg1eP6xzJo8aq3lshKeDLQbiNxYMErG7u083NUYrOMrptdEb4awb
+         /peB3wUtpyHPZR+RaFKOJC2EJ92WjID1sCJRCKAL+hpL7dXCKHxSF8bq5h491Psbld1y
+         ig9BDCjbK8V7VS+BkhqN7P7TKdvFFSpnS/U2k=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=hI/kpd9kHPRWzpfI0kNYKZCyhWVoPQb/rgjwr6oqTM8JOqmzskwGrlXg12QclHYhAc
+         Ibgv0hnYDl60yx4zuxxfBSKnoiqia3uC4cofdeORQplvCLLlYCycwoArRzU8y7mlC3uL
+         gwTwyOBYv9vKS/l+pSPD/MGazffYlci9s/M0s=
+Received: by 10.90.107.20 with SMTP id f20mr201424agc.7.1259362950765;
+        Fri, 27 Nov 2009 15:02:30 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.151.83 with SMTP id b19ls825516bkw.2.p; Fri, 27 Nov 2009 
+	15:02:29 -0800 (PST)
+Received: by 10.204.15.20 with SMTP id i20mr47599bka.13.1259362949485;
+        Fri, 27 Nov 2009 15:02:29 -0800 (PST)
+Received: by 10.204.15.20 with SMTP id i20mr47598bka.13.1259362949461;
+        Fri, 27 Nov 2009 15:02:29 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f217.google.com (mail-fx0-f217.google.com [209.85.220.217])
+        by gmr-mx.google.com with ESMTP id 18si118040bwz.9.2009.11.27.15.02.28;
+        Fri, 27 Nov 2009 15:02:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.217 as permitted sender) client-ip=209.85.220.217;
+Received: by fxm9 with SMTP id 9so1838842fxm.30
+        for <ruby-ffi@googlegroups.com>; Fri, 27 Nov 2009 15:02:28 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.184.150 with SMTP id y22mr167515hbg.21.1259362948110; Fri, 
+	27 Nov 2009 15:02:28 -0800 (PST)
+In-Reply-To: <b3b3bb77-5111-4620-9651-d3a19f4175f2@r5g2000yqb.googlegroups.com>
+References: <4ccee320911271417v4c7c0fc8xb745bd6db43d1c0b@mail.gmail.com> 
+	<71166b3b0911271422w6dc7ef58p2f8a0bc8ef7aada9@mail.gmail.com> 
+	<b3b3bb77-5111-4620-9651-d3a19f4175f2@r5g2000yqb.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Fri, 27 Nov 2009 20:02:08 -0300
+Message-ID: <71166b3b0911271502m2ae77d37l6d91d5118cfe9fd0@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: FFI 0.5.4 released
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.217 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/bd48c9159b78db0a
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/cceaaa023f7d1b8f
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Nov 27, 2009 at 7:47 PM, remogatto <fazzi.andrea@gmail.com> wrote:
+> On 27 Nov, 23:22, Luis Lavena <luislav...@gmail.com> wrote:
+>
+>> =3D=3D> Somehow Rake is being marked as a runtime dependency instead of =
+development?
+>
+> Hum, I'm pretty sure I wrongly add this dependency in commit
+> 379c776548f9a69c4458533c19fc7c02289f4ce2 in order to fix RUBY_FFI-43
+> issue
+> on Kenai.
+>
+> http://kenai.com/jira/browse/RUBY_FFI-43
+>
+> When I did the fix I was sure it was needed but now I can not remember
+> why =3D8O
+>
+
+The only place that depends on Rake is lib/ffi/tools/generator_task.rb
+
+And that is not automatically loaded, but instead is inside lib as a helper=
+.
+
+Unless I'm wrong, and unless you explicitly use it, then rake
+dependency is unneeded.
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

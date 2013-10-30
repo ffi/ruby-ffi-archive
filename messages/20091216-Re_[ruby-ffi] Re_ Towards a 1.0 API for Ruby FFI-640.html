@@ -1,0 +1,65 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Towards a 1.0 API for Ruby FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/16/09 2:30 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 15, 2009, at 10:49 PM, Luis Lavena wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Wed, Dec 16, 2009 at 3:21 AM, Victor Costan <a class="moz-txt-link-rfc2396E" href="mailto:costan@gmail.com">&lt;costan@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Is it feasible to make "FFI.add_sys_types" available on all platforms
+<span class="moz-txt-citetags">&gt;&gt; </span>if it's implemented at runtime?
+<span class="moz-txt-citetags">&gt;&gt; </span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>You just made me discard my previous message. I was going to ask
+<span class="moz-txt-citetags">&gt; </span>exactly the same thing.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I believe these values should be computed at build time and not at
+<span class="moz-txt-citetags">&gt; </span>runtime. runtime calculation and shelling out is a hidden requirement
+<span class="moz-txt-citetags">&gt; </span>and add complexity to debug it.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Even you put guards to avoid errors, expect bug reports about these
+<span class="moz-txt-citetags">&gt; </span>sys types being missing from people not having the development tools
+<span class="moz-txt-citetags">&gt; </span>for their platforms at hand.
+</pre></blockquote><pre wrap>
+
+Fully agree. My intention was not to mean that FFI.add_sys_types would begin parsing header files right then figure out the results. Only that the by hiding it behind a method, every implementation is free to make the best decision about how they want to import them.
+
+I'd imagine that typically, ruby-ffi would calculate these values at build time and put them in either a .rb file that you include, or perhaps the FFI.add_sys_types method would be a C method that adds the types, thereby using the compiler itself to do most of the work.
+
+Again, the method is a simple abstraction to allow each implementation the most flexibility with the least pain.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm thinking ideally the ffi gem will come prebuilt, at least for OSX
+<span class="moz-txt-citetags">&gt;&gt; </span>and Windows, so users might not have Xcode / mingw / Vistual Studio.
+<span class="moz-txt-citetags">&gt;&gt; </span>To me, the biggest advantage of using ffi is not having to deal with
+<span class="moz-txt-citetags">&gt;&gt; </span>all the extension building stuff on a per-gem basis.
+<span class="moz-txt-citetags">&gt;&gt; </span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>On this field, I'm working on adding an option to rake-compiler to use
+<span class="moz-txt-citetags">&gt; </span>and abuse of RVM and Pik to build fat binaries on all the platforms,
+<span class="moz-txt-citetags">&gt; </span>for anyone that cares.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Cheers,
+<span class="moz-txt-citetags">&gt; </span>-- 
+<span class="moz-txt-citetags">&gt; </span>Luis Lavena
+<span class="moz-txt-citetags">&gt; </span>AREA 17
+<span class="moz-txt-citetags">&gt; </span>-
+<span class="moz-txt-citetags">&gt; </span>Perfection in design is achieved not when there is nothing more to add,
+<span class="moz-txt-citetags">&gt; </span>but rather when there is nothing more to take away.
+<span class="moz-txt-citetags">&gt; </span>Antoine de Saint-Exupéry
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

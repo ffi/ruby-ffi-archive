@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: struct questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: struct questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Shawn Anderson <shawn42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/20/09 9:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">nice-ffi by jacius works for this too.<br><br><div class="gmail_quote">On Sat, Dec 19, 2009 at 11:34 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+
+<blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">2009/12/20 rogerdpack &lt;<a href="mailto:rogerpack2005@gmail.com">rogerpack2005@gmail.com</a>&gt;:<br>
+
+
+<div class="im">&gt; When I first started using FFI::Struct&#39;s<br>
+&gt;<br>
+&gt; I anticipated being able to call methods, like<br>
+&gt; a = Struct.new<br>
+&gt; <a href="http://a.name" target="_blank">a.name</a> = &quot;hello there&quot;<br>
+&gt;<br>
+&gt; (since that&#39;s how you access them in C, and they are certainly not<br>
+&gt; hashes).  Would a patch for such be acceptable?<br>
+<br>
+</div>I considered this at one point, but it leads to name clashes with<br>
+other methods you might want to call on a Struct instance - so you<br>
+have a namespace issue.<br>
+<div class="im"><br>
+e.g.<br>
+<br>
+class S &lt; FFI::Struct<br>
+</div>  layout :size, :int<br>
+end<br>
+<br>
+s = S.new<br>
+<br>
+What does s.size return?  The size of the struct, or the contents of<br>
+the native field called size?<br>
+<br>
+Using the [] method to access struct fields neatly avoids it.<br>
+<br>
+If you really want it, ffi-swig-generator generates accessor methods<br>
+like that for every field, but it should not be a part of ffi itself.<br>
+</blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,71 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] My first example failed, can anyone help me?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] My first example failed, can anyone help me?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>win kiwi <kiwi.swhite.coder@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/3/12 3:43 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I write a c header file:
+
+hello.h
+-------------------------------
+extern void hello();
+-------------------------------
+
+souce file: hello.cpp
+------------------------------
+#include "hello.h"
+#include &lt;stdio.h&gt;
+
+void hello() {
+	printf("hello");
+}
+------------------------------
+
+I use this command to generate .so in ubuntu:
+
+g++ -O -fpic -shared -o hello.so hello.cpp
+
+
+Now, the hello.so is under my directory.
+
+I write a ruby file: helloLib.rb:
+-----------------------------
+require 'ffi'
+module HelloLib
+	extend FFI::Library
+	ffi_lib File.dirname(__FILE__) + "/hello.so"
+	attach_function :hello, [], :void
+end
+----------------------------
+
+then, I write codes to call this wrapper
+
+hellotest.rb
+-------------------------------
+require 'rubygems'
+require 'ffi'
+require 'helloLib'
+
+HelloLib.hello()
+-------------------------------
+
+I type : ruby ./hellotest.rb at the console . get following error
+information:
+
+
+/var/lib/gems/1.8/gems/ffi-1.0.11/lib/ffi/library.rb:249:in
+`attach_function': Function 'hello' not found in [./hello.so]
+(FFI::NotFoundError)
+	from ./helloLib.rb:5
+	from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in
+`gem_original_require'
+	from /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+	from ./hellotest.rb:3
+
+
+Can any one give me suggestion? Thank you.
+</pre></div></body>
+</html>
+</table></div>

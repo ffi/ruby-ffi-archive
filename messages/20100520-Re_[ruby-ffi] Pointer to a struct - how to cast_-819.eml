@@ -1,0 +1,192 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs10763qcb;
+        Thu, 20 May 2010 12:59:46 -0700 (PDT)
+Received: by 10.224.79.10 with SMTP id n10mr490729qak.219.1274385584565;
+        Thu, 20 May 2010 12:59:44 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERCtqdbfBBoEp2ZNdQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id 32si346237ywh.39.2010.05.20.12.59.43;
+        Thu, 20 May 2010 12:59:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERCtqdbfBBoEp2ZNdQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERCtqdbfBBoEp2ZNdQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERCtqdbfBBoEp2ZNdQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg8 with SMTP id 8sf168576gyg.7
+        for <headius@headius.com>; Thu, 20 May 2010 12:59:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=XCYxI+EgP4QiepJqGuSYHTVxdBAuKLh2wX9zim3hct4=;
+        b=jYRLPIbhUPFp+IR+9P1bdNUNlOkrKG25r51p9MNmPjqYEshgmGyDs2wXe7Oh2AI8nO
+         KLB2xCBZKIEjR/RqJDD1uaxZ/azvcI3PEAvmTVbpA6vAb4l5zRyGWMSn6bvUElwyMFEO
+         xfG9+GtPiEYh/owp4LDHjbn+/189LKnYVxQ1I=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=D3ZVsq/pHcVRcgGl8CaybHVq1Bz2Jq/qo29U2eNDwZjgclAtNl7iJGXmYPMGy8XYRt
+         FCvPHAJUgGHhPeERn0epYXRtIvzvv5TYhXxYl4XVceRhlaqa6MKKVegPGRoXpAYelJSG
+         Y5GZVEvnHUpq1o0ujbZxSPfsaaGywSC5F1+dw=
+Received: by 10.150.168.5 with SMTP id q5mr126399ybe.54.1274385581697;
+        Thu, 20 May 2010 12:59:41 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.139.8 with SMTP id r8ls155741ann.7.p; Thu, 20 May 2010 
+	12:59:41 -0700 (PDT)
+Received: by 10.101.202.38 with SMTP id e38mr175467anq.39.1274385581229;
+        Thu, 20 May 2010 12:59:41 -0700 (PDT)
+Received: by 10.101.202.38 with SMTP id e38mr175466anq.39.1274385581173;
+        Thu, 20 May 2010 12:59:41 -0700 (PDT)
+Return-Path: <jvoorhis@gmail.com>
+Received: from mail-yw0-f199.google.com (mail-yw0-f199.google.com [209.85.211.199])
+        by gmr-mx.google.com with ESMTP id 11si20657gxk.5.2010.05.20.12.59.40;
+        Thu, 20 May 2010 12:59:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 209.85.211.199 as permitted sender) client-ip=209.85.211.199;
+Received: by mail-yw0-f199.google.com with SMTP id 37so164235ywh.2
+        for <ruby-ffi@googlegroups.com>; Thu, 20 May 2010 12:59:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.229.242.1 with SMTP id lg1mr164633qcb.156.1274385579924; Thu, 
+	20 May 2010 12:59:39 -0700 (PDT)
+Received: by 10.229.217.206 with HTTP; Thu, 20 May 2010 12:59:39 -0700 (PDT)
+In-Reply-To: <AANLkTinJsgojioh6loOgUkofD2_20mI3wYTl_3owC6nc@mail.gmail.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+	 <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+	 <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+	 <AANLkTili1Czv42tlJoSK00kXSGDRXttq8pHB2TMWLle7@mail.gmail.com>
+	 <AANLkTilNtcrmZLxJCKbBd2hiP31LylEaGEweh4d98sju@mail.gmail.com>
+	 <6DCFD30D-74A0-4ECF-AEB0-179C0BE0945C@mac.com>
+	 <AANLkTinJsgojioh6loOgUkofD2_20mI3wYTl_3owC6nc@mail.gmail.com>
+Date: Thu, 20 May 2010 12:59:39 -0700
+Message-ID: <AANLkTinCAb5ojMpAr7SRn3syPiSABfDNJ5oehS7FlXTu@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jvoorhis@gmail.com designates 209.85.211.199 as permitted sender) 
+	smtp.mail=jvoorhis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jvoorhis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016363b7e04cc605a04870c030e
+
+--0016363b7e04cc605a04870c030e
+Content-Type: text/plain; charset=UTF-8
+
+Check out Pointer#get_array_of_type. You can also do it with FFI::Pointer
+arithmetic.
+
+Jeremy
+
+On Thu, May 20, 2010 at 12:04 PM, DA <drew.avis@gmail.com> wrote:
+
+> On Thu, May 20, 2010 at 2:48 PM, Chuck Remes <cremes.devlist@mac.com>
+> wrote:
+>
+> > That looks kind of funky to me. In the F_TextItemsT C struct, it shows
+> *val which is just a single pointer. There is no array of pointers to read
+> from at that location. I believe the syntax for arrays of pointers are more
+> like:
+> >
+> > struct {
+> >  int len;
+> >  item_t **list;
+> > }
+> >
+> > Note the double-asterisk.
+> >
+> > Have you written this in C to see how to get each F_TextItemT?
+>
+> Hi Chuck, you're right, that pointer is for an array of F_TextItemT,
+> *not* an array of pointers to F_TextItemT.
+>
+> The c code looks like this:
+>
+> tis = F_ApiGetText(docId, flowId, FTI_String | FTI_LineEnd);
+> /* Traverse text items and print strings and line ends. */
+> for (i=0; i<tis.len; i++)
+> {
+> ip = &tis.val[i];
+> if (ip->dataType == FTI_String)
+> F_Printf(NULL,"%s", ip->u.sdata);
+> else F_Printf(NULL,"\n");
+> }
+>
+> So I guess I need the equivalent of "get_array_of_struct"?  I can't
+> find an example for this case (array of struct) on the wiki.  Any
+> ideas?
+>
+> Thanks,
+> Drew
+>
+
+--0016363b7e04cc605a04870c030e
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Check out Pointer#get_array_of_type. You can also do it with FFI::Pointer a=
+rithmetic.<div><br></div><div>Jeremy<br><br><div class=3D"gmail_quote">On T=
+hu, May 20, 2010 at 12:04 PM, DA <span dir=3D"ltr">&lt;<a href=3D"mailto:dr=
+ew.avis@gmail.com">drew.avis@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;"><div class=3D"im">On Thu, May 20, 2010 at 2=
+:48 PM, Chuck Remes &lt;<a href=3D"mailto:cremes.devlist@mac.com">cremes.de=
+vlist@mac.com</a>&gt; wrote:<br>
+
+<br>
+&gt; That looks kind of funky to me. In the F_TextItemsT C struct, it shows=
+ *val which is just a single pointer. There is no array of pointers to read=
+ from at that location. I believe the syntax for arrays of pointers are mor=
+e like:<br>
+
+&gt;<br>
+&gt; struct {<br>
+&gt; =C2=A0int len;<br>
+&gt; =C2=A0item_t **list;<br>
+&gt; }<br>
+&gt;<br>
+&gt; Note the double-asterisk.<br>
+&gt;<br>
+&gt; Have you written this in C to see how to get each F_TextItemT?<br>
+<br>
+</div>Hi Chuck, you&#39;re right, that pointer is for an array of F_TextIte=
+mT,<br>
+*not* an array of pointers to F_TextItemT.<br>
+<br>
+The c code looks like this:<br>
+<br>
+tis =3D F_ApiGetText(docId, flowId, FTI_String | FTI_LineEnd);<br>
+/* Traverse text items and print strings and line ends. */<br>
+for (i=3D0; i&lt;tis.len; i++)<br>
+{<br>
+ip =3D &amp;tis.val[i];<br>
+if (ip-&gt;dataType =3D=3D FTI_String)<br>
+F_Printf(NULL,&quot;%s&quot;, ip-&gt;u.sdata);<br>
+else F_Printf(NULL,&quot;\n&quot;);<br>
+}<br>
+<br>
+So I guess I need the equivalent of &quot;get_array_of_struct&quot;? =C2=A0=
+I can&#39;t<br>
+find an example for this case (array of struct) on the wiki. =C2=A0Any<br>
+ideas?<br>
+<br>
+Thanks,<br>
+<font color=3D"#888888">Drew<br>
+</font></blockquote></div><br></div>
+
+--0016363b7e04cc605a04870c030e--

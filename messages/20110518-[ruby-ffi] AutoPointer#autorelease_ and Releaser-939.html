@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] AutoPointer#autorelease? and Releaser</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] AutoPointer#autorelease? and Releaser</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;dark.panda&quot; &lt;dark.panda@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/18/11 8:39 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+G'day list.
+
+I noticed that in ffi 1.0.8, an autorelease? method was added to the
+Pointer class to check on @autorelease. In the AutoPointer class, the
+autorelease= method is overridden and the value is forwarded to
+Releaser, but the autorelease? method isn't overridden in a similar
+fashion and will always return false.
+
+I'm currently cleaning up an ffi wrapper for the GEOS library, and the
+rules for whether or not to objects need to be explicitly freed
+depends on the situation such as whether or not a parent object owns a
+geometry and so forth. I'd like to use autorelease? to check on the
+status of autorelease as I'm relying upon it to detect whether or not
+I have to do some object cloning or if the objects I'm using are safe
+to use directly.
+
+So, I guess what I'm wondering is is if the absence of autorelease?
+delegating to Releaser in AutoPointer intentional and that what I'm
+trying to do is insane, or if I'm on to something here. At the moment
+I'm relying on instance_variable_get to get to @releaser.autorelease,
+but that seems pretty flaky.
+
+Cheers.
+</pre></div></body>
+</html>
+</table></div>

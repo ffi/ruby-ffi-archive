@@ -1,0 +1,114 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ANN] ffi 0.5.0</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ANN] ffi 0.5.0</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Andrea Fazzi <andrea.fazzi@alcacoop.it></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/6/09 3:48 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-talk@ruby-lang.org (ruby-talk ML)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Newsgroups: </div>comp.lang.ruby</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+ffi version 0.5.0
+    by Wayne Meissner
+    <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi">http://wiki.github.com/ffi/ffi</a>
+
+== DESCRIPTION
+
+Ruby-FFI is a ruby extension for programmatically loading dynamic
+libraries, binding functions within them, and calling those functions
+from Ruby code. Moreover, a Ruby-FFI extension works without changes
+on Ruby and JRuby. Discover why should you write your next extension
+using Ruby-FFI here[<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/why-use-ffi">http://wiki.github.com/ffi/ffi/why-use-ffi</a>].
+
+== CHANGES
+
+* Major improvements
+  * New Function class
+  * Structs can be passed and returned by value
+  * Implement a custom trampoline for x86_64, resulting in roughly 30%
+speedup
+  * Improve dispatch of functions which take (0..6)
+char/short/int/long/pointer arguments by between 50% and 200% on x86_64
+  * Callbacks are now approximately 100% faster on x86_64
+* Minor improvements
+  * Add support for MacOSX Snow Leopard
+  * Improve support for Windows releasing fat binaries on rubyforge
+  * Better introspection in structs:
+    * Add StructLayout::Field#type, size, offset, alignment and name
+      methods
+    * Add StructLayout#fields which returns an array of
+      StructLayout::Field objects
+  * Add automagic deducing of library name from module name.
+    Idea and prototype implementation from Matt Hulse
+  * Callback fields in structs can now be both read and written
+  * Add a bunch of new benchmarks
+  * Lots of refactoring
+* Experimental features
+  * blocking functions (i.e. native code that blocks the thread) support
+* Bug fixes
+  * Fix RUBY-FFI_43 (rake gem dependency)
+
+== FEATURES
+
+* It has a very intuitive DSL
+* It supports all C native types
+* It supports C structs (also nested), enums and global variables
+* It supports callbacks
+* It has smart methods to handle memory management of pointers and
+structs
+
+== SYNOPSIS
+
+  require 'ffi'
+
+  module MyLib
+    extend FFI::Library
+    attach_function :puts, [ :string ], :int
+  end
+
+  MyLib.puts 'Hello boys using libc!'
+
+For less minimalistic and more sane examples you may look at:
+
+* the samples/ folder
+* the examples on the wiki[<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi">http://wiki.github.com/ffi/ffi</a>]
+* the projects using FFI listed on this
+page[<a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/projects-using-ffi">http://wiki.github.com/ffi/ffi/projects-using-ffi</a>]
+
+== REQUIREMENTS
+
+* You need a sane building environment in order to compile the
+extension.
+
+== DOWNLOAD/INSTALL
+
+From rubyforge:
+
+  [sudo] gem install ffi
+
+or from the git repository on github:
+
+  git clone <a class="moz-txt-link-freetext" href="git://github.com/ffi/ffi.git">git://github.com/ffi/ffi.git</a>
+  cd ffi
+  rake gem:install
+
+== CREDITS
+
+Special thanks to:
+
+* Yehuda Katz
+* Luc Heinrich
+* Andrea Fazzi
+* Mike Dalessio
+* Hongli Lai
+* Evan Phoenix
+* Aman Gupta
+* Beoran
+
+== LICENSE
+
+See LICENSE file.
+<div class="moz-txt-sig">-- 
+Posted via <a class="moz-txt-link-freetext" href="http://www.ruby-forum.com/">http://www.ruby-forum.com/</a>.
+
+</div></pre></div></body>
+</html>
+</table></div>

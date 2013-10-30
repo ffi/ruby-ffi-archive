@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] success using ffi to read Vernier sensor data from ruby  and jruby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] success using ffi to read Vernier sensor data from ruby  and jruby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/13/09 2:13 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">The initial implementation of a Ruby FFI interface to a Vernier GoIO sensor now works!
+<br>
+<br>&nbsp; <a class="moz-txt-link-freetext" href="http://gist.github.com/254981">http://gist.github.com/254981</a>
+<br>
+<br>It's an adaptation of the GoIO_DeviceCheck.cpp sample app supplied with the Vernier GoIO SDK.
+<br>
+<br>&nbsp; <a class="moz-txt-link-freetext" href="http://www.vernier.com/downloads/gosdk.html">http://www.vernier.com/downloads/gosdk.html</a>
+<br>
+<br>Vernier makes all kinds of inexpensive sensors and interfaces:
+<br>
+<br>&nbsp; <a class="moz-txt-link-freetext" href="http://www.vernier.com/go/">http://www.vernier.com/go/</a>
+<br>
+<br>$ jruby test.rb
+<br>This app is linked to GoIO lib version 2.28
+<br>...
+<br>GoLink found. Enumerated id: 0x1d100000
+<br>Sensor id: 10:
+<br>25 measurements received after about 1 second.
+<br>Average measurement: 3.352 Volts
+<br>
+<br>$ ruby test.rb
+<br>This app is linked to GoIO lib version 2.28
+<br>...
+<br>GoLink found. Enumerated id: 0x1d100000
+<br>Sensor id: 10:
+<br>25 measurements received after about 1 second.
+<br>Average measurement: 3.350 Volts
+<br>
+<br>While the initial implementation is ugly (and doesn't do much) I think it's quite amazing that I can use one dynamic library 
+from Vernier and the same FFI code in Ruby and JRuby!
+<br>
+<br>Vernier supplies the full source code for their SDK as public domain. They have dynamic libraries for Mac OS X and Windows (not 
+sure how hard it would be to also compile one for Linux).&nbsp; I don't have a Windows system here but if Nokogiri can work on 
+Windows I'll bet this can also.
+<br></div></body>
+</html>
+</table></div>

@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs388181qaj;
+        Wed, 16 Sep 2009 02:36:25 -0700 (PDT)
+Received: by 10.100.55.18 with SMTP id d18mr8677053ana.80.1253093784562;
+        Wed, 16 Sep 2009 02:36:24 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-iw0-f163.google.com (mail-iw0-f163.google.com [209.85.223.163])
+        by mx.google.com with ESMTP id 28si13723254iwn.120.2009.09.16.02.36.23;
+        Wed, 16 Sep 2009 02:36:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.223.163 as permitted sender) client-ip=209.85.223.163;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.223.163 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by iwn35 with SMTP id 35so1651647iwn.22
+        for <headius@headius.com>; Wed, 16 Sep 2009 02:36:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:received:received
+         :received:content-type:subject:from:to:in-reply-to:references:date
+         :message-id:user-agent:content-transfer-encoding:reply-to:sender
+         :precedence:x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=5xwtcc3gZ157WuA8M//18oXonHoL3uJMnKvWUO/jv48=;
+        b=DO9mwUwF3qmIRbOcNV+tSlu4agI3UkYKOo0LFA+gzbJjnIwHaxJLoHlLnQkeLmZoN1
+         13ZVqdVjfqCaJoiYf9Gz6P8IHnlC4x3MyuB/84uUxNwLkdqk/E9UalSH+okV41MPFPMa
+         coLYyTQxQyZePvaKZSK6Zh8M69LjB+PuPqDTI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :content-type:subject:from:to:in-reply-to:references:date:message-id
+         :user-agent:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=yppIjcT9hQXN0JlNvtbAk+L4sY8SYduyDziVsSPos4UhTZ0zEia4KK2CNJtIrM+NY0
+         c88ypNsDwunSdc8qdtEYdMLwjelWkZGP4bI6I4U/SBXeXEEKvB9eLYYlUD34eRFyxn7r
+         qeOC8grcqkCyFClRKw1d3t1EfIrz+mcha1ul8=
+Received: by 10.229.78.141 with SMTP id l13mr367103qck.16.1253093781916;
+        Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Received: by 10.177.111.12 with SMTP id o12gr32yqm.0;
+	Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+X-Sender: andrea.fazzi@alcacoop.it
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.204.13.68 with SMTP id b4mr174750bka.0.1253093781500; Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Received: by 10.204.13.68 with SMTP id b4mr174749bka.0.1253093781464; Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Return-Path: <andrea.fazzi@alcacoop.it>
+Received: from mail-fx0-f213.google.com (mail-fx0-f213.google.com [209.85.220.213]) by gmr-mx.google.com with ESMTP id 15si901198fxm.1.2009.09.16.02.36.21; Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.213 is neither permitted nor denied by best guess record for domain of andrea.fazzi@alcacoop.it) client-ip=209.85.220.213;
+Received: by fxm9 with SMTP id 9so3578979fxm.25 for <ruby-ffi@googlegroups.com>; Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Received: by 10.204.18.145 with SMTP id w17mr7246737bka.42.1253093781184; Wed, 16 Sep 2009 02:36:21 -0700 (PDT)
+Return-Path: <andrea.fazzi@alcacoop.it>
+Received: from ganimoide (host99-236-dynamic.31-79-r.retail.telecomitalia.it [79.31.236.99]) by mx.google.com with ESMTPS id 22sm4772088fkq.52.2009.09.16.02.36.20 (version=TLSv1/SSLv3 cipher=RC4-MD5); Wed, 16 Sep 2009 02:36:20 -0700 (PDT)
+Received: from andrea by ganimoide with local (Exim 4.69) (envelope-from <andrea@ganimoide>) id 1Mnqvz-0005kr-AI for ruby-ffi@googlegroups.com; Wed, 16 Sep 2009 11:36:19 +0200
+Content-Type: text/plain; charset=UTF-8
+Subject: [ruby-ffi] Re: cannot define function pointers that take function
+ pointer arguments in jruby struct layout
+From: Andrea Fazzi <andrea.fazzi@alcacoop.it>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+In-reply-to: <4ccee320909150715w497d009dv4a85de6c82f2a632@mail.gmail.com>
+References: <c5a49969-580f-4bfd-8d72-23b5e677a28c@l35g2000pra.googlegroups.com> <1252952479-sup-7349@ganimoide> <e1c05edd0909141323w2e21ae32w4d5e94a7bf43ba2d@mail.gmail.com> <1252967084-sup-4813@ganimoide> <4ccee320909150715w497d009dv4a85de6c82f2a632@mail.gmail.com>
+Date: Wed, 16 Sep 2009 11:36:19 +0200
+Message-Id: <1253093711-sup-4540@ganimoide>
+User-Agent: Sup/git
+Content-Transfer-Encoding: 8bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Excerpts from Wayne Meissner's message of mar set 15 16:15:08 +0200 2009:
+> 
+> 2009/9/15 Andrea Fazzi <andrea.fazzi@alcacoop.it>:
+> > I guess that Ruby-FFI and JRuby should expose the same behaviour in cases
+> > like these. Wayne, should we fire a JIRA ticket?
+> 
+> Definitely file a ticket.  Was this a ruby-ffi 0.4.0 capability, or 0.3.x ?
+
+It was a 0.3.x feature. I filed a ticked for JRuby to JIRA.
+
+> 
+> And, please add a spec for this case.  I'm half-way thru syncing up
+> ruby-ffi struct.rb and JRuby struct.rb, so I'll need something to
+> verify this specific case works.
+
+Done.
+
+-- 
+Andrea Fazzi @ alca.le.it
+Follow me on http://twitter.com/remogatto

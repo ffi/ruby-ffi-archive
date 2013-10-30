@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.16.68 with SMTP id e4csp17136obd;
+        Sat, 3 Mar 2012 21:01:10 -0800 (PST)
+Received: by 10.236.146.6 with SMTP id q6mr17181197yhj.90.1330837269946;
+        Sat, 03 Mar 2012 21:01:09 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id d9si12352008yhn.57.2012.03.03.21.01.09
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 03 Mar 2012 21:01:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ghbg22 with SMTP id g22sf4219485ghb.7
+        for <headius@headius.com>; Sat, 03 Mar 2012 21:01:09 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIi6hJqaBhCT7sv6BBoEz0FpMA@googlegroups.com designates 10.224.187.201 as permitted sender) client-ip=10.224.187.201;
+Received: from mr.google.com ([10.224.187.201])
+        by 10.224.187.201 with SMTP id cx9mr10827388qab.13.1330837269151 (num_hops = 1);
+        Sat, 03 Mar 2012 21:01:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=NOjBE5UW724CvBBiv54NYHAF5PlqADFTMhOpG3aJyak=;
+        b=qugd7/EnTn6nrkFZ6WXkV+GqIj9Gxz/rGf5ZaV3iZXICEg2pic6J6/4muKYRKwqMfu
+         efZ2X/zMVMtM8GUUdXGbU1EpTRhcJKcAzL0/RfvZLt70XjshacgBDOHoAuUwjKYTWZD+
+         f3pwCLFIi4idd3fjOWM8jNgzO/soHF1H04+U4=
+Received: by 10.224.187.201 with SMTP id cx9mr3197366qab.13.1330837267717;
+        Sat, 03 Mar 2012 21:01:07 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.34.13 with SMTP id j13ls5275416qad.0.gmail; Sat, 03 Mar
+ 2012 21:01:07 -0800 (PST)
+Received: by 10.224.207.137 with SMTP id fy9mr1057163qab.6.1330837267393;
+        Sat, 03 Mar 2012 21:01:07 -0800 (PST)
+Received: by 10.224.106.133 with SMTP id x5msqao;
+        Sat, 3 Mar 2012 19:55:59 -0800 (PST)
+Received: by 10.52.100.167 with SMTP id ez7mr2655939vdb.13.1330833359478;
+        Sat, 03 Mar 2012 19:55:59 -0800 (PST)
+Date: Sat, 3 Mar 2012 19:55:58 -0800 (PST)
+From: Richard Musiol <mail@richard-musiol.de>
+To: ruby-ffi@googlegroups.com
+Message-ID: <33051243.1572.1330833358864.JavaMail.geo-discussion-forums@vbkl3>
+Subject: [ruby-ffi] ffi_gen - A generator for Ruby FFI bindings, directly from
+ header files via LLVM's Clang compiler
+MIME-Version: 1.0
+X-Original-Sender: mail@richard-musiol.de
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1571_23226736.1330833358864"
+
+------=_Part_1571_23226736.1330833358864
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi,
+
+I would like to introduce ffi_gen. It is a generator for FFI bindings that 
+uses C header files as input. It is similar to SWIG, but hopefully a lot 
+better, since it is based on Clang. Clang is the LLVM project's C(++) 
+compiler that is designed to be GCC compatible. I am using its backend to 
+analyse the headers and let it resolve all macros and stuff. Then I take 
+its completely wired structures and turn them into beautiful Ruby FFI code. 
+Even the documentation comments are parsed and integrated as YARD comments.
+
+The project can be found here: https://github.com/neelance/ffi_gen
+You are invited to give it a try on your favorite C library. Feedback is 
+always welcome.
+
+Richard
+
+------=_Part_1571_23226736.1330833358864
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi,<div style=3D"border-style: initial; border-color: initial; "><br></div>=
+<div style=3D"border-style: initial; border-color: initial; ">I would like =
+to introduce ffi_gen. It is a generator for FFI bindings that uses C header=
+ files as input. It is similar to SWIG, but hopefully a lot better, since i=
+t is based on Clang. Clang is the LLVM project's C(++) compiler that is des=
+igned to be GCC compatible. I am using its backend to analyse the headers a=
+nd let it resolve all macros and stuff. Then I take its completely wired st=
+ructures and turn them into beautiful Ruby FFI code. Even the documentation=
+ comments are parsed and integrated as YARD comments.</div><div style=3D"bo=
+rder-style: initial; border-color: initial; "><br></div><div style=3D"borde=
+r-style: initial; border-color: initial; ">The project can be found here:&n=
+bsp;<a href=3D"https://github.com/neelance/ffi_gen">https://github.com/neel=
+ance/ffi_gen</a></div><div style=3D"border-style: initial; border-color: in=
+itial; ">You are invited to give it a try on your favorite C library. Feedb=
+ack is always welcome.</div><div style=3D"border-style: initial; border-col=
+or: initial; "><br></div><div style=3D"border-style: initial; border-color:=
+ initial; ">Richard</div>
+------=_Part_1571_23226736.1330833358864--

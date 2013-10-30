@@ -1,0 +1,81 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] struct questions</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] struct questions</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 7:10 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Dec 18, 2009, at 5:00 PM, rogerdpack wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>A few random questions for members of the group...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I've noticed that inheritance doesn't seem to work...
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> class SimpleStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout  :value, :double,
+<span class="moz-txt-citetags">&gt; </span>           :name, :string
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>class S2 &lt; SimpleStruct; end
+<span class="moz-txt-citetags">&gt; </span>puts S2.members # fails NoMethodError: undefined method `members' for
+<span class="moz-txt-citetags">&gt; </span>nil:NilClass
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Is there any means for inheritance? Is this a bug?  (as another side-
+<span class="moz-txt-citetags">&gt; </span>effect, the parent marshal's correctly but the child doesn't--is that
+<span class="moz-txt-citetags">&gt; </span>a bug?).
+</pre></blockquote><pre wrap>
+
+They were never designed to be subclassed, so I don't consider it a bug.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>With char arrays, it seems "difficult" to insert a string
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>(rdb:1) ss[:title] = "abc"
+<span class="moz-txt-citetags">&gt; </span>ArgumentError Exception: put not supported for
+<span class="moz-txt-citetags">&gt; </span>FFI::StructLayout::Array
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>is there an easier way than ss[:title][0] = 33; ss[:title][1] = 34; //
+<span class="moz-txt-citetags">&gt; </span>one at a time?
+</pre></blockquote><pre wrap>
+
+If this works, it should not. The return value should not be references the memory of the array itself in the struct, thats not safe.
+
+Because char_array is an explicit type, #put could support it since the size of the char_array should be known by #put.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>If the only reason "put" is not supported is because it is on the todo
+<span class="moz-txt-citetags">&gt; </span>list, I could help with that.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I would also be happy to hack up a patch that made Struct#inspect more
+<span class="moz-txt-citetags">&gt; </span>visually friendly
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>i.e.
+<span class="moz-txt-citetags">&gt; </span>#&lt;SnarlStruct:0x13221c0&gt;
+<span class="moz-txt-citetags">&gt; </span>becomes
+<span class="moz-txt-citetags">&gt; </span>#&lt;SnarlStruct field1: value1, field2: value2...&gt;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>if there's any interest.
+</pre></blockquote><pre wrap>
+
+I prefer this not happen. This would require all fields to be read, which is hardly cheap. Plus, reading a field can cause a segfault, so I'd prefer all field reads are explicit by the user.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thoughts?
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>In good news, I was able to successfully convert ruby/dl of the Snarl
+<span class="moz-txt-citetags">&gt; </span>gem into ffi and it works [now ffi compatible--yea].
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks!
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

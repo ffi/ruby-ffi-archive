@@ -1,0 +1,284 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.205 with SMTP id i13cs1255faj;
+        Sat, 12 Mar 2011 00:45:39 -0800 (PST)
+Received: by 10.224.208.1 with SMTP id ga1mr9121170qab.399.1299919538739;
+        Sat, 12 Mar 2011 00:45:38 -0800 (PST)
+Return-Path: <ruby-ffi+bncCK695Z6ZDxCs5ezrBBoEv30RpA@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id m12si11275255qcu.27.2011.03.12.00.45.37
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 12 Mar 2011 00:45:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxCs5ezrBBoEv30RpA@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCK695Z6ZDxCs5ezrBBoEv30RpA@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCK695Z6ZDxCs5ezrBBoEv30RpA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf1347559qwj.7
+        for <headius@headius.com>; Sat, 12 Mar 2011 00:45:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=MwcMhQrJkUYVpGgLkNE2pft/Mnkj7JcWO5GUSvYImdE=;
+        b=0xiLkPPcNhPRR1TORaaUWfDwgVr2Z/Mb+C9fLspSuVy9lffX1jyS1iE6Q+q1wzwxD9
+         isj4v+dvFC8xJm++Yg1Z2wXKScTz7hvhr8gkHgE+BSqCTpYkRJy1/G1wstnG7Q93kdv5
+         3cjiGtT8TRpmqfXq0M1ZrzbXLtLzFgtZNE9dU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=j/606dY6KWY0upT3i8mB1xmuVU8pBI/6vCMiMUVR9nQzyuMVJrSkN7PcEfvLfGnMej
+         EPFYrvxaz3a5IIRQy5iRcOnN47kJR9M6vQHk08E8niulf5L2f6iXILWw8cm8LnQ4lKy1
+         GY8Vw/9iLxP3R8fn58EPJK74+4W5LBopzPbxY=
+Received: by 10.224.125.8 with SMTP id w8mr678982qar.27.1299919532560;
+        Sat, 12 Mar 2011 00:45:32 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.176.70 with SMTP id bd6ls537836qab.5.p; Sat, 12 Mar 2011
+ 00:45:31 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.224.8.206 with SMTP id i14mr633778qai.19.1299919531718; Sat,
+ 12 Mar 2011 00:45:31 -0800 (PST)
+Received: by r17g2000vbc.googlegroups.com with HTTP; Sat, 12 Mar 2011 00:45:31
+ -0800 (PST)
+Date: Sat, 12 Mar 2011 00:45:31 -0800 (PST)
+X-IP: 77.178.205.141
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.15)
+ Gecko/20110304 Firefox/3.6.15,gzip(gfe)
+Message-ID: <7f45dbbd-6337-4677-9a6a-8cb4abac5dab@r17g2000vbc.googlegroups.com>
+Subject: [ruby-ffi] FFI 1.0.6 fails to compile
+From: Quintus <sutniuq@gmx.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sutniuq@gmx.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi there,
+
+I've been trying to update my ffi gem today, but it didn't work out.
+Here's the update log:
+
+=============================
+$ sudo gem update ffi
+Passwort:
+Updating installed gems
+Updating ffi
+Building native extensions.  This could take a while...
+ERROR:  Error installing ffi:
+	ERROR: Failed to build gem native extension.
+
+        /opt/rubies/ruby-1.9.2-p180/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/opt/rubies/ruby-1.9.2-p180/bin/ruby
+	--with-ffi_c-dir
+	--without-ffi_c-dir
+	--with-ffi_c-include
+	--without-ffi_c-include=${ffi_c-dir}/include
+	--with-ffi_c-lib
+	--without-ffi_c-lib=${ffi_c-dir}/lib
+	--with-libffi-config
+	--without-libffi-config
+	--with-pkg-config
+	--without-pkg-config
+	--with-ffilib
+	--without-ffilib
+/opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:368:in `try_do':
+The complier failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:435:in
+`try_link0'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:440:in
+`try_link'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:552:in
+`try_func'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:748:in `block
+in have_library'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:693:in `block
+in checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+(2 levels) in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:276:in
+`postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:692:in
+`checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:743:in
+`have_library'
+	from extconf.rb:10:in `<main>'
+
+
+Gem files will remain installed in /opt/rubies/ruby-1.9.2-p180/lib/
+ruby/gems/1.9.1/gems/ffi-1.0.6 for inspection.
+Results logged to /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1/gems/
+ffi-1.0.6/ext/ffi_c/gem_make.out
+Nothing to update
+=============================
+
+The gem_make.out file says this:
+
+=============================
+$ cat /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1/gems/ffi-1.0.6/
+ext/ffi_c/gem_make.out
+/opt/rubies/ruby-1.9.2-p180/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/opt/rubies/ruby-1.9.2-p180/bin/ruby
+	--with-ffi_c-dir
+	--without-ffi_c-dir
+	--with-ffi_c-include
+	--without-ffi_c-include=${ffi_c-dir}/include
+	--with-ffi_c-lib
+	--without-ffi_c-lib=${ffi_c-dir}/lib
+	--with-libffi-config
+	--without-libffi-config
+	--with-pkg-config
+	--without-pkg-config
+	--with-ffilib
+	--without-ffilib
+/opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:368:in `try_do':
+The complier failed to generate an executable file. (RuntimeError)
+You have to install development tools first.
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:435:in
+`try_link0'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:440:in
+`try_link'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:552:in
+`try_func'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:748:in `block
+in have_library'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:693:in `block
+in checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+(2 levels) in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:280:in `block
+in postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:254:in `open'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:276:in
+`postpone'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:692:in
+`checking_for'
+	from /opt/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/mkmf.rb:743:in
+`have_library'
+	from extconf.rb:10:in `<main>'
+=============================
+
+The libffi I have installed however *does* have the ffi_call symbol:
+
+=============================
+$ objdump -T /usr/lib/libffi.so | grep ffi_call
+0000000000005c1c g    DF .text	000000000000016e  Base
+ffi_call_unix64
+0000000000005800 g    DF .text	000000000000041a  Base        ffi_call
+=============================
+
+I'm running Arch Linux with these things:
+
+=============================
+$ ruby -v
+ruby 1.9.2p180 (2011-02-18 revision 30909) [x86_64-linux]
+$ gem env
+RubyGems Environment:
+  - RUBYGEMS VERSION: 1.6.2
+  - RUBY VERSION: 1.9.2 (2011-02-18 patchlevel 180) [x86_64-linux]
+  - INSTALLATION DIRECTORY: /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/
+1.9.1
+  - RUBY EXECUTABLE: /opt/rubies/ruby-1.9.2-p180/bin/ruby
+  - EXECUTABLE DIRECTORY: /opt/rubies/ruby-1.9.2-p180/bin
+  - RUBYGEMS PLATFORMS:
+    - ruby
+    - x86_64-linux
+  - GEM PATHS:
+     - /opt/rubies/ruby-1.9.2-p180/lib/ruby/gems/1.9.1
+     - /home/quintus/.gem/ruby/1.9.1
+  - GEM CONFIGURATION:
+     - :update_sources => true
+     - :verbose => true
+     - :benchmark => false
+     - :backtrace => false
+     - :bulk_threshold => 1000
+     - "install" => "--format-executable"
+     - "update" => "--format-executable"
+     - "rdoc" => "--format=hanna"
+  - REMOTE SOURCES:
+     - http://rubygems.org/
+$ LANG=EN_US gcc --version
+gcc (GCC) 4.5.2 20110127 (prerelease)
+Copyright (C) 2010 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There
+is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+
+$ LANG=EN_US pacman -Qi libffi
+Name           : libffi
+Version        : 3.0.9-1
+URL            : http://sourceware.org/libffi
+Licenses       : MIT
+Groups         : None
+Provides       : None
+Depends On     : glibc  texinfo
+Optional Deps  : None
+Required By    : gobject-introspection  python  python2
+Conflicts With : None
+Replaces       : None
+Installed Size : 180.00 K
+Packager       : Jan de Groot <jgc@archlinux.org>
+Architecture   : x86_64
+Build Date     : Sat Mar 13 21:42:37 2010
+Install Date   : Fri Nov 26 21:31:34 2010
+Install Reason : Installed as a dependency for another package
+Install Script : Yes
+Description    : A portable, high level programming interface to
+various calling conventions.
+=============================
+
+What am I missing?
+
+Valete,
+Marvin

@@ -1,0 +1,78 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs369665qaj;
+        Tue, 15 Sep 2009 18:14:14 -0700 (PDT)
+Received: by 10.150.115.8 with SMTP id n8mr13680850ybc.64.1253063654162;
+        Tue, 15 Sep 2009 18:14:14 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f138.google.com (mail-yx0-f138.google.com [209.85.210.138])
+        by mx.google.com with ESMTP id 8si15597494ywh.7.2009.09.15.18.14.13;
+        Tue, 15 Sep 2009 18:14:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.138 as permitted sender) client-ip=209.85.210.138;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.138 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe2 with SMTP id 2so7262082yxe.3
+        for <headius@headius.com>; Tue, 15 Sep 2009 18:14:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=a1vJ/vp17Qh6bV5qXPb0yDovdnjK5xDvQyykfLEvWNA=;
+        b=gaR4Ibu5diw4Bwz4nXJZSQRTUIqb012gP3Z/nNIRKoKdRSboDZXf8x0wc/6rgaigd+
+         Td1QH3k60flWveRcPwkOKLxv/wgEbXzeuguH+MhE/wmVljntirdSMuUCN/8JjnYd0S45
+         j0kpY/KrTSEHtU6TCRC6cbr84LjMLdoLigcIA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :content-type:reply-to:sender:precedence:x-google-loop:mailing-list
+         :list-id:list-post:list-help:list-unsubscribe:x-beenthere-env
+         :x-beenthere;
+        b=ZAtr/qbMeCtLB7krRgUUlfwycf3qXZbha0ZPEYO/8zBIT4XG2t1RDWMeN93KdFhda+
+         AiEouUpETRGFIxvdIizyRjn+T67mRsuQUNC/PLhEOi43yXaHr0QWBxrKAO1DbUJVJ4LL
+         /hRJBJJGjnTKUKCdcD1CekQdWhxf4GPGgZtwI=
+Received: by 10.101.1.1 with SMTP id d1mr1859679ani.24.1253063651769;
+        Tue, 15 Sep 2009 18:14:11 -0700 (PDT)
+Received: by 10.176.151.15 with SMTP id y15gr30yqd.0;
+	Tue, 15 Sep 2009 18:14:11 -0700 (PDT)
+X-Sender: brett.blackham@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.100.202.3 with SMTP id z3mr1796492anf.32.1253063651294; Tue,  15 Sep 2009 18:14:11 -0700 (PDT)
+Date: Tue, 15 Sep 2009 18:14:11 -0700 (PDT)
+In-Reply-To: <4ccee320909151623yfb08bf4mda131cf0c9adc00a@mail.gmail.com>
+X-IP: 190.84.127.192
+References: <375f210e-392d-4156-bd7f-70d8588735d8@31g2000vbf.googlegroups.com>  <4ccee320909151623yfb08bf4mda131cf0c9adc00a@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.4pre)  Gecko/20090915 Ubuntu/9.04 (jaunty) Shiretoko/3.5.4pre,gzip(gfe),gzip(gfe)
+Message-ID: <6bb207cb-68d9-463c-b451-e340565aceb3@f10g2000vbf.googlegroups.com>
+Subject: [ruby-ffi] Re: What is the best way to convert a Fixnum to a
+ :pointer?
+From: Brett Blackham <brett.blackham@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Ah ha! Thanks.
+
+pointer = FFI::Pointer.new(address) # Works
+pointer = FFI::MemoryPointer.new(address) # Fails.
+
+Thanks again!
+
+Now I am curious what is the difference between a Pointer and
+MemoryPointer. It was my understanding that a pointer is a pointer.

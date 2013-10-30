@@ -1,0 +1,126 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mitchell Hashimoto <mitchell.hashimoto@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/10 1:38 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I'm going to have to jump into this discussion as well. While I can't
+get any hard statistic, I think I'm one of the largest users of FFI,
+with the development of Vagrant, virtualbox bindings, and libvirt
+bindings. All the aforementioned projects are used in "enterprisey"
+environments, where the only company-bestowed Ruby installation is
+that which their current OS ships with its package manager.
+
+For Ubuntu users, this means that my corporate users are restricted to
+Ruby 1.8.7 for another year at least (until another LTS release is
+out). To support this, I've had to restrict FFI versions for my gems
+to "~&gt; 0.6.3" I'm even currently struggling with a company interested
+in using my libvirt bindings, but they're restricting to Ruby 1.8.5!
+(RedHat Enterprise Linux 5) While I think thats a bit too far back, I
+think you get the idea.
+
+While I agree that Ruby 1.9.x adoption is improving and moving
+forward, there are important groups of people who simply <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>cant<span class="moz-txt-tag">_</span></span> move
+forward, even if they wanted to, due to corporate policy.
+
+FFI is an important enough library for Ruby that this needs to be
+handled in a cleaner way.
+
+I'd love to help in any way I can. I've never written a C extension so
+my experience falls short there, but if I can provide testing (Vagrant/
+virtualbox <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>really<span class="moz-txt-tag">_</span></span> stress FFI) or some other form of support, I'm
+happy to.
+
+Thanks for all your hard work so far.
+
+Best,
+Mitchell
+
+On Dec 22, 11:24 am, Evan Phoenix <a class="moz-txt-link-rfc2396E" href="mailto:e...@fallingsnow.net">&lt;e...@fallingsnow.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Dec 22, 2010, at 11:16 AM, Charles Oliver Nutter wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>On Fri, Dec 3, 2010 at 4:57 AM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt;&gt; </span>If FFI is aiming 1.9.2 or bigger, then the rubygem spec needs to be
+<span class="moz-txt-citetags">&gt; &gt;&gt;&gt; </span>tweaked to reflect that. I'm not against of ditching 1.8.x support,
+<span class="moz-txt-citetags">&gt; &gt;&gt;&gt; </span>but just want to reduce painful support issues for users still using
+<span class="moz-txt-citetags">&gt; &gt;&gt;&gt; </span>1.8.x
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>Agreed, and I just pushed a change the restricts it to &gt;= 1.9.2
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>I'm not against it still working on 1.8.7 - I'm just against:
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>a) doing the work to make it work, and
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>b) dealing with issues when people try to run code that either
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>requires blocking threads, or non-ruby threads calling back into ruby.
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I think it's premature to drop 1.8.7 support. The majority of Ruby
+<span class="moz-txt-citetags">&gt; &gt; </span>users are still on 1.8.7, and that's not changing rapidly. There's
+<span class="moz-txt-citetags">&gt; &gt; </span>also people with production apps and released libraries that depend on
+<span class="moz-txt-citetags">&gt; &gt; </span>FFI.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I think we need to find a way to get support back in there ASAP.
+<span class="moz-txt-citetags">&gt; &gt; </span>Perhaps that means we need to actively find someone to help Wayne
+<span class="moz-txt-citetags">&gt; &gt; </span>maintain the FFI gem (or take over 1.8 support completely). If we
+<span class="moz-txt-citetags">&gt; &gt; </span>don't have FFI for 1.8.7, it becomes substantially less useful as a
+<span class="moz-txt-citetags">&gt; &gt; </span>cross-impl replacement for extensions.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I agree. Sorry that I didn't chime in when 1.0.0 was released also, I got tied up with the Rubinius 1.2 release.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I appreciate the issues with blocking threads, but I think that's a
+<span class="moz-txt-citetags">&gt; &gt; </span>peril for any C extension on 1.8.7. In other words...we punt, since
+<span class="moz-txt-citetags">&gt; &gt; </span>there's no solution, and recommend people consider blocking calls when
+<span class="moz-txt-citetags">&gt; &gt; </span>using libraries through FFI.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I agree this, is a tricky problem that Wayne has done a great job supporting. But I think that the difficulty in it points that it's just not possible to do properly with the architecture of 1.8. Not supporting callbacks on non-ruby threads seems like an OK compromise. Are there a lot of people using this functionality?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Wayne: Can you summarize what's needed to get 1.8.7 support back in the gem?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Wayne, in the past we've talked about me help with the gem development and API. I'm happy to start doing this in earnest.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>- Charlie
+</pre></div></body>
+</html>
+</table></div>

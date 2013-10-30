@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] What is the best way to convert a Fixnum to a :pointer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] What is the best way to convert a Fixnum to a :pointer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Brett Blackham <brett.blackham@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/15/09 11:56 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+What is the best way to convert a Fixnum to a :pointer?
+
+Currently I have found the following works:
+
+        if address.class == Fixnum
+          pointer = FFI::MemoryPointer.new :pointer
+          pointer.write_long( address )
+        else
+          pointer = address
+        end
+
+        result = Libc.ptrace( PTRACE_PEEKTEXT, pid,
+pointer.read_pointer, nil )
+
+
+But it seems like a waste of processing to write_long, then
+read_pointer using the same data. And a waste of memory to create a
+pointer to help with the convert. Which is why I want to know if there
+is a better way to do this?  Perhaps a way to set the address of
+MemoryPointer that I don't know about?
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,16 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: FFI::StructLayout::CharArray and UTF-8 encoding</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: FFI::StructLayout::CharArray and UTF-8 encoding</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;Navaneeth.K.N&quot; &lt;navaneethkn@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/9/12 12:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hello,<br><br><div class="gmail_quote">On Wed, May 9, 2012 at 4:55 AM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br><br>On Tuesday, 8 May 2012 15:49:17 UTC+10, Navaneeth KN  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div><br>It looks like str.force_encoding(&#39;UTF-8&#39;) works well. But I am still ineterested  to know if there are any FFI way of specifying the encoding.<br>
+<br></div></blockquote><div><br></div><div>There&#39;s no way currently.  Can you add a section to the wiki about forcing the string encoding like you did above?</div></blockquote><div><br>Sure. Will do it. <br><br>Do you think adding this as an extension to FFI::StructLayout::CharArray makes sense? In such cases ptr.read_string can do the desired encoding. read_string can take the encoding as a parameter or read from a configuration like, <br>
+<br>module Sample<br>  extend FFI::Library<br>  ffi_lib &quot;sample.so&quot;<br>  string_encoding &quot;UTF-8&quot;<br>end<br></div></div><br>Let me know what you think.<br><br>Thanks<br>Navaneeth<br clear="all"><br><br>
+
+
+</div></body>
+</html>
+</table></div>

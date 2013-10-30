@@ -1,0 +1,130 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7cs4191obb;
+        Tue, 7 Feb 2012 22:41:59 -0800 (PST)
+Received: by 10.50.194.199 with SMTP id hy7mr20447941igc.26.1328683318898;
+        Tue, 07 Feb 2012 22:41:58 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMXjnc2ZExCyssj5BBoEAHx4MA@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id h6si1628745pbn.96.2012.02.07.22.41.58
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 07 Feb 2012 22:41:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMXjnc2ZExCyssj5BBoEAHx4MA@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMXjnc2ZExCyssj5BBoEAHx4MA@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCMXjnc2ZExCyssj5BBoEAHx4MA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pbcwz7 with SMTP id wz7sf398853pbc.7
+        for <headius@headius.com>; Tue, 07 Feb 2012 22:41:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:x-mxl-hash:message-id:date:from
+         :organization:user-agent:mime-version:to:subject:references
+         :in-reply-to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=Bd42usStxVdipYKJmAKDEU5r1Ugyi0yOfyA5ExyGVZE=;
+        b=4j5mTLiazrjNbX7eQSebC6nOpo0yS+J7sUU3g7I61VC8qKiU7s+9WymNRJm/4E1as5
+         fg3qDdYXkLH2yB8nhiWxZ7OhQaK+YW9iM5ZRZ8iUvrEVcGv0zqAhD2S0KPW+7dcGZHOq
+         0njYHyRMDOyNwKbjPVPMoCu1ZbUtDLsnQisko=
+Received: by 10.68.228.233 with SMTP id sl9mr1986619pbc.3.1328683314775;
+        Tue, 07 Feb 2012 22:41:54 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.14.101 with SMTP id o5ls1197331pbc.4.gmail; Tue, 07 Feb
+ 2012 22:41:54 -0800 (PST)
+Received: by 10.68.226.10 with SMTP id ro10mr16120569pbc.6.1328683314476;
+        Tue, 07 Feb 2012 22:41:54 -0800 (PST)
+Received: by 10.68.226.10 with SMTP id ro10mr16120568pbc.6.1328683314467;
+        Tue, 07 Feb 2012 22:41:54 -0800 (PST)
+Received: from mow.securemx.jp (mow302.securemx.jp. [210.130.202.52])
+        by gmr-mx.google.com with ESMTPS id c6si1470446pbo.0.2012.02.07.22.41.54
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 07 Feb 2012 22:41:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of jjones@toppan-f.co.jp designates 210.130.202.52 as permitted sender) client-ip=210.130.202.52;
+Received: by mow.securemx.jp (mow302) id q186fr6Q026339; Wed, 8 Feb 2012 15:41:53 +0900
+X-MXL-Hash: 4f3219307bff7ff7-d856c2c9dd9ea2b89d1784d20235007000de0045
+Received: from milrl02.mil.toppan.co.jp (milrl02.mil.toppan.co.jp [132.179.39.57])
+	by relay.securemx.jp (mx-mr302) id q186fq9T017442;
+	Wed, 8 Feb 2012 15:41:52 +0900
+Received: from milflt03.mil.toppan.co.jp (milflt03.mil.toppan.co.jp [10.110.228.146])
+	by milrl02.mil.toppan.co.jp (Postfix) with ESMTP id 92BA617BB
+	for <ruby-ffi@googlegroups.com>; Wed,  8 Feb 2012 15:41:52 +0900 (JST)
+Received: from milsv07.mil.toppan.co.jp [10.110.227.70] 
+	 by milflt03.mil.toppan.co.jp with ESMTP id RAA09089;
+	 Wed, 8 Feb 2012 15:41:52 +0900
+Received: from [10.80.89.170] ([10.248.17.1] [10.248.17.1]) by milsv07.mil.toppan.co.jp with ESMTPA id BT-MMP-58209; Wed, 8 Feb 2012 15:41:46 +0900
+Message-ID: <4F32192C.10800@toppan-f.co.jp>
+Date: Wed, 08 Feb 2012 15:41:48 +0900
+From: Jeffrey Jones <jjones@toppan-f.co.jp>
+Organization: Toppan Forms
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.24) Gecko/20111108 Lightning/1.0b2 Thunderbird/3.1.16
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] unsigned char *
+References: <50b4cbb8-d001-4537-a02f-9020fa743e93@i10g2000pbl.googlegroups.com> <AFFEDEEE-61AF-4BF8-B9BC-6039C88A531F@mac.com>
+In-Reply-To: <AFFEDEEE-61AF-4BF8-B9BC-6039C88A531F@mac.com>
+X-Original-Sender: jjones@toppan-f.co.jp
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jjones@toppan-f.co.jp designates 210.130.202.52 as permitted
+ sender) smtp.mail=jjones@toppan-f.co.jp
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hello Chuck,
+
+Well that is embarrassing, it has been a decade since I have done any 
+real C stuff and that was at university so the semantics have been 
+rather lost on me.
+
+I shall gives this a go and see how things pan out.
+
+Thanks for the pointer (Ba-dump-tsh!)
+
+Jeff
+
+On 08/02/12 15:13, Chuck Remes wrote:
+> On Feb 6, 2012, at 3:15 AM, Jeffrey Jones wrote:
+>
+>> Hello all,
+>>
+>> I am in the early stages of investigating ruby FFI for use with a
+>> particular third party library.
+>>
+>> This library makes use of a few functions with the following
+>> signature.
+>>
+>> struct * function (unsigned char*, unsigned int)
+>>
+>> These functions are basically used for reading data in from various
+>> places (fread for example) so it is the data itself and the data size.
+>>
+>> Looking at all the various documentation and examples and code, I
+>> cannot actually see what I need to do in ruby to match the signature.
+>>
+>> module Foo
+>>   attach_function :function, [:uchar, :uint], :pointer
+>> end
+>>
+>> Doesn't work because it isn't expecting a single char but a char*.
+>>
+>> Does anyone know what I need to do? (If it is even possible?)
+> A "char *" is a pointer. You almost had the answer on your own.
+>
+> module Foo
+>    attach_function :function, [:pointer, :uint], :pointer
+> end
+>
+> Try that.
+>
+> cr
+>
+>

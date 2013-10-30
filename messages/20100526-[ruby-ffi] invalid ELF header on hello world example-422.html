@@ -1,0 +1,38 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] invalid ELF header on hello world example</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] invalid ELF header on hello world example</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>bwv549 <jtprince@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/26/10 6:09 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+---
+require 'ffi'
+
+LIBC = 'libc'
+module Hello
+  extend FFI::Library
+  ffi_lib LIBC
+  attach_function 'puts', [ :string ], :int
+end
+
+Hello.puts("Hello, World")
+---
+
+Gives me:
+<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:61:in
+`block in ffi_lib': Could not open library 'libc': libc: cannot open
+shared object file: No such file or directory. Could not open library
+'libc.so': /usr/lib/libc.so: invalid ELF header (LoadError)
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:
+43:in `map'
+	from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>home/jtprince<span class="moz-txt-tag">/</span></i>.gem/ruby/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:
+43:in `ffi_lib'
+	from hello.rb:7:in `&lt;module:Hello&gt;'
+	from hello.rb:5:in `&lt;main&gt;'
+
+Seems like it can see libc but says "invalid ELF header".  How do I
+get hello world to run on linux?
+</pre></div></body>
+</html>
+</table></div>

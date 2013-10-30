@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 4:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/22 Thomas E Enebo <a class="moz-txt-link-rfc2396E" href="mailto:tom.enebo@gmail.com">&lt;tom.enebo@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I have been wondering about the Struct API myself.   It seems like it
+<span class="moz-txt-citetags">&gt; </span>should support a simple explicit memory management API ala:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class MyFFIStruct &lt; FFI::Struct ....
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>MyFFIStruct.new do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>struct_instance<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>  some_ffi_call struct_instance
+<span class="moz-txt-citetags">&gt; </span>  # Do other stuff....
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span># I know the block has disposed of my allocated struct
+</pre></blockquote><pre wrap>
+
+It does support this indirectly via MemoryPointer.new
+e.g.
+  MemoryPointer.new(MyFFIStruct.size) do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>p<span class="moz-txt-tag">|</span></code>
+    s = MyFFIStruct.new(p)
+    some_ffi_call s
+    # do other stuff
+  end
+
+An alternative is to use FFI::Buffer as the backing memory - on JRuby,
+that is jvm-heap memory, which is copied in/out of a temporary native
+memory area (usually on the stack) when passed to a native function.
+For small structs, especially ones that are passed to a native
+function just once, this can be up to 10x faster than the alloc/free
+cycle of a MemoryPointer backed Struct.
+</pre></div></body>
+</html>
+</table></div>

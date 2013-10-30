@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.67.198 with SMTP id s6cs269374qai;
+        Tue, 8 Sep 2009 06:14:03 -0700 (PDT)
+Received: by 10.224.118.138 with SMTP id v10mr9812959qaq.13.1252415643626;
+        Tue, 08 Sep 2009 06:14:03 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-vw0-f170.google.com (mail-vw0-f170.google.com [209.85.212.170])
+        by mx.google.com with ESMTP id 41si6537734qyk.116.2009.09.08.06.14.02;
+        Tue, 08 Sep 2009 06:14:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) client-ip=209.85.212.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws42 with SMTP id 42so6298664vws.13
+        for <headius@headius.com>; Tue, 08 Sep 2009 06:14:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=gTA0U5sgwhAcNVdjqBK2OrINAfN3kqTeyVfK77U7iA8=;
+        b=V3ePHb9Ge99L8Wsj1FrVRAqWLPQpYPAgubEz8vtl1TpFzniJSBWr3AOeH3usjISBfL
+         wkvmewhcDKseibDiGGSZBLbMtmv4IilvUBerEjYjxB9HmUdx0AUgST5G7t+Sx1Lty4bj
+         xOR+1bRECqpFGTNJmPqLslisnBl+wChnhM6oI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=rsbfuiP3fdi9rkAFDwerV2Ygx/2xQ1vWhy1OBJp4NvHXNlQuiMUhvlQ4eR/vTtw6yt
+         rCzKJMYlbf4XiLEEmJ01fryYdbZlmrmo9sA1+9b2eYRlPXUrzucv8pCeYSfO6GuaG339
+         TAqOKfXRpJM4TwfuKs5sTnn1P5V3i+ykPzq3U=
+Received: by 10.220.87.213 with SMTP id x21mr662451vcl.2.1252415583807;
+        Tue, 08 Sep 2009 06:13:03 -0700 (PDT)
+Received: by 10.230.9.20 with SMTP id j20gr14vbj.0;
+	Tue, 08 Sep 2009 06:13:03 -0700 (PDT)
+X-Sender: brett.blackham@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.16.19 with SMTP id 19mr23749ybp.27.1252415583302; Tue, 08  Sep 2009 06:13:03 -0700 (PDT)
+Date: Tue, 8 Sep 2009 06:13:03 -0700 (PDT)
+X-IP: 190.84.127.192
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); en-US; rv:1.9.1.2)  Gecko/20090729 Firefox/3.5.2,gzip(gfe),gzip(gfe)
+Message-ID: <0f24f240-5e3c-4766-bcbb-57359ebe09cb@r39g2000yqm.googlegroups.com>
+Subject: [ruby-ffi] Test pointer results
+From: Brett Blackham <brett.blackham@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+I have the following code:
+
+  DWORD     = FFI::Type::UINT32
+  ...
+  ffi_lib 'kernel32'
+  attach_function :CreateToolhelp32Snapshot, [DWORD, DWORD], :pointer
+
+
+  snapshot = KERNEL32.CreateToolhelp32Snapshot
+( Win32DebuggerDefines::TH32CS_SNAPTHREAD, @pid
+  if snapshot == nil
+    return false
+  end
+
+
+  However, this code fails at "if snapshot == nil". It appears that
+CreateToolhelp32Snapshot will always return a pointer. Even if @pid is
+not a valid process ID. Additionally, FFI pointers don't like to be
+compared to nil. Any thoughts on how I could test the results to
+ensure the CreateToolhelp32Snapshot call worked?
+
+Thanks
+
+
+
+
+
+

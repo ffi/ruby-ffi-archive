@@ -1,0 +1,237 @@
+X-Mozilla-Keys: notjunk $notjunk
+Delivered-To: headius@headius.com
+Received: by 10.152.162.111 with SMTP id xz15csp196594lab;
+        Thu, 7 Feb 2013 17:38:09 -0800 (PST)
+X-Received: by 10.49.12.138 with SMTP id y10mr1458135qeb.64.1360287488982;
+        Thu, 07 Feb 2013 17:38:08 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBAFO2GEAKGQE3STYN4Q@googlegroups.com>
+Received: from mail-qa0-f57.google.com (mail-qa0-f57.google.com [209.85.216.57])
+        by mx.google.com with ESMTPS id v3si7479363qct.164.2013.02.07.17.38.08
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Thu, 07 Feb 2013 17:38:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBAFO2GEAKGQE3STYN4Q@googlegroups.com designates 209.85.216.57 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBAFO2GEAKGQE3STYN4Q@googlegroups.com designates 209.85.216.57 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBAFO2GEAKGQE3STYN4Q@googlegroups.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qa0-f57.google.com with SMTP id hg5sf98427qab.22
+        for <headius@headius.com>; Thu, 07 Feb 2013 17:38:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=54sM4It3tNv7BktZnXHBXoG/qZSKGgHkNpHi7cV5sE8=;
+        b=JKFxuNGMYmsIv5+8+3Ikw8UowrcMHRckeN7Zc/szVv5fAuU0o5J2MzLkz2H64+ECE3
+         OYBgDjoAJs7NdHLF9Myl8AbRevhkr3gjDoRo76WZerIkRB5XjIxRHXf2ntqdb0lzRYiY
+         rOhLNx9FAcNmP9UBi7Y0p2UeUzAub3wqbuJUxgrm4vL/7vKE4N6vn8SNaOV5RZe2keJ4
+         nGcu9Gwf0NUf7Q2VRChokmdEEaaWfcMgjIOHzEaTRXshIwoYRY02LFyCJWTd8b/+pO63
+         e4WO8S7Sj7WR21LC8Apexc4HJILlADefUfvpwtQ8UEbtFOQJbq/M/IJDYODAHd4KUk3U
+         HLdQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id
+         :in-reply-to:references:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=54sM4It3tNv7BktZnXHBXoG/qZSKGgHkNpHi7cV5sE8=;
+        b=HtS7W/fgLm8zbM630BR7YOaJWGSjBflOXdIhZAHU1flQbdFoh3IPRTLSfYhMg9kGvN
+         zd2aiL5GhUaUc5Sv0OHzAA6jUYa6bDHebBkrhfFDQ3QcCRzW8nhItBdNKWAsUic09t6I
+         9ulQmdXkh6mVXLxcbsGDZbhnVX+93lWVTE0BrMZA2tj792IUwsEVtkwgrqEm+9dDUJ+m
+         RBRpYYryeOxHuS/5sQNfj7xTWfd3dJFf/uNYoBPbEvLPpBMlalDMLhUpUAUS1o9p4T5f
+         8zcL3gbU2GhAFDJM7/6LiaRP/s0rL0/1NlAqqd2z9NPg0EjPMxQqiIeI+qLely0Z2MRN
+         94yA==
+X-Received: by 10.49.127.198 with SMTP id ni6mr351028qeb.23.1360287488390;
+        Thu, 07 Feb 2013 17:38:08 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.110.10 with SMTP id hw10ls974297qeb.54.gmail; Thu, 07 Feb
+ 2013 17:38:07 -0800 (PST)
+X-Received: by 10.49.63.164 with SMTP id h4mr354465qes.39.1360287487944;
+        Thu, 07 Feb 2013 17:38:07 -0800 (PST)
+Date: Thu, 7 Feb 2013 17:38:07 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <a1a7556a-a5d5-42ab-9b47-b4b5e9ba4ee9@googlegroups.com>
+In-Reply-To: <2edd4a03-5c16-4e95-9b55-2bc2fda5e520@googlegroups.com>
+References: <96958782-a0ac-4240-918a-fe2652490f75@googlegroups.com>
+ <757382e0-08fe-43c3-934c-debb022f2cf4@googlegroups.com>
+ <2edd4a03-5c16-4e95-9b55-2bc2fda5e520@googlegroups.com>
+Subject: [ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_157_546175.1360287487686"
+
+------=_Part_157_546175.1360287487686
+Content-Type: text/plain; charset=ISO-8859-1
+
+I think the problem is that xmlFree and xmlMalloc are not functions, but 
+pointers to functions (there are macros in the header files to make this 
+transparent when called from C/C++).
+
+This works for me:
+
+      attach_variable :__xmlFree, :xmlFree, callback([ :pointer ], :void)
+      attach_variable :__xmlMalloc, :xmlMalloc, callback([ :size_t ], 
+:pointer)
+
+      def self.xmlMalloc(size)
+        __xmlMalloc.call(size)
+      end
+
+      def self.xmlFree(ptr)
+        __xmlFree.call(ptr)
+      end
+
+That attaches xmlMalloc and xmlFree as global variables exported by the 
+library, then provides wrappers to call them from ruby.
+
+On Wednesday, 6 February 2013 09:59:11 UTC+10, Paul Hinze wrote:
+>
+>
+> Thanks for getting back to me, Wayne.
+>
+> On Tuesday, February 5, 2013 3:22:49 PM UTC-7, Wayne Meissner wrote:
+>
+>> You're correct that MemoryPointer#free won't do anything for you - it 
+>> only frees the memory allocated for itself.
+>>
+>> From looking at other C based examples, it should be as simple as adding 
+>> the following (after reading result from the strptr):
+>>
+>>   C::LibXML.xmlFree(strptr) unless strptr.null?
+>>
+>
+> Okay this is the direction I was headed in, but whenever I call either 
+> xmlFree or xmlMalloc, ruby (latest 1.9.3, but also tried ree for fun) 
+> crashes and burns like so:
+>
+> https://gist.github.com/phinze/f2f89ce8864b66d3e0f9
+>
+> Here's where I bind the functions - It's pretty straightforward:
+>
+>
+> https://github.com/phinze/xml_security/blob/39d4cb62776b28d6fce1b8d8fd277a4d2339158c/lib/xml_security/c/lib_xml.rb#L20-L21
+>
+> And here's a really simple test case that blows up on the xmlMalloc call:
+>
+>
+> https://github.com/phinze/xml_security/blob/bdbe54d0f2c1c05bcace7cf29e3f1b0c1b274368/spec/xml_security/c/lib_xml_spec.rb
+>
+> Now, libxml2 does some funky stuff with its memory management functions 
+> [1], which means that the function declarations in the code have several 
+> layers of indirection built in. I'm wondering if it's possible that this is 
+> confusing to the FFI layer.
+>
+> If you'd like, I can extract this into a more isolated test case for you, 
+> but I wanted first to get a feel for whether or not this could possibly be 
+> an FFI issue.
+>
+> I'm thinking a decent workaround is to just reach over to libc's 
+> malloc/free, which I'll be working on in parallel to this investigation. 
+> Still, it'd be nice to get to the bottom of this.
+>
+> Thanks for your time,
+>
+> Paul
+>
+> [1] http://www.xmlsoft.org/xmlmem.html
+>
+>
+>
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_157_546175.1360287487686
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I think the problem is that xmlFree and xmlMalloc are not functions, but po=
+inters to functions (there are macros in the header files to make this tran=
+sparent when called from C/C++).<div><br></div><div>This works for me:</div=
+><div><br></div><div><div>&nbsp; &nbsp; &nbsp; attach_variable :__xmlFree, =
+:xmlFree, callback([ :pointer ], :void)</div><div>&nbsp; &nbsp; &nbsp; atta=
+ch_variable :__xmlMalloc, :xmlMalloc, callback([ :size_t ], :pointer)</div>=
+<div><br></div><div>&nbsp; &nbsp; &nbsp; def self.xmlMalloc(size)</div><div=
+>&nbsp; &nbsp; &nbsp; &nbsp; __xmlMalloc.call(size)</div><div>&nbsp; &nbsp;=
+ &nbsp; end</div><div><br></div><div>&nbsp; &nbsp; &nbsp; def self.xmlFree(=
+ptr)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; __xmlFree.call(ptr)</div><div>&n=
+bsp; &nbsp; &nbsp; end</div><div><br></div><div>That attaches xmlMalloc and=
+ xmlFree as global variables exported by the library, then provides wrapper=
+s to call them from ruby.</div><br>On Wednesday, 6 February 2013 09:59:11 U=
+TC+10, Paul Hinze  wrote:<blockquote class=3D"gmail_quote" style=3D"margin:=
+ 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>T=
+hanks for getting back to me, Wayne.<br><div><br></div><div>On Tuesday, Feb=
+ruary 5, 2013 3:22:49 PM UTC-7, Wayne Meissner wrote:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc s=
+olid;padding-left:1ex">You're correct that MemoryPointer#free won't do anyt=
+hing for you - it only frees the memory allocated for itself.<div><br></div=
+><div>From looking at other C based examples, it should be as simple as add=
+ing the following (after reading result from the strptr):</div><div><br></d=
+iv><div>&nbsp; C::LibXML.xmlFree(strptr) unless strptr.null?<br></div></blo=
+ckquote><div><br></div><div>Okay this is the direction I was headed in, but=
+ whenever I call either xmlFree or xmlMalloc, ruby (latest 1.9.3, but also =
+tried ree for fun) crashes and burns like so:</div><div><br></div><div><a h=
+ref=3D"https://gist.github.com/phinze/f2f89ce8864b66d3e0f9" target=3D"_blan=
+k">https://gist.github.com/<wbr>phinze/f2f89ce8864b66d3e0f9</a></div></div>=
+<div><br></div><div>Here's where I bind the functions - It's pretty straigh=
+tforward:</div><div><br></div><div><a href=3D"https://github.com/phinze/xml=
+_security/blob/39d4cb62776b28d6fce1b8d8fd277a4d2339158c/lib/xml_security/c/=
+lib_xml.rb#L20-L21" target=3D"_blank">https://github.com/phinze/xml_<wbr>se=
+curity/blob/<wbr>39d4cb62776b28d6fce1b8d8fd277a<wbr>4d2339158c/lib/xml_secu=
+rity/c/<wbr>lib_xml.rb#L20-L21</a></div><div><br></div><div>And here's a re=
+ally simple test case that blows up on the xmlMalloc call:</div><div><br></=
+div><div><a href=3D"https://github.com/phinze/xml_security/blob/bdbe54d0f2c=
+1c05bcace7cf29e3f1b0c1b274368/spec/xml_security/c/lib_xml_spec.rb" target=
+=3D"_blank">https://github.com/phinze/xml_<wbr>security/blob/<wbr>bdbe54d0f=
+2c1c05bcace7cf29e3f1b<wbr>0c1b274368/spec/xml_security/<wbr>c/lib_xml_spec.=
+rb</a></div><div><br></div><div>Now, libxml2 does some funky stuff with its=
+ memory management functions [1], which means that the function declaration=
+s in the code have several layers of indirection built in. I'm wondering if=
+ it's possible that this is confusing to the FFI layer.</div><div><br></div=
+><div>If you'd like, I can extract this into a more isolated test case for =
+you, but I wanted first to get a feel for whether or not this could possibl=
+y be an FFI issue.</div><div><br></div><div>I'm thinking a decent workaroun=
+d is to just reach over to libc's malloc/free, which I'll be working on in =
+parallel to this investigation. Still, it'd be nice to get to the bottom of=
+ this.</div><div><br></div><div>Thanks for your time,</div><div><br></div><=
+div>Paul</div><div><br></div><div>[1]&nbsp;<a href=3D"http://www.xmlsoft.or=
+g/xmlmem.html" target=3D"_blank">http://www.xmlsoft.org/<wbr>xmlmem.html</a=
+></div><div><br></div><div><br></div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_157_546175.1360287487686--

@@ -1,0 +1,111 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs360672and;
+        Fri, 18 Dec 2009 03:37:49 -0800 (PST)
+Received: by 10.101.3.4 with SMTP id f4mr5881352ani.139.1261136268762;
+        Fri, 18 Dec 2009 03:37:48 -0800 (PST)
+Return-Path: <3imkrSwwJCGoNIhhQ.IVLZMIOUIQT.KWUZcJg-NNQOWWOTMOZWcXa.KWU@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 6si13638392yxe.109.2009.12.18.03.37.47;
+        Fri, 18 Dec 2009 03:37:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3imkrSwwJCGoNIhhQ.IVLZMIOUIQT.KWUZcJg-NNQOWWOTMOZWcXa.KWU@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3imkrSwwJCGoNIhhQ.IVLZMIOUIQT.KWUZcJg-NNQOWWOTMOZWcXa.KWU@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3imkrSwwJCGoNIhhQ.IVLZMIOUIQT.KWUZcJg-NNQOWWOTMOZWcXa.KWU@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh8 with SMTP id 8sf7319704ywh.3
+        for <headius@headius.com>; Fri, 18 Dec 2009 03:37:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:mime-version:x-beenthere:received
+         :received:received:received:received-spf:received:received:received
+         :received:subject:from:to:in-reply-to:references:date:message-id
+         :user-agent:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        bh=MOaaewCqVF0G7h24UJpyACUeWPNbEhnU+f8Ai+ZHf/k=;
+        b=NOjQpFldjNzFzM+4NDsBPm6337YUMGANM4mn1FHZnP0x537nhGvjAcCNyBC4GH/WWL
+         maiqiDrYov/bCYIvbgFCgLB7IJLT0/HaE/COwcSSzX0GPZ00jSE8qrxekZ4AMAm2NnAb
+         8nfjI7pV4WMpVUc2vUshp17meOEvlhbtSRwj8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=mime-version:x-beenthere:received-spf:subject:from:to:in-reply-to
+         :references:date:message-id:user-agent
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=A+A5adOMJHl6+zmMeLAMtWqRQKWXEm4kte3qxNi95XsuPf8RU4nQpgLshTC6FYkbJJ
+         Sj66u9p4qtMypDCQWXEj3/coc/aWASgj7zTb/x2krrgdzgnVaC+9//seiUXPD1tzSoUb
+         q7yajzDGxK8nAkeJqlSzkBMmufxIPqHgvHAT0=
+Received: by 10.91.215.9 with SMTP id s9mr344725agq.9.1261136266360;
+        Fri, 18 Dec 2009 03:37:46 -0800 (PST)
+MIME-Version: 1.0
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.86.239.10 with SMTP id m10ls11940fgh.0.p; Fri, 18 Dec 2009 
+	03:37:45 -0800 (PST)
+Received: by 10.87.47.2 with SMTP id z2mr84252fgj.7.1261136265459;
+        Fri, 18 Dec 2009 03:37:45 -0800 (PST)
+Received: by 10.87.47.2 with SMTP id z2mr84251fgj.7.1261136265421;
+        Fri, 18 Dec 2009 03:37:45 -0800 (PST)
+Return-Path: <andrea.fazzi@alcacoop.it>
+Received: from fg-out-1718.google.com (fg-out-1718.google.com [72.14.220.155])
+        by gmr-mx.google.com with ESMTP id 12si241328fxm.9.2009.12.18.03.37.45;
+        Fri, 18 Dec 2009 03:37:45 -0800 (PST)
+Received-SPF: neutral (google.com: 72.14.220.155 is neither permitted nor denied by best guess record for domain of andrea.fazzi@alcacoop.it) client-ip=72.14.220.155;
+Received: by fg-out-1718.google.com with SMTP id 16so1419974fgg.9
+        for <ruby-ffi@googlegroups.com>; Fri, 18 Dec 2009 03:37:45 -0800 (PST)
+Received: by 10.102.168.8 with SMTP id q8mr1701364mue.2.1261136262687;
+        Fri, 18 Dec 2009 03:37:42 -0800 (PST)
+Return-Path: <andrea.fazzi@alcacoop.it>
+Received: from ganimoide (host97-235-dynamic.40-79-r.retail.telecomitalia.it [79.40.235.97])
+        by mx.google.com with ESMTPS id 12sm7659123muq.18.2009.12.18.03.37.42
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Fri, 18 Dec 2009 03:37:42 -0800 (PST)
+Received: from andrea by ganimoide with local (Exim 4.69)
+	(envelope-from <andrea@ganimoide>)
+	id 1NLb9Q-0003mm-L3
+	for ruby-ffi@googlegroups.com; Fri, 18 Dec 2009 12:37:40 +0100
+Subject: Re: [ruby-ffi] int size?
+From: Andrea Fazzi <andrea.fazzi@alcacoop.it>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+In-reply-to: <faf173f9-7e8e-40f2-967c-96a4c9b50d5c@o28g2000yqh.googlegroups.com>
+References: <faf173f9-7e8e-40f2-967c-96a4c9b50d5c@o28g2000yqh.googlegroups.com>
+Date: Fri, 18 Dec 2009 12:37:40 +0100
+Message-Id: <1261136190-sup-2712@ganimoide>
+User-Agent: Sup/git
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	72.14.220.155 is neither permitted nor denied by best guess record for domain 
+	of andrea.fazzi@alcacoop.it) smtp.mail=andrea.fazzi@alcacoop.it
+X-Original-Sender: fazzi.andrea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/4762fc77130339b1
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/50ed1fde164a75ab
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Excerpts from rogerdpack's message of ven dic 18 00:34:56 +0100 2009:
+> I noticed on the wiki page it says that :int is 32 bits--I assume that
+> this is not the case for 64 bit systems? Or am I mistaken.
+> Thanks.
+> -r
+
+Some time ago I read an interesting document about that. You could check it 
+out at:
+
+http://www.unix.org/version2/whatsnew/lp64_wp.html
+
+Cheers,
+
+-- 
+Andrea Fazzi @ alcacoop.it
+Follow me on http://twitter.com/remogatto

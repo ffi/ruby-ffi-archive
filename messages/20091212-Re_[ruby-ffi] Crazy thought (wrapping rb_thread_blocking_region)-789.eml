@@ -1,0 +1,155 @@
+Delivered-To: headius@headius.com
+Received: by 10.114.184.4 with SMTP id h4cs24550waf;
+        Sat, 12 Dec 2009 11:34:36 -0800 (PST)
+Received: by 10.231.125.19 with SMTP id w19mr396350ibr.8.1260646476030;
+        Sat, 12 Dec 2009 11:34:36 -0800 (PST)
+Return-Path: <3SvAjSw8JCKkQNMPNQXPbQRJcdbPVJRU.LXVadKh-OORPXXPUNPaXdYb.LXV@listserv.bounces.google.com>
+Received: from mail-yw0-f144.google.com (mail-yw0-f144.google.com [209.85.211.144])
+        by mx.google.com with ESMTP id 29si4386814iwn.69.2009.12.12.11.34.35;
+        Sat, 12 Dec 2009 11:34:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3SvAjSw8JCKkQNMPNQXPbQRJcdbPVJRU.LXVadKh-OORPXXPUNPaXdYb.LXV@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) client-ip=209.85.211.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3SvAjSw8JCKkQNMPNQXPbQRJcdbPVJRU.LXVadKh-OORPXXPUNPaXdYb.LXV@listserv.bounces.google.com designates 209.85.211.144 as permitted sender) smtp.mail=3SvAjSw8JCKkQNMPNQXPbQRJcdbPVJRU.LXVadKh-OORPXXPUNPaXdYb.LXV@listserv.bounces.google.com
+Received: by ywh8 with SMTP id 8sf4317269ywh.3
+        for <headius@headius.com>; Sat, 12 Dec 2009 11:34:35 -0800 (PST)
+Received: by 10.91.49.3 with SMTP id b3mr671592agk.23.1260646474668;
+        Sat, 12 Dec 2009 11:34:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.5.15 with SMTP id 15ls368318ibt.1.p; Sat, 12 Dec 2009 
+	11:34:33 -0800 (PST)
+Received: by 10.231.155.18 with SMTP id q18mr145729ibw.12.1260646472488;
+        Sat, 12 Dec 2009 11:34:32 -0800 (PST)
+Received: by 10.231.155.18 with SMTP id q18mr145728ibw.12.1260646472470;
+        Sat, 12 Dec 2009 11:34:32 -0800 (PST)
+Return-Path: <hedgehogshiatus@gmail.com>
+Received: from mail-iw0-f202.google.com (mail-iw0-f202.google.com [209.85.223.202])
+        by gmr-mx.google.com with ESMTP id 24si248788iwn.3.2009.12.12.11.34.31;
+        Sat, 12 Dec 2009 11:34:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of hedgehogshiatus@gmail.com designates 209.85.223.202 as permitted sender) client-ip=209.85.223.202;
+Received: by iwn40 with SMTP id 40so1129164iwn.28
+        for <ruby-ffi@googlegroups.com>; Sat, 12 Dec 2009 11:34:31 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.231.5.23 with SMTP id 23mr3013149ibt.45.1260646470785; Sat, 12 
+	Dec 2009 11:34:30 -0800 (PST)
+In-Reply-To: <d9233847-c12b-4a66-9a0a-bfb9a1f8598c@j19g2000yqk.googlegroups.com>
+References: <d9233847-c12b-4a66-9a0a-bfb9a1f8598c@j19g2000yqk.googlegroups.com>
+Date: Sun, 13 Dec 2009 06:34:30 +1100
+Message-ID: <143041db0912121134h5738b30apedc48fbd02805dd0@mail.gmail.com>
+Subject: Re: [ruby-ffi] Crazy thought (wrapping rb_thread_blocking_region)
+From: Hedge Hog <hedgehogshiatus@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of hedgehogshiatus@gmail.com designates 209.85.223.202 as permitted 
+	sender) smtp.mail=hedgehogshiatus@gmail.com; dkim=pass (test mode) 
+	header.i=@gmail.com
+X-Original-Sender: hedgehogshiatus@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/26440665daf6b519
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/570bd466bc993326
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+
+On Sun, Dec 13, 2009 at 2:26 AM, v01d  wrote:
+> Hi,
+> I'm a little interested in a possible future where Ruby could be used
+> for heavy processing stuff (but by means of calling computationally
+> heavy C code, and take advantage of multi-core processors by doing
+> several of these calls in parallel native threads) and I just found
+> out about Ruby's "rb_thread_blocking_region" C call.
+>
+> What came to my mind is that maybe FFI could be used here to make
+> writing these type of parallelized Ruby extensions easier, by just
+> doing something like:
+>
+> module RubyAPI
+>  extend FFI::Library
+>  attach_function :rb_thread_blocking_region,
+> [ :pointer, :pointer, :pointer ], :void
+> end
+>
+> then maybe I'm wrapping a HeavyComputationLibrary:
+>
+
+My 2c:
+Context: I take 'HeavyComputation' to mean 'saturates more than one machine=
+'.
+In that case I think you'd be using somthing like this:
+http://github.com/abedra/mpi-ruby
+
+ffi-mpi-ruby would be interesting.
+
+My preference has been to _try_ avoid threading and any issues it
+causes.  I would rather just throw more instances of a ruby script
+(processes, somtimes processes>=3Dprocessors/cores) at the problem -
+this does scale beyond one machine.  Threading doesn't.
+It has been a while since I used MPI and there may be threading buried
+in the library above.
+
+Of course 'HeavyComputation' might mean using only one machine.  Then
+scaling is not an issue and maybe threading is undisputably the best
+way to go?
+As I said, just my 2c.
+
+HH
+
+> module HeavyComputationLibrary
+>  extend FFI::Library
+>  attach_function :long_running_computation, [ :pointer ], :value
+>  attach_function :unblock_computation, [ :pointer ], :void
+> end
+>
+> and then do something like:
+> RubyAPI.rb_thread_blocking_region
+> (HeavyComputationLibrary.long_running_computation, data_ptr,
+> HeavyComputationLibrary.unblock_computation)
+>
+> Obviously there are a couple of non-existing things here (like passing
+> the function pointer of a C function (maybe there's already a way to
+> do that?), usage of :value), but I wanted to ask if this is feasible
+> or not.
+> I think that something like this could ease writing parallel-aware
+> Ruby extensions (maybe with some help of Ruby Inline) for existing C
+> libraries. Then again, I may be wrong.
+>
+> Matt
+>
+> PS: I'm obviously talking about Ruby 1.9 and the function call defined
+> here: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252
+>
+>
+
+
+
+- --
+=CF=80=CF=8C=CE=BB=CE=BB' =CE=BF=E1=BC=B6=CE=B4 =E1=BC=80=CE=BB=CF=8E=CF=80=
+=CE=B7=CE=BE, =E1=BC=80=CE=BB=CE=BB' =E1=BC=90=CF=87=E1=BF=96=CE=BD=CE=BF=
+=CF=82 =E1=BC=93=CE=BD =CE=BC=CE=AD=CE=B3=CE=B1
+[The fox knows many things, but the hedgehog knows one big thing.]
+  Archilochus, Greek poet (c. 680 BC =E2=80=93 c. 645 BC)
+http://wiki.hedgehogshiatus.com
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.9 (GNU/Linux)
+Comment: Use GnuPG with Firefox : http://getfiregpg.org (Version: 0.7.10)
+
+iEYEARECAAYFAksj8EYACgkQL/DTCig+NhfFWQCeKK5ohPsJzjieM2y1HSv7l4Dq
+8gIAn1b97tMd/o4sBg1uPX+JJFRVDMf7
+=3DMj85
+-----END PGP SIGNATURE-----

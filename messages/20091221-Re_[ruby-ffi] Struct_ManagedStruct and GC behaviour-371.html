@@ -1,0 +1,34 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 2:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I'll address the biggest hole in this here. FFI::MemoryPointer, FFI::Struct, and FFI::ManagedStruct are all proxy objects. Nothing they reference lives in the ruby heap. This is the only way they can be implemented by all implementations because the API must be able to provide struct style access on pointers returned by any function. That means that the storage for the memory being referenced is outside the control of ruby entirely.
+
+When a ruby GC detects that an FFI::Struct is garbage, the memory that the FFI::Struct references is acted upon at all. This is because FFI::Struct is just a proxy for some unmanaged memory.
+
+ - Evan
+
+On Dec 21, 2009, at 12:26 PM, Jon wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Before I add API-ish level doc to <a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/structs">http://wiki.github.com/ffi/ffi/structs</a> please double check my FFI::Struct and FFI::ManagedStruct understanding.  Please ensure feedback is valid across the impl's.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>1) Both FFI::Struct and FFI::ManagedStruct are able to be freed by the Ruby impl's GC. Overall GC semantics are no different that any other Ruby object GC'd by the specific Ruby impl.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2) FFI::ManagedStruct enables one to specify custom cleanup code via a required 'release(ptr)' class method that is guaranteed to be called only once when the instance is GC'd.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>3) Neither FFI::Struct nor FFI::ManagedStruct currently provide for deterministic GC-ing (is it valid to call FFI::MemoryPointer#free deterministic GC??)
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>4) FFI::Struct and FFI::ManagedStruct instances live completely in Ruby heap memory.  Or are they effectively proxy objects in Ruby heap that interface and manage their underlying native heap-based structs? This one's likely too impl specific to put in the wiki docs, but I'm still curious <span class="moz-smiley-s1" title=":)"><span>:)</span></span> 
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thanks, Jon
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

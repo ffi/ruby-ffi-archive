@@ -1,0 +1,339 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: What constitutes a sane building environment?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: What constitutes a sane building environment?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>James <james.b.thompson@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/27/10 4:18 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hey Mike - thanks for giving me a hand.
+
+So I installed the libffi-devel package and then got past the initial
+error that I had and on to a new one. I have managed to install
+version 0.6.2, but I am getting the following errors for 0.6.3...
+(sorry about the massive copy-paste)
+
+gem_make.out: ==================================
+
+/usr/bin/ruby extconf.rb
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... yes
+checking for ffi_prep_raw_closure()... yes
+checking for rb_thread_blocking_region()... no
+creating extconf.h
+creating Makefile
+
+make
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c StructLayout.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c ClosurePool.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c Buffer.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c Call.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c Function.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c ArrayType.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c Struct.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c MethodHandle.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c ffi.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c FunctionInfo.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c StructByValue.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c AbstractMemory.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c Type.c
+gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=
+\"extconf.h\"    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/
+include    -c MappedType.c
+MappedType.c: In function ‘mapped_allocate’:
+MappedType.c:54:26: error: ‘NATIVE_MAPPED’ undeclared (first use in
+this function)
+MappedType.c:54:26: note: each undeclared identifier is reported only
+once for each function it appears in
+MappedType.c: In function ‘mapped_initialize’:
+MappedType.c:64:11: warning: unused variable ‘t’
+make: *** [MappedType.o] Error 1
+
+========================================================
+
+mkmf.log: ==============================================
+
+package configuration for libffi
+cflags: -I/usr/lib64/libffi-3.0.9/include
+ldflags:
+libs: -lffi
+
+have_library: checking for ffi_call() in -lffi... --------------------
+yes
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic      -lffi   -lruby -lffi  -
+lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include &lt;ffi.h&gt;
+2:
+3: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+4: int main() { return 0; }
+5: int t() { void ((*volatile p)()); p = (void ((*)()))ffi_call;
+return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ffi_prep_closure()... -------------------- yes
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:53: error: ‘ffi_prep_closure’ undeclared (first use in
+this function)
+conftest.c:3:53: note: each undeclared identifier is reported only
+once for each function it appears in
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)
+()))ffi_prep_closure; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:1: warning: implicit declaration of function
+‘ffi_prep_closure’
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { ffi_prep_closure(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ffi_raw_call()... -------------------- yes
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:53: error: ‘ffi_raw_call’ undeclared (first use in this
+function)
+conftest.c:3:53: note: each undeclared identifier is reported only
+once for each function it appears in
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))ffi_raw_call;
+return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:1: warning: implicit declaration of function
+‘ffi_raw_call’
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { ffi_raw_call(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ffi_prep_raw_closure()... --------------------
+yes
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:53: error: ‘ffi_prep_raw_closure’ undeclared (first use
+in this function)
+conftest.c:3:53: note: each undeclared identifier is reported only
+once for each function it appears in
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)
+()))ffi_prep_raw_closure; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:1: warning: implicit declaration of function
+‘ffi_prep_raw_closure’
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { ffi_prep_raw_closure(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()...
+-------------------- no
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:53: error: ‘rb_thread_blocking_region’ undeclared (first
+use in this function)
+conftest.c:3:53: note: each undeclared identifier is reported only
+once for each function it appears in
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)
+()))rb_thread_blocking_region; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I.    -O2 -g -
+pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --
+param=ssp-buffer-size=4 -m64 -mtune=generic -fno-strict-aliasing  -
+fPIC   -I/usr/lib64/libffi-3.0.9/include   conftest.c  -L. -L/usr/
+lib64 -L.  -rdynamic -Wl,-export-dynamic     -lffi  -lffi   -lruby -
+lffi  -lffi   -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3:1: warning: implicit declaration of function
+‘rb_thread_blocking_region’
+/tmp/ccIT0bAE.o: In function `t':
+/usr/lib/ruby/gems/1.8/gems/ffi-0.6.3/ext/ffi_c/conftest.c:3:
+undefined reference to `rb_thread_blocking_region'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+1: /<b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b>/
+2: int main() { return 0; }
+3: int t() { rb_thread_blocking_region(); return 0; }
+/* end */
+
+--------------------
+==============================================================
+
+Thanks for your help <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+On Nov 26, 6:02 pm, Mike Dalessio <a class="moz-txt-link-rfc2396E" href="mailto:mike.dales...@gmail.com">&lt;mike.dales...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Can you please reply with the warnings/errors you see, as well as the
+<span class="moz-txt-citetags">&gt; </span>mkmf.log from the failed install?
+<span class="moz-txt-citetags">&gt; </span>On Nov 26, 2010 9:02 AM, "James" <a class="moz-txt-link-rfc2396E" href="mailto:james.b.thomp...@gmail.com">&lt;james.b.thomp...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Hey guys,
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I'm running Fedora 14, and am having problems installing the gem. I
+<span class="moz-txt-citetags">&gt; &gt; </span>have installed all of the development tools that I can think of, as
+<span class="moz-txt-citetags">&gt; &gt; </span>well as libffi, but am still having issues.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>I noticed in the wiki that you said:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>"You need a sane building environment in order to compile the
+<span class="moz-txt-citetags">&gt; &gt; </span>extension. "
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>So my question is, which packages are required to meet the sane
+<span class="moz-txt-citetags">&gt; &gt; </span>building environment requirement? <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thanks for your help!
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

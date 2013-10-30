@@ -1,0 +1,178 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs7202qcb;
+        Thu, 20 May 2010 09:37:08 -0700 (PDT)
+Received: by 10.224.44.218 with SMTP id b26mr221037qaf.291.1274373428324;
+        Thu, 20 May 2010 09:37:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMPYuayYERCxytXfBBoEDuupKg@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id 6si67278ywh.52.2010.05.20.09.37.07;
+        Thu, 20 May 2010 09:37:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMPYuayYERCxytXfBBoEDuupKg@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMPYuayYERCxytXfBBoEDuupKg@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCMPYuayYERCxytXfBBoEDuupKg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb11 with SMTP id 11sf12528gwb.7
+        for <headius@headius.com>; Thu, 20 May 2010 09:37:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=+/7Xa2fQzSBU6tqoXVbXsx5LgGY469fRFjYpDaSiVtE=;
+        b=Pcz5/pl8xxEc99FjeTuDc0JcfaEeynJcexaOCKQ/1wh8T7PcrjtRz5C54FGxMxN6IP
+         QrN0oimU2BlAS4KtDN2auL1DbGD9tLUQ0wGtAeLCfRAVtPLpqdDLNM9WSVNJue11Mp/L
+         +PvW/bn8o5OFT4CIzpS6icRB9K1R9+uP/kmqU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=FRQBF559mCiN70rUPMIuyyOoQNarXPuoYQ7djr6akD3XufDoRNOAQEJK9oZggwYNoS
+         Hgt3uATftFchNPqCg5NxcfiQCJC/DhtVSUI8ywAULXp78yI0MUIRpENvZWsiUsoWzjpY
+         +eQx5OwMduygGrNSrwiISDvz3Hx9oSO2XkE9c=
+Received: by 10.101.180.36 with SMTP id h36mr22415anp.63.1274373425288;
+        Thu, 20 May 2010 09:37:05 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.132.3 with SMTP id j3ls111576ann.3.p; Thu, 20 May 2010 
+	09:37:03 -0700 (PDT)
+Received: by 10.100.243.14 with SMTP id q14mr100958anh.20.1274373423155;
+        Thu, 20 May 2010 09:37:03 -0700 (PDT)
+Received: by 10.100.243.14 with SMTP id q14mr100957anh.20.1274373423091;
+        Thu, 20 May 2010 09:37:03 -0700 (PDT)
+Return-Path: <jvoorhis@gmail.com>
+Received: from mail-qy0-f193.google.com (mail-qy0-f193.google.com [209.85.221.193])
+        by gmr-mx.google.com with ESMTP id 24si11101ywh.14.2010.05.20.09.37.02;
+        Thu, 20 May 2010 09:37:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jvoorhis@gmail.com designates 209.85.221.193 as permitted sender) client-ip=209.85.221.193;
+Received: by qyk31 with SMTP id 31so13992327qyk.25
+        for <ruby-ffi@googlegroups.com>; Thu, 20 May 2010 09:37:02 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.87.75 with SMTP id v11mr199682qal.397.1274373421851; Thu, 
+	20 May 2010 09:37:01 -0700 (PDT)
+Received: by 10.229.217.206 with HTTP; Thu, 20 May 2010 09:37:01 -0700 (PDT)
+In-Reply-To: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+Date: Thu, 20 May 2010 09:37:01 -0700
+Message-ID: <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: Jeremy Voorhis <jvoorhis@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jvoorhis@gmail.com designates 209.85.221.193 as permitted sender) 
+	smtp.mail=jvoorhis@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jvoorhis@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00c09f89980e1ee8670487092f13
+
+--00c09f89980e1ee8670487092f13
+Content-Type: text/plain; charset=UTF-8
+
+The code looks alright to me on first glance. Are you sure your pointer is
+valid?
+
+On Thu, May 20, 2010 at 8:14 AM, Drew <drew.avis@gmail.com> wrote:
+
+> Hi there, I have a pointer to a struct that looks like this:
+>
+> // c:
+> typedef struct
+>        {
+>         IntT offset;
+>         IntT dataType;
+>         union {
+>                StringT sdata;
+>                IntT idata;
+>                } u;
+>        } F_TextItemT;
+>
+> In Ruby I've defined it like this:
+>
+>  class FTextItemU < FFI::Union
+>    layout :sdata, :string,
+>    :idata, :int
+>  end
+>
+>  class FTextItemT < FFI::Struct
+>    layout :offset, :int,
+>      :dataType, :int,
+>      :u, FTextItemU
+>  end
+>
+> I'm trying to cast the pointer like this:
+>
+> my_struct = FM::FTexFtItemT.new(p)
+> puts "test: #{my_struct[:dataType]}"
+>
+> However, I'm getting a seg fault on the puts statement.
+>
+> Any ideas of what I'm doing wrong?
+>
+> Thanks!
+> Drew
+>
+
+--00c09f89980e1ee8670487092f13
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+The code looks alright to me on first glance. Are you sure your pointer is =
+valid?<br><br><div class=3D"gmail_quote">On Thu, May 20, 2010 at 8:14 AM, D=
+rew <span dir=3D"ltr">&lt;<a href=3D"mailto:drew.avis@gmail.com">drew.avis@=
+gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">Hi there, I have a pointer to a struct that=
+ looks like this:<br>
+<br>
+// c:<br>
+typedef struct<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0{<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 IntT offset;<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 IntT dataType;<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 union {<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0StringT sdata;<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0IntT idata;<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} u;<br>
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0} F_TextItemT;<br>
+<br>
+In Ruby I&#39;ve defined it like this:<br>
+<br>
+ =C2=A0class FTextItemU &lt; FFI::Union<br>
+ =C2=A0 =C2=A0layout :sdata, :string,<br>
+ =C2=A0 =C2=A0:idata, :int<br>
+ =C2=A0end<br>
+<br>
+ =C2=A0class FTextItemT &lt; FFI::Struct<br>
+ =C2=A0 =C2=A0layout :offset, :int,<br>
+ =C2=A0 =C2=A0 =C2=A0:dataType, :int,<br>
+ =C2=A0 =C2=A0 =C2=A0:u, FTextItemU<br>
+ =C2=A0end<br>
+<br>
+I&#39;m trying to cast the pointer like this:<br>
+<br>
+my_struct =3D FM::FTexFtItemT.new(p)<br>
+puts &quot;test: #{my_struct[:dataType]}&quot;<br>
+<br>
+However, I&#39;m getting a seg fault on the puts statement.<br>
+<br>
+Any ideas of what I&#39;m doing wrong?<br>
+<br>
+Thanks!<br>
+<font color=3D"#888888">Drew<br>
+</font></blockquote></div><br>
+
+--00c09f89980e1ee8670487092f13--

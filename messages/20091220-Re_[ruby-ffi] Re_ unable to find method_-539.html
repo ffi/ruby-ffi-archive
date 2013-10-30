@@ -1,0 +1,24 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Vladimir Sizikov <vsizikov@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/20/09 3:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Sun, Dec 20, 2009 at 10:48 AM, Vladimir Sizikov <a class="moz-txt-link-rfc2396E" href="mailto:vsizikov@gmail.com">&lt;vsizikov@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Same here, the sample crashes on MRI 1.8.6 (mingw) and 1.8.7 (mswin).
+<span class="moz-txt-citetags">&gt; </span>But works just fine with JRuby 1.5.0.dev. <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+</pre></blockquote><pre wrap>
+
+But I think this is not a good practice doing extend FFI::Library
+right at the <b class="moz-txt-star"><span class="moz-txt-tag">*</span>top<span class="moz-txt-tag">*</span></b> level.
+Once I wrapped this top-level stuff into a standalone library class,
+everything started to work with MRI as well.
+
+Thanks,
+  --Vladimir
+</pre></div></body>
+</html>
+</table></div>

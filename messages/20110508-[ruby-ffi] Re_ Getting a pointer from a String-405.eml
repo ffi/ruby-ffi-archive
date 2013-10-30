@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs39929agb;
+        Sun, 8 May 2011 04:49:48 -0700 (PDT)
+Received: by 10.143.90.15 with SMTP id s15mr1635643wfl.315.1304855387144;
+        Sun, 08 May 2011 04:49:47 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDThpruBBoEtYAfqQ@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id c3si17721349wfa.30.2011.05.08.04.49.45
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 08 May 2011 04:49:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDThpruBBoEtYAfqQ@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDThpruBBoEtYAfqQ@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDThpruBBoEtYAfqQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf4288308pwj.7
+        for <headius@headius.com>; Sun, 08 May 2011 04:49:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=OyUy8q59yVLrITrX4x//zpNic35AtEI1X11765Gs6EI=;
+        b=n6qCraqgOwafv1vHWsFRUo5eNMAQcLZYPJbbK8htDoOT0By9EVW7v3SqVrDPev+dXr
+         EZDj5hm1iy+6BIKFwPt+lVSKF7oEMz+p8IIn6D4n3KuPv0YeTWMfsLbkpSDBuZAb1vhh
+         OJ6dggvyImpIUHhE0gP3EqIdxURB5xawBHsGM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=CQ0LgThV5/xIinKrRDceicgbuXOaONoZ2bCcNNt7tLRjwFWnyEo1HJdnnRejtkZefo
+         UGfMVtM9lMb92V8g215n8NgFFkXpW1DZh0KmUwScn375uJtmn3qPQvD2/xmsTuIYwsTY
+         QhipEXcUlLNFNtTQbhZoyWd7dgRDBsIrJa9qg=
+Received: by 10.68.4.161 with SMTP id l1mr314832pbl.55.1304855379484;
+        Sun, 08 May 2011 04:49:39 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.1.5 with SMTP id 5ls7370834pbi.1.gmail; Sun, 08 May 2011
+ 04:49:39 -0700 (PDT)
+Received: by 10.68.57.201 with SMTP id k9mr305890pbq.14.1304855379127;
+        Sun, 08 May 2011 04:49:39 -0700 (PDT)
+Date: Sun, 8 May 2011 04:49:38 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <31439847.2403.1304855378730.JavaMail.geo-discussion-forums@prby37>
+In-Reply-To: <a0f53888-6d6e-43e0-b3c8-a2c0c4eb0b86@c26g2000vbq.googlegroups.com>
+Subject: [ruby-ffi] Re: Getting a pointer from a String
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2402_14484160.1304855378729"
+
+------=_Part_2402_14484160.1304855378729
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Yes, that is precisely what it does.  Same with FFI::Buffer.
+
+
+
+------=_Part_2402_14484160.1304855378729
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Yes, that is precisely what it does. &nbsp;Same with FFI::Buffer.<div><br></div><div><br></div>
+------=_Part_2402_14484160.1304855378729--

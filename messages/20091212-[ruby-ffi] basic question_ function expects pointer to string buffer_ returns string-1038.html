@@ -1,0 +1,39 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] basic question: function expects pointer to string buffer,  returns string</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] basic question: function expects pointer to string buffer,  returns string</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 12:06 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">I've started working on a Ruby FFI interface to the Vernier GoIO sensor interface products.
+<br>
+<br>See:
+<br>
+<br>&nbsp; <a class="moz-txt-link-freetext" href="http://www.vernier.com/go/">http://www.vernier.com/go/</a>
+<br>&nbsp; <a class="moz-txt-link-freetext" href="http://www.vernier.com/downloads/gosdk.html">http://www.vernier.com/downloads/gosdk.html</a>&nbsp;&nbsp; *the SDK is public domain
+<br>
+<br>I've got a very basic question FFI question.
+<br>
+<br>I have a C++ function that expects a pointer to a string buffer and a int32 specifying the size of the buffer.
+<br>
+<br>The result of calling the function is a name of a connected device in the string buffer.
+<br>
+<br>How should the call be setup and then processed on return to generate a Ruby string.
+<br>
+<br>Here's the state of the code so far:&nbsp; <a class="moz-txt-link-freetext" href="http://gist.github.com/254981">http://gist.github.com/254981</a>
+<br>
+<br>This is the specific function I have the question about:
+<br>
+<br>GOIO_DLL_INTERFACE_DECL gtype_int32 GoIO_GetNthAvailableDeviceName(
+<br>&nbsp; char *pBuf,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // [out] ptr to buffer to store device name string.
+<br>&nbsp; gtype_int32 bufSize,&nbsp;&nbsp; // [in] number of bytes in buffer pointed to by pBuf.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Strlen(pBuf) &lt; bufSize, because the string is NULL terminated.
+<br>&nbsp; gtype_int32 vendorId,&nbsp; // [in] USB vendor id
+<br>&nbsp; gtype_int32 productId, //[in] USB product id
+<br>&nbsp; gtype_int32 N);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //[in] index into list of known devices, 0 =&gt; first device in list.
+<br>
+<br>Also, is there any rdoc for FFI?
+<br>
+<br></div></body>
+</html>
+</table></div>

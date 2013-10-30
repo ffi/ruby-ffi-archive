@@ -1,0 +1,98 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.47.194 with SMTP id f2csp197213obn;
+        Wed, 28 Mar 2012 14:02:01 -0700 (PDT)
+Received: by 10.60.14.4 with SMTP id l4mr40016851oec.39.1332968521187;
+        Wed, 28 Mar 2012 14:02:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMWq-bruBRDE-M37BBoEf3KRkw@googlegroups.com>
+Received: from mail-ob0-f190.google.com (mail-ob0-f190.google.com [209.85.214.190])
+        by mx.google.com with ESMTPS id 1si2846287oex.55.2012.03.28.14.02.01
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 28 Mar 2012 14:02:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMWq-bruBRDE-M37BBoEf3KRkw@googlegroups.com designates 209.85.214.190 as permitted sender) client-ip=209.85.214.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMWq-bruBRDE-M37BBoEf3KRkw@googlegroups.com designates 209.85.214.190 as permitted sender) smtp.mail=ruby-ffi+bncCMWq-bruBRDE-M37BBoEf3KRkw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by obbup16 with SMTP id up16sf2671377obb.7
+        for <headius@headius.com>; Wed, 28 Mar 2012 14:02:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=71OpsIk4l3nY6beszAC+/FKlu5zAt8ppZ4Q2pzzaLdA=;
+        b=kHXVKn7ODL0MmClWqjq0ECdy1zn/HXPRRtf3WSD8Atf8My/Ali7DGtERJk1D5tCPc7
+         k+9xp9zjxbOSbwREf+HIMISiV2vDU+bzan1kITH96tFuAMz3N37u6VSrbJwNnTs4E6Zb
+         wM3zTIFRhOYx+U7/gIW6uMboOFNBudIq1B5zw=
+Received: by 10.52.28.33 with SMTP id y1mr3885424vdg.1.1332968516188;
+        Wed, 28 Mar 2012 14:01:56 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.157.66 with SMTP id a2ls378248vcx.8.gmail; Wed, 28 Mar
+ 2012 14:01:54 -0700 (PDT)
+Received: by 10.224.108.68 with SMTP id e4mr14539322qap.4.1332968514904;
+        Wed, 28 Mar 2012 14:01:54 -0700 (PDT)
+Received: by 10.224.180.136 with SMTP id bu8msqab;
+        Wed, 28 Mar 2012 09:28:54 -0700 (PDT)
+Received: by 10.52.24.98 with SMTP id t2mr2447689vdf.2.1332952134444;
+        Wed, 28 Mar 2012 09:28:54 -0700 (PDT)
+Date: Wed, 28 Mar 2012 09:28:53 -0700 (PDT)
+From: Nick Clark <nick4jesus@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <31329715.815.1332952133992.JavaMail.geo-discussion-forums@vbhy1>
+Subject: [ruby-ffi] Cannot Open Mac Universal Library
+MIME-Version: 1.0
+X-Original-Sender: nick4jesus@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_814_20948677.1332952133991"
+
+------=_Part_814_20948677.1332952133991
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+I am trying to wrap a simple, three function SDK for use in ruby, but when 
+I try to use FFI with it I get the following error:
+
+/Users/nick/.rvm/gems/ruby-1.9.3-p0-perf/gems/ffi-1.0.12.rc1/lib/ffi/library.rb:121:in 
+> `block in ffi_lib': Could not open library 'lib/ext/libH-ITTSDK.so': 
+> dlopen(lib/ext/libH-ITTSDK.so, 5): no suitable image found.  Did find: 
+> (LoadError)
+> lib/ext/libH-ITTSDK.so: unknown file type, first eight bytes: 0x21 0x3C 
+> 0x61 0x72 0x63 0x68 0x3E 0x0A
+
+
+I have A gist here:
+https://gist.github.com/2227967
+
+Am I doing something wrong?
+
+Thanks
+
+------=_Part_814_20948677.1332952133991
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+I am trying to wrap a simple, three function SDK for use in ruby, but when =
+I try to use FFI with it I get the following error:<div><br></div><div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin-top: 0px; margin-right: 0px; =
+margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left=
+-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex; ">=
+/Users/nick/.rvm/gems/ruby-1.9.3-p0-perf/gems/ffi-1.0.12.rc1/lib/ffi/librar=
+y.rb:121:in `block in ffi_lib': Could not open library 'lib/ext/libH-ITTSDK=
+.so': dlopen(lib/ext/libH-ITTSDK.so, 5): no suitable image found. &nbsp;Did=
+ find: (LoadError)<br><span class=3D"Apple-tab-span" style=3D"white-space:p=
+re">=09</span>lib/ext/libH-ITTSDK.so: unknown file type, first eight bytes:=
+ 0x21 0x3C 0x61 0x72 0x63 0x68 0x3E 0x0A</blockquote><div><br><div><div>I h=
+ave A gist here:</div><div><a href=3D"https://gist.github.com/2227967">http=
+s://gist.github.com/2227967</a><br></div></div></div></div><div><br></div><=
+div>Am I doing something wrong?</div><div><br></div><div>Thanks</div>
+------=_Part_814_20948677.1332952133991--

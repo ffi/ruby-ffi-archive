@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] ffi-swig generating a :string instead of a :pointer ??</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/13/09 5:30 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>Excerpts from Stephen Bannasch's message of dom dic 13 05:23:50 +0100 2009:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>I have a C++ function that takes a pointer to a buffer where the function stores a C-string.
+<span class="moz-txt-citetags">&gt; &gt; &gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>This is what I wrote and got working.
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> attach_function :GoIO_GetNthAvailableDeviceName, [:pointer, :int, :int, :int, :int], :int
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>However if I use ffi-swig it generates a :string as the first parameter.
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> attach_function :GoIO_GetNthAvailableDeviceName, [ :string, :int, :int, :int, :int ], :int
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span>
+<span class="moz-txt-citetags">&gt; &gt; &gt;</span>Is there anyway this could work? The function needs an address to a location to store a C-string.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Using char* rather than const char* for string it's not strictly incorrect
+<span class="moz-txt-citetags">&gt;</span>IMHO. I'd say it's a bad practice so, in this case, the generator is
+<span class="moz-txt-citetags">&gt;</span>favoring a bad practice. I was troubled about the behaviour to impose in
+<span class="moz-txt-citetags">&gt;</span>cases like this since so many libraries I processed with the generator
+<span class="moz-txt-citetags">&gt;</span>follow the bad practice. And I ended up with the conversion char* -&gt;
+<span class="moz-txt-citetags">&gt;</span>:string.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>That said, you need a different behaviour now so I should reconsider my
+<span class="moz-txt-citetags">&gt;</span>choice. BTW, I'd like to read the opinion of the ML about this.
+</pre></blockquote><pre wrap>
+
+How about a command-line option to turn the behavior on or off?
+
+Are there more translation patterns that people might also expect to have different outcomes?
+</pre></div></body>
+</html>
+</table></div>

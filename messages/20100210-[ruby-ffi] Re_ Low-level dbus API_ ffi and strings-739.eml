@@ -1,0 +1,139 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.144.196 with SMTP id a4cs4871ibv;
+        Wed, 10 Feb 2010 02:54:10 -0800 (PST)
+Received: by 10.150.239.3 with SMTP id m3mr2050946ybh.79.1265799249472;
+        Wed, 10 Feb 2010 02:54:09 -0800 (PST)
+Return-Path: <3T5BySwcNCJ0RKBUFPQALOCBIFQB.KBQOR8V-CCFDLLDIBDOLRMP.9LJ@groups.bounces.google.com>
+Received: from mail-yw0-f150.google.com (mail-yw0-f150.google.com [209.85.211.150])
+        by mx.google.com with ESMTP id 5si2522205ywh.14.2010.02.10.02.54.08;
+        Wed, 10 Feb 2010 02:54:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3T5BySwcNCJ0RKBUFPQALOCBIFQB.KBQOR8V-CCFDLLDIBDOLRMP.9LJ@groups.bounces.google.com designates 209.85.211.150 as permitted sender) client-ip=209.85.211.150;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3T5BySwcNCJ0RKBUFPQALOCBIFQB.KBQOR8V-CCFDLLDIBDOLRMP.9LJ@groups.bounces.google.com designates 209.85.211.150 as permitted sender) smtp.mail=3T5BySwcNCJ0RKBUFPQALOCBIFQB.KBQOR8V-CCFDLLDIBDOLRMP.9LJ@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywh14 with SMTP id 14sf2803925ywh.27
+        for <headius@headius.com>; Wed, 10 Feb 2010 02:54:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        bh=aNvV6wn3ndMzYAWrxGK1oOOPb3L/SgSpgR8OZ72QLPU=;
+        b=hwg8eXDWX01OvmM1sTx891CSdypBAiQYYQNNFV7kHfQQG4f0cvch93DZa51K5tecm+
+         9/30gdPx11hLDMn35DcZoLkTevROv/QXKwZs3EXC8oGAN7ou4mPs9OUMS//JI/Ndp10u
+         4wuPmiF5D/czFdMRZyV8vOpPK5h5N439EQuw4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=sxzkV+w3UtAQTemwp3agrjNr3lRmFUMRlxoW5Jmvlh+5cAXZX5/VZmfeLY1S6X7dDb
+         CikvZhosjM+SvdmNKWWpGQB2X1oQyLsizSQ/1Eep5wKB0KKhBU9X5lU8FRasEvEZO03I
+         ayFD6M4mk4Os1X6V8sMmUpYpzNwUyBVeb+DKk=
+Received: by 10.150.175.11 with SMTP id x11mr57699ybe.88.1265799247168;
+        Wed, 10 Feb 2010 02:54:07 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.112.25 with SMTP id k25ls407551ybc.3.p; Wed, 10 Feb 2010 
+	02:54:06 -0800 (PST)
+Received: by 10.150.246.7 with SMTP id t7mr1359955ybh.19.1265799243462;
+        Wed, 10 Feb 2010 02:54:03 -0800 (PST)
+Received: by 10.150.246.7 with SMTP id t7mr1359953ybh.19.1265799243437;
+        Wed, 10 Feb 2010 02:54:03 -0800 (PST)
+Return-Path: <unexist@dorfelite.net>
+Received: from mail-yx0-f168.google.com (mail-yx0-f168.google.com [209.85.210.168])
+        by gmr-mx.google.com with ESMTP id 18si121118yxe.4.2010.02.10.02.54.03;
+        Wed, 10 Feb 2010 02:54:03 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.210.168 is neither permitted nor denied by best guess record for domain of unexist@dorfelite.net) client-ip=209.85.210.168;
+Received: by mail-yx0-f168.google.com with SMTP id 40so25512947yxe.28
+        for <ruby-ffi@googlegroups.com>; Wed, 10 Feb 2010 02:54:03 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.116.12 with SMTP id t12mr70401ybm.27.1265799243271; Wed, 
+	10 Feb 2010 02:54:03 -0800 (PST)
+Date: Wed, 10 Feb 2010 02:54:03 -0800 (PST)
+In-Reply-To: <4ccee321002100230p9ba8ae3p201aa07d0ab860fc@mail.gmail.com>
+X-IP: 77.9.29.238
+References: <b5f0c809-4269-4e85-9cc7-e1d1f0ddee82@o3g2000yqb.googlegroups.com> 
+	<4ccee321002100230p9ba8ae3p201aa07d0ab860fc@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.6) 
+	Gecko/20091216 Shiretoko/3.5.6,gzip(gfe),gzip(gfe)
+Message-ID: <9208bdd1-1505-4c0e-9c24-3ea45f038651@f12g2000yqn.googlegroups.com>
+Subject: [ruby-ffi] Re: Low-level dbus API, ffi and strings
+From: Christoph Kappel <unexist@dorfelite.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com: 
+	209.85.210.168 is neither permitted nor denied by best guess record for 
+	domain of unexist@dorfelite.net) smtp.mail=unexist@dorfelite.net
+X-Original-Sender: unexist@dorfelite.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/5b19cf0ca6f5020c
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/f1011d1a8c6c787f
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+
+On Feb 10, 11:30=A0am, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> On 10 February 2010 20:20, Christoph Kappel <unex...@dorfelite.net> wrote=
+:
+>
+>
+>
+> > Hello,
+>
+> > I have some problems calling following C function with a string as
+> > value:
+>
+> > dbus_bool_t dbus_message_iter_append_basic(DBusMessageIter *iter, int
+> > type, const void *value)
+>
+> > I attached it via ffi:
+>
+> > attach_function(:dbus_message_iter_append_basic,
+> > =A0:dbus_message_iter_append_basic, [ :pointer,
+> > DBusType, :pointer ], :bool
+> > )
+>
+> > (DBusType is an enum with the allowed types as integer.)
+>
+> > In C it should look like this and it allows several types casted to
+> > void:
+>
+> > DBusMessageIter iter;
+> > char *value =3D "foobar";
+>
+> > dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING, &value);
+>
+> The ruby-ffi equivalent is:
+>
+> value =3D FFI::MemoryPointer.from_string("subtle")
+> ptr =3D FFI::MemoryPointer.new(:pointer)
+> ptr.put_pointer(0, value)
+> dbus_message_iter_append_basic(piter, :type_string, ptr)
+>
+> i.e. you need to allocate a chunk of native memory to hold the string,
+> then allocate another bit of native memory to hold the address of that
+> first native chunk, and pass that in.
+
+Hello Wayne,
+
+thanks for the fast and working answer. I thought it must be like
+that, but couldn't think
+of way to archieve it.

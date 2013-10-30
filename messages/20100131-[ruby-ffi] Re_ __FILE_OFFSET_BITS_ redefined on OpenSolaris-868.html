@@ -1,0 +1,115 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: &quot;_FILE_OFFSET_BITS&quot; redefined on OpenSolaris</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: &quot;_FILE_OFFSET_BITS&quot; redefined on OpenSolaris</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Henry Jen <henryjen@ztune.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/31/10 1:49 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+BTW, I can fix the issue with attached patch, however, I am not
+confortable with that. Maybe there is a way to pass CFLAGS when
+invoking rake, that way, at least one can give correct value.
+
+Another way would be to include &lt;ruby.h&gt; first before any others, is
+there an issue for doing that?
+
+Cheers,
+Henry
+
+2010/1/30 slowhog <a class="moz-txt-link-rfc2396E" href="mailto:henryjen@ztune.net">&lt;henryjen@ztune.net&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I am trying to install ffi gem on OpenSolaris b130, but encounter
+<span class="moz-txt-citetags">&gt; </span>"_FILE_OFFSET_BITS" redefined error. Below is the result from `rake --
+<span class="moz-txt-citetags">&gt; </span>trace gem:install`.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The error is obvious, but I am not sure what's the right fix. Am I
+<span class="moz-txt-citetags">&gt; </span>missing something?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Cheers,
+<span class="moz-txt-citetags">&gt; </span>Henry
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>===&gt; suspicious, not sure if this is expected?
+<span class="moz-txt-citetags">&gt; </span>** Invoke spec/ffi/rbx/spec_helper.rb (first_time, not_needed)
+<span class="moz-txt-citetags">&gt; </span>** Invoke spec/ffrake-compiler must be configured first to enable
+<span class="moz-txt-citetags">&gt; </span>cross-compilation
+<span class="moz-txt-citetags">&gt; </span>rake-compiler must be configured first to enable cross-compilation
+<span class="moz-txt-citetags">&gt; </span>rake-compiler must be configured first to enable cross-compilation
+<span class="moz-txt-citetags">&gt; </span>rake-compiler must be configured first to enable cross-compilation
+<span class="moz-txt-citetags">&gt; </span>rm -r pkg
+<span class="moz-txt-citetags">&gt; </span>&lt;...snip...&gt;
+<span class="moz-txt-citetags">&gt; </span>sudo gem install --local pkg/ffi-0.6.0
+<span class="moz-txt-citetags">&gt; </span>Password:
+<span class="moz-txt-citetags">&gt; </span>Building native extensions.  This could take a while...
+<span class="moz-txt-citetags">&gt; </span>ERROR:  Error installing pkg/ffi-0.6.0:
+<span class="moz-txt-citetags">&gt; </span>       ERROR: Failed to build gem native extension.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/usr/ruby/1.8/bin/ruby extconf.rb
+<span class="moz-txt-citetags">&gt; </span>checking for ffi_call() in -lffi... yes
+<span class="moz-txt-citetags">&gt; </span>checking for ffi_prep_closure()... yes
+<span class="moz-txt-citetags">&gt; </span>checking for ffi_raw_call()... no
+<span class="moz-txt-citetags">&gt; </span>checking for rb_thread_blocking_region()... no
+<span class="moz-txt-citetags">&gt; </span>creating extconf.h
+<span class="moz-txt-citetags">&gt; </span>creating Makefile
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>make
+<span class="moz-txt-citetags">&gt; </span>/usr/sfw/bin/gcc -I. -I. -I/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11
+<span class="moz-txt-citetags">&gt; </span>-I. -DRUBY_EXTCONF_H=\"extconf.h\" -I/usr/sfw/include -fPIC -g -O3 -
+<span class="moz-txt-citetags">&gt; </span>fPIC -I/usr/lib/libffi-3.0.8/include   -Werror -Wunused -Wformat -
+<span class="moz-txt-citetags">&gt; </span>Wimplicit -Wreturn-type   -c Buffer.c
+<span class="moz-txt-citetags">&gt; </span>In file included from /usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/
+<span class="moz-txt-citetags">&gt; </span>ruby.h:24,
+<span class="moz-txt-citetags">&gt; </span>                from Buffer.c:31:
+<span class="moz-txt-citetags">&gt; </span>/usr/ruby/1.8/lib/ruby/1.8/i386-solaris2.11/config.h:27:1:
+<span class="moz-txt-citetags">&gt; </span>"_FILE_OFFSET_BITS" redefined
+<span class="moz-txt-citetags">&gt; </span>In file included from /usr/include/sys/int_types.h:55,
+<span class="moz-txt-citetags">&gt; </span>                from /usr/include/sys/stdint.h:38,
+<span class="moz-txt-citetags">&gt; </span>                from /usr/include/stdint.h:38,
+<span class="moz-txt-citetags">&gt; </span>                from Buffer.c:29:
+<span class="moz-txt-citetags">&gt; </span>/usr/include/sys/feature_tests.h:209:1: this is the location of the
+<span class="moz-txt-citetags">&gt; </span>previous definition
+<span class="moz-txt-citetags">&gt; </span>make: *** [Buffer.o] Error 1
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Gem files will remain installed in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/ruby/1.8/gem_home/gems<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>ffi-0.6.0 for inspection.
+<span class="moz-txt-citetags">&gt; </span>Results logged to <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>var/ruby/1.8/gem_home/gems/ffi-0.6.0/ext/ffi_c<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; </span>gem_make.out
+<span class="moz-txt-citetags">&gt; </span>rake aborted!
+<span class="moz-txt-citetags">&gt; </span>Command failed with status (1): [sudo gem install --local pkg/
+<span class="moz-txt-citetags">&gt; </span>ffi-0.6.0...]
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:995:in `sh'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `call'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1010:in `sh'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1094:in `sh'
+<span class="moz-txt-citetags">&gt; </span>/home/henryjen/git/ffi/tasks/gem.rake:171
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:597:in
+<span class="moz-txt-citetags">&gt; </span>`invoke_with_call_chain'
+<span class="moz-txt-citetags">&gt; </span>/usr/ruby/1.8/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:590:in
+<span class="moz-txt-citetags">&gt; </span>`invoke_with_call_chain'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2051:in
+<span class="moz-txt-citetags">&gt; </span>`invoke_task'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+<span class="moz-txt-citetags">&gt; </span>`standard_exception_handling'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:2068:in
+<span class="moz-txt-citetags">&gt; </span>`standard_exception_handling'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+<span class="moz-txt-citetags">&gt; </span>/var/ruby/1.8/gem_home/gems/rake-0.8.7/bin/rake:31
+<span class="moz-txt-citetags">&gt; </span>/usr/bin/rake:19:in `load'
+<span class="moz-txt-citetags">&gt; </span>/usr/bin/rake:19
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div><br><hr><br><div style="font-size:12px;color:black;"><img src="data:image/gif;base64,R0lGODdhDwAPAOMAAP///zEwYmJlzQAAAPr6+vv7+/7+/vb29pyZ//39/YOBg////////////////////ywAAAAADwAPAAAESRDISUG4lQYr+s5bIEwDUWictA2GdBjhaAGDrKZzjYq3PgUw2co24+VGLYAAAesRLQklxoeiUDUI0qSj6EoH4Iuoq6B0PQJyJQIAOw==">
+<ul><li><a href="Attachments-3/ffi_osol.diff">Attachments-3/ffi_osol.diff</li></a></ul></div></body>
+</html>

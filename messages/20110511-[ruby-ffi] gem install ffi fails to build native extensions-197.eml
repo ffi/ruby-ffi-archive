@@ -1,0 +1,116 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs180372agb;
+        Wed, 11 May 2011 13:35:03 -0700 (PDT)
+Received: by 10.236.153.135 with SMTP id f7mr11110492yhk.445.1305146102795;
+        Wed, 11 May 2011 13:35:02 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNPErMSxBRDv5avuBBoEoXVA7A@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id m29si1313093yhm.13.2011.05.11.13.35.01
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 11 May 2011 13:35:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNPErMSxBRDv5avuBBoEoXVA7A@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNPErMSxBRDv5avuBBoEoXVA7A@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCNPErMSxBRDv5avuBBoEoXVA7A@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gxk7 with SMTP id 7sf2138333gxk.7
+        for <headius@headius.com>; Wed, 11 May 2011 13:35:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=vOaWHOGcICbIaKFT+Tc1wxaUzq21F9hk9nK7OgoPIhw=;
+        b=Muu0uW/LJLaFsuF+G1So2ijKf1sUBxPtf8iSBsnwSe80/TVssLN/zfAQqO2OvWDUrQ
+         Hs6HvmvZdEjocpNFD2w3O68dtL12+56EPz10Ly/sDe3F9q0M/cJOUBAlQ5RY4llSbQA1
+         MsZ72vYV7lFVimTPextWf0iN6bDQtbHbqYoY0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=ETHu4vq+D4q8f4jtCHXeZM7EuclSlBaKrULO7TLd26p5DdltdKngYVIcvb4Iwc8GYH
+         GeEd+yP5PaLgjjAcsxdD5fFPjX4144KH844e9z6fykeLf1aGy/4VWZcgUmsDI///+Tdp
+         Q/+bciIQUoj5scdh6x6LJrnU8k2vXOMY/1j3Q=
+Received: by 10.91.4.27 with SMTP id g27mr981206agi.40.1305146095758;
+        Wed, 11 May 2011 13:34:55 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.135.9 with SMTP id i9ls320170ybd.4.gmail; Wed, 11 May 2011
+ 13:34:55 -0700 (PDT)
+Received: by 10.236.76.170 with SMTP id b30mr2066166yhe.39.1305146095245;
+        Wed, 11 May 2011 13:34:55 -0700 (PDT)
+Received: by 10.150.73.31 with SMTP id v31msyba;
+        Wed, 11 May 2011 09:02:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.47.2 with SMTP id z2mr222355pbm.7.1305129700915; Wed, 11
+ May 2011 09:01:40 -0700 (PDT)
+Received: by k3g2000prl.googlegroups.com with HTTP; Wed, 11 May 2011 09:01:40
+ -0700 (PDT)
+Date: Wed, 11 May 2011 09:01:40 -0700 (PDT)
+X-IP: 24.143.102.86
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1)
+ Gecko/20100101 Firefox/4.0.1,gzip(gfe)
+Message-ID: <af55c6c5-c584-4ad2-a109-facb362992be@k3g2000prl.googlegroups.com>
+Subject: [ruby-ffi] gem install ffi fails to build native extensions
+From: "lil'b" <abeillewright@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: abeillewright@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Good morning everyone,
+
+When I try to install the FFI gem on my engineyard instance, I get the
+following failure:
+
+<snip>
+i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+fPIC -Wno-declaration-after-statement   -o Types.o -c Types.c
+i686-pc-linux-gnu-gcc -I. -I/usr/include/ruby-1.9.1/i686-linux -I/usr/
+include/ruby-1.9.1/ruby/backward -I/usr/include/ruby-1.9.1 -I. -I/usr/
+lib/ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/include -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_FILE_OFFSET_BITS=64  -fPIC -O2 -
+march=pentium-m -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing -
+fPIC -Wno-declaration-after-statement   -o LastError.o -c LastError.c
+i686-pc-linux-gnu-gcc -shared -o ffi_c.so ClosurePool.o
+DynamicLibrary.o Platform.o ffi.o Thread.o MethodHandle.o
+StructLayout.o FunctionInfo.o Buffer.o StructByValue.o Variadic.o
+DataConverter.o ArrayType.o MappedType.o Struct.o Function.o Pointer.o
+Type.o Call.o MemoryPointer.o StructByReference.o AbstractMemory.o
+Types.o LastError.o -L. -L/usr/lib -Wl,-R/usr/lib -L. -Wl,-O1,--hash-
+style=gnu -rdynamic -Wl,-export-dynamic -Wl,--no-undefined   /usr/lib/
+ruby/gems/1.9.1/gems/ffi-1.0.7/ext/ffi_c/libffi/.libs/
+libffi_convenience.a -Wl,-R -Wl,/usr/lib -L/usr/lib -lruby19  -
+lpthread -lrt -ldl -lcrypt -lm   -lc
+AbstractMemory.o: In function `memory_get_array_of_ulong':
+AbstractMemory.c:(.text+0x40c9): undefined reference to
+`__builtin_bswap32'
+AbstractMemory.o: In function `memory_put_array_of_ulong':
+AbstractMemory.c:(.text+0x425c): undefined reference to
+`__builtin_bswap32'
+<snip>
+
+gcc version:
+
+deploy@domU-12-31-39-0C-C0-A2 ~ $ gcc --version
+gcc (GCC) 4.1.2 (Gentoo 4.1.2 p1.1)
+
+please help.
+
+~b

@@ -1,0 +1,30 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] [OT] win32api question</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] [OT] win32api question</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:47 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+A little off topic, but this code from
+<a class="moz-txt-link-freetext" href="http://rubygems.rubyforge.org/svn/trunk/lib/rubygems/config_file.rb">http://rubygems.rubyforge.org/svn/trunk/lib/rubygems/config_file.rb</a>
+
+      if RUBY_VERSION &gt; '1.9' then
+        SHGetFolderPath = Win32API.new 'shell32', 'SHGetFolderPath',
+'PLPLP',
+                                       'L', :stdcall
+...
+      else
+        SHGetFolderPath = Win32API.new 'shell32', 'SHGetFolderPath',
+'LLLLP',
+                                       'L'
+...
+      end
+
+Seems to show a difference in parameters between 1.9 and
+1.8....anybody have any clue what is going on here?
+Thanks.
+-r
+</pre></div></body>
+</html>
+</table></div>

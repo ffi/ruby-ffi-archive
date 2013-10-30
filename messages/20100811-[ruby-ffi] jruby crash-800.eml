@@ -1,0 +1,89 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.60.79 with SMTP id o15cs339332qah;
+        Wed, 11 Aug 2010 04:44:27 -0700 (PDT)
+Received: by 10.150.31.5 with SMTP id e5mr21564592ybe.150.1281527067273;
+        Wed, 11 Aug 2010 04:44:27 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNuojKTqEBCZmorjBBoEGFY0LA@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id q2si178006ybe.9.2010.08.11.04.44.26;
+        Wed, 11 Aug 2010 04:44:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCZmorjBBoEGFY0LA@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNuojKTqEBCZmorjBBoEGFY0LA@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCNuojKTqEBCZmorjBBoEGFY0LA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyg10 with SMTP id 10sf30434445gyg.7
+        for <headius@headius.com>; Wed, 11 Aug 2010 04:44:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=okssP+M9udsnFEtr0LKAFK2uEudReyCmipVsBK+NEgY=;
+        b=38xH0hnsQmnjJg7USXYyF9N5ATyi8dggYfjS81EomsAxJ0XSPb10gi7NissSLMZLUs
+         RP8TNq5ifvJufo3XU0S+xpXQcEQp8/IgbpgwXrWiKqc1TsX3wvguA2IXQIBW6D2ORULg
+         sfMXBjagq0AFuPu5dE5bCFQwI4kqWPtmvaj5U=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=jKC1qWby8W2piGKAhLnFSCkWoP1gNU7aDuc783dmq2utEKtxCmNfvPBfZ3xgE3c/qn
+         /a3NK/9/UVm5+Q8DNCOyR3Pn1dm2+Ie0e+5BdlSFif7y7qmFb8F5b/RGKjQGHozJ45BT
+         OyQyIOwyqhlfpPvNFZOqZQDIVIWcd+IgDY+ck=
+Received: by 10.90.97.19 with SMTP id u19mr3391656agb.25.1281527065798;
+        Wed, 11 Aug 2010 04:44:25 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.21.28 with SMTP id y28ls441238agi.2.p; Wed, 11 Aug 2010 
+	04:44:25 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.49.16 with SMTP id w16mr3386027agw.24.1281527065434; Wed, 
+	11 Aug 2010 04:44:25 -0700 (PDT)
+Received: by p22g2000pre.googlegroups.com with HTTP; Wed, 11 Aug 2010 04:44:25 
+	-0700 (PDT)
+Date: Wed, 11 Aug 2010 04:44:25 -0700 (PDT)
+X-IP: 216.49.181.254
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) 
+	AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4,gzip(gfe)
+Message-ID: <1c7c38cd-7b7a-4914-ba48-b03392027e1a@p22g2000pre.googlegroups.com>
+Subject: [ruby-ffi] jruby crash
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Anybody have any pointers on what might be happening with this jruby
+ffi crash?
+
+http://jira.codehaus.org/browse/JRUBY-4916
+
+Basically using the enumerate windows win32api several times in jruby
+results in:
+
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x01b7b7c3, pid=3372,
+tid=5564
+#
+# JRE version: 6.0_18-b07
+# Java VM: Java HotSpot(TM) Client VM (16.0-b13 mixed mode, sharing
+windows-x86 )
+# Problematic frame:
+# J  com.kenai.jffi.Foreign.invokeArrayReturnInt(J[B)I
+
+also reproducible with this: http://gist.github.com/518855
+
+Seems to work fine with MRI.
+Thanks.

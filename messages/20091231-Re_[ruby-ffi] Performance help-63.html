@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Performance help</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Performance help</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>John Croisant <jacius@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/31/09 7:11 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+On Thu, Dec 31, 2009 at 1:25 PM, Shawn Anderson <a class="moz-txt-link-rfc2396E" href="mailto:shawn42@gmail.com">&lt;shawn42@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm seeing my ffi version of chipmunk bindings are about 10 times slower.
+<span class="moz-txt-citetags">&gt; </span>Can any experts take a look and tell me if I'm doing something wrong?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/shawn42/chipmunk-ffi">http://github.com/shawn42/chipmunk-ffi</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>you will need ffi 0.6 and nice-ffi 0.2 and chipmunk built from svn (
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://code.google.com/p/chipmunk-physics/source/checkout">http://code.google.com/p/chipmunk-physics/source/checkout</a> )
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/Shawn
+</pre></blockquote><pre wrap>
+
+I don't see anything that you've done <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>wrong<span class="moz-txt-tag">_</span></span>, but it can be
+significantly optimized.
+
+The main source of slowness is creating the struct. For something this
+simple, and which will be created so frequently, using NiceFFI adds
+more overhead than you want, and doesn't give you much benefit.
+NiceFFI itself could probably be optimized quite a bit, but I would
+suggest using a plain FFI::Struct for this anyway. On my system,
+changing to FFI::Struct reduced the struct creation time by 40%. You
+will need to take care of memory management for pointers returned by
+the library, but that's easily accomplished using FFI::AutoPointer.
+
+Even with that optimization, creating a struct with FFI is quite a bit
+slower than creating it in C, which I think should be expected. But
+maybe other people have some more optimization tips besides "Don't use
+John's slow library." <span class="moz-smiley-s3" title=";-)"><span>;-)</span></span>
+
+- John
+
+P.S. I've sent you a pull request that implements the changes I've
+talked about here.
+</pre></div></body>
+</html>
+</table></div>

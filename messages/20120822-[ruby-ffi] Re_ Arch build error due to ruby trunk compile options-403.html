@@ -1,0 +1,109 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Arch build error due to ruby trunk compile options</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Arch build error due to ruby trunk compile options</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/22/12 5:44 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><div><br></div>Can you try 1.2.0.dev3 ? &nbsp;It should eliminate the warnflags MRI puts in there.<br><br>On Friday, 10 August 2012 06:16:10 UTC+10, Jon  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">With ruby trunk the last few ffi gem releases have failed to build on my Arch 3.4.7 32bit dev system with gcc 4.7.1 (20120721).
+<br>
+<br>Given the details and workaround info below, the root cause appears to be recent `<a href="http://configure.in" target="_blank">configure.in</a>` ansi compliance mods:
+<br>
+<br>&nbsp; <a href="https://github.com/ruby/ruby/blob/trunk/configure.in#L619-635" target="_blank">https://github.com/ruby/ruby/<wbr>blob/trunk/configure.in#L619-<wbr>635</a>
+<br>
+<br>Looks like others are running into as well
+<br>
+<br>&nbsp; <a href="https://github.com/flori/json/issues/142" target="_blank">https://github.com/flori/json/<wbr>issues/142</a>
+<br>
+<br>While I've only briefly investigated, I don't have time to fully look into it. But I don't want to forget about it.
+<br>
+<br>
+<br>
+<br>*** GEM UPDATE FAILURE ***
+<br>
+<br>[jon@archee ~]$ gem update ffi --user-install
+<br>Updating installed gems
+<br>Updating ffi
+<br>Fetching: ffi-1.1.5.gem (100%)
+<br>Building native extensions. &nbsp;This could take a while...
+<br>ERROR: &nbsp;Error installing ffi:
+<br>&nbsp; &nbsp; &nbsp; &nbsp; ERROR: Failed to build gem native extension.
+<br>
+<br>&nbsp; &nbsp; &nbsp; &nbsp; /usr/local/bin/ruby extconf.rb
+<br>checking for ffi_call() in -lffi... yes
+<br>checking for ffi_prep_closure()... yes
+<br>checking for ffi_raw_call()... yes
+<br>checking for ffi_prep_raw_closure()... yes
+<br>checking for rb_thread_blocking_region()... yes
+<br>checking for ruby_native_thread_p()... yes
+<br>checking for rb_thread_call_with_gvl()... yes
+<br>creating extconf.h
+<br>creating Makefile
+<br>
+<br>make
+<br>compiling Pointer.c
+<br>In file included from Pointer.c:34:0:
+<br>rbffi_endian.h:46:4: error: #error "Cannot determine the endian-ness of this platform"
+<br>Pointer.c: In function 'ptr_order':
+<br>Pointer.c:339:59: error: 'BYTE_ORDER' undeclared (first use in this function)
+<br>Pointer.c:339:59: note: each undeclared identifier is reported only once for each function it appears in
+<br>Pointer.c:339:72: error: 'BIG_ENDIAN' undeclared (first use in this function)
+<br>Pointer.c:351:25: error: 'LITTLE_ENDIAN' undeclared (first use in this function)
+<br>Pointer.c:368:1: warning: control reaches end of non-void function [-Wreturn-type]
+<br>make: *** [Pointer.o] Error 1
+<br>
+<br>
+<br>Gem files will remain installed in /home/jon/.gem/ruby/2.0.0/<wbr>gems/ffi-1.1.5 for inspection.
+<br>Results logged to /home/jon/.gem/ruby/2.0.0/<wbr>gems/ffi-1.1.5/ext/ffi_c/gem_<wbr>make.out
+<br>Nothing to update
+<br>
+<br>
+<br>
+<br>*** WORKAROUND ***
+<br>
+<br>gem update ffi --user-install -- --with-cflags='--std=gnu99'
+<br>
+<br>
+<br>
+<br>*** SYSTEM INFO ***
+<br>
+<br># rbconfig.rb contents:
+<br>&nbsp; CONFIG["warnflags"] = "-Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-<wbr>initializers -Wunused-variable -Werror=pointer-arith -Werror=write-strings -Werror=declaration-after-<wbr>statement -Werror=implicit-function-<wbr>declaration -ansi -std=iso9899:199409"
+<br>&nbsp; CONFIG["WERRORFLAG"] = "-Werror"
+<br>
+<br>
+<br>[jon@archee ~]$ gem env
+<br>RubyGems Environment:
+<br>&nbsp; - RUBYGEMS VERSION: 1.8.24
+<br>&nbsp; - RUBY VERSION: 2.0.0 (2012-08-10 patchlevel -1) [i686-linux]
+<br>&nbsp; - INSTALLATION DIRECTORY: /usr/local/lib/ruby/gems/2.0.0
+<br>&nbsp; - RUBY EXECUTABLE: /usr/local/bin/ruby
+<br>&nbsp; - EXECUTABLE DIRECTORY: /usr/local/bin
+<br>&nbsp; - RUBYGEMS PLATFORMS:
+<br>&nbsp; &nbsp; - ruby
+<br>&nbsp; &nbsp; - x86-linux
+<br>&nbsp; - GEM PATHS:
+<br>&nbsp; &nbsp; &nbsp;- /usr/local/lib/ruby/gems/2.0.0
+<br>&nbsp; &nbsp; &nbsp;- /home/jon/.gem/ruby/2.0.0
+<br>&nbsp; - GEM CONFIGURATION:
+<br>&nbsp; &nbsp; &nbsp;- :update_sources =&gt; true
+<br>&nbsp; &nbsp; &nbsp;- :verbose =&gt; true
+<br>&nbsp; &nbsp; &nbsp;- :benchmark =&gt; false
+<br>&nbsp; &nbsp; &nbsp;- :backtrace =&gt; false
+<br>&nbsp; &nbsp; &nbsp;- :bulk_threshold =&gt; 1000
+<br>&nbsp; &nbsp; &nbsp;- :sources =&gt; ["<a href="http://rubygems.org" target="_blank">http://rubygems.org</a>"]
+<br>&nbsp; &nbsp; &nbsp;- "gem" =&gt; "--no-ri --no-rdoc"
+<br>&nbsp; - REMOTE SOURCES:
+<br>&nbsp; &nbsp; &nbsp;- <a href="http://rubygems.org" target="_blank">http://rubygems.org</a>
+<br>
+<br>
+<br>Jon
+<br>
+<br>---
+<br>Fail fast. Fail often. Fail publicly. Learn. Adapt. Repeat.
+<br><a href="http://thecodeshop.github.com" target="_blank">http://thecodeshop.github.com</a> | <a href="http://jonforums.github.com/" target="_blank">http://jonforums.github.com/</a>
+<br>twitter: @jonforums
+<br></blockquote>
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,118 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs935892anc;
+        Thu, 28 Jan 2010 09:12:38 -0800 (PST)
+Received: by 10.101.11.40 with SMTP id o40mr7086123ani.143.1264698758254;
+        Thu, 28 Jan 2010 09:12:38 -0800 (PST)
+Return-Path: <3g8VhSwoJCPUirfpiXsbkXdjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com>
+Received: from mail-yx0-f137.google.com (mail-yx0-f137.google.com [209.85.210.137])
+        by mx.google.com with ESMTP id 39si2603363yxe.37.2010.01.28.09.12.37;
+        Thu, 28 Jan 2010 09:12:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3g8VhSwoJCPUirfpiXsbkXdjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com designates 209.85.210.137 as permitted sender) client-ip=209.85.210.137;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3g8VhSwoJCPUirfpiXsbkXdjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com designates 209.85.210.137 as permitted sender) smtp.mail=3g8VhSwoJCPUirfpiXsbkXdjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe1 with SMTP id 1sf2763277yxe.3
+        for <headius@headius.com>; Thu, 28 Jan 2010 09:12:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:from:date:message-id:subject:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=vyAQSkhDEXE7M8UyCEbKkVr7mD9ZsxRHOcRgu/rYhBA=;
+        b=hyVQYWK3WxBVOG2gkGmq2rL2ssrzz3NfMKQ6O4SCGh2bvWsRxEFJq9M6FsB8lBXBvQ
+         egKmC4VRFRFBkM21CC2g1jkMhpkmsFgV/Adf7DV1mDhfS16XKC0xv7ruzmsY1XzNgAPW
+         kCZJxY0l7JHZGSuiZg6hTzIvGYPybXs7XM3B8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=o0gPAxmIh5WLyJ23q1sAq7/E0fr/F+615oni0FZeHQUWwZwDFw+29sSuHoSujnEHJK
+         8gHYHaUvw7PJRLVtcXgCdTWFzdxDFe95hnlSoRBLOxPZTbvDKkZ6PE+LCVwSh7RRLK9c
+         v5FU1kYFuWfmJutWjKPl7fWOW3XbXTU+kDpTw=
+Received: by 10.101.131.33 with SMTP id i33mr762584ann.36.1264698755977;
+        Thu, 28 Jan 2010 09:12:35 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.223.17.217 with SMTP id t25ls298881faa.2.p; Thu, 28 Jan 2010 
+	09:12:34 -0800 (PST)
+Received: by 10.223.145.129 with SMTP id d1mr372220fav.27.1264698753972;
+        Thu, 28 Jan 2010 09:12:33 -0800 (PST)
+Received: by 10.223.145.129 with SMTP id d1mr372219fav.27.1264698753930;
+        Thu, 28 Jan 2010 09:12:33 -0800 (PST)
+Return-Path: <luislavena@gmail.com>
+Received: from mail-fx0-f223.google.com (mail-fx0-f223.google.com [209.85.220.223])
+        by gmr-mx.google.com with ESMTP id 12si12587fxm.1.2010.01.28.09.12.32;
+        Thu, 28 Jan 2010 09:12:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.220.223 as permitted sender) client-ip=209.85.220.223;
+Received: by fxm23 with SMTP id 23so976218fxm.18
+        for <ruby-ffi@googlegroups.com>; Thu, 28 Jan 2010 09:12:32 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.239.186.197 with SMTP id i5mr1280712hbh.103.1264698752508; 
+	Thu, 28 Jan 2010 09:12:32 -0800 (PST)
+In-Reply-To: <ab94f1ed-c615-401a-b186-423e971510bc@p13g2000pre.googlegroups.com>
+References: <d1d846ab-3511-48e8-89b1-1b52aa69c472@m16g2000yqc.googlegroups.com> 
+	<4ccee321001241606u3ba21b65x127fdcc3bdaccf2e@mail.gmail.com> 
+	<ab94f1ed-c615-401a-b186-423e971510bc@p13g2000pre.googlegroups.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Thu, 28 Jan 2010 17:12:12 +0000
+Message-ID: <71166b3b1001280912l1e3705fbua1348401f8077377@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Other compilers?
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of luislavena@gmail.com designates 209.85.220.223 as permitted sender) 
+	smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: luislavena@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3980eb9fc5849a8
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/bcbae6d5a6a9557d
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jan 28, 2010 at 4:17 PM, Daniel Berger <djberg96@gmail.com> wrote:
+> Are there any plans to support other compilers? Or does FFI use some
+> GNU specific extensions?
+>
+
+As long libffi is compilable with Visual Studio and a makefile for it
+is provided (maybe libffivs.mk) things could work.
+
+Please take a look here:
+
+http://github.com/ffi/ffi/blob/master/ext/ffi_c/extconf.rb#L28-39
+
+And here:
+
+http://github.com/ffi/ffi/tree/master/ext/ffi_c/
+
+for libffi.*.mk files
+
+Then try compiling and running the specs with a Visual Studio built
+version of Ruby.
+
+(gem install ffi --development will install all the dependencies)
+
+Cheers,
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

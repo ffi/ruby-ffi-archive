@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: FFI core concepts wiki documentation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: FFI core concepts wiki documentation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/11/09 2:35 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>There are a couple of points:
+<span class="moz-txt-citetags">&gt; </span>1) ruby-ffi releases are timed to coincide with JRuby releases, to
+<span class="moz-txt-citetags">&gt; </span>keep the FFI apis in sync.  This means it takes on average 3 months
+<span class="moz-txt-citetags">&gt; </span>from one 0.x.0 release to the next, which can seem like an eternity to
+<span class="moz-txt-citetags">&gt; </span>someone waiting for a feature.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2) The more stuff added to the core api, the more other
+<span class="moz-txt-citetags">&gt; </span>implementations have to implement.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Putting these extras in NiceFFI or another gem allows the features to
+<span class="moz-txt-citetags">&gt; </span>iterate a lot quicker, since they no longer impose any api
+<span class="moz-txt-citetags">&gt; </span>compatibility constraints - its all pure ruby that runs on any FFI
+<span class="moz-txt-citetags">&gt; </span>implementation.
+</pre></blockquote><pre wrap>
+
+I see your challenge, and while I like the ability to quickly deliver new features, having FFI::Reference feels more fundamental and core-ish than the "nice to have" extras in NiceFFI.  It's similar to one of the things that bugs me about the Inno installer...you have to download and and install a completely different package to get the compiler's pre-processor <span class="moz-smiley-s2" title=":("><span>:(</span></span>  It's so useful that it should be part of the base package.
+
+Since FFI::Reference addresses some pretty common C usages, I'm for including in FFI core especially as you mentioned it can be implemented in pure Ruby.
+
+That said, do the other implementations think it will be overly burdensome to implement?
+
+Jon
+</pre></div></body>
+</html>
+</table></div>

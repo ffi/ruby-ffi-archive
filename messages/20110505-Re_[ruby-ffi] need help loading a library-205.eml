@@ -1,0 +1,147 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs59100agb;
+        Thu, 5 May 2011 10:23:08 -0700 (PDT)
+Received: by 10.68.69.8 with SMTP id a8mr3527432pbu.418.1304616188029;
+        Thu, 05 May 2011 10:23:08 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhCbuYvuBBoEvC--vg@googlegroups.com>
+Received: from mail-px0-f184.google.com (mail-px0-f184.google.com [209.85.212.184])
+        by mx.google.com with ESMTPS id u1si6708630pbi.226.2011.05.05.10.23.07
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 May 2011 10:23:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCbuYvuBBoEvC--vg@googlegroups.com designates 209.85.212.184 as permitted sender) client-ip=209.85.212.184;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhCbuYvuBBoEvC--vg@googlegroups.com designates 209.85.212.184 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhCbuYvuBBoEvC--vg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi4 with SMTP id 4sf1900274pxi.21
+        for <headius@headius.com>; Thu, 05 May 2011 10:23:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :x-proofpoint-virus-version:x-proofpoint-spam-details:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-transfer-encoding:content-type;
+        bh=TKjCEHOAl0f1sTrIAEyrBPuJcoL9qrldlu2NiroC1rI=;
+        b=PXXibUvBpjIxTddtF5atMWb/5llbhci9qc4ATzmNjG9Qc3J+NHRtg37KJkMkFn7ujR
+         uiRg0Y7kP2geUwncJtirmvfxAAStn+Jg+xP/lS3Ho8kgaiPlDqvBNLAbdw5ID2Kgd0yQ
+         b3cAllGQ+DvEBBs/hTVCQFlSWIKcS/4zWE+bQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-virus-version
+         :x-proofpoint-spam-details:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        b=uDgQ0aeCLEhLZqwEhC/lWqGBZGhS530Nfvf9hQxBeRFXO04zR42y5qViEfGFCc2U9k
+         UBSJSxMHlTavJ/RVAJoMpdvwnSxl9cR7XHrIT9oNcAuQ7H0l5MEENIJ3F5WCQRpPCPw9
+         3RoxiS4Z6OH3XIqkfb1hMJ2U9pzZ+X38McHNU=
+Received: by 10.142.14.5 with SMTP id 5mr264932wfn.53.1304616091042;
+        Thu, 05 May 2011 10:21:31 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.38.11 with SMTP id q11ls1699838wfj.2.gmail; Thu, 05 May
+ 2011 10:21:29 -0700 (PDT)
+Received: by 10.142.52.20 with SMTP id z20mr282038wfz.63.1304616089717;
+        Thu, 05 May 2011 10:21:29 -0700 (PDT)
+Received: by 10.142.52.20 with SMTP id z20mr282037wfz.63.1304616089693;
+        Thu, 05 May 2011 10:21:29 -0700 (PDT)
+Received: from asmtpout023.mac.com (asmtpout023.mac.com [17.148.16.98])
+        by gmr-mx.google.com with ESMTP id u26si1127581wfc.5.2011.05.05.10.21.29;
+        Thu, 05 May 2011 10:21:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) client-ip=17.148.16.98;
+MIME-version: 1.0
+Received: from [192.168.0.101] (unknown [76.8.86.186])
+ by asmtp023.mac.com (Oracle Communications Messaging Exchange Server 7u4-20.01
+ 64bit (built Nov 21 2010)) with ESMTPSA id <0LKQ00LISG7A2280@asmtp023.mac.com>
+ for ruby-ffi@googlegroups.com; Thu, 05 May 2011 10:21:11 -0700 (PDT)
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.2.15,1.0.148,0.0.0000
+ definitions=2011-05-05_07:2011-05-05,2011-05-05,1970-01-01 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 suspectscore=1 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ adjust=0 reason=mlx engine=6.0.2-1012030000 definitions=main-1105050106
+Subject: Re: [ruby-ffi] need help loading a library
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <BANLkTi=hn1mz2WcQ+QaCwhwhqEDafSLkjQ@mail.gmail.com>
+Date: Thu, 05 May 2011 12:20:34 -0500
+Message-id: <5EE3ED8E-D751-471A-AC51-2DC79CF1F84E@mac.com>
+References: <86A00FC7-FC17-4340-91D9-AC489F8651A1@mac.com>
+ <BANLkTik2_Ydh0-h1ihohT8zWFf44vwA4kA@mail.gmail.com>
+ <BE3DDE80-6E52-452A-A464-77D15A3E2897@mac.com>
+ <BANLkTi=e_vVfYATLi=jDDyb+DCiqfPszSA@mail.gmail.com>
+ <C4C3AA81-6905-45E3-A7AD-50BB46DFFDBD@mac.com>
+ <BBF8C544-B8CF-4288-BAEE-4AF6D87F978F@mac.com>
+ <BANLkTinR976Vfdi8pdMQZen17dRDMXbZ-Q@mail.gmail.com>
+ <BANLkTinQ56w6FHzHXVRJFEJ-V_sjYSUqRA@mail.gmail.com>
+ <BANLkTi=hn1mz2WcQ+QaCwhwhqEDafSLkjQ@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1082)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII
+
+
+On May 4, 2011, at 8:00 PM, Luis Lavena wrote:
+
+> On Wed, May 4, 2011 at 9:30 PM, Dominic Sisneros <dsisnero@gmail.com> wrote:
+>> 
+>> Can someone write up the steps needed to get 0mq working on windows?
+>> 
+> 
+> Steps are easy:
+> 
+> 1) You need RubyInstaller and it's DevKit, instructions for that are
+> in RubyInstaller website:
+> 
+> http://rubyinstaller.org/downloads
+> 
+> 2) Start a command prompt and invoke devkitvars.bat found inside the
+> folder you installed DevKit, this will give you access to MinGW tools.
+> 
+> 3) Download 0mq source somewhere and extract (eg C:\src\zeromq)
+> 
+> 4) compile it using the following commands:
+> 
+> C:\> cd C:\src\zeromq
+> C:\> sh configure --prefix=C:/zeromq
+> C:\> make
+> C:\> make install
+> 
+> Note the use of forwardslash in the second command. The above commands
+> will take a long time to complete, but once its done, you will find
+> inside C:\zeromq folder the binaries (bin, lib, include).
+> 
+> 5) Copy the result binaries
+> 
+> Now you can copy the DLL from inside bin into a directory in your PATH
+> and use it.
+> 
+> 6) Don't forget the additional dependencies
+> 
+> Don't forge to copy libstdc++-6.dll and libgcc_s_sjlj-1.dll from
+> DevKit MinGW into the same folder you copied  libzmq.dll.
+> 
+> To know where these DLLs are, you can use where, eg:
+> 
+> C:\> where libstdc++-6.dll
+> C:\Users\Luis\Tools\DevKit\4.5.1\mingw\bin\libstdc++-6.dll
+
+Luis, I'm adding this write-up to the 0mq FAQ. Thanks for the write-up!
+
+cr
+

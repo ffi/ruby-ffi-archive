@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp327513obj;
+        Mon, 7 May 2012 22:49:19 -0700 (PDT)
+Received: by 10.224.175.195 with SMTP id bb3mr11353045qab.35.1336456159164;
+        Mon, 07 May 2012 22:49:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxDe56L9BBoEezXlGQ@googlegroups.com>
+Received: from mail-qa0-f56.google.com (mail-qa0-f56.google.com [209.85.216.56])
+        by mx.google.com with ESMTPS id c14si7926809qcu.153.2012.05.07.22.49.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 07 May 2012 22:49:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxDe56L9BBoEezXlGQ@googlegroups.com designates 209.85.216.56 as permitted sender) client-ip=209.85.216.56;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxDe56L9BBoEezXlGQ@googlegroups.com designates 209.85.216.56 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxDe56L9BBoEezXlGQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qauh8 with SMTP id h8sf362947qau.21
+        for <headius@headius.com>; Mon, 07 May 2012 22:49:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=iF7tELHN0yDuyve6eMqHjqBRu4ODY80+VJgXutsboRE=;
+        b=RAHl5Lpn+i0DNOzL1zRLghZG315/s25oNh1KJksD/t0wIlFl516m47uhdUrn1v0LJm
+         NiAonGEtdH5ORjcSmwrqOTw5NXrlgYM6k0su34eR9j3Ztjfvf+RSLgtcfmKGLUfynjyA
+         KBHEZrX0OOY/hbAqYGdAF89RX1s7IHG46fR8s=
+Received: by 10.68.227.234 with SMTP id sd10mr139923pbc.12.1336456158616;
+        Mon, 07 May 2012 22:49:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.135.10 with SMTP id po10ls254332pbb.4.gmail; Mon, 07 May
+ 2012 22:49:18 -0700 (PDT)
+Received: by 10.68.189.72 with SMTP id gg8mr72399pbc.13.1336456158415;
+        Mon, 07 May 2012 22:49:18 -0700 (PDT)
+Date: Mon, 7 May 2012 22:49:17 -0700 (PDT)
+From: Navaneeth KN <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <27740124.175.1336456157734.JavaMail.geo-discussion-forums@pbyy9>
+In-Reply-To: <1157585.784.1336455289325.JavaMail.geo-discussion-forums@pbnf3>
+References: <1157585.784.1336455289325.JavaMail.geo-discussion-forums@pbnf3>
+Subject: [ruby-ffi] Re: FFI::StructLayout::CharArray and UTF-8 encoding
+MIME-Version: 1.0
+X-Original-Sender: navaneethkn@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ navaneethkn@gmail.com designates internal as permitted sender)
+ smtp.mail=navaneethkn@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_174_18640561.1336456157734"
+
+------=_Part_174_18640561.1336456157734
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+
+On Tuesday, 8 May 2012 11:04:49 UTC+5:30, Navaneeth KN wrote:
+>
+> Hello,
+>
+> I have a struct which has character arrays which contains UTF8 encoded 
+> string. My C library ensures it always works with UTF8 for input and 
+> output. I wrapped the C library in ruby using FFI. When reading these 
+> values from  FFI using FFI::StructLayout::CharArray.read_string gives me a 
+> ruby string with encoding ASCII-8BIT. When I try to convert this into UTF-8 
+> using,
+>
+> str.encode!("UTF-8")
+>
+>
+It looks like str.force_encoding('UTF-8') works well. But I am still 
+ineterested  to know if there are any FFI way of specifying the encoding.
+
+Thanks 
+
+------=_Part_174_18640561.1336456157734
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<br><br>On Tuesday, 8 May 2012 11:04:49 UTC+5:30, Navaneeth KN  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hello,<br><br>I have a struct which has character arrays which contains UTF8 encoded string. My C library ensures it always works with UTF8 for input and output. I wrapped the C library in ruby using FFI. When reading these values from&nbsp; FFI using FFI::StructLayout::CharArray.<wbr>read_string gives me a ruby string with encoding ASCII-8BIT. When I try to convert this into UTF-8 using,<br><br>str.encode!("UTF-8")<br><br></blockquote><div><br>It looks like str.force_encoding('UTF-8') works well. But I am still ineterested&nbsp; to know if there are any FFI way of specifying the encoding.<br><br>Thanks <br></div>
+------=_Part_174_18640561.1336456157734--

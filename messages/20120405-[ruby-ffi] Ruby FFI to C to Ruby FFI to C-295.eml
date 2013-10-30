@@ -1,0 +1,91 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.47.194 with SMTP id f2csp36872obn;
+        Thu, 5 Apr 2012 16:11:45 -0700 (PDT)
+Received: by 10.229.136.201 with SMTP id s9mr1851163qct.28.1333667504879;
+        Thu, 05 Apr 2012 16:11:44 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJHz69weEKzN-PsEGgRtqxqQ@googlegroups.com>
+Received: from mail-qc0-f190.google.com (mail-qc0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id ew5si5166861qab.47.2012.04.05.16.11.44
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 05 Apr 2012 16:11:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJHz69weEKzN-PsEGgRtqxqQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJHz69weEKzN-PsEGgRtqxqQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCJHz69weEKzN-PsEGgRtqxqQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qcsr22 with SMTP id r22sf3112295qcs.7
+        for <headius@headius.com>; Thu, 05 Apr 2012 16:11:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=h32C5+8mrcOI8Ed2pj8EUhvxLcoLo6RPY9bI9OMU53E=;
+        b=kuQu37ucs50lM5MbIPfq7djS9gQu47C6Vmb/BL24RdfXGR+7qKy08pMwb/GPQNxNHY
+         Ef8HL3lto1O/DOhseJh/W5K/uDF8PbHXkB8nzSEe6B246XMWcBmEIci/4U3UL1POLPpb
+         reLuw3DgL0yTdmrylIaKLRpFJztqrxblAtr/M=
+Received: by 10.50.217.137 with SMTP id oy9mr1772321igc.2.1333667500303;
+        Thu, 05 Apr 2012 16:11:40 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.27.25 with SMTP id g25ls354414ibc.1.gmail; Thu, 05 Apr
+ 2012 16:11:39 -0700 (PDT)
+Received: by 10.42.150.2 with SMTP id y2mr2792529icv.7.1333667499963;
+        Thu, 05 Apr 2012 16:11:39 -0700 (PDT)
+Received: by 10.50.151.242 with SMTP id ut18msigb;
+        Thu, 5 Apr 2012 14:50:56 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.68.136.3 with SMTP id pw3mr1199201pbb.17.1333662656010; Thu,
+ 05 Apr 2012 14:50:56 -0700 (PDT)
+Received: by vy8g2000pbc.googlegroups.com with HTTP; Thu, 5 Apr 2012 14:50:55
+ -0700 (PDT)
+Date: Thu, 5 Apr 2012 14:50:55 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3)
+ AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.142 Safari/535.19,gzip(gfe)
+Message-ID: <14fe67cd-34b3-400f-aaf1-e1ef26d76661@vy8g2000pbc.googlegroups.com>
+Subject: [ruby-ffi] Ruby FFI to C to Ruby FFI to C
+From: avalanche123 <mallluhuct@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mallluhuct@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of mallluhuct@gmail.com designates internal as permitted sender)
+ smtp.mail=mallluhuct@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello,
+
+I'm working on libuv ffi bindings for Ruby and have an issue I can't
+understand
+
+Libuv needs an allocated buffer it can write to, here is a gist of
+code https://gist.github.com/2313277 that has my ruby module and usage
+examples both in C and Ruby
+The C example works fine, while ruby makes Libuv raise EINVAL. I've
+used some basic debugging and figured out that the buffer len than
+comes from Ruby is 140735085305696
+instead of 128, as can be seen from shell outputs examples I've added
+to the gist. I've also added relevant pieces of Libuv to the gist,
+specifically uv_buf_init that is
+responsible for creating uv_buf_t and part of libuv's uv__read that is
+responsible for using it.
+
+ From my debugging it looks like a corrupted uv_buf_t memory comes back
+from Ruby, making libuv believe beffer's len attribute is
+140735085305696 bytes long.
+
+I will appreciate any feedback as I've been struggling with this for a
+while.
+
+Best,
+Bulat

@@ -1,0 +1,134 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp122665laa;
+        Sun, 22 Sep 2013 04:05:14 -0700 (PDT)
+X-Received: by 10.14.45.70 with SMTP id o46mr27166345eeb.19.1379847914466;
+        Sun, 22 Sep 2013 04:05:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD6733FW44FBB2M57OIQKGQEEMYV2MQ@googlegroups.com>
+Received: from mail-ee0-x23e.google.com (mail-ee0-x23e.google.com [2a00:1450:4013:c00::23e])
+        by mx.google.com with ESMTPS id x42si18161102eel.56.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 22 Sep 2013 04:05:14 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning ruby-ffi+bncBD6733FW44FBB2M57OIQKGQEEMYV2MQ@googlegroups.com does not designate 194.109.24.31 as permitted sender) client-ip=194.109.24.31;
+Authentication-Results: mx.google.com;
+       spf=softfail (google.com: domain of transitioning ruby-ffi+bncBD6733FW44FBB2M57OIQKGQEEMYV2MQ@googlegroups.com does not designate 194.109.24.31 as permitted sender) smtp.mail=ruby-ffi+bncBD6733FW44FBB2M57OIQKGQEEMYV2MQ@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-ee0-f62.google.com with SMTP id c41sf254869eek.27
+        for <headius@headius.com>; Sun, 22 Sep 2013 04:05:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=message-id:date:from:user-agent:mime-version:to:subject
+         :content-type:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe;
+        bh=E6Frei+GYA6RNXWEGi6nj6GS4jF6T7qWN+QO/ZFrZQA=;
+        b=jb/pCFMgf/VUlNj9ctbJjxzJJq0nc0Wtq0hrmw/D25BmRDeVRC37OC4PCMMh2EK6xH
+         fIQuadO9hW/6WwQi+rGckFu+Y+juQCBz1MuYbDYDG8GI0pfkbkMIy/yKnK9xfa8pZA4n
+         r82epVRPXEqax3+K03mYEOavJhLNP9mbCkxwEI+GedCAHSBbH3vZnk6WZD4ow67m/9ZY
+         u+DH/EgqbU/0vRd0IaEQbjBJpBGUptW5aYg6VN1l9aBtCjuYKQnMfEU9aKpUrvP+ujP9
+         d6+4u8lY6lAwfMESgFSZWuUjhxVJQwJc8rkS2mZ0y9QOwq72XhuCuITMDkVKzkVCJrjg
+         DyTQ==
+X-Received: by 10.180.37.243 with SMTP id b19mr320489wik.18.1379847914217;
+        Sun, 22 Sep 2013 04:05:14 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.10.233 with SMTP id l9ls476595wib.3.gmail; Sun, 22 Sep
+ 2013 04:05:13 -0700 (PDT)
+X-Received: by 10.14.213.65 with SMTP id z41mr265448eeo.7.1379847913421;
+        Sun, 22 Sep 2013 04:05:13 -0700 (PDT)
+Received: from smtp-vbr11.xs4all.nl (smtp-vbr11.xs4all.nl. [194.109.24.31])
+        by gmr-mx.google.com with ESMTP id cd45si3204479eeb.0.1969.12.31.16.00.00;
+        Sun, 22 Sep 2013 04:05:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 194.109.24.31 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.31;
+Received: from [10.0.0.34] (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr11.xs4all.nl (8.13.8/8.13.8) with ESMTP id r8MB56XE018497
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Sun, 22 Sep 2013 13:05:12 +0200 (CEST)
+	(envelope-from matijs@matijs.net)
+Message-ID: <523ECEE1.4060406@matijs.net>
+Date: Sun, 22 Sep 2013 13:05:05 +0200
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130821 Icedove/17.0.8
+MIME-Version: 1.0
+To: Ruby-FFI Google Group <ruby-ffi@googlegroups.com>
+Subject: [ruby-ffi] DataConverter for callback type
+X-Enigmail-Version: 1.5.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="----enig2GNOTVBFAMLOSJPWCBKUL"
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 194.109.24.31 is neither permitted nor denied by best guess
+ record for domain of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2GNOTVBFAMLOSJPWCBKUL
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+I'm trying to create a DataConverter that represents a callback function.=
+ The
+code basically boils down to this:
+
+module Lib
+  include FFI::Library
+  ffi_lib 'some-library'
+end
+
+class Foo < Proc
+  extend FFI::DataConverter
+
+  Callback =3D Lib.callback ... # usual call to FFI::Library.callback
+
+  def self.native_type
+    self::Callback
+  end
+end
+
+[The reason I'm doing this is that I want to wrap procs passed from ruby =
+in some
+argument conversion code using a method defined on, in this case, Foo]
+
+Now, I'm unable to figure out what the definition of Foo.to_native should=
+ be.
+Foo::Callback is of type FFI::FunctionType, which doesn't have a to_nativ=
+e method.
+
+Any ideas?
+
+Thanks and regards,
+--=20
+Matijs
+
+
+------enig2GNOTVBFAMLOSJPWCBKUL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+iQEVAwUBUj7O4ZZ5CSFec8nfAQjRdwf/V7q+hiKxp88KSmTpaD3+8/+cnWCdqim/
+RIyLONY6GTx7llR05UuKreQVRUgrXkn5Xw60aRWuozxe+r66QRzmMcN+r4Slf40e
+aB+CdBDMLxQtTGMbc/lpyamoDaxjRPj2nCwsgAnlSee+ZkGMEVPOxvI4k0VOn2Qo
+hkxt/6Cqlxd+h3yWRyToaVW86dzcNnzHeZKGR2c8x60tMoiXGLTzQCvpg4XDz9DV
+qVT5KGkVBN3/Ni6hcw8JSkFqBAKqqjgGpR4IpiUMwvdvVO1FHKjm81VXLXLf/93p
+l1q2huTHD3gDrGWalZRxr/Ku4OVvhbKD4vUt+Xs2aVFmOv+MbCKEzQ==
+=7jYf
+-----END PGP SIGNATURE-----
+
+------enig2GNOTVBFAMLOSJPWCBKUL--

@@ -1,0 +1,40 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jon <jon.forums@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 12:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I've cloned ffi, executed:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>rake install
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and with new installation enumerating desktop windows sample works without
+<span class="moz-txt-citetags">&gt; </span>problems except that sample on the Wiki has one error. Line:
+</pre></blockquote><pre wrap>
+
+I forced a local compile (using latest DevKit) of FFI 0.5.4 by running
+"gem install ffi --platform=ruby" and ran the same enumerate desktop
+windows sample.  Unfortunately, I get the following segv similar to
+what I got when using the 0.5.3 mingw32 binary gem.
+
+ (eval):3: [BUG] Segmentation fault
+ruby 1.9.1p243 (2009-07-16 revision 24175) [i386-mingw32]
+
+-- control frame ----------
+c:0005 p:---- s:0019 b:0019 l:000018 d:000018 CFUNC  :call
+c:0004 p:0016 s:0013 b:0013 l:000012 d:000012 METHOD (eval):3
+c:0003 p:0104 s:0008 b:0008 l:0011f4 d:0011ac EVAL   ffi_enumwin.rb:31
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0011f4 d:0011f4 TOP
+---------------------------
+-- Ruby level backtrace
+information-----------------------------------------
+(eval):3:in `call'
+(eval):3:in `enum_desktop_windows'
+ffi_enumwin.rb:31:in `&lt;main&gt;'
+</pre></div></body>
+</html>
+</table></div>

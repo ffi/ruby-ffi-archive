@@ -1,0 +1,46 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Cross-platform C code packaged in a gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Cross-platform C code packaged in a gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/18/13 3:48 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">Hi Hugo,<div><br></div><div style>Ruby-LLVM does exactly this for the support library. We let rubygems build the extension by invoking rake. Here are the relevant bits.</div><div style><ul style><li style>declare the extension: <a href="https://github.com/ruby-llvm/ruby-llvm/blob/master/ruby-llvm.gemspec#L22">https://github.com/ruby-llvm/ruby-llvm/blob/master/ruby-llvm.gemspec#L22</a></li>
+<li style>define Rakefile for build process: <a href="https://github.com/ruby-llvm/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile">https://github.com/ruby-llvm/ruby-llvm/blob/master/ext/ruby-llvm-support/Rakefile</a></li>
+<li style>loading the library by its relative path: <a href="https://github.com/ruby-llvm/ruby-llvm/blob/master/lib/llvm/support.rb#L15-L17">https://github.com/ruby-llvm/ruby-llvm/blob/master/lib/llvm/support.rb#L15-L17</a><br>
+</li></ul></div><div style>HTH,</div></div><div class="gmail_extra"><br><br><div class="gmail_quote">On Thu, Apr 18, 2013 at 1:01 PM, Hugo Frappier <span dir="ltr">&lt;<a href="mailto:hugo@cekoya.com" target="_blank">hugo@cekoya.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Was anyone able to package cross-platform C code in a gem and loading<br>
+it with FFI?<br>
+<br>
+I&#39;m having a hard time compiling and linking the code (especially on<br>
+Windows) using extconf.rb.  I looked at all the github FFI projects<br>
+(the one listed on the Wiki) and none of them seems to be doing<br>
+something similar.<br>
+<br>
+Thanks<br>
+<span class="HOEnZb"><font color="#888888"><br>
+--<br>
+<br>
+---<br>
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an email to <a href="mailto:ruby-ffi%2Bunsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/groups/opt_out</a>.<br>
+<br>
+<br>
+</font></span></blockquote></div><br><br clear="all"><div><br></div>-- <br><div dir="ltr">Jeremy Voorhis<br></div>
+</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] FFI::StructLayout::CharArray and UTF-8 encoding</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] FFI::StructLayout::CharArray and UTF-8 encoding</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Navaneeth KN <navaneethkn@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/8/12 12:34 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hello,<br><br>I have a struct which has character arrays which contains UTF8 encoded string. My C library ensures it always works with UTF8 for input and output. I wrapped the C library in ruby using FFI. When reading these values from&nbsp; FFI using FFI::StructLayout::CharArray.read_string gives me a ruby string with encoding ASCII-8BIT. When I try to convert this into UTF-8 using,<br><br>str.encode!("UTF-8")<br><br>it fails saying few characters can't be encoded to UTF8. I am wondering is there a way to tell FFI to treat strings as UTF-8 encoded?<br><br>Any help would be great<br><br>Thanks<br>
+</div></body>
+</html>
+</table></div>

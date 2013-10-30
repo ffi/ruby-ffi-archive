@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Multiple libraries included via dlopen()?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Multiple libraries included via dlopen()?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Michael MacDonald <mjmac42@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/16/10 1:01 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Hi.<div><br></div><div>I'm trying to use ruby-ffi for a library which uses plugins to include functionality (e.g. auth, accounting, etc.). &nbsp;These plugins are loaded at runtime using dlopen.</div><div><br></div><div>The issue that I have is that the symbols in the main library seem to go out of scope when any of the plugin libraries are opened... &nbsp;At least, this is my novice assessment of the problem.</div><div><br></div><div>I can load the main library, and any functions I call which don't trigger plugin loading work OK. &nbsp;As soon as I call a function which triggers loading of any plugins, I get symbol lookup errors (from the plugin) for symbols which are definitely present in the main library.</div><div><br></div><div>e.g.&nbsp;</div><div><div>./test.rb&nbsp;</div><div>ruby: symbol lookup error: /usr/lib64/slurm/auth_none.so: undefined symbol: slurm_verbose</div></div><div><br></div><div><div>nm /usr/lib64/libslurm.so | grep slurm_verbose</div><div>0000000000043490 T slurm_verbose</div></div><div><br></div><div>What gives? &nbsp;I'd be happy to gist code snippets if that helps to illustrate the problem, but I thought folks with more experience might recognize this right away.</div><div><br></div><div>Oh, I'm using ruby 1.8.6 + ruby-ffi 0.8.3. &nbsp;I'd prefer not to use 1.9.2 yet if I don't have to.</div><div><br></div><div>Thanks!</div>
+</div></body>
+</html>
+</table></div>

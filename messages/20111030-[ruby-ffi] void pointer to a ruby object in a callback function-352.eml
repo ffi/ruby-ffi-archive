@@ -1,0 +1,70 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs13760igc;
+        Sun, 30 Oct 2011 03:41:27 -0700 (PDT)
+Received: by 10.236.128.173 with SMTP id f33mr11977966yhi.8.1319971284416;
+        Sun, 30 Oct 2011 03:41:24 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCLT4s8ODDRDS07T1BBoErxRE8Q@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id y5si1547253anh.125.2011.10.30.03.41.24
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 30 Oct 2011 03:41:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLT4s8ODDRDS07T1BBoErxRE8Q@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLT4s8ODDRDS07T1BBoErxRE8Q@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCLT4s8ODDRDS07T1BBoErxRE8Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywa8 with SMTP id 8sf14384910ywa.7
+        for <headius@headius.com>; Sun, 30 Oct 2011 03:41:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=+FVfUONCrV5+uSSHMn3FYCev1s9Egdc+ucl0pW6JcZo=;
+        b=SDoWY2qKJZMLvblk86XO8TyGc1sx8uug9/gGDJl1Y1gW/cwoGamnxhU3IA2OReyMHO
+         nIs8vPlUFrJz/XUpoXTfWxyQ8R96jNkBOExlbZjh1oKO0KXkYArsKIAWC4ifqh4t6svi
+         MycD/IC38q/5dAoK99lCUZJ9t4oowmPttl7ok=
+Received: by 10.236.201.227 with SMTP id b63mr3153773yho.6.1319971282708;
+        Sun, 30 Oct 2011 03:41:22 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.206.18 with SMTP id i18ls12660530anq.7.gmail; Sun, 30 Oct
+ 2011 03:41:22 -0700 (PDT)
+Received: by 10.100.105.9 with SMTP id d9mr2605658anc.41.1319971282385;
+        Sun, 30 Oct 2011 03:41:22 -0700 (PDT)
+Received: by 10.150.69.1 with SMTP id r1msyba;
+        Sun, 30 Oct 2011 01:23:22 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.182.14.9 with SMTP id l9mr858037obc.9.1319963001908; Sun, 30
+ Oct 2011 01:23:21 -0700 (PDT)
+Received: by q39g2000prg.googlegroups.com with HTTP; Sun, 30 Oct 2011 01:23:21
+ -0700 (PDT)
+Date: Sun, 30 Oct 2011 01:23:21 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+ AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.106 Safari/535.2,gzip(gfe)
+Message-ID: <fb2493cf-8a5a-4382-b23a-22545462656b@q39g2000prg.googlegroups.com>
+Subject: [ruby-ffi] void pointer to a ruby object in a callback function
+From: Mark <mark@catley.net.nz>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mark@catley.net.nz
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+I am trying to use an api that has a callback function. The api takes
+a void pointer that is passes through to the callback function. Is it
+possible to get access to a ruby object via that void pointer? I.e.
+get a pointer to a ruby object or something functionally equivalent?
+
+Cheers,
+Mark

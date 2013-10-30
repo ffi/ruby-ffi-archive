@@ -1,0 +1,52 @@
+MIME-Version: 1.0
+Received: by 10.142.187.11 with HTTP; Wed, 28 Oct 2009 16:42:29 -0700 (PDT)
+In-Reply-To: <bf2f536c0910252310y770b2c19n725108e39a89a5c1@mail.gmail.com>
+References: <bf2f536c0910251145x5792b613xdbd15bfce9ddee5c@mail.gmail.com>
+	 <f04d2210910251919s2559da25m6e7fd68b3e149542@mail.gmail.com>
+	 <bf2f536c0910252310y770b2c19n725108e39a89a5c1@mail.gmail.com>
+Date: Wed, 28 Oct 2009 18:42:29 -0500
+Delivered-To: headius@headius.com
+Message-ID: <f04d2210910281642j66d694e9vc734c22fd975cd74@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Rubygame now uses FFI
+From: Charles Oliver Nutter <headius@headius.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
+
+Ok John, thanks for the clarification. It seems like the extra calls
+ought to be something you could do from FFI, but perhaps that's too
+late or too complicated?
+
+On Mon, Oct 26, 2009 at 1:10 AM, John Croisant <jacius@gmail.com> wrote:
+> RSDL is essentially a wrapper around the Ruby interpreter, but it
+> performs some SDL initialization magic that is only necessary on Mac.
+> It has something to do with priming Cocoa to open a display window,
+> but the details are somewhat arcane, and the implementation is rather
+> messy. Without RSDL -- that is, using the plain Ruby (or JRuby)
+> interpreter -- Rubygame and Ruby/SDL applications just print a bunch
+> of gibberish to the console instead of opening a display window.
+>
+> Due to the messy and obscure implementation hidden inside SDL, I'm not
+> sure there's any way around it except to create a Java program that
+> initializes SDL and then runs an embedded JRuby interpreter. It *may*
+> be possible to initiate some of the Cocoa stuff that SDL wants via FFI
+> or other means, but the mish-mash of C (SDL), Objective-C (Cocoa),
+> Java, and Ruby makes my head spin just thinking about it. A Java app
+> wrapper would probably be simpler -- although more inconvenient for
+> users, because it's one more thing to install, and it's annoying to
+> have to remember to use it instead of the usual Ruby interpreter.
+>
+> I think (or at least hope) that this annoying issue will be solved in
+> SDL 1.3, but I have no clue when that will be released. It has been
+> "almost ready" several times over the past 2-3 years, but it has never
+> managed to get off the ground. I could possibly set up a binding to
+> the SDL 1.3 SVN version, but I'm generally not in the habit of using
+> unreleased software as dependencies.
+>
+> My own feeling is that the best, simplest, cleanest course right now
+> is for Rubygame to provide an OpenGL back end, but I'm not sure how
+> soon I'll be able to attempt it. If someone with Java knowledge wants
+> to try making a JRuby-ish RSDL wrapper, I think that would also have a
+> good chance of letting Rubygame work on Mac JRuby in the meantime.
+>
+> - John
+>

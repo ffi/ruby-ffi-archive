@@ -1,0 +1,73 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [ANN] ffi-compiler 0.0.1</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [ANN] ffi-compiler 0.0.1</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/15/13 6:24 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Tue, Jan 15, 2013 at 9:14 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Wednesday, 16 January 2013 10:09:39 UTC+11, Luis Lavena wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Noticed in the example that result of compilation is left in the ext
+<span class="moz-txt-citetags">&gt;&gt; </span>folder. Assume that is to avoid clash wih ruby trying to load the shared
+<span class="moz-txt-citetags">&gt;&gt; </span>library?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You're reading too much intent into a quick&amp;dirty late night hack <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Don't underestimate the power of late night hacking <span class="moz-smiley-s3" title=";-)"><span>;-)</span></span>
+
+I was wondering since I started to work on a rake-compiler replacement
+that works outside-in called gem-compiler:
+
+<a class="moz-txt-link-freetext" href="https://github.com/luislavena/gem-compiler">https://github.com/luislavena/gem-compiler</a>
+
+But it collects compiled artifacts from known locations defined in the
+gemspec like require_paths:
+
+<a class="moz-txt-link-freetext" href="https://github.com/luislavena/gem-compiler/blob/master/lib/rubygems/compiler.rb#L26-L28">https://github.com/luislavena/gem-compiler/blob/master/lib/rubygems/compiler.rb#L26-L28</a>
+
+That is why I peek into the final placement of the compiled shared object.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>It leaves the library where it is because that was the simplest thing that
+<span class="moz-txt-citetags">&gt; </span>worked.  Once it worked as a proof of concept, I shipped it, as I figured we
+<span class="moz-txt-citetags">&gt; </span>can refine it as we go.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+Couldn't agree more <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I think for the next version, I'll move to a rake task style, rather than
+<span class="moz-txt-citetags">&gt; </span>generating a Rakefile (i.e. similar to what ruby-llvm does).  It increases
+<span class="moz-txt-citetags">&gt; </span>the transparency of what is happening, which will make it easier to debug
+<span class="moz-txt-citetags">&gt; </span>when things don't work.  The current way is based on the idea of "build
+<span class="moz-txt-citetags">&gt; </span>something like mkmf, but for FFI".
+</pre></blockquote><pre wrap>
+
+I think pre-compiled gems generated with ffi-compiler could be
+processed with gem-compiler too, to provide pre-compiled binaries for
+some platforms where gem compilation might be difficult.
+
+Not just talking about Windows, also pre-compiled for other platforms.
+
+Again, will take a look on Windows later today and chime in, hope you
+don't mind <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

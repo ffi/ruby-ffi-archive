@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: extconf.rb typo?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: extconf.rb typo?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/14/09 9:56 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Yep, should be changed, although in that specific case, it doesn't
+matter, since we no longer use that part of libffi; ruby-ffi
+implements its own closure allocator.
+
+Speaking of win64, the libffi version in ruby-ffi has been updated to
+3.0.9rc1, which theoretically includes win64 support, so it would be
+interesting to see if that works with mingw64.  There are probably a
+few win32-isms in the windows support in ruby-ffi that need to be
+cleaned up.
+
+2009/10/14 Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Wed, Oct 14, 2009 at 10:14 AM, Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Should line 21 in ext/ffi_c/extconf.rb
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>mf.puts "FFI_MMAP_EXEC=-DFFI_MMAP_EXEC_WRIT=#{Config::CONFIG['host_os'] =~ /(win32|mingw)/ ? 0 : 1}"
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>use <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>mswin|mingw<span class="moz-txt-tag">/</span></i> instead of /(win32|mingw)/
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>That is correct, the issue become a problem when Ruby is x86_64 (x64-mswin64_80)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The proper evaluation should be mswin or mingw, since mingw can be 64
+<span class="moz-txt-citetags">&gt; </span>bits too (working on that).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt; </span>Luis Lavena
+<span class="moz-txt-citetags">&gt; </span>AREA 17
+<span class="moz-txt-citetags">&gt; </span>-
+<span class="moz-txt-citetags">&gt; </span>Perfection in design is achieved not when there is nothing more to add,
+<span class="moz-txt-citetags">&gt; </span>but rather when there is nothing more to take away.
+<span class="moz-txt-citetags">&gt; </span>Antoine de Saint-Exupéry
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

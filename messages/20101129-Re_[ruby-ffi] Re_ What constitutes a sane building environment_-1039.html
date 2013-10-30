@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: What constitutes a sane building environment?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: What constitutes a sane building environment?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Mike Dalessio <mike.dalessio@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/29/10 1:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><br><br><div class="gmail_quote">On Sat, Nov 27, 2010 at 5:18 AM, James <span dir="ltr">&lt;<a href="mailto:james.b.thompson@gmail.com">james.b.thompson@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+Hey Mike - thanks for giving me a hand.<br>
+<br>
+So I installed the libffi-devel package and then got past the initial<br>
+error that I had and on to a new one. I have managed to install<br>
+version 0.6.2, but I am getting the following errors for 0.6.3...<br>
+(sorry about the massive copy-paste)<br>
+<br>
+gem_make.out: ==================================<br>
+<br></blockquote><div><br></div><div>&lt;snip&gt;</div><div> </div><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">gcc -I. -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DRUBY_EXTCONF_H=<br>
+
+\&quot;extconf.h\&quot;    -fPIC -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -<br>
+fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -<br>
+mtune=generic -fno-strict-aliasing  -fPIC  -I/usr/lib64/libffi-3.0.9/<br>
+include    -c MappedType.c<br>
+MappedType.c: In function ‘mapped_allocate’:<br>
+MappedType.c:54:26: error: ‘NATIVE_MAPPED’ undeclared (first use in<br>
+this function)<br>
+MappedType.c:54:26: note: each undeclared identifier is reported only<br>
+once for each function it appears in<br>
+MappedType.c: In function ‘mapped_initialize’:<br>
+MappedType.c:64:11: warning: unused variable ‘t’<br>
+make: *** [MappedType.o] Error 1<br></blockquote><div><br></div><div>I don&#39;t think this is an environment issue. NATIVE_MAPPED is defined in Types.h, which is included by Type.h, which is included by MappedType.c on line 33. So I&#39;m at a loss to explain what&#39;s going on.</div>
+<div><br></div><div>Perhaps if you included some information about your platform - what distro, version of GCC, etc., someone might have deeper insight than I do.</div><div><br></div><div>Good luck,</div><div>-mike</div><div>
+ </div></div>
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,105 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Crazy thought (wrapping rb_thread_blocking_region)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Crazy thought (wrapping rb_thread_blocking_region)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Hedge Hog <hedgehogshiatus@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 1:34 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+
+On Sun, Dec 13, 2009 at 2:26 AM, v01d  wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>I'm a little interested in a possible future where Ruby could be used
+<span class="moz-txt-citetags">&gt; </span>for heavy processing stuff (but by means of calling computationally
+<span class="moz-txt-citetags">&gt; </span>heavy C code, and take advantage of multi-core processors by doing
+<span class="moz-txt-citetags">&gt; </span>several of these calls in parallel native threads) and I just found
+<span class="moz-txt-citetags">&gt; </span>out about Ruby's "rb_thread_blocking_region" C call.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>What came to my mind is that maybe FFI could be used here to make
+<span class="moz-txt-citetags">&gt; </span>writing these type of parallelized Ruby extensions easier, by just
+<span class="moz-txt-citetags">&gt; </span>doing something like:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module RubyAPI
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> attach_function :rb_thread_blocking_region,
+<span class="moz-txt-citetags">&gt; </span>[ :pointer, :pointer, :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>then maybe I'm wrapping a HeavyComputationLibrary:
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+My 2c:
+Context: I take 'HeavyComputation' to mean 'saturates more than one machine'.
+In that case I think you'd be using somthing like this:
+<a class="moz-txt-link-freetext" href="http://github.com/abedra/mpi-ruby">http://github.com/abedra/mpi-ruby</a>
+
+ffi-mpi-ruby would be interesting.
+
+My preference has been to <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>try<span class="moz-txt-tag">_</span></span> avoid threading and any issues it
+causes.  I would rather just throw more instances of a ruby script
+(processes, somtimes processes&gt;=processors/cores) at the problem -
+this does scale beyond one machine.  Threading doesn't.
+It has been a while since I used MPI and there may be threading buried
+in the library above.
+
+Of course 'HeavyComputation' might mean using only one machine.  Then
+scaling is not an issue and maybe threading is undisputably the best
+way to go?
+As I said, just my 2c.
+
+HH
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>module HeavyComputationLibrary
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> attach_function :long_running_computation, [ :pointer ], :value
+<span class="moz-txt-citetags">&gt; </span> attach_function :unblock_computation, [ :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and then do something like:
+<span class="moz-txt-citetags">&gt; </span>RubyAPI.rb_thread_blocking_region
+<span class="moz-txt-citetags">&gt; </span>(HeavyComputationLibrary.long_running_computation, data_ptr,
+<span class="moz-txt-citetags">&gt; </span>HeavyComputationLibrary.unblock_computation)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Obviously there are a couple of non-existing things here (like passing
+<span class="moz-txt-citetags">&gt; </span>the function pointer of a C function (maybe there's already a way to
+<span class="moz-txt-citetags">&gt; </span>do that?), usage of :value), but I wanted to ask if this is feasible
+<span class="moz-txt-citetags">&gt; </span>or not.
+<span class="moz-txt-citetags">&gt; </span>I think that something like this could ease writing parallel-aware
+<span class="moz-txt-citetags">&gt; </span>Ruby extensions (maybe with some help of Ruby Inline) for existing C
+<span class="moz-txt-citetags">&gt; </span>libraries. Then again, I may be wrong.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Matt
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>PS: I'm obviously talking about Ruby 1.9 and the function call defined
+<span class="moz-txt-citetags">&gt; </span>here: <a class="moz-txt-link-freetext" href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10252</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></blockquote><pre wrap>
+
+
+
+- --
+πόλλ' οἶδ ἀλώπηξ, ἀλλ' ἐχῖνος ἓν μέγα
+[The fox knows many things, but the hedgehog knows one big thing.]
+  Archilochus, Greek poet (c. 680 BC – c. 645 BC)
+<a class="moz-txt-link-freetext" href="http://wiki.hedgehogshiatus.com">http://wiki.hedgehogshiatus.com</a>
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.9 (GNU/Linux)
+Comment: Use GnuPG with Firefox : <a class="moz-txt-link-freetext" href="http://getfiregpg.org">http://getfiregpg.org</a> (Version: 0.7.10)
+
+iEYEARECAAYFAksj8EYACgkQL/DTCig+NhfFWQCeKK5ohPsJzjieM2y1HSv7l4Dq
+8gIAn1b97tMd/o4sBg1uPX+JJFRVDMf7
+=Mj85
+-----END PGP SIGNATURE-----
+</pre></div></body>
+</html>
+</table></div>

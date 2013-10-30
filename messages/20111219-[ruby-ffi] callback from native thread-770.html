@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] callback from native thread</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] callback from native thread</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>JackNorris <matthew@jacknorris.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/11 11:32 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I am looking to write an asynchronous ICMP/Ping library to use with
+Ruby + FFI.
+
+I've not really started writing anything yet I am just curious if FFI
+can handle callbacks from threads that were not created by Ruby. My
+plan is to create a new thread running a libevent loop and call back
+to Ruby when an event occurs (ie a ping response). This leaves the
+ruby thread open to control libevent.
+
+It would appreciated if anyone could advise me on this, specifically
+if calling back in such a way will work.
+Maybe I am just going about the whole thing the wrong way! <span class="moz-smiley-s1" title=":-)"><span>:-)</span></span>
+</pre></div></body>
+</html>
+</table></div>

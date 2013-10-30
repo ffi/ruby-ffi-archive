@@ -1,0 +1,120 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.250.142 with SMTP id mo14cs490qcb;
+        Fri, 21 May 2010 06:12:42 -0700 (PDT)
+Received: by 10.142.56.17 with SMTP id e17mr1095552wfa.12.1274447561757;
+        Fri, 21 May 2010 06:12:41 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhC5jdrfBBoE556uUA@googlegroups.com>
+Received: from mail-pv0-f190.google.com (mail-pv0-f190.google.com [74.125.83.190])
+        by mx.google.com with ESMTP id 40si1032387pzk.91.2010.05.21.06.12.40;
+        Fri, 21 May 2010 06:12:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC5jdrfBBoE556uUA@googlegroups.com designates 74.125.83.190 as permitted sender) client-ip=74.125.83.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhC5jdrfBBoE556uUA@googlegroups.com designates 74.125.83.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhC5jdrfBBoE556uUA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pvf33 with SMTP id 33sf343967pvf.7
+        for <headius@headius.com>; Fri, 21 May 2010 06:12:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:subject:from
+         :in-reply-to:date:message-id:references:to:x-mailer
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        bh=FuM3z6r9uQvHGlRDng5Zqv0EDFZPVkbVBbD4N6JY4Do=;
+        b=HH4VHBX3SG4xTxAS3AL1i6m3ri13xy7sEHlC+hZa78Y34HaU5LpcLmNh250LJkeFUE
+         N6hZusbicWx+FmJbCWzB1TkrzlI9FFQQOPxQPIUsDVvG5IJ6A9tKRjulNFzUOh+4Q0EC
+         rDamWKy4JlVCe8JgpgfA+NAbQOaSYFqtk0iCU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:subject:from:in-reply-to:date:message-id
+         :references:to:x-mailer:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        b=mTVtTBIEHQGS9t8RBYzXO9SaWNTFLajnYDi6jJu1vU+riVqdZ3gyEbjy6LA+D/7eqm
+         oTD/YUyqbT8OF5nyhBnCsDZB4/hW+9ADTdEqhmJduqVZQ3ZrOJLB0s1zTe9CLoOKAG0e
+         cm5WRZ/cIRBoiox9ve7KIC56dwvNUB5qXSG4U=
+Received: by 10.141.124.13 with SMTP id b13mr143936rvn.27.1274447545952;
+        Fri, 21 May 2010 06:12:25 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.140.255.17 with SMTP id c17ls681797rvi.2.p; Fri, 21 May 2010 
+	06:12:24 -0700 (PDT)
+Received: by 10.141.124.12 with SMTP id b12mr529316rvn.27.1274447543982;
+        Fri, 21 May 2010 06:12:23 -0700 (PDT)
+Received: by 10.141.124.12 with SMTP id b12mr529315rvn.27.1274447543958;
+        Fri, 21 May 2010 06:12:23 -0700 (PDT)
+Return-Path: <cremes.devlist@mac.com>
+Received: from asmtpout026.mac.com (asmtpout026.mac.com [17.148.16.101])
+        by gmr-mx.google.com with ESMTP id 19si191162pzk.3.2010.05.21.06.12.23;
+        Fri, 21 May 2010 06:12:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted sender) client-ip=17.148.16.101;
+MIME-version: 1.0
+Received: from [192.168.0.101] ([76.8.86.186])
+ by asmtp026.mac.com (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec
+ 16 2008; 32bit)) with ESMTPSA id <0L2R004XNU0MT430@asmtp026.mac.com> for
+ ruby-ffi@googlegroups.com; Fri, 21 May 2010 06:12:23 -0700 (PDT)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0
+ reason=mlx engine=6.0.2-1004200000 definitions=main-1005210075
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=1.12.8161:2.4.5,1.2.40,4.0.166
+ definitions=2010-05-21_01:2010-02-06,2010-05-21,2010-05-21 signatures=0
+Subject: Re: [ruby-ffi] Pointer to a struct - how to cast?
+From: Chuck Remes <cremes.devlist@mac.com>
+In-reply-to: <AANLkTil0YCoNhdY0U-HoY-rEcza9vPpPBX6NYv1iTNA8@mail.gmail.com>
+Date: Fri, 21 May 2010 08:12:21 -0500
+Message-id: <535D2D9E-D1CC-4B6D-A5B4-742E1AC8A8C1@mac.com>
+References: <b36952de-d546-417b-baa6-cc7135c8caad@q33g2000vbt.googlegroups.com>
+ <AANLkTilsPThTYVBTIlxUMc-cMzlqkSQvyGJHwki2fXEh@mail.gmail.com>
+ <AANLkTikxAaNFU8RHopnCTGBbYlr0FldeL6GylCM7BxHD@mail.gmail.com>
+ <AANLkTili1Czv42tlJoSK00kXSGDRXttq8pHB2TMWLle7@mail.gmail.com>
+ <AANLkTilNtcrmZLxJCKbBd2hiP31LylEaGEweh4d98sju@mail.gmail.com>
+ <6DCFD30D-74A0-4ECF-AEB0-179C0BE0945C@mac.com>
+ <AANLkTinJsgojioh6loOgUkofD2_20mI3wYTl_3owC6nc@mail.gmail.com>
+ <AANLkTikghgO1cZLeNR6mL2ySdYkM3WuerTAW3y86YOqg@mail.gmail.com>
+ <AANLkTil0YCoNhdY0U-HoY-rEcza9vPpPBX6NYv1iTNA8@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1078)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of cremes.devlist@mac.com designates 17.148.16.101 as permitted 
+	sender) smtp.mail=cremes.devlist@mac.com
+X-Original-Sender: cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+On May 21, 2010, at 8:10 AM, DA wrote:
+
+> On Thu, May 20, 2010 at 9:13 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+>> Try using FFI::Pointer#+
+>> 
+>> e.g.
+>> 0.upto(tis[:len]).each do |i|
+>>  s = FM::FTexFtItemT.new(tis[:val] + (i * FM::FTexFtItemT.size))
+>>  # do stuff with s here
+>> end
+> 
+> Hi Wayne, thanks a bunch, this works perfectly (minus the .each).
+> 
+> Would this be a good example to add to the wiki, perhaps under
+> "Structs > Array of Structs"?  I would be happy to add it.  (It also
+> would illustrate using a union in a struct).
+
+Drew, please add it to the wiki. I used a similar technique to solve the same problem but your example is better since it uses unions too.
+
+cr
+

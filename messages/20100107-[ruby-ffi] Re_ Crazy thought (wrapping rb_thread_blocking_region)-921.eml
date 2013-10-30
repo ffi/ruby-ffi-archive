@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.164.20 with SMTP id m20cs162311ane;
+        Thu, 7 Jan 2010 14:32:25 -0800 (PST)
+Received: by 10.91.210.11 with SMTP id m11mr538776agq.18.1262903545125;
+        Thu, 07 Jan 2010 14:32:25 -0800 (PST)
+Return-Path: <392BGSw0JCOkcZRPcaLNVnllqRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@listserv.bounces.google.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 26si45061976yxe.1.2010.01.07.14.32.24;
+        Thu, 07 Jan 2010 14:32:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of 392BGSw0JCOkcZRPcaLNVnllqRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 392BGSw0JCOkcZRPcaLNVnllqRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@listserv.bounces.google.com designates 209.85.210.170 as permitted sender) smtp.mail=392BGSw0JCOkcZRPcaLNVnllqRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42sf53676841yxe.22
+        for <headius@headius.com>; Thu, 07 Jan 2010 14:32:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=NFx6tDbM3/c/66NfXbLLqqlbuFUn+f/00nTHIM0rEy8=;
+        b=RO5DlIk3oWAJ4V4yr5SXHaJOtbb2s08kyIZNT2iCP9fq1CGG5Hntz6ykymMgpkpCaW
+         k+EYvyazV0xN1QvL0/WPhZAppns2DThIoyaJE2r39ZfHdMIfzYCpgwcNKEpglnwfD8jh
+         glTT+6r590YOA1eqN1K4Yk6aD+66kGRCvP4BI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type;
+        b=k3aGueyZgIXJwAWfQ+p9Bhje2zN2xy2+2Op7hI8rNDktjmSovUrbVfPYTGeWR9XdYY
+         3TT2yBreIdOBmkh9wNI33Wc0uZzq/EUsBfB7DgrHC4LDqjPgwC8hzhoc0t0GWZd7ma9+
+         bpi1hu/y0H172JXfFUik4hMMGmCmUPTm8jFrg=
+Received: by 10.150.127.4 with SMTP id z4mr2157801ybc.27.1262903543086;
+        Thu, 07 Jan 2010 14:32:23 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.90.244.1 with SMTP id r1ls507727agh.1.p; Thu, 07 Jan 2010 
+	14:32:21 -0800 (PST)
+Received: by 10.91.78.13 with SMTP id f13mr2972111agl.4.1262903541218;
+        Thu, 07 Jan 2010 14:32:21 -0800 (PST)
+Received: by 10.91.78.13 with SMTP id f13mr2972109agl.4.1262903541187;
+        Thu, 07 Jan 2010 14:32:21 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f154.google.com (mail-yx0-f154.google.com [209.85.210.154])
+        by gmr-mx.google.com with ESMTP id 19si3027684ywh.10.2010.01.07.14.32.21;
+        Thu, 07 Jan 2010 14:32:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.154 as permitted sender) client-ip=209.85.210.154;
+Received: by mail-yx0-f154.google.com with SMTP id 26so48906375yxe.0
+        for <ruby-ffi@googlegroups.com>; Thu, 07 Jan 2010 14:32:21 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.150.172.13 with SMTP id u13mr1348756ybe.70.1262903541127; Thu, 
+	07 Jan 2010 14:32:21 -0800 (PST)
+Date: Thu, 7 Jan 2010 14:32:19 -0800 (PST)
+In-Reply-To: <d9233847-c12b-4a66-9a0a-bfb9a1f8598c@j19g2000yqk.googlegroups.com>
+X-IP: 216.49.181.128
+References: <d9233847-c12b-4a66-9a0a-bfb9a1f8598c@j19g2000yqk.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.8 (KHTML, like Gecko) Chrome/4.0.288.1 Safari/532.8,gzip(gfe),gzip(gfe)
+Message-ID: <dc78b9ff-8312-4696-b58b-0edf3e6fce91@c3g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Crazy thought (wrapping rb_thread_blocking_region)
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.154 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/26440665daf6b519
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/12df450dffe44b4a
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+> several of these calls in parallel native threads) and I just found
+> out about Ruby's "rb_thread_blocking_region" C call.
+
+It might be nice if FFI would optionally wrap its calls in an
+rb_thread_blocking_region (just on 1.9, I guess).
+-r

@@ -1,0 +1,133 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.16.68 with SMTP id e4csp33668obd;
+        Sun, 4 Mar 2012 09:34:22 -0800 (PST)
+Received: by 10.236.181.74 with SMTP id k50mr18493486yhm.62.1330882461968;
+        Sun, 04 Mar 2012 09:34:21 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPWhsY2GBBCYz876BBoEycVLxw@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTPS id s49si13754304yhg.50.2012.03.04.09.34.21
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 04 Mar 2012 09:34:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCYz876BBoEycVLxw@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBCYz876BBoEycVLxw@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCPWhsY2GBBCYz876BBoEycVLxw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ghbg22 with SMTP id g22sf4759233ghb.7
+        for <headius@headius.com>; Sun, 04 Mar 2012 09:34:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:received-spf:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=AUbGtLult5ALF18jBU1xlBIJwGH2zLXxgeK3093BLFY=;
+        b=YbZDXKgo+AwjMmNP95ow0jLjM56QDbLEPo0WHR2C1E3NoGwO6oqiCY9bD9zHbLdX1I
+         RUbJxsFOEjjU6EF3owPPQcWvhr0n0gEU98BIkCFTFhGJAgK4VHanY81ONHNNyAO3n3k2
+         XBb2S9yBzaRj7yBckSWBTPLDUCPbQjwGac1n0=
+Received: by 10.50.192.161 with SMTP id hh1mr1594572igc.5.1330882456839;
+        Sun, 04 Mar 2012 09:34:16 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.187.2 with SMTP id cu2ls7179761ibb.3.gmail; Sun, 04 Mar
+ 2012 09:34:16 -0800 (PST)
+Received: by 10.42.197.131 with SMTP id ek3mr6786585icb.2.1330882456015;
+        Sun, 04 Mar 2012 09:34:16 -0800 (PST)
+Received: by 10.42.197.131 with SMTP id ek3mr6786583icb.2.1330882456002;
+        Sun, 04 Mar 2012 09:34:16 -0800 (PST)
+Received: from mail-iy0-f181.google.com (mail-iy0-f181.google.com [209.85.210.181])
+        by gmr-mx.google.com with ESMTPS id uz1si1316497igc.2.2012.03.04.09.34.15
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 04 Mar 2012 09:34:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 209.85.210.181 as permitted sender) client-ip=209.85.210.181;
+Received: by mail-iy0-f181.google.com with SMTP id o28so4895278iao.12
+        for <ruby-ffi@googlegroups.com>; Sun, 04 Mar 2012 09:34:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 10.50.95.195 as permitted sender) client-ip=10.50.95.195;
+Received: from mr.google.com ([10.50.95.195])
+        by 10.50.95.195 with SMTP id dm3mr4603121igb.9.1330882455987 (num_hops = 1);
+        Sun, 04 Mar 2012 09:34:15 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.50.95.195 with SMTP id dm3mr3836161igb.9.1330882455929; Sun,
+ 04 Mar 2012 09:34:15 -0800 (PST)
+Received: by 10.42.137.70 with HTTP; Sun, 4 Mar 2012 09:34:15 -0800 (PST)
+In-Reply-To: <33051243.1572.1330833358864.JavaMail.geo-discussion-forums@vbkl3>
+References: <33051243.1572.1330833358864.JavaMail.geo-discussion-forums@vbkl3>
+Date: Sun, 4 Mar 2012 12:34:15 -0500
+Message-ID: <CAD_Zexrk7-dJv4b5doFjPYeekG5CNn3vGHd96kKJUXk93GvEwQ@mail.gmail.com>
+Subject: Re: [ruby-ffi] ffi_gen - A generator for Ruby FFI bindings, directly
+ from header files via LLVM's Clang compiler
+From: Charles Strahan <charles.c.strahan@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: charles.c.strahan@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of charles.c.strahan@gmail.com designates 209.85.210.181 as permitted
+ sender) smtp.mail=charles.c.strahan@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=e89a8f2349cb0601ca04ba6e3813
+
+--e89a8f2349cb0601ca04ba6e3813
+Content-Type: text/plain; charset=ISO-8859-1
+
+Wow, that's pretty cool looking!
+
+-Charles
+
+On Sat, Mar 3, 2012 at 10:55 PM, Richard Musiol <mail@richard-musiol.de>wrote:
+
+> Hi,
+>
+> I would like to introduce ffi_gen. It is a generator for FFI bindings that
+> uses C header files as input. It is similar to SWIG, but hopefully a lot
+> better, since it is based on Clang. Clang is the LLVM project's C(++)
+> compiler that is designed to be GCC compatible. I am using its backend to
+> analyse the headers and let it resolve all macros and stuff. Then I take
+> its completely wired structures and turn them into beautiful Ruby FFI code.
+> Even the documentation comments are parsed and integrated as YARD comments.
+>
+> The project can be found here: https://github.com/neelance/ffi_gen
+> You are invited to give it a try on your favorite C library. Feedback is
+> always welcome.
+>
+> Richard
+>
+
+--e89a8f2349cb0601ca04ba6e3813
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Wow, that&#39;s pretty cool looking!<div><br></div><div>-Charles<br><br><di=
+v class=3D"gmail_quote">On Sat, Mar 3, 2012 at 10:55 PM, Richard Musiol <sp=
+an dir=3D"ltr">&lt;<a href=3D"mailto:mail@richard-musiol.de">mail@richard-m=
+usiol.de</a>&gt;</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">Hi,<div style=3D"border-style:initial;border=
+-color:initial"><br></div><div style=3D"border-style:initial;border-color:i=
+nitial">
+I would like to introduce ffi_gen. It is a generator for FFI bindings that =
+uses C header files as input. It is similar to SWIG, but hopefully a lot be=
+tter, since it is based on Clang. Clang is the LLVM project&#39;s C(++) com=
+piler that is designed to be GCC compatible. I am using its backend to anal=
+yse the headers and let it resolve all macros and stuff. Then I take its co=
+mpletely wired structures and turn them into beautiful Ruby FFI code. Even =
+the documentation comments are parsed and integrated as YARD comments.</div=
+>
+<div style=3D"border-style:initial;border-color:initial"><br></div><div sty=
+le=3D"border-style:initial;border-color:initial">The project can be found h=
+ere:=A0<a href=3D"https://github.com/neelance/ffi_gen" target=3D"_blank">ht=
+tps://github.com/neelance/ffi_gen</a></div>
+<div style=3D"border-style:initial;border-color:initial">You are invited to=
+ give it a try on your favorite C library. Feedback is always welcome.</div=
+><span class=3D"HOEnZb"><font color=3D"#888888"><div style=3D"border-style:=
+initial;border-color:initial">
+<br></div><div style=3D"border-style:initial;border-color:initial">Richard<=
+/div></font></span></blockquote></div><br></div>
+
+--e89a8f2349cb0601ca04ba6e3813--

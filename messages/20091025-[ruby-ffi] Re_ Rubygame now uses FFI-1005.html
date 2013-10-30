@@ -1,0 +1,77 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Rubygame now uses FFI</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Rubygame now uses FFI</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Gimi <liang.gimi@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/25/09 11:14 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Great job! Hope more and more C/C++ code will be replaced with FFI ; )
+
+On Oct 26, 2:45 am, John Croisant <a class="moz-txt-link-rfc2396E" href="mailto:jac...@gmail.com">&lt;jac...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Greetings, FFI-ers
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I've finally released the first FFI-powered version of Rubygame! I was
+<span class="moz-txt-citetags">&gt; </span>able to completely eliminate all the C code for Rubygame, which has
+<span class="moz-txt-citetags">&gt; </span>already made it a lot easier for users on all platforms to install,
+<span class="moz-txt-citetags">&gt; </span>since no compilation is needed anymore. And of course, there's the
+<span class="moz-txt-citetags">&gt; </span>added bonus for me of being able to develop in all Ruby. <span class="moz-smiley-s5" title=":-D"><span>:-D</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>You can read the full announcement on the Rubygame blog. (If you get
+<span class="moz-txt-citetags">&gt; </span>an application error on my blog, please try again later. Rails has
+<span class="moz-txt-citetags">&gt; </span>been acting up lately.)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> <a class="moz-txt-link-freetext" href="http://blog.rubygame.org/articles/2009/10/24/rubygame-2-6-released">http://blog.rubygame.org/articles/2009/10/24/rubygame-2-6-released</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Gems are available on Rubyforge ("gem install rubygame"), and are
+<span class="moz-txt-citetags">&gt; </span>known to work on MatzRuby (1.8.6, 1.8.7, 1.9.1) as well as JRuby
+<span class="moz-txt-citetags">&gt; </span>(1.3.1, 1.4.0RC2). However, JRuby users need to first install the ffi
+<span class="moz-txt-citetags">&gt; </span>stub gem [1] to resolve the gem dependencies. Also, I'm afraid JRuby
+<span class="moz-txt-citetags">&gt; </span>users on Mac are out of luck until a JRuby equivalent of RSDL [2] is
+<span class="moz-txt-citetags">&gt; </span>written.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>  [1]<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi-jruby">http://github.com/ffi/ffi-jruby</a>
+<span class="moz-txt-citetags">&gt; </span>  [2]<a class="moz-txt-link-freetext" href="http://github.com/knu/rsdl">http://github.com/knu/rsdl</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I haven't been able to test it on Rubinius, but in theory it should
+<span class="moz-txt-citetags">&gt; </span>work if the FFI interface is compatible. I'd love to hear reports of
+<span class="moz-txt-citetags">&gt; </span>anyone who tries it on Rubinius.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I created two other FFI-ish libraries to support the new Rubygame:
+<span class="moz-txt-citetags">&gt; </span>Nice-FFI and Ruby-SDL-FFI. Nice-FFI is a helper library on top of FFI,
+<span class="moz-txt-citetags">&gt; </span>which makes some things in FFI more convenient for me. As one example,
+<span class="moz-txt-citetags">&gt; </span>it can automatically turn pointers returned from a function into
+<span class="moz-txt-citetags">&gt; </span>struct instances of the appropriate class. Ruby-SDL-FFI uses Nice-FFI
+<span class="moz-txt-citetags">&gt; </span>(and plain FFI) to interface with SDL and related libraries. Rubygame
+<span class="moz-txt-citetags">&gt; </span>then uses Ruby-SDL-FFI instead of a compiled extension written in C.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Overall, FFI has been great to work with, and I'm very happy that I
+<span class="moz-txt-citetags">&gt; </span>switched to it! As I mentioned above, I was able to throw away the C
+<span class="moz-txt-citetags">&gt; </span>code and now write everything in Ruby, which is a joy. Not only is it
+<span class="moz-txt-citetags">&gt; </span>easier to write and maintain, it also works on more platforms and is
+<span class="moz-txt-citetags">&gt; </span>much easier for users to install. Before, users had to have a compiler
+<span class="moz-txt-citetags">&gt; </span>environment set up, or hope someone would create a binary gem for
+<span class="moz-txt-citetags">&gt; </span>their OS, which was a huge barrier for Windows users.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Plus, I can now do run-time detection of what libraries and features
+<span class="moz-txt-citetags">&gt; </span>are available on the user's system, and even theoretically provide
+<span class="moz-txt-citetags">&gt; </span>alternative back ends using different libraries. For example, I'm
+<span class="moz-txt-citetags">&gt; </span>considering adding an OpenGL back end (using ffi-opengl, of course!),
+<span class="moz-txt-citetags">&gt; </span>to provide faster rendering and better Mac support. Such a thing would
+<span class="moz-txt-citetags">&gt; </span>have been much more difficult using a C extension, because the feature
+<span class="moz-txt-citetags">&gt; </span>detection there is (usually) done at compile time, which is unreliable
+<span class="moz-txt-citetags">&gt; </span>if compiled on one system and then distributed to others, such as with
+<span class="moz-txt-citetags">&gt; </span>a binary gem.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Anyway, I guess you can count me as a total FFI fanboy now! <span class="moz-smiley-s5" title=":-D"><span>:-D</span></span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Thanks to everyone for your wonderful work on FFI, both for MatzRuby
+<span class="moz-txt-citetags">&gt; </span>and JRuby! It has made my programming life a lot easier, and easier
+<span class="moz-txt-citetags">&gt; </span>for Rubygame users as well.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- John
+</pre></div></body>
+</html>
+</table></div>

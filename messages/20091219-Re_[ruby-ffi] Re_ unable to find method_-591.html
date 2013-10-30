@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/19/09 6:34 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Is MessageBoxA a WINAPI function?  That might need:
+
+  ffi_convention :stdcall
+
+before the attach_function call
+
+2009/12/19 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>BTW, where are you guys with coming up with more interesting windows examples (64-bit, pointer-to-pointer return types, etc)!? <span class="moz-smiley-s3" title=";)"><span>;)</span></span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Got stuck with this example segfaulting.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span># button constants
+<span class="moz-txt-citetags">&gt; </span>BUTTONS_OK = 0
+<span class="moz-txt-citetags">&gt; </span>BUTTONS_OKCANCEL = 1
+<span class="moz-txt-citetags">&gt; </span>BUTTONS_ABORTRETRYIGNORE = 2
+<span class="moz-txt-citetags">&gt; </span>BUTTONS_YESNO = 4
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span># return code constants
+<span class="moz-txt-citetags">&gt; </span>CLICKED_OK = 1
+<span class="moz-txt-citetags">&gt; </span>CLICKED_CANCEL = 2
+<span class="moz-txt-citetags">&gt; </span>CLICKED_ABORT = 3
+<span class="moz-txt-citetags">&gt; </span>CLICKED_RETRY = 4
+<span class="moz-txt-citetags">&gt; </span>CLICKED_IGNORE = 5
+<span class="moz-txt-citetags">&gt; </span>CLICKED_YES = 6
+<span class="moz-txt-citetags">&gt; </span>CLICKED_NO = 7
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>ffi_lib 'user32'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>attach_function :msgbox, 'MessageBoxA',
+<span class="moz-txt-citetags">&gt; </span>[:pointer, :string, :string, :uint], :int
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>def message_box(txt, title=APP_TITLE, buttons=BUTTONS_OK)
+<span class="moz-txt-citetags">&gt; </span>   ffi_lib 'user32'
+<span class="moz-txt-citetags">&gt; </span>   r = msgbox(nil, txt, title, buttons)
+<span class="moz-txt-citetags">&gt; </span>   return r
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>response = message_box("Are you sure you want to proceed?",
+<span class="moz-txt-citetags">&gt; </span>"Proceed?", BUTTONS_YESNO)
+<span class="moz-txt-citetags">&gt; </span>if response == CLICKED_YES
+<span class="moz-txt-citetags">&gt; </span>   # insert your code here
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,79 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] New release of FFI gem</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] New release of FFI gem</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/22/10 7:15 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+See below.
+
+On Dec 22, 2010, at 5:03 PM, Wayne Meissner wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On 23 December 2010 05:16, Charles Oliver Nutter <a class="moz-txt-link-rfc2396E" href="mailto:headius@headius.com">&lt;headius@headius.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Wayne: Can you summarize what's needed to get 1.8.7 support back in the gem?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>It should (ffi master) build and install on 1.8.x.  The main reason I
+<span class="moz-txt-citetags">&gt; </span>dropped support for everything but 1.9.2+ on MacOS, was to reduce the
+<span class="moz-txt-citetags">&gt; </span>surface area of the things I had to support, to actually get a new
+<span class="moz-txt-citetags">&gt; </span>release out the door.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I figured that anyone who cared about the other versions+platforms
+<span class="moz-txt-citetags">&gt; </span>that broke would help to fix them.  This happened with win32 support
+<span class="moz-txt-citetags">&gt; </span>(thanks to Luis &amp; Jon), which is why it got fixed almost immediately
+<span class="moz-txt-citetags">&gt; </span>... but its only been this week that people have started to make noise
+<span class="moz-txt-citetags">&gt; </span>about 1.8.x not working.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>There are a couple of different problems in 1.8.x
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>1) Blocking calls.  These are C functions which will wait (e.g. on
+<span class="moz-txt-citetags">&gt; </span>I/O).  Calling one of these will lock up the interpreter until the
+<span class="moz-txt-citetags">&gt; </span>function returns.  The only way I've found to fix this for 1.8 is to:
+<span class="moz-txt-citetags">&gt; </span> a) create a pipe
+<span class="moz-txt-citetags">&gt; </span> b) spin up a new native thread, pass it the converted native
+<span class="moz-txt-citetags">&gt; </span>arguments and the write end of the pipe
+<span class="moz-txt-citetags">&gt; </span> c) have the ruby thread go to sleep until the pipe becomes readable
+<span class="moz-txt-citetags">&gt; </span>via rb_thread_wait_fd()
+<span class="moz-txt-citetags">&gt; </span> d) once the native thread returns from the function call, write to the pipe
+<span class="moz-txt-citetags">&gt; </span> e) ruby thread wakes up from rb_thread_wait_fd(), closes the pipe,
+<span class="moz-txt-citetags">&gt; </span>joins on the native thread
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Not exactly rocket surgery, but not trivial either - and there will
+<span class="moz-txt-citetags">&gt; </span>need to be two implementations, one for pthreads, one for win32
+<span class="moz-txt-citetags">&gt; </span>(assuming we can't get just settle for 1.9.2+ on win32).
+</pre></blockquote><pre wrap>
+
+I think that this should be simply ignored on 1.8. These is very good precedent for doing so: CAPI methods. Users regularly write methods in C that perform some long action which blocks all threads. Thus users are used to this very thing for a long time and are generally ok with it.
+
+If a FFI method blocks the same as a C-API method, then FFI doesn't have a bug.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>2) Callbacks from non-ruby threads.  This is possibly more
+<span class="moz-txt-citetags">&gt; </span>complicated, and there does not appear (unless I missed it) a way in
+<span class="moz-txt-citetags">&gt; </span>1.8.x to detect attempts to call into the interpreter from a non-ruby
+<span class="moz-txt-citetags">&gt; </span>thread.  This manifests as non-obvious crashes, that look to be in
+<span class="moz-txt-citetags">&gt; </span>completely different sections of code.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> I think there is a simple way to detect non-ruby threads calling
+<span class="moz-txt-citetags">&gt; </span>back, just by storing/clearing the current thread id in a global var
+<span class="moz-txt-citetags">&gt; </span>when entering/exiting native code, and checking that from the callback
+<span class="moz-txt-citetags">&gt; </span>code.  This would mean the callback just does not get called when
+<span class="moz-txt-citetags">&gt; </span>called from a non-ruby thread (and possibly an error is logged).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span> Fixing it properly so callbacks from non-ruby threads actually work,
+<span class="moz-txt-citetags">&gt; </span>will be something similar to what is done for 1.9.x, but with the
+<span class="moz-txt-citetags">&gt; </span>twist of using a pipe instead of a mutex+condvar.
+</pre></blockquote><pre wrap>
+
+Again, I think we can safely ignore this functionality on 1.8 and simply report an error if a user attempts it (which can be detected using the global variable techinque). My reasoning is the same as above, namely that you can't write a C-API method that does this, so there is no need for FFI to support it.
+
+ - Evan
+
+</pre></div></body>
+</html>
+</table></div>

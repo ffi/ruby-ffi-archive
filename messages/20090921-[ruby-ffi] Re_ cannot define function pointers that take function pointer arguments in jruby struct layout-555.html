@@ -1,0 +1,120 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: cannot define function pointers that take function  pointer arguments in jruby struct layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: cannot define function pointers that take function  pointer arguments in jruby struct layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Aman Gupta <themastermind1@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/21/09 4:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Thu, Sep 17, 2009 at 8:13 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/9/14 Aman Gupta <a class="moz-txt-link-rfc2396E" href="mailto:themastermind1@gmail.com">&lt;themastermind1@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm using ffi-swig-generator on:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>typedef void (*MyCallback) (void *data);
+<span class="moz-txt-citetags">&gt;&gt; </span>typedef struct {
+<span class="moz-txt-citetags">&gt;&gt; </span> void (*member) (MyCallback cb);
+<span class="moz-txt-citetags">&gt;&gt; </span>} MyStruct;
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>which generates:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> callback(:MyCallback, [ :pointer ], :void)
+<span class="moz-txt-citetags">&gt;&gt; </span> class MyStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt;&gt; </span>   layout(
+<span class="moz-txt-citetags">&gt;&gt; </span>     :member, callback([ :MyCallback ], :void)
+<span class="moz-txt-citetags">&gt;&gt; </span>   )
+<span class="moz-txt-citetags">&gt;&gt; </span> end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The root problem here is the resolution of :MyCallback - it will fail
+<span class="moz-txt-citetags">&gt; </span>on both JRuby and 1.9 (or at least it does for me).
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The best way to ensure this works is to define a constant in enclosing
+<span class="moz-txt-citetags">&gt; </span>module, and use that on the layout line.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; </span>module Foo
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> MyCallback = callback(:MyCallback, [ :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span> class MyStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout(:member, callback(MyCallback, :void))
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+I like this syntax, although it only works if the callback is capitalized.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Alternatively you can look it up using Foo.find_type(:MyCallback)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module Foo
+<span class="moz-txt-citetags">&gt; </span> extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span> callback(:MyCallback, [ :pointer ], :void
+<span class="moz-txt-citetags">&gt; </span> class MyStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>   layout(:member, callback(Foo.find_type(:MyCallback), :void))
+<span class="moz-txt-citetags">&gt; </span> end
+<span class="moz-txt-citetags">&gt; </span>end
+</pre></blockquote><pre wrap>
+
+This one is harder to implement, since ffi-swig-generator doesn't
+necessarily know the name of the enclosing module.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ffi-swig-generator should be altered to do one of the above.
+</pre></blockquote><pre wrap>
+
+How about:
+
+diff --git a/lib/generator/function.rb b/lib/generator/function.rb
+index e0b9ac2..7432747 100644
+--- a/lib/generator/function.rb
++++ b/lib/generator/function.rb
+@@ -40,7 +40,7 @@ module FFI
+       end
+       def to_s
+         unless @inline
+-          @indent_str + "callback(:#{@symname}, [
+#{get_params.join(', ')} ], #{get_rtype})"
++          @indent_str + "CB_#{@symname} = callback(:#{@symname}, [
+#{get_params.join(', ')} ], #{get_rtype})"
+         else
+           @indent_str + "callback([ #{get_params.join(', ')} ], #{get_rtype})"
+         end
+diff --git a/lib/generator/type.rb b/lib/generator/type.rb
+index 8846f60..9c01202 100644
+--- a/lib/generator/type.rb
++++ b/lib/generator/type.rb
+@@ -99,7 +99,7 @@ module FFI
+         ffi_type_from(Generator::TYPES['int']) if @declaration.is_enum?
+       end
+       def callback
+-        <a class="moz-txt-link-rfc2396E" href="mailto::#{@full_decl.scan(/^callback\s(\w+)/).flatten[0]}">":#{@full_decl.scan(/^callback\s(\w+)/).flatten[0]}"</a> if
+@declaration.is_callback?
++        <a class="moz-txt-link-rfc2396E" href="mailto:CB_#{@full_decl.scan(/^callback\s(\w+)/).flatten[0]}">"CB_#{@full_decl.scan(/^callback\s(\w+)/).flatten[0]}"</a> if
+@declaration.is_callback?
+       end
+       def inline_callback
+         Callback.new(:node =&gt; @node, :inline =&gt; true, :typedefs =&gt;
+@typedefs).to_s if @declaration.is_inline_callback?
+
+This works for my use case, although I don't particularly like the CB_
+prefix. Maybe C_, Callback_ or just C?
+
+  Aman
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Struct#find_type tries to emulate this behaviour, and fails - ruby
+<span class="moz-txt-citetags">&gt; </span>does not appear to have anyway of getting the lexical enclosing module
+<span class="moz-txt-citetags">&gt; </span>of a subclass, when accessed from a method of the superclass.  If
+<span class="moz-txt-citetags">&gt; </span>anyone knows a way, I'd be interested.
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

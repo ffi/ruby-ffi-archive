@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] basic question: function expects pointer to string  buffer,  	returns string</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] basic question: function expects pointer to string  buffer,  	returns string</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Stephen Bannasch <stephen.bannasch@deanbrook.org></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/12/09 7:08 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>I've started working on a Ruby FFI interface to the Vernier GoIO sensor interface products.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>See:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> <a class="moz-txt-link-freetext" href="http://www.vernier.com/go/">http://www.vernier.com/go/</a>
+<span class="moz-txt-citetags">&gt; </span> <a class="moz-txt-link-freetext" href="http://www.vernier.com/downloads/gosdk.html">http://www.vernier.com/downloads/gosdk.html</a>   *the SDK is public domain
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>I've got a very basic question FFI question.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>I have a C++ function that expects a pointer to a string buffer and a int32 specifying the size of the buffer.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>The result of calling the function is a name of a connected device in the string buffer.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>How should the call be setup and then processed on return to generate a Ruby string.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>Here's the state of the code so far:  <a class="moz-txt-link-freetext" href="http://gist.github.com/254981">http://gist.github.com/254981</a>
+</pre></blockquote><pre wrap>
+
+Here's a simplification of how I solved the problem:
+
+I create a MemoryPointer pointing to a 256 byte buffer:
+
+  name = FFI::MemoryPointer.new(256)
+
+then call my function (also telling the function to limit the returned string to 255 chars):
+
+  GetDeviceName(name, 255)
+
+and print the returned string:
+
+  puts name.get_string(0)
+
+</pre></div></body>
+</html>
+</table></div>

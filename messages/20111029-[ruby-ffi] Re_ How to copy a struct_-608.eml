@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs8704igc;
+        Sat, 29 Oct 2011 16:57:24 -0700 (PDT)
+Received: by 10.231.82.140 with SMTP id b12mr2981865ibl.37.1319932643238;
+        Sat, 29 Oct 2011 16:57:23 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDfpbL1BBoEkABUWQ@googlegroups.com>
+Received: from mail-iy0-f190.google.com (mail-iy0-f190.google.com [209.85.210.190])
+        by mx.google.com with ESMTPS id f3si3100986ibt.46.2011.10.29.16.57.23
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 29 Oct 2011 16:57:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDfpbL1BBoEkABUWQ@googlegroups.com designates 209.85.210.190 as permitted sender) client-ip=209.85.210.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDfpbL1BBoEkABUWQ@googlegroups.com designates 209.85.210.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDfpbL1BBoEkABUWQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by iaqq3 with SMTP id q3sf201895iaq.7
+        for <headius@headius.com>; Sat, 29 Oct 2011 16:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:references
+         :subject:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=Kj49KfLDxzc5/CaZ7AX/SInRrp0nOOKicgcDV5vGmlw=;
+        b=rxc8Fp4PdC5hAQAdH6YA9zk6qnqh//onXvkorKx/oDqiz+eQFg8CH/39U4V3tUpTXH
+         xyiUc1bf9QGLxuh/HQ5wjVX76ZTRlDK8F7FVFw/y4v+OSiLJYhLC6Wxi+Ae1CZV2LXJ4
+         UVr4yIbpRrkBTi1OYvGm9lNWGLqcRZ3/s7p3w=
+Received: by 10.182.127.72 with SMTP id ne8mr755006obb.0.1319932639228;
+        Sat, 29 Oct 2011 16:57:19 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.120.35 with SMTP id b35ls3307539ibr.4.gmail; Sat, 29 Oct
+ 2011 16:57:18 -0700 (PDT)
+Received: by 10.182.152.4 with SMTP id uu4mr772779obb.6.1319932638700;
+        Sat, 29 Oct 2011 16:57:18 -0700 (PDT)
+Date: Sat, 29 Oct 2011 16:57:18 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <29315111.467.1319932638238.JavaMail.geo-discussion-forums@prfp13>
+In-Reply-To: <08154b43-68fb-49a5-9c3f-2669c2e45e4f@u10g2000prl.googlegroups.com>
+References: <77ad8b51-39f4-4a63-898b-be73710cfddb@z28g2000pro.googlegroups.com>
+ <72a98c73-69ba-492a-a523-ff0356ca72e5@h39g2000prh.googlegroups.com> <21677020.728.1319889075142.JavaMail.geo-discussion-forums@prep8>
+ <08154b43-68fb-49a5-9c3f-2669c2e45e4f@u10g2000prl.googlegroups.com>
+Subject: [ruby-ffi] Re: How to copy a struct?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_466_6164803.1319932638237"
+
+------=_Part_466_6164803.1319932638237
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+
+On Sunday, 30 October 2011 02:31:12 UTC+10, cootcraig wrote:
+>
+>
+> For this task I plan to have multiple threads, each reading from a 
+> network socket.  I will struct.new a buffer for each thread, the dll 
+> call reads into the struct, the struct is used read only in any 
+> threads that reference it. No need for dup with this approach. 
+>
+>
+Yep, that will work fine.  As long as only one thread mutates a struct at a 
+time,  they should be safe to share between threads in that manner.
+
+
+
+------=_Part_466_6164803.1319932638237
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><br>On Sunday, 30 October 2011 02:31:12 UTC+10, cootcraig  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>For this task I plan to have multiple threads, each reading from a
+<br>network socket. &nbsp;I will struct.new a buffer for each thread, the dll
+<br>call reads into the struct, the struct is used read only in any
+<br>threads that reference it. No need for dup with this approach.
+<br><br></blockquote><div><br></div><div>Yep, that will work fine. &nbsp;As long as only one thread mutates a struct at a time, &nbsp;they should be safe to share between threads in that manner.</div><div><br></div><div><br></div>
+------=_Part_466_6164803.1319932638237--

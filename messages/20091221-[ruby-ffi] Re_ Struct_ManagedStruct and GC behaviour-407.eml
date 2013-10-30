@@ -1,0 +1,110 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs531961and;
+        Mon, 21 Dec 2009 15:40:48 -0800 (PST)
+Received: by 10.90.134.20 with SMTP id h20mr1007647agd.30.1261438848244;
+        Mon, 21 Dec 2009 15:40:48 -0800 (PST)
+Return-Path: <3fgcwSw0JCAEsphfsqbdl3116hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 10si14343782gxk.12.2009.12.21.15.40.47;
+        Mon, 21 Dec 2009 15:40:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3fgcwSw0JCAEsphfsqbdl3116hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3fgcwSw0JCAEsphfsqbdl3116hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com designates 209.85.210.142 as permitted sender) smtp.mail=3fgcwSw0JCAEsphfsqbdl3116hnbjm.dpnsvcz-ggjhpphmfhspvqt.dpn@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6sf3623384yxe.13
+        for <headius@headius.com>; Mon, 21 Dec 2009 15:40:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :in-reply-to:x-ip:references:user-agent:x-http-via:x-http-useragent
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        bh=fFNLLZPPll/I0PTtvbPKQ0JG4pfZz5clvKOrO1ushz4=;
+        b=d5BHmWf8q9NdlPJve7JPYo6QLiD3WiPJDlUokcgwecqnz5HDHgAJsY5J+HRbGygcJR
+         LB7+1yqgRfZ6noux6EqRg10XzxmxmbnjAPjH1UKqckA1xw5anTu8dxff5ShEZmqvSp3z
+         nQGIw9IbmZZCSvHnKP24LZgKaIKk3aUxLsey8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:in-reply-to:x-ip
+         :references:user-agent:x-http-via:x-http-useragent:message-id
+         :subject:from:to:x-original-authentication-results:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:x-thread-url:x-message-url:sender:list-unsubscribe
+         :list-subscribe:content-type:content-transfer-encoding;
+        b=xjlShRcxj77adlEwTXECUPMGFd0nGywZE9nAjLt0L10qybFeHwbFSDpl3V6VT5MLG2
+         lv1+ey2I4+sKznpKgJbz6NG3N/7Kh2OYgeEHSGhUeSuWoXaS5r0fXTjPIdq9FPeSDabB
+         dWg2YNdEzGcI3K8O/obHuCkUel1GAwMUQUlfE=
+Received: by 10.101.131.28 with SMTP id i28mr159009ann.44.1261438846174;
+        Mon, 21 Dec 2009 15:40:46 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.200.19 with SMTP id c19ls27714anq.1.p; Mon, 21 Dec 2009 
+	15:40:45 -0800 (PST)
+Received: by 10.100.130.12 with SMTP id c12mr8505257and.11.1261438845585;
+        Mon, 21 Dec 2009 15:40:45 -0800 (PST)
+Received: by 10.100.130.12 with SMTP id c12mr8505255and.11.1261438845560;
+        Mon, 21 Dec 2009 15:40:45 -0800 (PST)
+Return-Path: <rogerpack2005@gmail.com>
+Received: from mail-yx0-f144.google.com (mail-yx0-f144.google.com [209.85.210.144])
+        by gmr-mx.google.com with ESMTP id 24si873710ywh.15.2009.12.21.15.40.45;
+        Mon, 21 Dec 2009 15:40:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of rogerpack2005@gmail.com designates 209.85.210.144 as permitted sender) client-ip=209.85.210.144;
+Received: by mail-yx0-f144.google.com with SMTP id 8so10655809yxe.19
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 15:40:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.6.11 with SMTP id j11mr225331ani.0.1261438845521; Mon, 21 
+	Dec 2009 15:40:45 -0800 (PST)
+Date: Mon, 21 Dec 2009 15:40:45 -0800 (PST)
+In-Reply-To: <4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+X-IP: 216.49.181.128
+References: <20091221152637.62654e37.jon.forums@gmail.com> 
+	<4ccee320912211400t18af822coe605c5353cea0950@mail.gmail.com> 
+	<4ccee320912211521r47522a8q1905e1da000cab07@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-Via: 1.1 CHQPVUA3455 (NetCache NetApp/6.0.1P3D3), 1.1 CHQPVUA3455 
+	(NetCache NetApp/6.0.1P3D3)
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) 
+	AppleWebKit/532.6 (KHTML, like Gecko) Chrome/4.0.266.0 Safari/532.6,gzip(gfe),gzip(gfe)
+Message-ID: <4c8621ca-bd47-4e6b-98ef-10507e52f54a@t42g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Re: Struct/ManagedStruct and GC behaviour
+From: rogerdpack <rogerpack2005@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of rogerpack2005@gmail.com designates 209.85.210.144 as permitted 
+	sender) smtp.mail=rogerpack2005@gmail.com
+X-Original-Sender: rogerpack2005@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/f179632bd05f7ab7
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+> I should have added a footnote that just because it *can* be
+> collected, there is in fact no guarantee that objects are in fact ever
+> collected by the GC. =A0Depending on the implementation, there might not
+> be sufficient ruby/java memory pressure to cause a GC event, so the
+> objects are not collected, and the native memory is never freed.
+
+Is there a #destroy method?
+
+Which reminds me of dl's #malloc method.
+
+Also a question.
+In the old dl world there was dl/win32 which was a dl implementation
+of Win32API.  Would there be any interest in seeing an FFI port of the
+same?
+
+-r

@@ -1,0 +1,250 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp179364laa;
+        Sun, 13 Oct 2013 17:43:55 -0700 (PDT)
+X-Received: by 10.52.230.102 with SMTP id sx6mr27082663vdc.15.1381711434809;
+        Sun, 13 Oct 2013 17:43:54 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBSP45SJAKGQEONL62AQ@googlegroups.com>
+Received: from mail-ve0-x23b.google.com (mail-ve0-x23b.google.com [2607:f8b0:400c:c01::23b])
+        by mx.google.com with ESMTPS id op1si20440261vcb.42.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 13 Oct 2013 17:43:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBSP45SJAKGQEONL62AQ@googlegroups.com designates 2607:f8b0:400c:c01::23b as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBSP45SJAKGQEONL62AQ@googlegroups.com designates 2607:f8b0:400c:c01::23b as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBSP45SJAKGQEONL62AQ@googlegroups.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ve0-f187.google.com with SMTP id jx11sf181670veb.14
+        for <headius@headius.com>; Sun, 13 Oct 2013 17:43:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=3mMuGH2s1CC4D+JJ1l0VhCdy9g4XbTQwE2L16LeKZAw=;
+        b=TgcrFzjbHFxRNSrE9qhBwjdflIrYuOjr3BBua80sGkZw936SZrEh8WDbz3XoFWxN5s
+         MmqXmpdfh+cDzoPD+C9y9Krf58jaRjhKLtUlITqOlHyt4b3fn2+LUFdpzYSHG/2EKtQh
+         qIlaHDbVee1xatRQhfGpORtZIKYj2resyH88ba8xB8ycsEXJdXZOL53k4Jg1TnRDFS8h
+         lqas+xYrC1l4De9ENYC+7rnihWPlBV4/cy7WiZYyqPO4k2eFIpHBXc+40hjrJAK/S53l
+         eBwdMIMj7ECKRh7veCaGLtQiueUXpa5SrGxF3ILsx/mMVo4Z5QCvjFdPGiK5GHU3RTgB
+         C2PA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=3mMuGH2s1CC4D+JJ1l0VhCdy9g4XbTQwE2L16LeKZAw=;
+        b=kaduUNpQOnTJX8X+NJTVlPmRqIEMkbW8Ccyq0Yz8BWX5/ZddZbbfdCdSCu6HOIdTF5
+         0MpqmKilvzYUqT15zxaVyS6RTZW4bxW6mRuYLV4GPCzNismKNN2jhb9yiwUorxnCS+yQ
+         lxp6OEplZ6PA19ze09qjrHJjYmTES8MftRF2jIYYU/rr73MM0S6Yaqs4JAnFPw7roZ+Q
+         kIwOTn5J0W1tciE+iyBXXMAteBukjpf1gj67JRG4/qfX+oSn02HWirnQ4POHrkw0k+xV
+         6oT76Gux9JvO6pp5PYdVZDbJEEyi8RQQuxGE85xpQeufcIYHd37fQ8wwr8Io3EqnXEMO
+         IgnQ==
+X-Received: by 10.50.171.169 with SMTP id av9mr303662igc.11.1381711433449;
+        Sun, 13 Oct 2013 17:43:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.7.37 with SMTP id g5ls1610608iga.29.canary; Sun, 13 Oct
+ 2013 17:43:52 -0700 (PDT)
+X-Received: by 10.50.2.74 with SMTP id 10mr301450igs.15.1381711432982;
+        Sun, 13 Oct 2013 17:43:52 -0700 (PDT)
+Date: Sun, 13 Oct 2013 17:43:51 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <9a4aafb7-1f9d-4b58-b86a-69824734a94c@googlegroups.com>
+In-Reply-To: <5259D9DC.70209@gmail.com>
+References: <8f18f2ef-b612-4f83-8482-62cb9ea8f033@googlegroups.com>
+ <5259D9DC.70209@gmail.com>
+Subject: Re: [ruby-ffi] Describing an anonymous union
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1_4800373.1381711431902"
+
+------=_Part_1_4800373.1381711431902
+Content-Type: text/plain; charset=ISO-8859-1
+
+Yep, that should work.  Can even leave off the class_eval - 
+
+Class.new(FFI::Union) do
+  layout :msg, :pointer, 
+            :song_end, UadeNotificationSongEnd
+end
+
+The only things that won't work are typedefs/aliases - they use a hacky way 
+to find the enclosing module (which contains the typedef table), which 
+won't work with anon classes.
+
+Lexically scoped things will work fine though (and the built in FFI types)
+
+On Sunday, 13 October 2013 10:23:08 UTC+11, Postmodern wrote:
+>
+>  Usually I just come up with some name for anonymous structs/unions. 
+> However, I wonder if you could do
+>
+> layout :type, :uade_notification_type,
+>        :union, Class.new(FFI::Union).class_eval do
+>                  ...
+>                end
+>
+> or something similar?
+>
+> On 10/12/2013 04:44 AM, Misty De Meo wrote:
+>
+>   How can I represent an anonymous union in FFI?
+>
+> A struct I'm wrapping has the following structure:
+>
+> struct uade_notification {
+>     enum uade_notification_type type;
+>     union {
+>         char *msg;
+>         struct uade_notification_song_end song_end;
+>     };
+> };
+>
+> I can create a union using FFI::Union of course, but I'm not sure how to 
+> represent that in a struct layout. Is assigning it an arbitrary name the 
+> right way to go?
+>
+> Best,
+> Misty
+>  -- 
+>  
+> --- 
+> You received this message because you are subscribed to the Google Groups 
+> "ruby-ffi" group.
+> To unsubscribe from this group and stop receiving emails from it, send an 
+> email to ruby-ffi+u...@googlegroups.com <javascript:>.
+> For more options, visit https://groups.google.com/groups/opt_out.
+>
+>   -- 
+> Blog: http://postmodern.github.com/
+> GitHub: https://github.com/postmodern
+> Twitter: @postmodern_mod3
+> PGP: 0xB9515E77
+>
+>  
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+------=_Part_1_4800373.1381711431902
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Yep, that should work. &nbsp;Can even leave off the class_=
+eval -&nbsp;<div><br></div><div>Class.new(FFI::Union) do</div><div>&nbsp; l=
+ayout :msg, :pointer,&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; :song_end, UadeNotificationSongEnd</div><div>end</div><div><br></div><=
+div>The only things that won't work are typedefs/aliases - they use a hacky=
+ way to find the enclosing module (which contains the typedef table), which=
+ won't work with anon classes.</div><div><br></div><div>Lexically scoped th=
+ings will work fine though (and the built in FFI types)<br><br>On Sunday, 1=
+3 October 2013 10:23:08 UTC+11, Postmodern  wrote:<blockquote class=3D"gmai=
+l_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;=
+padding-left: 1ex;">
+ =20
+   =20
+ =20
+  <div bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div>
+      <p style=3D"margin:1.2em 0px!important">Usually I just come up
+        with some name for anonymous structs/unions. However, I wonder
+        if you could do</p>
+      <pre style=3D"font-size:0.85em;font-family:Consolas,Inconsolata,Couri=
+er,monospace;font-size:1em;line-height:1.2em;margin:1.2em 0px"><code style=
+=3D"font-size:0.85em;font-family:Consolas,Inconsolata,Courier,monospace;mar=
+gin:0px 0.15em;padding:0px 0.3em;white-space:pre-wrap;border:1px solid rgb(=
+234,234,234);background-color:rgb(248,248,248);border-radius:3px 3px 3px 3p=
+x;display:inline;white-space:pre;overflow:auto;border-radius:3px 3px 3px 3p=
+x;border:1px solid rgb(204,204,204);padding:0.5em 0.7em;display:block;paddi=
+ng:0.5em;background:none repeat scroll 0% 0% rgb(0,0,0);color:rgb(248,248,2=
+48)">layout :type, :uade_notification_type,
+       :union, Class.new(FFI::Union).class_<wbr>eval do
+                 ...
+               end</code></pre>
+      <p style=3D"margin:1.2em 0px!important">or something similar?</p>
+      <p style=3D"margin:1.2em 0px!important">On 10/12/2013 04:44 AM,
+        Misty De Meo wrote:</p>
+      <p style=3D"margin:1.2em 0px!important"></p>
+      <div>
+        <p></p>
+        <blockquote type=3D"cite">
+          <div dir=3D"ltr">How can I represent an anonymous union in FFI?<b=
+r>
+            <br>
+            A struct I'm wrapping has the following structure:<br>
+            <br>
+            struct uade_notification {<br>
+            &nbsp;&nbsp;&nbsp; enum uade_notification_type type;<br>
+            &nbsp;&nbsp;&nbsp; union {<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; char *msg;<br>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; struct uade_notification_=
+song_end song_end;<br>
+            &nbsp;&nbsp;&nbsp; };<br>
+            };<br>
+            <br>
+            I can create a union using FFI::Union of course, but I'm not
+            sure how to represent that in a struct layout. Is assigning
+            it an arbitrary name the right way to go?<br>
+            <br>
+            Best,<br>
+            Misty<br>
+          </div>
+          -- <br>
+          &nbsp;<br>
+          --- <br>
+          You received this message because you are subscribed to the
+          Google Groups "ruby-ffi" group.<br>
+          To unsubscribe from this group and stop receiving emails from
+          it, send an email to <a href=3D"javascript:" target=3D"_blank" gd=
+f-obfuscated-mailto=3D"ERtlpK47n9gJ">ruby-ffi+u...@<wbr>googlegroups.com</a=
+>.<br>
+          For more options, visit <a href=3D"https://groups.google.com/grou=
+ps/opt_out" target=3D"_blank">https://groups.google.com/<wbr>groups/opt_out=
+</a>.<br>
+        </blockquote>
+        <p></p>
+      </div>
+      <p style=3D"margin:1.2em 0px!important"></p>
+    </div>
+    <pre cols=3D"72">--=20
+Blog: <a href=3D"http://postmodern.github.com/" target=3D"_blank">http://po=
+stmodern.github.com/</a>
+GitHub: <a href=3D"https://github.com/postmodern" target=3D"_blank">https:/=
+/github.com/postmodern</a>
+Twitter: @postmodern_mod3
+PGP: 0xB9515E77</pre>
+  </div>
+
+</blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+
+------=_Part_1_4800373.1381711431902--

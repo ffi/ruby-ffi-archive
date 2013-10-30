@@ -1,0 +1,137 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.67.198 with SMTP id s6cs253909qai;
+        Mon, 14 Sep 2009 02:07:14 -0700 (PDT)
+Received: by 10.101.56.11 with SMTP id i11mr6016861ank.5.1252919234163;
+        Mon, 14 Sep 2009 02:07:14 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f168.google.com (mail-yx0-f168.google.com [209.85.210.168])
+        by mx.google.com with ESMTP id 15si8592938yxe.43.2009.09.14.02.07.13;
+        Mon, 14 Sep 2009 02:07:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.168 as permitted sender) client-ip=209.85.210.168;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.168 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe40 with SMTP id 40so5781007yxe.28
+        for <headius@headius.com>; Mon, 14 Sep 2009 02:07:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=8SbV6U+0GoQMuknk/F3dgN8cdSeHKqUyTLSg5PF537c=;
+        b=DBEyq8fvza3ALvhvSQ9bxj3WsA9xIbnlLkN4vhfogTTXslXX6aYHdvY3KMnduFyAo6
+         N8DDhTlfigYiNu2pbycuv7hJiwVwViZO/JOyjU0fAy2IzDj31J/v7/6Oj8fi3xyTaDKZ
+         ZpyvKlPRX3hqLQKUeRm3xtukLnxpGWTvaDg0Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=jvDz13ce3DDSFFqE91+bg21F2xiyFFgcdvm8mr0oVgomF1JfXSH9eBxdhGGvVUpSis
+         GzJMn6ZqwWZIXIvAeDce2wuK19nS3BUZGrTUbwx1MkaE/tb7wFS57+9mkHKW2lRsVmwv
+         DkRo36xA4QnNzjQi+JoBRJLrhUY0eXwNVsPrw=
+Received: by 10.100.199.19 with SMTP id w19mr1376947anf.33.1252919231810;
+        Mon, 14 Sep 2009 02:07:11 -0700 (PDT)
+Received: by 10.176.133.2 with SMTP id g2gr17yqd.0;
+	Mon, 14 Sep 2009 02:07:11 -0700 (PDT)
+X-Sender: themastermind1@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.100.249.2 with SMTP id w2mr1435704anh.11.1252919231038; Mon,  14 Sep 2009 02:07:11 -0700 (PDT)
+Date: Mon, 14 Sep 2009 02:07:10 -0700 (PDT)
+X-IP: 71.204.189.133
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-us)  AppleWebKit/530.18 (KHTML, like Gecko) Version/4.0.1 Safari/530.18,gzip(gfe),gzip(gfe)
+Message-ID: <531031b1-b784-4180-b341-3ab5cf6eaf7a@f20g2000prn.googlegroups.com>
+Subject: [ruby-ffi] using :buffer_out with strings in ruby vs jruby
+From: Aman Gupta <themastermind1@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+I'm seeing different behavior on ruby vs jruby when passing in a
+string as a :buffer_out argument:
+
+require 'rubygems'
+require 'ffi'
+
+module GLib
+  extend FFI::Library
+  ffi_lib 'libglib-2.0'
+  attach_function :g_memdup_buf, :g_memdup,
+[ :buffer_out, :uint ], :pointer
+  attach_function :g_memdup_ptr, :g_memdup,
+[ :pointer, :uint ], :pointer
+
+  def self.test_memdup(arg_type, func_type)
+    ostr = "a\0b\0c"
+
+    if arg_type == :string
+      arg = ostr.dup
+    elsif arg_type == :buffer
+      arg = FFI::Buffer.new(ostr.size)
+      arg.put_bytes(0, ostr)
+    end
+
+    if func_type == :buffer_out
+      ret = GLib.g_memdup_buf(arg, arg.size)
+    elsif func_type == :pointer
+      ret = GLib.g_memdup_ptr(arg, arg.size)
+    end
+
+    rstr = ret.get_bytes(0, ostr.size)
+
+    p [arg_type, func_type, ostr, rstr, ostr == rstr]
+  end
+end
+
+GLib.test_memdup(:buffer, :buffer_out)
+GLib.test_memdup(:buffer, :pointer)
+GLib.test_memdup(:string, :buffer_out)
+GLib.test_memdup(:string, :pointer)
+
+$ ruby glib_memduptest.rb
+[:buffer, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+[:string, :buffer_out, "a\000b\000c", "a\000b\000c", true]
+[:string, :pointer, "a\000b\000c", "a\000b\000c", true]
+
+$ jruby glib_memduptest.rb
+[:buffer, :buffer_out, "a\000b\000c", "\300\370\177\260A", false]
+[:buffer, :pointer, "a\000b\000c", "a\000b\000c", true]
+[:string, :buffer_out, "\001\000\000\000\270", "\001\000\000\000\270",
+true]
+[:string, :pointer, "\001\000\000\000\270", "\001\000\000\000\270",
+true]
+
+I'm not really sure what's happening in the jruby case. If I use an
+explicit FFI::Buffer with :pointer, it seems to work.
+
+What's really strange though, is that if you reverse the order in
+which the tests happen (so the string versions execute first), they
+all fail:
+
+GLib.test_memdup(:string, :buffer_out)
+GLib.test_memdup(:string, :pointer)
+GLib.test_memdup(:buffer, :buffer_out)
+GLib.test_memdup(:buffer, :pointer)
+
+$ jruby glib_memduptest.rb
+[:string, :buffer_out, "\300\370\177\260A", "\300\370\177\260A", true]
+[:string, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]
+[:buffer, :buffer_out, "\300\370\177\260A", "0\f\200\001@", false]
+[:buffer, :pointer, "\300\370\177\260A", "\300\370\177\260A", true]

@@ -1,0 +1,86 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs119660wfg;
+        Sun, 15 Nov 2009 14:01:49 -0800 (PST)
+Received: by 10.115.25.9 with SMTP id c9mr13040345waj.229.1258322509623;
+        Sun, 15 Nov 2009 14:01:49 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 40si15064935pzk.75.2009.11.15.14.01.47;
+        Sun, 15 Nov 2009 14:01:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.160.68 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj13 with SMTP id 13so548848pwj.27
+        for <headius@headius.com>; Sun, 15 Nov 2009 14:01:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type:reply-to:sender
+         :precedence:x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=ka/VXt+/xTsXy5ELL3C0ksb9VUG9O0wMgRgrPyQVQUk=;
+        b=lA9S+eyv46bNj5NPVidYY5nwzecGJQ5ZgheC6R77NMMsHY0aZQvz7Ba9KzV2A0MdTk
+         FbWOEQFJk+p0EDM05+23TYe7Cu1hh8V+47c+DsbpX6e+Ii0t2ruzaEbzvEaSYHXyLna6
+         9s/zgTjFeDkDEeARu8AFViVVEG57ABPMNs14A=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=c+Ag+00qDa21efHCy5Qx7pTY286ixpSXgZR7kqUk/Q/2rP6CcjRJ0B+tZhqgSEagt2
+         mThuCfT7ZeiAzHhFGZ7DEmsAhHPyUrKOsepHC5I3shwTjFouFsOb5Tnb5U+dHkH8ldK9
+         48/1XZyvbMlkG+gWN1G0QzSlAfKsaZQnfasgM=
+Received: by 10.115.102.27 with SMTP id e27mr253330wam.16.1258322505943;
+        Sun, 15 Nov 2009 14:01:45 -0800 (PST)
+Received: by 10.106.154.17 with SMTP id b17gr118pre.0;
+	Sun, 15 Nov 2009 14:01:45 -0800 (PST)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.142.74.5 with SMTP id w5mr1210505wfa.12.1258322505061; Sun, 15 Nov 2009 14:01:45 -0800 (PST)
+Received: by 10.142.74.5 with SMTP id w5mr1210504wfa.12.1258322505033; Sun, 15 Nov 2009 14:01:45 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pw0-f48.google.com (mail-pw0-f48.google.com [209.85.160.48]) by gmr-mx.google.com with ESMTP id 17si798069pxi.3.2009.11.15.14.01.44; Sun, 15 Nov 2009 14:01:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.160.48 as permitted sender) client-ip=209.85.160.48;
+Received: by mail-pw0-f48.google.com with SMTP id 12so3290069pwj.7 for <ruby-ffi@googlegroups.com>; Sun, 15 Nov 2009 14:01:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type; bh=PpjzO3ZbXuD3Xn7eCv2hC94sglCdWATGe0cVCXtFEhU=; b=P+G2GtI2xRn+lMFqwcnjBUMWsS4f5+3SEBA5nMmyCeM49fA92jABeVltkDHHl+vIH6 nX1ELPOyBkSjkdtdkco8FXRLQpsbOkolL3s05G/+uRsA1ttq2hfI2cICDOREz8K3ltTu oRN8e0tWyses3cvv6s8MiCieLoY0iqeOcfeoY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type; b=gpadrj/qIboQ8n3y6QMfmN0wznZS364eq/imq+M/1x/s6D4i45NAy7BnKa9ZQx1ZNL Ug8M8FIC1JK9JTmSzb2oFYEBEYKmN3ifWMV+YNkQaM7+4jiRh25xUT0PLF3EdUUFvqAx nuxyNj5fo39dGdqlGNyi0kcNTE2sbALOjhtf4=
+MIME-Version: 1.0
+Received: by 10.140.127.8 with SMTP id z8mr377288rvc.156.1258322503951; Sun,  15 Nov 2009 14:01:43 -0800 (PST)
+In-Reply-To: <20091115165240.236db197.jon.forums@gmail.com>
+References: <20091115165240.236db197.jon.forums@gmail.com>
+Date: Mon, 16 Nov 2009 08:01:43 +1000
+Message-ID: <4ccee320911151401r6f43dbd5j76cae127d22a1eac@mail.gmail.com>
+Subject: [ruby-ffi] Re: ffi_lib and symbol/string usage?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+2009/11/16 Jon <jon.forums@gmail.com>:
+> I've updated my examples on the wiki to use only String's, but am wondering if FFI core should be agnostic for the ffi_lib arg?
+
+I have no preference, but is there really any style reason to use
+symbols over strings or vice-versa for this?
+
+>
+> I personally prefer the Symbol style but I don't really have strong feelings other than "keep lib loads fast."
+
+Well, compared to the cost of a dlopen() call, the cost of symbol vs
+string for the ffi_lib arg isn't even a rounding error.  Its
+equivalent to a butterfly flapping its wings in a hurricane.

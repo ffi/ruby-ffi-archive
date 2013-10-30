@@ -1,0 +1,140 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] SystemStackError of callback</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] SystemStackError of callback</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>7/2/10 1:05 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+There are a few problems in your code.
+
+1) Using a block as an async callback won't work, and could
+potentially crash the VM.  You need to instantiate it as a Proc or
+Function and keep a strong ref to that object.
+e.g.
+
+cb = Proc.new do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>a, b<span class="moz-txt-tag">|</span></code>
+   100.times do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>d<span class="moz-txt-tag">|</span></code>
+       puts a, b.read_int
+   end
+end
+async_call(cb, 1, p)
+
+
+2) Your native function passes a pointer to data on its stack to the
+newly created thread.  This is a really bad thing, since the new
+thread might start running after the native function has returned, and
+that stack space has been re-used for some other data.
+
+You could use malloc in async_call(), and free in call() to manage that data.
+
+
+3) Make sure you're using the latest FFI code from github with
+ruby-1.9, or JRuby.  Callbacks from non-ruby threads were not properly
+supported in earlier versions (up to and including 0.6.3).  JRuby has
+always been fine though.  Ruby 1.8 won't work at all with callbacks
+from non-ruby threads, and could result in undefined behaviour and/or
+crashes.
+
+On 2 July 2010 00:40, tlayboy <a class="moz-txt-link-rfc2396E" href="mailto:tlayboy@gmail.com">&lt;tlayboy@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I am in troble with SystemStackError of callback.
+<span class="moz-txt-citetags">&gt; </span>Does anyone know why this error is occured?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>My code is like this.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>C library
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>typedef void (*callback)(int, void *);
+<span class="moz-txt-citetags">&gt; </span>pthread_t thread;
+<span class="moz-txt-citetags">&gt; </span>struct cb_info info;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>struct cb_info {
+<span class="moz-txt-citetags">&gt; </span>       callback cb;
+<span class="moz-txt-citetags">&gt; </span>       int data;
+<span class="moz-txt-citetags">&gt; </span>       void *p;
+<span class="moz-txt-citetags">&gt; </span>};
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>void *call(void *data)
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span>       struct cb_info *info = (struct cb_info *)data;
+<span class="moz-txt-citetags">&gt; </span>       info-&gt;cb(info-&gt;data, info-&gt;p);
+<span class="moz-txt-citetags">&gt; </span>}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>void async_call(callback cb, unsigned int data, void *p)
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span>       int ret;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>       info.cb = rcb;
+<span class="moz-txt-citetags">&gt; </span>       info.data = data;
+<span class="moz-txt-citetags">&gt; </span>       info.p = p;
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>       if ((ret = pthread_create(&amp;thread, NULL, call, (void *)&amp;info)) != 0)
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span>               perror("ptherad_create");
+<span class="moz-txt-citetags">&gt; </span>               exit(EXIT_FAILURE);
+<span class="moz-txt-citetags">&gt; </span>       }
+<span class="moz-txt-citetags">&gt; </span>}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>Ruby Code
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>p = FFI::MemoryPointer.new(:int)
+<span class="moz-txt-citetags">&gt; </span>p.write_int(2)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>async_call(1, p) do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>a, b<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>       100.times do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>d<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt; </span>               puts a, b.read_int
+<span class="moz-txt-citetags">&gt; </span>       end
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>Output
+<span class="moz-txt-citetags">&gt; </span>############################
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>1
+<span class="moz-txt-citetags">&gt; </span>2
+<span class="moz-txt-citetags">&gt; </span>/usr/lib/ruby/1.8/pp.rb:133:in `pp': stack level too deep
+<span class="moz-txt-citetags">&gt; </span>(SystemStackError)
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:119:in `guard_inspect_key'
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:77:in `pp'
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:60:in `pp'
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:59:in `each'
+<span class="moz-txt-citetags">&gt; </span>       from /usr/lib/ruby/1.8/pp.rb:59:in `pp'
+<span class="moz-txt-citetags">&gt; </span>       from libcb.rb:35
+<span class="moz-txt-citetags">&gt; </span>       from (eval):6:in `call'
+<span class="moz-txt-citetags">&gt; </span>       from (eval):6:in `async_call'
+<span class="moz-txt-citetags">&gt; </span>       from libcb.rb:34
+<span class="moz-txt-citetags">&gt; </span>       from libcb.rb:33:in `times'
+<span class="moz-txt-citetags">&gt; </span>       from libcb.rb:33
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>thank you,
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

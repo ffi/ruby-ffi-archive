@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Bryan Kearney <bkearney@redhat.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/4/09 4:04 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">On 11/03/2009 01:46 PM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">
+<br>2009/11/4 Bryan Kearney<a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+<br><blockquote type=cite style="color: #000000;">I&nbsp; have applied both, and I have gotten past the earlier issue (Thank you!).
+<br>I am now seeing different errors on ppc and ppc64. On the ppc build [1] I
+<br>build and get a couple of unit test failures.. On the ppc64 build [2] I see
+<br>a wierd error about wrong number of arguments.
+<br></blockquote>
+<br>I'm not surprised.&nbsp; You're probably the first person on the planet to
+<br>try ruby-ffi on either ppc-linux or ppc64-linux.
+<br>
+<br>You have two choices:
+<br>1) Cut your losses and declare the package usable for i386 and x86_64
+<br>only.&nbsp; This is probably the easiest path, and given how obsolete ppc
+<br>machines are, probably not a huge loss.
+<br>
+<br>2) Learn enough details about the ppc32 and ppc64 abi, and debug
+<br>ruby-ffi.&nbsp; It will probably turn out to be something simple, but it
+<br>could take a lot of tears and pain to track down.&nbsp; The upside is that
+<br>this will help knock out any bugs for other arches like arm.
+<br>
+<br>Naturally, I advocate option #1.
+<br></blockquote>Yeah.. If I dont get this running in fedora I wont be able to use it for 
+Augeas/Puppet.
+<br>
+<br>Here is a patch for the ppc platform. Change is in the test library only.
+<br>
+<br>-- bk
+<br>
+<br></div><BR><FIELDSET CLASS="mimeAttachmentHeader"><LEGEND CLASS="mimeAttachmentHeaderName">Closure_Test_Long.patch</LEGEND></FIELDSET><BR/><div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+diff --git a/libtest/ClosureTest.c b/libtest/ClosureTest.c
+index c0ab8da..a68ec46 100644
+--- a/libtest/ClosureTest.c
++++ b/libtest/ClosureTest.c
+@@ -48,7 +48,7 @@ int testClosureVrI(int (*closure)(void))
+ {
+     return (*closure)();
+ }
+-long long testClosureVrL(long (*closure)(void))
++long testClosureVrL(long (*closure)(void))
+ {
+     return (*closure)();
+ }
+</pre></div><br><hr><br><div style="font-size:12px;color:black;"><img src="data:image/gif;base64,R0lGODdhDwAPAOMAAP///zEwYmJlzQAAAPr6+vv7+/7+/vb29pyZ//39/YOBg////////////////////ywAAAAADwAPAAAESRDISUG4lQYr+s5bIEwDUWictA2GdBjhaAGDrKZzjYq3PgUw2co24+VGLYAAAesRLQklxoeiUDUI0qSj6EoH4Iuoq6B0PQJyJQIAOw==">
+<ul><li><a href="Attachments-1/Closure_Test_Long.patch">Attachments-1/Closure_Test_Long.patch</li></a></ul></div></body>
+</html>

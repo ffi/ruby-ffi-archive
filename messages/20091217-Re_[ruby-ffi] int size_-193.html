@@ -1,0 +1,37 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] int size?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] int size?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/17/09 6:33 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/18 rogerdpack <a class="moz-txt-link-rfc2396E" href="mailto:rogerpack2005@gmail.com">&lt;rogerpack2005@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I noticed on the wiki page it says that :int is 32 bits--I assume that
+<span class="moz-txt-citetags">&gt; </span>this is not the case for 64 bit systems? Or am I mistaken.
+</pre></blockquote><pre wrap>
+
+Its whatever the native int size is - but that is still 32bit on all
+systems that I know of.
+The only things that change size on common 64bit arches are long and pointer.
+
+LP64 (used by unix) says that long, long long, pointer are 64bit,
+everything else is the same as 32bit.
+
+LLP64 for win64 says that only long long and pointer are 64bit; long
+is still 32bit, everything else as per 32bit.
+
+The de facto standards for the other integer types are: byte/char = 8
+bit, short = 16 bit, int = 32bit, long long = 64bit.  Sure you can get
+exceptions to these, but usually on some weird architecture like IBM
+or HP big iron, not on anything ruby people would ever encounter**.
+And if they do, they get to fix it.
+
+
+
+** I know of <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>one<span class="moz-txt-tag">_</span></span> person using FFI via JRuby on an IBM mainframe
+running zLinux.  It apparently worked fine, even running nokogiri.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] I wrote on advanced FFI usage</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] I wrote on advanced FFI usage</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Kim Burgestrand <kim@burgestrand.se></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/30/13 4:19 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">
+                <div><blockquote type="cite">wayne: (so now I know the story behind all those issues you raised against JRuby)</blockquote><div>Hehe, yes. I wanted to see if I could run some MRI-working code (spotify gem + OpenAL) on JRuby,</div><div>and in doing that I ran into a few issues. The reason for doing that was because I became curious as</div></div><div>I was writing the article. I’m happy to say I managed to get it running on JRuby, streaming music from</div><div>the spotify API, bound with FFI, into the OpenAL API, bound with FFI. Really cool!</div><div><div><blockquote type="cite">postmodern: all of the other blog posts only cover loading&nbsp;a library and attaching some functions.</blockquote><div>Yes. I have not yet found a blog post that explains the basics better than the wiki though. The wiki is</div><div>a nice collection of information, and it was pretty much my bible when I started with FFI, together with</div></div></div><div>the FFI source code. I believe there is place for yet another article on FFI, aimed at people beginning</div><div>with FFI for the first time.</div><div><blockquote type="cite">wayne:&nbsp;Any subclass of FFI::AutoPointer can be used as a function result, and it automatically wraps the result of the function in that AutoPointer subclass.</blockquote></div>
+                <div><div>This is a really nice way of using FFI, and I actually do this throughout all one of my FFI gems. The</div><div>spotify library in particular uses a reference counting mechanism, where some functions return pointers</div><div>that should have their reference increased, and I do that automatically with a similar mechanic to .auto_ptr:</div><div><a href="https://github.com/Burgestrand/spotify/blob/a7deb7b4e9334c95f6c3a2d8f077264dc7d55f8d/lib/spotify/managed_pointer.rb#L76">https://github.com/Burgestrand/spotify/blob/a7deb7b4e9334c95f6c3a2d8f077264dc7d55f8d/lib/spotify/managed_pointer.rb#L76</a></div><div></div><blockquote type="cite"><div>4) Completely replace the FFI api with your own concoction. &nbsp;Using FFI::DynamicLibrary, FFI::Function, and FFI::DataConverter, you can write your own API for mapping C libraries into ruby. &nbsp;Thats how JRuby implements legacy interfaces like dl and Win32API.</div></blockquote><div>I did not know you could do that. Nice!</div><div></div><div><br></div>— Kim</div><blockquote type="cite" style="border-left-style:solid;border-width:1px;margin-left:0px;padding-left:10px;">
+                 
+                 
+                 
+                 
+                </blockquote>
+                 
+                <div>
+                    <br>
+                </div>
+            
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

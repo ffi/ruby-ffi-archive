@@ -1,0 +1,105 @@
+Delivered-To: headius@headius.com
+Received: by 10.229.228.137 with SMTP id je9cs81807qcb;
+        Mon, 14 Jun 2010 08:26:20 -0700 (PDT)
+Received: by 10.150.2.1 with SMTP id 1mr7304886ybb.65.1276529180460;
+        Mon, 14 Jun 2010 08:26:20 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMnq3cGqAxCalNngBBoEvK4YjQ@googlegroups.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id 6si2487289ywh.18.2010.06.14.08.26.19;
+        Mon, 14 Jun 2010 08:26:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCalNngBBoEvK4YjQ@googlegroups.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxCalNngBBoEvK4YjQ@googlegroups.com designates 209.85.160.190 as permitted sender) smtp.mail=ruby-ffi+bncCMnq3cGqAxCalNngBBoEvK4YjQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyh20 with SMTP id 20sf6889933gyh.7
+        for <headius@headius.com>; Mon, 14 Jun 2010 08:26:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=MC9NNHakxpKjmo1Q3FFzP1KnTkd8pwJxnuljcH80Sds=;
+        b=Ey4zKwYAv9Au/YQEqJrRIZgC976OIjDaRVQqgl+ilbbB1YbRbKTSVnXibam0aySvEV
+         FR2YyJwUDWzmmvrxlnuR4hqomPQ6qAhAbcLgPPl8mTpCCiQOpF+O6ZVsgNZQh0iVts4n
+         kWsPHsUeNvY3HCXrX4qYKiVBnFGQIaK0yNdzk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=UO2Y2IOK7utSxq994TJYtMph6e/DVVuR0E1FtKAPm1JhY0dMssYL6rNsR5I0aj0Oov
+         5i0iCqvxN1wKYFsETltuzLe3/SPvKGgG4LW50ybI/V+sULoeGN81vJwsf3OfznYHb2In
+         QXL5ihrsH/eQVvDRY4DXhho1/toFOrzjNGRMI=
+Received: by 10.151.3.4 with SMTP id f4mr300250ybi.58.1276529178955;
+        Mon, 14 Jun 2010 08:26:18 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.17.15 with SMTP id u15ls6099695ybi.0.p; Mon, 14 Jun 2010 
+	08:26:18 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.150.171.11 with SMTP id t11mr296943ybe.15.1276529178688; Mon, 
+	14 Jun 2010 08:26:18 -0700 (PDT)
+Received: by k17g2000pro.googlegroups.com with HTTP; Mon, 14 Jun 2010 08:26:18 
+	-0700 (PDT)
+Date: Mon, 14 Jun 2010 08:26:18 -0700 (PDT)
+In-Reply-To: <AANLkTikcOz9vMY6bvxJ7jxsTDYRmwZPmnkXdbQdhb_5I@mail.gmail.com>
+X-IP: 128.117.92.5
+References: <9f216bde-2460-425a-ba66-f2091f876c9b@h13g2000yqm.googlegroups.com> 
+	<AANLkTikcOz9vMY6bvxJ7jxsTDYRmwZPmnkXdbQdhb_5I@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.3) 
+	Gecko/20100423 Ubuntu/10.04 (lucid) Firefox/3.6.3,gzip(gfe)
+Message-ID: <cf0bbfb0-e551-40de-9283-f78df6209576@k17g2000pro.googlegroups.com>
+Subject: [ruby-ffi] Re: Unable to detect failure with reentrant function on 
+	Linux
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+
+On Jun 12, 9:24=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> A couple of things:
+> 1) You should map getprotobynumber_r as:
+>
+> attach_function 'getprotobynumber_r', [:int, :pointer, :pointer,
+> :long, :pointer], :int
+>
+> 2) and call it like so:
+>
+> # getprotobynumber_r will use the buffer you pass in as the allocation
+> area for the names
+> # of the protocol, so allocate some native memory for it.
+>
+> namebuf =A0=3D FFI::MemoryPointer.new(:char, 1024, false)
+> pstruct =3D ProtocolStruct.new
+> ptr =3D FFI::MemoryPointer.new(:pointer)
+>
+> rc =3D getprotobynumber_r(protocol, pstruct, namebuf, 1024, qptr)
+>
+> 3) a return val of 0 signifies success, and pstruct will be filled out
+> with the data. =A0For non-zero returns, you should probably check errno,
+> and raise an exception if it is anything other than the not-found
+> case.
+>
+> return rc =3D=3D 0 && !qptr.get_pointer(0).null? ? pstruct[:p_name] : nil
+
+Excellent, thanks!
+
+Dan

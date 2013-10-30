@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Make functions private by default?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Make functions private by default?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/9/12 10:52 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi Daniel,
+
+You can easily create a method attach_function_privately that combines the calls
+to attach_function and private_class_method.
+
+Regards,
+Matijs
+
+On 09/06/12 17:25, Daniel Berger wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Is there a way to make the FFI function declarations private by
+<span class="moz-txt-citetags">&gt; </span>default? I want to use the functions internally only. I don't want
+<span class="moz-txt-citetags">&gt; </span>them exposed as part of a public API. Simply using the "private"
+<span class="moz-txt-citetags">&gt; </span>keyword doesn't seem to work. Consider:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>module Windows
+<span class="moz-txt-citetags">&gt; </span>  extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>  ffi_lib :kernel32
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  private
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  attach_function :CloseHandle, [:ulong], :bool
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>p Windows.methods(false) # =&gt; [:CloseHandle]
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>The only way to make it work is to call private_class_method on the
+<span class="moz-txt-citetags">&gt; </span>functions after the fact, so it can be done. I was just hoping there
+<span class="moz-txt-citetags">&gt; </span>was a nicer way to do them "en masse" as it were.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Perhaps if attach_function is called in the context of private
+<span class="moz-txt-citetags">&gt; </span>automatically declare them private_class_methods? Although I don't
+<span class="moz-txt-citetags">&gt; </span>actually know if that's possible in Ruby. <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Regards,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Dan
+</pre></blockquote><pre wrap>
+
+
+<div class="moz-txt-sig">-- 
+Matijs
+
+</div></pre></div></body>
+</html>
+</table></div>

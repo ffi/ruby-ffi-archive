@@ -1,0 +1,114 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs687101anc;
+        Sun, 24 Jan 2010 16:28:34 -0800 (PST)
+Received: by 10.101.131.11 with SMTP id i11mr6928339ann.210.1264379313377;
+        Sun, 24 Jan 2010 16:28:33 -0800 (PST)
+Return-Path: <3reVcSwkJCDstjbfppkbodjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com>
+Received: from mail-px0-f149.google.com (mail-px0-f149.google.com [209.85.216.149])
+        by mx.google.com with ESMTP id 11si7568089ywh.80.2010.01.24.16.28.31;
+        Sun, 24 Jan 2010 16:28:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3reVcSwkJCDstjbfppkbodjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com designates 209.85.216.149 as permitted sender) client-ip=209.85.216.149;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3reVcSwkJCDstjbfppkbodjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com designates 209.85.216.149 as permitted sender) smtp.mail=3reVcSwkJCDstjbfppkbodjXfi.ZljorYv-ccfdlldibdolrmp.Zlj@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi13 with SMTP id 13sf794314pxi.13
+        for <headius@headius.com>; Sun, 24 Jan 2010 16:28:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=HyX2tq2UL6iqXn1SPSdbpXgdbM0xdpeCkWja/Xe4oYw=;
+        b=Xegbxgcca5GwmUeJ8LRe1Ukaweli3BKJInuQMlbm3qH7IS40MC78W41qgVqVYVpXOG
+         XphHTHN9l42KgIQnLPkYU1D54m0vw7SVGpvJRe7Yt612p1+9VezuU6M+Jz+2fKVLRkxk
+         d/LBf9cAAOOgFp9o5f8QhH8kKZo2ucKdh0DDU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=RGbbMXDR/kCmfz7vzs1uS19TtROSb4Wyn7JnKsN3uf3EsMHnmm27DNwU/7iQwcDVFs
+         Lpmt55An0xBL6qUIcDvH/k0znJdpaoB0FqvknENlhibMuRWy5xenNvq3VaAfUBzISb4I
+         L1EGMSPGnmnJUlQpkVcI2jLthkpLiiWiHSgaU=
+Received: by 10.114.251.36 with SMTP id y36mr213291wah.17.1264379309980;
+        Sun, 24 Jan 2010 16:28:29 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.215.3 with SMTP id n3ls711834wag.2.p; Sun, 24 Jan 2010 
+	16:28:29 -0800 (PST)
+Received: by 10.114.23.8 with SMTP id 8mr736248waw.8.1264379309389;
+        Sun, 24 Jan 2010 16:28:29 -0800 (PST)
+Received: by 10.114.23.8 with SMTP id 8mr736247waw.8.1264379309357;
+        Sun, 24 Jan 2010 16:28:29 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f188.google.com (mail-px0-f188.google.com [209.85.216.188])
+        by gmr-mx.google.com with ESMTP id 24si1193281pzk.2.2010.01.24.16.28.28;
+        Sun, 24 Jan 2010 16:28:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.188 as permitted sender) client-ip=209.85.216.188;
+Received: by pxi26 with SMTP id 26so792234pxi.17
+        for <ruby-ffi@googlegroups.com>; Sun, 24 Jan 2010 16:28:28 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.58.10 with SMTP id g10mr4192712rva.57.1264379307565; Sun, 
+	24 Jan 2010 16:28:27 -0800 (PST)
+In-Reply-To: <bf2f536c0912211449q7a337147g69257040a6abab91@mail.gmail.com>
+References: <bf2f536c0912211449q7a337147g69257040a6abab91@mail.gmail.com>
+Date: Mon, 25 Jan 2010 10:28:27 +1000
+Message-ID: <4ccee321001241628h4fbf1780oa3137ad42a2538b8@mail.gmail.com>
+Subject: Re: [ruby-ffi] Behavior of ffi_lib with Arrays (Was: lists only one 
+	lib?)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.216.188 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/11b365ae7374c20d
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/3856ede8fe72ead3
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+2009/12/22 John Croisant <jacius@gmail.com>:
+> On Sat, Dec 19, 2009 at 6:35 AM, Wayne Meissner <wmeissner@gmail.com> wro=
+te:
+>> You need to list them all on the same line.
+>>
+>> i.e.
+>>
+>> =A0ffi_lib 'user32', 'msvcrt'
+>
+> I always thought that giving multiple args to ffi_lib was a way of
+> providing fallback libraries /alternate names in case the first one
+> failed. I guess I assumed that it didn't make sense (or wouldn't work)
+> to load more than one library into the same module, anyway. I'm not
+> sure why I assumed that, though.
+
+the way ffi_lib handles multiple args changed in 0.6:
+
+now, ffi_lib "a", "b", "c" will fail if _any_ of a, b, or c fail to load.
+
+If you need alternate library names (e.g. for linux shared libs), you can u=
+se []
+e.g.
+# try to load libncurses, fall back to libncurses.so.5 on linux if
+that fails, but also load libc
+ffi_lib [ "ncurses", "libncurses.so.5" ], FFI::Platform::LIBC
+
+However, a better idea is probably to use NiceFFI and its find_library func=
+tion.

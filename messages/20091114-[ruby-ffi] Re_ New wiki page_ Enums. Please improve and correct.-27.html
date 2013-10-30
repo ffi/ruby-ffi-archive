@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: New wiki page: Enums. Please improve and correct.</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: New wiki page: Enums. Please improve and correct.</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/14/09 4:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/11/14 John Croisant <a class="moz-txt-link-rfc2396E" href="mailto:jacius@gmail.com">&lt;jacius@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>But, I thought you could use the enum name as a type, even in structs.
+<span class="moz-txt-citetags">&gt; </span>I haven't tried it yet, but it certainly feels like that <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>should<span class="moz-txt-tag">_</span></span> be
+<span class="moz-txt-citetags">&gt; </span>supported, from a library user's perspective. Even if that doesn't
+<span class="moz-txt-citetags">&gt; </span>work yet, "enum_type(:my_enum)" would work, right?
+</pre></blockquote><pre wrap>
+
+The problem is that Struct.layout() needs to be able to resolve the
+module that encloses the Struct subclass definition, to be able to
+lookup any custom typedefs (e.g. callbacks, enums).
+
+e.g.
+Module Foo
+  typedef :int, :my_int
+  class MyStruct &lt; FFI::Struct
+    layout :a, :my_int
+  end
+end
+
+It kinda-sorta works, but is not rock solid, so I discourage its use.
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>P.S. Does FFI enforce the validity of values used where a particular
+<span class="moz-txt-citetags">&gt; </span>enum type is expected? In other words, if a function (or struct) is
+<span class="moz-txt-citetags">&gt; </span>expecting an enum that can be only :a, :b, or :c, would passing :d
+<span class="moz-txt-citetags">&gt; </span>cause it to raise an error?
+</pre></blockquote><pre wrap>
+
+Passing :d should raise an error, since it will try to look it up in
+the enum table and fail.
+</pre></div></body>
+</html>
+</table></div>

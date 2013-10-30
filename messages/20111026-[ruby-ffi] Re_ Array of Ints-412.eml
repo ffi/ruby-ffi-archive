@@ -1,0 +1,136 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.197.132 with SMTP id iu4cs4106igc;
+        Wed, 26 Oct 2011 15:03:52 -0700 (PDT)
+Received: by 10.150.135.2 with SMTP id i2mr30036389ybd.44.1319666631343;
+        Wed, 26 Oct 2011 15:03:51 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIbJ28XKARDDh6L1BBoERUDmCw@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id d8si1582770ybl.66.2011.10.26.15.03.51
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 26 Oct 2011 15:03:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIbJ28XKARDDh6L1BBoERUDmCw@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIbJ28XKARDDh6L1BBoERUDmCw@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCIbJ28XKARDDh6L1BBoERUDmCw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ggnj1 with SMTP id j1sf6563587ggn.7
+        for <headius@headius.com>; Wed, 26 Oct 2011 15:03:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=RRqbCOhxMg2O6OnSiPf51PlL/O3mYc7UB/eNfVvUElM=;
+        b=NrHbQRy7Bfom/yYPTsZ/Cp00ihuJpEBlSCLRFknf4+KgVzgJCr/PwiLCHk+DiR3IX7
+         IDgGmOGdZ466Ciok4zYc+VAA4mrYaIKnlMb1cQZVNW+ixsimL5EQiE7sNaSya81kSiUf
+         aebSp9imYlgSsOjGAwdaT2yQecpfg1y9PBmuk=
+Received: by 10.236.112.242 with SMTP id y78mr1075127yhg.3.1319666627292;
+        Wed, 26 Oct 2011 15:03:47 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.237.8 with SMTP id k8ls3323846anh.2.gmail; Wed, 26 Oct
+ 2011 15:03:46 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.100.141.15 with SMTP id o15mr44951and.23.1319666626610; Wed,
+ 26 Oct 2011 15:03:46 -0700 (PDT)
+Received: by g27g2000pre.googlegroups.com with HTTP; Wed, 26 Oct 2011 15:03:46
+ -0700 (PDT)
+Date: Wed, 26 Oct 2011 15:03:46 -0700 (PDT)
+In-Reply-To: <84f1a260-89ec-4382-ba61-0daf1dfa0355@p20g2000prm.googlegroups.com>
+References: <c0c0aee2-bedc-4f90-b94b-523c31981d8d@m5g2000prg.googlegroups.com>
+ <256FAAE4-28FE-4A22-9EBA-6B1650073F43@mac.com> <9b749446-153f-4900-aad0-d754f056857a@g27g2000pro.googlegroups.com>
+ <FC6D8C7A-2D3C-4FDB-A14F-03E591DA664D@mac.com> <84f1a260-89ec-4382-ba61-0daf1dfa0355@p20g2000prm.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1 (KHTML, like
+ Gecko) Chrome/14.0.835.202 Safari/535.1,gzip(gfe)
+Message-ID: <66a867a3-5fe5-4282-be22-43bbc64eafa0@g27g2000pre.googlegroups.com>
+Subject: [ruby-ffi] Re: Array of Ints
+From: John Lee <jiujitsu1985@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jiujitsu1985@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ jiujitsu1985@gmail.com designates internal as permitted sender)
+ smtp.mail=jiujitsu1985@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Do you know if it is possible to go the other way around? i.e., array
+of ints as an output parameter
+
+So far, I have
+attach_function :function2, [:pointer], :int
+
+...
+
+ptr =3D FFI::MemoryPointer.new(:int, 10)
+MyLibrary.function2(ptr)
+puts ptr.read_array_of_int(10)
+
+But all it prints out is [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].
+
+Thanks
+
+
+
+On Oct 26, 12:46=A0pm, John Lee <jiujitsu1...@gmail.com> wrote:
+> Thanks a lot. Your code really helped!
+>
+> On Oct 26, 9:35=A0am, Chuck Remes <cremes.devl...@mac.com> wrote:
+>
+>
+>
+>
+>
+>
+>
+> > On Oct 26, 2011, at 10:31 AM, John Lee wrote:
+>
+> > > I tried wrapping my code inside a module, but the problem still
+> > > persists.
+>
+> > > Do you think :pointer is the correct type to represent the array in
+> > > attach_function.
+>
+> > > I know that if you have an array in a struct, you can specify it as:
+> > > class Struct1 < ::FFI::Struct
+> > > =A0 layout :value1, [:int, 3]
+> > > end
+>
+> > > So I tried to replace :pointer with [:int, 3] in attach_function, but
+> > > it complains about "unable to resolve type ':int, 3]' <TypeError>"
+> > > attach_function :function1, [[:int, 3], :int, :int], :int
+>
+> > > Has anyone got arrays to work with FFI?
+>
+> > I have gotten it working in my own project. Take a look at my definitio=
+n for a function that takes an array:
+>
+> >https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/libzm...
+>
+> > I call that function here:
+>
+> >https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll....
+>
+> > The array that is passed to that function is constructed in this file:
+>
+> >https://github.com/chuckremes/ffi-rzmq/blob/master/lib/ffi-rzmq/poll_...
+>
+> > In that file, the #clean method is where most of the array work is done=
+ where I construct the array.
+>
+> > I know it's a big example, but it works and has worked without change s=
+ince the ffi gem was at 0.6.3.
+>
+> > cr

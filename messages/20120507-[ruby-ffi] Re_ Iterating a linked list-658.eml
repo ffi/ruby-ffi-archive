@@ -1,0 +1,96 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.35.162 with SMTP id i2csp325345obj;
+        Mon, 7 May 2012 21:48:25 -0700 (PDT)
+Received: by 10.220.107.6 with SMTP id z6mr11430049vco.37.1336452505073;
+        Mon, 07 May 2012 21:48:25 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxCYy6L9BBoEPYuA5Q@googlegroups.com>
+Received: from mail-vb0-f62.google.com (mail-vb0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id jd8si4538846vcb.193.2012.05.07.21.48.24
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 07 May 2012 21:48:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCYy6L9BBoEPYuA5Q@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCYy6L9BBoEPYuA5Q@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxCYy6L9BBoEPYuA5Q@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by vbbfs19 with SMTP id fs19sf74529vbb.7
+        for <headius@headius.com>; Mon, 07 May 2012 21:48:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=APgVouLWR8/eTgR+V1puzIv5c7zYjxvF1Jh28UI1fjw=;
+        b=fVrDmQoBO9TUHULhTVgJtdJoUpska74OA7gjfIwzFVlou3FN5xtk1KUkdaeGaiI2TR
+         1GZLA7knw0pflrDeEtbpeTPIERDsL5dBWNM8afCYsytZiXxejicwecWijpobMCvdJZJs
+         e1ep6dgnSplgi8uEZ1yIwU4W+57B1F2F/z1Vg=
+Received: by 10.68.218.103 with SMTP id pf7mr116749pbc.11.1336452504154;
+        Mon, 07 May 2012 21:48:24 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.222.193 with SMTP id qo1ls15020334pbc.9.gmail; Mon, 07 May
+ 2012 21:48:23 -0700 (PDT)
+Received: by 10.68.229.168 with SMTP id sr8mr117908pbc.5.1336452503877;
+        Mon, 07 May 2012 21:48:23 -0700 (PDT)
+Date: Mon, 7 May 2012 21:48:23 -0700 (PDT)
+From: Navaneeth KN <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <28629274.573.1336452503409.JavaMail.geo-discussion-forums@pbpf6>
+In-Reply-To: <26810186.145.1336429580966.JavaMail.geo-discussion-forums@pbcia3>
+References: <6133187.2.1336413335460.JavaMail.geo-discussion-forums@pboc1>
+ <26810186.145.1336429580966.JavaMail.geo-discussion-forums@pbcia3>
+Subject: [ruby-ffi] Re: Iterating a linked list
+MIME-Version: 1.0
+X-Original-Sender: navaneethkn@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ navaneethkn@gmail.com designates internal as permitted sender)
+ smtp.mail=navaneethkn@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_572_33254670.1336452503409"
+
+------=_Part_572_33254670.1336452503409
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+On Tuesday, 8 May 2012 03:56:20 UTC+5:30, Wayne Meissner wrote:
+>
+> You've got it almost right - the problem is your mapping of the struct 
+> token string fields.
+>
+> e.g.
+>   char tag[TOKEN_TAG_MAX];
+>
+> instead of
+>   :tag, :string
+>
+> it should be:
+>
+>   :tag, [ :char, TOKEN_TAG_MAX ]
+>
+> Similar for pattern, value1, value2.  Of course, you'll also need to 
+> define TOKEN_TAG_MAX and SYMBOL_MAX.
+>
+
+Great. Works now. Thanks a lot for the help.
+
+Navaneeth 
+
+------=_Part_572_33254670.1336452503409
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hello,<br><br>On Tuesday, 8 May 2012 03:56:20 UTC+5:30, Wayne Meissner  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">You've got it almost right - the problem is your mapping of the struct token string fields.<div><br></div><div>e.g.</div><div>&nbsp; char tag[TOKEN_TAG_MAX];<br></div><div><br></div><div>instead of</div><div>&nbsp; :tag, :string</div><div><br></div><div>it should be:</div><div><br></div><div>&nbsp; :tag, [ :char, TOKEN_TAG_MAX ]</div><div><br></div><div>Similar for pattern, value1, value2. &nbsp;Of course, you'll also need to define TOKEN_TAG_MAX and SYMBOL_MAX.<br></div></blockquote><div><br>Great. Works now. Thanks a lot for the help.<br><br>Navaneeth <br></div>
+------=_Part_572_33254670.1336452503409--

@@ -1,0 +1,24 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Turning a Struct into its binary representation</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Turning a Struct into its binary representation</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/7/11 10:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><br><br>On Friday, 6 May 2011 23:39:09 UTC+10, candlerb  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">(1) What's the most direct way to get the binary representation of
+<br>'f'? Eventually I found:
+<br>
+<br>&nbsp; &nbsp; f.pointer.get_bytes(0, Foo.size)
+<br>
+<br>This was made a bit awkward because I was looking for 'read' methods,
+<br>and there was no 'read_bytes'. It turns out there are a handful for
+<br>methods which have "get" but no "read" equivalent:
+<br></blockquote><div><br></div><div>Some of those (the float32/float64 ones) are only there for backwards compat - get/read_float and get/read_double are the preferred &nbsp;way).</div><div><br></div><div>The missing read_bytes and read_array_of_string will be fixed shortly.</div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>(2) Suppose I want to create a packed structure which is a contiguous
+<br>array of Foos. I found an example for InlineArrayOfStructs, but not
+<br>how to make an array of structs at the top level.
+<br></blockquote><div><br></div><div>Have a read of:</div><div><br></div><div>https://groups.google.com/d/msg/ruby-ffi/2JxDNdXlcTc/GP2gbjtatqAJ</div><div><br></div><div>If you can figure it out from that thread, *please* add a wiki page on it.</div><div>&nbsp;</div><blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">(3) What's the difference between FFI::Pointer, FFI::MemoryPointer and
+<br>FFI::Buffer?
+<br><br></blockquote><div>This one is a bit tricky to explain. &nbsp;</div><div><br></div><div>tl;dr - use FFI::MemoryPointer and you code will work fine, but may be a little slower on JRuby than it need be.</div><div><br></div><div>Long, hand wavy explanation: &nbsp;Its very VM dependent whether Buffer works better than Pointer in certain circumstances. &nbsp;</div><div><br></div><div>On JRuby, there are two types of memory used by FFI - native memory at a fixed address (i.e. what a Pointer or MemoryPointer refers to), and the memory where ruby objects themselves are allocated (e.g. Fixnum, String, Buffer). &nbsp;This latter type is very fast to allocate and access from ruby code, but needs to be copied to/from temporary native memory to be accessed from native code, as the JVM does not provide direct access to the memory contents.</div><div><br></div><div>On the other hand, FFI::MemoryPointer, whilst it can be accessed directly by native code, and still reasonably fast from ruby code, has horrendous management overhead on JRuby - its just the way GC is tuned on the VM - java objects are very fast and lightweight, but the overhead of managing the lifecycle of native objects is huge.</div><div><br></div><div>One obvious use where FFI::Buffer is a clear win, is for small, single-use native memory areas (e.g. the 'length' pointer in getsockopt). &nbsp;It is up to an order of magnitude (10x) faster to use a FFI::Buffer which gets copied to/from native memory for that single use, than it is to use a FFI::MemoryPointer and handle the allocation/release management overhead.</div><div><br></div><div>But, as you can see, its not very obvious to the casual programmer when using FFI::Buffer will lead to a speed improvement, which is why I usually say "just use FFI::MemoryPointer and be happy" these days.</div><div><br></div><div><br></div><div>&nbsp;</div>
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,47 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Alignment problem when passing values for struct on  x86_64-linux</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Alignment problem when passing values for struct on  x86_64-linux</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/2/09 4:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+2009/12/2 rhp <a class="moz-txt-link-rfc2396E" href="mailto:ronald.pijnacker@gmail.com">&lt;ronald.pijnacker@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>--- ffi_test.rb
+<span class="moz-txt-citetags">&gt; </span>#!/usr/bin/ruby -w
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>require 'rubygems'
+<span class="moz-txt-citetags">&gt; </span>require 'ffi'
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>module TestFFI extend FFI::Library
+<span class="moz-txt-citetags">&gt; </span>   ffi_lib 'ffi'
+<span class="moz-txt-citetags">&gt; </span>   attach_function :test, [:pointer, :int, :int, :int], :void
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ptr = FFI::MemoryPointer.new :float, 10
+<span class="moz-txt-citetags">&gt; </span>TestFFI.test(ptr, 10, 1, 2)
+</pre></blockquote><pre wrap>
+
+That won't pass a struct by value on x86_64 (and it only does it on
+i386 due to the way arguments are packed).
+
+Instead, you need:
+
+class S &lt; FFI::Struct
+  layout :a, :int, :b, :int
+end
+
+module TestFFI
+  extend FFI::Library
+  attach_function :test, [ :pointer, :int, S.by_value ], :void
+end
+
+s = S.new
+s[:a] = 1
+s[:b] = 2
+ptr = FFI::MemoryPointer.new :float, 10
+TestFFI.test(ptr, 10, s)
+</pre></div></body>
+</html>
+</table></div>

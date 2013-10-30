@@ -1,0 +1,150 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Basic question about types</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Basic question about types</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Gimi <liang.gimi@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/25/09 11:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Thank you again Wayne.
+
+Since this feature is not necessary for me ( guess nobody needs this
+yet ), and I was just wondering its possibility, adding it to the
+issue tracker makes little sense.
+
+Your help is greatly appreciated. Have a happy day!
+
+On Oct 26, 11:24 am, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>In general, no, you can't call va_list functions.  I mean, technically
+<span class="moz-txt-citetags">&gt; </span>it is possible if you allocate memory, pack the arguments in the same
+<span class="moz-txt-citetags">&gt; </span>way the native code would, then pass that pointer in (I think), but if
+<span class="moz-txt-citetags">&gt; </span>you have the choice, you may as well call the varargs version.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>FFI could be made do that behind the scenes - it just hasn't come up
+<span class="moz-txt-citetags">&gt; </span>before.  Would be a good project for someone, so if you want it, add
+<span class="moz-txt-citetags">&gt; </span>it to the issue tracker (<a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues">http://github.com/ffi/ffi/issues</a>), and
+<span class="moz-txt-citetags">&gt; </span>someone may pick it up.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>2009/10/22 Gimi <a class="moz-txt-link-rfc2396E" href="mailto:liang.g...@gmail.com">&lt;liang.g...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Thank you very much Wayne, thank you for your so-detailed replies!
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>For the 2nd question, I'd already known about :varargs and its usage.
+<span class="moz-txt-citetags">&gt; &gt; </span>My question is how about a function which uses va_list as a parameter,
+<span class="moz-txt-citetags">&gt; &gt; </span>like this:
+<span class="moz-txt-citetags">&gt; &gt; </span>int vprintf ( const char * format, va_list arg );
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>According to my test, it's impossible to do it in this way:
+<span class="moz-txt-citetags">&gt; &gt; </span>#-- code --
+<span class="moz-txt-citetags">&gt; &gt; </span>attach_function :vprintf, [:string, :varargs], :int
+<span class="moz-txt-citetags">&gt; &gt; </span># -- code end --
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>As va_llist actually is void*,  so I guess I should do:
+<span class="moz-txt-citetags">&gt; &gt; </span>#-- code --
+<span class="moz-txt-citetags">&gt; &gt; </span>attach_function :vprintf, [:string, :pointer], :int
+<span class="moz-txt-citetags">&gt; &gt; </span>#-- code end --
+<span class="moz-txt-citetags">&gt; &gt; </span>But I don't know how to call it.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Although it's not important to do that because there are always(i
+<span class="moz-txt-citetags">&gt; &gt; </span>guess) a :varargs version for this kind of va_list-style-function, I
+<span class="moz-txt-citetags">&gt; &gt; </span>just want to know is it possible to do this in Ruby-FFI.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>With many thanks!
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Sincerely,
+<span class="moz-txt-citetags">&gt; &gt; </span>Gimi
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>On Oct 21, 7:21 am, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>You specifiy variadic parameters as :varargs, and when you call the
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>function, you need to explicitly specify the type of the parameters.
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span># this says printf takes a string parameter, followed by a variable
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>number of parameters
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>  attach_function :printf, [ :string, :varargs ], :int
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span># You don't need to specify the type of any fixed params, since it is part of
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span># the function signature, but you do need to for each varargs parameter
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>LibC.printf("Hello, %s", :string, "World")
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; </span>2009/10/21 Gimi <a class="moz-txt-link-rfc2396E" href="mailto:liang.g...@gmail.com">&lt;liang.g...@gmail.com&gt;</a>:
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>Hi, it's me again : )
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>I just wanna ask one more question, how to deal with the va_list
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>parameter? Like the vprintf method, how to attach and call it?
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>With many thanks!
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>Gimi
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt; </span>On Oct 20, 10:10 am, Gimi <a class="moz-txt-link-rfc2396E" href="mailto:liang.g...@gmail.com">&lt;liang.g...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>Hi all,
+</pre></blockquote></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>I'm new to FFI, and I have a basic question about types. Assume there
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>is some C code like this:
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span># -- C code begin --
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>#if some situation
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>typedef sometype unsignedint
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>#else
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>typedef sometype int
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>#endif
+</pre></blockquote></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>void some_function(sometype);
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>#-- C code end --
+</pre></blockquote></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>So I mean when the types of parameters of a function are different in
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>different situations, how do I write the Ruby code?
+</pre></blockquote></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>Any help will be greatly appreciated.
+</pre></blockquote></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt;&gt; &gt;&gt; </span>Regards,
+</pre></div></body>
+</html>
+</table></div>

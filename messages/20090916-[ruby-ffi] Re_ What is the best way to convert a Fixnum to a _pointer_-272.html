@@ -1,0 +1,70 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: What is the best way to convert a Fixnum to a  :pointer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: What is the best way to convert a Fixnum to a  :pointer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/16/09 9:32 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/9/16 Brett Blackham <a class="moz-txt-link-rfc2396E" href="mailto:brett.blackham@gmail.com">&lt;brett.blackham@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So MemoryPointer is like calling malloc and returning a pointer to
+<span class="moz-txt-citetags">&gt; </span>it.
+</pre></blockquote><pre wrap>
+
+Correct.  The native memory gets garbage collected for you when the
+MemoryPointer instance no longer has any hard references to it.
+
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I had tried just sending address to Pointer.new in hopes that it could
+<span class="moz-txt-citetags">&gt; </span>handle an Int as well as an existing pointer. But it doesn't appear to
+<span class="moz-txt-citetags">&gt; </span>work.
+</pre></blockquote><pre wrap>
+
+It works in master, so it must have been added after the 0.4.0 release.
+
+Just do the test in ruby land then, and only wrap the address if not
+already a pointer.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>require 'ffi'
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; true
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>address = FFI::Pointer.new(5)
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;Native Pointer address=0x5&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>p = FFI::Pointer.new(address)
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>TypeError: can't convert FFI::Pointer into Integer
+<span class="moz-txt-citetags">&gt; </span>       from (irb):4:in `initialize'
+<span class="moz-txt-citetags">&gt; </span>       from (irb):4:in `new'
+<span class="moz-txt-citetags">&gt; </span>       from (irb):4
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>address = FFI::MemoryPointer :pointer
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>NoMethodError: undefined method `MemoryPointer' for FFI:Module
+<span class="moz-txt-citetags">&gt; </span>       from (irb):5
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>address = FFI::MemoryPointer.new :pointer
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;MemoryPointer address=0x155f140 size=8&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>p = FFI::Pointer.new(address)
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>TypeError: can't convert FFI::MemoryPointer into Integer
+<span class="moz-txt-citetags">&gt; </span>       from (irb):7:in `initialize'
+<span class="moz-txt-citetags">&gt; </span>       from (irb):7:in `new'
+<span class="moz-txt-citetags">&gt; </span>       from (irb):7
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

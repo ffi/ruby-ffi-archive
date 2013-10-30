@@ -1,0 +1,41 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] convert free -> xfree?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] convert free -&gt; xfree?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 8:23 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Yep, a couple of those should have been xfree (the Buffer and
+MemoryPointer ones).  The rest are allocated from
+calloc/malloc/strdup, so they use stdlib free(3).
+
+Fixed.  Thanks for pointing them out.
+
+2009/12/12 Jon <a class="moz-txt-link-rfc2396E" href="mailto:jon.forums@gmail.com">&lt;jon.forums@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>From <a class="moz-txt-link-freetext" href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/22727">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/22727</a> in the "Mixing runtime libraries" section the claim that you can mix msft c runtimes if
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>* If you call ALLOC or ALLOC_N, use xfree and not free
+<span class="moz-txt-citetags">&gt; </span>* Don't call sprintf or printf in an extension, instead use rb_f_sprintf/rb_vsprintf/rb_io_printf
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>...does it make sense to change these free's to xfree's (not libffi's dlmalloc?) in ruby-ffi?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>C:\Users\Jon\Documents\RubyDev\ffi-trunk&gt;grep -Rn " free(" ext
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/Buffer.c:154:        free(ptr-&gt;storage);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/ClosurePool.c:131:        free(memory-&gt;data);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/ClosurePool.c:132:        free(memory);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/ClosurePool.c:135:    free(pool);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/ClosurePool.c:218:    free(block);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/ClosurePool.c:219:    free(list);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/libffi/src/dlmalloc.c:678:  free(void* p)
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/libffi/src/dlmalloc.c:857:    free(pool);     // Can now free the array (or not, if it is needed later)
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/MemoryPointer.c:137:            free(ptr-&gt;storage);
+<span class="moz-txt-citetags">&gt; </span>ext/ffi_c/Type.c:162:    free(type-&gt;name);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

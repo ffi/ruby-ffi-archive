@@ -1,0 +1,56 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] How to manage an Array of Structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] How to manage an Array of Structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>P4010 <paolo.bosetti@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/27/11 11:58 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi all,
+I am writing an FFI interface to IP shared memory and semaphores. I
+wonder if someone here can give me advice on how to manage an Array of
+Structs.
+
+I am mapping the semop() function in FFI. It has the following
+signature:
+
+#include &lt;sys/sem.h&gt;
+int
+semop(int semid, struct sembuf *sops, size_t nsops);
+
+I wrote something like:
+
+module Shared
+  extend FFI::Library
+  ffi_lib FFI::Library::LIBC
+
+  class Sembuf &lt; FFI::Struct
+    layout :sem_num, :ushort,
+      :sem_op, :short,
+      :sem_flg, :short
+  end
+
+  attach_function :semop,  [:int, :pointer, :size_t], :int
+
+end
+
+Now the Shared#semop wants a pointer to an array of Shared::Sembuf
+structs. How can I build such a pointer? I guess I should start with
+
+op = Shared::Sembuf.new
+op[:sem_num] = 0
+op[:sem_op] = -1
+op[:sem_flg] = 0
+
+ops = FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)
+
+But then I could not find how to add the op instance to the array
+pointed to by ops...
+
+I'll appreciate any suggestion...
+
+Cheers,
+-P.
+</pre></div></body>
+</html>
+</table></div>

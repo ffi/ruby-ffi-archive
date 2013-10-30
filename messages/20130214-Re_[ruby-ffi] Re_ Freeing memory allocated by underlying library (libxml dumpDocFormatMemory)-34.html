@@ -1,0 +1,49 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Freeing memory allocated by underlying library (libxml dumpDocFormatMemory)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Paul Hinze <paul.t.hinze@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/14/13 3:37 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr">This is exactly what I needed! Thank you so much for your help, I really appreciate it.<div><br></div><div style>Paul</div></div><div class="gmail_extra"><br><br><div class="gmail_quote">On Thu, Feb 7, 2013 at 7:38 PM, Wayne Meissner <span dir="ltr">&lt;<a href="mailto:wmeissner@gmail.com" target="_blank">wmeissner@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">I think the problem is that xmlFree and xmlMalloc are not functions, but pointers to functions (there are macros in the header files to make this transparent when called from C/C++).<div>
+<br></div><div>This works for me:</div><div><br></div><div><div>      attach_variable :__xmlFree, :xmlFree, callback([ :pointer ], :void)</div><div>      attach_variable :__xmlMalloc, :xmlMalloc, callback([ :size_t ], :pointer)</div>
+<div><br></div><div>      def self.xmlMalloc(size)</div><div>        __xmlMalloc.call(size)</div><div>      end</div><div><br></div><div>      def self.xmlFree(ptr)</div><div>        __xmlFree.call(ptr)</div><div>      end</div>
+<div><br></div><div>That attaches xmlMalloc and xmlFree as global variables exported by the library, then provides wrappers to call them from ruby.</div><div><div class="h5"><br>On Wednesday, 6 February 2013 09:59:11 UTC+10, Paul Hinze  wrote:<blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>Thanks for getting back to me, Wayne.<br><div><br></div><div>On Tuesday, February 5, 2013 3:22:49 PM UTC-7, Wayne Meissner wrote:<br><blockquote class="gmail_quote" style="margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left:1ex">
+You&#39;re correct that MemoryPointer#free won&#39;t do anything for you - it only frees the memory allocated for itself.<div><br></div><div>From looking at other C based examples, it should be as simple as adding the following (after reading result from the strptr):</div>
+<div><br></div><div>  C::LibXML.xmlFree(strptr) unless strptr.null?<br></div></blockquote><div><br></div><div>Okay this is the direction I was headed in, but whenever I call either xmlFree or xmlMalloc, ruby (latest 1.9.3, but also tried ree for fun) crashes and burns like so:</div>
+<div><br></div><div><a href="https://gist.github.com/phinze/f2f89ce8864b66d3e0f9" target="_blank">https://gist.github.com/<u></u>phinze/f2f89ce8864b66d3e0f9</a></div></div><div><br></div><div>Here&#39;s where I bind the functions - It&#39;s pretty straightforward:</div>
+<div><br></div><div><a href="https://github.com/phinze/xml_security/blob/39d4cb62776b28d6fce1b8d8fd277a4d2339158c/lib/xml_security/c/lib_xml.rb#L20-L21" target="_blank">https://github.com/phinze/xml_<u></u>security/blob/<u></u>39d4cb62776b28d6fce1b8d8fd277a<u></u>4d2339158c/lib/xml_security/c/<u></u>lib_xml.rb#L20-L21</a></div>
+<div><br></div><div>And here&#39;s a really simple test case that blows up on the xmlMalloc call:</div><div><br></div><div><a href="https://github.com/phinze/xml_security/blob/bdbe54d0f2c1c05bcace7cf29e3f1b0c1b274368/spec/xml_security/c/lib_xml_spec.rb" target="_blank">https://github.com/phinze/xml_<u></u>security/blob/<u></u>bdbe54d0f2c1c05bcace7cf29e3f1b<u></u>0c1b274368/spec/xml_security/<u></u>c/lib_xml_spec.rb</a></div>
+<div><br></div><div>Now, libxml2 does some funky stuff with its memory management functions [1], which means that the function declarations in the code have several layers of indirection built in. I&#39;m wondering if it&#39;s possible that this is confusing to the FFI layer.</div>
+<div><br></div><div>If you&#39;d like, I can extract this into a more isolated test case for you, but I wanted first to get a feel for whether or not this could possibly be an FFI issue.</div><div><br></div><div>I&#39;m thinking a decent workaround is to just reach over to libc&#39;s malloc/free, which I&#39;ll be working on in parallel to this investigation. Still, it&#39;d be nice to get to the bottom of this.</div>
+<div><br></div><div>Thanks for your time,</div><div><br></div><div>Paul</div><div><br></div><div>[1] <a href="http://www.xmlsoft.org/xmlmem.html" target="_blank">http://www.xmlsoft.org/<u></u>xmlmem.html</a></div><div><br>
+</div><div><br></div></blockquote></div></div></div><div class="HOEnZb"><div class="h5">
+
+<p></p>
+
+-- <br>
+ <br>
+--- <br>
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an email to <a href="mailto:ruby-ffi%2Bunsubscribe@googlegroups.com" target="_blank">ruby-ffi+unsubscribe@googlegroups.com</a>.<br>
+For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/groups/opt_out</a>.<br>
+ <br>
+ <br>
+</div></div></blockquote></div><br></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/21/10 8:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On May 21, 2010, at 8:10 AM, DA wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Thu, May 20, 2010 at 9:13 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Try using FFI::Pointer#+
+<span class="moz-txt-citetags">&gt;&gt; </span>
+<span class="moz-txt-citetags">&gt;&gt; </span>e.g.
+<span class="moz-txt-citetags">&gt;&gt; </span>0.upto(tis[:len]).each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i<span class="moz-txt-tag">|</span></code>
+<span class="moz-txt-citetags">&gt;&gt; </span> s = FM::FTexFtItemT.new(tis[:val] + (i * FM::FTexFtItemT.size))
+<span class="moz-txt-citetags">&gt;&gt; </span> # do stuff with s here
+<span class="moz-txt-citetags">&gt;&gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Hi Wayne, thanks a bunch, this works perfectly (minus the .each).
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Would this be a good example to add to the wiki, perhaps under
+<span class="moz-txt-citetags">&gt; </span>"Structs &gt; Array of Structs"?  I would be happy to add it.  (It also
+<span class="moz-txt-citetags">&gt; </span>would illustrate using a union in a struct).
+</pre></blockquote><pre wrap>
+
+Drew, please add it to the wiki. I used a similar technique to solve the same problem but your example is better since it uses unions too.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

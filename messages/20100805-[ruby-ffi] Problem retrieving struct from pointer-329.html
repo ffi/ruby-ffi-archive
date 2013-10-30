@@ -1,0 +1,67 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Problem retrieving struct from pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Problem retrieving struct from pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Joe <jm202@yahoo.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/5/10 8:12 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello all
+I'm trying to pull some information from the SNIA's HBA API (<a class="moz-txt-link-freetext" href="http://">http://</a>
+hbaapi.sourceforge.net).  The function I'm  having difficulty with is
+HBA_GetAdapterAttributes, which according to the API, returns a single
+pointer to a struct.  The struct in C is:
+
+typedef struct hba_AdapterAttributes {
+    char	Manufacturer[64];
+    char	SerialNumber[64];
+    char	Model[256];
+    char	ModelDescription[256];
+    HBA_WWN	NodeWWN;
+    char	NodeSymbolicName[256];
+    char	HardwareVersion[256];
+    char	DriverVersion[256];
+    char	OptionROMVersion[256];
+    char	FirmwareVersion[256];
+    HBA_UINT32	VendorSpecificID;
+    HBA_UINT32	NumberOfPorts;
+    char	DriverName[256];
+} HBA_ADAPTERATTRIBUTES, *PHBA_ADAPTERATTRIBUTES;
+
+And the function in question is:
+HBA_API HBA_STATUS HBA_GetAdapterAttributes(
+    HBA_HANDLE		handle,
+    HBA_ADAPTERATTRIBUTES   *hbaattributes
+    );
+
+----------
+
+In Ruby, I created the struct as so:
+class HBA_AdapterAttributes &lt; FFI::Struct
+	layout :Manufacturer, :char
+	:SerialNumber, :char,
+	:Model, :char,
+	:ModelDescription, :char,
+	:NodeWWN, :uint8,
+	:NodeSymbolicName, :char,
+	:HardwareVersion, :char,
+	:DriverVersion, :char,
+	:OptionROMVersion, :char,
+	:FirmwareVersion, :char,
+	:VendorSpecificID, :uint32,
+	:NumberOfPorts, :uint32,
+	:DriverName, :char
+end
+
+Now def get_struct pointer
+def get_struct pointer
+	HBA::HBA_AdapterAttributes.new pointer
+end
+
+Calling the get_struct_pointer returns an array of fixnums, instead of
+any string values.
+
+Any idea what I'm overlooking here?
+</pre></div></body>
+</html>
+</table></div>

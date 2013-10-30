@@ -1,0 +1,157 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.61.135 with SMTP id t7cs39964bkh;
+        Tue, 19 Oct 2010 13:01:38 -0700 (PDT)
+Received: by 10.101.157.32 with SMTP id j32mr4362988ano.157.1287518497021;
+        Tue, 19 Oct 2010 13:01:37 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRCe8vflBBoEnh8u3Q@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id f29si31777367anh.16.2010.10.19.13.01.35;
+        Tue, 19 Oct 2010 13:01:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRCe8vflBBoEnh8u3Q@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRCe8vflBBoEnh8u3Q@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRCe8vflBBoEnh8u3Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwj19 with SMTP id 19sf3660450gwj.7
+        for <headius@headius.com>; Tue, 19 Oct 2010 13:01:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=8TmEBjJiIgslIXVXFR//0pcKlBSK9arjHeGxQFr9oSA=;
+        b=GsS/hoI4qtYihc1vb5Hs1IlNYfL22t2B+SfGzV6qMEsLqFRfYUTnY1B6rO6hHOal03
+         aOjYvj0qpjC1YxAxCTIvjkkKtfbL0T86BbyIqxyIOOc92ndO3SU84RkTwn+7DGp9bS0H
+         UKJQXWyzW2/6dSpk1x+ROadUndC11pdVjA5q8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=hxlDdJvK2U0kIY+0rJh03tOflrTKmSqKcLS/DHurYAjo08I+EyHlNN5VSXhqrErybf
+         kR0q1Hn8r1m2TTPysRmb5nxD9qaI8et8QVpo78MuuNzR+dztC2vdyqBDnP4Ng8qfNZ41
+         iMy8pkWoqqUDUz+Omd+yo63QAUE3lCdblBu/g=
+Received: by 10.150.72.10 with SMTP id u10mr506805yba.39.1287518494244;
+        Tue, 19 Oct 2010 13:01:34 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.102.24 with SMTP id z24ls314882ybb.3.p; Tue, 19 Oct 2010
+ 13:01:34 -0700 (PDT)
+Received: by 10.150.239.16 with SMTP id m16mr1861064ybh.42.1287518494040;
+        Tue, 19 Oct 2010 13:01:34 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.142.248.35 with SMTP id v35mr296955wfh.69.1287509504502; Tue,
+ 19 Oct 2010 10:31:44 -0700 (PDT)
+Received: by n24g2000prj.googlegroups.com with HTTP; Tue, 19 Oct 2010 10:31:44
+ -0700 (PDT)
+Date: Tue, 19 Oct 2010 10:31:44 -0700 (PDT)
+X-IP: 174.31.65.79
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <63eaefe1-6b80-4af8-af7a-33d81b48b7a4@n24g2000prj.googlegroups.com>
+Subject: [ruby-ffi] Linked list of structs
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Given this struct
+
+struct pcap_if {
+	struct pcap_if *next;
+	char *name;		/* name to hand to "pcap_open_live()" */
+	char *description;	/* textual description of interface, or NULL */
+	struct pcap_addr *addresses;
+	bpf_u_int32 flags;	/* PCAP_IF_ interface flags */
+};
+
+The code to fill the list:
+
+pcap_if_t* find_devs()
+{
+   pcap_if_t *devs;
+   char errbuf[PCAP_ERRBUF_SIZE];
+   int res;
+   res=pcap_findalldevs(&devs, errbuf);
+   return devs;
+ }
+
+
+And the FFI code
+
+module Pcap
+  extend FFI::Library
+  ffi_lib 'pcap'
+  ffi_lib "#{Dir.pwd}/libpcap_ffi.so"
+
+  attach_function :pcap_lookupdev,[:string],:string
+
+  attach_function :find_devs,[],:pointer
+  class Pcap_if_t < FFI::Struct
+    layout :next,:pointer,
+	   :name,:string,
+	   :description,:string,
+	   :pcap_addr,:pointer,
+ 	   :flags,:int
+    def self.release ptr
+      Pcap.free_object ptr
+    end
+  end
+end
+
+How do you iterate over the linked list using FFI?
+
+I have tried read_array_of_pointer, it didn't seem to work.
+
+I tried
+
+ptr = FFI::MemoryPointer.new :pointer
+ptr = Pcap.find_devs
+
+devs = Pcap::Pcap_if_t.new ptr
+puts devs[:name]
+
+And I can get the first name, but I can't figure out how to iterate
+over it.
+
+This works but it feels wrong
+
+while true
+devs = Pcap::Pcap_if_t.new ptr
+break if devs[:name].nil? or devs[:name].empty?
+puts devs[:name]
+ptr=devs[:next]
+
+
+end
+
+
+So I guess all I need is to figure out the number of elements in a
+list?
+
+******
+
+Also is it true that FFI can not handle a multidimensional array? The
+actual function to do the above has a signature of int
+pcap_findalldevs(pcap_if_t **, char *); and I couldn't get it to work
+without creating a C function to return pcap_if_t*.
+
+pcap_if_t* find_devs()
+{
+   pcap_if_t *devs;
+   char errbuf[PCAP_ERRBUF_SIZE];
+   int res;
+   res=pcap_findalldevs(&devs, errbuf);
+   return devs;
+ }

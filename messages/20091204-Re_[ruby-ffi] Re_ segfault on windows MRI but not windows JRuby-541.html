@@ -1,0 +1,53 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: segfault on windows MRI but not windows JRuby</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Luis Lavena <luislavena@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/4/09 12:31 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On Fri, Dec 4, 2009 at 11:18 AM, Bosko Ivanisevic
+<a class="moz-txt-link-rfc2396E" href="mailto:bosko.ivanisevic@gmail.com">&lt;bosko.ivanisevic@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I've cloned ffi, executed:
+<span class="moz-txt-citetags">&gt; </span>rake install
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and with new installation enumerating desktop windows sample works without
+<span class="moz-txt-citetags">&gt; </span>problems except that sample on the Wiki has one error. Line:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>if not Win.EnumDesktopWindows
+<span class="moz-txt-citetags">&gt; </span>should be:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>if not Win.enum_desktop_windows
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and in order to display window title puts command should be:
+<span class="moz-txt-citetags">&gt; </span>puts "[%03i] Found '%s'" % [ win_count += 1, title.get_string(0) ]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I was using Rubyinstaller 1.8.6. version of Ruby (mingw) with devkit to
+<span class="moz-txt-citetags">&gt; </span>build ffi gem.
+</pre></blockquote><pre wrap>
+
+Ok, so perhaps the issue is related to GCC and mingw32 headers used by
+cross compiling?
+
+Wayne:
+
+Which versions of packages for mingw32 do you have installed?
+
+luis@seyori ~$ port installed | grep "mingw32"
+  i386-mingw32-binutils @2.19.1_0 (active)
+  i386-mingw32-gcc @3.4.5-20060117-2_0 (active)
+  i386-mingw32-runtime @3.15.2_0 (active)
+  i386-mingw32-w32api @3.13_0 (active)
+
+<div class="moz-txt-sig">-- 
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exupéry
+</div></pre></div></body>
+</html>
+</table></div>

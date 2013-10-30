@@ -1,0 +1,127 @@
+X-Mozilla-Keys: notjunk $notjunk
+Delivered-To: headius@headius.com
+Received: by 10.152.162.111 with SMTP id xz15csp259831lab;
+        Tue, 12 Feb 2013 15:30:54 -0800 (PST)
+X-Received: by 10.236.79.9 with SMTP id h9mr24629562yhe.83.1360711854143;
+        Tue, 12 Feb 2013 15:30:54 -0800 (PST)
+Return-Path: <ruby-ffi+bncBCJJTHXDVEMBBLFB5OEAKGQEZT5XMIY@googlegroups.com>
+Received: from mail-gg0-x239.google.com (mail-gg0-x239.google.com [2607:f8b0:4002:c02::239])
+        by mx.google.com with ESMTPS id v44si47540407yhd.101.2013.02.12.15.30.53
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Tue, 12 Feb 2013 15:30:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBCJJTHXDVEMBBLFB5OEAKGQEZT5XMIY@googlegroups.com designates 2607:f8b0:4002:c02::239 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBCJJTHXDVEMBBLFB5OEAKGQEZT5XMIY@googlegroups.com designates 2607:f8b0:4002:c02::239 as permitted sender) smtp.mail=ruby-ffi+bncBCJJTHXDVEMBBLFB5OEAKGQEZT5XMIY@googlegroups.com;
+       dkim=pass header.i=@googlemail.com
+Received: by mail-gg0-f185.google.com with SMTP id k2sf1849136ggd.12
+        for <headius@headius.com>; Tue, 12 Feb 2013 15:30:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=YOmYNXBTMiODYC/EqCIWTg12lfptDGLkoup9+7gfDLQ=;
+        b=n1thOcQR95uLMpbujWPtYr4mMhMfuSusJUhxnfapibMUW6topVYhHiyRPwE0nLU5pB
+         jZELw8Q/ZTWtSTf71n9Yu1x3EpDNLTETnI4YLAj8eGsEWtwsr2nPnR0SNYyqPxfD7o9j
+         coyMbuYRSOr1MGTp4yFGVvtZLX+zordtGJ/ysDAZZh0KyIM9g0IbkKCJV5PRV1wqQCsY
+         og69NJZ9aZ/odG6ufkYv6qDxw1sKRgg7GHr91TGsRlyRlHmg3PIyajxrZ2latf26xcmj
+         VIVhVlf8Hl4htbrZh0Uz5vcwr5zxSUH3T3XVySNMFBNFQ60Qo5cfiIoQ9DXsSdtZPSqn
+         U3pw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20120113;
+        h=x-received:x-beenthere:x-received:x-received:date:from:to
+         :message-id:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=YOmYNXBTMiODYC/EqCIWTg12lfptDGLkoup9+7gfDLQ=;
+        b=P/Gcbw8P3+mOiq11foboAemw0liNq7WHewXwQ0WlZG36gZrmpp0jdtNu9AEqLkw5Ss
+         qj5wT8k4/1egNMlz6ATgDjGVXhl5lCcGs+YwBfpWBAM5jwa1E6mjBKK3WvMtfoVcLEM2
+         rlNh2/kTydNNBrRqTQ/WjRgq2OXglSdaLdJGCphwd1rT+MXIWWgOL+jovfilb9N5w6nN
+         b08ie0pkR3zcTjpgz3ff6Va+sRbk7yPVVAp1XEdkyNMvjWHfr1krQ+nN+IZGuYYMA/tg
+         Qk1QPQtzZs4/BziIWSF0zbNm0rIEr0BF8O9XLbkX5Lx27ebWpaQkyXzWAgmfXiBDyad4
+         QJkQ==
+X-Received: by 10.49.34.135 with SMTP id z7mr1313616qei.1.1360711853557;
+        Tue, 12 Feb 2013 15:30:53 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.47.112 with SMTP id c16ls219801qen.43.gmail; Tue, 12 Feb
+ 2013 15:30:52 -0800 (PST)
+X-Received: by 10.224.72.199 with SMTP id n7mr11940938qaj.5.1360711852788;
+        Tue, 12 Feb 2013 15:30:52 -0800 (PST)
+Received: by 10.224.56.8 with SMTP id w8msqag;
+        Tue, 12 Feb 2013 14:49:53 -0800 (PST)
+X-Received: by 10.49.116.115 with SMTP id jv19mr1354159qeb.21.1360709393793;
+        Tue, 12 Feb 2013 14:49:53 -0800 (PST)
+Date: Tue, 12 Feb 2013 14:49:53 -0800 (PST)
+From: Ole Olson <skw39dub@googlemail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <3c2782d7-a4fd-4216-be46-b999463b00c1@googlegroups.com>
+Subject: [ruby-ffi] Callback Function with varargs
+MIME-Version: 1.0
+X-Original-Sender: skw39dub@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1127_24617838.1360709393609"
+
+------=_Part_1127_24617838.1360709393609
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+I have to use a callback function with varargs (I already red issue #161).
+I cannot avoid this because I cannot change the interface of the C Library.
+
+Do you have any idea, how to solve this problem ?
+
+Maybe define va_list as an parameter and split the elements in the 
+implementation of the callback ?
+
+Thanks for help.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_1127_24617838.1360709393609
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi,<br><br>I have to use a callback function with varargs (I already red is=
+sue #161).<br>I cannot avoid this because I cannot change the interface of =
+the C Library.<br><br>Do you have any idea, how to solve this problem ?<br>=
+<br>Maybe define va_list as an parameter and split the elements in the impl=
+ementation of the callback ?<br><br>Thanks for help.
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_1127_24617838.1360709393609--

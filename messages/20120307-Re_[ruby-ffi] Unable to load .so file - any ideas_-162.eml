@@ -1,0 +1,159 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.175.98 with SMTP id bz2csp130485obc;
+        Wed, 7 Mar 2012 04:53:37 -0800 (PST)
+Received: by 10.68.195.99 with SMTP id id3mr3376627pbc.149.1331124817147;
+        Wed, 07 Mar 2012 04:53:37 -0800 (PST)
+Return-Path: <ruby-ffi+bncCIqvzZrJGxDMtN36BBoEhrGoXA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id p7si1053128pbk.44.2012.03.07.04.53.36
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 07 Mar 2012 04:53:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIqvzZrJGxDMtN36BBoEhrGoXA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIqvzZrJGxDMtN36BBoEhrGoXA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCIqvzZrJGxDMtN36BBoEhrGoXA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by dadz9 with SMTP id z9sf9192017dad.7
+        for <headius@headius.com>; Wed, 07 Mar 2012 04:53:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=S4SXlfTz0zgUgKhHB7DOS+++sOFqTCNYfp4AuJ4khK0=;
+        b=Lb6uI+mfCAf5+qM9dq+pahaVuPmsHFDWVZHIJ/vtBA8IYtbhbu3J3D7l3Hdn4eGVJN
+         dWbQriNaq4YbskZLiz2AD6Dr9UPGnL2jF+BI27eBYWmmzjYvvePcd6tFf/hVpfswM/x8
+         VYGC0aFBDN4Wl15erzFCVhvcUZ3i84SDTYYTo=
+Received: by 10.224.176.12 with SMTP id bc12mr363228qab.15.1331124812372;
+        Wed, 07 Mar 2012 04:53:32 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.69.89 with SMTP id y25ls2119747qci.8.gmail; Wed, 07 Mar
+ 2012 04:53:31 -0800 (PST)
+Received: by 10.236.156.73 with SMTP id l49mr141279yhk.15.1331124811057;
+        Wed, 07 Mar 2012 04:53:31 -0800 (PST)
+Date: Wed, 7 Mar 2012 04:53:30 -0800 (PST)
+From: Tony Summerville <tsummerville@rarestep.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <24362704.848.1331124810597.JavaMail.geo-discussion-forums@ynkz21>
+In-Reply-To: <E0D5E8F9-6147-4E3F-9DD8-C0A921453A36@mac.com>
+References: <14072510.211.1331046642686.JavaMail.geo-discussion-forums@ynlr19>
+ <E0D5E8F9-6147-4E3F-9DD8-C0A921453A36@mac.com>
+Subject: Re: [ruby-ffi] Unable to load .so file - any ideas?
+MIME-Version: 1.0
+X-Original-Sender: tsummerville@rarestep.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ tsummerville@rarestep.com designates internal as permitted sender)
+ smtp.mail=tsummerville@rarestep.com; dkim=pass
+ header.i=@rarestep.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_847_502559.1331124810596"
+X-Gm-Message-State: ALoCoQkdce27cy1bkuJRF/VhtMJ0Wt7AIejVzRjR6wHEmtnqUPH5dznM0/YoykqPJ5Jhh3rjGUNl
+
+------=_Part_847_502559.1331124810596
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Thanks for your answer. That does appear to be the problem as the .so file 
+was compiled for a different flavor of Linux I've come to find out...
+
+Thanks again!
+
+On Tuesday, March 6, 2012 2:39:41 PM UTC-6, cremes wrote:
+>
+>
+> On Mar 6, 2012, at 9:10 AM, Tony Summerville wrote:
+>
+> > I'd really appreciate any help or thoughts on this issue.
+> > 
+> > I'm trying to wrap a simple shared library in a Ruby Gem. The .so file 
+> was precompiled by a 3rd-party vendor and I don't have access to the C 
+> source files.
+> > 
+> > I've installed FFI gem v1.0.11 and am able to get the basic "getpid" 
+> example working perfectly, but when I try to load the .so file I get the 
+> following error:
+> > 
+> > ruby-1.9.2-p180 :001 > require "prova-vhm-raw2xml"
+> > LoadError: Could not open library 
+> '/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so': 
+> dlopen(/Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so, 
+> 5): no suitable image found.  Did find:
+> > 
+>         /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so: 
+> unknown file type, first eight bytes: 0x7F 0x45 0x4C 0x46 0x02 0x01 0x01 
+> 0x00
+> > 
+>
+> > Other potentially relevant notes:
+> > - I'm on Mac OSX with 64 bit processor
+> > - The libZVLParser64.so was compiled for 64 bit architecture
+> > 
+> > Anything obvious that I'm missing? I'm new to FFI and wrapping C libs 
+> with Ruby in general, so I'm just not quite sure what I'm doing wrong. I've 
+> read through all the documentation and looked through the Google Group but 
+> can't figure out what the problem is.
+> > 
+> > Thanks again for any help or insight you can provide!
+>
+>
+> What is the output of:
+>
+>   file 
+> /Users/tsummerville/.rvm/gems/ruby-1.9.2-p180@prova-vhm-raw2xml/gems/prova-vhm-raw2xml-0.1.0/lib/libZVLParser64/libZVLParser64.so
+>
+> It sounds like there is an architecture mismatch, so the output from that 
+> should hopefully shed some light on the problem.
+>
+> cr
+>
+>
+------=_Part_847_502559.1331124810596
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Thanks for your answer. That does appear to be the problem as the .so file =
+was compiled for a different flavor of Linux I've come to find out...<div><=
+br></div><div>Thanks again!<br><br>On Tuesday, March 6, 2012 2:39:41 PM UTC=
+-6, cremes wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margi=
+n-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>On Mar 6,=
+ 2012, at 9:10 AM, Tony Summerville wrote:<p>&gt; I'd really appreciate any=
+ help or thoughts on this issue.<br>&gt; <br>&gt; I'm trying to wrap a simp=
+le shared library in a Ruby Gem. The .so file was precompiled by a 3rd-part=
+y vendor and I don't have access to the C source files.<br>&gt; <br>&gt; I'=
+ve installed FFI gem v1.0.11 and am able to get the basic "getpid" example =
+working perfectly, but when I try to load the .so file I get the following =
+error:<br>&gt; <br>&gt; ruby-1.9.2-p180 :001 &gt; require "prova-vhm-raw2xm=
+l"<br>&gt; LoadError: Could not open library '/Users/tsummerville/.rvm/<wbr=
+>gems/ruby-1.9.2-p180@prova-<wbr>vhm-raw2xml/gems/prova-vhm-<wbr>raw2xml-0.=
+1.0/lib/<wbr>libZVLParser64/libZVLParser64.<wbr>so': dlopen(/Users/tsummerv=
+ille/.<wbr>rvm/gems/ruby-1.9.2-p180@<wbr>prova-vhm-raw2xml/gems/prova-<wbr>=
+vhm-raw2xml-0.1.0/lib/<wbr>libZVLParser64/libZVLParser64.<wbr>so, 5): no su=
+itable image found. &nbsp;Did find:<br>&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;/Users/tsummerville/.<wbr>rvm/gems/ruby-1.9.2-p180@<wbr>pr=
+ova-vhm-raw2xml/gems/prova-<wbr>vhm-raw2xml-0.1.0/lib/<wbr>libZVLParser64/l=
+ibZVLParser64.<wbr>so: unknown file type, first eight bytes: 0x7F 0x45 0x4C=
+ 0x46 0x02 0x01 0x01 0x00<br>&gt; </p><p>&gt; Other potentially relevant no=
+tes:<br>&gt; - I'm on Mac OSX with 64 bit processor<br>&gt; - The libZVLPar=
+ser64.so was compiled for 64 bit architecture<br>&gt; <br>&gt; Anything obv=
+ious that I'm missing? I'm new to FFI and wrapping C libs with Ruby in gene=
+ral, so I'm just not quite sure what I'm doing wrong. I've read through all=
+ the documentation and looked through the Google Group but can't figure out=
+ what the problem is.<br>&gt; <br>&gt; Thanks again for any help or insight=
+ you can provide!</p><p><br>What is the output of:</p><p>&nbsp; file /Users=
+/tsummerville/.rvm/gems/<wbr>ruby-1.9.2-p180@prova-vhm-<wbr>raw2xml/gems/pr=
+ova-vhm-<wbr>raw2xml-0.1.0/lib/<wbr>libZVLParser64/libZVLParser64.<wbr>so</=
+p><p>It sounds like there is an architecture mismatch, so the output from t=
+hat should hopefully shed some light on the problem.</p><p>cr</p><p></p><p>=
+</p><p></p><p></p><p></p><p></p><p></p></blockquote></div>
+------=_Part_847_502559.1331124810596--

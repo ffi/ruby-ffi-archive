@@ -1,0 +1,48 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] ffi 0.6.0 and Windows (was: is the 0.6.0 gem ready to  release?)</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] ffi 0.6.0 and Windows (was: is the 0.6.0 gem ready to  release?)</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/8/10 4:52 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On 8 February 2010 18:43, Luis Lavena <a class="moz-txt-link-rfc2396E" href="mailto:luislavena@gmail.com">&lt;luislavena@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Seems 0.6.0 got released anyway.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I was unable to compile or locally check if these gems worked properly
+<span class="moz-txt-citetags">&gt; </span>on MinGW and VC6 builds of Ruby on Windows.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Wayne: there was an issue with Windows native versions? Checking with gem list:
+</pre></blockquote><pre wrap>
+
+The only issue was that I ran out of time yesterday morning to sort
+out the windows builds (my macports is busted somewhere), but I wanted
+to release the 0.6.0 gem for linux/MacOS, because there are bugs
+piling up about ruby-ffi not building correctly on those platforms.
+
+And I figured that it would still work with the devkit on windows.  I
+forgot to factor in the upgrade to libffi-3.0.9 breaking something.
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Trying to install the "ruby" version and trigger the compile process
+<span class="moz-txt-citetags">&gt; </span>failed on a sed segmentation fault (used to compile libffi)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>If you don't mind, I would like to take a stab and rearrange libffi
+<span class="moz-txt-citetags">&gt; </span>and ffi build directories to make it work on Windows while keep it
+<span class="moz-txt-citetags">&gt; </span>working under OSX/Linux.
+</pre></blockquote><pre wrap>
+
+I've added you to the ffi repo as a collaborator, so take a stab at it
+if you want.  Vladimir Sizikov might also be interested (he did the
+win32 &amp; win64 work for jffi, so he has experience there).
+
+Before you do, check out the latest libffi from
+<a class="moz-txt-link-freetext" href="http://github.com/atgreen/libffi">http://github.com/atgreen/libffi</a> - it appears there has been work on
+msvc compilation there - all after the libffi-3.0.9 release, so it
+isn't in ruby-ffi, but it might be worth updating to it.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,83 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs109946faj;
+        Thu, 11 Nov 2010 21:25:15 -0800 (PST)
+Received: by 10.90.105.3 with SMTP id d3mr2645816agc.142.1289539512911;
+        Thu, 11 Nov 2010 21:25:12 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLjW6djlEBC2n_PmBBoEI0qQXA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTP id l9si3536716yhl.91.2010.11.11.21.25.11;
+        Thu, 11 Nov 2010 21:25:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLjW6djlEBC2n_PmBBoEI0qQXA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLjW6djlEBC2n_PmBBoEI0qQXA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCLjW6djlEBC2n_PmBBoEI0qQXA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk5 with SMTP id 5sf594030pzk.7
+        for <headius@headius.com>; Thu, 11 Nov 2010 21:25:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:x-ip:user-agent:x-http-useragent:message-id
+         :subject:from:to:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=525Ms9y8XVHPCDfYU1n1cD1/6jt35QjvGTZ+lcEc5H0=;
+        b=Ydn3kIxf6Yez5ADvYqY1hiefkprJLkmo0Jh+JdBuAD3VPlrX1uwMMV2uSgbFL8fpCE
+         38BJr3jheGCul1oJLQmXG/UNEzfgufib7Sib1fh6B8rfj9/XlAcwgingsz10Rj7qeySB
+         wRUR8tVmXbhWB3kAm3hqBBLdMSEHDIqlr5WGg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=W463QqZ46UlKZrw088NkSR6tNBmMWKdCN99QEC3WO8bOn4qjv7biZcSE2gfcvmtds4
+         UgX5XJRcSvscrcz2I/aLxSlhRo09IFg+I+oGAuaUJdiyN41BeAOI+BmOw4zC4th7sb+s
+         Wj/+odkhpnMVeI5f7nDANVC2EL/DfkmmgccNY=
+Received: by 10.142.152.27 with SMTP id z27mr93969wfd.33.1289539510182;
+        Thu, 11 Nov 2010 21:25:10 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.142.78.15 with SMTP id a15ls3652333wfb.2.p; Thu, 11 Nov 2010
+ 21:25:09 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.142.196.9 with SMTP id t9mr96599wff.67.1289539509368; Thu, 11
+ Nov 2010 21:25:09 -0800 (PST)
+Received: by u25g2000pra.googlegroups.com with HTTP; Thu, 11 Nov 2010 21:25:09
+ -0800 (PST)
+Date: Thu, 11 Nov 2010 21:25:09 -0800 (PST)
+X-IP: 76.87.42.32
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5,gzip(gfe)
+Message-ID: <3c238cf2-a6e6-48fd-99f5-2fc686518e48@u25g2000pra.googlegroups.com>
+Subject: [ruby-ffi] Null Pointer Issue?  Am I Racing with the Garbage Collector?
+From: Scott Gonyea <gonyea@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: gonyea@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+https://gist.github.com/673753
+
+That will show you the script I'm running, the gdb backtrace, and ruby-
+prof (if that helps at all).  I basically was benchmarking my library
+with the one I started branching from.  It's all good, until I start
+running a whole lot of iterations.  I made some changes, which seems
+to have made it less frequent... until I up the number of iterations.
+
+https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c2337b1adff21d00#comments
+
+That was the one fix.  This GSolr junk of mine uses StreamlyFFI and
+CurlFFI:
+
+StreamlyFFI: https://github.com/aitrus/streamly_ffi
+CurlFFI: https://github.com/aitrus/curl_ffi
+
+Scott

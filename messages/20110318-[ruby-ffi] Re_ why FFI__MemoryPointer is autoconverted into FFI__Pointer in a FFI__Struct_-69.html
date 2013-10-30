@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/18/11 4:05 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><div><br></div>When in doubt, manage the memory yourself.<div><br></div><div>e.g. use the ffi-libc gem (https://github.com/postmodern/ffi-libc) , and then use FFI::LibC.malloc() to allocate the memory, and FFI::LibC.free() to release it when the memory is no longer needed.</div><div><br></div><div>Or, as chuck says, use attach_function to map in malloc and free yourself.</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

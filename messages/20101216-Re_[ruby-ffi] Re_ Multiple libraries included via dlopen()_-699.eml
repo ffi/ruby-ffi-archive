@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.216.232.164 with SMTP id n36cs83269weq;
+        Thu, 16 Dec 2010 15:38:25 -0800 (PST)
+Received: by 10.224.2.200 with SMTP id 8mr90696qak.203.1292542704352;
+        Thu, 16 Dec 2010 15:38:24 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDuxaroBBoECZEPlw@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTP id u29si1255606qcp.167.2010.12.16.15.38.22;
+        Thu, 16 Dec 2010 15:38:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDuxaroBBoECZEPlw@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDuxaroBBoECZEPlw@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDuxaroBBoECZEPlw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws4 with SMTP id 4sf33583vws.7
+        for <headius@headius.com>; Thu, 16 Dec 2010 15:38:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=R+n3nW4lcYVXkOb+dFQkxkdvwoEjLVgXwV/XycinhkY=;
+        b=zs4wNByoKGxL/sUgw2WTDopGyVeHyKYi6AGEeCHchT04V6iurZtL7vhnN9wrljEFXQ
+         vCiyauKj36Gbhx5mQ5Gis6TieqX0NcOSX8jss/jIHIyZ9HrT7M7aubMnJIkT1N4+K1vt
+         OxhnnmHec3izEf1xAMm3BTtoxrnHudMPp5Bt0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=zQRJJN9fmg2g6JOjdFQSFDAGt1dc0hR/rKtfGmxl83uDfDLv/4T5FMLgeu3NyvuM+l
+         CkZd5ZMYOWjCGnZRVa9srxOIFXheP113G/zJwx9k5tJnJXE7QdDqkr1OGPcGTjhDaTei
+         bFnz4plWmTkoIa+1oh2hnbc7nXFd17k3JKYKs=
+Received: by 10.220.193.72 with SMTP id dt8mr864vcb.45.1292542702298;
+        Thu, 16 Dec 2010 15:38:22 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.64.95 with SMTP id d31ls284193vci.3.p; Thu, 16 Dec 2010
+ 15:38:21 -0800 (PST)
+Received: by 10.220.171.20 with SMTP id f20mr39457vcz.23.1292542701592;
+        Thu, 16 Dec 2010 15:38:21 -0800 (PST)
+Received: by 10.220.171.20 with SMTP id f20mr39456vcz.23.1292542701573;
+        Thu, 16 Dec 2010 15:38:21 -0800 (PST)
+Received: from mail-qy0-f172.google.com (mail-qy0-f172.google.com [209.85.216.172])
+        by gmr-mx.google.com with ESMTP id d14si42957vbv.1.2010.12.16.15.38.20;
+        Thu, 16 Dec 2010 15:38:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.172 as permitted sender) client-ip=209.85.216.172;
+Received: by mail-qy0-f172.google.com with SMTP id 34so918685qyk.3
+        for <ruby-ffi@googlegroups.com>; Thu, 16 Dec 2010 15:38:20 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.224.67 with SMTP id in3mr122950qcb.246.1292542700402; Thu,
+ 16 Dec 2010 15:38:20 -0800 (PST)
+Received: by 10.229.241.211 with HTTP; Thu, 16 Dec 2010 15:38:20 -0800 (PST)
+In-Reply-To: <55bffc22-64df-4ddd-87cc-52ec62083369@29g2000yqq.googlegroups.com>
+References: <22182623.107.1292526062588.JavaMail.geo-discussion-forums@vbyc22>
+	<55bffc22-64df-4ddd-87cc-52ec62083369@29g2000yqq.googlegroups.com>
+Date: Fri, 17 Dec 2010 09:38:20 +1000
+Message-ID: <AANLkTikGuHgcE1pvg9pes_mvuvayYpFUBgCmUcrYV4au@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Multiple libraries included via dlopen()?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.172 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On 17 December 2010 09:07, mjmac <mjmac42@gmail.com> wrote:
+
+>
+> So, it looks like the attach_function finds the symbol in libslurm.so
+> OK, but this doesn't help with loading auth_munge.so. =A0Is this a
+> namespace problem of some sort? =A0I'm shaky on the details of what's
+> going on at this level, so I could be on the wrong track.
+
+Try specifying the library flags before calling ffi_lib
+e.g.
+
+  ffi_lib_flags :global, :lazy
+  ffi_lib 'slurm'
+
+By default, FFI loads libraries as :lazy, :local so symbols are not
+exported into the global namespace.

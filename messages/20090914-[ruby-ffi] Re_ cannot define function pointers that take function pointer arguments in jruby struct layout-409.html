@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: cannot define function pointers that take function pointer arguments in jruby struct layout</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: cannot define function pointers that take function pointer arguments in jruby struct layout</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Andrea Fazzi <andrea.fazzi@alcacoop.it></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>9/14/09 5:34 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-unicode"><pre wrap>
+
+Excerpts from Aman Gupta's message of lun set 14 22:23:08 +0200 2009:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>JRuby supports it, just doesn't recognize the callback if its defined
+<span class="moz-txt-citetags">&gt; </span>before the struct the way ffi-swig-generator does it. The issue is in
+<span class="moz-txt-citetags">&gt; </span>FFI::Struct#find_type, but I got very confused trying to fix it.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>If I nest the callback definition inline, it works as expected:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>  class MyStruct &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>    layout(
+<span class="moz-txt-citetags">&gt; </span>      :member, callback([ callback([ :pointer ], :void) ], :void)
+<span class="moz-txt-citetags">&gt; </span>    )
+<span class="moz-txt-citetags">&gt; </span>  end
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+I guess that Ruby-FFI and JRuby should expose the same behaviour in cases 
+like these. Wayne, should we fire a JIRA ticket?
+
+<div class="moz-txt-sig">-- 
+Andrea Fazzi @ alca.le.it
+Follow me on <a class="moz-txt-link-freetext" href="http://twitter.com/remogatto">http://twitter.com/remogatto</a>
+</div></pre></div></body>
+</html>
+</table></div>

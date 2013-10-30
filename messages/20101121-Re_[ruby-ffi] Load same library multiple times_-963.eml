@@ -1,0 +1,175 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs40084faj;
+        Sun, 21 Nov 2010 16:53:53 -0800 (PST)
+Received: by 10.100.247.17 with SMTP id u17mr3539770anh.197.1290387232123;
+        Sun, 21 Nov 2010 16:53:52 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMHsmJT3EhCc_qbnBBoE-72Vuw@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id a26si10140506ana.129.2010.11.21.16.53.49;
+        Sun, 21 Nov 2010 16:53:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMHsmJT3EhCc_qbnBBoE-72Vuw@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMHsmJT3EhCc_qbnBBoE-72Vuw@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCMHsmJT3EhCc_qbnBBoE-72Vuw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb19 with SMTP id 19sf3319590gwb.7
+        for <headius@headius.com>; Sun, 21 Nov 2010 16:53:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=mGOmlootxSEeRX7gtcQCqoc0kaWaykhkpm9W153t0FI=;
+        b=Jy5BqZsg/be3vL8l+W55cLz9FHD4ZO6W+4Cn/F1o6FGfqbbyTLgfxO5e7kg5IDmUxJ
+         GDsBhW6/4X80bcJ453we39jt/yIbweeZZ6k41t8BZjfb83T8d65GqpJK4KusjDqAQfeD
+         /fyTNxd/J7GsQhexWgiUuU0OgIillYFWDiKSw=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=fFNib7aztguWUPV+lCv6+fs9P2b5/eyT143r8wChtmG0upJ3q6ykJEvHLJMfzhQvJi
+         tAJyVM/CLh5lopOurpoW2DpOeIkycKdSsqcD3f170aDPvaV5Kaa+oqAxhd3tfWe+1Dnf
+         w1Gzo9njImRce4xhLQ1f/4jBfSde56wPEPTBk=
+Received: by 10.151.63.12 with SMTP id q12mr467199ybk.43.1290387228777;
+        Sun, 21 Nov 2010 16:53:48 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.231.76.165 with SMTP id c37ls1358116ibk.3.p; Sun, 21 Nov 2010
+ 16:53:47 -0800 (PST)
+Received: by 10.231.10.198 with SMTP id q6mr2548113ibq.3.1290387227071;
+        Sun, 21 Nov 2010 16:53:47 -0800 (PST)
+Received: by 10.231.10.198 with SMTP id q6mr2548108ibq.3.1290387226702;
+        Sun, 21 Nov 2010 16:53:46 -0800 (PST)
+Received: from mail-iw0-f171.google.com (mail-iw0-f171.google.com [209.85.214.171])
+        by gmr-mx.google.com with ESMTP id bm7si1764356ibb.6.2010.11.21.16.53.45;
+        Sun, 21 Nov 2010 16:53:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of kim.toms@gmail.com designates 209.85.214.171 as permitted sender) client-ip=209.85.214.171;
+Received: by mail-iw0-f171.google.com with SMTP id 42so6147117iwn.16
+        for <ruby-ffi@googlegroups.com>; Sun, 21 Nov 2010 16:53:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.231.176.79 with SMTP id bd15mr6097849ibb.114.1290387225582;
+ Sun, 21 Nov 2010 16:53:45 -0800 (PST)
+Received: by 10.42.173.131 with HTTP; Sun, 21 Nov 2010 16:53:45 -0800 (PST)
+In-Reply-To: <34B66746-DD97-4FB8-BEBF-433D96227691@mac.com>
+References: <162bae32-81fe-4be0-aeb9-b1e4f69c8c7c@t35g2000yqj.googlegroups.com>
+	<34B66746-DD97-4FB8-BEBF-433D96227691@mac.com>
+Date: Sun, 21 Nov 2010 19:53:45 -0500
+Message-ID: <AANLkTimxD+MzGvSGxL4fepZY5nnuhbHJxX_6app2xe07@mail.gmail.com>
+Subject: Re: [ruby-ffi] Load same library multiple times?
+From: Kim Toms <kim.toms@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: kim.toms@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of kim.toms@gmail.com designates 209.85.214.171 as permitted sender)
+ smtp.mail=kim.toms@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0014853d202c341e36049599b0b5
+
+--0014853d202c341e36049599b0b5
+Content-Type: text/plain; charset=ISO-8859-1
+
+The application I'm using this for is simulating a small system (embedded
+CPU) which just happens to be in C.  The nodes are connected together with
+radios (think Crossbow or Dust Systems), and I'd like to simulate a network
+of them, while letting the Ruby code record the radio traffic to a database
+for later analysis.  When they make a call to their "Send a radio message"
+routine, I just catch that in the Ruby and then deliver it to whatever nodes
+are "close enough" to hear it.  I think I can make it work using the FFI and
+call-backs.  I've found that I can use the library approach if I make a
+discrete copy of the library for each node; each will get mapped into the
+space independently.  The global variables don't clash because all the
+linking is done at runtime; I'm not sure exactly how it works, but it
+appears that the global vars are not added to the processes global vars, at
+least as far as I can tell.
+
+My other choice would be to use something like DRB to make it possible to
+run the many processes.
+
+On Sat, Nov 20, 2010 at 5:01 PM, Chuck Remes <cremes.devlist@mac.com> wrote:
+
+>
+> On Nov 20, 2010, at 10:04 AM, Kim.Toms wrote:
+>
+> > I'd like to load the same library multiple times, so that the global
+> > variables in my C program are complete separate.  This would allow me
+> > to run multiple simulations of objects that arre connected.  The
+> > objects are all communicating with each other, and I'd like to track
+> > the communication.  I've posted a simple example in the issues at
+> > https://github.com/ffi/ffi/issues/#issue/65
+>
+> I don't think this is possible. When you load a library, it is mapped into
+> the same address space as the interpreter (MRI, JRuby, Rubinius, etc.). If
+> your library is using global variables in a global namespace, then it isn't
+> re-entrant either.
+>
+> I recommend modifying the library so it is re-entrant. Then you can load
+> the library *once* but call into it from multiple threads safely.
+>
+> cr
+>
+>
+
+--0014853d202c341e36049599b0b5
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+The application I&#39;m using this for is simulating a small system (embedd=
+ed CPU) which just happens to be in C. =A0The nodes are connected together =
+with radios (think Crossbow or Dust Systems), and I&#39;d like to simulate =
+a network of them, while letting the Ruby code record the radio traffic to =
+a database for later analysis. =A0When they make a call to their &quot;Send=
+ a radio message&quot; routine, I just catch that in the Ruby and then deli=
+ver it to whatever nodes are &quot;close enough&quot; to hear it. =A0I thin=
+k I can make it work using the FFI and call-backs. =A0I&#39;ve found that I=
+ can use the library approach if I make a discrete copy of the library for =
+each node; each will get mapped into the space independently. =A0The global=
+ variables don&#39;t clash because all the linking is done at runtime; I&#3=
+9;m not sure exactly how it works, but it appears that the global vars are =
+not added to the processes global vars, at least as far as I can tell.<div>
+<br></div><div>My other choice would be to use something like DRB to make i=
+t possible to run the many processes.<br><br><div class=3D"gmail_quote">On =
+Sat, Nov 20, 2010 at 5:01 PM, Chuck Remes <span dir=3D"ltr">&lt;<a href=3D"=
+mailto:cremes.devlist@mac.com">cremes.devlist@mac.com</a>&gt;</span> wrote:=
+<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;"><div><div></div><div class=3D"h5"><br>
+On Nov 20, 2010, at 10:04 AM, Kim.Toms wrote:<br>
+<br>
+&gt; I&#39;d like to load the same library multiple times, so that the glob=
+al<br>
+&gt; variables in my C program are complete separate. =A0This would allow m=
+e<br>
+&gt; to run multiple simulations of objects that arre connected. =A0The<br>
+&gt; objects are all communicating with each other, and I&#39;d like to tra=
+ck<br>
+&gt; the communication. =A0I&#39;ve posted a simple example in the issues a=
+t<br>
+&gt; <a href=3D"https://github.com/ffi/ffi/issues/#issue/65" target=3D"_bla=
+nk">https://github.com/ffi/ffi/issues/#issue/65</a><br>
+<br>
+</div></div>I don&#39;t think this is possible. When you load a library, it=
+ is mapped into the same address space as the interpreter (MRI, JRuby, Rubi=
+nius, etc.). If your library is using global variables in a global namespac=
+e, then it isn&#39;t re-entrant either.<br>
+
+<br>
+I recommend modifying the library so it is re-entrant. Then you can load th=
+e library *once* but call into it from multiple threads safely.<br>
+<font color=3D"#888888"><br>
+cr<br>
+<br>
+</font></blockquote></div><br></div>
+
+--0014853d202c341e36049599b0b5--

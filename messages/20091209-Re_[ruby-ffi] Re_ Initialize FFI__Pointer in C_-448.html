@@ -1,0 +1,131 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Initialize FFI::Pointer in C?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Initialize FFI::Pointer in C?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 2:29 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You can setup that callback all from ruby.
+
+module Foo
+  callback :my_callback, [ :pointer ], :int
+  attach_function :DefineFunction, [ :string, :char, :my_callback, :string ]
+end
+
+
+Then you set it up like so:
+
+cb = Proc.new do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>p<span class="moz-txt-tag">|</span></code>
+   # Do whatever you want to do in the callback here
+   puts "pointer=#{p.inspect}"
+   # return zero to C code
+   0
+end
+
+Foo.DefineFunction("ruby-callback, "d".ord, cb, "RubyCallback")
+
+You need to stash the 'cb' reference somewhere so it does not get
+garbage collected until the callback is no longer needed, but that is
+all the setup you should need to do to use that api from FFI.
+
+
+2009/12/10 Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chiang@gmail.com">&lt;simon.a.chiang@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>The problem is that I need to register the C function with a codebase
+<span class="moz-txt-citetags">&gt; </span>I don't control.  I need to call a function like this in C:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> int RubyCallback(void *thing) {...}
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> DefineFunction("ruby-callback", 'd', (int (*)(void)) RubyCallback,
+<span class="moz-txt-citetags">&gt; </span>"RubyCallback");
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The leading inputs are not important for the example but if you look
+<span class="moz-txt-citetags">&gt; </span>at the latter arguments you can see I need both a pointer to the
+<span class="moz-txt-citetags">&gt; </span>callback function and the name of the function.  I think the FFI
+<span class="moz-txt-citetags">&gt; </span>callback provides a function pointer but not a name, right?  Is there
+<span class="moz-txt-citetags">&gt; </span>a way I can name the callback?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I'm ok with manually maintaining my calls to the C api.  Do you have
+<span class="moz-txt-citetags">&gt; </span>suggestions about how I can use it in this context? Thanks.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>==== FYI
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>This is the signature of the DefineFunction method.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> int      DefineFunction(functionName,functionType,
+<span class="moz-txt-citetags">&gt; </span>functionPointer,actualFunctionName);
+<span class="moz-txt-citetags">&gt; </span> char    *functionName, functionType, *actualFunctionName;
+<span class="moz-txt-citetags">&gt; </span> int    (*functionPointer)();
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>And if it helps, the version of the passing OS X is 10.5.8.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Dec 9, 12:04 am, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Really, don't use the C api - it will break at some point, since it is
+<span class="moz-txt-citetags">&gt;&gt; </span>not intended in any way to be a public api.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Use a FFI callback to call from C to ruby.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span><a class="moz-txt-link-freetext" href="http://wiki.github.com/ffi/ffi/exampleshas">http://wiki.github.com/ffi/ffi/exampleshas</a> a callback example, as
+<span class="moz-txt-citetags">&gt;&gt; </span>doeshttp://wiki.github.com/ffi/ffi/windows-examples
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>2009/12/9 Simon Chiang <a class="moz-txt-link-rfc2396E" href="mailto:simon.a.chi...@gmail.com">&lt;simon.a.chi...@gmail.com&gt;</a>:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>I'm building a callback to ruby from an extension and I would like to
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>pass back pointers much like an attached function that returns
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>a :pointer.  Basically something like this:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> int RubyCallback(void *thing)
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> {
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   VALUE ffi_pointer = rbffi_Pointer_NewInstance(thing);
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   VALUE ruby_module = rb_const_get(rb_cObject, rb_intern
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>("SomeModule"));
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   VALUE ruby_result = rb_funcall(ruby_module, rb_intern("callback"),
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>1, ffi_pointer);
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   long result = FIX2INT(ruby_result);
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   return(result);
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> }
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>And then in ruby:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> module SomeModule
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   module_function
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   def callback(ptr)
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>      ptr.inspect         # =&gt; shows this to be an FFI::Pointer
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>   end
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span> end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>A method like this works on OS X with ffi-0.5.0 (pre snow-lepoard,
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>I'll get the version if necessary) but results in a segfault on snow
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>leopard 10.6.2.  The segfault is triggered upon inspect.  I don't know
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>how FFI works... I really only got this working by taking a guess at
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>what rbffi_Pointer_NewInstance does.  Any ideas what's going wrong on
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>10.6.2 and/or how I can do this better?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

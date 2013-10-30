@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.5.7 with SMTP id 7cs74090ane;
+        Mon, 1 Feb 2010 06:35:15 -0800 (PST)
+Received: by 10.101.168.27 with SMTP id v27mr5407154ano.45.1265034915356;
+        Mon, 01 Feb 2010 06:35:15 -0800 (PST)
+Return-Path: <3oeZmSwoJCDofkj.bknqiociWeh.YkinqXu-bbeckkchacnkqlo.Yki@groups.bounces.google.com>
+Received: from mail-yx0-f170.google.com (mail-yx0-f170.google.com [209.85.210.170])
+        by mx.google.com with ESMTP id 36si9582642ywh.120.2010.02.01.06.35.14;
+        Mon, 01 Feb 2010 06:35:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3oeZmSwoJCDofkj.bknqiociWeh.YkinqXu-bbeckkchacnkqlo.Yki@groups.bounces.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3oeZmSwoJCDofkj.bknqiociWeh.YkinqXu-bbeckkchacnkqlo.Yki@groups.bounces.google.com designates 209.85.210.170 as permitted sender) smtp.mail=3oeZmSwoJCDofkj.bknqiociWeh.YkinqXu-bbeckkchacnkqlo.Yki@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe42 with SMTP id 42sf2650779yxe.22
+        for <headius@headius.com>; Mon, 01 Feb 2010 06:35:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:received:date:from:to
+         :subject:message-id:in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=uhS2ylBUvfqMvQ4WWbioplaIm5XzTTwKlDMAwqucpe4=;
+        b=3YyTAM6ZZyrOo8HvPxTH5NY0OiFZOgBbaUPaumH1/zpa1YETgLHTliKtL7zsEJn7ex
+         X8hlFuS1mAmBO7NVIuBirg9W7NWwkf1fs42r203Dg0kA41rgnJs0LsyDfmeiO/dkDLuW
+         pHC8UZochuJJz6zmPaPY9TcGa0iu5uXcaITDk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        b=vb/2Z/+ltO5LhaNG8MMLoTpxxvohvFwCxX2dL9mgvC8/0dUu9rwcCMA8zcyg+UxWLW
+         KcYHE5Z6WKR3AZe5hBdWfrOjLvDQNRm4ZS9FnKxHngj+MjtDTbfstGG7ZWcnfZFtva9j
+         0FB7COm/rJjJ4b0uN6XZ2qhLQLubJPoI4uU9g=
+Received: by 10.100.211.1 with SMTP id j1mr331803ang.56.1265034913008;
+        Mon, 01 Feb 2010 06:35:13 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.101.200.17 with SMTP id c17ls2174013anq.2.p; Mon, 01 Feb 2010 
+	06:35:12 -0800 (PST)
+Received: by 10.101.136.35 with SMTP id o35mr3943138ann.0.1265034912113;
+        Mon, 01 Feb 2010 06:35:12 -0800 (PST)
+Received: by 10.101.136.35 with SMTP id o35mr3943137ann.0.1265034912093;
+        Mon, 01 Feb 2010 06:35:12 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-yw0-f171.google.com (mail-yw0-f171.google.com [209.85.211.171])
+        by gmr-mx.google.com with ESMTP id 18si512940yxe.12.2010.02.01.06.35.11;
+        Mon, 01 Feb 2010 06:35:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.211.171 as permitted sender) client-ip=209.85.211.171;
+Received: by mail-yw0-f171.google.com with SMTP id 1so2757441ywh.18
+        for <ruby-ffi@googlegroups.com>; Mon, 01 Feb 2010 06:35:11 -0800 (PST)
+Received: by 10.150.74.21 with SMTP id w21mr6430818yba.61.1265034909054;
+        Mon, 01 Feb 2010 06:35:09 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250])
+        by mx.google.com with ESMTPS id 23sm5530933iwn.11.2010.02.01.06.35.05
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Mon, 01 Feb 2010 06:35:07 -0800 (PST)
+Date: Mon, 1 Feb 2010 09:34:59 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] Re: Other compilers?
+Message-Id: <20100201093459.d06c4de9.jon.forums@gmail.com>
+In-Reply-To: <71166b3b1001311159g23610f2ds3e8201954c9bbd0f@mail.gmail.com>
+References: <d1d846ab-3511-48e8-89b1-1b52aa69c472@m16g2000yqc.googlegroups.com>
+	<4ccee321001241606u3ba21b65x127fdcc3bdaccf2e@mail.gmail.com>
+	<ab94f1ed-c615-401a-b186-423e971510bc@p13g2000pre.googlegroups.com>
+	<71166b3b1001280912l1e3705fbua1348401f8077377@mail.gmail.com>
+	<d463748a-51c7-4ff2-a4cd-796709ec2c83@e19g2000prn.googlegroups.com>
+	<6650eb11-6418-432d-9dee-106417b82455@22g2000yqr.googlegroups.com>
+	<71166b3b1001311159g23610f2ds3e8201954c9bbd0f@mail.gmail.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of jon.forums@gmail.com designates 209.85.211.171 as permitted sender) 
+	smtp.mail=jon.forums@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: jon.forums@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f3980eb9fc5849a8
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/a3019253db054f3d
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+
+> On Sat, Jan 30, 2010 at 3:27 PM, Daniel Berger <djberg96@gmail.com> wrote:
+> >
+> > Someone pointed me to this:
+> >
+> > http://industriousone.com/premake
+> >
+> > Anyone tried it?
+> >
+> 
+> Yes, is nice but abstract and can end being complex.
+> 
+> It doesn't support mingw32 cross compiling functionality either from
+> fedora, macports or ubuntu packages, so it requires some tricks to
+> make it generate proper GNU makefiles for those cases.
+> 
+> If your library/dependency chain depends on autoconf, expect
+> reinventing the wheel to create the premake files.
+> 
+
+FWIW, I also keep meaning to check out
+
+http://www.cmake.org/
+
+and the LLVM project has an quickstart page that links to page that tells how to cross compile with cmake
+
+http://www.llvm.org/docs/CMake.html
+
+Anyone tried cmake?
+
+Jon

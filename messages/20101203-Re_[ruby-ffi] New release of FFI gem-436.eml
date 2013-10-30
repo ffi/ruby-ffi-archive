@@ -1,0 +1,98 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs57687faj;
+        Fri, 3 Dec 2010 13:42:15 -0800 (PST)
+Received: by 10.142.246.16 with SMTP id t16mr2584621wfh.307.1291412534030;
+        Fri, 03 Dec 2010 13:42:14 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCzyOXnBBoEVBTJPw@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id r3si4889012qcs.146.2010.12.03.13.42.12
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Fri, 03 Dec 2010 13:42:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCzyOXnBBoEVBTJPw@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCzyOXnBBoEVBTJPw@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCzyOXnBBoEVBTJPw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk12 with SMTP id 12sf22163988qyk.7
+        for <headius@headius.com>; Fri, 03 Dec 2010 13:42:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=i8wG/D2Z/BRAZ7xe7Rk3BVj0SOePJAMaDrwQVOlT2ZU=;
+        b=VLSUtliD276lhZrBNPRTNqXjl2A7ls/FhpAxlmlRka6OSRb1yXMauOu8wr1gPwufxM
+         UQVJi+aCS4O8HJuC6po1YJTvCXsG8nuyzlUti+oebKg4YPdfY1GZ+5z05jgTUqwFFkuN
+         pJxTXLV/YUIAjQx+CuCKnNrS7JLxlapUDvI1w=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=uxeq0ttPhBIthuI3X+HTFzeV7cWgYPThGG2hBSjdLPoddFYezybmwqBIGVgqZ93j5F
+         OSIX5NUr5uLBvQny2C2U2iHX2+QPUMPZKK8ZVldABJ1grRbAZBL9gLTHmrFhZTtbtiwQ
+         /09Og/dUGCj2oewtO3u7qun0oGtD2WRuIxlEk=
+Received: by 10.229.34.72 with SMTP id k8mr320551qcd.2.1291412531915;
+        Fri, 03 Dec 2010 13:42:11 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.69.77 with SMTP id y13ls3521295qci.3.p; Fri, 03 Dec 2010
+ 13:42:11 -0800 (PST)
+Received: by 10.229.239.4 with SMTP id ku4mr288586qcb.5.1291412531382;
+        Fri, 03 Dec 2010 13:42:11 -0800 (PST)
+Received: by 10.229.239.4 with SMTP id ku4mr288585qcb.5.1291412531359;
+        Fri, 03 Dec 2010 13:42:11 -0800 (PST)
+Received: from mail-qy0-f170.google.com (mail-qy0-f170.google.com [209.85.216.170])
+        by gmr-mx.google.com with ESMTP id e24si495172qcg.5.2010.12.03.13.42.10;
+        Fri, 03 Dec 2010 13:42:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.170 as permitted sender) client-ip=209.85.216.170;
+Received: by mail-qy0-f170.google.com with SMTP id 10so1308067qyk.1
+        for <ruby-ffi@googlegroups.com>; Fri, 03 Dec 2010 13:42:10 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.95.81 with SMTP id c17mr1638059qcn.246.1291412529622; Fri,
+ 03 Dec 2010 13:42:09 -0800 (PST)
+Received: by 10.229.241.211 with HTTP; Fri, 3 Dec 2010 13:42:09 -0800 (PST)
+In-Reply-To: <AANLkTimk_+qqiP2zkx50AfNi+Dr7ggXJ9bXO7+TaVjGo@mail.gmail.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+	<20101130105256.d687602f.jon.forums@gmail.com>
+	<AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+	<20101201123846.5c4724b5.jon.forums@gmail.com>
+	<AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+	<AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+	<AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+	<AANLkTimk_+qqiP2zkx50AfNi+Dr7ggXJ9bXO7+TaVjGo@mail.gmail.com>
+Date: Sat, 4 Dec 2010 07:42:09 +1000
+Message-ID: <AANLkTi=6xXphBTqFEpFxiuv68Ygnqg+h3y=A4V33F3KH@mail.gmail.com>
+Subject: Re: [ruby-ffi] New release of FFI gem
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.170 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 4 December 2010 00:20, Luis Lavena <luislavena@gmail.com> wrote:
+> I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now
+> getting this on the specs:
+>
+> https://gist.github.com/726989
+>
+> The problem is that is looking for strdup and not _strdup, perhaps the
+> problem is libffi?
+
+Thats just a symbol lookup problem.  All the traditional libc symbols
+in msvcrt.dll have an underscore prepended, so that test should have a
+special case for win32 in it.

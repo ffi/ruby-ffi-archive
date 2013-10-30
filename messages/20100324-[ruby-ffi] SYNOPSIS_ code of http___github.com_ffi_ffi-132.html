@@ -1,0 +1,35 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] SYNOPSIS&#39; code of http://github.com/ffi/ffi</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] SYNOPSIS&#39; code of http://github.com/ffi/ffi</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>&quot;KISHIMOTO, Makoto&quot; &lt;ksmakoto@dd.iij4u.or.jp&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/24/10 8:45 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I've tried SYNOPSIS' code of <a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi">http://github.com/ffi/ffi</a> .
+
+#====
+require 'ffi'
+
+module MyLib
+  extend FFI::Library
+  ffi_lib 'c'                              # insert this line
+  attach_function :puts, [ :string ], :int
+end
+
+MyLib.puts 'Hello boys using libc!'
+#====
+
+Without "ffi_lib 'c'", following error occured.
+
+/usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:79:in `ffi_libraries': no library specified (LoadError)
+        from /usr/local/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi/library.rb:106:in `attach_function'
+
+The SYNOPSIS' code correct?
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,134 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.19.234 with SMTP id i10cs37291lae;
+        Sun, 4 Sep 2011 16:24:03 -0700 (PDT)
+Received: by 10.52.28.6 with SMTP id x6mr449412vdg.314.1315178641556;
+        Sun, 04 Sep 2011 16:24:01 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCL2n8aLQBxCLkZDzBBoE0Gi_2Q@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id l3si1245843vcq.187.2011.09.04.16.23.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 04 Sep 2011 16:24:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxCLkZDzBBoE0Gi_2Q@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCL2n8aLQBxCLkZDzBBoE0Gi_2Q@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCL2n8aLQBxCLkZDzBBoE0Gi_2Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyg14 with SMTP id 14sf3304026qyg.7
+        for <headius@headius.com>; Sun, 04 Sep 2011 16:23:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=1ro4bbHvi+AhdSKBKQdZNlqiHHHGMDEm3fksxsW8TjI=;
+        b=g2pyKL9d5HdhMwjYR5YVMPAnX2PD/k8A6PXfutdSf6g/D0jusysIEgyx4PxgNcjwIG
+         VOkEgdtHJcIAcz0A136BIw+ssjPm5bP2eCbxWMKZSvRshsJXr7NaFaZsdD7Xd2/N5Fsg
+         VGWQ6KxL0z5NkUJle9nc54HFgdLCb5AXLYnp0=
+Received: by 10.229.67.69 with SMTP id q5mr283443qci.2.1315178635139;
+        Sun, 04 Sep 2011 16:23:55 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.39.3 with SMTP id d3ls521855qae.7.gmail; Sun, 04 Sep 2011
+ 16:23:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.184.82 with SMTP id cj18mr294545qab.25.1315178634571; Sun,
+ 04 Sep 2011 16:23:54 -0700 (PDT)
+Received: by dl2g2000vbb.googlegroups.com with HTTP; Sun, 4 Sep 2011 16:23:54
+ -0700 (PDT)
+Date: Sun, 4 Sep 2011 16:23:54 -0700 (PDT)
+In-Reply-To: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+References: <bd9bfef8-da0f-4383-b0e5-f41329b4b69a@h9g2000vbr.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.1) Gecko/20100101 Firefox/6.0.1,gzip(gfe)
+Message-ID: <26f6b418-63d8-4ed4-b838-aa50a9ac74c6@dl2g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Re: attach_function a bit draconian
+From: cfis <cfis@savagexi.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: cfis@savagexi.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ cfis@savagexi.com designates internal as permitted sender)
+ smtp.mail=cfis@savagexi.com; dkim=pass
+ header.i=@savagexi.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Thinking about this a bit more, maybe a better approach it to
+explicitly support versions?  Something like:
+
+attach_function(:fancy_new_function, [], :int, :version =3D> '1.1.0')
+
+module FFI
+  module Library
+    def lib_version
+      raise(RuntimeError, "You must implement #lib_version to support
+function versioning")
+    end
+  end
+end
+
+Then modify attach_function to see check the passed in options for a
+version, and if so, compare the specified version against the loaded
+library version (via #lib_version).
+
+The problem with this is FFI supports loading multiple libraries, so
+the approach above is too simplistic since you would have need to
+specify the version of which library in both #lib_version and in
+#attach_fuction.
+
+Charlie
+
+
+On Sep 4, 3:19=A0pm, cfis <c...@savagexi.com> wrote:
+> I've written a ffi wrapper for the free image library, which is here:
+>
+> http://cfis.github.com/free-image-ruby/
+>
+> The problem is that I've coded against the latest version of
+> FreeImage, and most linux distributions have older versions
+> installed. =A0Thus when I try to load the gem it fails since
+> attach_function throws an error because the older versions don't have
+> all the functions.
+>
+> This isn't what I want - the older versions work perfectly fine, they
+> just don't include as much functionality. =A0So instead of blowing up, I
+> would prefer if FFI throw a warning message but continue loading the
+> library.
+>
+> If a user does call one of these unimplemented functions, then FFI
+> should throw an error and allows the wrapping library to customize
+> that message to say something useful (sorry, to use this function you
+> need to upgrade to a newer version of freeimage).
+>
+> I can think of lots of ways of doing this, here is one possibility:
+>
+> * If a function is not implemented, instead of throwing an error, wrap
+> it with a NotImplemented function (to go along with Function and
+> Variadic).
+>
+> * When a NotImplemented function is called, throw an error. =A0This
+> could:
+> =A0 =A0 - Just hard-code an error, not allow customization
+> =A0 =A0 - Call a method on library, not_implemented, that developers coul=
+d
+> override
+> =A0 =A0 - Call a proc which would be passed to attach_function which woul=
+d
+> be called
+>
+> I lean towards the 2nd choice, but don't feel very strongly about it.
+>
+> Does this sound like an idea that could be accepted to FFI? =A0If so,
+> I'll code up a patch for review.
+>
+> Thanks - Charlie

@@ -1,0 +1,113 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.244.3 with SMTP id lo3csp98422ibb;
+        Sun, 3 Jun 2012 15:21:12 -0700 (PDT)
+Received: by 10.224.72.204 with SMTP id n12mr11289454qaj.89.1338762072522;
+        Sun, 03 Jun 2012 15:21:12 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDXxq_-BBoEFjCsMQ@googlegroups.com>
+Received: from mail-qc0-f190.google.com (mail-qc0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id d9si8689281qap.109.2012.06.03.15.21.12
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 03 Jun 2012 15:21:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDXxq_-BBoEFjCsMQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDXxq_-BBoEFjCsMQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDXxq_-BBoEFjCsMQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by qcsr22 with SMTP id r22sf8489515qcs.7
+        for <headius@headius.com>; Sun, 03 Jun 2012 15:21:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=AwgsMxz8B19jIcpU/1+rqnmskE2hRzF8Y80L9tigu4s=;
+        b=aZFwtjKd4Q1pXxNRtD2hSFaEiY46BySDxPXKSUDfqh/ChSHPxF+luOGFsZdQhOaWsr
+         Ko/0HH0ncTIMhxl2qmedsWhC+gLZy/KDL3SUg2UdLl3Qi7cw39gMj7WRjBxpuguA9mih
+         R6ThzkXfGUU3e6CkPHl3eH9pO6F474yfG+7Ec=
+Received: by 10.68.235.37 with SMTP id uj5mr1220254pbc.13.1338762071816;
+        Sun, 03 Jun 2012 15:21:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.222.134 with SMTP id qm6ls3659863pbc.6.gmail; Sun, 03 Jun
+ 2012 15:21:11 -0700 (PDT)
+Received: by 10.68.125.168 with SMTP id mr8mr1693666pbb.1.1338762071640;
+        Sun, 03 Jun 2012 15:21:11 -0700 (PDT)
+Date: Sun, 3 Jun 2012 15:21:10 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <a94e0624-9def-4ea9-8ad6-2b96734b6aa1@googlegroups.com>
+In-Reply-To: <d6534baa-a9b4-40fb-a281-293f51067067@googlegroups.com>
+References: <d6534baa-a9b4-40fb-a281-293f51067067@googlegroups.com>
+Subject: [ruby-ffi] Re: What is the context parameter when defining a custom
+ type with DataConverter?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_54_7259460.1338762070795"
+
+------=_Part_54_7259460.1338762070795
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+Currently it is unused.  The intention was to provide more information to=
+=20
+converters about the context within which the converter was called (e.g.=20
+was it a method parameter, callback parameter, return, struct field=20
+assignment, etc).  But, that never got implemented.
+
+On Monday, June 4, 2012 7:35:18 AM UTC+10, Kim Burgestrand wrote:
+>
+> Looking at an old issue (
+> https://github.com/ffi/ffi/issues/114#issuecomment-1246483) where a=20
+> custom Bool type is defined, .to_native and .from_native both accept a=20
+> second =E2=80=9Cctx=E2=80=9D parameter. What is this? How should it be us=
+ed, if at all?
+>
+> The reason I ask is that I=E2=80=99ve written my own converter for making=
+ sure=20
+> input and output strings are always in UTF-8 encoding, and I=E2=80=99d li=
+ke to do=20
+> it properly:=20
+> https://github.com/Burgestrand/libspotify-ruby/blob/35c32461d757649297e35=
+92b80b4937e35e3a1f8/lib/spotify/utf8_string.rb
+>
+
+------=_Part_54_7259460.1338762070795
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div>Currently it is unused. &nbsp;The intention was to provide m=
+ore information to converters about the context within which the converter =
+was called (e.g. was it a method parameter, callback parameter, return, str=
+uct field assignment, etc). &nbsp;But, that never got implemented.<br><br>O=
+n Monday, June 4, 2012 7:35:18 AM UTC+10, Kim Burgestrand wrote:<blockquote=
+ class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1=
+px #ccc solid;padding-left: 1ex;">Looking at an old issue (<a href=3D"https=
+://github.com/ffi/ffi/issues/114#issuecomment-1246483" target=3D"_blank">ht=
+tps://github.com/ffi/ffi/<wbr>issues/114#issuecomment-<wbr>1246483</a>) whe=
+re a custom Bool type is defined, .to_native and .from_native both accept a=
+ second =E2=80=9Cctx=E2=80=9D parameter. What is this? How should it be use=
+d, if at all?<div><br></div><div>The reason I ask is that I=E2=80=99ve writ=
+ten my own converter for making sure input and output strings are always in=
+ UTF-8 encoding, and I=E2=80=99d like to do it properly:&nbsp;<a href=3D"ht=
+tps://github.com/Burgestrand/libspotify-ruby/blob/35c32461d757649297e3592b8=
+0b4937e35e3a1f8/lib/spotify/utf8_string.rb" target=3D"_blank">https://githu=
+b.com/<wbr>Burgestrand/libspotify-ruby/<wbr>blob/<wbr>35c32461d757649297e35=
+92b80b493<wbr>7e35e3a1f8/lib/spotify/utf8_<wbr>string.rb</a></div></blockqu=
+ote>
+------=_Part_54_7259460.1338762070795--

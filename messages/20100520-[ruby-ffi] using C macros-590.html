@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] using C macros</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] using C macros</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>mixtli <ronmcclain75@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 10:22 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Is it possible to access macros such as FD_SET and FD_ZERO?  I'm
+trying to wrap net-snmp, specifically the snmp_select_info function
+which is called in C like so:
+
+ int fds = 0, block = 1;
+ fd_set fdset;
+ struct timeval timeout;
+ FD_ZERO(&amp;fdset);
+ snmp_select_info(&amp;fds, &amp;fdset, &amp;timeout, &amp;block);
+ fds = select(fds, &amp;fdset, 0,0, block ? 0 : &amp;timeout);
+ if(fds) { snmp_read(&amp;fdset); } else { snmp_timeout(); }
+
+
+I've been trying to do it with ffi-inliner, but haven't had much
+luck.  Any pointers would be appreciated.
+
+</pre></div></body>
+</html>
+</table></div>

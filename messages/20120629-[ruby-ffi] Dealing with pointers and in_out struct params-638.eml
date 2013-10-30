@@ -1,0 +1,94 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.42.5 with SMTP id u5csp114311wfj;
+        Fri, 29 Jun 2012 18:09:22 -0700 (PDT)
+Received: by 10.236.78.39 with SMTP id f27mr5234273yhe.121.1341018562415;
+        Fri, 29 Jun 2012 18:09:22 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCMnq3cGqAxDBo7n_BBoESyuKVg@googlegroups.com>
+Received: from mail-gg0-f190.google.com (mail-gg0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id e8si1922226ano.209.2012.06.29.18.09.22
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 29 Jun 2012 18:09:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxDBo7n_BBoESyuKVg@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMnq3cGqAxDBo7n_BBoESyuKVg@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCMnq3cGqAxDBo7n_BBoESyuKVg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggcq2 with SMTP id q2sf6657587ggc.7
+        for <headius@headius.com>; Fri, 29 Jun 2012 18:09:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=G0TYI6CBXS3b16o/W/pX15R4cGPMDIMX+enEW/wA6ZA=;
+        b=u/ZpwDSpNk/7JssO8tgtg4kNlLYmadUJAPHo3c6/uN+mfIU3k+1dC1hlQlQIuRGLWf
+         BkFCkF9WMmk1T+yZDgMWBljTPj/QOZwZjlHW/DhliNkjtp7CGPsE/tBmwzcs9uYUUaQq
+         7w+x6k+mPJkeWF2ezChlJ9+nLTe1Sgs/nF3Y0=
+Received: by 10.52.67.71 with SMTP id l7mr323680vdt.12.1341018561916;
+        Fri, 29 Jun 2012 18:09:21 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.204.129 with SMTP id fm1ls2522766vcb.7.gmail; Fri, 29 Jun
+ 2012 18:09:21 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.52.179.98 with SMTP id df2mr327592vdc.3.1341018561497; Fri, 29
+ Jun 2012 18:09:21 -0700 (PDT)
+Received: by 3g2000vbx.googlegroups.com with HTTP; Fri, 29 Jun 2012 18:09:21
+ -0700 (PDT)
+Date: Fri, 29 Jun 2012 18:09:21 -0700 (PDT)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5
+ (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5,gzip(gfe)
+Message-ID: <3fd06a4f-f954-4bba-911b-50d8b3cfc598@3g2000vbx.googlegroups.com>
+Subject: [ruby-ffi] Dealing with pointers and in/out struct params
+From: Daniel Berger <djberg96@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: djberg96@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of djberg96@gmail.com designates internal as permitted sender)
+ smtp.mail=djberg96@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+There's a function called ReadFileScatter in the Windows API that
+takes an OVERLAPPED structure as its last (in/out) parameter. It looks
+like this, keeping in mind that I've simplified it a bit to only
+contain the bits I care about,  and it is the right size - 20.
+
+class Overlapped < FFI::Struct
+    layout(
+      :Internal, :pointer,
+      :InternalHigh, :pointer,
+      :Offset, :ulong,
+      :OffsetHigh, :ulong,
+      :hEvent, :ulong
+    )
+end
+
+The member I happen to care about specifically is :Internal, which the
+MSDN docs will tell you is a ULONG_PTR (either an unsigned long or
+unsigned int64, depending on whether or not you're x64).
+
+I created an instance using Overlapped.new and passed it to
+ReadFileScatter, which I can call successfully. The problem is that
+the overlap[:Internal] member isn't populated after the call. I also
+tried explicitly setting the :Internal member to an
+FFI::MemoryPointer.new(:ulong) before passing the struct, but that
+didn't seem to help.
+
+How do I get FFI to populate my overlapped struct's pointer?
+
+Regards,
+
+Dan

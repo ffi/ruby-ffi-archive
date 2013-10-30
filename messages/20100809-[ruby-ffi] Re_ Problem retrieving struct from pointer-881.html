@@ -1,0 +1,142 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Problem retrieving struct from pointer</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Problem retrieving struct from pointer</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Joe <jm202@yahoo.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/9/10 4:41 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+
+On Aug 5, 4:23 pm, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devl...@mac.com">&lt;cremes.devl...@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>On Aug 5, 2010, at 8:12 AM, Joe wrote:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>[snip]
+<span class="moz-txt-citetags">&gt; &gt; </span>typedef struct hba_AdapterAttributes {
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    Manufacturer[64];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    SerialNumber[64];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    Model[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    ModelDescription[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   HBA_WWN NodeWWN;
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    NodeSymbolicName[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    HardwareVersion[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    DriverVersion[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    OptionROMVersion[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    FirmwareVersion[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>   HBA_UINT32      VendorSpecificID;
+<span class="moz-txt-citetags">&gt; &gt; </span>   HBA_UINT32      NumberOfPorts;
+<span class="moz-txt-citetags">&gt; &gt; </span>   char    DriverName[256];
+<span class="moz-txt-citetags">&gt; &gt; </span>} HBA_ADAPTERATTRIBUTES, *PHBA_ADAPTERATTRIBUTES;
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>[snip]
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>----------
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>In Ruby, I created the struct as so:
+<span class="moz-txt-citetags">&gt; &gt; </span>class HBA_AdapterAttributes &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; &gt; </span>   layout :Manufacturer, :char
+<span class="moz-txt-citetags">&gt; &gt; </span>   :SerialNumber, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :Model, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :ModelDescription, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :NodeWWN, :uint8,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :NodeSymbolicName, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :HardwareVersion, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :DriverVersion, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :OptionROMVersion, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :FirmwareVersion, :char,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :VendorSpecificID, :uint32,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :NumberOfPorts, :uint32,
+<span class="moz-txt-citetags">&gt; &gt; </span>   :DriverName, :char
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Now def get_struct pointer
+<span class="moz-txt-citetags">&gt; &gt; </span>def get_struct pointer
+<span class="moz-txt-citetags">&gt; &gt; </span>   HBA::HBA_AdapterAttributes.new pointer
+<span class="moz-txt-citetags">&gt; &gt; </span>end
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Calling the get_struct_pointer returns an array of fixnums, instead of
+<span class="moz-txt-citetags">&gt; &gt; </span>any string values.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Any idea what I'm overlooking here?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Your FFI::Struct looks wrong for the char arrays/strings. You need to make sure the struct is allocating space for your string by telling it the length.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>class HBA_AdapterAttributes &lt; FFI::Struct
+<span class="moz-txt-citetags">&gt; </span>        layout :Manufacturer, [:char, 64],
+<span class="moz-txt-citetags">&gt; </span>        :SerialNumber, [:char, 64],
+<span class="moz-txt-citetags">&gt; </span>        :Model, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :ModelDescription, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :NodeWWN, :uint8, # this probably needs to be another struct
+<span class="moz-txt-citetags">&gt; </span>        :NodeSymbolicName, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :HardwareVersion, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :DriverVersion, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :OptionROMVersion, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :FirmwareVersion, [:char, 256],
+<span class="moz-txt-citetags">&gt; </span>        :VendorSpecificID, :uint32,
+<span class="moz-txt-citetags">&gt; </span>        :NumberOfPorts, :uint32,
+<span class="moz-txt-citetags">&gt; </span>        :DriverName, [:char, 256]
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Check out the wiki athttp://wiki.github.com/ffi/ffi/structs
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Lots of good information there...
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr- Hide quoted text -
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>- Show quoted text -
+</pre></blockquote><pre wrap>
+
+Chuck, thanks for the response, it worked well.
+
+Another question now if you don't mind.. you mentioned that for the
+WWN, it needs to be a struct.  Just wondering how I would go about
+doing this?
+
+Previously, I passed a struct to the HBA_GetAdapterAttributes
+function.  Since there isn't a function to do something similar, how
+would I go about getting the string value of the Node WWN by using a
+struct?
+
+What I've tried is, created a new class to emulate the C struct:
+  class HBA_Wwn &lt; FFI::Struct
+      layout :wwn, [:uint32, 8]
+  end
+
+In C:
+  typedef struct HBA_wwn {
+      HBA_UINT8 wwn[8];
+  } HBA_WWN, *PHBA_WWN;
+
+And from previously, I use the HBA_AdapterAttributes class, passing in
+'attribs' as a struct.
+
+  attribs = HBA::HBA_AdapterAttributes.new
+  HBA::HBA_GetAdapterAttributes(i, attribs)
+  wwnstruct = HBA::HBA_Wwn.new attribs[:NodeWWN].to_ptr
+  puts "WWN: #{wwnstruct[:wwn]}"
+
+Which isn't working out.  If you can't tell, I'm sort of hacking my
+way through this <span class="moz-smiley-s1" title=":)"><span>:)</span></span>
+
+Thank you
+</pre></div></body>
+</html>
+</table></div>

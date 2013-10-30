@@ -1,0 +1,114 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.47.194 with SMTP id f2csp197539obn;
+        Wed, 28 Mar 2012 14:11:04 -0700 (PDT)
+Received: by 10.236.76.168 with SMTP id b28mr10019282yhe.32.1332969064626;
+        Wed, 28 Mar 2012 14:11:04 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDk_M37BBoEgvUsOQ@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id c50si4408385yhh.23.2012.03.28.14.11.04
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 28 Mar 2012 14:11:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDk_M37BBoEgvUsOQ@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDk_M37BBoEgvUsOQ@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDk_M37BBoEgvUsOQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yhkk61 with SMTP id k61sf2320248yhk.7
+        for <headius@headius.com>; Wed, 28 Mar 2012 14:11:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=U7IGqGkl4P56ZgmdO9QnONUtkZouJw76vtfHiwUhmMM=;
+        b=FZ5dItIc6RrqnHdfkzQE4HEcKdDawJjyhdvM2xr4yW6rNw0rfWb4q1gE0Qyrn1f8Wx
+         kfar/g5+97l17TAsP06E/NQdJ3TzvQK0kWTDC2BPHiGqfi8vcg+7cQFGwFxfrwcNUpcD
+         y3cCeOEARmUwNNzmiC8jrtF3rIHjKWs8hPY18=
+Received: by 10.68.233.98 with SMTP id tv2mr5234637pbc.16.1332969060003;
+        Wed, 28 Mar 2012 14:11:00 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.225.129 with SMTP id rk1ls1206892pbc.5.gmail; Wed, 28 Mar
+ 2012 14:10:59 -0700 (PDT)
+Received: by 10.68.220.166 with SMTP id px6mr908115pbc.11.1332969059828;
+        Wed, 28 Mar 2012 14:10:59 -0700 (PDT)
+Date: Wed, 28 Mar 2012 14:10:59 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <29119489.933.1332969059396.JavaMail.geo-discussion-forums@pbij6>
+In-Reply-To: <31329715.815.1332952133992.JavaMail.geo-discussion-forums@vbhy1>
+References: <31329715.815.1332952133992.JavaMail.geo-discussion-forums@vbhy1>
+Subject: [ruby-ffi] Re: Cannot Open Mac Universal Library
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_932_24384446.1332969059395"
+
+------=_Part_932_24384446.1332969059395
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+It looks like that lib was built wrong.
+
+file is reporting it is a universal ar archive, not a dynamic lib.
+
+
+On Thursday, March 29, 2012 2:28:53 AM UTC+10, Nick Clark wrote:
+>
+> I am trying to wrap a simple, three function SDK for use in ruby, but when 
+> I try to use FFI with it I get the following error:
+>
+> /Users/nick/.rvm/gems/ruby-1.9.3-p0-perf/gems/ffi-1.0.12.rc1/lib/ffi/library.rb:121:in 
+>> `block in ffi_lib': Could not open library 'lib/ext/libH-ITTSDK.so': 
+>> dlopen(lib/ext/libH-ITTSDK.so, 5): no suitable image found.  Did find: 
+>> (LoadError)
+>> lib/ext/libH-ITTSDK.so: unknown file type, first eight bytes: 0x21 0x3C 
+>> 0x61 0x72 0x63 0x68 0x3E 0x0A
+>
+>
+> I have A gist here:
+> https://gist.github.com/2227967
+>
+> Am I doing something wrong?
+>
+> Thanks
+>
+
+------=_Part_932_24384446.1332969059395
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+It looks like that lib was built wrong.<div><br></div><div>file is reportin=
+g it is a universal ar archive, not a dynamic lib.</div><div><br></div><div=
+><br>On Thursday, March 29, 2012 2:28:53 AM UTC+10, Nick Clark wrote:<block=
+quote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-le=
+ft: 1px #ccc solid;padding-left: 1ex;">I am trying to wrap a simple, three =
+function SDK for use in ruby, but when I try to use FFI with it I get the f=
+ollowing error:<div><br></div><div><blockquote class=3D"gmail_quote" style=
+=3D"margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0.8ex;bor=
+der-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:sol=
+id;padding-left:1ex">/Users/nick/.rvm/gems/ruby-1.<wbr>9.3-p0-perf/gems/ffi=
+-1.0.12.<wbr>rc1/lib/ffi/library.rb:121:in `block in ffi_lib': Could not op=
+en library 'lib/ext/libH-ITTSDK.so': dlopen(lib/ext/libH-ITTSDK.so, 5): no =
+suitable image found. &nbsp;Did find: (LoadError)<br><span style=3D"white-s=
+pace:pre">=09</span>lib/ext/libH-ITTSDK.so: unknown file type, first eight =
+bytes: 0x21 0x3C 0x61 0x72 0x63 0x68 0x3E 0x0A</blockquote><div><br><div><d=
+iv>I have A gist here:</div><div><a href=3D"https://gist.github.com/2227967=
+" target=3D"_blank">https://gist.github.com/<wbr>2227967</a><br></div></div=
+></div></div><div><br></div><div>Am I doing something wrong?</div><div><br>=
+</div><div>Thanks</div></blockquote></div>
+------=_Part_932_24384446.1332969059395--

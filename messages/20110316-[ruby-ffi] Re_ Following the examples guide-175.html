@@ -1,0 +1,18 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Following the examples guide</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Following the examples guide</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>vinny <agnellvj@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/16/11 1:54 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Just a guess but to me it looks like you aren't specifying that the
+output of the compilation step is a shared object.  Normally what gcc
+produces is an object file which needs to be linked together into an
+executable, static library or dynamic library.  The gcc man page says
+it can generate a shared object, but I have never used it to do that
+with "-shared" or "-shared-libgcc".  Otherwise you will need to use
+"ld" and tell it to generate a shared library.
+</pre></div></body>
+</html>
+</table></div>

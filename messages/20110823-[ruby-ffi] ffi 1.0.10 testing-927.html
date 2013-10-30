@@ -1,0 +1,32 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] ffi 1.0.10 testing</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] ffi 1.0.10 testing</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/23/11 6:29 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+Can people please test ffi-master on your favourite ruby version?
+
+Things fixed since 1.0.9:
+
+- should now work on 1.9.3 (ruby_thread_has_gvl_p no longer exported)
+- installs on non-MRI rubies
+- compiles using VC++ toolchain on win32 (Charlie Savage)
+- a lot of API documentation (Kim Burgestrand)
+- other win32/win64 mingw fixes (Luis Lavena)
+- better handling of linker scripts on linux (aniederl)
+- ext/ffi_c/StructLayout.c fixes (Chikanaga Tomoyuki)
+- Size lookup for MemoryPointer.new and Buffer.new type
+(e.g. :int, :long, etc) parameters now much faster.
+- FFI::Buffer.new for small sizes (&lt;= 8 bytes) types now approx 30%
+faster.
+
+I especially would like people to test on 1.9.3-preview1 (or later
+1.9.3 builds/source), since I want the release to work out-of-the-box
+on 1.9.3.
+
+</pre></div></body>
+</html>
+</table></div>

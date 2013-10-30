@@ -1,0 +1,126 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.81.161 with SMTP id b1csp183827lby;
+        Thu, 8 Nov 2012 11:46:01 -0800 (PST)
+Received: by 10.50.214.66 with SMTP id ny2mr9207035igc.21.1352403960713;
+        Thu, 08 Nov 2012 11:46:00 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDAOLYH4RIHRB54X6CCAKGQEC34JUVQ@googlegroups.com>
+Received: from mail-ie0-f187.google.com (mail-ie0-f187.google.com [209.85.223.187])
+        by mx.google.com with ESMTPS id s10si29253557ice.25.2012.11.08.11.45.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 08 Nov 2012 11:46:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDAOLYH4RIHRB54X6CCAKGQEC34JUVQ@googlegroups.com designates 209.85.223.187 as permitted sender)
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBDAOLYH4RIHRB54X6CCAKGQEC34JUVQ@googlegroups.com designates 209.85.223.187 as permitted sender) smtp.mail=ruby-ffi+bncBDAOLYH4RIHRB54X6CCAKGQEC34JUVQ@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by mail-ie0-f187.google.com with SMTP id k11sf2224805iea.4
+        for <headius@headius.com>; Thu, 08 Nov 2012 11:45:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=eIlBgFWlmXOJ1atqh3FztjEvNBoiFhZ9b2ffYL4AxD4=;
+        b=KrDcnVFxNMrsXhlnicK79n4dY+S40GPI8yJgfj1mYoDczCHqJv5QVRVypDud9muRSR
+         62ijZwcX86bFl926kpByv+FvWlFSZaMmo0r8800tlQAg0XPLwc7lWvITqxH58ZSIYKfb
+         OgvpCvYRNor4sNdSV0OPT3aaAWBQEQ3/HEfNYsodPxxXEoG+vdl7+iR/Zetb4fXfjjVo
+         o96l0wf30wzBpYA7qtbbGjWOIhZv7x4l/2LMlU+iOVOnro72cnG2Zch7xD/lwsgrJb8b
+         3SSGVZDYm7MZM5aU31c8ngGJapMuOSZQo44wyYzcrWu0tRQBmEjUrbl+z4R1wBrugB2c
+         UKmQ==
+Received: by 10.52.96.71 with SMTP id dq7mr2042093vdb.11.1352403959633;
+        Thu, 08 Nov 2012 11:45:59 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.52.16.79 with SMTP id e15ls3841778vdd.6.gmail; Thu, 08 Nov
+ 2012 11:45:59 -0800 (PST)
+Received: by 10.52.34.205 with SMTP id b13mr2046794vdj.3.1352403959290;
+        Thu, 08 Nov 2012 11:45:59 -0800 (PST)
+Date: Thu, 8 Nov 2012 11:45:58 -0800 (PST)
+From: Hans Hasselberg <hans@hans.io>
+To: ruby-ffi@googlegroups.com
+Message-Id: <51d877a7-2028-4780-8535-e9f3c7e53ab5@googlegroups.com>
+Subject: [ruby-ffi] Structs layout and memory consumption
+MIME-Version: 1.0
+X-Original-Sender: hans@hans.io
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_117_14891674.1352403958778"
+
+------=_Part_117_14891674.1352403958778
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello!
+
+Thank you very much for this library!
+I stumbled over a problem with code I 'inherited', it is a gem which wraps 
+libcurl.
+This code works, but consumes too much memory for my taste and looks 
+suspicious!
+
+https://github.com/typhoeus/ethon/blob/master/lib/ethon/curls/classes.rb:
+
+class FDSet < FFI::Struct
+  FD_SETSIZE = 524288
+  layout :fds_bits, [:long, FD_SETSIZE / FFI::Type::LONG.size]
+end
+
+
+I can change that code to:
+
+class FDSet < FFI::Struct
+  layout :fds_bits, :long
+end
+
+
+Instances of FDSet do not consume so much memory any more, but I get 
+segfaults on a regular basis. It seems to me, that fds_bits is just a 
+memory placeholder.
+The ffi code in that particular project looks quite understandable except 
+for that FDSet. 
+
+Could you explain to me, why my code segfaults with the changed code and if 
+FDSet is correct specified? I bet you need more information, but I don't 
+know which, so feel free to ask!
+
+
+Cheers,
+Hans
+
+------=_Part_117_14891674.1352403958778
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello!<div><br></div><div>Thank you very much for this library!</div><div>I=
+ stumbled over a problem with code I 'inherited', it is a gem which wraps l=
+ibcurl.</div><div>This code works, but consumes too much memory for my tast=
+e and looks suspicious!</div><div><br></div><div>https://github.com/typhoeu=
+s/ethon/blob/master/lib/ethon/curls/classes.rb:<br></div><div><br></div><bl=
+ockquote style=3D"margin: 0 0 0 40px; border: none; padding: 0px;"><div><fo=
+nt face=3D"courier new, monospace">class FDSet &lt; FFI::Struct</font></div=
+><div><font face=3D"courier new, monospace">&nbsp; FD_SETSIZE =3D 524288</f=
+ont></div><div><font face=3D"courier new, monospace">&nbsp; layout :fds_bit=
+s, [:long, FD_SETSIZE / FFI::Type::LONG.size]</font></div><div><font face=
+=3D"courier new, monospace">end</font></div></blockquote><div><br></div><di=
+v>I can change that code to:</div><div><br></div><blockquote style=3D"margi=
+n: 0 0 0 40px; border: none; padding: 0px;"><div><span style=3D"font-family=
+: 'courier new', monospace;">class FDSet &lt; FFI::Struct</span></div><div>=
+<span style=3D"font-family: 'courier new', monospace;">&nbsp; layout :fds_b=
+its, :long</span><br></div><div><font face=3D"courier new, monospace">end</=
+font></div></blockquote><div><br></div><div>Instances of FDSet do not consu=
+me so much memory any more, but I get segfaults on a regular basis. It seem=
+s to me, that fds_bits is just a memory placeholder.</div><div>The ffi code=
+ in that particular project looks quite understandable except for that FDSe=
+t.&nbsp;</div><div><br></div><div>Could you explain to me, why my code segf=
+aults with the changed code and if FDSet is correct specified? I bet you ne=
+ed more information, but I don't know which, so feel free to ask!</div><div=
+><br></div><div><br></div><div>Cheers,</div><div>Hans</div>
+------=_Part_117_14891674.1352403958778--

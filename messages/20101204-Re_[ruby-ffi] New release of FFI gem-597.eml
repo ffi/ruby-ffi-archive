@@ -1,0 +1,152 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs73096fam;
+        Sat, 4 Dec 2010 07:12:34 -0800 (PST)
+Received: by 10.216.24.139 with SMTP id x11mr3218610wex.54.1291475553751;
+        Sat, 04 Dec 2010 07:12:33 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDbtOnnBBoE62Ro2g@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTP id l70si5361171weq.161.2010.12.04.07.12.32;
+        Sat, 04 Dec 2010 07:12:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDbtOnnBBoE62Ro2g@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDbtOnnBBoE62Ro2g@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDbtOnnBBoE62Ro2g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwe15 with SMTP id 15sf4632199wwe.7
+        for <headius@headius.com>; Sat, 04 Dec 2010 07:12:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=CzkatH3GCahj3e/OeKm1pH3ayROPULfyEpe1wqyNHfY=;
+        b=L92g4jZdXv1QuPDqQlIY+MzZ18xMnKvdI2gyTOQnw0lpgqsdgj6MX6M1BTM7NYIhhN
+         5taT8oUwjtOidxkJfPpX+uzRH24rRMPUwR6+d1kJ7FjgOgo3uPkxzOygvHx0fag2lXFm
+         kaGSiwjYbeksMzSChTg8AB13tUtDrQSmh2Gww=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=ir5QsJNFtoyvy05mFP0/FAXULMknNgke0CI3twZOGt/jO90c1oFw15rjNc9lBi8zVk
+         uh+XqyOjaUeeOPfDvjYSExnHGVzQPRKlCSFY4eqjuupgcahAimHm8AcRUnuvyYhGjzK2
+         KyzCfn1lH1tXgWZ5XbNEruZsOn1Zd+5oK3fkw=
+Received: by 10.216.179.145 with SMTP id h17mr72048wem.21.1291475547715;
+        Sat, 04 Dec 2010 07:12:27 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.31.211 with SMTP id m59ls1392314eea.7.p; Sat, 04 Dec 2010
+ 07:12:27 -0800 (PST)
+Received: by 10.14.127.15 with SMTP id c15mr470667eei.27.1291475547039;
+        Sat, 04 Dec 2010 07:12:27 -0800 (PST)
+Received: by 10.14.127.15 with SMTP id c15mr470666eei.27.1291475547015;
+        Sat, 04 Dec 2010 07:12:27 -0800 (PST)
+Received: from mail-ey0-f193.google.com (mail-ey0-f193.google.com [209.85.215.193])
+        by gmr-mx.google.com with ESMTP id z15si963799eeh.2.2010.12.04.07.12.25;
+        Sat, 04 Dec 2010 07:12:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.193 as permitted sender) client-ip=209.85.215.193;
+Received: by eye27 with SMTP id 27so2213137eye.0
+        for <ruby-ffi@googlegroups.com>; Sat, 04 Dec 2010 07:12:25 -0800 (PST)
+Received: by 10.213.13.130 with SMTP id c2mr456799eba.5.1291475544693; Sat, 04
+ Dec 2010 07:12:24 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.19.195 with HTTP; Sat, 4 Dec 2010 07:12:04 -0800 (PST)
+In-Reply-To: <AANLkTi=6xXphBTqFEpFxiuv68Ygnqg+h3y=A4V33F3KH@mail.gmail.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+ <20101130105256.d687602f.jon.forums@gmail.com> <AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+ <20101201123846.5c4724b5.jon.forums@gmail.com> <AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+ <AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+ <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+ <AANLkTimk_+qqiP2zkx50AfNi+Dr7ggXJ9bXO7+TaVjGo@mail.gmail.com> <AANLkTi=6xXphBTqFEpFxiuv68Ygnqg+h3y=A4V33F3KH@mail.gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Sat, 4 Dec 2010 12:12:04 -0300
+Message-ID: <AANLkTinUMV=rdA5SYyWRg40UvmV8bDJm5+-vr4zYCVqL@mail.gmail.com>
+Subject: Re: [ruby-ffi] New release of FFI gem
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.193 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0015174c429013dd7a0496971510
+
+--0015174c429013dd7a0496971510
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 3, 2010 at 6:42 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+
+> On 4 December 2010 00:20, Luis Lavena <luislavena@gmail.com> wrote:
+> > I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now
+> > getting this on the specs:
+> >
+> > https://gist.github.com/726989
+> >
+> > The problem is that is looking for strdup and not _strdup, perhaps the
+> > problem is libffi?
+>
+> Thats just a symbol lookup problem.  All the traditional libc symbols
+> in msvcrt.dll have an underscore prepended, so that test should have a
+> special case for win32 in it.
+>
+
+Sorry, been long time since I used libffi that mind is not the same as it
+used to be (and getting older is not helping either)
+
+Will come up with a patch and let you know.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry
+
+--0015174c429013dd7a0496971510
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div class=3D"gmail_quote">On Fri, Dec 3, 2010 at 6:42 PM, Wayne Meissner <=
+span dir=3D"ltr">&lt;<a href=3D"mailto:wmeissner@gmail.com">wmeissner@gmail=
+.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+
+<div class=3D"im">On 4 December 2010 00:20, Luis Lavena &lt;<a href=3D"mail=
+to:luislavena@gmail.com">luislavena@gmail.com</a>&gt; wrote:<br>
+&gt; I was able to compile ffi with Ruby 1.9.2-p0 and GCC 4.5.1, but now<br=
+>
+&gt; getting this on the specs:<br>
+&gt;<br>
+&gt; <a href=3D"https://gist.github.com/726989" target=3D"_blank">https://g=
+ist.github.com/726989</a><br>
+&gt;<br>
+&gt; The problem is that is looking for strdup and not _strdup, perhaps the=
+<br>
+&gt; problem is libffi?<br>
+<br>
+</div>Thats just a symbol lookup problem. =A0All the traditional libc symbo=
+ls<br>
+in msvcrt.dll have an underscore prepended, so that test should have a<br>
+special case for win32 in it.<br>
+</blockquote></div><br>Sorry, been long time since I used libffi that mind =
+is not the same as it used to be (and getting older is not helping either)<=
+div><div><br></div><div>Will come up with a patch and let you know.</div>
+
+<div><br>-- <br>Luis Lavena<br>AREA 17<br>-<br>Perfection in design is achi=
+eved not when there is nothing more to add,<br>but rather when there is not=
+hing more to take away.<br>Antoine de Saint-Exup=E9ry<br>
+</div></div>
+
+--0015174c429013dd7a0496971510--

@@ -1,0 +1,120 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.80.134 with SMTP id t6cs296346qak;
+        Sun, 7 Mar 2010 01:59:26 -0800 (PST)
+Received: by 10.101.40.1 with SMTP id s1mr6367880anj.222.1267955965381;
+        Sun, 07 Mar 2010 01:59:25 -0800 (PST)
+Return-Path: <3-niTSxAJCFI3ECD27.6uwwuBD1I06u25.w86BEvI-zz208805y0B8E9C.w86@groups.bounces.google.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id 8si11413503gxk.46.2010.03.07.01.59.24;
+        Sun, 07 Mar 2010 01:59:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3-niTSxAJCFI3ECD27.6uwwuBD1I06u25.w86BEvI-zz208805y0B8E9C.w86@groups.bounces.google.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3-niTSxAJCFI3ECD27.6uwwuBD1I06u25.w86BEvI-zz208805y0B8E9C.w86@groups.bounces.google.com designates 74.125.83.62 as permitted sender) smtp.mail=3-niTSxAJCFI3ECD27.6uwwuBD1I06u25.w86BEvI-zz208805y0B8E9C.w86@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwaa20 with SMTP id a20sf9598431gwa.7
+        for <headius@headius.com>; Sun, 07 Mar 2010 01:59:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:mime-version:received:date
+         :x-ip:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=xz1S7dPI2YF2E/IOheDtfKvKDm7XuWGUs0TiHnmdvII=;
+        b=RjhHs7i4pzNB/+3TAZoV4Kb3pYH39Xk830LO0w4dEak/AFX+JpsLrnc3gNkGxlCwnb
+         qz9eYqWfhZJm3U7bzBbt0lHSzT09qjgPOY6+y6l4pW6CX4tBuBrg2iJWuKOkXyQbWK46
+         p3ZtBk2FQRfDB2aeWcnVGklBHdsCV2Kc9/My4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=vyLtirtqk6Ubz8msxZ/aSODwZW72YrxuwLU/3fE4KjJt2m7ZX144wy5s9yh++S9gwc
+         1S3tKCKB34ZBx0f5a9evMafoKi991NxOpe5lFrSgX+txkvazJy0b7k5BHruo8sue6X9j
+         8Kh8F8FvwIUoVXs8TyjKc53XqkETcEeDNjpJU=
+Received: by 10.150.214.11 with SMTP id m11mr126926ybg.55.1267955962897;
+        Sun, 07 Mar 2010 01:59:22 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.38.5 with SMTP id l5ls436663ybl.1.p; Sun, 07 Mar 2010 
+	01:59:22 -0800 (PST)
+Received: by 10.150.251.3 with SMTP id y3mr3372357ybh.7.1267955961831;
+        Sun, 07 Mar 2010 01:59:21 -0800 (PST)
+Received: by 10.150.117.36 with SMTP id p36mr3368717ybc.6.1267954879463;
+        Sun, 07 Mar 2010 01:41:19 -0800 (PST)
+Received: by 10.150.117.36 with SMTP id p36mr3368715ybc.6.1267954879442;
+        Sun, 07 Mar 2010 01:41:19 -0800 (PST)
+Return-Path: <justin.maccarthy@gmail.com>
+Received: from mail-gy0-f187.google.com (mail-gy0-f187.google.com [209.85.160.187])
+        by gmr-mx.google.com with ESMTP id 11si407360gxk.5.2010.03.07.01.41.19;
+        Sun, 07 Mar 2010 01:41:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of justin.maccarthy@gmail.com designates 209.85.160.187 as permitted sender) client-ip=209.85.160.187;
+Received: by gyh4 with SMTP id 4so8734591gyh.24
+        for <ruby-ffi@googlegroups.com>; Sun, 07 Mar 2010 01:41:19 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.151.18.3 with SMTP id v3mr32132ybi.33.1267954879403; Sun, 07 
+	Mar 2010 01:41:19 -0800 (PST)
+Date: Sun, 7 Mar 2010 01:41:19 -0800 (PST)
+X-IP: 125.26.221.206
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; 
+	rv:1.9.2) Gecko/20100115 Firefox/3.6,gzip(gfe),gzip(gfe)
+Message-ID: <59718a03-d170-44e8-9d45-44c00ce112a2@m35g2000prh.googlegroups.com>
+Subject: [ruby-ffi] newbie question ffi on OsX
+From: macarthy <justin.maccarthy@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of justin.maccarthy@gmail.com designates 209.85.160.187 as permitted 
+	sender) smtp.mail=justin.maccarthy@gmail.com
+X-Original-Sender: justin.maccarthy@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/f48bd31c2e7cbe
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/6cb76434b57871d7
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi all,
+
+Can someone explain this error ? Obviously an architecture mismatch of
+some sort, how does one got about fixing this? Or compile libmylib as
+a different arch (or as several ? )
+
+
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:61:in
+`ffi_lib': Could not open library 'libmylib.dylib':
+dlopen(libmylib.dylib, 9): no suitable image found.  Did find:
+(LoadError)
+
+/usr/local/lib/libmylib.dylib: mach-o, but wrong architecture. Could
+not open library 'libmylib': dlopen(libmylib, 9): image not found
+        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+43:in `map'
+        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+43:in `ffi_lib'
+        from xxx.rb:14
+
+otool gives me this ...
+
+ otool -h /usr/local/lib/libmylib.dylib
+
+/usr/local/lib/libmylib.dylib:
+Mach header
+      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds
+flags
+ 0xfeedface       7          3  0x00          6    20       2404
+0x00118085
+
+Thanks

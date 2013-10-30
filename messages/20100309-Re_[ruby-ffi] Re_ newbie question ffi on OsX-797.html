@@ -1,0 +1,85 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: newbie question ffi on OsX</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: newbie question ffi on OsX</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/9/10 8:46 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+You are now the honorary universal binary expert for ruby-ffi on
+MacOS.  Turn your email thread into a FAQ and put it up on the wiki.
+
+
+On 10 March 2010 00:56, macarthy <a class="moz-txt-link-rfc2396E" href="mailto:justin.maccarthy@gmail.com">&lt;justin.maccarthy@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Answering my own question, since I can't recompile the lib as 64bit I
+<span class="moz-txt-citetags">&gt; </span>was able to run ruby as 32 bit and ffi works fine, Commands and output
+<span class="moz-txt-citetags">&gt; </span>below.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>$ lipo -info /usr/local/lib/libmylib.dylib
+<span class="moz-txt-citetags">&gt; </span>Non-fat file: /usr/local/lib/libmylib.dylib is architecture: i386
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>$ lipo -detailed_info /usr/bin/ruby
+<span class="moz-txt-citetags">&gt; </span>Fat header in: /usr/bin/ruby
+<span class="moz-txt-citetags">&gt; </span>fat_magic 0xcafebabe
+<span class="moz-txt-citetags">&gt; </span>nfat_arch 3
+<span class="moz-txt-citetags">&gt; </span>architecture x86_64
+<span class="moz-txt-citetags">&gt; </span>   cputype CPU_TYPE_X86_64
+<span class="moz-txt-citetags">&gt; </span>   cpusubtype CPU_SUBTYPE_X86_64_ALL
+<span class="moz-txt-citetags">&gt; </span>   offset 4096
+<span class="moz-txt-citetags">&gt; </span>   size 14176
+<span class="moz-txt-citetags">&gt; </span>   align 2<sup class="moz-txt-sup"><span style="display:inline-block;width:0;height:0;overflow:hidden">^</span>12</sup> (4096)
+<span class="moz-txt-citetags">&gt; </span>architecture i386
+<span class="moz-txt-citetags">&gt; </span>   cputype CPU_TYPE_I386
+<span class="moz-txt-citetags">&gt; </span>   cpusubtype CPU_SUBTYPE_I386_ALL
+<span class="moz-txt-citetags">&gt; </span>   offset 20480
+<span class="moz-txt-citetags">&gt; </span>   size 14112
+<span class="moz-txt-citetags">&gt; </span>   align 2<sup class="moz-txt-sup"><span style="display:inline-block;width:0;height:0;overflow:hidden">^</span>12</sup> (4096)
+<span class="moz-txt-citetags">&gt; </span>architecture ppc7400
+<span class="moz-txt-citetags">&gt; </span>   cputype CPU_TYPE_POWERPC
+<span class="moz-txt-citetags">&gt; </span>   cpusubtype CPU_SUBTYPE_POWERPC_7400
+<span class="moz-txt-citetags">&gt; </span>   offset 36864
+<span class="moz-txt-citetags">&gt; </span>   size 13904
+<span class="moz-txt-citetags">&gt; </span>   align 2<sup class="moz-txt-sup"><span style="display:inline-block;width:0;height:0;overflow:hidden">^</span>12</sup> (4096)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>$ arch -arch i386 /usr/bin/ruby libmylib.rb
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Can someone explain this error ? Obviously an architecture mismatch of
+<span class="moz-txt-citetags">&gt;&gt; </span>some sort, how does one got about fixing this? Or compile libmylib as
+<span class="moz-txt-citetags">&gt;&gt; </span>a different arch (or as several ? )
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>/Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:61:in
+<span class="moz-txt-citetags">&gt;&gt; </span>`ffi_lib': Could not open library 'libmylib.dylib':
+<span class="moz-txt-citetags">&gt;&gt; </span>dlopen(libmylib.dylib, 9): no suitable image found.  Did find:
+<span class="moz-txt-citetags">&gt;&gt; </span>(LoadError)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>/usr/local/lib/libmylib.dylib: mach-o, but wrong architecture. Could
+<span class="moz-txt-citetags">&gt;&gt; </span>not open library 'libmylib': dlopen(libmylib, 9): image not found
+<span class="moz-txt-citetags">&gt;&gt; </span>        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+<span class="moz-txt-citetags">&gt;&gt; </span>43:in `map'
+<span class="moz-txt-citetags">&gt;&gt; </span>        from /Library/Ruby/Gems/1.8/gems/ffi-0.6.2/lib/ffi/library.rb:
+<span class="moz-txt-citetags">&gt;&gt; </span>43:in `ffi_lib'
+<span class="moz-txt-citetags">&gt;&gt; </span>        from xxx.rb:14
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>otool gives me this ...
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span> otool -h /usr/local/lib/libmylib.dylib
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>/usr/local/lib/libmylib.dylib:
+<span class="moz-txt-citetags">&gt;&gt; </span>Mach header
+<span class="moz-txt-citetags">&gt;&gt; </span>      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds
+<span class="moz-txt-citetags">&gt;&gt; </span>flags
+<span class="moz-txt-citetags">&gt;&gt; </span> 0xfeedface       7          3  0x00          6    20       2404
+<span class="moz-txt-citetags">&gt;&gt; </span>0x00118085
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Thanks
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

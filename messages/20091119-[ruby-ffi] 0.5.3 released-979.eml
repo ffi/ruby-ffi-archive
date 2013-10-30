@@ -1,0 +1,82 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.224.14 with SMTP id w14cs48217wfg;
+        Thu, 19 Nov 2009 15:19:57 -0800 (PST)
+Received: by 10.115.84.10 with SMTP id m10mr695482wal.100.1258672796942;
+        Thu, 19 Nov 2009 15:19:56 -0800 (PST)
+Return-Path: <3mtIFSwkJCL0zphlvvqhujpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com>
+Received: from mail-pz0-f148.google.com (mail-pz0-f148.google.com [209.85.222.148])
+        by mx.google.com with ESMTP id 14si1882169pxi.27.2009.11.19.15.19.55;
+        Thu, 19 Nov 2009 15:19:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3mtIFSwkJCL0zphlvvqhujpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com designates 209.85.222.148 as permitted sender) client-ip=209.85.222.148;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3mtIFSwkJCL0zphlvvqhujpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com designates 209.85.222.148 as permitted sender) smtp.mail=3mtIFSwkJCL0zphlvvqhujpdlo.frpuxe1-iiljrrjohjurxsv.frp@groups.bounces.google.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by pzk12 with SMTP id 12sf616703pzk.13
+        for <headius@headius.com>; Thu, 19 Nov 2009 15:19:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:date
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type;
+        bh=JV+y3A7gGRJ0IXwC/Ck6sZh1pUUDgnHR7FfdezYlZaY=;
+        b=UqEeMOa/+3Zrs1wmJZMsDXD9QxG33N61/7ox6ueLtb1CXyHZniye7vNf3BSs2OqELp
+         EmbmxYWc/r45gW2yD+xpUbseGJu0N1ArYxcce3x8zoOb+WqpZSNJe45KDnPpGYYsKJag
+         p2kw776n4V7Bwt/P9oA2PrZF2YCO6gq+Qzh4M=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=x-beenthere:received-spf:authentication-results:mime-version:date
+         :message-id:subject:from:to:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url
+         :list-unsubscribe:list-subscribe:content-type;
+        b=joqyQmuoJRqYPT8hz+SSN/l6Dvd7anBt31Z1mU5OiXsBYXUfi07+4uMgAu+JgvkTmX
+         ilGbbw1S7bGvc2w1nQaXww6HHjVnfu9Llmaeewv77ikiGrKUpOJHRWH2GZnv0uVxWN8T
+         d7VLnSH3kKbzaYL9FjLCJGC6lg8GnV8atVyq8=
+Received: by 10.142.8.19 with SMTP id 19mr135433wfh.10.1258672794918;
+        Thu, 19 Nov 2009 15:19:54 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.20.3 with SMTP id x3ls4475wfi.2.p; Thu, 19 Nov 2009 
+	15:19:54 -0800 (PST)
+Received: by 10.142.8.37 with SMTP id 37mr132365wfh.16.1258672793943;
+        Thu, 19 Nov 2009 15:19:53 -0800 (PST)
+Received: by 10.142.8.37 with SMTP id 37mr132363wfh.16.1258672793898;
+        Thu, 19 Nov 2009 15:19:53 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f191.google.com (mail-pz0-f191.google.com [209.85.222.191])
+        by gmr-mx.google.com with ESMTP id 16si263696pxi.5.2009.11.19.15.19.52;
+        Thu, 19 Nov 2009 15:19:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.191 as permitted sender) client-ip=209.85.222.191;
+Received: by pzk29 with SMTP id 29so1989746pzk.17
+        for <ruby-ffi@googlegroups.com>; Thu, 19 Nov 2009 15:19:52 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.140.188.7 with SMTP id l7mr41553rvf.79.1258672792456; Thu, 19 
+	Nov 2009 15:19:52 -0800 (PST)
+Date: Fri, 20 Nov 2009 09:19:52 +1000
+Message-ID: <4ccee320911191519n4eb2b33bqbf70e843b3f7e8e5@mail.gmail.com>
+Subject: [ruby-ffi] 0.5.3 released
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/5bf4b780ed9e6b6a
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/6dd55ac24589c4bb
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I just uploaded 0.5.3 to rubyforge.
+
+This release fixes powerpc, cywin and FreeBSD installation/build
+problems.  If none of those affect you, then there is no need to
+upgrade from 0.5.1.
+
+For those wondering, 0.5.2 was mostly Fedora fixes, so it was tagged
+in the tree, but I didn't do a gem release for it, since I wanted to
+roll in the cygwin and FreeBSD fixes.

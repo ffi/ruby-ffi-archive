@@ -1,0 +1,158 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Re: Null Pointer Issue? Am I Racing with the Garbage Collector?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/13/10 7:09 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I think those changes fixing things is purely coincidental.
+
+I think the reason why ffi from github was raising errors, was because
+the enum parameter handling was slightly broken (it only accepted enum
+constants, not ints), so update, re-install it and see if it works
+now.
+
+
+On 13 November 2010 08:50, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gonyea@gmail.com">&lt;gonyea@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Well that's weird.  Now it's all working in MRI.  I'm not sure which
+<span class="moz-txt-citetags">&gt; </span>of my changes helped, or if I sleep-walked last night after one of my
+<span class="moz-txt-citetags">&gt; </span>lobes declared a coup.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Here's what I did with CurlFFI:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/commit/3e72173c9f60238f855c6e23f54e553ad7da3608">https://github.com/aitrus/curl_ffi/commit/3e72173c9f60238f855c6e23f54e553ad7da3608</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>And here's what I did in StreamlyFFI:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi/commit/48568e7792cd7bc8a300d0fac99238799364c374">https://github.com/aitrus/streamly_ffi/commit/48568e7792cd7bc8a300d0fac99238799364c374</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I need to go back and remove my frantic use of ".dup" and see what the
+<span class="moz-txt-citetags">&gt; </span>effect is.  I should probably walk back my changes to see where it
+<span class="moz-txt-citetags">&gt; </span>went right.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Scott
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Nov 11, 11:09 pm, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gon...@gmail.com">&lt;gon...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Interesting.  I used JRuby (1.5.3) and the ffi gem (0.6.3 /
+<span class="moz-txt-citetags">&gt;&gt; </span>rubygems.org).  Works just peachy.  I ran it at 50 and then 100
+<span class="moz-txt-citetags">&gt;&gt; </span>iterations.  Everything seems to get along.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>sgonyea@skg:~/Sites/gsolr$ ruby bench.rbhttp://toddler.tomkittens.com:8080/solr
+<span class="moz-txt-citetags">&gt;&gt; </span>"hi"
+<span class="moz-txt-citetags">&gt;&gt; </span>Rehearsal ------------------------------------
+<span class="moz-txt-citetags">&gt;&gt; </span> GSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  4.626000   0.000000   4.626000 (  4.626000)
+<span class="moz-txt-citetags">&gt;&gt; </span> RSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  9.435000   0.000000   9.435000 (  9.436000)
+<span class="moz-txt-citetags">&gt;&gt; </span>-------------------------- total: 14.061000sec
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>       user     system      total        real
+<span class="moz-txt-citetags">&gt;&gt; </span> GSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  3.523000   0.000000   3.523000 (  3.523000)
+<span class="moz-txt-citetags">&gt;&gt; </span> RSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  8.903000   0.000000   8.903000 (  8.903000)
+<span class="moz-txt-citetags">&gt;&gt; </span>sgonyea@skg:~/Sites/gsolr$ ruby bench.rbhttp://toddler.tomkittens.com:8080/solr
+<span class="moz-txt-citetags">&gt;&gt; </span>"hi"
+<span class="moz-txt-citetags">&gt;&gt; </span>Rehearsal ------------------------------------
+<span class="moz-txt-citetags">&gt;&gt; </span> GSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  8.134000   0.000000   8.134000 (  8.134000)
+<span class="moz-txt-citetags">&gt;&gt; </span> RSolr
+<span class="moz-txt-citetags">&gt;&gt; </span> 18.710000   0.000000  18.710000 ( 18.710000)
+<span class="moz-txt-citetags">&gt;&gt; </span>-------------------------- total: 26.844000sec
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>       user     system      total        real
+<span class="moz-txt-citetags">&gt;&gt; </span> GSolr
+<span class="moz-txt-citetags">&gt;&gt; </span>  6.805000   0.000000   6.805000 (  6.805000)
+<span class="moz-txt-citetags">&gt;&gt; </span> RSolr
+<span class="moz-txt-citetags">&gt;&gt; </span> 17.557000   0.000000  17.557000 ( 17.557000)
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Scott
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>On Nov 11, 11:01 pm, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gon...@gmail.com">&lt;gon...@gmail.com&gt;</a> wrote:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>Strange.  I replied in my e-mail, but it didn't post.  Hoping it
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>wasn't plugged up in Google somewhere.  Here's what I wrote:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>I'm pretty sure it does.  I ran into another issue, while using the
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>FFI from Github:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt;</span><a class="moz-txt-link-freetext" href="https://gist.github.com/673816">https://gist.github.com/673816</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>I'm checking the values, all along the way, and I'm not handing it any
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>nils, but it won't believe me. The ffi 0.6.3 gem won't complain about
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>this (but it will blow up at a few spots).
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>Sigh <span class="moz-smiley-s2" title=":("><span>:(</span></span>  Thank you very much, for your help.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>Scott
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; </span>On Nov 11, 10:21 pm, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeiss...@gmail.com">&lt;wmeiss...@gmail.com&gt;</a> wrote:
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>Thats interesting.
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>Does curl use threads internally?  If so, build the ffi gem from
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>github and try that.  Earlier versions don't deal well with callbacks
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>coming from non-ruby threads.
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>Also try running it with JRuby.  It handles threads a lot better.
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; </span>On 12 November 2010 15:25, Scott Gonyea <a class="moz-txt-link-rfc2396E" href="mailto:gon...@gmail.com">&lt;gon...@gmail.com&gt;</a> wrote:
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt;</span><a class="moz-txt-link-freetext" href="https://gist.github.com/673753">https://gist.github.com/673753</a>
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>That will show you the script I'm running, the gdb backtrace, and ruby-
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>prof (if that helps at all).  I basically was benchmarking my library
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>with the one I started branching from.  It's all good, until I start
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>running a whole lot of iterations.  I made some changes, which seems
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>to have made it less frequent... until I up the number of iterations.
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt;</span><a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c23">https://github.com/aitrus/curl_ffi/commit/99a231aea24b2d7d63bccaa5c23</a>...
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>That was the one fix.  This GSolr junk of mine uses StreamlyFFI and
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>CurlFFI:
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>StreamlyFFI:<a class="moz-txt-link-freetext" href="https://github.com/aitrus/streamly_ffi">https://github.com/aitrus/streamly_ffi</a>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>CurlFFI:<a class="moz-txt-link-freetext" href="https://github.com/aitrus/curl_ffi">https://github.com/aitrus/curl_ffi</a>
+</pre></blockquote></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; &gt; &gt; &gt; </span>Scott
+</pre></div></body>
+</html>
+</table></div>

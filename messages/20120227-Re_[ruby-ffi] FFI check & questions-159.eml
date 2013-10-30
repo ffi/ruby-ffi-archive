@@ -1,0 +1,930 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp78395obb;
+        Mon, 27 Feb 2012 17:13:57 -0800 (PST)
+Received: by 10.236.186.98 with SMTP id v62mr19195158yhm.22.1330391636975;
+        Mon, 27 Feb 2012 17:13:56 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com>
+Received: from mail-gx0-f190.google.com (mail-gx0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id a1si947271anl.9.2012.02.27.17.13.56
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 27 Feb 2012 17:13:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggnl2 with SMTP id l2sf8694759ggn.7
+        for <headius@headius.com>; Mon, 27 Feb 2012 17:13:56 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDQ1LD6BBoE3bxD5w@googlegroups.com designates 10.68.241.42 as permitted sender) client-ip=10.68.241.42;
+Received: from mr.google.com ([10.68.241.42])
+        by 10.68.241.42 with SMTP id wf10mr1227379pbc.3.1330391636648 (num_hops = 1);
+        Mon, 27 Feb 2012 17:13:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=5+Tmij6BBSPevCGOC/vWgucSDKlTrjYBiy2EhUNiOTo=;
+        b=qvBHsUPV0cS8wv7JEdgLcMHN9l8GRNBARzb2seg//7FZ5qKJag5MgP6O8PTqaDPB/i
+         1lxMS/o2KxnA/PtLtyxVuNeBkJLJx3Z8nRcxrSySJ3OGl6Jvtn/tBhh8ep0j0BmLQ/Mt
+         1HPimF4FL9kRg808t97rpRZsTuunxhGjFGcOg=
+Received: by 10.68.241.42 with SMTP id wf10mr321992pbc.3.1330391632426;
+        Mon, 27 Feb 2012 17:13:52 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.120.102 with SMTP id lb6ls19683253pbb.6.gmail; Mon, 27 Feb
+ 2012 17:13:52 -0800 (PST)
+Received: by 10.68.226.136 with SMTP id rs8mr1991611pbc.2.1330391632177;
+        Mon, 27 Feb 2012 17:13:52 -0800 (PST)
+Date: Mon, 27 Feb 2012 17:13:51 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <4364266.162.1330391631454.JavaMail.geo-discussion-forums@pbbpk4>
+In-Reply-To: <4F4C231B.4040105@toppan-f.co.jp>
+References: <4F4ADBD9.7050708@toppan-f.co.jp> <4F4BABFF.6010906@matijs.net>
+ <4F4C231B.4040105@toppan-f.co.jp>
+Subject: Re: [ruby-ffi] FFI check & questions
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_161_17642939.1330391631451"
+
+------=_Part_161_17642939.1330391631451
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+There are a couple of problems:
+
+1) The return type of get_pagememsize should be :int, not :size_t - :size_t 
+is 64bit on 64bit platforms, and it will return bogus values from a 
+function that actually returns an int.
+
+2) You're using string ops on binary data.  In FFI, anything that is 
+:string, or read_string or write_string treats the string as a NUL 
+terminated C string - i.e. it will stop reading at the first zero byte, and 
+ensures the data written to memory is terminated with a zero byte.
+
+So, in pdf_data_to_pointer(), instead of MemoryPointer.from_string(), use:
+    @@pointer_data = MemoryPointer.new(:char, data.size)
+    @@pointer_data.put_bytes(0, data)
+
+And in get_image(), instead of picBuf.read_string, use picBuf.get_bytes(0, 
+image_size)
+
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones wrote:
+>
+> Hi Matjis,
+>
+> I could have sworn I already checked the header file for a definition 
+> but I obviously missed something
+>
+> The code is
+>
+> typedef enum {
+>      EPSoutput,
+>      TIFFoutput,
+>      JPEGoutput,
+>      BMPoutput,
+>      PNGoutput,
+>      RAWoutput,
+>      PDFoutput,
+>      GIFoutput,
+> } OutputTypeCode;
+>
+> So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of 
+> curiosity but the allocation is still 4Gb.
+>
+> Regarding checking if picBuf is null. I added a check immediately after 
+> the malloc and the pointer is indeed null.
+> If I cheat badly and malloc image_size / 1024 then the picBuf pointer is 
+> not null but them of course the
+> get_pagemem method fails.
+>
+> I have no idea why I am getting a return value of 4Gb from the 
+> get_pagememsize(iC) method. I was hoping there
+> was some obvious mistake (type conversion or something) I was making but 
+> if nothing obvious springs out to
+> more experienced eyes then I am not sure.
+>
+> Regards,
+>
+> Jeff
+>
+> On 28/02/12 01:14, Matijs van Zuijlen wrote:
+> > Hi Jeffrey,
+> >
+> > On 02/27/2012 02:26 AM, Jeffrey Jones wrote:
+> >> I am in the process of looking at using the following library from ruby
+> >> (http://www.datalogics.com/products/pdf2img/) using FFI but have run 
+> >> into a few
+> >> issues mainly due to my lack of FFI experience and general lack of C++.
+> >>
+> >> [...]
+> >>
+> >> The following Gist has the example C++ code (Posted with permission) 
+> >> and my Ruby
+> >> code along side some example output. https://gist.github.com/1920005
+> >>
+> >> [...]
+> >>
+> >> On line 22 of the ruby file I have defined the second argument as an 
+> >> :int, this
+> >> is probably wrong but it suffices for the moment I think. I assume 
+> >> the real
+> >> value is an Enumeration, struct or something along those lines. It is 
+> >> not
+> >> documented so I will ask the original developers.
+> >
+> > You should take a look at the file 'pdf2imglib.h', to see what the 
+> > values of that enumeration are. In particular, what integer value 
+> > corresponds to GIFoutput.
+> >
+> >> Questions:
+> >>
+> >> 1. On line 40 of the ruby file the required memory is apparently 4Gb, 
+> >> this is
+> >> obviously wrong, does anyone know why? (I assume I have messed 
+> >> something up
+> >> somewhere)
+> >
+> > Perhaps setting the output type to 0 is wrong. I'm not sure what 
+> > output type would demand 4GB, though.
+> >
+> >> 2. Can anyone see any other obvious mistakes on my part?
+> >
+> > I'm guessing allocating 4GB is not going very well. Do check the that 
+> > the resulting pointer isn't null, i.e., with picBuf.null?
+> >
+> > Regards,
+>
+>
+------=_Part_161_17642939.1330391631451
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div>There are a couple of problems:<div><br></div><div>1) The re=
+turn type of get_pagememsize should be :int, not :size_t - :size_t is 64bit=
+ on 64bit platforms, and it will return bogus values from a function that a=
+ctually returns an int.</div><div><br></div><div>2) You're using string ops=
+ on binary data. &nbsp;In FFI, anything that is :string, or read_string or =
+write_string treats the string as a NUL terminated C string - i.e. it will =
+stop reading at the first zero byte, and ensures the data written to memory=
+ is terminated with a zero byte.</div><div><br></div><div>So, in&nbsp;<span=
+ style=3D"color: rgb(153, 0, 0); font-family: 'Bitstream Vera Sans Mono', C=
+ourier, monospace; font-weight: bold; line-height: 18px; text-align: left; =
+white-space: pre; ">pdf_data_to_pointer(), </span>instead of MemoryPointer.=
+from_string(), use:</div><div>&nbsp; &nbsp;&nbsp;<span class=3D"vc" style=
+=3D"line-height: 18px; color: rgb(0, 128, 128); font-family: 'Bitstream Ver=
+a Sans Mono', Courier, monospace; text-align: left; white-space: pre; ">@@p=
+ointer_data</span><span style=3D"color: rgb(0, 0, 0); font-family: 'Bitstre=
+am Vera Sans Mono', Courier, monospace; line-height: 18px; text-align: left=
+; white-space: pre; "> </span><span class=3D"o" style=3D"line-height: 18px;=
+ font-weight: bold; color: rgb(0, 0, 0); font-family: 'Bitstream Vera Sans =
+Mono', Courier, monospace; text-align: left; white-space: pre; ">=3D </span=
+>MemoryPointer.new(:char, data.size)</div><div>&nbsp; &nbsp;&nbsp;<span cla=
+ss=3D"vc" style=3D"line-height: 18px; color: rgb(0, 128, 128); font-family:=
+ 'Bitstream Vera Sans Mono', Courier, monospace; text-align: left; white-sp=
+ace: pre; ">@@pointer_data</span><span class=3D"vc" style=3D"line-height: 1=
+8px; font-family: 'Bitstream Vera Sans Mono', Courier, monospace; text-alig=
+n: left; white-space: pre; "><font color=3D"#000000">.put_bytes(0, data)</f=
+ont></span></div><div><span class=3D"vc" style=3D"line-height: 18px; font-f=
+amily: 'Bitstream Vera Sans Mono', Courier, monospace; text-align: left; wh=
+ite-space: pre; "><font color=3D"#000000"><br></font></span></div><div><spa=
+n class=3D"vc" style=3D"line-height: 18px; font-family: 'Bitstream Vera San=
+s Mono', Courier, monospace; text-align: left; white-space: pre; "><font co=
+lor=3D"#000000">And in get_image(), instead of </font></span><span style=3D=
+"color: rgb(0, 0, 0); font-family: 'Bitstream Vera Sans Mono', Courier, mon=
+ospace; line-height: 18px; text-align: left; white-space: pre; ">picBuf.rea=
+d_string, use </span><span style=3D"color: rgb(0, 0, 0); font-family: 'Bits=
+tream Vera Sans Mono', Courier, monospace; line-height: 18px; text-align: l=
+eft; white-space: pre; ">picBuf.get_bytes(0, image_size)</span></div><div><=
+br>On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones  wrote:<bloc=
+kquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-l=
+eft: 1px #ccc solid;padding-left: 1ex;">Hi Matjis,<p>I could have sworn I a=
+lready checked the header file for a definition <br>but I obviously missed =
+something</p><p>The code is</p><p>typedef enum {<br>&nbsp; &nbsp; &nbsp;EPS=
+output,<br>&nbsp; &nbsp; &nbsp;TIFFoutput,<br>&nbsp; &nbsp; &nbsp;JPEGoutpu=
+t,<br>&nbsp; &nbsp; &nbsp;BMPoutput,<br>&nbsp; &nbsp; &nbsp;PNGoutput,<br>&=
+nbsp; &nbsp; &nbsp;RAWoutput,<br>&nbsp; &nbsp; &nbsp;PDFoutput,<br>&nbsp; &=
+nbsp; &nbsp;GIFoutput,<br>} OutputTypeCode;</p><p>So 0 would be EPS output =
+I assume, I changed it to 2 (JPEG) out of <br>curiosity but the allocation =
+is still 4Gb.</p><p>Regarding checking if picBuf is null. I added a check i=
+mmediately after <br>the malloc and the pointer is indeed null.<br>If I che=
+at badly and malloc image_size / 1024 then the picBuf pointer is <br>not nu=
+ll but them of course the<br>get_pagemem method fails.</p><p>I have no idea=
+ why I am getting a return value of 4Gb from the <br>get_pagememsize(iC) me=
+thod. I was hoping there<br>was some obvious mistake (type conversion or so=
+mething) I was making but <br>if nothing obvious springs out to<br>more exp=
+erienced eyes then I am not sure.</p><p>Regards,</p><p>Jeff</p><p></p><p>On=
+ 28/02/12 01:14, Matijs van Zuijlen wrote:<br>&gt; Hi Jeffrey,<br>&gt;<br>&=
+gt; On 02/27/2012 02:26 AM, Jeffrey Jones wrote:<br>&gt;&gt; I am in the pr=
+ocess of looking at using the following library from ruby<br>&gt;&gt; (<a h=
+ref=3D"http://www.datalogics.com/products/pdf2img/" target=3D"_blank">http:=
+//www.datalogics.com/<wbr>products/pdf2img/</a>) using FFI but have run <br=
+>&gt;&gt; into a few<br>&gt;&gt; issues mainly due to my lack of FFI experi=
+ence and general lack of C++.<br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>=
+&gt;&gt; The following Gist has the example C++ code (Posted with permissio=
+n) <br>&gt;&gt; and my Ruby<br>&gt;&gt; code along side some example output=
+. <a href=3D"https://gist.github.com/1920005" target=3D"_blank">https://gis=
+t.github.com/<wbr>1920005</a><br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>=
+&gt;&gt; On line 22 of the ruby file I have defined the second argument as =
+an <br>&gt;&gt; :int, this<br>&gt;&gt; is probably wrong but it suffices fo=
+r the moment I think. I assume <br>&gt;&gt; the real<br>&gt;&gt; value is a=
+n Enumeration, struct or something along those lines. It is <br>&gt;&gt; no=
+t<br>&gt;&gt; documented so I will ask the original developers.<br>&gt;<br>=
+&gt; You should take a look at the file 'pdf2imglib.h', to see what the <br=
+>&gt; values of that enumeration are. In particular, what integer value <br=
+>&gt; corresponds to GIFoutput.<br>&gt;<br>&gt;&gt; Questions:<br>&gt;&gt;<=
+br>&gt;&gt; 1. On line 40 of the ruby file the required memory is apparentl=
+y 4Gb, <br>&gt;&gt; this is<br>&gt;&gt; obviously wrong, does anyone know w=
+hy? (I assume I have messed <br>&gt;&gt; something up<br>&gt;&gt; somewhere=
+)<br>&gt;<br>&gt; Perhaps setting the output type to 0 is wrong. I'm not su=
+re what <br>&gt; output type would demand 4GB, though.<br>&gt;<br>&gt;&gt; =
+2. Can anyone see any other obvious mistakes on my part?<br>&gt;<br>&gt; I'=
+m guessing allocating 4GB is not going very well. Do check the that <br>&gt=
+; the resulting pointer isn't null, i.e., with picBuf.null?<br>&gt;<br>&gt;=
+ Regards,<br></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p=
+></p></blockquote></div><br>On Tuesday, 28 February 2012 10:43:07 UTC+10, J=
+effrey Jones  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;ma=
+rgin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi Matjis,=
+<p>I could have sworn I already checked the header file for a definition <b=
+r>but I obviously missed something</p><p>The code is</p><p>typedef enum {<b=
+r>&nbsp; &nbsp; &nbsp;EPSoutput,<br>&nbsp; &nbsp; &nbsp;TIFFoutput,<br>&nbs=
+p; &nbsp; &nbsp;JPEGoutput,<br>&nbsp; &nbsp; &nbsp;BMPoutput,<br>&nbsp; &nb=
+sp; &nbsp;PNGoutput,<br>&nbsp; &nbsp; &nbsp;RAWoutput,<br>&nbsp; &nbsp; &nb=
+sp;PDFoutput,<br>&nbsp; &nbsp; &nbsp;GIFoutput,<br>} OutputTypeCode;</p><p>=
+So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of <br>curi=
+osity but the allocation is still 4Gb.</p><p>Regarding checking if picBuf i=
+s null. I added a check immediately after <br>the malloc and the pointer is=
+ indeed null.<br>If I cheat badly and malloc image_size / 1024 then the pic=
+Buf pointer is <br>not null but them of course the<br>get_pagemem method fa=
+ils.</p><p>I have no idea why I am getting a return value of 4Gb from the <=
+br>get_pagememsize(iC) method. I was hoping there<br>was some obvious mista=
+ke (type conversion or something) I was making but <br>if nothing obvious s=
+prings out to<br>more experienced eyes then I am not sure.</p><p>Regards,</=
+p><p>Jeff</p><p></p><p>On 28/02/12 01:14, Matijs van Zuijlen wrote:<br>&gt;=
+ Hi Jeffrey,<br>&gt;<br>&gt; On 02/27/2012 02:26 AM, Jeffrey Jones wrote:<b=
+r>&gt;&gt; I am in the process of looking at using the following library fr=
+om ruby<br>&gt;&gt; (<a href=3D"http://www.datalogics.com/products/pdf2img/=
+" target=3D"_blank">http://www.datalogics.com/<wbr>products/pdf2img/</a>) u=
+sing FFI but have run <br>&gt;&gt; into a few<br>&gt;&gt; issues mainly due=
+ to my lack of FFI experience and general lack of C++.<br>&gt;&gt;<br>&gt;&=
+gt; [...]<br>&gt;&gt;<br>&gt;&gt; The following Gist has the example C++ co=
+de (Posted with permission) <br>&gt;&gt; and my Ruby<br>&gt;&gt; code along=
+ side some example output. <a href=3D"https://gist.github.com/1920005" targ=
+et=3D"_blank">https://gist.github.com/<wbr>1920005</a><br>&gt;&gt;<br>&gt;&=
+gt; [...]<br>&gt;&gt;<br>&gt;&gt; On line 22 of the ruby file I have define=
+d the second argument as an <br>&gt;&gt; :int, this<br>&gt;&gt; is probably=
+ wrong but it suffices for the moment I think. I assume <br>&gt;&gt; the re=
+al<br>&gt;&gt; value is an Enumeration, struct or something along those lin=
+es. It is <br>&gt;&gt; not<br>&gt;&gt; documented so I will ask the origina=
+l developers.<br>&gt;<br>&gt; You should take a look at the file 'pdf2imgli=
+b.h', to see what the <br>&gt; values of that enumeration are. In particula=
+r, what integer value <br>&gt; corresponds to GIFoutput.<br>&gt;<br>&gt;&gt=
+; Questions:<br>&gt;&gt;<br>&gt;&gt; 1. On line 40 of the ruby file the req=
+uired memory is apparently 4Gb, <br>&gt;&gt; this is<br>&gt;&gt; obviously =
+wrong, does anyone know why? (I assume I have messed <br>&gt;&gt; something=
+ up<br>&gt;&gt; somewhere)<br>&gt;<br>&gt; Perhaps setting the output type =
+to 0 is wrong. I'm not sure what <br>&gt; output type would demand 4GB, tho=
+ugh.<br>&gt;<br>&gt;&gt; 2. Can anyone see any other obvious mistakes on my=
+ part?<br>&gt;<br>&gt; I'm guessing allocating 4GB is not going very well. =
+Do check the that <br>&gt; the resulting pointer isn't null, i.e., with pic=
+Buf.null?<br>&gt;<br>&gt; Regards,<br></p><p></p><p></p><p></p><p></p><p></=
+p><p></p><p></p><p></p><p></p></blockquote><br>On Tuesday, 28 February 2012=
+ 10:43:07 UTC+10, Jeffrey Jones  wrote:<blockquote class=3D"gmail_quote" st=
+yle=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-lef=
+t: 1ex;">Hi Matjis,<p>I could have sworn I already checked the header file =
+for a definition <br>but I obviously missed something</p><p>The code is</p>=
+<p>typedef enum {<br>&nbsp; &nbsp; &nbsp;EPSoutput,<br>&nbsp; &nbsp; &nbsp;=
+TIFFoutput,<br>&nbsp; &nbsp; &nbsp;JPEGoutput,<br>&nbsp; &nbsp; &nbsp;BMPou=
+tput,<br>&nbsp; &nbsp; &nbsp;PNGoutput,<br>&nbsp; &nbsp; &nbsp;RAWoutput,<b=
+r>&nbsp; &nbsp; &nbsp;PDFoutput,<br>&nbsp; &nbsp; &nbsp;GIFoutput,<br>} Out=
+putTypeCode;</p><p>So 0 would be EPS output I assume, I changed it to 2 (JP=
+EG) out of <br>curiosity but the allocation is still 4Gb.</p><p>Regarding c=
+hecking if picBuf is null. I added a check immediately after <br>the malloc=
+ and the pointer is indeed null.<br>If I cheat badly and malloc image_size =
+/ 1024 then the picBuf pointer is <br>not null but them of course the<br>ge=
+t_pagemem method fails.</p><p>I have no idea why I am getting a return valu=
+e of 4Gb from the <br>get_pagememsize(iC) method. I was hoping there<br>was=
+ some obvious mistake (type conversion or something) I was making but <br>i=
+f nothing obvious springs out to<br>more experienced eyes then I am not sur=
+e.</p><p>Regards,</p><p>Jeff</p><p></p><p>On 28/02/12 01:14, Matijs van Zui=
+jlen wrote:<br>&gt; Hi Jeffrey,<br>&gt;<br>&gt; On 02/27/2012 02:26 AM, Jef=
+frey Jones wrote:<br>&gt;&gt; I am in the process of looking at using the f=
+ollowing library from ruby<br>&gt;&gt; (<a href=3D"http://www.datalogics.co=
+m/products/pdf2img/" target=3D"_blank">http://www.datalogics.com/<wbr>produ=
+cts/pdf2img/</a>) using FFI but have run <br>&gt;&gt; into a few<br>&gt;&gt=
+; issues mainly due to my lack of FFI experience and general lack of C++.<b=
+r>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>&gt;&gt; The following Gist has=
+ the example C++ code (Posted with permission) <br>&gt;&gt; and my Ruby<br>=
+&gt;&gt; code along side some example output. <a href=3D"https://gist.githu=
+b.com/1920005" target=3D"_blank">https://gist.github.com/<wbr>1920005</a><b=
+r>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>&gt;&gt; On line 22 of the ruby=
+ file I have defined the second argument as an <br>&gt;&gt; :int, this<br>&=
+gt;&gt; is probably wrong but it suffices for the moment I think. I assume =
+<br>&gt;&gt; the real<br>&gt;&gt; value is an Enumeration, struct or someth=
+ing along those lines. It is <br>&gt;&gt; not<br>&gt;&gt; documented so I w=
+ill ask the original developers.<br>&gt;<br>&gt; You should take a look at =
+the file 'pdf2imglib.h', to see what the <br>&gt; values of that enumeratio=
+n are. In particular, what integer value <br>&gt; corresponds to GIFoutput.=
+<br>&gt;<br>&gt;&gt; Questions:<br>&gt;&gt;<br>&gt;&gt; 1. On line 40 of th=
+e ruby file the required memory is apparently 4Gb, <br>&gt;&gt; this is<br>=
+&gt;&gt; obviously wrong, does anyone know why? (I assume I have messed <br=
+>&gt;&gt; something up<br>&gt;&gt; somewhere)<br>&gt;<br>&gt; Perhaps setti=
+ng the output type to 0 is wrong. I'm not sure what <br>&gt; output type wo=
+uld demand 4GB, though.<br>&gt;<br>&gt;&gt; 2. Can anyone see any other obv=
+ious mistakes on my part?<br>&gt;<br>&gt; I'm guessing allocating 4GB is no=
+t going very well. Do check the that <br>&gt; the resulting pointer isn't n=
+ull, i.e., with picBuf.null?<br>&gt;<br>&gt; Regards,<br></p><p></p><p></p>=
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p></blockquote><br>On Tuesda=
+y, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones  wrote:<blockquote class=
+=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #cc=
+c solid;padding-left: 1ex;">Hi Matjis,<p>I could have sworn I already check=
+ed the header file for a definition <br>but I obviously missed something</p=
+><p>The code is</p><p>typedef enum {<br>&nbsp; &nbsp; &nbsp;EPSoutput,<br>&=
+nbsp; &nbsp; &nbsp;TIFFoutput,<br>&nbsp; &nbsp; &nbsp;JPEGoutput,<br>&nbsp;=
+ &nbsp; &nbsp;BMPoutput,<br>&nbsp; &nbsp; &nbsp;PNGoutput,<br>&nbsp; &nbsp;=
+ &nbsp;RAWoutput,<br>&nbsp; &nbsp; &nbsp;PDFoutput,<br>&nbsp; &nbsp; &nbsp;=
+GIFoutput,<br>} OutputTypeCode;</p><p>So 0 would be EPS output I assume, I =
+changed it to 2 (JPEG) out of <br>curiosity but the allocation is still 4Gb=
+.</p><p>Regarding checking if picBuf is null. I added a check immediately a=
+fter <br>the malloc and the pointer is indeed null.<br>If I cheat badly and=
+ malloc image_size / 1024 then the picBuf pointer is <br>not null but them =
+of course the<br>get_pagemem method fails.</p><p>I have no idea why I am ge=
+tting a return value of 4Gb from the <br>get_pagememsize(iC) method. I was =
+hoping there<br>was some obvious mistake (type conversion or something) I w=
+as making but <br>if nothing obvious springs out to<br>more experienced eye=
+s then I am not sure.</p><p>Regards,</p><p>Jeff</p><p></p><p>On 28/02/12 01=
+:14, Matijs van Zuijlen wrote:<br>&gt; Hi Jeffrey,<br>&gt;<br>&gt; On 02/27=
+/2012 02:26 AM, Jeffrey Jones wrote:<br>&gt;&gt; I am in the process of loo=
+king at using the following library from ruby<br>&gt;&gt; (<a href=3D"http:=
+//www.datalogics.com/products/pdf2img/" target=3D"_blank">http://www.datalo=
+gics.com/<wbr>products/pdf2img/</a>) using FFI but have run <br>&gt;&gt; in=
+to a few<br>&gt;&gt; issues mainly due to my lack of FFI experience and gen=
+eral lack of C++.<br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>&gt;&gt; The=
+ following Gist has the example C++ code (Posted with permission) <br>&gt;&=
+gt; and my Ruby<br>&gt;&gt; code along side some example output. <a href=3D=
+"https://gist.github.com/1920005" target=3D"_blank">https://gist.github.com=
+/<wbr>1920005</a><br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&gt;<br>&gt;&gt; On =
+line 22 of the ruby file I have defined the second argument as an <br>&gt;&=
+gt; :int, this<br>&gt;&gt; is probably wrong but it suffices for the moment=
+ I think. I assume <br>&gt;&gt; the real<br>&gt;&gt; value is an Enumeratio=
+n, struct or something along those lines. It is <br>&gt;&gt; not<br>&gt;&gt=
+; documented so I will ask the original developers.<br>&gt;<br>&gt; You sho=
+uld take a look at the file 'pdf2imglib.h', to see what the <br>&gt; values=
+ of that enumeration are. In particular, what integer value <br>&gt; corres=
+ponds to GIFoutput.<br>&gt;<br>&gt;&gt; Questions:<br>&gt;&gt;<br>&gt;&gt; =
+1. On line 40 of the ruby file the required memory is apparently 4Gb, <br>&=
+gt;&gt; this is<br>&gt;&gt; obviously wrong, does anyone know why? (I assum=
+e I have messed <br>&gt;&gt; something up<br>&gt;&gt; somewhere)<br>&gt;<br=
+>&gt; Perhaps setting the output type to 0 is wrong. I'm not sure what <br>=
+&gt; output type would demand 4GB, though.<br>&gt;<br>&gt;&gt; 2. Can anyon=
+e see any other obvious mistakes on my part?<br>&gt;<br>&gt; I'm guessing a=
+llocating 4GB is not going very well. Do check the that <br>&gt; the result=
+ing pointer isn't null, i.e., with picBuf.null?<br>&gt;<br>&gt; Regards,<br=
+></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></block=
+quote><br>On Tuesday, 28 February 2012 10:43:07 UTC+10, Jeffrey Jones  wrot=
+e:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;b=
+order-left: 1px #ccc solid;padding-left: 1ex;">Hi Matjis,<p>I could have sw=
+orn I already checked the header file for a definition <br>but I obviously =
+missed something</p><p>The code is</p><p>typedef enum {<br>&nbsp; &nbsp; &n=
+bsp;EPSoutput,<br>&nbsp; &nbsp; &nbsp;TIFFoutput,<br>&nbsp; &nbsp; &nbsp;JP=
+EGoutput,<br>&nbsp; &nbsp; &nbsp;BMPoutput,<br>&nbsp; &nbsp; &nbsp;PNGoutpu=
+t,<br>&nbsp; &nbsp; &nbsp;RAWoutput,<br>&nbsp; &nbsp; &nbsp;PDFoutput,<br>&=
+nbsp; &nbsp; &nbsp;GIFoutput,<br>} OutputTypeCode;</p><p>So 0 would be EPS =
+output I assume, I changed it to 2 (JPEG) out of <br>curiosity but the allo=
+cation is still 4Gb.</p><p>Regarding checking if picBuf is null. I added a =
+check immediately after <br>the malloc and the pointer is indeed null.<br>I=
+f I cheat badly and malloc image_size / 1024 then the picBuf pointer is <br=
+>not null but them of course the<br>get_pagemem method fails.</p><p>I have =
+no idea why I am getting a return value of 4Gb from the <br>get_pagememsize=
+(iC) method. I was hoping there<br>was some obvious mistake (type conversio=
+n or something) I was making but <br>if nothing obvious springs out to<br>m=
+ore experienced eyes then I am not sure.</p><p>Regards,</p><p>Jeff</p><p></=
+p><p>On 28/02/12 01:14, Matijs van Zuijlen wrote:<br>&gt; Hi Jeffrey,<br>&g=
+t;<br>&gt; On 02/27/2012 02:26 AM, Jeffrey Jones wrote:<br>&gt;&gt; I am in=
+ the process of looking at using the following library from ruby<br>&gt;&gt=
+; (<a href=3D"http://www.datalogics.com/products/pdf2img/" target=3D"_blank=
+">http://www.datalogics.com/<wbr>products/pdf2img/</a>) using FFI but have =
+run <br>&gt;&gt; into a few<br>&gt;&gt; issues mainly due to my lack of FFI=
+ experience and general lack of C++.<br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&=
+gt;<br>&gt;&gt; The following Gist has the example C++ code (Posted with pe=
+rmission) <br>&gt;&gt; and my Ruby<br>&gt;&gt; code along side some example=
+ output. <a href=3D"https://gist.github.com/1920005" target=3D"_blank">http=
+s://gist.github.com/<wbr>1920005</a><br>&gt;&gt;<br>&gt;&gt; [...]<br>&gt;&=
+gt;<br>&gt;&gt; On line 22 of the ruby file I have defined the second argum=
+ent as an <br>&gt;&gt; :int, this<br>&gt;&gt; is probably wrong but it suff=
+ices for the moment I think. I assume <br>&gt;&gt; the real<br>&gt;&gt; val=
+ue is an Enumeration, struct or something along those lines. It is <br>&gt;=
+&gt; not<br>&gt;&gt; documented so I will ask the original developers.<br>&=
+gt;<br>&gt; You should take a look at the file 'pdf2imglib.h', to see what =
+the <br>&gt; values of that enumeration are. In particular, what integer va=
+lue <br>&gt; corresponds to GIFoutput.<br>&gt;<br>&gt;&gt; Questions:<br>&g=
+t;&gt;<br>&gt;&gt; 1. On line 40 of the ruby file the required memory is ap=
+parently 4Gb, <br>&gt;&gt; this is<br>&gt;&gt; obviously wrong, does anyone=
+ know why? (I assume I have messed <br>&gt;&gt; something up<br>&gt;&gt; so=
+mewhere)<br>&gt;<br>&gt; Perhaps setting the output type to 0 is wrong. I'm=
+ not sure what <br>&gt; output type would demand 4GB, though.<br>&gt;<br>&g=
+t;&gt; 2. Can anyone see any other obvious mistakes on my part?<br>&gt;<br>=
+&gt; I'm guessing allocating 4GB is not going very well. Do check the that =
+<br>&gt; the resulting pointer isn't null, i.e., with picBuf.null?<br>&gt;<=
+br>&gt; Regards,<br></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p=
+></p><p></p></blockquote><br>On Tuesday, 28 February 2012 10:43:07 UTC+10, =
+Jeffrey Jones  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;m=
+argin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi Matjis=
+,<p>I could have sworn I already checked the header file for a definition <=
+br>but I obviously missed something</p><p>The code is</p><p>typedef enum {<=
+br>&nbsp; &nbsp; &nbsp;EPSoutput,<br>&nbsp; &nbsp; &nbsp;TIFFoutput,<br>&nb=
+sp; &nbsp; &nbsp;JPEGoutput,<br>&nbsp; &nbsp; &nbsp;BMPoutput,<br>&nbsp; &n=
+bsp; &nbsp;PNGoutput,<br>&nbsp; &nbsp; &nbsp;RAWoutput,<br>&nbsp; &nbsp; &n=
+bsp;PDFoutput,<br>&nbsp; &nbsp; &nbsp;GIFoutput,<br>} OutputTypeCode;</p><p=
+>So 0 would be EPS output I assume, I changed it to 2 (JPEG) out of <br>cur=
+iosity but the allocation is still 4Gb.</p><p>Regarding checking if picBuf =
+is null. I added a check immediately after <br>the malloc and the pointer i=
+s indeed null.<br>If I cheat badly and malloc image_size / 1024 then the pi=
+cBuf pointer is <br>not null but them of course the<br>get_pagemem method f=
+ails.</p><p>I have no idea why I am getting a return value of 4Gb from the =
+<br>get_pagememsize(iC) method. I was hoping there<br>was some obvious mist=
+ake (type conversion or something) I was making but <br>if nothing obvious =
+springs out to<br>more experienced eyes then I am not sure.</p><p>Regards,<=
+/p><p>Jeff</p><p></p><p>On 28/02/12 01:14, Matijs van Zuijlen wrote:<br>&gt=
+; Hi Jeffrey,<br>&gt;<br>&gt; On 02/27/2012 02:26 AM, Jeffrey Jones wrote:<=
+br>&gt;&gt; I am in the process of looking at using the following library f=
+rom ruby<br>&gt;&gt; (<a href=3D"http://www.datalogics.com/products/pdf2img=
+/" target=3D"_blank">http://www.datalogics.com/<wbr>products/pdf2img/</a>) =
+using FFI but have run <br>&gt;&gt; into a few<br>&gt;&gt; issues mainly du=
+e to my lack of FFI experience and general lack of C++.<br>&gt;&gt;<br>&gt;=
+&gt; [...]<br>&gt;&gt;<br>&gt;&gt; The following Gist has the example C++ c=
+ode (Posted with permission) <br>&gt;&gt; and my Ruby<br>&gt;&gt; code alon=
+g side some example output. <a href=3D"https://gist.github.com/1920005" tar=
+get=3D"_blank">https://gist.github.com/<wbr>1920005</a><br>&gt;&gt;<br>&gt;=
+&gt; [...]<br>&gt;&gt;<br>&gt;&gt; On line 22 of the ruby file I have defin=
+ed the second argument as an <br>&gt;&gt; :int, this<br>&gt;&gt; is probabl=
+y wrong but it suffices for the moment I think. I assume <br>&gt;&gt; the r=
+eal<br>&gt;&gt; value is an Enumeration, struct or something along those li=
+nes. It is <br>&gt;&gt; not<br>&gt;&gt; documented so I will ask the origin=
+al developers.<br>&gt;<br>&gt; You should take a look at the file 'pdf2imgl=
+ib.h', to see what the <br>&gt; values of that enumeration are. In particul=
+ar, what integer value <br>&gt; corresponds to GIFoutput.<br>&gt;<br>&gt;&g=
+t; Questions:<br>&gt;&gt;<br>&gt;&gt; 1. On line 40 of the ruby file the re=
+quired memory is apparently 4Gb, <br>&gt;&gt; this is<br>&gt;&gt; obviously=
+ wrong, does anyone know why? (I assume I have messed <br>&gt;&gt; somethin=
+g up<br>&gt;&gt; somewhere)<br>&gt;<br>&gt; Perhaps setting the output type=
+ to 0 is wrong. I'm not sure what <br>&gt; output type would demand 4GB, th=
+ough.<br>&gt;<br>&gt;&gt; 2. Can anyone see any other obvious mistakes on m=
+y part?<br>&gt;<br>&gt; I'm guessing allocating 4GB is not going very well.=
+ Do check the that <br>&gt; the resulting pointer isn't null, i.e., with pi=
+cBuf.null?<br>&gt;<br>&gt; Regards,<br></p><p></p><p></p><p></p><p></p><p><=
+/p><p></p><p></p><p></p><p></p></blockquote>
+------=_Part_161_17642939.1330391631451--

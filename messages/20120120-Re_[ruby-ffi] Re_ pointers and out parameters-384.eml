@@ -1,0 +1,293 @@
+Delivered-To: headius@headius.com
+Received: by 10.231.37.130 with SMTP id x2cs106174ibd;
+        Fri, 20 Jan 2012 13:43:03 -0800 (PST)
+Received: by 10.180.100.130 with SMTP id ey2mr21697849wib.15.1327095781347;
+        Fri, 20 Jan 2012 13:43:01 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMSw2MXzERDhv-f4BBoEZEYurg@googlegroups.com>
+Received: from mail-we0-f190.google.com (mail-we0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTPS id v6si3694642weq.15.2012.01.20.13.43.00
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 20 Jan 2012 13:43:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMSw2MXzERDhv-f4BBoEZEYurg@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMSw2MXzERDhv-f4BBoEZEYurg@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCMSw2MXzERDhv-f4BBoEZEYurg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by werb12 with SMTP id b12sf5803489wer.7
+        for <headius@headius.com>; Fri, 20 Jan 2012 13:43:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=mtlYdj23lPNSTtmiZ89+E7Z1nYjORRILjYiAb7QER4o=;
+        b=zplnDD3aVeSfzBWs+8TBmWr2dQqTFD4LQ6ZvBdqrX/Fuit7iRBN3GcdCKNkkyDvFNo
+         AOdu1kof1/cs3+zZQmwzyS57lUaNHS0SIpaRtCMab0ik90IawMbs/l4qXCyP11TQ7DDt
+         RXyIOdUvGWDYgCW3j9DawxHsZKwcmBlMdd7dY=
+Received: by 10.216.131.193 with SMTP id m43mr57659wei.0.1327095777208;
+        Fri, 20 Jan 2012 13:42:57 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.5.198 with SMTP id u6ls5299693wiu.1.gmail; Fri, 20 Jan
+ 2012 13:42:55 -0800 (PST)
+Received: by 10.180.102.3 with SMTP id fk3mr1739160wib.4.1327095775921;
+        Fri, 20 Jan 2012 13:42:55 -0800 (PST)
+Received: by 10.180.102.3 with SMTP id fk3mr1739159wib.4.1327095775908;
+        Fri, 20 Jan 2012 13:42:55 -0800 (PST)
+Received: from mail-wi0-f178.google.com (mail-wi0-f178.google.com [209.85.212.178])
+        by gmr-mx.google.com with ESMTPS id y6si13412wiw.2.2012.01.20.13.42.55
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 20 Jan 2012 13:42:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of mwotton@gmail.com designates 209.85.212.178 as permitted sender) client-ip=209.85.212.178;
+Received: by wibhn3 with SMTP id hn3so938465wib.23
+        for <ruby-ffi@googlegroups.com>; Fri, 20 Jan 2012 13:42:55 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.180.75.212 with SMTP id e20mr6580043wiw.11.1327095775817; Fri,
+ 20 Jan 2012 13:42:55 -0800 (PST)
+Received: by 10.223.83.203 with HTTP; Fri, 20 Jan 2012 13:42:55 -0800 (PST)
+In-Reply-To: <8659966.3451.1327060924081.JavaMail.geo-discussion-forums@prcu6>
+References: <6f5c513f-9a39-4b8d-b72f-09325e094391@y5g2000pbk.googlegroups.com>
+	<8659966.3451.1327060924081.JavaMail.geo-discussion-forums@prcu6>
+Date: Sat, 21 Jan 2012 08:42:55 +1100
+Message-ID: <CAHfTQEh4CdAJQ-RD6GfmOP5hcjr12n7j=j7+uz4qWRf769azAA@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: pointers and out parameters
+From: Mark Wotton <mwotton@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: mwotton@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of mwotton@gmail.com designates 209.85.212.178 as permitted sender)
+ smtp.mail=mwotton@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=f46d043890a54cf13204b6fc90e0
+
+--f46d043890a54cf13204b6fc90e0
+Content-Type: text/plain; charset=ISO-8859-1
+
+write_pointer! wonderful, thank you, that's exactly what i needed.
+
+cheers
+Mark
+
+On Fri, Jan 20, 2012 at 11:02 PM, Wayne Meissner <wmeissner@gmail.com>wrote:
+
+> It looks like you need to pass the address of a zmsg_t pointer, so you
+> need to use Pointer#write_pointer()
+> i.e. I think something like this might work:
+>
+>   def once
+>       raise "Worker needs a responder block" unless block_given?
+>
+>       ptr = FFI::MemoryPointer.new(:**pointer)
+>       reply = nil
+>       while true
+>         puts "calling receive"
+>         request = Majordomo.mdwrk_recv @session, ptr
+>         puts "worker interrupted" unless request
+>
+>         reply = yield request
+>         # The block returned a zmsg_t pointer
+>         ptr.write_pointer(reply)
+>       end
+>     end
+>
+>
+> On Thursday, 19 January 2012 17:40:01 UTC+10, Mark Wotton wrote:
+>>
+>> Hi all,
+>>
+>> I'm trying to move some code from C to Ruby using FFI.
+>>
+>>   The problematic chunk looks like this:
+>>
+>>   int verbose = (argc > 1 && streq (argv [1], "-v"));
+>>     mdwrk_t *session = mdwrk_new (
+>>         "tcp://localhost:5555", "echo", verbose);
+>>
+>>     zmsg_t *reply = NULL;
+>>     while (1) {
+>>         zmsg_t *request = mdwrk_recv (session, &reply);
+>>         if (request == NULL)
+>>             break;              //  Worker was interrupted
+>>         reply = request;        //  Echo is complex... :-)
+>>     }
+>>     mdwrk_destroy (&session);
+>>     return 0;
+>>
+>>
+>> I'm not quite sure how to model the "reply = request" chunk - I have
+>> this:
+>>
+>>
+>> module Majordomo
+>>   extend FFI::Library
+>>   ffi_lib 'lib0mq_majordomo'
+>>
+>>   attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+>>   attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+>>   attach_function :mdwrk_destroy, [:pointer], :void
+>>   class Worker < FFI::ManagedStruct
+>>     def initialize(host, service, verbose=false)
+>>       @session = Majordomo.mdwrk_new host, service, verbose
+>>     end
+>>
+>>     # this is a bit ugly, but the C expects to be in a run loop
+>>     # and therefore makes mdwrk_recv do two things...
+>>     def once
+>>       raise "Worker needs a responder block" unless block_given?
+>>
+>>       ptr = FFI::MemoryPointer.new(:**pointer)
+>>       while true
+>>         puts "calling receive"
+>>         request = Majordomo.mdwrk_recv @session, ptr
+>>         puts "worker interrupted" unless request
+>>
+>>         ptr = yield request
+>>       end
+>>     end
+>>   end
+>> end
+>>
+>> calling it as
+>>
+>>   while true
+>>     worker.once {|x| x}
+>>   end
+>>
+>> to test. The first run goes through ok, but the "ptr = yield request"
+>> is clearly bogus: it should really be one layer of indirection out.
+>>
+>> I can't see how to model this, even after going through the out
+>> parameter section in the wiki. Could you help?
+>>
+>> cheers
+>> Mark
+>
+>
+
+
+-- 
+A UNIX signature isn't a return address, it's the ASCII equivalent of a
+black velvet clown painting. It's a rectangle of carets surrounding a
+quote from a literary giant of weeniedom like Heinlein or Dr. Who.
+        -- Chris Maeda
+
+--f46d043890a54cf13204b6fc90e0
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+write_pointer! wonderful, thank you, that&#39;s exactly what i needed.<div>=
+<br></div><div>cheers</div><div>Mark<br><br><div class=3D"gmail_quote">On F=
+ri, Jan 20, 2012 at 11:02 PM, Wayne Meissner <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:wmeissner@gmail.com">wmeissner@gmail.com</a>&gt;</span> wrote:<b=
+r>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">It looks like you need to pass the address o=
+f a zmsg_t pointer, so you need to use Pointer#write_pointer()<div>i.e. I t=
+hink something like this might work:</div>
+<div class=3D"im"><div><br></div><div>=A0 def once=A0<br>=A0 =A0 =A0 raise =
+&quot;Worker needs a responder block&quot; unless block_given?=A0<br><br>=
+=A0 =A0 =A0 ptr =3D FFI::MemoryPointer.new(:<u></u>pointer)=A0</div></div><=
+div>=A0 =A0 =A0 reply =3D nil<br>
+=A0 =A0 =A0 while true</div><div><div class=3D"im">=A0 =A0 =A0 =A0 puts &qu=
+ot;calling receive&quot;=A0<br>=A0 =A0 =A0 =A0 request =3D Majordomo.mdwrk_=
+recv @session, ptr=A0<br>=A0 =A0 =A0 =A0 puts &quot;worker interrupted&quot=
+; unless request=A0<br><br></div>=A0 =A0 =A0 =A0 reply =3D yield request=A0=
+</div>
+<div>=A0 =A0 =A0 =A0 # The block returned a zmsg_t pointer</div><div>=A0 =
+=A0 =A0 =A0 ptr.write_pointer(reply)<br></div><div>=A0 =A0 =A0 end=A0<br>=
+=A0 =A0 end=A0<div><div class=3D"h5"><br><div><br>On Thursday, 19 January 2=
+012 17:40:01 UTC+10, Mark  Wotton  wrote:<blockquote class=3D"gmail_quote" =
+style=3D"margin:0;margin-left:0.8ex;border-left:1px #ccc solid;padding-left=
+:1ex">
+Hi all,
+<br>
+<br>I&#39;m trying to move some code from C to Ruby using FFI.
+<br>
+<br>=A0 The problematic chunk looks like this:
+<br>
+<br>=A0 int verbose =3D (argc &gt; 1 &amp;&amp; streq (argv [1], &quot;-v&q=
+uot;));
+<br>=A0 =A0 mdwrk_t *session =3D mdwrk_new (
+<br>=A0 =A0 =A0 =A0 &quot;tcp://localhost:5555&quot;, &quot;echo&quot;, ver=
+bose);
+<br>
+<br>=A0 =A0 zmsg_t *reply =3D NULL;
+<br>=A0 =A0 while (1) {
+<br>=A0 =A0 =A0 =A0 zmsg_t *request =3D mdwrk_recv (session, &amp;reply);
+<br>=A0 =A0 =A0 =A0 if (request =3D=3D NULL)
+<br>=A0 =A0 =A0 =A0 =A0 =A0 break; =A0 =A0 =A0 =A0 =A0 =A0 =A0// =A0Worker =
+was interrupted
+<br>=A0 =A0 =A0 =A0 reply =3D request; =A0 =A0 =A0 =A0// =A0Echo is complex=
+... :-)
+<br>=A0 =A0 }
+<br>=A0 =A0 mdwrk_destroy (&amp;session);
+<br>=A0 =A0 return 0;
+<br>
+<br>
+<br>I&#39;m not quite sure how to model the &quot;reply =3D request&quot; c=
+hunk - I have
+<br>this:
+<br>
+<br>
+<br>module Majordomo
+<br>=A0 extend FFI::Library
+<br>=A0 ffi_lib &#39;lib0mq_majordomo&#39;
+<br>
+<br>=A0 attach_function :mdwrk_new, [:string, :string, :bool], :pointer
+<br>=A0 attach_function :mdwrk_recv, [:pointer, :pointer], :pointer
+<br>=A0 attach_function :mdwrk_destroy, [:pointer], :void
+<br>=A0 class Worker &lt; FFI::ManagedStruct
+<br>=A0 =A0 def initialize(host, service, verbose=3Dfalse)
+<br>=A0 =A0 =A0 @session =3D Majordomo.mdwrk_new host, service, verbose
+<br>=A0 =A0 end
+<br>
+<br>=A0 =A0 # this is a bit ugly, but the C expects to be in a run loop
+<br>=A0 =A0 # and therefore makes mdwrk_recv do two things...
+<br>=A0 =A0 def once
+<br>=A0 =A0 =A0 raise &quot;Worker needs a responder block&quot; unless blo=
+ck_given?
+<br>
+<br>=A0 =A0 =A0 ptr =3D FFI::MemoryPointer.new(:<u></u>pointer)
+<br>=A0 =A0 =A0 while true
+<br>=A0 =A0 =A0 =A0 puts &quot;calling receive&quot;
+<br>=A0 =A0 =A0 =A0 request =3D Majordomo.mdwrk_recv @session, ptr
+<br>=A0 =A0 =A0 =A0 puts &quot;worker interrupted&quot; unless request
+<br>
+<br>=A0 =A0 =A0 =A0 ptr =3D yield request
+<br>=A0 =A0 =A0 end
+<br>=A0 =A0 end
+<br>=A0 end
+<br>end
+<br>
+<br>calling it as
+<br>
+<br>=A0 while true
+<br>=A0 =A0 worker.once {|x| x}
+<br>=A0 end
+<br>
+<br>to test. The first run goes through ok, but the &quot;ptr =3D yield req=
+uest&quot;
+<br>is clearly bogus: it should really be one layer of indirection out.
+<br>
+<br>I can&#39;t see how to model this, even after going through the out
+<br>parameter section in the wiki. Could you help?
+<br>
+<br>cheers
+<br>Mark</blockquote></div></div></div></div></blockquote></div><br><br cle=
+ar=3D"all"><div><br></div>-- <br>A UNIX signature isn&#39;t a return addres=
+s, it&#39;s the ASCII equivalent of a <br>black velvet clown painting. It&#=
+39;s a rectangle of carets surrounding a <br>
+quote from a literary giant of weeniedom like Heinlein or Dr. Who. <br>=A0 =
+=A0 =A0 =A0 -- Chris Maeda<br><br>
+</div>
+
+--f46d043890a54cf13204b6fc90e0--

@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.60.79 with SMTP id o15cs193612qah;
+        Thu, 5 Aug 2010 13:14:48 -0700 (PDT)
+Received: by 10.101.69.16 with SMTP id w16mr12523871ank.141.1281039288557;
+        Thu, 05 Aug 2010 13:14:48 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJS9pIKQHRDvtuziBBoEPGowRg@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id n1si1484614ane.63.2010.08.05.13.14.47;
+        Thu, 05 Aug 2010 13:14:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJS9pIKQHRDvtuziBBoEPGowRg@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJS9pIKQHRDvtuziBBoEPGowRg@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCJS9pIKQHRDvtuziBBoEPGowRg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxt33 with SMTP id 33sf16920509yxt.7
+        for <headius@headius.com>; Thu, 05 Aug 2010 13:14:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=1LeY2MXi7EkUeMlVOaiRWe8iq3tIP8qfd2fu3COe5SQ=;
+        b=UUtKgFt8Id1+tPyBH+5R7k/9dHNNVcXEK68SQbMBoT8mlqvrQmjrLH/SteEp/waWHJ
+         CaUurD68RXK+elr0C3PvRy24lLjf05yVMmqfYkWDmrIkuo17OZngaAm/cSfHg5iQMpgD
+         I7n5hCZu8TpaWwLlajXd36p6iZZbmFUCrEHdI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=2uVp7jacx865FFQTZDPdsylGdhNwsrx7Z1+PwE50u4eSmjbaZHDXFZNDHJGrg6CXO2
+         g/AyNXmEGxg77OdfmUbw/JGocEl5xCCxXFQl2Unj2cLnk4UnigQ9JQOb3H6+Q/LJIYCb
+         /pKIGGxD/47yrIG4rkIc7wgxUh8SKEBmZ/aG0=
+Received: by 10.90.101.10 with SMTP id y10mr2087427agb.43.1281039215545;
+        Thu, 05 Aug 2010 13:13:35 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.48.5 with SMTP id v5ls1253382ybv.6.p; Thu, 05 Aug 2010 
+	13:13:35 -0700 (PDT)
+Received: by 10.150.95.11 with SMTP id s11mr5320131ybb.2.1281039215335;
+        Thu, 05 Aug 2010 13:13:35 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.209.16 with SMTP id l16mr2029222agq.31.1281013933636; Thu, 
+	05 Aug 2010 06:12:13 -0700 (PDT)
+Received: by d17g2000yqb.googlegroups.com with HTTP; Thu, 5 Aug 2010 06:12:13 
+	-0700 (PDT)
+Date: Thu, 5 Aug 2010 06:12:13 -0700 (PDT)
+X-IP: 138.162.8.58
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; 
+	Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.1; .NET CLR 
+	3.0.04506.648; .NET CLR 3.5.21022),gzip(gfe)
+Message-ID: <d600a9e9-c1d5-4883-8f91-9e6a9cd7cde5@d17g2000yqb.googlegroups.com>
+Subject: [ruby-ffi] Problem retrieving struct from pointer
+From: Joe <jm202@yahoo.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: jm202@yahoo.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hello all
+I'm trying to pull some information from the SNIA's HBA API (http://
+hbaapi.sourceforge.net).  The function I'm  having difficulty with is
+HBA_GetAdapterAttributes, which according to the API, returns a single
+pointer to a struct.  The struct in C is:
+
+typedef struct hba_AdapterAttributes {
+    char	Manufacturer[64];
+    char	SerialNumber[64];
+    char	Model[256];
+    char	ModelDescription[256];
+    HBA_WWN	NodeWWN;
+    char	NodeSymbolicName[256];
+    char	HardwareVersion[256];
+    char	DriverVersion[256];
+    char	OptionROMVersion[256];
+    char	FirmwareVersion[256];
+    HBA_UINT32	VendorSpecificID;
+    HBA_UINT32	NumberOfPorts;
+    char	DriverName[256];
+} HBA_ADAPTERATTRIBUTES, *PHBA_ADAPTERATTRIBUTES;
+
+And the function in question is:
+HBA_API HBA_STATUS HBA_GetAdapterAttributes(
+    HBA_HANDLE		handle,
+    HBA_ADAPTERATTRIBUTES   *hbaattributes
+    );
+
+----------
+
+In Ruby, I created the struct as so:
+class HBA_AdapterAttributes < FFI::Struct
+	layout :Manufacturer, :char
+	:SerialNumber, :char,
+	:Model, :char,
+	:ModelDescription, :char,
+	:NodeWWN, :uint8,
+	:NodeSymbolicName, :char,
+	:HardwareVersion, :char,
+	:DriverVersion, :char,
+	:OptionROMVersion, :char,
+	:FirmwareVersion, :char,
+	:VendorSpecificID, :uint32,
+	:NumberOfPorts, :uint32,
+	:DriverName, :char
+end
+
+Now def get_struct pointer
+def get_struct pointer
+	HBA::HBA_AdapterAttributes.new pointer
+end
+
+Calling the get_struct_pointer returns an array of fixnums, instead of
+any string values.
+
+Any idea what I'm overlooking here?

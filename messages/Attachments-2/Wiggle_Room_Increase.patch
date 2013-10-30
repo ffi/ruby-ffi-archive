@@ -1,0 +1,26 @@
+diff --git a/spec/ffi/managed_struct_spec.rb b/spec/ffi/managed_struct_spec.rb
+index 9b0423c..ef63bc2 100644
+--- a/spec/ffi/managed_struct_spec.rb
++++ b/spec/ffi/managed_struct_spec.rb
+@@ -45,7 +45,7 @@ describe "Managed Struct" do
+     end
+ 
+     loop_count = 30
+-    wiggle_room = 2
++    wiggle_room = 5
+ 
+     PleaseReleaseMe.should_receive(:release).at_least(loop_count-wiggle_room).times
+     loop_count.times do
+diff --git a/spec/ffi/pointer_spec.rb b/spec/ffi/pointer_spec.rb
+index 44563f1..190471e 100644
+--- a/spec/ffi/pointer_spec.rb
++++ b/spec/ffi/pointer_spec.rb
+@@ -107,7 +107,7 @@ end
+ 
+ describe "AutoPointer" do
+   loop_count = 30
+-  wiggle_room = 2 # GC rarely cleans up all objects. we can get most of them, and that's enough to determine if the basic functionality is working.
++  wiggle_room = 5 # GC rarely cleans up all objects. we can get most of them, and that's enough to determine if the basic functionality is working.
+   magic = 0x12345678
+ 
+   class AutoPointerTestHelper

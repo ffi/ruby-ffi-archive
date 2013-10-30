@@ -1,0 +1,139 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp90099laa;
+        Sun, 1 Sep 2013 22:57:12 -0700 (PDT)
+X-Received: by 10.15.75.73 with SMTP id k49mr34201396eey.36.1378101432344;
+        Sun, 01 Sep 2013 22:57:12 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBD6733FW44FBBN6RSCIQKGQEDEL4EPQ@googlegroups.com>
+Received: from mail-ea0-x23c.google.com (mail-ea0-x23c.google.com [2a00:1450:4013:c01::23c])
+        by mx.google.com with ESMTPS id x7si8713234eeo.277.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 01 Sep 2013 22:57:12 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning ruby-ffi+bncBD6733FW44FBBN6RSCIQKGQEDEL4EPQ@googlegroups.com does not designate 194.109.24.25 as permitted sender) client-ip=194.109.24.25;
+Authentication-Results: mx.google.com;
+       spf=softfail (google.com: domain of transitioning ruby-ffi+bncBD6733FW44FBBN6RSCIQKGQEDEL4EPQ@googlegroups.com does not designate 194.109.24.25 as permitted sender) smtp.mail=ruby-ffi+bncBD6733FW44FBBN6RSCIQKGQEDEL4EPQ@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com
+Received: by mail-ea0-f188.google.com with SMTP id d10sf698331eaj.25
+        for <headius@headius.com>; Sun, 01 Sep 2013 22:57:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=message-id:date:from:user-agent:mime-version:to:subject:references
+         :in-reply-to:content-type:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe;
+        bh=HB+z21sXETIHuKVwa89v1L0A3dxAa5GikqG7Oy5rWYk=;
+        b=ushwLyTJBj9VDjOxxDNXrnNnN5JyUKLDvQzmoMq1gU+mxd7KjXXlfpAub9sByKbvUL
+         HTAMNEV4hD+IE0lqbjOwecDZ1xiPdeTtOW/XJzpAd22WM9apiYBjONbqstNDHPsUy+VN
+         ZqiOPpexldY9UCS8PQSrWOftI+TnZs6fN1UiiUqsBmVWkDGl20Ch/bXXO0hkQUggJ8PR
+         GNwxLEncZB/NvRePhbhYNvcOrV2tYhFJkQHzizOQsJFonFqevA4ixGHUGgEVJUmYbDsm
+         lGWjTD3GK8ODIkxgMXaXAX/i+0Ip7YPfw0vEWBPUKWwh6gPcpUG2tiIWhnywELeUAUvR
+         7QNw==
+X-Received: by 10.152.170.168 with SMTP id an8mr9634lac.23.1378101431875;
+        Sun, 01 Sep 2013 22:57:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.152.87.41 with SMTP id u9ls541283laz.4.gmail; Sun, 01 Sep 2013
+ 22:57:11 -0700 (PDT)
+X-Received: by 10.14.119.140 with SMTP id n12mr21129733eeh.0.1378101431346;
+        Sun, 01 Sep 2013 22:57:11 -0700 (PDT)
+Received: from smtp-vbr5.xs4all.nl (smtp-vbr5.xs4all.nl. [194.109.24.25])
+        by gmr-mx.google.com with ESMTP id cd45si1794812eeb.0.1969.12.31.16.00.00;
+        Sun, 01 Sep 2013 22:57:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 194.109.24.25 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.25;
+Received: from [10.0.0.34] (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr5.xs4all.nl (8.13.8/8.13.8) with ESMTP id r825v3fg036450
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Mon, 2 Sep 2013 07:57:10 +0200 (CEST)
+	(envelope-from matijs@matijs.net)
+Message-ID: <522428AE.2040503@matijs.net>
+Date: Mon, 02 Sep 2013 07:57:02 +0200
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130821 Icedove/17.0.8
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] ANN ffi-bit_masks
+References: <521DCDA4.5000204@gmail.com> <5221CDDE.1070708@matijs.net> <52228DFA.2080004@gmail.com>
+In-Reply-To: <52228DFA.2080004@gmail.com>
+X-Enigmail-Version: 1.5.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="----enig2UUUOKBDTAFTIVCOCCXOK"
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 194.109.24.25 is neither permitted nor denied by best guess
+ record for domain of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+------enig2UUUOKBDTAFTIVCOCCXOK
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On 01/09/13 02:44, postmodern wrote:
+> The library defines a typedef to the new BitMask Data Converter. So any=
+where you
+> can use a typedef, you can use ffi-bit_masks.
+
+Excellent. I've been waiting for bitmasks for a long time, so I'll be try=
+ing out
+ffi-bit_masks in my own gem soon.
+
+> I'm thinking about forking the library and writing a plugin specificall=
+y for
+> Struct bit-fields, but I want to use sexy syntax:
+>=20
+> |layout :foo, :uint,
+>        :x,    1,
+>        :y,    3,
+>        :z,    2|
+>=20
+> On 08/31/2013 04:05 AM, Matijs van Zuijlen wrote:
+>> On 28/08/13 12:15, postmodern wrote:
+>>> I finally got around to finishing my FFI plugin for handling bit-mask=
+ed
+>>> function arguments. Much thanks to Wayne Meissner for explaining the
+>>> DataConverter API.
+>>> https://github.com/postmodern/ffi-bit_masks#readme
+>>>
+>>> Now I'm wondering what a FFI plugin for struct bit-fields might look =
+like?
+>>>
+>> Does this mean this plugin will work for function arguments but not fo=
+r struct
+>> fields?
+>>
+
+
+--=20
+Matijs
+
+
+------enig2UUUOKBDTAFTIVCOCCXOK
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+iQEVAwUBUiQor5Z5CSFec8nfAQgfzwf+JAQBvXHxO+gtZ/MvAjOMlxArg23ydP4n
+f2Tt6FO3bOOxmmydWioMBD3Ctg/yWAc0ejBvqkTR5eKvmQ7aYG/ja6pf1f++wr27
+zFUkoqv85IbQrqfCmFxXa9deZTns8uiWzFSEe4A7sRxDQByWSxtA6KCxGwrj9CaY
+Jm7CpZvE/aTYigoEBAtLc4g8A9dmQK4anm6vB78J3bB1H25fuYEvbVVUxrAeGpk6
+khct01CGBJU3Kgrv3cXAyLmc/WzH0enNnZmuFnTt9BpkkE7uJ6VfKCxZZyDDFGT1
+YMuNmHX2cQZkcMDIkForjK1L6HPN3tZn0fK1sISWtbvabWssi4whYQ==
+=bfsw
+-----END PGP SIGNATURE-----
+
+------enig2UUUOKBDTAFTIVCOCCXOK--

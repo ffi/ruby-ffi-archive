@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Pointer to a struct - how to cast?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Pointer to a struct - how to cast?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Jeremy Voorhis <jvoorhis@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/20/10 11:37 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">The code looks alright to me on first glance. Are you sure your pointer is valid?<br><br><div class="gmail_quote">On Thu, May 20, 2010 at 8:14 AM, Drew <span dir="ltr">&lt;<a href="mailto:drew.avis@gmail.com">drew.avis@gmail.com</a>&gt;</span> wrote:<br>
+<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">Hi there, I have a pointer to a struct that looks like this:<br>
+<br>
+// c:<br>
+typedef struct<br>
+        {<br>
+         IntT offset;<br>
+         IntT dataType;<br>
+         union {<br>
+                StringT sdata;<br>
+                IntT idata;<br>
+                } u;<br>
+        } F_TextItemT;<br>
+<br>
+In Ruby I&#39;ve defined it like this:<br>
+<br>
+  class FTextItemU &lt; FFI::Union<br>
+    layout :sdata, :string,<br>
+    :idata, :int<br>
+  end<br>
+<br>
+  class FTextItemT &lt; FFI::Struct<br>
+    layout :offset, :int,<br>
+      :dataType, :int,<br>
+      :u, FTextItemU<br>
+  end<br>
+<br>
+I&#39;m trying to cast the pointer like this:<br>
+<br>
+my_struct = FM::FTexFtItemT.new(p)<br>
+puts &quot;test: #{my_struct[:dataType]}&quot;<br>
+<br>
+However, I&#39;m getting a seg fault on the puts statement.<br>
+<br>
+Any ideas of what I&#39;m doing wrong?<br>
+<br>
+Thanks!<br>
+<font color="#888888">Drew<br>
+</font></blockquote></div><br>
+
+</div></body>
+</html>
+</table></div>

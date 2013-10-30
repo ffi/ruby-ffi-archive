@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Functions returning structures</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Functions returning structures</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>galdor <khaelin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/14/09 3:29 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+Let's define a C function which returns a plain structure:
+
+    typedef struct {
+        int r, g, b, a;
+    } ALLEGRO_COLOR;
+
+    ALLEGRO_COLOR al_map_rgb(unsigned char r, unsigned char g,
+unsigned char b);
+
+Now we bind it:
+
+    class ALLEGRO_COLOR &lt; FFI::Struct
+        layout :r, :float,
+               :g, :float,
+               :b, :float,
+               :a, :float
+    end
+
+    attach_function :al_map_rgb, [:uchar, :uchar, :uchar],
+ALLEGRO_COLOR
+
+But the following ruby code doesn't work:
+
+    bgcolor = al_map_rgb(20, 20, 20)
+    fgcolor = al_map_rgb(20, 40, 80)
+    al_clear_to_color(bgcolor)
+
+The screen is cleared with rgb(20, 40, 80), instead of rgb(20, 20,
+20).
+I don't know how stack allocation is performed, I must be doing
+something wrong.
+
+How should I work with stack-allocated structures ?
+
+Regards,
+
+Nicolas Martyanoff
+</pre></div></body>
+</html>
+</table></div>

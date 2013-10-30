@@ -1,0 +1,103 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.198.7 with SMTP id v7cs116460anf;
+        Wed, 20 Apr 2011 13:06:46 -0700 (PDT)
+Received: by 10.52.96.8 with SMTP id do8mr4161693vdb.142.1303330005732;
+        Wed, 20 Apr 2011 13:06:45 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJLrrPi9EhDQ-bztBBoEsCBhqQ@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id cf10si1201668vdc.163.2011.04.20.13.06.45
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 20 Apr 2011 13:06:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhDQ-bztBBoEsCBhqQ@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJLrrPi9EhDQ-bztBBoEsCBhqQ@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCJLrrPi9EhDQ-bztBBoEsCBhqQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf1670666qwj.7
+        for <headius@headius.com>; Wed, 20 Apr 2011 13:06:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=dY775A15ENvN0AxC0/TRDtL9WugZ0srTvw+Vdtz2GKQ=;
+        b=kzncnvXXdbWqpVrhuG3zkcxP6G+Yft6qQBDT4ABoWd4sbua3XfhzGoYxhtKR2rP28l
+         i6ErL3fl3HFpejRbYrE7ZvD1dcpxXorUVJc6uqtjrt/pmLVbbWTuIuN3ewUKV/CSB6Gu
+         xGW+o8WRwpZWe4kbq7SIRz3kUdxa9364BGu/Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=p/n8CJqHAASIPhE/RCNit3/VEwO0n0M9kg4Qhgu6PJ/jLa+eouQTLX1aRZc9LenIOd
+         YPSuf/JIY8cp/E0nNlUlBDFViqpM9kjMtEP53sMJjAc5hA+rMHAB97iHdzzj9kKoBQAB
+         7aOi/+OJWz+jPID7g1hsr9tzFUzcjmvrOp6kk=
+Received: by 10.229.118.104 with SMTP id u40mr557574qcq.0.1303330000481;
+        Wed, 20 Apr 2011 13:06:40 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.219.73 with SMTP id ht9ls300688qab.7.gmail; Wed, 20 Apr
+ 2011 13:06:40 -0700 (PDT)
+Received: by 10.224.140.68 with SMTP id h4mr440237qau.24.1303330000132;
+        Wed, 20 Apr 2011 13:06:40 -0700 (PDT)
+Received: by 10.224.183.200 with SMTP id ch8msqab;
+        Wed, 20 Apr 2011 11:12:45 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.199.9 with SMTP id eq9mr787339qab.50.1303323165771; Wed,
+ 20 Apr 2011 11:12:45 -0700 (PDT)
+Received: by j25g2000vbr.googlegroups.com with HTTP; Wed, 20 Apr 2011 11:12:45
+ -0700 (PDT)
+Date: Wed, 20 Apr 2011 11:12:45 -0700 (PDT)
+X-IP: 209.131.48.66
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US;
+ rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16,gzip(gfe)
+Message-ID: <527e0f31-eb4b-4145-9495-d2c04422519e@j25g2000vbr.googlegroups.com>
+Subject: [ruby-ffi] can't explain this behavior
+From: Alexander Kabanov <shurikk@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: shurikk@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi there,
+
+I'm trying to do something basic in my opinion, and get mixed results
+
+code example is here: http://pastebin.com/b15rrd6n
+
+C function signature (arguments in order):
+
+- pointer to a string (input)
+- string size
+- pointer to final result (string)
+- pointer to result size (int)
+- int (always 0 now)
+- pointer to a string
+
+sometimes function call works as expected, sometimes it doesn't, I
+can't explain why. adding removing few lines of code (random "puts"
+calls etc.) will change the function call behavior (will work 20% or
+100% of times). am I supposed to maintain memory pointers somehow
+(i.e. malloc/free) or my .so lib has bad implementation (i know it's
+used in other places without any issues)?
+
+I tried to use LibC approach described on wiki page using malloc, same
+deal.
+
+ruby 1.8.7 (2010-12-23 patchlevel 330) [i386-linux] RHEL 5.4
+ffi (1.0.7)
+
+best,
+
+--Alex

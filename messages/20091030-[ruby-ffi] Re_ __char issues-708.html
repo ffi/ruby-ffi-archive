@@ -1,0 +1,54 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: **char issues</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: **char issues</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/30/09 10:24 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+2009/10/31 Bryan Kearney <a class="moz-txt-link-rfc2396E" href="mailto:bkearney@redhat.com">&lt;bkearney@redhat.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Thank you.. that worked. Next one is a ***char issue. the augeas API returns
+<span class="moz-txt-citetags">&gt; </span>an array of Strings:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>int aug_match(const augeas *aug, const char *path, char ***matches);
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I have mapped it as
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span> attach_function :aug_match, [:pointer, :string, :pointer], :int
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>and I am trying to call it. I have 2 tries:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>   def match2(path)
+<span class="moz-txt-citetags">&gt; </span>       self.check()
+<span class="moz-txt-citetags">&gt; </span>       ptr = FFI::MemoryPointer.new(:pointer, 1)
+<span class="moz-txt-citetags">&gt; </span>       len = AugeasLib.aug_match(@aug, path, ptr)
+<span class="moz-txt-citetags">&gt; </span>       puts(len)
+<span class="moz-txt-citetags">&gt; </span>       strPtr = ptr.read_pointer()
+<span class="moz-txt-citetags">&gt; </span>       strPtr.null? ? [] : strPtr.read_array_of_type(:string, :read_pointer,
+<span class="moz-txt-citetags">&gt; </span>len)
+<span class="moz-txt-citetags">&gt; </span>   end
+</pre></blockquote><pre wrap>
+
+You should be able to replace the last line of that with:
+
+  strPtr.null ? [] : strPtr.get_array_of_string(0, len).compact
+
+get_array_of_string() will read len pointers, converting each either
+to a string, or to nil if the pointer is NULL.  Array#compact then
+removes any nil values from the array.
+
+Your match() function probably should have used the triple-dot range:
+
+(0...len)
+
+i.e. 0 up to, but not including len.  You would have been reading one
+pointer element beyond the end of the array, and quite possibly read a
+garbage value and tried to deref it.  (trying to deref a NULL value
+will get you a ruby exception, but there's nothing we can do about
+invalid non-zero memory locations).
+</pre></div></body>
+</html>
+</table></div>

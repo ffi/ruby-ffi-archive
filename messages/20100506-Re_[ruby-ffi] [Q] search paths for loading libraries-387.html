@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] [Q] search paths for loading libraries</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] [Q] search paths for loading libraries</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/6/10 5:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+ffi_lib searches in the standard locations that dlopen() would look
+for the library - usually /usr/lib.  For everything else, you need to
+specify by absolute path.
+
+You can specify both "search the default paths" and "use this specific
+path" like so:
+
+module FooLib
+  ffi_lib [ "foo", "/usr/local/libfoo.so", "/opt/local/libfoo.dylib" ]
+end
+
+That will try to load each of the members of the array in turn, and
+stop once it has loaded once successfully.
+
+
+
+On 7 May 2010 07:35, Chuck Remes <a class="moz-txt-link-rfc2396E" href="mailto:cremes.devlist@mac.com">&lt;cremes.devlist@mac.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm working on providing a set of FFI bindings for the zeromq (zeromq.com) message queuing library. It is typically installed in /usr/local/lib.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The ruby bindings that it currently has builds a C extension which it stashes in ruby/lib/ruby/site_ruby/1.9.1/ for the correct platform. Presumably FFI would find a library installed here, but I'm hoping it will also find a library stored at the traditional /usr/local/lib location. Will it? Any way to give it a hint (aside from providing an absolute path)?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>cr
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Link to non-windows dlls</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Link to non-windows dlls</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>kvberge <kvandenberge@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/22/10 6:33 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Is there a trick to using FFI and the non-windows api dll's?  I am
+attempting to link to a custom usb dll that is known to work
+(currently using wrapper created from swig and using ruby 1.8.6).  I
+am now attempting to run ruby 1.9.2 and FFI seemed like a simpler
+solution than worrying about using swig.  I should also note that I am
+on windows 7 and ran the ruby one click installer for windows.  When
+running the script I get this error:
+
+
+C:/projects/FFI/test_usb.rb:6: [BUG] Segmentation fault
+ruby 1.9.2p0 (2010-08-18) [i386-mingw32]
+
+-- control frame ----------
+c:0004 p:---- s:0014 b:0014 l:000013 d:000013 CFUNC  :Receive
+c:0003 p:0081 s:0009 b:0008 l:0013f4 d:001074 EVAL   C:<i class="moz-txt-slash"><span class="moz-txt-tag">/</span>projects/FFI<span class="moz-txt-tag">/</span></i>
+test_usb.rb:6
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0013f4 d:0013f4 TOP
+---------------------------
+-- Ruby level backtrace information
+----------------------------------------
+C:/projects/FFI/test_usb.rb:6:in `&lt;main&gt;'
+C:/projects/FFI/test_usb.rb:6:in `Receive'
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension
+libraries.
+Bug reports are welcome.
+For details: <a class="moz-txt-link-freetext" href="http://www.ruby-lang.org/bugreport.html">http://www.ruby-lang.org/bugreport.html</a>
+
+
+This application has requested the Runtime to terminate it in an
+unusual way.
+Please contact the application's support team for more information.
+
+Any advice?
+If you need more information let me know.
+
+Thanks
+</pre></div></body>
+</html>
+</table></div>

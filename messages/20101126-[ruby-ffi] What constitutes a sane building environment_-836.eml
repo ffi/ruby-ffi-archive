@@ -1,0 +1,83 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs206710faj;
+        Fri, 26 Nov 2010 06:02:16 -0800 (PST)
+Received: by 10.142.128.12 with SMTP id a12mr2383578wfd.60.1290780135743;
+        Fri, 26 Nov 2010 06:02:15 -0800 (PST)
+Return-Path: <ruby-ffi+bncCKmtnZWtBxDl-77nBBoEA0Utvw@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTP id r36si4752292qcs.93.2010.11.26.06.02.14;
+        Fri, 26 Nov 2010 06:02:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKmtnZWtBxDl-77nBBoEA0Utvw@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKmtnZWtBxDl-77nBBoEA0Utvw@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCKmtnZWtBxDl-77nBBoEA0Utvw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf3778050qwj.7
+        for <headius@headius.com>; Fri, 26 Nov 2010 06:02:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=WBUleg0UZ8R3CVcRL4B+WDCv6WP4g3F75QwBEaDsmfM=;
+        b=pfWkIy9ddWd25CqiL9UPxga/0N7AglDRWk0u44A0XK76j/W40J91Qg4Y38k5yyDagz
+         UpDaBjp96+MCrsN7L8CxYJAXi2kEk4tPocYwVayFtet+F9U3YrSfSVUWFxJZ8cWmZP6q
+         85xYHoqVadbiZYMa/17coJX4mRuUPmQmqNdzQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=HKjHIYii233Zm42QSiA4KrJDF2Wuoq9qVphgeOE3wXAtykW10vhVCXLIsPZ0Ci2hku
+         zs5nBq6YX01V3rq7K0B7zZ3HDrYnX9UhFuMYEM4M+ITvA/We30pR/u5LFrgvXQ3Dcbie
+         RrtomQ2dHhLRmWr4mZSksLByjE/8QiGF6s8Zc=
+Received: by 10.229.2.151 with SMTP id 23mr165849qcj.11.1290780133481;
+        Fri, 26 Nov 2010 06:02:13 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.3.2 with SMTP id 2ls507973qal.7.p; Fri, 26 Nov 2010
+ 06:02:13 -0800 (PST)
+Received: by 10.224.28.73 with SMTP id l9mr183556qac.4.1290780133113;
+        Fri, 26 Nov 2010 06:02:13 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.224.11.11 with SMTP id r11mr60638qar.49.1290763782835; Fri, 26
+ Nov 2010 01:29:42 -0800 (PST)
+Received: by f20g2000vbc.googlegroups.com with HTTP; Fri, 26 Nov 2010 01:29:42
+ -0800 (PST)
+Date: Fri, 26 Nov 2010 01:29:42 -0800 (PST)
+X-IP: 196.215.96.102
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2.12)
+ Gecko/20101026 Firefox/3.6.12,gzip(gfe)
+Message-ID: <7444468f-efc4-4d95-8aea-8483aed362de@f20g2000vbc.googlegroups.com>
+Subject: [ruby-ffi] What constitutes a sane building environment?
+From: James <james.b.thompson@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: james.b.thompson@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hey guys,
+
+I'm running Fedora 14, and am having problems installing the gem. I
+have installed all of the development tools that I can think of, as
+well as libffi, but am still having issues.
+
+I noticed in the wiki that you said:
+
+"You need a sane building environment in order to compile the
+extension. "
+
+So my question is, which packages are required to meet the sane
+building environment requirement? :)
+
+Thanks for your help!

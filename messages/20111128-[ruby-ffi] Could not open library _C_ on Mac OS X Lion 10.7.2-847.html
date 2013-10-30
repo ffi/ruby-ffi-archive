@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Could not open library &#39;C&#39; on Mac OS X Lion 10.7.2</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Could not open library &#39;C&#39; on Mac OS X Lion 10.7.2</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>来诺 &lt;winfield301@gmail.com&gt;</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>11/28/11 2:08 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode"><div>Hi, guys</div><div><br></div><div>&nbsp; I have the following code copied from the ruby-ffi github page. I have Xcode installed. tested both in ruby ruby-1.8.7-p352 [ i686 ] and ruby-1.9.2-p180 [ x86_64 ]</div><div>&nbsp; but got the error:&nbsp;</div><div><br></div><div>&nbsp;&nbsp;gems/ffi-1.0.11/lib/ffi/library.rb:121:in `block in ffi_lib': Could not open library 'c': dlopen(c, 5): image not found. (LoadError)</div><div>Could not open library 'libc.dylib': dlopen(libc.dylib, 5): image not found</div><div><br></div><div>&nbsp;&nbsp;the code:</div><div><br></div><div>&nbsp; require 'rubygems'</div><div>&nbsp; require 'ffi'</div><div><br></div><div>&nbsp; module MyLib</div><div>&nbsp; &nbsp; extend FFI::Library</div><div>&nbsp; &nbsp; ffi_lib 'c'</div><div>&nbsp; &nbsp; attach_function :puts, [ :string ], :int</div><div>&nbsp; end</div><div><br></div><div>&nbsp; MyLib.puts 'Hello boys using libc!'</div>
+</div></body>
+</html>
+</table></div>

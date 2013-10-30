@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.71.198 with SMTP id i6cs174457faj;
+        Tue, 18 Jan 2011 12:27:27 -0800 (PST)
+Received: by 10.42.221.198 with SMTP id id6mr6888621icb.361.1295382445809;
+        Tue, 18 Jan 2011 12:27:25 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOar7YaCHRCr79fpBBoENyqCgQ@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id b8si5484940vci.166.2011.01.18.12.27.24
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 18 Jan 2011 12:27:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOar7YaCHRCr79fpBBoENyqCgQ@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOar7YaCHRCr79fpBBoENyqCgQ@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCOar7YaCHRCr79fpBBoENyqCgQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk12 with SMTP id 12sf60822qyk.7
+        for <headius@headius.com>; Tue, 18 Jan 2011 12:27:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=LNXcVdDvvMKWH4q3AnZgboFLCv4eC0GsBdkciDw5RPg=;
+        b=snDGXKVpf/ihiU4W7MbLqqDZIIodWV/UnullMtIJisiWKbreCeQFrDmUToBDDyC9J5
+         nZcoH/ciSyj+HHfdyHfjCFUXwUYvGkpTKjcSXvgLEKrdbB0UyGnv5ptXnJSosv4YKgq+
+         n2tNa0PPKOIraaRIeozbUj/J/Y8EPvRuB0Vk8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=we9O5B+9b+ShhWpzDbfKX81QJHwD9z+poyq1Byn1l3c25k6SPHkFLgMtsdo+6RPnIP
+         COV0SOLC335k6IM6YpqEQ1+zV5UvEMIejXfEnFGYVTK+popOBTnPCOFclop1HL0z6PU5
+         MZ5lRiNt3HbK6bZkNKodsCrfG1n2ADeqE4jFE=
+Received: by 10.224.67.210 with SMTP id s18mr320131qai.15.1295382443776;
+        Tue, 18 Jan 2011 12:27:23 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.3.230 with SMTP id 38ls1350621qao.0.p; Tue, 18 Jan 2011
+ 12:27:23 -0800 (PST)
+Received: by 10.224.54.81 with SMTP id p17mr563785qag.19.1295382443340;
+        Tue, 18 Jan 2011 12:27:23 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.220.187.5 with SMTP id cu5mr331550vcb.15.1295375018959; Tue,
+ 18 Jan 2011 10:23:38 -0800 (PST)
+Received: by m35g2000vbn.googlegroups.com with HTTP; Tue, 18 Jan 2011 10:23:38
+ -0800 (PST)
+Date: Tue, 18 Jan 2011 10:23:38 -0800 (PST)
+X-IP: 190.242.65.202
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-us)
+ AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4,gzip(gfe)
+Message-ID: <39fb9ee4-8740-4cc1-bc22-4b38eff9b5cc@m35g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] Passing Windows VARIANT by value leads to segfault
+From: Stephan Schwab <sns@caimito.net>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: sns@caimito.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi!
+
+Given this code:
+
+get_accState      = FFI::Function.new(:uint32, [:pointer,
+Variant.by_value, :pointer], i_accessible_vtbl[:get_accState])
+variant_out       = Variant.new
+
+variant_in = Variant.new
+variant_init(variant_in)
+variant_in[:vt] = Constants::VT_I4   # 0x3
+variant_in[:lVal] = 0  # CHILDID_SELF
+
+acc_state_result  = get_accState.call(i_accessible, variant_in,
+variant_out)
+fail "Can't query for button state. HRESULT = 0x" +
+acc_state_result.to_s(16) unless acc_state_result == Constants::S_OK
+# S_OK = 0
+
+I get a segmentation fault when calling get_accState.call()
+
+The method get_accState() allows me to skip the second parameter and
+pass in NULL instead. If I do that (after changing the parameter type
+to a pointer and using 'nil') the function returns S_OK and does not
+crash.
+
+What might be the reason for the segmentation fault given this code?
+
+Stephan

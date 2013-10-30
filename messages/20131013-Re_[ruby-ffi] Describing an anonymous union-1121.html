@@ -1,0 +1,101 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Describing an anonymous union</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Describing an anonymous union</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Misty De Meo <mistydemeo@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/13/13 7:48 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Thanks! I hadn't thought about using Class.new to avoid assigning it
+as a separate constant.
+
+In this case though I was wondering about the name within the struct,
+not the Ruby constant representing the union. In the original C
+definition the union has no name - is assigning something arbitrary
+the best way to go, e.g. :union in Postmodern's example?
+
+On Sun, Oct 13, 2013 at 5:43 PM, Wayne Meissner <a class="moz-txt-link-rfc2396E" href="mailto:wmeissner@gmail.com">&lt;wmeissner@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Yep, that should work.  Can even leave off the class_eval -
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Class.new(FFI::Union) do
+<span class="moz-txt-citetags">&gt; </span>  layout :msg, :pointer,
+<span class="moz-txt-citetags">&gt; </span>            :song_end, UadeNotificationSongEnd
+<span class="moz-txt-citetags">&gt; </span>end
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>The only things that won't work are typedefs/aliases - they use a hacky way
+<span class="moz-txt-citetags">&gt; </span>to find the enclosing module (which contains the typedef table), which won't
+<span class="moz-txt-citetags">&gt; </span>work with anon classes.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Lexically scoped things will work fine though (and the built in FFI types)
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Sunday, 13 October 2013 10:23:08 UTC+11, Postmodern wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Usually I just come up with some name for anonymous structs/unions.
+<span class="moz-txt-citetags">&gt;&gt; </span>However, I wonder if you could do
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>layout :type, :uade_notification_type,
+<span class="moz-txt-citetags">&gt;&gt; </span>       :union, Class.new(FFI::Union).class_eval do
+<span class="moz-txt-citetags">&gt;&gt; </span>                 ...
+<span class="moz-txt-citetags">&gt;&gt; </span>               end
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>or something similar?
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>On 10/12/2013 04:44 AM, Misty De Meo wrote:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>How can I represent an anonymous union in FFI?
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>A struct I'm wrapping has the following structure:
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>struct uade_notification {
+<span class="moz-txt-citetags">&gt;&gt; </span>    enum uade_notification_type type;
+<span class="moz-txt-citetags">&gt;&gt; </span>    union {
+<span class="moz-txt-citetags">&gt;&gt; </span>        char *msg;
+<span class="moz-txt-citetags">&gt;&gt; </span>        struct uade_notification_song_end song_end;
+<span class="moz-txt-citetags">&gt;&gt; </span>    };
+<span class="moz-txt-citetags">&gt;&gt; </span>};
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I can create a union using FFI::Union of course, but I'm not sure how to
+<span class="moz-txt-citetags">&gt;&gt; </span>represent that in a struct layout. Is assigning it an arbitrary name the
+<span class="moz-txt-citetags">&gt;&gt; </span>right way to go?
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Best,
+<span class="moz-txt-citetags">&gt;&gt; </span>Misty
+<span class="moz-txt-citetags">&gt;&gt; </span>--
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>---
+<span class="moz-txt-citetags">&gt;&gt; </span>You received this message because you are subscribed to the Google Groups
+<span class="moz-txt-citetags">&gt;&gt; </span>"ruby-ffi" group.
+<span class="moz-txt-citetags">&gt;&gt; </span>To unsubscribe from this group and stop receiving emails from it, send an
+<span class="moz-txt-citetags">&gt;&gt; </span>email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+u...@googlegroups.com">ruby-ffi+u...@googlegroups.com</a>.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>--
+<span class="moz-txt-citetags">&gt;&gt; </span>Blog: <a class="moz-txt-link-freetext" href="http://postmodern.github.com/">http://postmodern.github.com/</a>
+<span class="moz-txt-citetags">&gt;&gt; </span>GitHub: <a class="moz-txt-link-freetext" href="https://github.com/postmodern">https://github.com/postmodern</a>
+<span class="moz-txt-citetags">&gt;&gt; </span>Twitter: @postmodern_mod3
+<span class="moz-txt-citetags">&gt;&gt; </span>PGP: 0xB9515E77
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>---
+<span class="moz-txt-citetags">&gt; </span>You received this message because you are subscribed to the Google Groups
+<span class="moz-txt-citetags">&gt; </span>"ruby-ffi" group.
+<span class="moz-txt-citetags">&gt; </span>To unsubscribe from this group and stop receiving emails from it, send an
+<span class="moz-txt-citetags">&gt; </span>email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+<span class="moz-txt-citetags">&gt; </span>For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+</pre></blockquote><pre wrap>
+
+<div class="moz-txt-sig">-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to <a class="moz-txt-link-abbreviated" href="mailto:ruby-ffi+unsubscribe@googlegroups.com">ruby-ffi+unsubscribe@googlegroups.com</a>.
+For more options, visit <a class="moz-txt-link-freetext" href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.
+</div></pre></div></body>
+</html>
+</table></div>

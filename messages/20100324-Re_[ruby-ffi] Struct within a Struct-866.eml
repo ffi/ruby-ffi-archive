@@ -1,0 +1,89 @@
+Delivered-To: headius@headius.com
+Received: by 10.150.225.19 with SMTP id x19cs248806ybg;
+        Wed, 24 Mar 2010 13:01:59 -0700 (PDT)
+Received: by 10.115.113.31 with SMTP id q31mr246532wam.1.1269460918974;
+        Wed, 24 Mar 2010 13:01:58 -0700 (PDT)
+Return-Path: <3s2-qSwcJCBk1DA0N595Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@groups.bounces.google.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTP id 10si650377pzk.131.2010.03.24.13.01.57;
+        Wed, 24 Mar 2010 13:01:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3s2-qSwcJCBk1DA0N595Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@groups.bounces.google.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3s2-qSwcJCBk1DA0N595Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@groups.bounces.google.com designates 209.85.160.62 as permitted sender) smtp.mail=3s2-qSwcJCBk1DA0N595Bz7A.1DBGJ0N-4475DD5A35GDJEH.1DB@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwi10 with SMTP id 10sf1146221pwi.7
+        for <headius@headius.com>; Wed, 24 Mar 2010 13:01:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=xvw1rlzMpu5xnJWx8Sffg8SRKDBZn5yYl0Zn/D/q6v4=;
+        b=jsc9SGRAHowjJrW1dFjLdksy7qQexk1Y/SaqJ9mb/PVCE2k084ZAOxdg0WIew9haNh
+         P0QiCxQFEEU6AIM31vqI13J8TikYtYFy+ELEhQmWIA+4YglOVwLJDw+3+U7vZARl6GyD
+         PT/EVFYcWZQsFS9vfP3Bh/uBeWfbgEJz38FDY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=uyfERxJdQuNHGpeUbY0hXTlJaFAsAlUCgOAZX11oajXOSwA3rVofaF5OjkX55RHqD6
+         AFQEEssU1rmSHK2a/QenEhmhK6eQ3kLBYLYFEO8Bkv+dtAVGt3LcYViJlS47jlD5caZa
+         u0p0w/eC2zjJ0uwTsYsPfP5fGvY0iSoENNYN4=
+Received: by 10.114.70.14 with SMTP id s14mr575399waa.7.1269460915904;
+        Wed, 24 Mar 2010 13:01:55 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.115.117.28 with SMTP id u28ls1465955wam.1.p; Wed, 24 Mar 2010 
+	13:01:55 -0700 (PDT)
+Received: by 10.114.187.6 with SMTP id k6mr2504337waf.23.1269460915086;
+        Wed, 24 Mar 2010 13:01:55 -0700 (PDT)
+Received: by 10.114.187.6 with SMTP id k6mr2504336waf.23.1269460915054;
+        Wed, 24 Mar 2010 13:01:55 -0700 (PDT)
+Return-Path: <colbygk@gmail.com>
+Received: from mail-px0-f199.google.com (mail-px0-f199.google.com [209.85.216.199])
+        by gmr-mx.google.com with ESMTP id 25si1932003pxi.0.2010.03.24.13.01.54;
+        Wed, 24 Mar 2010 13:01:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of colbygk@gmail.com designates 209.85.216.199 as permitted sender) client-ip=209.85.216.199;
+Received: by mail-px0-f199.google.com with SMTP id 37so2708821pxi.11
+        for <ruby-ffi@googlegroups.com>; Wed, 24 Mar 2010 13:01:54 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.141.15.10 with SMTP id s10mr379946rvi.40.1269460913681; Wed, 
+	24 Mar 2010 13:01:53 -0700 (PDT)
+In-Reply-To: <4ccee321003240053x36636834pd74a079481d25f3d@mail.gmail.com>
+References: <35a9c525-5378-4e9f-8e25-b4c8b1ae7c7f@l25g2000yqd.googlegroups.com>
+	 <4ccee321003240053x36636834pd74a079481d25f3d@mail.gmail.com>
+Date: Wed, 24 Mar 2010 13:01:53 -0700
+Message-ID: <289d112c1003241301i7da1826yed26a44c11beea10@mail.gmail.com>
+Subject: Re: [ruby-ffi] Struct within a Struct
+From: Colby Gutierrez-Kraybill <colbygk@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of colbygk@gmail.com designates 209.85.216.199 as permitted sender) 
+	smtp.mail=colbygk@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: colbygk@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/c2372af88e5991d5
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/79806f97f1264aa
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Oh man I should have seen that one coming.
+
+Thanks :)
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.

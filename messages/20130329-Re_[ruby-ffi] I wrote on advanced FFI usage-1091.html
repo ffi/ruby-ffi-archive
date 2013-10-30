@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] I wrote on advanced FFI usage</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] I wrote on advanced FFI usage</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/29/13 6:53 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">There are a few other tricks you can do:<div><br></div><div>1) Use as a result filter to automagically turn errno values into exceptions (not that I recommend exceptions-as-flow-control)</div><div>e.g.</div><div>&nbsp; &nbsp; module PosixResult</div><div>&nbsp; &nbsp; &nbsp; extend FFI::DataConverter</div><div>&nbsp; &nbsp; &nbsp; native_type FFI::Type::INT</div><div><br></div><div>&nbsp; &nbsp; &nbsp; def self.from_native(value, ctx)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if value != -1</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; value</div><div>&nbsp; &nbsp; &nbsp; &nbsp; else</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raise SystemCallError.new("native error", FFI.errno)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; end</div><div>&nbsp; &nbsp; &nbsp; end</div><div>&nbsp; &nbsp; end</div><div><br></div><div>&nbsp; &nbsp; attach_function :some_function_that_can_fail, [ &nbsp;], PosixResult</div><div><br></div><div>2) Automagically convert and free pointer results. &nbsp;</div><div>e.g. lets say you have a function that returns an allocated C string, and you need to free it yourself. &nbsp;You /could/ use an AutoPointer, but to be kinder to the GC, you want to copy the string immediately to a GC managed object, and free the underlying C string.</div><div><br></div><div>&nbsp; &nbsp; class AllocatedStringResult</div><div><div>&nbsp; &nbsp; &nbsp; extend FFI::DataConverter</div><div>&nbsp; &nbsp; &nbsp; native_type FFI::Type::POINTER</div><div><br></div><div>&nbsp; &nbsp; &nbsp; def self.from_native(val, ctx)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; if val.null?</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nil</div><div>&nbsp; &nbsp; &nbsp; &nbsp; else&nbsp;</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; str = val.get_string(0)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LibC.free(val)</div><div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; str</div><div>&nbsp; &nbsp; &nbsp; &nbsp; end</div><div>&nbsp; &nbsp; &nbsp; end</div><div>&nbsp; end</div></div><div><br></div><div>3) Any subclass of FFI::AutoPointer can be used as a function result, and it automatically wraps the result of the function in that AutoPointer subclass.&nbsp;</div><div><br></div><div>You could also make something like this work:</div><div><br></div><div>&nbsp; &nbsp; attach_function :some_function, [], Device.managed</div><div><br></div><div>that way, Device is a regular non-autopointer, except in those cases where you need it to be. &nbsp;Look at Struct.auto_ptr for ideas on how to implement Device.managed.</div><div><br>4) Completely replace the FFI api with your own concoction. &nbsp;Using FFI::DynamicLibrary, FFI::Function, and FFI::DataConverter, you can write your own API for mapping C libraries into ruby. &nbsp;Thats how JRuby implements legacy interfaces like dl and Win32API.</div><div><br></div><div><br>On Saturday, 30 March 2013 08:44:29 UTC+10, Postmodern  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Thank you for putting this together. I was meaning to write a more
+<br>details overview of FFI; all of the other blog posts only cover loading
+<br>a library and attaching some functions. I never knew about by_ref and
+<br>extending FFI::Pointer is brilliant.
+<br>
+<br>On 03/28/2013 11:34 AM, Kim Burgestrand wrote:
+<br>&gt; Might be interesting to you since you are subscribed to the FFI
+<br>&gt; mailing list. The article is
+<br>&gt; here: <a href="http://www.elabs.se/blog/61-advanced-topics-in-ruby-ffi" target="_blank">http://www.elabs.se/blog/61-<wbr>advanced-topics-in-ruby-ffi</a>
+<br>&gt;
+<br>&gt; If you have any reactions to what I've written I'd love to hear them.
+<br>&gt;
+<br>&gt;
+<br>&gt;
+<br>&gt; -- 
+<br>&gt; — Kim Burgestrand
+<br>&gt; -- 
+<br>&gt; &nbsp;
+<br>&gt; ---
+<br>&gt; You received this message because you are subscribed to the Google
+<br>&gt; Groups "ruby-ffi" group.
+<br>&gt; To unsubscribe from this group and stop receiving emails from it, send
+<br>&gt; an email to <a href="javascript:" target="_blank" gdf-obfuscated-mailto="msW7g22ENmgJ">ruby-ffi+u...@<wbr>googlegroups.com</a>.
+<br>&gt; For more options, visit <a href="https://groups.google.com/groups/opt_out" target="_blank">https://groups.google.com/<wbr>groups/opt_out</a>.
+<br>&gt; &nbsp;
+<br>&gt; &nbsp;
+<br>
+<br>
+<br>-- 
+<br>Blog: <a href="http://postmodern.github.com/" target="_blank">http://postmodern.github.com/</a>
+<br>GitHub: <a href="https://github.com/postmodern" target="_blank">https://github.com/postmodern</a>
+<br>Twitter: @postmodern_mod3
+<br>PGP: 0xB9515E77
+<br>
+<br>
+<br></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

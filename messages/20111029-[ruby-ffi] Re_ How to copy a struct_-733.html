@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: How to copy a struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: How to copy a struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/29/11 6:51 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">Or you could use Struct#dup.<div><br></div><div>e.g. &nbsp;</div><div><br></div><div>$ ruby -rrubygems -e 'require "ffi"; class S &lt; FFI::Struct; layout :a, :int; end; s1 = S.new; s1[:a] = 1234; s2 = s1.dup; puts "s1=#{s1.pointer.address}, s2=#{s2.pointer.address} s1[:a]=#{s1[:a]}, s2[:a]=#{s2[:a]}"'</div><div><br></div><div>s1=4311971984, s2=4312277120 s1[:a]=1234, s2[:a]=1234</div><div><br></div><div>Different memory addresses, same contents.</div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

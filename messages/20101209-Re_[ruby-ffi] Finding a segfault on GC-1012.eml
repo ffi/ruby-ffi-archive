@@ -1,0 +1,101 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs47980fam;
+        Thu, 9 Dec 2010 21:25:11 -0800 (PST)
+Received: by 10.229.225.133 with SMTP id is5mr259086qcb.95.1291958710998;
+        Thu, 09 Dec 2010 21:25:10 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBC084boBBoEzm6Sxw@googlegroups.com>
+Received: from mail-qy0-f190.google.com (mail-qy0-f190.google.com [209.85.216.190])
+        by mx.google.com with ESMTPS id y10si3062122vch.161.2010.12.09.21.25.09
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Thu, 09 Dec 2010 21:25:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC084boBBoEzm6Sxw@googlegroups.com designates 209.85.216.190 as permitted sender) client-ip=209.85.216.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBC084boBBoEzm6Sxw@googlegroups.com designates 209.85.216.190 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBC084boBBoEzm6Sxw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qyk12 with SMTP id 12sf6157818qyk.7
+        for <headius@headius.com>; Thu, 09 Dec 2010 21:25:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=3aZnjE7sdC8wwgjGg7YJr+7InWIy7M8KrcZ5iR5RaWc=;
+        b=JNUAZprBnxJOjwephfq7yWYp74Jm9UtPU5Lojlzd4IQGc1RL9gS7JMZvI7JKcSiSQ4
+         NzoNEa91vF0+su7nyXF3117n/WNaqy9VRXJIWrC5L31owHS9E7CeZHwAF120wlXVekso
+         qb3pOAz07j+sUT4huf9oScaZSzPh84HGuYOCM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=gthc3oxGALGw6oGhk7ksllIRoGLyESsCebvC8A1jozSudV5tGmsF00kmRzl8xRFCNb
+         CYftU67kOBDFfaQ9jywXTzeux8wdpA5nzUtkjB5gLX3/zDUV13l0JUH+uwbXBupVtApy
+         BwtxXmEXNHsMf1fVWyt/NsD6FVr5V3PX54iXM=
+Received: by 10.229.44.3 with SMTP id y3mr19496qce.38.1291958708635;
+        Thu, 09 Dec 2010 21:25:08 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.80.196 with SMTP id u4ls909639qck.0.p; Thu, 09 Dec 2010
+ 21:25:08 -0800 (PST)
+Received: by 10.229.239.130 with SMTP id kw2mr38508qcb.4.1291958708107;
+        Thu, 09 Dec 2010 21:25:08 -0800 (PST)
+Received: by 10.229.239.130 with SMTP id kw2mr38507qcb.4.1291958708081;
+        Thu, 09 Dec 2010 21:25:08 -0800 (PST)
+Received: from mail-qy0-f181.google.com (mail-qy0-f181.google.com [209.85.216.181])
+        by gmr-mx.google.com with ESMTP id 3si553271qci.14.2010.12.09.21.25.07;
+        Thu, 09 Dec 2010 21:25:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.181 as permitted sender) client-ip=209.85.216.181;
+Received: by mail-qy0-f181.google.com with SMTP id 12so2870571qyk.12
+        for <ruby-ffi@googlegroups.com>; Thu, 09 Dec 2010 21:25:07 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.74.9 with SMTP id s9mr274190qcj.18.1291958706873; Thu, 09
+ Dec 2010 21:25:06 -0800 (PST)
+Received: by 10.229.241.211 with HTTP; Thu, 9 Dec 2010 21:25:06 -0800 (PST)
+In-Reply-To: <7a4d1f7e-4ee0-486d-8ff2-06410c9ba27f@c39g2000yqi.googlegroups.com>
+References: <7a4d1f7e-4ee0-486d-8ff2-06410c9ba27f@c39g2000yqi.googlegroups.com>
+Date: Fri, 10 Dec 2010 15:25:06 +1000
+Message-ID: <AANLkTi=ATbSgz7eWbUW_Jh-Y9MfJYPTW7LnC+sjgt33=@mail.gmail.com>
+Subject: Re: [ruby-ffi] Finding a segfault on GC
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.181 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 10 December 2010 12:21, dark.panda <dark.panda@gmail.com> wrote:
+
+> Anyone have any ideas as to what's going on? I'm at my wits end at
+> this point. Modifying GEOS itself might not be an option, but if
+> there's something I can do in Ruby that would be awesome.
+
+I haven't looked in depth, but in that cut down gist, it _could_ be this:
+
+handle = FFIGeos.initGEOS_r(
+  self.method(:notice_handler),
+  self.method(:error_handler)
+)
+
+Stash the return values from self.method() somewhere.
+e.g.
+
+@nh = self.method(:notice_handler)
+@eh = self.method(:error_handler)
+handle = FFIGeos.initGEOS_r(@nh, @eh))
+
+They don't have to be ivars, but they need to be kept for as long as
+Geos needs to use the callbacks.

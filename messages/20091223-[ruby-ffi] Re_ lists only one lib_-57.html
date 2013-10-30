@@ -1,0 +1,24 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: lists only one lib?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: lists only one lib?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/23/09 12:26 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>Looking at the ffi_lib code now, it is clear that subsequent ffi_lib
+<span class="moz-txt-citetags">&gt; &gt; </span>calls are not good. Well, maybe we should make that totally explicit,
+<span class="moz-txt-citetags">&gt; &gt; </span>and just don't allow to call ffi_lib the second time?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Probably best to have ffi_libraisean exception if the libs are already set. That solves it nicely and keeps users from tripping up on this.
+</pre></blockquote><pre wrap>
+
+I would also humbly suggest having second calls to Struct#layout also
+raise, to avoid confusion [I assume they're not really expected].
+-r
+</pre></div></body>
+</html>
+</table></div>

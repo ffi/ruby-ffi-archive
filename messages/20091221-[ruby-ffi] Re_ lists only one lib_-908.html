@@ -1,0 +1,36 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: lists only one lib?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: lists only one lib?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/21/09 8:03 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>  ffi_lib 'user32', 'msvcrt'
+</pre></blockquote><pre wrap>
+
+Hmm.
+This code:
+
+require 'ffi'
+module M
+ extend FFI::Library
+ ffi_lib 'user32'
+ ffi_lib 'msvcrt'
+ attach_function 'FindWindow', [ :string, :string], :pointer
+end
+
+yields this response:
+
+C:/installs/ruby19_mingw/lib/ruby/gems/1.9.1/gems/ffi-0.5.4-x86-
+mingw32/lib/ffi/library.rb:77:in `attach_function': Function
+'FindWindow' not found in [msvcrt] (FFI::NotFoundError)
+        from go2.rb:6:in `&lt;module:M&gt;'
+        from go2.rb:2:in `&lt;main&gt;'
+
+I assume this is unexpected?
+-r
+</pre></div></body>
+</html>
+</table></div>

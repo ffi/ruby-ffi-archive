@@ -1,0 +1,107 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs231703fam;
+        Tue, 28 Dec 2010 07:35:39 -0800 (PST)
+Received: by 10.216.46.193 with SMTP id r43mr17087262web.20.1293550539322;
+        Tue, 28 Dec 2010 07:35:39 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRDIh-joBBoEkAz-SA@googlegroups.com>
+Received: from mail-wy0-f190.google.com (mail-wy0-f190.google.com [74.125.82.190])
+        by mx.google.com with ESMTP id u30si18686766wei.171.2010.12.28.07.35.38;
+        Tue, 28 Dec 2010 07:35:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDIh-joBBoEkAz-SA@googlegroups.com designates 74.125.82.190 as permitted sender) client-ip=74.125.82.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRDIh-joBBoEkAz-SA@googlegroups.com designates 74.125.82.190 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRDIh-joBBoEkAz-SA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wyg36 with SMTP id 36sf15012169wyg.7
+        for <headius@headius.com>; Tue, 28 Dec 2010 07:35:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:received:mime-version:received
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=XVcKFmfCORK4ldtnyRjpKyh7qpEWJWHnZqLIiFo3auE=;
+        b=CdLqiGQ0/Ut9aD+7PyWLwzh9Exg0OhQy50+o5qPCgyCwoz9b6foSua5g9BoJ24jw3+
+         BjR/45RtkeTfidfJPX83Z07FyQR1s2hLbIdTjSfMf5D40Kv2utuj5m660FdoUIgQhtg+
+         yU6L3zt+C8hBviTuVm6dGEIIeJn303b35fIo0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=XacJIOTQGzNsuUaiG+7Cad5mhDk3O8tJa7F2NGMQGz6oqrYjs2Klo6g6N8T0BWtxgM
+         0aJea4TCHcyt+o7VvDhLFVVK1PL5Ae3KWjLzyHa+jq4iCoqE9ewxESW7X/2/ztZMAN9H
+         JKLk6FaREwsDsqOZbI5szQE13E+c44pCVTlX4=
+Received: by 10.216.165.78 with SMTP id d56mr2803116wel.0.1293550536961;
+        Tue, 28 Dec 2010 07:35:36 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.133.15 with SMTP id p15ls531788eei.7.p; Tue, 28 Dec 2010
+ 07:35:36 -0800 (PST)
+Received: by 10.14.53.2 with SMTP id f2mr1874092eec.23.1293550536263;
+        Tue, 28 Dec 2010 07:35:36 -0800 (PST)
+Received: by 10.14.53.2 with SMTP id f2mr1874091eec.23.1293550536248;
+        Tue, 28 Dec 2010 07:35:36 -0800 (PST)
+Received: from mail-ew0-f48.google.com (mail-ew0-f48.google.com [209.85.215.48])
+        by gmr-mx.google.com with ESMTP id 41si3515284ees.1.2010.12.28.07.35.35;
+        Tue, 28 Dec 2010 07:35:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.215.48 as permitted sender) client-ip=209.85.215.48;
+Received: by ewy20 with SMTP id 20so1411500ewy.21
+        for <ruby-ffi@googlegroups.com>; Tue, 28 Dec 2010 07:35:35 -0800 (PST)
+Received: by 10.213.113.210 with SMTP id b18mr10902784ebq.31.1293550535064;
+ Tue, 28 Dec 2010 07:35:35 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.213.102.7 with HTTP; Tue, 28 Dec 2010 07:35:13 -0800 (PST)
+In-Reply-To: <20101228102551.898cdf6c.jon.forums@gmail.com>
+References: <20101227101122.9ec1841c.jon.forums@gmail.com> <AANLkTinMy=5UsOCvJ=GS6Uf4L_b-xauwkKUvwWdaMy7Q@mail.gmail.com>
+ <20101228102551.898cdf6c.jon.forums@gmail.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Tue, 28 Dec 2010 12:35:13 -0300
+Message-ID: <AANLkTimzRHr1pDdFZUUKpqr-diFsxuNS89aitcoTG-kF@mail.gmail.com>
+Subject: Re: [ruby-ffi] FFI 1.0.3 and Windows build issue with MRI trunk@30404
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.215.48 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Dec 28, 2010 at 12:25 PM, Jon <jon.forums@gmail.com> wrote:
+> I think it's fine to enforce code consistency for MRI core and it's inclu=
+ded extensions, but agree with you on breaking third party code. I can't ye=
+t see how this mod enhances code quality. Extension API's already exist for=
+ third parties to code to. IMO, a build flag is not an API.
+>
+
+Jon, why not report this to Ruby-Core instead?
+
+If the flag is going to have such impact on extensions and other gems,
+Core should hear this before that change hits another release.
+
+More than "extending things to circumvent the change" in the form of
+patch or anything, better tell Core to revert that or make it default
+false with the optional configure flag.
+
+Sorry for the tone, couldn't resist that this needs to be deal on Core
+by Core and not discussed over this list.
+
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

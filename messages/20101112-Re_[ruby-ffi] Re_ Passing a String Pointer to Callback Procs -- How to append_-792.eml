@@ -1,0 +1,201 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.72.197 with SMTP id n5cs463faj;
+        Thu, 11 Nov 2010 22:05:19 -0800 (PST)
+Received: by 10.224.11.140 with SMTP id t12mr286554qat.203.1289541918851;
+        Thu, 11 Nov 2010 22:05:18 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBCcsvPmBBoEJ-HN3w@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTP id p17si6806192qcs.52.2010.11.11.22.05.17;
+        Thu, 11 Nov 2010 22:05:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCcsvPmBBoEJ-HN3w@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBCcsvPmBBoEJ-HN3w@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBCcsvPmBBoEJ-HN3w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf4974429qwj.7
+        for <headius@headius.com>; Thu, 11 Nov 2010 22:05:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:received
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=IDKoUUQ7H6ZP6PqPFvWMpuNd2KGf7nb/drBpewcxQ2w=;
+        b=KH39IEuXJRqkKvqq4pQJ3XZCyHk6rNqRHvKwojB7R0eAAK/zzdkvdD9eQF1fy2Wxm3
+         FoQa2+1R1GkG+zHjib+NR+ui97FRIrkScgRJ4sal5o4X9UbF+Bj6wcCbFf6KCTSWBR//
+         Ji5hseLd/Ldy2MFfPNifiYHlsrCqONHxID4OY=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=hogZ/FarnTD1jEoqnRobPhNhplpN3a0GSg8PObFu8HcorljotnYX5usXNd/LnFPujU
+         QrzaJTRRAs8YQCpuaf0tyPXa8bOJLPDJOv6aI4lAh6PQeBvpzXAZ1TQfjz87GPEQjrr9
+         7CN5XOfITvtPa327pMhatrzHGf9YTCOJkDmDM=
+Received: by 10.229.2.160 with SMTP id 32mr243483qcj.16.1289541916823;
+        Thu, 11 Nov 2010 22:05:16 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.229.69.77 with SMTP id y13ls913625qci.3.p; Thu, 11 Nov 2010
+ 22:05:16 -0800 (PST)
+Received: by 10.229.241.85 with SMTP id ld21mr214779qcb.24.1289541916166;
+        Thu, 11 Nov 2010 22:05:16 -0800 (PST)
+Received: by 10.229.241.85 with SMTP id ld21mr214778qcb.24.1289541916146;
+        Thu, 11 Nov 2010 22:05:16 -0800 (PST)
+Received: from mail-qw0-f42.google.com (mail-qw0-f42.google.com [209.85.216.42])
+        by gmr-mx.google.com with ESMTP id 3si1572014qci.14.2010.11.11.22.05.15;
+        Thu, 11 Nov 2010 22:05:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.42 as permitted sender) client-ip=209.85.216.42;
+Received: by mail-qw0-f42.google.com with SMTP id 7so738918qwd.15
+        for <ruby-ffi@googlegroups.com>; Thu, 11 Nov 2010 22:05:15 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.233.142 with SMTP id jy14mr1612919qcb.2.1289541914957;
+ Thu, 11 Nov 2010 22:05:14 -0800 (PST)
+Received: by 10.229.251.143 with HTTP; Thu, 11 Nov 2010 22:05:14 -0800 (PST)
+In-Reply-To: <a474ebf5-b437-46d3-9825-c218e6ff8ca3@o23g2000prh.googlegroups.com>
+References: <932132f1-bd9d-4f6b-b449-46132b0c6a4c@k14g2000pre.googlegroups.com>
+	<AANLkTimOqwh_sjX2eis=e_=sekvu3ncu8mL3LKs9E8iN@mail.gmail.com>
+	<a474ebf5-b437-46d3-9825-c218e6ff8ca3@o23g2000prh.googlegroups.com>
+Date: Fri, 12 Nov 2010 16:05:14 +1000
+Message-ID: <AANLkTin8Z_cHam2j0m=am4WS8uy9OE=3YN5OmfrsOckE@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Passing a String Pointer to Callback Procs -- How
+ to append?
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of wmeissner@gmail.com designates 209.85.216.42 as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Yes, using FFI::Function would work.
+
+You still need to keep a strong ref to each one for as long as it is
+used though - they're garbage collected like everything else, and if
+the handler gets called by C code after it has been garbage collected,
+then the VM will have a Really Bad Day.
+
+e.g. store the :WRITEFUNCTION FFI::Function in @write_function_ptr
+
+connection.setopt(:WRITEFUNCTION,
+    @write_function_ptr =3D FFI::Function.new(:size_t, [:pointer,
+:size_t, :size_t,], &self.__method__(_callback)))
+
+Thats assuming that Curl::Easy#setopt is not doing that for all the
+values used as options, which *might* not be an incredibly stupid
+idea.
+
+e.g.
+module CurlFFI
+  class Easy
+
+    def setopt(option, value)
+      check_code(CurlFFI.easy_setopt(@pointer, option,
+@option_values[option] =3D value))
+    end
+
+  end
+end
+
+
+
+On 12 November 2010 15:20, Scott Gonyea <gonyea@gmail.com> wrote:
+> Thank you, Wayne. =A0Evan actually gave me some helpful info, as well,
+> along similar lines (just a little bit before you replied). =A0The fix
+> was to, basically, not make the Proc a constant (first). =A0Then, inside
+> the proc, I would simply append the "stream" variables data to an
+> instance variable.
+>
+> This was then replaced by something NoKarma used (and I stole), which
+> was to pass a FFI::Function, which calls an instance method (which
+> then appends to an instance variable).
+>
+> You can see my code in its current state, which seems to be largely
+> good / stable / etc. =A0There's another issue, which I'm going to post
+> about separately.
+>
+> https://github.com/aitrus/streamly_ffi/blob/master/lib/streamly_ffi/base.=
+rb#L120
+>
+> Scott
+>
+> On Nov 9, 5:56=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+>> You can't pass ruby objects through C callbacks with FFI, so any
+>> variables you want to access from the callback have to be visible to
+>> the Proc when you create it.
+>>
+>> You seem to be mostly doing it correct with your data_handler() method
+>> - i.e. the _string parameter to data_handler() will be visible inside
+>> the proc callback, and you can just append the data to it. =A0The
+>> handler parameter to the callback will not be used (and is most likely
+>> nil anyway).
+>>
+>> I would change the first parameter (stream) of the curl handler to be
+>> of type pointer though, and get the data out like so:
+>>
+>> =A0 =A0_string << stream.get_string(0, size)
+>>
+>> I'm not sure if curl guarantees that the buffer is NUL terminated, but
+>> I suspect not, since it is binary data, so you only want to copy out
+>> as many bytes as curl indicates are ready (the size param).
+>>
+>> One _VERY_ important thing to remember, always keep a reference to the
+>> proc returned by data_handler somewhere - e.g. as an @variable in each
+>> Request instance. =A0FFI dynamically generates native code for the
+>> callback, and you need to keep a strong reference to it to avoid it
+>> being prematurely collected, and crashing the VM. =A0Stashing the proc
+>> somewhere for the lifetime of the Request instance should suffice.
+>>
+>> On 9 November 2010 10:30, Scott Gonyea <gon...@gmail.com> wrote:
+>>
+>>
+>>
+>> > I'm having a really painful time figuring this out. =A0I jumped onto
+>> > what NoKarma had already begun, with his curl-ffi library, and started
+>> > running with it. =A0I'm trying to emulate the ruby extension layers us=
+ed
+>> > in some different Curl gems (Streamly and Patron, atm).
+>>
+>> > Curl wants you to pass a method reference, which it will then
+>> > callback. =A0You can see examples used in Streamly and Patron:
+>>
+>> > Streamly, lines 29-83:
+>> >https://github.com/aitrus/streamly/blob/master/ext/streamly.c#L29
+>>
+>> > Patron, lines 59-75 (Much simpler):
+>> >https://github.com/aitrus/patron/blob/master/ext/patron/session_ext.c..=
+.
+>>
+>> > Basically, they're allocating a buffer and providing a callback + that
+>> > buffer, which is sent to the callback. I've added this callback to
+>> > CurlFFI and I have the Proc working, etc... But I cannot seem to get
+>> > it to append to the string.
+>>
+>> > Callback Additions to CurlFFI:
+>> >https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L923
+>> >https://github.com/aitrus/curl_ffi/blob/master/lib/bindings.rb#L926
+>>
+>> > I'll delete 926, as it's not necessary (I think).
+>>
+>> > Procs that get called:
+>> >https://github.com/aitrus/streamly/blob/master/lib/streamly/request.r..=
+.
+>>
+>> > I suppose the last resort can be to call C libraries, allocating /
+>> > freeing a string. =A0But that makes me think I'm doing it wrong. =A0I
+>> > can't imagine that I'm doing anything overly interesting with my code.
+>>
+>> > Scott

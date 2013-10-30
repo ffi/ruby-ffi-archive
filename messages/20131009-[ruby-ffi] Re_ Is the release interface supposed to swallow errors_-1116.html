@@ -1,0 +1,21 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Is the release interface supposed to swallow errors?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Is the release interface supposed to swallow errors?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/9/13 2:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div dir="ltr"><div><br></div>All errors from the release method are indeed swallowed - release is called from a garbage collection thread, so it has to quash any exceptions. &nbsp;<div><br></div><div>If you explicitly call kptr.pointer.free(), it should propagate exceptions from KStatCtl.release().<br><br>On Wednesday, 9 October 2013 02:52:15 UTC+11, Daniel Berger  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir="ltr">Hi,<div><br></div><div>ffi 1.9.0</div><div><br></div><div>I noticed that if I declare a struct using .auto_ptr, that the corresponding release method seems to swallow errors.</div><div><br></div><div><font size="1" face="times new roman, serif">require 'ffi'</font></div><font size="1" face="times new roman, serif"><br>class Solaris<br>&nbsp; extend FFI::Library<br>&nbsp; ffi_lib :kstat<br><br>&nbsp; class KstatCtl &lt; FFI::Struct<br>&nbsp;&nbsp;&nbsp; layout(:kc_chain_id, :int, :kc_chain, :pointer, :kc_kd, :int)<br><br>&nbsp;&nbsp;&nbsp; def self.release(pointer)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "Releasing..." # Yep, I see this<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bogus # Shouldn't this raise an error? Instead, nothing happens.<br>&nbsp;&nbsp;&nbsp; end<br>&nbsp; end<br><br>&nbsp; attach_function :kstat_open, [], KstatCtl.auto_ptr<br>&nbsp; attach_function :kstat_close, [KstatCtl], :int<br><br>&nbsp; def self.kstat<br>&nbsp;&nbsp;&nbsp; kptr = kstat_open()<br>&nbsp;&nbsp;&nbsp; kstat_close(kptr)<br>&nbsp; end<br>end<br><br>Solaris.kstat</font><div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">What I'm really trying to do is have the release method call kstat_close inside the KstatCtl's release method. It fails, but I can't tell -why- it fails since the error is getting swallowed.</font></div><div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">Help or advice appreciated.</font></div><div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">Regards,</font></div><div><font size="1" face="times new roman, serif"><br></font></div><div><font size="1" face="times new roman, serif">Dan</font></div></div></blockquote></div></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+
+</div></body>
+</html>
+</table></div>

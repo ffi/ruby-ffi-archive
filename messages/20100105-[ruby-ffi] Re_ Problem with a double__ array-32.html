@@ -1,0 +1,43 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Problem with a double** array</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Problem with a double** array</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>mael <mael.primet@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/5/10 6:04 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Okay, I understood that the offset should be in terms of bytes, and
+not of the underlying struct, and that there is no reason I have a
+valid size
+when retrieving a "naked pointer",
+
+but why is the following code triggering a segfault ?
+
+def do_clustering
+  article_vectors = get_article_vectors()
+
+  ncols = article_vectors.size
+  nrows = article_vectors.map{ <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>av<span class="moz-txt-tag">|</span></code> av.map{ <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id,tfidf<span class="moz-txt-tag">|</span></code> id }.max }.max
++ 1
+
+  p_size = FFI.type_size :pointer
+  d_size = FFI.type_size :double
+
+  data = FFI::MemoryPointer.new :pointer, nrows
+  for i in (0..nrows-1)
+    row_i = FFI::MemoryPointer.new :double, ncols
+    data.put_pointer i*p_size, row_i
+  end
+  for j in (0..ncols-1)
+    col_j = article_vectors[j]
+    col_j.each do <code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>i,tfidf<span class="moz-txt-tag">|</span></code>
+      c = data.get_pointer i*p_size
+      puts "i=#{i} (nrows=#{nrows}), j=#{j} (ncols=#{ncols}), c = #
+{c}"
+      c.put_double(j*d_size, tfidf)
+    end
+  end
+end
+</pre></div></body>
+</html>
+</table></div>

@@ -1,0 +1,97 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp55523obb;
+        Mon, 20 Feb 2012 02:46:07 -0800 (PST)
+Received: by 10.68.241.39 with SMTP id wf7mr50021682pbc.128.1329734766619;
+        Mon, 20 Feb 2012 02:46:06 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id p6si19369246pbd.233.2012.02.20.02.46.06
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 20 Feb 2012 02:46:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by dadz9 with SMTP id z9sf8611012dad.7
+        for <headius@headius.com>; Mon, 20 Feb 2012 02:46:06 -0800 (PST)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDpyIj6BBoET5YZNw@googlegroups.com designates 10.68.130.132 as permitted sender) client-ip=10.68.130.132;
+Received: from mr.google.com ([10.68.130.132])
+        by 10.68.130.132 with SMTP id oe4mr14737666pbb.3.1329734766155 (num_hops = 1);
+        Mon, 20 Feb 2012 02:46:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=Ht3nnypW32AGUObIsHw6yiacCRkgcVqK1FY4MseUoHA=;
+        b=HxH58FvQfoqBIBsRHp804Mv+zLjjDILs7yu5rYAWL+LZYNf6u2m0hyhZckjQleDvcf
+         zUGiSwAgtOm2SbCZwjgJUV9ujQ5x/z4DBF8VOkKHvDcHL2RHRMRRmRn7zrt2DWGBPhjw
+         x1E1HY4OCwRaX3TWiYgvaXGcSFwKQuBth7YZk=
+Received: by 10.68.130.132 with SMTP id oe4mr4029012pbb.3.1329734761918;
+        Mon, 20 Feb 2012 02:46:01 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.237.73 with SMTP id va9ls9256463pbc.4.gmail; Mon, 20 Feb
+ 2012 02:46:01 -0800 (PST)
+Received: by 10.68.132.137 with SMTP id ou9mr4025731pbb.16.1329734761627;
+        Mon, 20 Feb 2012 02:46:01 -0800 (PST)
+Date: Mon, 20 Feb 2012 02:46:00 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-ID: <11911075.1224.1329734760900.JavaMail.geo-discussion-forums@pbeo1>
+In-Reply-To: <6794b71b-e4eb-4709-8b72-b0f433d133bd@qs5g2000pbc.googlegroups.com>
+References: <6794b71b-e4eb-4709-8b72-b0f433d133bd@qs5g2000pbc.googlegroups.com>
+Subject: [ruby-ffi] Re: long pointer
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ wmeissner@gmail.com designates internal as permitted sender)
+ smtp.mail=wmeissner@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1223_13362987.1329734760899"
+
+------=_Part_1223_13362987.1329734760899
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Do you mean, a C function with a signature something like:
+    void foo(long *l):
+
+In that case, the corresponding ruby-ffi would be:
+module MyLib
+    extend FFI::LIbrary
+    ffi_lib 'mylib'
+    attach_function :foo, [ :pointer ], :void
+end
+
+and you would invoke it like so:
+
+    ptr = FFI::MemoryPointer.new(:long)
+    ptr.write_long(0xdeadbeef)
+    MyLib.foo(ptr);
+
+    # now extract the value the C code filled in
+    l = ptr.read_long
+
+
+
+
+------=_Part_1223_13362987.1329734760899
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Do you mean, a C function with a signature something like:<div>&nbsp; &nbsp; void foo(long *l):</div><div><br></div><div>In that case, the corresponding ruby-ffi would be:</div><div>module MyLib</div><div>&nbsp; &nbsp; extend FFI::LIbrary</div><div>&nbsp; &nbsp; ffi_lib 'mylib'</div><div>&nbsp; &nbsp; attach_function :foo, [ :pointer ], :void<br></div><div>end</div><div><br></div><div>and you would invoke it like so:</div><div><br></div><div>&nbsp; &nbsp; ptr = FFI::MemoryPointer.new(:long)</div><div>&nbsp; &nbsp; ptr.write_long(0xdeadbeef)</div><div>&nbsp; &nbsp; MyLib.foo(ptr);</div><div><br></div><div>&nbsp; &nbsp; # now extract the value the C code filled in</div><div>&nbsp; &nbsp; l = ptr.read_long</div><div><br></div><div><br></div><div><br></div>
+------=_Part_1223_13362987.1329734760899--

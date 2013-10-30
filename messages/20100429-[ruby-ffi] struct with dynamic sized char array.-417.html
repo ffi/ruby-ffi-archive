@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] struct with dynamic sized char array.</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] struct with dynamic sized char array.</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Yannick K <yannick.koechlin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/29/10 4:12 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+hi,
+
+i have the following struct definition from libattr:
+
+typedef struct attrlist_ent {	/* data from attr_list() */
+	u_int32_t	a_valuelen;	/* number bytes in value of attr */
+	char		a_name[1];	/* attr name (NULL terminated) */
+} attrlist_ent_t;
+
+
+where a_valuelen actually holds the size of a_name.
+how should i map this to a string?
+
+
+regards,
+y
+</pre></div></body>
+</html>
+</table></div>

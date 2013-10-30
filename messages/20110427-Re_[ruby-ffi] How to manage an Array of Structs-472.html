@@ -1,0 +1,71 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] How to manage an Array of Structs</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] How to manage an Array of Structs</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Charles Strahan <charles.c.strahan@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/27/11 7:37 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Hi P,<div><br></div><div>Just FYI, the first parameter to MemoryPointer.new is the type_size, and the second parameter is count - so you probably wanted to do something like this (for an array consisting of a single Sembuf):</div>
+<div><br></div><div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; ">  ops = FFI::MemoryPointer.new(Shared::Sembuf) # count defaults to 1</span></div><div>
+<span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; "><br></span></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">Now then, there&#39;s probably a better way to do this, but this should work:</span></font></div>
+<div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><br></span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  sembuf_count = ... # however many Sembufs you want to write</span></font></div>
+<div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><span class="Apple-style-span" style="font-size: 13px; ">  ops = FFI::MemoryPointer.new(Shared::Sembuf, sembuf_count)</span></span></font></div>
+<div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><br></span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  # get the bytes</span></font></div>
+<div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  struct_bytes = op.get_bytes(0, Sembuf.size) # (offset, length)</span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><br>
+</span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  # Pointer#[n] returns a new pointer with the address incremented by (n * Pointer#type_size) - just like a C array</span></font></div>
+<div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  ops[0].put_bytes(0, struct_bytes) # (offset, byte_string)</span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;"><br>
+</span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  # now you repeat with ops[1], ops[2], ops[n-1]</span></font></div><div><font class="Apple-style-span" face="arial, sans-serif"><span class="Apple-style-span" style="border-collapse: collapse;">  </span></font><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; ">ops[1].put_bytes ..</span></div>
+<div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; ">  ...</span></div><div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; "><br>
+</span></div><div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; ">Again, there might be a better way to do this. I figured that Pointer#[]= would do the trick, but I guess not.</span></div>
+<div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; "><br></span></div><div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; ">HTH,</span></div>
+<div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; "><br></span></div><div><span class="Apple-style-span" style="border-collapse: collapse; font-family: arial, sans-serif; font-size: 13px; ">Charles</span></div>
+<div><br><br><div class="gmail_quote">On Wed, Apr 27, 2011 at 11:58 AM, P4010 <span dir="ltr">&lt;<a href="mailto:paolo.bosetti@gmail.com">paolo.bosetti@gmail.com</a>&gt;</span> wrote:<br><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex;">
+Hi all,<br>
+I am writing an FFI interface to IP shared memory and semaphores. I<br>
+wonder if someone here can give me advice on how to manage an Array of<br>
+Structs.<br>
+<br>
+I am mapping the semop() function in FFI. It has the following<br>
+signature:<br>
+<br>
+#include &lt;sys/sem.h&gt;<br>
+int<br>
+semop(int semid, struct sembuf *sops, size_t nsops);<br>
+<br>
+I wrote something like:<br>
+<br>
+module Shared<br>
+  extend FFI::Library<br>
+  ffi_lib FFI::Library::LIBC<br>
+<br>
+  class Sembuf &lt; FFI::Struct<br>
+    layout :sem_num, :ushort,<br>
+      :sem_op, :short,<br>
+      :sem_flg, :short<br>
+  end<br>
+<br>
+  attach_function :semop,  [:int, :pointer, :size_t], :int<br>
+<br>
+end<br>
+<br>
+Now the Shared#semop wants a pointer to an array of Shared::Sembuf<br>
+structs. How can I build such a pointer? I guess I should start with<br>
+<br>
+op = Shared::Sembuf.new<br>
+op[:sem_num] = 0<br>
+op[:sem_op] = -1<br>
+op[:sem_flg] = 0<br>
+<br>
+ops = FFI::MemoryPointer.new(Shared::Sembuf, Shared::Sembuf.size * 1)<br>
+<br>
+But then I could not find how to add the op instance to the array<br>
+pointed to by ops...<br>
+<br>
+I&#39;ll appreciate any suggestion...<br>
+<br>
+Cheers,<br>
+<font color="#888888">-P.</font></blockquote></div><br></div>
+
+</div></body>
+</html>
+</table></div>

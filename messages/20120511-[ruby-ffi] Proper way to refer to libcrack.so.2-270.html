@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Proper way to refer to libcrack.so.2</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Proper way to refer to libcrack.so.2</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>broberts <broberts@mobileiron.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/11/12 1:40 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+On CentOS cracklib is deploy as libcrack.so.2 which is a symlink to
+libcrack.so.2.8.1. There is no libcrack.so. Referring to this library
+using:
+
+ffi_lib 'crack'
+
+fails with a file not found error. Referring to the library using:
+
+ffi_lib 'crack.so.2'
+
+succeeds. I assume that this is the expected behavior but I wanted to
+make sure before I get too far down the road.
+
+Thanks for any help.
+
+Baron
+</pre></div></body>
+</html>
+</table></div>

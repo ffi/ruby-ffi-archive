@@ -1,0 +1,72 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs44313bkj;
+        Wed, 3 Nov 2010 15:08:29 -0700 (PDT)
+Received: by 10.100.43.20 with SMTP id q20mr2489048anq.93.1288822108815;
+        Wed, 03 Nov 2010 15:08:28 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCO-gte66GRDausfmBBoEN83-6Q@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTP id x33si12166105anx.192.2010.11.03.15.08.27;
+        Wed, 03 Nov 2010 15:08:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCO-gte66GRDausfmBBoEN83-6Q@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCO-gte66GRDausfmBBoEN83-6Q@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCO-gte66GRDausfmBBoEN83-6Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by ywp6 with SMTP id 6sf1849523ywp.7
+        for <headius@headius.com>; Wed, 03 Nov 2010 15:08:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=iRzj89yWadL4U2uZH4wpdlBnCOVAYgVqmNhs0SiRpsc=;
+        b=CBQKZVtyr1S7sYBwIDEsrs8sgwm8KpyMDDNhy71561hATiRRFqwfWLDrLDH+ko4i+w
+         VBbOg260ph6rg2gp1hxTLYqMLp9ogpQb2cSSqbenKzLQxKs8LKaL5n1Vwnza/vDrS+M9
+         dMszA2MLrFKB0bHXblCZTfOr2s6U48H4GsLmc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=38K6fJJR3R9QoH64Oar5I2BPQ42ENx01QqwH43JiQO9kO+5tBkVZ5yYRxJTuPgJCrp
+         UTPXVgaCQVLONWU3C4v9BT/wpSanV4P0u3H2OXFjAMbzXZg+EVB/LCxkaGIjopgHMTp3
+         n+vo7YvmsX4cY7LsFtaBwqon3d9JvVOZoH/Ww=
+Received: by 10.90.225.4 with SMTP id x4mr17328agg.39.1288822106245;
+        Wed, 03 Nov 2010 15:08:26 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.91.170.4 with SMTP id x4ls337877ago.0.p; Wed, 03 Nov 2010
+ 15:08:25 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.91.197.40 with SMTP id z40mr21632agp.14.1288822105424; Wed, 03
+ Nov 2010 15:08:25 -0700 (PDT)
+Received: by n32g2000prc.googlegroups.com with HTTP; Wed, 3 Nov 2010 15:08:25
+ -0700 (PDT)
+Date: Wed, 3 Nov 2010 15:08:25 -0700 (PDT)
+In-Reply-To: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+X-IP: 71.37.141.51
+References: <19ba1363-0a0e-40da-82fc-b79da401849e@g25g2000yqn.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.12)
+ Gecko/20101026 SUSE/3.6.12-0.7.1 Firefox/3.6.12,gzip(gfe)
+Message-ID: <a4dd5c61-5fc2-49eb-9997-7b78214d726d@n32g2000prc.googlegroups.com>
+Subject: [ruby-ffi] Re: Having trouble with a struct
+From: Qwerty <qwerty123451910@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: qwerty123451910@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I found a way around the problems I was having. Any field bigger than
+8 bits I declare as [:uchar,x bytes]. Feels like an ugly hack to get
+around what seems to be a pretty nasty bug

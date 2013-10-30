@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] How to specify size for returned buffer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] How to specify size for returned buffer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>8/21/11 12:58 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Hi cfis,
+<br>
+<br>On 08/20/2011 06:57 AM, cfis wrote:
+<br><blockquote type=cite style="color: #000000;">I'm trying to wrap FreeImage (<a class="moz-txt-link-freetext" href="http://freeimage.sourceforge.net/">http://freeimage.sourceforge.net/</a>) and
+<br>it has this function:
+<br>
+<br>DLL_API BOOL DLL_CALLCONV FreeImage_AcquireMemory(FIMEMORY *stream,
+<br>BYTE **data, DWORD *size_in_bytes);
+<br>
+<br>The way this works is you hand FreeImage a pointer (data) which it
+<br>then allocates memory for and returns the size in the size_in_bytes
+<br>out parameter.&nbsp; I've attached example C code from the FreeImage docs
+<br>in case it helps.
+<br>
+<br>So I'm not sure how to wrap this function.&nbsp; So far I have this:
+<br>
+<br>FreeImage.attach_function('FreeImage_AcquireMemory',
+<br>[:pointer, :pointer, :uint], :bool)
+<br></blockquote>
+<br>Since all the arguments in C are pointers, the argument specification should 
+read [:pointer, :pointer, :pointer].
+<br>
+<br><blockquote type=cite style="color: #000000;">buffer = MemoryPointer.new(:pointer)
+<br>size_ptr = MemoryPointer.new(:uint)
+<br>FreeImage.FreeImage_AcquireMemory(self, buffer, size);
+<br></blockquote>
+<br>The call would then be
+<br>
+<br>&nbsp; FreeImage.FreeImage_AcquireMemory(self, buffer, size_ptr)
+<br>
+<br>But perhaps you were doing that already and didn't copy and paste properly?
+<br>
+<br><blockquote type=cite style="color: #000000;">What I would then like to do is something like:
+<br>
+<br>buffer.size = size_ptr.read_pointer()
+<br>
+<br>But buffer doesn't have any such API.
+<br></blockquote>
+<br>There really is no need to do that. Besides, the call would be size_ptr.read_uint.
+<br>
+<br>What you want to do is:
+<br>
+<br>&nbsp; size = size_ptr.read_uint
+<br>&nbsp; data_ptr = buffer.read_pointer
+<br>
+<br>And then you can read data using:
+<br>
+<br>&nbsp; data_ptr.get_uint8(offset)
+<br>
+<br>Making sure that offset &lt; size.
+<br>
+<br><blockquote type=cite style="color: #000000;">Any help appreciated.
+<br>
+<br>Thanks,
+<br>
+<br>Charlie
+<br></blockquote>
+<br>HTH,
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

@@ -1,0 +1,100 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.2.131 with SMTP id 3cs187106qaj;
+        Tue, 6 Oct 2009 12:13:26 -0700 (PDT)
+Received: by 10.115.24.3 with SMTP id b3mr2953488waj.23.1254856405768;
+        Tue, 06 Oct 2009 12:13:25 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-px0-f144.google.com (mail-px0-f144.google.com [209.85.216.144])
+        by mx.google.com with ESMTP id 31si3428159pzk.28.2009.10.06.12.13.24;
+        Tue, 06 Oct 2009 12:13:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.144 as permitted sender) client-ip=209.85.216.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.216.144 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi8 with SMTP id 8so1361227pxi.22
+        for <headius@headius.com>; Tue, 06 Oct 2009 12:13:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=fvyZ6KBbyZDCibDjicGuwfijvWVfbbT+RtjBcJJMUkI=;
+        b=y1vgbxgGPNFyBUyoXC+OWtNJAmGBFyFI6cQUfEsK91vhoPLUGgRyQH5gltWfx9EHkS
+         NeolcPbRTq4g05pfDRsW3wN1gNj1A7ymrghfmuPFePPvzw2B+2PtiReDB4dhxCLCS+bP
+         9HHj1CParlzWNT4e8GFTCBCfBP0Ay0YWbQfM0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=H/OI9KYjh7DmvKQa7ABepMsWhRYba1on7Yoon5wQreosR9BA43dMIRcjCdXHZRFvhy
+         eSydS3RaRyaEX1fyKAFzqozs+cfoeV8ZEiWg4Oq2SapFN9lJwHXyDPuffKM5eCbH4Rll
+         TGN+AzkKV0d7IBLqTIM3bU0zvC/rZA/c24QLQ=
+Received: by 10.229.13.152 with SMTP id c24mr412460qca.13.1254856402390;
+        Tue, 06 Oct 2009 12:13:22 -0700 (PDT)
+Received: by 10.177.128.16 with SMTP id f16gr42yqn.0;
+	Tue, 06 Oct 2009 12:13:22 -0700 (PDT)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.87.2 with SMTP id k2mr921891ybb.26.1254856401555; Tue, 06  Oct 2009 12:13:21 -0700 (PDT)
+Date: Tue, 6 Oct 2009 12:13:21 -0700 (PDT)
+X-IP: 96.11.69.141
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1.3)  Gecko/20090824 Firefox/3.5.3 (.NET CLR 3.5.30729),gzip(gfe),gzip(gfe)
+Message-ID: <7d249968-48f7-41df-a494-e88d1e44517c@j28g2000vbl.googlegroups.com>
+Subject: [ruby-ffi] Value in gem-time and build-time testing?
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+Is there any value in having "gem-time" spec-based testing as well as
+build-time testing?
+
+What I mean by this is, imagine you've just installed the latest FFI
+*binary* gem on your Win32 system.  You notice that the FFI gem has a
+spec directory and a Rakefile with a specs task.  You decide you'd
+like to run the developer created specs to get more comfortable with
+FFI.
+
+You decide to humor your OCD bad habits by the following from the FFI
+gem dir
+
+> spec spec
+[boom] need win32console for coloring and get a LoadError due to
+missing build/libtest.dll from spec/ffi/spec_helper.rb:16:in
+`<module:LibTest>'
+
+All the spec support is currently targeted to having the build
+environment dependencies, which is great.
+
+But I'm wondering if something quick like adding a new task that
+allows one to run specs (even a smaller but still valid subset of the
+full suite) adds any value?  Probably could call spec with a creative
+Dir["..."] and should get rid of the rake-compiler and bones
+dependencies.  Probably don't want to have libtest.dll as part of the
+binary gem unless you want to build fat-binary support for both
+libtest and ffi_c.so
+
+So, is there any value in the effort even if it is only a "feel good"
+tool for those just beginning with FFI?  Could also be part of an "FFI
+ready" check post gem install.
+
+Jon
+
+

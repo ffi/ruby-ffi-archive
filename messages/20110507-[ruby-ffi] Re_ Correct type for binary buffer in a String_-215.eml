@@ -1,0 +1,112 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs30902agb;
+        Sat, 7 May 2011 20:30:24 -0700 (PDT)
+Received: by 10.68.33.97 with SMTP id q1mr5437000pbi.424.1304825423936;
+        Sat, 07 May 2011 20:30:23 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDJnJjuBBoEfyoPcQ@googlegroups.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id x17si16510409wfd.63.2011.05.07.20.30.23
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 07 May 2011 20:30:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDJnJjuBBoEfyoPcQ@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDJnJjuBBoEfyoPcQ@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDJnJjuBBoEfyoPcQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj4 with SMTP id 4sf4006709pwj.7
+        for <headius@headius.com>; Sat, 07 May 2011 20:30:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=OIHPUGZLwFpo8jBGFEK+ODPXPMQOnXtAWpyp7aWeAiY=;
+        b=SUdQUwf9AQkaN8oz0uA9zZsdQOvfYKerA7Ctc8gKm4qVNBrkWh1LvsIlBpQ3NksGFE
+         +8ULs9LNevVW3pQGK1N3GWK9TwflYITDzPd+XOZVDty7iNnizvpuzB2t6a3hrEUJ450V
+         E2ZYib4r9XvUU3Uf0ASjJi6EDA99EskKjkbjc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=eQODJ7znZuqz1HGxskj9OaPqWPkdTQV/z8EKnx49nh0CPIEMxRP/q2uIf+znWyx7mp
+         tThaX8IHdnnJlF/39tgVc3HaPksc0w9V0UuBlIBRScQdbXFAYH6HVX0+nMB+mpwgXy+b
+         JyfOcXi4SJdRd7HHo+vZatMTNdXlGjd1yCBaQ=
+Received: by 10.68.6.130 with SMTP id b2mr534139pba.38.1304825417800;
+        Sat, 07 May 2011 20:30:17 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.1.5 with SMTP id 5ls6953297pbi.1.gmail; Sat, 07 May 2011
+ 20:30:17 -0700 (PDT)
+Received: by 10.68.42.133 with SMTP id o5mr1686pbl.68.1304825417419;
+        Sat, 07 May 2011 20:30:17 -0700 (PDT)
+Date: Sat, 7 May 2011 20:30:16 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <3425738.3079.1304825416812.JavaMail.geo-discussion-forums@prhu33>
+In-Reply-To: <9ed18284-bba2-4319-b85d-f7298d2add79@s2g2000yql.googlegroups.com>
+Subject: [ruby-ffi] Re: Correct type for binary buffer in a String?
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3078_17664844.1304825416811"
+
+------=_Part_3078_17664844.1304825416811
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+
+On Friday, 6 May 2011 18:09:40 UTC+10, candlerb wrote:
+>
+>
+> Now, I also tried it using plain String instead of FFI::Buffer, and it 
+> works. However if Ruby is sharing the underlying string storage 
+> between multiple strings (copy-on-write) then aliasing happens: 
+>
+> str = "xxxx" 
+> buf = str.dup 
+> buflen = [buf.bytesize].pack("I") 
+> puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf, 
+> buflen) 
+> p buf  # "@\000\000\000" 
+> p str  # "@\000\000\000" as well!! 
+>
+> Is that intentional? Perhaps if the argument is :buffer_inout then FFI 
+> should call rb_str_modify on the string first? 
+>
+>  It is highly likely you are correct.  If you haven't already, can you 
+raise an issue on github for this, and also test it on JRuby and raise an 
+issue in its bug tracker?
+
+
+------=_Part_3078_17664844.1304825416811
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><br>On Friday, 6 May 2011 18:09:40 UTC+10, candlerb  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><br>Now, I also tried it using plain String instead of FFI::Buffer, and it
+<br>works. However if Ruby is sharing the underlying string storage
+<br>between multiple strings (copy-on-write) then aliasing happens:
+<br>
+<br>str = "xxxx"
+<br>buf = str.dup
+<br>buflen = [buf.bytesize].pack("I")
+<br>puts Foo.getsockopt(s.fileno, Socket::IPPROTO_IP, Socket::IP_TTL, buf,
+<br>buflen)
+<br>p buf &nbsp;# "@\000\000\000"
+<br>p str &nbsp;# "@\000\000\000" as well!!
+<br>
+<br>Is that intentional? Perhaps if the argument is :buffer_inout then FFI
+<br>should call rb_str_modify on the string first?
+<br><br></blockquote><div>&nbsp;It is highly likely you are correct. &nbsp;If you haven't already, can you raise an issue on github for this, and also test it on JRuby and raise an issue in its bug tracker?</div><div><br></div>
+------=_Part_3078_17664844.1304825416811--

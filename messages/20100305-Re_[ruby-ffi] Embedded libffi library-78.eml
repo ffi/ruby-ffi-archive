@@ -1,0 +1,99 @@
+Delivered-To: headius@headius.com
+Received: by 10.220.165.131 with SMTP id i3cs3202vcy;
+        Fri, 5 Mar 2010 21:06:39 -0800 (PST)
+Received: by 10.141.188.40 with SMTP id q40mr1224090rvp.82.1267851998995;
+        Fri, 05 Mar 2010 21:06:38 -0800 (PST)
+Return-Path: <33OKRSwkJCJwSIAEOOJANCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@groups.bounces.google.com>
+Received: from mail-pw0-f62.google.com (mail-pw0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTP id 30si807253pzk.1.2010.03.05.21.06.37;
+        Fri, 05 Mar 2010 21:06:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of 33OKRSwkJCJwSIAEOOJANCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@groups.bounces.google.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 33OKRSwkJCJwSIAEOOJANCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@groups.bounces.google.com designates 209.85.160.62 as permitted sender) smtp.mail=33OKRSwkJCJwSIAEOOJANCI6EH.8KINQ7U-BBECKKCHACNKQLO.8KI@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwi5 with SMTP id 5sf1525051pwi.7
+        for <headius@headius.com>; Fri, 05 Mar 2010 21:06:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=Qp7VXWop4M2MYLM7WE2FeiQbOibFpPfYux6Oqowa7o0=;
+        b=18B0aQEoUz9gLRjJfi2snm6if60bGuS6iZm6UvvNXqePQ3vysy9lJU3te6G3hFkYBf
+         Ge1H18w91i7Q+qUOfDMrOwZtmhmN65wgDMsZII3+ahZTV6oSx27/CXwwrsXvEcnKaTgL
+         C9zefajtUVIb6RFRD0EoI0LcQJWaHD8wflPPs=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=vU5vJ31W65MByFv4PVEmdMbxfRqjY0fIApFSOETMai4BFh35EJ6on31PL+5yM1m2ay
+         8Nt7g4Vb6WyqdR9xta49fRiSdHos2VaZwMGPKMhTT+jzEL7PIDY9dg8ukCQNU7Tnfa8X
+         RGYvynRzlF+KOlkS7eT48OhiZ2+V665qODkpE=
+Received: by 10.141.2.7 with SMTP id e7mr97688rvi.10.1267851996366;
+        Fri, 05 Mar 2010 21:06:36 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.141.187.19 with SMTP id o19ls346315rvp.0.p; Fri, 05 Mar 2010 
+	21:06:35 -0800 (PST)
+Received: by 10.140.83.22 with SMTP id g22mr324944rvb.0.1267851995231;
+        Fri, 05 Mar 2010 21:06:35 -0800 (PST)
+Received: by 10.140.83.22 with SMTP id g22mr324943rvb.0.1267851995207;
+        Fri, 05 Mar 2010 21:06:35 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f201.google.com (mail-pz0-f201.google.com [209.85.222.201])
+        by gmr-mx.google.com with ESMTP id 19si659258pzk.15.2010.03.05.21.06.34;
+        Fri, 05 Mar 2010 21:06:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.201 as permitted sender) client-ip=209.85.222.201;
+Received: by pzk39 with SMTP id 39so623820pzk.15
+        for <ruby-ffi@googlegroups.com>; Fri, 05 Mar 2010 21:06:34 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.88.2 with SMTP id q2mr1059706rvl.2.1267851994045; Fri, 05 
+	Mar 2010 21:06:34 -0800 (PST)
+In-Reply-To: <4066c36d-3432-454e-8054-a07a82699f21@k17g2000yqb.googlegroups.com>
+References: <4066c36d-3432-454e-8054-a07a82699f21@k17g2000yqb.googlegroups.com>
+Date: Sat, 6 Mar 2010 15:06:33 +1000
+Message-ID: <4ccee321003052106s3e7efc67l147ad91a602c9847@mail.gmail.com>
+Subject: Re: [ruby-ffi] Embedded libffi library
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.201 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/cc8d865246b7003e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4b7752c22f706e8a
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+On 6 March 2010 09:12, micah <micaho@gmail.com> wrote:
+> Hi,
+>
+> In working on the Debian package, I found that the ffi ruby library
+> embeds an entire code-copy of the upstream libffi C library. Embedding
+> code is a bug in Debian if there is already an available library and
+> headers that can be depended on and used instead... so I have taken
+> the steps to repack the tarball to remove this embedded code-copy in
+> the Debian package.
+>
+> However, I am curious to know if this is just a convenience copy, or
+> if it has any modifications that I should be aware of?
+
+It should be a pristine copy of 3.0.9, and yes, it is just there for
+convenience when building on older linux, or other systems (e.g.
+MacOS) that have broken libffi builds.

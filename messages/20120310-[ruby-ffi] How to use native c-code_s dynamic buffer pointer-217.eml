@@ -1,0 +1,81 @@
+Delivered-To: headius@headius.com
+Received: by 10.147.147.8 with SMTP id z8csp65560yan;
+        Sat, 10 Mar 2012 15:20:28 -0800 (PST)
+Received: by 10.236.184.202 with SMTP id s50mr8199552yhm.84.1331421628319;
+        Sat, 10 Mar 2012 15:20:28 -0800 (PST)
+Return-Path: <ruby-ffi+bncCKSAsOeSDBC6w-_6BBoE6H6oJw@googlegroups.com>
+Received: from mail-yw0-f62.google.com (mail-yw0-f62.google.com [209.85.213.62])
+        by mx.google.com with ESMTPS id d68si9884090yhe.150.2012.03.10.15.20.28
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 10 Mar 2012 15:20:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKSAsOeSDBC6w-_6BBoE6H6oJw@googlegroups.com designates 209.85.213.62 as permitted sender) client-ip=209.85.213.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKSAsOeSDBC6w-_6BBoE6H6oJw@googlegroups.com designates 209.85.213.62 as permitted sender) smtp.mail=ruby-ffi+bncCKSAsOeSDBC6w-_6BBoE6H6oJw@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by yhkk61 with SMTP id k61sf5821298yhk.7
+        for <headius@headius.com>; Sat, 10 Mar 2012 15:20:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=4K0gX78ohPeB499foRSq6QucvsCa4IdofSjugE1AF/4=;
+        b=e6eXKYlK+OitDr2IWDnajLuNo+baCY7kYXOXfEJydA9/tCmPZ/BqjfZjX6BoVBU/o1
+         57WreUUaVv51rf064PLWmw83hYa9sSAufxcnt+ScE3gEnfl2BOCmd52OaVfrGcmsIBtX
+         qFoU8EzjEA1GkPad7rNCVoOYEaiOoMIrau/MI=
+Received: by 10.229.135.140 with SMTP id n12mr268412qct.23.1331421626530;
+        Sat, 10 Mar 2012 15:20:26 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.195.10 with SMTP id ea10ls9404422qab.9.gmail; Sat, 10 Mar
+ 2012 15:20:25 -0800 (PST)
+Received: by 10.224.108.68 with SMTP id e4mr2965318qap.4.1331421625351;
+        Sat, 10 Mar 2012 15:20:25 -0800 (PST)
+Received: by 10.224.70.133 with SMTP id d5msqaj;
+        Sat, 10 Mar 2012 14:14:45 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.52.95.229 with SMTP id dn5mr219729vdb.8.1331417684919; Sat, 10
+ Mar 2012 14:14:44 -0800 (PST)
+Received: by m2g2000vbc.googlegroups.com with HTTP; Sat, 10 Mar 2012 14:14:44
+ -0800 (PST)
+Date: Sat, 10 Mar 2012 14:14:44 -0800 (PST)
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:10.0.2)
+ Gecko/20100101 Firefox/10.0.2,gzip(gfe)
+Message-ID: <6485e679-db2e-418f-a44f-cd7ed058b716@m2g2000vbc.googlegroups.com>
+Subject: [ruby-ffi] How to use native c-code's dynamic buffer pointer
+From: MJoutsi <miika.joutsi@saunalahti.fi>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: miika.joutsi@saunalahti.fi
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain
+ of miika.joutsi@saunalahti.fi designates internal as permitted sender)
+ smtp.mail=miika.joutsi@saunalahti.fi; dkim=pass header.i=@saunalahti.fi
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Hi,
+
+On c-code side it goes:
+
+/* Declarations */
+DATABLOCK *new_db ();
+edit_db(DATABLOCK **db);
+
+/* Usage */
+db = new_db();
+edit_db(&db);
+
+How this goes on Ruby? https://github.com/ffi/ffi/wiki/Examples
+mentions about MemoryPointer but on my case I already have that buffer
+(created by new_db()), so how to pass reference to buffer for
+edit_db() or how it should go?

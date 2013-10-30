@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] easier syntax</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] easier syntax</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Evan Phoenix <evan@fallingsnow.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/11/09 5:20 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I don't see any benefit of this over the existing syntax.
+
+I must advise against changing things like this at this stage in the game. The FFI implementations are already a bit diverged, and adding something like this would only serve to completely destabilize any cross impl. using of FFI.
+
+ - Evan
+
+
+On Dec 11, 2009, at 3:17 PM, rogerdpack wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Perhaps it would be possible to allow for named paramters to an ffi
+<span class="moz-txt-citetags">&gt; </span>call, like
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :returns =&gt; :int
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>or
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :takes =&gt; :int
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>or
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>attach_function 'puts', :parameters =&gt; [ :string ], :returns
+<span class="moz-txt-citetags">&gt; </span>=&gt; :int, :name =&gt; 'puts_c' # use this ruby name
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>or
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>attach_function 'puts', [:string, :string] =&gt; :int # two string
+<span class="moz-txt-citetags">&gt; </span>parameters return an int
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>That would make it possible to write the examples a lot more readable.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>An example lib that does the named parameters on the fly is
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/maca/arguments">http://github.com/maca/arguments</a>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Thoughts?
+<span class="moz-txt-citetags">&gt; </span>-r
+<span class="moz-txt-citetags">&gt; </span>
+</pre></blockquote><pre wrap>
+
+</pre></div></body>
+</html>
+</table></div>

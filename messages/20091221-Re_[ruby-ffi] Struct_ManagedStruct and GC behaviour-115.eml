@@ -1,0 +1,239 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs527860and;
+        Mon, 21 Dec 2009 14:13:58 -0800 (PST)
+Received: by 10.114.23.4 with SMTP id 4mr5328593waw.28.1261433638078;
+        Mon, 21 Dec 2009 14:13:58 -0800 (PST)
+Return-Path: <3GvAvSwkJCIU5vnr11wn0pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@listserv.bounces.google.com>
+Received: from mail-px0-f144.google.com (mail-px0-f144.google.com [209.85.216.144])
+        by mx.google.com with ESMTP id 14si13822831pzk.55.2009.12.21.14.13.56;
+        Mon, 21 Dec 2009 14:13:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3GvAvSwkJCIU5vnr11wn0pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@listserv.bounces.google.com designates 209.85.216.144 as permitted sender) client-ip=209.85.216.144;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3GvAvSwkJCIU5vnr11wn0pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@listserv.bounces.google.com designates 209.85.216.144 as permitted sender) smtp.mail=3GvAvSwkJCIU5vnr11wn0pvjru.lxv03k7-oorpxxpunp0x3y1.lxv@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi8 with SMTP id 8sf3171986pxi.22
+        for <headius@headius.com>; Mon, 21 Dec 2009 14:13:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=0tRR/yWYD3nSsmggLYK1UA+1kRssUyiWoSOid4FPjzg=;
+        b=sVVT2tsfTybKwYJKPVZ0g4huyJevLLKUjyPZ/jDebjSsVqbnTwaI8+Ukkrgu5g6zvr
+         ZwUrWnJGqEJJesByl81y9VnhDGhjEcw5xPTMzYEAdXOwx+1vhDthxhjhiPzIUAvo7HIH
+         Gy3Vu5qp/YrfGmVjUbZ0f9RBi1SlmKENLxoK0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-unsubscribe:list-subscribe:content-type
+         :content-transfer-encoding;
+        b=H7zaawMpi0D3Izbhh9Oxyv/FNEgK/85K6Xc7X5MAyS3xteFP63gpJu7ZN1q571tQig
+         aX5j81UWISEapC6K6/64sxe9Q6J+B6yU0o74+RR7QpjKnLNBcxZcuXqhg8rfJFGBmA0s
+         Q2szulzXvVjmN/tKK0B8ix9bfQHqSwKFF6Iyo=
+Received: by 10.142.2.4 with SMTP id 4mr666481wfb.0.1261432858416;
+        Mon, 21 Dec 2009 14:00:58 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.143.21.11 with SMTP id y11ls647531wfi.1.p; Mon, 21 Dec 2009 
+	14:00:57 -0800 (PST)
+Received: by 10.143.26.6 with SMTP id d6mr1520897wfj.5.1261432857498;
+        Mon, 21 Dec 2009 14:00:57 -0800 (PST)
+Received: by 10.143.26.6 with SMTP id d6mr1520895wfj.5.1261432857458;
+        Mon, 21 Dec 2009 14:00:57 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-pz0-f173.google.com (mail-pz0-f173.google.com [209.85.222.173])
+        by gmr-mx.google.com with ESMTP id 18si1477091pzk.13.2009.12.21.14.00.56;
+        Mon, 21 Dec 2009 14:00:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.222.173 as permitted sender) client-ip=209.85.222.173;
+Received: by mail-pz0-f173.google.com with SMTP id 3so915967pzk.20
+        for <ruby-ffi@googlegroups.com>; Mon, 21 Dec 2009 14:00:56 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.214.22 with SMTP id r22mr5512903rvq.165.1261432853503; 
+	Mon, 21 Dec 2009 14:00:53 -0800 (PST)
+In-Reply-To: <20091221152637.62654e37.jon.forums@gmail.com>
+References: <20091221152637.62654e37.jon.forums@gmail.com>
+Date: Tue, 22 Dec 2009 08:00:53 +1000
+Message-ID: <4ccee320912211400t18af822coe605c5353cea0950@mail.gmail.com>
+Subject: Re: [ruby-ffi] Struct/ManagedStruct and GC behaviour
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.222.173 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/509f727c52cb337
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/cc0f6f4066789b5b
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+2009/12/22 Jon <jon.forums@gmail.com>:
+> Before I add API-ish level doc to http://wiki.github.com/ffi/ffi/structs =
+please double check my FFI::Struct and FFI::ManagedStruct understanding. =
+=A0Please ensure feedback is valid across the impl's.
+
+A ManagedStruct is basically a normal Struct with an AutoPointer to
+manage the backing memory.
+e.g. it is equivalent to:
+
+class XmlSandwichAutoPointer < FFI::AutoPointer
+  def self.release(ptr)
+    LibXml.xmlFreeSandwich(ptr);
+  end
+end
+
+class XmlSandwichStruct < FFI::Struct
+  layout ...
+end
+
+s =3D XmlSandwichStruct.new(XmlSandwichAutoPointer.new(LibXml.makeMeASandwi=
+ch)
+
+Since ManagedStruct is implemented purely in terms of other public FFI
+mechanisms, and it can be a bit confusing for people, it would be a
+prime candidate for being moved out of FFI core, to another library.
+
+
+> 4) FFI::Struct and FFI::ManagedStruct instances live completely in Ruby h=
+eap memory. =A0Or are they effectively proxy objects in Ruby heap that inte=
+rface and manage their underlying native heap-based structs? This one's lik=
+ely too impl specific to put in the wiki docs, but I'm still curious :)
+
+Both FFI::Struct and FFI::ManagedStruct just hold ruby references to
+whatever memory object they wrap.  That memory object is the ruby
+proxy that manages the underlying native memory.  So yes, they are
+effectively proxies (via the memory object) to native heap-based
+structs.
+
+Since a Struct is holding a normal ruby reference to the memory proxy,
+then all the normal garbage collection semantics apply.  i.e. as long
+as there is at least one strong reference to the memory proxy, the
+native memory will not be freed.
+
+
+Some implementation level detail examples.
+
+Assume we have a mapping like:
+
+module LibXml
+  attach_function :xmlMakeMeASandwich [], :pointer
+  attach_function :xmlFreeSandwich [ :pointer ]
+end
+
+and we defined the XmlSandwichAutoPointer class as previously.
+
+Passive memory (not managed at all by ruby)
+
+  ptr =3D LibXml.makeMeASandwich
+  s =3D XmlSandwichStruct.new(ptr)
+  ptr =3D nil
+  s =3D nil
+
+  # s can now be collected, ptr can now be collected, but the native
+memory is not freed, since
+  # ptr was a purely passive pointer
+
+Actively managed memory (obtained from function call)
+
+  ptr =3D XmlSandwichStruct.new(LibXml.makeMeASandwich)
+  s =3D XmlSandwichStruct.new(XmlSandwichAutoPointer.new(ptr))
+  s =3D nil
+  # s can now be collected, the backing AutoPointer instance can be
+collected, which
+  # will call xmlFreeSandwich()
+
+
+Actively managed memory (allocated internally by FFI)
+
+  s =3D XmlSandwichStruct.new
+  s =3D nil
+  # s can now be collected, the backing memory proxy can be collected,
+which will free the
+  # allocated native memory.
+
+If you drill down further on this one, it is equivalent to:
+
+  ptr =3D MemoryPointer.new(XmlSandwichStruct.size)
+  # we have allocated some native memory that is managed by 'ptr'
+  s =3D XmlSandwichStruct.new(ptr)
+
+  ptr =3D nil
+  # s still has a ref to ptr, so the memory ptr manages will not be freed
+
+  s =3D nil
+  # s can now be collected, the backing memory proxy can be collected,
+which will free the
+  # allocated native memory.
+
+Since it all follows normal ruby GC semantics, stuff like this is valid:
+
+  ptr =3D MemoryPointer.new(XmlSandwichStruct.size)
+  # we have allocated some native memory that is managed by 'ptr'
+  s =3D XmlSandwichStruct.new(ptr)
+  ...
+  s =3D nil
+  # local frame still has a ref to ptr, therefore ptr will not be
+collected, and the
+  # memory ptr manages will not be freed yet
+
+  ptr.get_int(0)
+  # ... do other things using ptr
+
+  ptr =3D nil
+  # ptr can now be collected, enabling the native memory to be freed
+
+
+Or even this:
+  s =3D XmlSandwichStruct.new
+  ptr =3D s.pointer
+  s =3D nil
+  ptr.get_int(0)
+  ptr =3D nil
+  # ptr can now be collected, enabling the native memory to be freed
+
+
+Hopefully the above isn't even more confusing.
+
+Note: I purposely did not discuss using a FFI::Buffer as FFI::Struct
+memory, since that could have confused the explanation of the native
+memory management.  The same same ruby GC semantics apply, of course.
+
+> 3) Neither FFI::Struct nor FFI::ManagedStruct currently provide for deter=
+ministic GC-ing (is it valid to call FFI::MemoryPointer#free deterministic =
+GC??)
+
+That depends on the type of memory the Struct wraps.
+
+e.g. if it wraps either a MemoryPointer or an AutoPointer, then this
+is perfectly valid:
+
+ s.pointer.free
+
+Of course, once you do that, s is now wrapping a dangling pointer, and
+if you pass it to a native function that tries to access it, fun and
+excitement will ensue.
+
+If s.pointer refers to a non-managed pointer, then it has no way to
+manage the memory, so s.pointer.free will raise a ruby exception.
+
+> 2) FFI::ManagedStruct enables one to specify custom cleanup code via a re=
+quired 'release(ptr)' class method that is guaranteed to be called only onc=
+e when the instance is GC'd.
+
+Correct.  AutoPointer#free will only call the release method once.

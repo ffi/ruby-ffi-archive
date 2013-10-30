@@ -1,0 +1,50 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 12:10 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>ref:<a class="moz-txt-link-freetext" href="http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx">http://msdn.microsoft.com/en-us/library/ms633499(VS.85).aspx</a>
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>What might it be...?
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>FindWindow is an alias of FindWindowA or FindWindowW depending if
+<span class="moz-txt-citetags">&gt; </span>unicode/wide condition was defined prior including the headers.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>So: there is no FindWindow, as pointed by others on this thread.
+</pre></blockquote><pre wrap>
+
+Interesting.
+
+Thanks for the help.
+
+C:\&gt;strings \WINDOWS\system32\user32.dll | grep  FindWindow
+FindWindowA
+FindWindowExA
+FindWindowExW
+FindWindowW
+
+
+Any guesses as to how VB is able to accomplish its snippet?
+
+&lt;DllImport("user32.dll", CharSet:=CharSet.Auto)&gt; _
+Public Shared Function FindWindow(ByVal lpClassName As String, ByVal
+lpWindowName As String) As IntPtr
+End Function
+
+Does it add a W or something, for us? (and ffi theoretically could,
+too?)
+
+
+Thanks.
+-r
+</pre></div></body>
+</html>
+</table></div>

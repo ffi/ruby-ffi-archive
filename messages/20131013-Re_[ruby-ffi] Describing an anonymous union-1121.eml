@@ -1,0 +1,161 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.9.8 with SMTP id v8csp179531laa;
+        Sun, 13 Oct 2013 17:48:34 -0700 (PDT)
+X-Received: by 10.60.93.67 with SMTP id cs3mr25950058oeb.12.1381711714150;
+        Sun, 13 Oct 2013 17:48:34 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBC4MV5HFZUFRBYP65SJAKGQEHFOSQSI@googlegroups.com>
+Received: from mail-ob0-x23d.google.com (mail-ob0-x23d.google.com [2607:f8b0:4003:c01::23d])
+        by mx.google.com with ESMTPS id fm3si31151480oeb.113.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 13 Oct 2013 17:48:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBC4MV5HFZUFRBYP65SJAKGQEHFOSQSI@googlegroups.com designates 2607:f8b0:4003:c01::23d as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBC4MV5HFZUFRBYP65SJAKGQEHFOSQSI@googlegroups.com designates 2607:f8b0:4003:c01::23d as permitted sender) smtp.mail=ruby-ffi+bncBC4MV5HFZUFRBYP65SJAKGQEHFOSQSI@googlegroups.com;
+       dkim=pass header.i=@googlegroups.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-f189.google.com with SMTP id uz6sf1245910obc.16
+        for <headius@headius.com>; Sun, 13 Oct 2013 17:48:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type;
+        bh=oHDjMW0xa4ygnCAEbbf2yXB9+NoV7fboMDImpeOvUk8=;
+        b=L1GT3q5Q/A6Q500F0CeMcD9ilEqrZgWDFMrUd+KYoULfOwW9nJZUVK0tJ1XkEMBnVs
+         rf+Nhdh9bZO9mDqnbN8oc3vCiEvFeX7PqIIfXP7MizRPvsX8GtiwX+M3Oq3/PGlynBAf
+         DRyM5OcTecqduCz9GAO+ezPK91+6LLvTQAxwbN4gA+iCFE1c1JkH14fipPBcpdqWyDvK
+         zBLxlL7vuzYZTshZG31ntizflPRpA4AqXxMCx0/u4vFfliQMrhI3YepW9SElBf1xpuOx
+         GK/Zma+/Ge8uYYcmbSktHFTN72zvI3jPyCnjrLCeswUdcuYUrNvUKRsUrf2b+/Syc/m4
+         Ia6g==
+X-Received: by 10.50.9.33 with SMTP id w1mr304574iga.12.1381711713477;
+        Sun, 13 Oct 2013 17:48:33 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.128.130 with SMTP id no2ls1395685igb.30.canary; Sun, 13 Oct
+ 2013 17:48:33 -0700 (PDT)
+X-Received: by 10.68.234.165 with SMTP id uf5mr11257664pbc.0.1381711712990;
+        Sun, 13 Oct 2013 17:48:32 -0700 (PDT)
+Received: from mail-vc0-x22c.google.com (mail-vc0-x22c.google.com [2607:f8b0:400c:c03::22c])
+        by gmr-mx.google.com with ESMTPS id a8si3062585vdk.3.1969.12.31.16.00.00
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 13 Oct 2013 17:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mistydemeo@gmail.com designates 2607:f8b0:400c:c03::22c as permitted sender) client-ip=2607:f8b0:400c:c03::22c;
+Received: by mail-vc0-f172.google.com with SMTP id hu8so4294256vcb.3
+        for <ruby-ffi@googlegroups.com>; Sun, 13 Oct 2013 17:48:32 -0700 (PDT)
+MIME-Version: 1.0
+X-Received: by 10.58.210.66 with SMTP id ms2mr4565969vec.10.1381711712817;
+ Sun, 13 Oct 2013 17:48:32 -0700 (PDT)
+Received: by 10.220.190.136 with HTTP; Sun, 13 Oct 2013 17:48:32 -0700 (PDT)
+In-Reply-To: <9a4aafb7-1f9d-4b58-b86a-69824734a94c@googlegroups.com>
+References: <8f18f2ef-b612-4f83-8482-62cb9ea8f033@googlegroups.com>
+	<5259D9DC.70209@gmail.com>
+	<9a4aafb7-1f9d-4b58-b86a-69824734a94c@googlegroups.com>
+Date: Sun, 13 Oct 2013 17:48:32 -0700
+Message-ID: <CAGLuM16SzqENJBGS_Dc-qh8q-1uqLymFrio1gZgWs-ViWCMCEg@mail.gmail.com>
+Subject: Re: [ruby-ffi] Describing an anonymous union
+From: Misty De Meo <mistydemeo@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: mistydemeo@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of mistydemeo@gmail.com designates 2607:f8b0:400c:c03::22c
+ as permitted sender) smtp.mail=mistydemeo@gmail.com;       dkim=pass
+ header.i=@gmail.com;       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe>, <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Thanks! I hadn't thought about using Class.new to avoid assigning it
+as a separate constant.
+
+In this case though I was wondering about the name within the struct,
+not the Ruby constant representing the union. In the original C
+definition the union has no name - is assigning something arbitrary
+the best way to go, e.g. :union in Postmodern's example?
+
+On Sun, Oct 13, 2013 at 5:43 PM, Wayne Meissner <wmeissner@gmail.com> wrote:
+> Yep, that should work.  Can even leave off the class_eval -
+>
+> Class.new(FFI::Union) do
+>   layout :msg, :pointer,
+>             :song_end, UadeNotificationSongEnd
+> end
+>
+> The only things that won't work are typedefs/aliases - they use a hacky way
+> to find the enclosing module (which contains the typedef table), which won't
+> work with anon classes.
+>
+> Lexically scoped things will work fine though (and the built in FFI types)
+>
+>
+> On Sunday, 13 October 2013 10:23:08 UTC+11, Postmodern wrote:
+>>
+>> Usually I just come up with some name for anonymous structs/unions.
+>> However, I wonder if you could do
+>>
+>> layout :type, :uade_notification_type,
+>>        :union, Class.new(FFI::Union).class_eval do
+>>                  ...
+>>                end
+>>
+>> or something similar?
+>>
+>> On 10/12/2013 04:44 AM, Misty De Meo wrote:
+>>
+>> How can I represent an anonymous union in FFI?
+>>
+>> A struct I'm wrapping has the following structure:
+>>
+>> struct uade_notification {
+>>     enum uade_notification_type type;
+>>     union {
+>>         char *msg;
+>>         struct uade_notification_song_end song_end;
+>>     };
+>> };
+>>
+>> I can create a union using FFI::Union of course, but I'm not sure how to
+>> represent that in a struct layout. Is assigning it an arbitrary name the
+>> right way to go?
+>>
+>> Best,
+>> Misty
+>> --
+>>
+>> ---
+>> You received this message because you are subscribed to the Google Groups
+>> "ruby-ffi" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an
+>> email to ruby-ffi+u...@googlegroups.com.
+>>
+>> For more options, visit https://groups.google.com/groups/opt_out.
+>>
+>> --
+>> Blog: http://postmodern.github.com/
+>> GitHub: https://github.com/postmodern
+>> Twitter: @postmodern_mod3
+>> PGP: 0xB9515E77
+>
+> --
+>
+> ---
+> You received this message because you are subscribed to the Google Groups
+> "ruby-ffi" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to ruby-ffi+unsubscribe@googlegroups.com.
+> For more options, visit https://groups.google.com/groups/opt_out.
+
+-- 
+
+--- 
+You received this message because you are subscribed to the Google Groups "ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.

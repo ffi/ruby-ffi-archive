@@ -1,0 +1,90 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: :varargs sometimes works, sometimes don&#39;t</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: :varargs sometimes works, sometimes don&#39;t</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Quintus <sutniuq@gmx.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/28/10 10:53 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Looks like a bug to me.
+</pre></blockquote><pre wrap>
+
+I opened an issue on GitHub: <a class="moz-txt-link-freetext" href="http://github.com/ffi/ffi/issues/issue/44">http://github.com/ffi/ffi/issues/issue/44</a>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>As a workaround, moving the attaching of g_object_set to before the enums makes
+<span class="moz-txt-citetags">&gt; </span>the example run fine.
+</pre></blockquote><pre wrap>
+
+Works for me, too. Thank you!
+
+Marvin
+
+On 27 Apr., 22:42, Matijs van Zuijlen <a class="moz-txt-link-rfc2396E" href="mailto:mat...@matijs.net">&lt;mat...@matijs.net&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi Marvin,
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On 04/27/2010 07:19 PM, Quintus wrote:
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>- the second fails with a quite strange error message:
+<span class="moz-txt-citetags">&gt; &gt; </span>--------------------------------------------------------------
+<span class="moz-txt-citetags">&gt; &gt; </span><i class="moz-txt-slash"><span class="moz-txt-tag">/</span>opt/rubies/ruby-1.9.1-p378/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/lib/ffi<span class="moz-txt-tag">/</span></i>
+<span class="moz-txt-citetags">&gt; &gt; </span>types.rb:46:in `find_type': Unable to resolve type
+<span class="moz-txt-citetags">&gt; &gt; </span>'string' (TypeError)
+<span class="moz-txt-citetags">&gt; &gt; </span>   from /opt/rubies/ruby-1.9.1-p378/lib/ruby/gems/1.9.1/gems/ffi-0.6.3/
+<span class="moz-txt-citetags">&gt; &gt; </span>lib/ffi/variadic.rb:47:in `call'
+<span class="moz-txt-citetags">&gt; &gt; </span>   from (eval):3:in `g_object_set'
+<span class="moz-txt-citetags">&gt; &gt; </span>   from gtkbox.rb:66:in `show'
+<span class="moz-txt-citetags">&gt; &gt; </span>   from gtkbox.rb:76:in `&lt;main&gt;'
+<span class="moz-txt-citetags">&gt; &gt; </span>-------------------------------------------------------------
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>What's the matter? As far as I know, :string as a regular type in
+<span class="moz-txt-citetags">&gt; &gt; </span>FFI.
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Looking at the ffi code, the fact that you create two new types in the second
+<span class="moz-txt-citetags">&gt; </span>example completely overrules the default type map when resolving varargs types.
+<span class="moz-txt-citetags">&gt; </span>Looks like a bug to me.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>And here's the (non-working) second:
+<span class="moz-txt-citetags">&gt; &gt; </span>-------------------------------------------------------------
+<span class="moz-txt-citetags">&gt; &gt; </span>[...]
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>           enum :type, [ :gtk_message_info,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                 :gtk_message_warning,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                 :gtk_message_question,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                 :gtk_message_error,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                 :gtk_message_other
+<span class="moz-txt-citetags">&gt; &gt; </span>                               ]
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; &gt; </span>           enum :buttons, [:gtk_buttons_none,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     :gtk_button_ok,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     :gtk_buttons_close,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     :gtk_buttons_cancel,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     :gtk_buttons_yes_no,
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     :gtk_buttons_ok_cancel
+<span class="moz-txt-citetags">&gt; &gt; </span>                                     ]
+</pre></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>At this point, @ffi_typedefs contains :type and :buttons, and only varargs of
+<span class="moz-txt-citetags">&gt; </span>those types will be recognized.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>As a workaround, moving the attaching of g_object_set to before the enums makes
+<span class="moz-txt-citetags">&gt; </span>the example run fine.
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>--
+<span class="moz-txt-citetags">&gt; </span>Matijs
+</pre></div></body>
+</html>
+</table></div>

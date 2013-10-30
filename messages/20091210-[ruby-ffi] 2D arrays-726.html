@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] 2D arrays</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] 2D arrays</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>galdor <khaelin@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/10/09 5:51 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+I'm trying to bind the following structure:
+
+struct ALLEGRO_TRANSFORM {
+   float m[4][4];
+};
+
+But with the following FFI declaration:
+
+class ALLEGRO_TRANSFORM &lt; FFI::Struct
+    layout :m, [[:float, 4], 4]
+end
+
+I get the following error:
+
+/usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi/struct.rb:177:in
+`add_array': undefined method `alignment' for [:float, 4]:Array
+(NoMethodError)
+        from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+struct.rb:177:in `array_layout'
+        from <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/ruby/gems/1.9.1/gems/ffi-0.6.0pre/lib/ffi<span class="moz-txt-tag">/</span></i>
+struct.rb:106:in `layout'
+        from lib/allegro/ffi_allegro.rb:558:in
+`&lt;class:ALLEGRO_TRANSFORM&gt;'
+        from lib/allegro/ffi_allegro.rb:557:in `&lt;module:Allegro&gt;'
+        from lib/allegro/ffi_allegro.rb:4:in `&lt;main&gt;'
+
+Is there a specific syntax for 2D arrays ?
+
+Regards,
+
+Nicolas Martyanoff
+</pre></div></body>
+</html>
+</table></div>

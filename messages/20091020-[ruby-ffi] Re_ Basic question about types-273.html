@@ -1,0 +1,58 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: Basic question about types</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: Basic question about types</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>10/20/09 6:21 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+You specifiy variadic parameters as :varargs, and when you call the
+function, you need to explicitly specify the type of the parameters.
+e.g.
+# this says printf takes a string parameter, followed by a variable
+number of parameters
+  attach_function :printf, [ :string, :varargs ], :int
+
+# You don't need to specify the type of any fixed params, since it is part of
+# the function signature, but you do need to for each varargs parameter
+
+LibC.printf("Hello, %s", :string, "World")
+
+
+2009/10/21 Gimi <a class="moz-txt-link-rfc2396E" href="mailto:liang.gimi@gmail.com">&lt;liang.gimi@gmail.com&gt;</a>:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Hi, it's me again : )
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>I just wanna ask one more question, how to deal with the va_list
+<span class="moz-txt-citetags">&gt; </span>parameter? Like the vprintf method, how to attach and call it?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>With many thanks!
+<span class="moz-txt-citetags">&gt; </span>Gimi
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>On Oct 20, 10:10 am, Gimi <a class="moz-txt-link-rfc2396E" href="mailto:liang.g...@gmail.com">&lt;liang.g...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt; </span>Hi all,
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>I'm new to FFI, and I have a basic question about types. Assume there
+<span class="moz-txt-citetags">&gt;&gt; </span>is some C code like this:
+<span class="moz-txt-citetags">&gt;&gt; </span># -- C code begin --
+<span class="moz-txt-citetags">&gt;&gt; </span>#if some situation
+<span class="moz-txt-citetags">&gt;&gt; </span>typedef sometype unsignedint
+<span class="moz-txt-citetags">&gt;&gt; </span>#else
+<span class="moz-txt-citetags">&gt;&gt; </span>typedef sometype int
+<span class="moz-txt-citetags">&gt;&gt; </span>#endif
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>void some_function(sometype);
+<span class="moz-txt-citetags">&gt;&gt; </span>#-- C code end --
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>So I mean when the types of parameters of a function are different in
+<span class="moz-txt-citetags">&gt;&gt; </span>different situations, how do I write the Ruby code?
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Any help will be greatly appreciated.
+<span class="moz-txt-citetags">&gt;&gt;</span>
+<span class="moz-txt-citetags">&gt;&gt; </span>Regards,
+</pre></div></body>
+</html>
+</table></div>

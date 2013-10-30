@@ -1,0 +1,102 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.110.10 with SMTP id i10cs686686anc;
+        Sun, 24 Jan 2010 16:08:08 -0800 (PST)
+Received: by 10.142.152.15 with SMTP id z15mr3045197wfd.98.1264378087523;
+        Sun, 24 Jan 2010 16:08:07 -0800 (PST)
+Return-Path: <35OBcSwkJCG0hXPTddYPcRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@groups.bounces.google.com>
+Received: from mail-px0-f169.google.com (mail-px0-f169.google.com [209.85.216.169])
+        by mx.google.com with ESMTP id 10si826501pzk.118.2010.01.24.16.08.06;
+        Sun, 24 Jan 2010 16:08:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of 35OBcSwkJCG0hXPTddYPcRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@groups.bounces.google.com designates 209.85.216.169 as permitted sender) client-ip=209.85.216.169;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 35OBcSwkJCG0hXPTddYPcRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@groups.bounces.google.com designates 209.85.216.169 as permitted sender) smtp.mail=35OBcSwkJCG0hXPTddYPcRXLTW.NZXcfMj-QQTRZZRWPRcZfad.NZX@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi41 with SMTP id 41sf852884pxi.23
+        for <headius@headius.com>; Sun, 24 Jan 2010 16:08:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:in-reply-to
+         :references:date:message-id:subject:from:to
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=NjgbpkXh7drl+eOVBgQU5mcnJpNnDanJWos5X/J80iU=;
+        b=noT5WZUi+AcyFcyY1Anxx0WBW2SaTzXpXWODP4g/cd7iO61kREe6sz1+yCS25Vy16a
+         QdvLLD8/yERalZGuoPqwUngW4dtTyctXKyAFOpS9IKY6t40HReD3cGpFySpFhw+16WOz
+         yo70RXblK4XjTi0m06SmNIfBMKXhH/OI4Nv64=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=YC5SwL/fi+iZeGTYGphsdal4Jb5tBUxmfUPkTCklihrJ5kf7rzP66nElS5OsofhiM2
+         CcuueiYDuakWStf7j0A/2d7DEKzfghWnidf7eXbWqkc+pFBD7oa1F3Jo2bCB7KRZZSde
+         tzaYkKB3z7fJWwLWScac6g/uY3cT72s0dxX6I=
+Received: by 10.115.101.31 with SMTP id d31mr213627wam.11.1264378084933;
+        Sun, 24 Jan 2010 16:08:04 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.215.3 with SMTP id n3ls708332wag.2.p; Sun, 24 Jan 2010 
+	16:08:04 -0800 (PST)
+Received: by 10.114.236.38 with SMTP id j38mr1204065wah.9.1264378084318;
+        Sun, 24 Jan 2010 16:08:04 -0800 (PST)
+Received: by 10.114.236.38 with SMTP id j38mr1204064wah.9.1264378084294;
+        Sun, 24 Jan 2010 16:08:04 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f193.google.com (mail-px0-f193.google.com [209.85.216.193])
+        by gmr-mx.google.com with ESMTP id 24si1214141pzk.10.2010.01.24.16.08.03;
+        Sun, 24 Jan 2010 16:08:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.193 as permitted sender) client-ip=209.85.216.193;
+Received: by pxi31 with SMTP id 31so2012715pxi.6
+        for <ruby-ffi@googlegroups.com>; Sun, 24 Jan 2010 16:08:03 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.141.23.13 with SMTP id a13mr4122715rvj.247.1264378083120; Sun, 
+	24 Jan 2010 16:08:03 -0800 (PST)
+In-Reply-To: <f5b4fdf8-a43a-4f7f-a895-5c3bfdd401cb@p8g2000yqb.googlegroups.com>
+References: <f5b4fdf8-a43a-4f7f-a895-5c3bfdd401cb@p8g2000yqb.googlegroups.com>
+Date: Mon, 25 Jan 2010 10:08:03 +1000
+Message-ID: <4ccee321001241608s237a9170ja5b8d47fd5574069@mail.gmail.com>
+Subject: Re: [ruby-ffi] Install Issue on osx 10.5.8
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of wmeissner@gmail.com designates 209.85.216.193 as permitted sender) 
+	smtp.mail=wmeissner@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/572d86fbc7c36d93
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/1c8f76dc02477adc
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Can you retry it with the latest source from github?  It /should/
+build both with and without libffi installed from ports.  If it isn't
+installed, it should use the in-tree version.
+
+2010/1/13 bmo <brianmo@yahoo.com>:
+> Just a FYI, this is an encapsulation of a email thread from a month
+> ago or so -- if you're missing ffi.h when installing on 10.5.8, you
+> should
+>
+> port install libffi
+>
+> An even better non-workaround would be to change extconf.rb in the ffi
+> gem to actually build libffi (which is included in the ext/ffi_c/
+> libffi directory), and modify the include and link paths in the
+> Makefile accordingly if ffi.h isn't originally found.
+>
+> Brian Moran
+> http://www.onehub.com
+>

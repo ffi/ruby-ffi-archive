@@ -1,0 +1,106 @@
+Delivered-To: headius@headius.com
+Received: by 10.50.220.167 with SMTP id px7cs14346igc;
+        Sun, 30 Oct 2011 04:50:35 -0700 (PDT)
+Received: by 10.227.206.200 with SMTP id fv8mr12740970wbb.11.1319975433088;
+        Sun, 30 Oct 2011 04:50:33 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCP397LbnChCE9LT1BBoEBpN2ug@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTPS id ek3si10942959wbb.19.2011.10.30.04.50.32
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sun, 30 Oct 2011 04:50:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCP397LbnChCE9LT1BBoEBpN2ug@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCP397LbnChCE9LT1BBoEBpN2ug@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCP397LbnChCE9LT1BBoEBpN2ug@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wwf4 with SMTP id 4sf2776102wwf.7
+        for <headius@headius.com>; Sun, 30 Oct 2011 04:50:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:message-id:date:from:user-agent
+         :mime-version:to:subject:references:in-reply-to:x-virus-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=jBfYz49DpgAcLYle/Ds14Mi4YFIA916N91mKfkPb9do=;
+        b=WfI2HRfAkeffU8Gfdh2++ZjDsOD3Q+FLNvSC85EuJvenJ9u9Cz7buzdhyw7Gd7W0Od
+         Pr5PK8OBFuTXMkM/TpMW4k0/DTFp1iFbgNB/6UFD9Mm4BzaG4S/U1zYYBSNcZkDSJbq3
+         Kv6iDIAfrTUhIIZ3jNFn0jTalIrmqGuUdbIwM=
+Received: by 10.216.131.205 with SMTP id m55mr198455wei.59.1319975428748;
+        Sun, 30 Oct 2011 04:50:28 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.14.25.88 with SMTP id y64ls1645618eey.4.gmail; Sun, 30 Oct
+ 2011 04:50:28 -0700 (PDT)
+Received: by 10.14.19.9 with SMTP id m9mr622711eem.8.1319975428202;
+        Sun, 30 Oct 2011 04:50:28 -0700 (PDT)
+Received: by 10.14.19.9 with SMTP id m9mr622710eem.8.1319975428186;
+        Sun, 30 Oct 2011 04:50:28 -0700 (PDT)
+Received: from smtp-vbr4.xs4all.nl (smtp-vbr4.xs4all.nl. [194.109.24.24])
+        by gmr-mx.google.com with ESMTP id i11si8688856eea.0.2011.10.30.04.50.27;
+        Sun, 30 Oct 2011 04:50:27 -0700 (PDT)
+Received-SPF: neutral (google.com: 194.109.24.24 is neither permitted nor denied by best guess record for domain of matijs@matijs.net) client-ip=194.109.24.24;
+Received: from [10.0.0.20] (mvz.xs4all.nl [83.163.118.181])
+	(authenticated bits=0)
+	by smtp-vbr4.xs4all.nl (8.13.8/8.13.8) with ESMTP id p9UBoQ2V062812
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NO)
+	for <ruby-ffi@googlegroups.com>; Sun, 30 Oct 2011 12:50:27 +0100 (CET)
+	(envelope-from matijs@matijs.net)
+Message-ID: <4EAD3A02.5000704@matijs.net>
+Date: Sun, 30 Oct 2011 12:50:26 +0100
+From: Matijs van Zuijlen <matijs@matijs.net>
+User-Agent: Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.23) Gecko/20111010 Icedove/3.1.15
+MIME-Version: 1.0
+To: ruby-ffi@googlegroups.com
+Subject: Re: [ruby-ffi] void pointer to a ruby object in a callback function
+References: <fb2493cf-8a5a-4382-b23a-22545462656b@q39g2000prg.googlegroups.com>
+In-Reply-To: <fb2493cf-8a5a-4382-b23a-22545462656b@q39g2000prg.googlegroups.com>
+X-Virus-Scanned: by XS4ALL Virus Scanner
+X-Original-Sender: matijs@matijs.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=neutral (google.com:
+ 194.109.24.24 is neither permitted nor denied by best guess record for domain
+ of matijs@matijs.net) smtp.mail=matijs@matijs.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi Mark,
+
+You can't pass the actual address of the ruby object in memory like you can with 
+regular C extensions.
+
+However, you can pass some other identifier, as long as it's numeric, such as 
+the object_id.
+
+You could map back from the object_id to objects using _id2ref. However, if you 
+want things to work with JRuby, I would recommend against it, since you need to 
+set a special flag to enable it. Instead, store the mapping from object_id to 
+object in a hash somewhere.
+
+For example:
+
+   MAPPING = {}
+   o = Object.new
+   MAPPING[o.object_id] = o
+   YourLib.function_with_callback(FFI::Pointer.new(o.object_id)) do |id|
+     obj = MAPPING[id]
+     # now do something with obj, which is the same as o.
+   end
+
+On 10/30/2011 09:23 AM, Mark wrote:
+> I am trying to use an api that has a callback function. The api takes
+> a void pointer that is passes through to the callback function. Is it
+> possible to get access to a ruby object via that void pointer? I.e.
+> get a pointer to a ruby object or something functionally equivalent?
+
+Kind regards,
+-- 
+Matijs

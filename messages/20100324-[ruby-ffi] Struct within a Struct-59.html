@@ -1,0 +1,45 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Struct within a Struct</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Struct within a Struct</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Colby Gutierrez-Kraybill <colbygk@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/24/10 12:31 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+I'm attempting to make use of a library with methods that return a
+struct by value and that struct contains another struct:
+
+spam_in_a_can_view s = windowShopping(); // note, not returning a
+pointer
+
+typedef struct
+{
+  size_t size;
+  double *data;
+} spam_in_a_can;
+
+typedef struct
+{
+  spam_in_a_can can;
+}  spam_in_a_can_view;
+
+I'm not sure how to go about this (if it's possible) with FFI.  The
+initial layout I would put down as:
+
+class Spam_In_A_Can &lt; FFI::Struct
+  layout :size, :size_t,
+            :data, :pointer
+end
+
+class Spam_In_A_Can_View &lt; FFI::Struct
+  layout :can, :pointer # ???
+end
+
+attach_function :windowShopping, [], :Spam_In_A_Can_View.by_value
+
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

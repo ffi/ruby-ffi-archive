@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs30927agb;
+        Sat, 7 May 2011 20:32:37 -0700 (PDT)
+Received: by 10.42.144.70 with SMTP id a6mr1192880icv.486.1304825556596;
+        Sat, 07 May 2011 20:32:36 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPS3mqGKCBDNnZjuBBoE7KzIvA@googlegroups.com>
+Received: from mail-pz0-f62.google.com (mail-pz0-f62.google.com [209.85.210.62])
+        by mx.google.com with ESMTPS id ud4si13290518icb.79.2011.05.07.20.32.35
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 07 May 2011 20:32:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDNnZjuBBoE7KzIvA@googlegroups.com designates 209.85.210.62 as permitted sender) client-ip=209.85.210.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPS3mqGKCBDNnZjuBBoE7KzIvA@googlegroups.com designates 209.85.210.62 as permitted sender) smtp.mail=ruby-ffi+bncCPS3mqGKCBDNnZjuBBoE7KzIvA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pzk10 with SMTP id 10sf3978555pzk.7
+        for <headius@headius.com>; Sat, 07 May 2011 20:32:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:date:from:reply-to:to:message-id
+         :in-reply-to:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=7uAA+1wJ5y1amL2Jefas7Ga/6PoIKPutUBTIDs4cdnQ=;
+        b=rKkpYWSAEbK0j8DmkTpkjWqvfv6D6Rfp6H/RgRVJFGlc410VTTcyrhU/lgWRNbKi4w
+         3sR4ZpevmKkCTxPWwQcvYdQNlrwxjC445EOPRYzCq1J7pHtxIeCUpMZPAPEFpYd7Te9C
+         dvLb6k/Ud6chzIsKv+Q9Eqq/LpaRnDM7vEGM8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:reply-to:to:message-id:in-reply-to:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=Itvfi0by8YkKxg/0L51gENmWK5+TZdy1VrIfdHMuUHDIGSfD7sYregsP2B66X+5mSz
+         8pZpjoiLg20jqkQf8hbUILHam6FCdztltk+lO6I2PyxDpJ8SMCx7/IGq7nhNWt6Wv60p
+         jtDc+1Awhmhxji2vrRBWVF1C5bSymQsE+MQ9s=
+Received: by 10.142.216.8 with SMTP id o8mr488904wfg.29.1304825549578;
+        Sat, 07 May 2011 20:32:29 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.36.67 with SMTP id o3ls6968983pbj.0.gmail; Sat, 07 May 2011
+ 20:32:29 -0700 (PDT)
+Received: by 10.68.11.71 with SMTP id o7mr176915pbb.57.1304825549322;
+        Sat, 07 May 2011 20:32:29 -0700 (PDT)
+Date: Sat, 7 May 2011 20:32:28 -0700 (PDT)
+From: Wayne Meissner <wmeissner@gmail.com>
+Reply-To: ruby-ffi@googlegroups.com
+To: ruby-ffi@googlegroups.com
+Message-ID: <12926351.2087.1304825548599.JavaMail.geo-discussion-forums@prfg19>
+In-Reply-To: <BANLkTimT8_Yz498K67SLcTOS+C0XwyvonQ@mail.gmail.com>
+Subject: [ruby-ffi] Re: checkBounds in Pointer#slice
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2086_22412981.1304825548598"
+
+------=_Part_2086_22412981.1304825548598
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Charles, can you raise an issue in github for this one (and JRuby's jira if 
+it happens there too), so it doesn't get lost?
+
+
+
+------=_Part_2086_22412981.1304825548598
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<br><div>Charles, can you raise an issue in github for this one (and JRuby's jira if it happens there too), so it doesn't get lost?</div><div><br></div><div><br></div>
+------=_Part_2086_22412981.1304825548598--

@@ -1,0 +1,79 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.31.9 with SMTP id i9csp120720wfj;
+        Thu, 14 Jun 2012 19:44:33 -0700 (PDT)
+Received: by 10.68.236.129 with SMTP id uu1mr14701291pbc.77.1339728273127;
+        Thu, 14 Jun 2012 19:44:33 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxCQw-r-BBoEKx_oEg@googlegroups.com>
+Received: from mail-pb0-f62.google.com (mail-pb0-f62.google.com [209.85.160.62])
+        by mx.google.com with ESMTPS id py10si8811630pbb.233.2012.06.14.19.44.33
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 14 Jun 2012 19:44:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCQw-r-BBoEKx_oEg@googlegroups.com designates 209.85.160.62 as permitted sender) client-ip=209.85.160.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCQw-r-BBoEKx_oEg@googlegroups.com designates 209.85.160.62 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxCQw-r-BBoEKx_oEg@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by pbbrq2 with SMTP id rq2sf6531806pbb.7
+        for <headius@headius.com>; Thu, 14 Jun 2012 19:44:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=roCqDM+HnIRTdaC3i5ceotcAeuFZK4qJC6Fp6dW308c=;
+        b=StN6aQyuy4CPZDuXGJtsA7rsASFynyP6GeU2yCt6uDN/L+3aEBAi4EMk7Ip9QlCUjG
+         dSAK+wShYyIkwyzKDVBvd0gTD64z49wq1zNrEFgYRlpkVw5pv128rBuMmmJlvtQCehd2
+         9kMH4OP/9ChgcLL8/rr/PVd9YijH2zLbmWQkM=
+Received: by 10.68.230.34 with SMTP id sv2mr872559pbc.6.1339728272869;
+        Thu, 14 Jun 2012 19:44:32 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.227.136 with SMTP id sa8ls4024786pbc.8.gmail; Thu, 14 Jun
+ 2012 19:44:32 -0700 (PDT)
+Received: by 10.68.233.74 with SMTP id tu10mr864486pbc.2.1339728272629;
+        Thu, 14 Jun 2012 19:44:32 -0700 (PDT)
+Date: Thu, 14 Jun 2012 19:44:32 -0700 (PDT)
+From: Navaneeth KN <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <a407382c-c624-4abe-870b-1922c83134a0@googlegroups.com>
+In-Reply-To: <1f091970-2c18-4f05-b8c8-9d887390d92c@googlegroups.com>
+References: <1f091970-2c18-4f05-b8c8-9d887390d92c@googlegroups.com>
+Subject: [ruby-ffi] Re: Reading struct elements returning incorrect values
+MIME-Version: 1.0
+X-Original-Sender: navaneethkn@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ navaneethkn@gmail.com designates internal as permitted sender)
+ smtp.mail=navaneethkn@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_405_29469542.1339728272194"
+
+------=_Part_405_29469542.1339728272194
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+I made a mistake in the first mail. Correct signature for varray_get is 
+
+void* varray_get(varray*, int index)
+
+Thanks
+Navaneeth
+
+------=_Part_405_29469542.1339728272194
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hello,<br><br>I made a mistake in the first mail. Correct signature for varray_get is <br><br>void* varray_get(varray*, int index)<br><br>Thanks<br>Navaneeth<br>
+------=_Part_405_29469542.1339728272194--

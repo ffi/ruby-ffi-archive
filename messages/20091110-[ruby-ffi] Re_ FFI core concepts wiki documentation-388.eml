@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.217.20 with SMTP id p20cs2801wfg;
+        Tue, 10 Nov 2009 11:29:26 -0800 (PST)
+Received: by 10.101.189.3 with SMTP id r3mr837928anp.105.1257881365597;
+        Tue, 10 Nov 2009 11:29:25 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-yx0-f142.google.com (mail-yx0-f142.google.com [209.85.210.142])
+        by mx.google.com with ESMTP id 7si6046891yxe.129.2009.11.10.11.29.24;
+        Tue, 10 Nov 2009 11:29:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) client-ip=209.85.210.142;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.210.142 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxe6 with SMTP id 6so406064yxe.13
+        for <headius@headius.com>; Tue, 10 Nov 2009 11:29:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:received:received:date:from:to:subject
+         :message-id:in-reply-to:references:x-mailer:mime-version
+         :content-type:content-transfer-encoding:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=dNVwz55Qr8nuKWl+ZvDkRuzkBjzrVtSOEdyYMSCffS0=;
+        b=D7vfj4Qs2yyyqDAIE1d5zhoevHPflSFssjU9TRbmuQnpm/d2RVP9Z7PfYF7cZrhztN
+         tQ1TVCqjqCMCgf7IhlJySbUdkbuDhqk5aCHsI7M0/OXx4Fw8C1BUNnguQky3lQgdkiG2
+         PmbQxNtlAKmohOo2JZGOD1+gTRPYwjkCqJAus=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:date:from:to:subject:message-id
+         :in-reply-to:references:x-mailer:mime-version:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=1ZZRHNkjsRHsU37YrQ6QT7rGdTjjOam3GXZxXp0LWAT2jJMWPrNToqAmz5+YAoOkgs
+         3vuAUGLJ9J5KEhWLhLSWyzCFvEJfgTMVnBs6ioZ5TCgGBZpg/FrDurt5H7a0UnLEam/r
+         3OwFWcseu53Y8ZdkMKUXSdJJTbhEXzSDHdtpI=
+Received: by 10.150.106.28 with SMTP id e28mr55220ybc.57.1257881362312;
+        Tue, 10 Nov 2009 11:29:22 -0800 (PST)
+Received: by 10.177.105.17 with SMTP id h17gr105yqm.0;
+	Tue, 10 Nov 2009 11:29:22 -0800 (PST)
+X-Sender: jon.forums@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.204.23.6 with SMTP id p6mr18257bkb.14.1257881361867; Tue, 10 Nov 2009 11:29:21 -0800 (PST)
+Received: by 10.204.23.6 with SMTP id p6mr18256bkb.14.1257881361816; Tue, 10 Nov 2009 11:29:21 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from mail-bw0-f219.google.com (mail-bw0-f219.google.com [209.85.218.219]) by gmr-mx.google.com with ESMTP id 12si67460fxm.5.2009.11.10.11.29.20; Tue, 10 Nov 2009 11:29:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of jon.forums@gmail.com designates 209.85.218.219 as permitted sender) client-ip=209.85.218.219;
+Received: by mail-bw0-f219.google.com with SMTP id 19so418420bwz.8 for <ruby-ffi@googlegroups.com>; Tue, 10 Nov 2009 11:29:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:received:received:date:from:to:subject :message-id:in-reply-to:references:x-mailer:mime-version :content-type:content-transfer-encoding; bh=5Sj8bYnM+9Ag8VQyIIHVAp3Racf7fv7dsha3Z78Mf2s=; b=gzjlFxXamquGslPiNqoeixfJi1d4/Ur7QutqqDmoMeQzOuz6AF2Z2HwgoUV8UMfqcL oWDCYTDb0oZMdveArZXHuTpisHNZaEpI4y2WHGZIQKMxhLSXnQKgAm+VnxQp8U6Mzi65 fu5cIrgnMD0cykdvk/g4OYEpGtv1IdnaswGEM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=date:from:to:subject:message-id:in-reply-to:references:x-mailer :mime-version:content-type:content-transfer-encoding; b=Jq0XOgEmlIB9RDTOJvDc7UlM/Z5amsqEdb+qZfnauD46vCm4ibJi1gEmzkFEXp6UUu 2Tx39S4UQrFo4kePr/EcGYazWIyI3OfHlTrvXIiXmOwLDfOsehGbmY1I0sSqfvZJdwwK s23wahiZyGM1TJD42rIy7hrgO3lxMvHC/eSzk=
+Received: by 10.204.150.76 with SMTP id x12mr522803bkv.30.1257881360584; Tue, 10 Nov 2009 11:29:20 -0800 (PST)
+Return-Path: <jon.forums@gmail.com>
+Received: from Red (rrcs-24-172-153-250.central.biz.rr.com [24.172.153.250]) by mx.google.com with ESMTPS id 13sm340599bwz.6.2009.11.10.11.29.18 (version=TLSv1/SSLv3 cipher=RC4-MD5); Tue, 10 Nov 2009 11:29:19 -0800 (PST)
+Date: Tue, 10 Nov 2009 14:28:49 -0500
+From: Jon <jon.forums@gmail.com>
+To: ruby-ffi@googlegroups.com
+Subject: [ruby-ffi] Re: FFI core concepts wiki documentation
+Message-Id: <20091110142849.700c962d.jon.forums@gmail.com>
+In-Reply-To: <4AF9BCEB.6070204@redhat.com>
+References: <20091107162455.ca8a2cd5.jon.forums@gmail.com> <4AF988AD.8010401@redhat.com> <20091110121928.e7219040.jon.forums@gmail.com> <4AF9B1B5.8030408@redhat.com> <20091110141554.837df13f.jon.forums@gmail.com> <4AF9BCEB.6070204@redhat.com>
+X-Mailer: Sylpheed 2.7.1 (GTK+ 2.10.14; i686-pc-mingw32)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+> >
+> > The reason I ask is there's a consideration regarding string memory allocation due to how the JVM and JRuby handles strings via Java heap memory.
+> >
+> > I've got to consolidate Wayne's summary of the issue and put it on the wiki, but looking over the aug_get and aug_match sigs (the :string param (Ruby 'path') in particular) I can't tell whether this would even be a concern.
+> 
+> I will hold off adding anything. The rest of the examples from Augeas 
+> were pretty vanilla input only parameters.
+
+Actually, since you and Wayne already worked through these on the list, why don't you go ahead and add the two examples to the wiki?
+
+We can always revert back to a previous version of the wiki page if we discover new info that mod's your examples.  I see value with having these more real-world examples up on the wiki rather than buried in the mailing list.
+
+Jon

@@ -1,0 +1,90 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs100008fam;
+        Thu, 16 Dec 2010 17:46:27 -0800 (PST)
+Received: by 10.150.220.12 with SMTP id s12mr2005271ybg.25.1292550386332;
+        Thu, 16 Dec 2010 17:46:26 -0800 (PST)
+Return-Path: <ruby-ffi+bncCOWH2tyCExDwgavoBBoEkm9WpA@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id w3si18746291ybi.97.2010.12.16.17.46.24;
+        Thu, 16 Dec 2010 17:46:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOWH2tyCExDwgavoBBoEkm9WpA@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOWH2tyCExDwgavoBBoEkm9WpA@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCOWH2tyCExDwgavoBBoEkm9WpA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxk30 with SMTP id 30sf169767yxk.7
+        for <headius@headius.com>; Thu, 16 Dec 2010 17:46:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=/tpT1iIZKI1jz4vj6fJvKYEdJsFOnd5m6DTyj+/bkeE=;
+        b=DWzhHT7az+J0hu6fP9p2ior5F0HQIKg091VsmzUQtxAk8xqlnQXxo3DE53wGEa8/ar
+         pZvngyGSjn0sZ3Q91tIiEtwPSQhNduRFp5FVPNLymBjqVCfuIi7uP+Ldijtxx+eYghtP
+         wdGg4QW8T740/Xej0+iAtKTbq8Pca51xF92kk=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=FbT2kOJOLCesT+Kf0Du8o4+FpyLjXc1fC1Bt4lW35347fExbdLtmov7OsV7CEnIE4d
+         SgrnTD1uXNHexIZqLFG+lu/pnzVjt4jcNv4G0IUmKj5glXLWe4pOkSR1xEmFC1MrflIE
+         W4GJY9fhVzSpfNjgMBRSPtGOTaNXVbmlyMwV4=
+Received: by 10.101.41.5 with SMTP id t5mr13881anj.15.1292550384643;
+        Thu, 16 Dec 2010 17:46:24 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.56.38 with SMTP id e38ls552342ana.3.p; Thu, 16 Dec 2010
+ 17:46:24 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.101.179.11 with SMTP id g11mr16541anp.0.1292550384269; Thu, 16
+ Dec 2010 17:46:24 -0800 (PST)
+Received: by o14g2000yqe.googlegroups.com with HTTP; Thu, 16 Dec 2010 17:46:24
+ -0800 (PST)
+Date: Thu, 16 Dec 2010 17:46:24 -0800 (PST)
+In-Reply-To: <AANLkTikGuHgcE1pvg9pes_mvuvayYpFUBgCmUcrYV4au@mail.gmail.com>
+X-IP: 74.78.44.136
+References: <22182623.107.1292526062588.JavaMail.geo-discussion-forums@vbyc22>
+ <55bffc22-64df-4ddd-87cc-52ec62083369@29g2000yqq.googlegroups.com> <AANLkTikGuHgcE1pvg9pes_mvuvayYpFUBgCmUcrYV4au@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US)
+ AppleWebKit/534.10 (KHTML, like Gecko) Chrome/8.0.552.224 Safari/534.10,gzip(gfe)
+Message-ID: <62b3d65a-d676-437f-bb78-59813b0a5d6f@o14g2000yqe.googlegroups.com>
+Subject: [ruby-ffi] Re: Multiple libraries included via dlopen()?
+From: mjmac <mjmac42@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: mjmac42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Dec 16, 6:38=A0pm, Wayne Meissner <wmeiss...@gmail.com> wrote:
+> On 17 December 2010 09:07, mjmac <mjma...@gmail.com> wrote:
+> Try specifying the library flags before calling ffi_lib
+> e.g.
+>
+> =A0 ffi_lib_flags :global, :lazy
+> =A0 ffi_lib 'slurm'
+>
+> By default, FFI loads libraries as :lazy, :local so symbols are not
+> exported into the global namespace.
+
+Sweet!  I hackported this from master to 0.6.3 and it works
+perfectly.  I'm still prototyping so this is a workable solution for
+now.
+
+Thanks a ton (for the advice, and for FFI)!
+
+Mike

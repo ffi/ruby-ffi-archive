@@ -1,0 +1,87 @@
+Delivered-To: headius@headius.com
+Received: by 10.239.152.76 with SMTP id u12cs142730hbb;
+        Tue, 31 Aug 2010 08:45:07 -0700 (PDT)
+Received: by 10.142.252.21 with SMTP id z21mr1477763wfh.230.1283269505593;
+        Tue, 31 Aug 2010 08:45:05 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJ2jt8vbBhD_xvTjBBoEYRg78g@googlegroups.com>
+Received: from mail-px0-f190.google.com (mail-px0-f190.google.com [209.85.212.190])
+        by mx.google.com with ESMTP id x17si21904830wfd.116.2010.08.31.08.45.03;
+        Tue, 31 Aug 2010 08:45:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD_xvTjBBoEYRg78g@googlegroups.com designates 209.85.212.190 as permitted sender) client-ip=209.85.212.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJ2jt8vbBhD_xvTjBBoEYRg78g@googlegroups.com designates 209.85.212.190 as permitted sender) smtp.mail=ruby-ffi+bncCJ2jt8vbBhD_xvTjBBoEYRg78g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pxi9 with SMTP id 9sf744491pxi.7
+        for <headius@headius.com>; Tue, 31 Aug 2010 08:45:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:mime-version:received
+         :x-proofpoint-spam-details:x-proofpoint-virus-version:from:subject
+         :date:message-id:to:x-mailer:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-transfer-encoding:content-type;
+        bh=xSMBmXD977fj+F390A6nvR8M+IH4zkyYYgJigDBEVfE=;
+        b=qnLce6u0i2l9LfWql0A0pxMhr/sUqGIIlbouEt0D0cOt2RaJ1tQ2KNb9WpLDD07lYh
+         4ESNcN8x5NJlh43ECdsMAj2ixYQqbyGSxMFj6Af6xqd+mGlVIUjfheuaBD9xkJcfQzQf
+         y8FPxTRRtkI6E6Q59ahs/WN4om2ZdqHkgAkok=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:x-proofpoint-spam-details
+         :x-proofpoint-virus-version:from:subject:date:message-id:to:x-mailer
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-transfer-encoding
+         :content-type;
+        b=jmfeMtUxinyiVnM7Y5GtlE8HJcNWKkLtBOD4oNBeP+4YFPdfzkrU3SwhqkfOTgcULW
+         vv6TyGxN6CHkO8HvqJKbyipO7T4qeSCZbZNF1MInmBfh5q58zzhhuqVz5LjtwVa9G98w
+         gWcKO2V+XF8EQ0VBGi12eogODyg+gP7OZJmJo=
+Received: by 10.115.67.11 with SMTP id u11mr370672wak.23.1283269503542;
+        Tue, 31 Aug 2010 08:45:03 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.115.85.40 with SMTP id n40ls483564wal.0.p; Tue, 31 Aug 2010
+ 08:45:01 -0700 (PDT)
+Received: by 10.114.92.16 with SMTP id p16mr606797wab.36.1283269501842;
+        Tue, 31 Aug 2010 08:45:01 -0700 (PDT)
+Received: by 10.114.92.16 with SMTP id p16mr606793wab.36.1283269501183;
+        Tue, 31 Aug 2010 08:45:01 -0700 (PDT)
+Received: from asmtpout023.mac.com (asmtpout023.mac.com [17.148.16.98])
+        by gmr-mx.google.com with ESMTP id j18si11315755wan.5.2010.08.31.08.45.01;
+        Tue, 31 Aug 2010 08:45:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) client-ip=17.148.16.98;
+MIME-version: 1.0
+Received: from [192.168.0.101] ([76.8.86.186])
+ by asmtp023.mac.com (Sun Java(tm) System Messaging Server 6.3-8.01 (built Dec
+ 16 2008; 32bit)) with ESMTPSA id <0L8000LEFX2YQR70@asmtp023.mac.com> for
+ ruby-ffi@googlegroups.com; Tue, 31 Aug 2010 08:45:00 -0700 (PDT)
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ ipscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam adjust=0
+ reason=mlx engine=6.0.2-1004200000 definitions=main-1008310059
+X-Proofpoint-Virus-Version: vendor=fsecure
+ engine=2.50.10432:5.0.10011,1.0.148,0.0.0000
+ definitions=2010-08-31_09:2010-08-31,2010-08-31,1970-01-01 signatures=0
+From: Chuck Remes <cremes.devlist@mac.com>
+Subject: [ruby-ffi] new gem release & rubinius
+Date: Tue, 31 Aug 2010 10:44:55 -0500
+Message-id: <D92F5CC9-5E82-4020-AACE-297007EF7276@mac.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Mailer: Apple Mail (2.1081)
+X-Original-Sender: cremes.devlist@mac.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of cremes.devlist@mac.com designates 17.148.16.98 as permitted sender) smtp.mail=cremes.devlist@mac.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; charset=us-ascii
+
+FYI, part of the push for the Rubinius 1.1 release is getting the FFI API back in synch. Prior to doing a new FFI gem release it might be a good idea to chat with the Rubinius guys to make sure everyone is on board with things.
+
+cr

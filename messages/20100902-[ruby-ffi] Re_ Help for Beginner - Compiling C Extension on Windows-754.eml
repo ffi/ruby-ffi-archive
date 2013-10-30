@@ -1,0 +1,80 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.51.207 with SMTP id e15cs78694bkg;
+        Thu, 2 Sep 2010 15:27:16 -0700 (PDT)
+Received: by 10.151.7.17 with SMTP id k17mr195485ybi.284.1283466434268;
+        Thu, 02 Sep 2010 15:27:14 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIrlxJa3GxDAyYDkBBoE0dVT9Q@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id p2si6008851ybe.94.2010.09.02.15.27.12;
+        Thu, 02 Sep 2010 15:27:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxDAyYDkBBoE0dVT9Q@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxDAyYDkBBoE0dVT9Q@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCIrlxJa3GxDAyYDkBBoE0dVT9Q@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb15 with SMTP id 15sf1789053gwb.7
+        for <headius@headius.com>; Thu, 02 Sep 2010 15:27:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:mime-version
+         :received:received:date:in-reply-to:x-ip:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=Zde72EykbEAl3ZaXmKaAL5KO8E/b9f3jcuCIXbKp0Pg=;
+        b=Kh0XOdOY1dxmn5XHpJC4oP3zGH7LI/ht9VoNVFxiWj+ADHiLU6GpQYSCUM7ixbIsHP
+         55HzLBR5NgPCjDLcJPfkmEPSGm9UW8/hYohS24OkkiBlC2DR+gqZvG403GqBJvU4bYH9
+         PDUoCJLmuVbG05remoTESyY5eUUY7yFyZZAok=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:x-ip:references
+         :user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=5BVwAh1byH8wy6rxbyxsp62EroJgvuigfa8LDFswx8ONCdEWfD5uFq4eAs+FRLcmRK
+         ELDnUZofnbEFF1XnAcqbtkJLelx0E7BbvLZ0CAyTRJpz1Z4/fNZFVZPzPy0efL/2os+1
+         iHF3OECbxcLYnKw08O3bLGEuq7C9rdex2Aevo=
+Received: by 10.101.133.6 with SMTP id k6mr840508ann.8.1283466432453;
+        Thu, 02 Sep 2010 15:27:12 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.86.11 with SMTP id j11ls363398anb.4.p; Thu, 02 Sep 2010
+ 15:27:12 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.101.107.1 with SMTP id j1mr841237anm.20.1283466432173; Thu, 02
+ Sep 2010 15:27:12 -0700 (PDT)
+Received: by f25g2000yqc.googlegroups.com with HTTP; Thu, 2 Sep 2010 15:27:12
+ -0700 (PDT)
+Date: Thu, 2 Sep 2010 15:27:12 -0700 (PDT)
+In-Reply-To: <AANLkTimkJc8zFrH_nBcAsijEMaN2RMEDDGy2NP-0NydQ@mail.gmail.com>
+X-IP: 97.124.68.247
+References: <857a7e34-f026-467d-87d0-3a18b81a1b35@i13g2000yqd.googlegroups.com>
+ <AANLkTimkDH=fX3sCtjY+3H+phDJ-jSG1pYZj3wybjq+n@mail.gmail.com>
+ <03791e87-4fd4-433a-9c76-dc3830316202@t20g2000yqa.googlegroups.com> <AANLkTimkJc8zFrH_nBcAsijEMaN2RMEDDGy2NP-0NydQ@mail.gmail.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8,gzip(gfe)
+Message-ID: <50d53fe5-0455-4c42-bb52-08e83123e1a7@f25g2000yqc.googlegroups.com>
+Subject: [ruby-ffi] Re: Help for Beginner - Compiling C Extension on Windows
+From: Karl <threadhead@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: threadhead@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+
+
+On Sep 2, 2:54=A0pm, Luis Lavena <luislav...@gmail.com> wrote:
+
+> Please bring this conversation to RubyInstaller group.
+
+Will do.

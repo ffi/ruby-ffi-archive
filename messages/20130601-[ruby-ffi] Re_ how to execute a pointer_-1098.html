@@ -1,0 +1,23 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: how to execute a pointer?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: how to execute a pointer?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/1/13 1:35 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western"><div><br></div><div>You should be able to just declare the return type of the function to be an appropriate callback type.</div><div><br></div><div>e.g.</div><div>&nbsp; attach_function :function_that_returns_function, [ ], callback([], :int)</div><div><br></div><div>fptr = function_that_returns_function()</div><div>result = fptr.call()</div><div><br></div>Or, you can wrap it up in a FFI::Function - see&nbsp;http://ffi.github.io/api/FFI/Function.html<div><br></div><div>e.g.</div><div>ptr = function_that_returns_pointer</div><div>fptr = FFI::Function.new(:int, [ ])</div><div>result = fptr.call()</div><div><br><br>On Wednesday, 29 May 2013 06:29:02 UTC+10, Jose Donizetti  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi all,&nbsp;<div><br></div><div>I mapped a function in ruby which returns a pointer to another function. How can I execute this pointer?</div><div><br></div><div>Thanks,</div><div>Jose.</div><div><br></div></blockquote></div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an email to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href="https://groups.google.com/groups/opt_out">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+</div></body>
+</html>
+</table></div>

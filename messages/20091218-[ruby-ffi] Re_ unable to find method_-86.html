@@ -1,0 +1,55 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: unable to find method?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: unable to find method?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/18/09 4:19 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>BTW, where are you guys with coming up with more interesting windows examples (64-bit, pointer-to-pointer return types, etc)!? <span class="moz-smiley-s3" title=";)"><span>;)</span></span>
+</pre></blockquote><pre wrap>
+
+Got stuck with this example segfaulting.
+
+require 'ffi'
+
+# button constants
+BUTTONS_OK = 0
+BUTTONS_OKCANCEL = 1
+BUTTONS_ABORTRETRYIGNORE = 2
+BUTTONS_YESNO = 4
+
+# return code constants
+CLICKED_OK = 1
+CLICKED_CANCEL = 2
+CLICKED_ABORT = 3
+CLICKED_RETRY = 4
+CLICKED_IGNORE = 5
+CLICKED_YES = 6
+CLICKED_NO = 7
+
+
+extend FFI::Library
+ffi_lib 'user32'
+
+attach_function :msgbox, 'MessageBoxA',
+[:pointer, :string, :string, :uint], :int
+
+def message_box(txt, title=APP_TITLE, buttons=BUTTONS_OK)
+    ffi_lib 'user32'
+    r = msgbox(nil, txt, title, buttons)
+    return r
+end
+
+response = message_box("Are you sure you want to proceed?",
+"Proceed?", BUTTONS_YESNO)
+if response == CLICKED_YES
+    # insert your code here
+end
+
+-r
+</pre></div></body>
+</html>
+</table></div>

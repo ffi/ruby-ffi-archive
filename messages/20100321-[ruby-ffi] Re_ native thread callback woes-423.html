@@ -1,0 +1,69 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: native thread callback woes</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: native thread callback woes</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/21/10 6:13 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+I <b class="moz-txt-star"><span class="moz-txt-tag">*</span>think<span class="moz-txt-tag">*</span></b> this should work now.  Whenever a callback to ruby from a
+non-ruby native thread is encountered, the native thread is paused,
+the callback is despatched on a new ruby thread, and the the result of
+the callback is returned to the native thread.
+
+Its 1.9 only, and you really want to restrict your gem to running on
+CRuby 1.9 or JRuby (both 1.8 and 1.9 mode will work).
+
+You will also need to mark any function that waits in native code as
+blocking.  I'm not sure what the best API for this is, but I
+implemented a quick&amp;dirty hack for 0.6.4 that won't break backward
+compatibility with older versions of Ruby-FFI or JRuby.
+
+To mark a method as blocking, you simply set the @blocking ivar before
+each attach_function call
+
+e.g.
+
+    @blocking = true
+    attach_function :al_wait_for_event, [:pointer, :pointer], :void
+
+
+@blocking is non-sticky - i.e. it gets reset after every
+attach_function, and is assumed to be non-true by default.
+
+
+
+On Mar 20, 3:36 am, Shawn Anderson <a class="moz-txt-link-rfc2396E" href="mailto:shaw...@gmail.com">&lt;shaw...@gmail.com&gt;</a> wrote:
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I'm trying to get allegro-ffi to work with the latest 4.9 branch of allegro
+<span class="moz-txt-citetags">&gt; </span>in SVN.  Allegro has recently changed to run everything in a native
+<span class="moz-txt-citetags">&gt; </span>callback.
+<span class="moz-txt-citetags">&gt; </span>ie..
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>... setup code ...
+<span class="moz-txt-citetags">&gt; </span>al_run_main argc, argv, &amp;method(:run)
+<span class="moz-txt-citetags">&gt; </span>puts "this code will never be called"
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>running this in ruby 1.9.1 I see the error:
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>examples/simple_window.rb:13: [BUG] object allocation during garbage
+<span class="moz-txt-citetags">&gt; </span>collection phase
+<span class="moz-txt-citetags">&gt; </span>ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>full trace here:<a class="moz-txt-link-freetext" href="https://gist.github.com/95d3ccc14fd8fdc1febf">https://gist.github.com/95d3ccc14fd8fdc1febf</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>Allegro spins off a new native thread (os x only) and calls the callback
+<span class="moz-txt-citetags">&gt; </span>from that native thread.  Apparently os x needs the main thread for its
+<span class="moz-txt-citetags">&gt; </span>event stuff...
+<span class="moz-txt-citetags">&gt; </span>Is there anyway to let this new non-ruby native thread call back into ruby
+<span class="moz-txt-citetags">&gt; </span>code?
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span><a class="moz-txt-link-freetext" href="http://github.com/shawn42/ffi-allegrohttp://alleg.sourceforge.net/">http://github.com/shawn42/ffi-allegrohttp://alleg.sourceforge.net/</a>
+<span class="moz-txt-citetags">&gt;</span>
+<span class="moz-txt-citetags">&gt; </span>/Shawn
+</pre></blockquote><pre wrap>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+</pre></div></body>
+</html>
+</table></div>

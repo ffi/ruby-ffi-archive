@@ -1,0 +1,166 @@
+Delivered-To: headius@headius.com
+Received: by 10.100.134.8 with SMTP id h8cs400398and;
+        Fri, 18 Dec 2009 17:10:59 -0800 (PST)
+Received: by 10.142.1.22 with SMTP id 22mr2826714wfa.303.1261185058442;
+        Fri, 18 Dec 2009 17:10:58 -0800 (PST)
+Return-Path: <3HygsSwQPCL4izerjeppmrkwrs0.rixvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 38si8437640pzk.46.2009.12.18.17.10.57;
+        Fri, 18 Dec 2009 17:10:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of 3HygsSwQPCL4izerjeppmrkwrs0.rixvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3HygsSwQPCL4izerjeppmrkwrs0.rixvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com designates 209.85.160.68 as permitted sender) smtp.mail=3HygsSwQPCL4izerjeppmrkwrs0.rixvyf2-jjmksskpikvsytw.gsq@listserv.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwj20 with SMTP id 20sf1575834pwj.27
+        for <headius@headius.com>; Fri, 18 Dec 2009 17:10:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        bh=bMN9PFpO0DSLwOWdR/KFrm+qJwD57U5fhjwkz6YEMn4=;
+        b=V5He0aNdTCEWY5RIIEErO8aCjusDqodBez1vM6xJ1hCKX3kApXXaeIAtFMoiaVr09h
+         cSkxBacKsvoAAMfVdXjvXBCWQlpToFVSVW7KNZohbkrG0AgIaGPFLE84f3fZbdTaCTJZ
+         zRTxL8OQOIoVwzswwf40QblEF7sICl1sa1svQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-unsubscribe:list-subscribe
+         :content-type:content-transfer-encoding;
+        b=uLWdurMYaNGirtK1gYSb/ptDO5Fcf4WPLjTjOL6htm8mLgCKhmzQoiUXYq+IsW05fg
+         80BKjroGrBM+Id+sY8OWNbODEKaWfPAQQPfPPxyizYYuw2PSvPICYbaJ9kCP4otjVeAr
+         Jq7Nt9/ilzi/iNSnBA67vZZeA6r/GibUkruLY=
+Received: by 10.115.101.14 with SMTP id d14mr49453wam.25.1261185055893;
+        Fri, 18 Dec 2009 17:10:55 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.114.187.1 with SMTP id k1ls12744waf.0.p; Fri, 18 Dec 2009 
+	17:10:55 -0800 (PST)
+Received: by 10.141.124.10 with SMTP id b10mr885466rvn.4.1261185055098;
+        Fri, 18 Dec 2009 17:10:55 -0800 (PST)
+Received: by 10.141.124.10 with SMTP id b10mr885465rvn.4.1261185055063;
+        Fri, 18 Dec 2009 17:10:55 -0800 (PST)
+Return-Path: <evan@fallingsnow.net>
+Received: from elle.fallingsnow.net (elle.fallingsnow.net [67.43.164.196])
+        by gmr-mx.google.com with ESMTP id 38si912789pxi.7.2009.12.18.17.10.54;
+        Fri, 18 Dec 2009 17:10:54 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 as permitted sender) client-ip=67.43.164.196;
+Received: from cpe-76-170-133-160.socal.res.rr.com ([76.170.133.160] helo=[10.0.1.194])
+	by elle.fallingsnow.net with esmtpa (Exim 4.69)
+	(envelope-from <evan@fallingsnow.net>)
+	id 1NLnqL-0006oy-7D
+	for ruby-ffi@googlegroups.com; Fri, 18 Dec 2009 17:10:53 -0800
+Mime-Version: 1.0 (Apple Message framework v1077)
+From: Evan Phoenix <evan@fallingsnow.net>
+In-Reply-To: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com>
+Date: Fri, 18 Dec 2009 17:10:48 -0800
+Message-Id: <0B2F0969-5686-4B32-8543-6FF807C0E3DA@fallingsnow.net>
+References: <540fa71e-d71e-4f04-b1ef-35559f147f9a@m3g2000yqf.googlegroups.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1077)
+X-SA-Exim-Connect-IP: 76.170.133.160
+X-SA-Exim-Mail-From: evan@fallingsnow.net
+X-Spam-Checker-Version: SpamAssassin 3.2.5 (2008-06-10) on elle.fallingsnow.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.2 required=5.0 tests=ALL_TRUSTED,AWL,BAYES_00
+	autolearn=ham version=3.2.5
+Subject: Re: [ruby-ffi] struct questions
+X-SA-Exim-Version: 4.2.1 (built Wed, 25 Jun 2008 17:14:11 +0000)
+X-SA-Exim-Scanned: Yes (on elle.fallingsnow.net)
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 
+	as permitted sender) smtp.mail=evan@fallingsnow.net
+X-Original-Sender: evan@fallingsnow.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/109da9d55f08ceaf
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/dae3d66cf4dbb8c3
+Sender: ruby-ffi@googlegroups.com
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+
+On Dec 18, 2009, at 5:00 PM, rogerdpack wrote:
+
+> A few random questions for members of the group...
+>=20
+> I've noticed that inheritance doesn't seem to work...
+>=20
+>  class SimpleStruct < FFI::Struct
+>    layout  :value, :double,
+>            :name, :string
+>  end
+>=20
+> class S2 < SimpleStruct; end
+> puts S2.members # fails NoMethodError: undefined method `members' for
+> nil:NilClass
+>=20
+> Is there any means for inheritance? Is this a bug?  (as another side-
+> effect, the parent marshal's correctly but the child doesn't--is that
+> a bug?).
+
+They were never designed to be subclassed, so I don't consider it a bug.
+
+>=20
+> With char arrays, it seems "difficult" to insert a string
+>=20
+> (rdb:1) ss[:title] =3D "abc"
+> ArgumentError Exception: put not supported for
+> FFI::StructLayout::Array
+>=20
+> is there an easier way than ss[:title][0] =3D 33; ss[:title][1] =3D =
+34; //
+> one at a time?
+
+If this works, it should not. The return value should not be references =
+the memory of the array itself in the struct, thats not safe.
+
+Because char_array is an explicit type, #put could support it since the =
+size of the char_array should be known by #put.
+
+>=20
+> If the only reason "put" is not supported is because it is on the todo
+> list, I could help with that.
+>=20
+> I would also be happy to hack up a patch that made Struct#inspect more
+> visually friendly
+>=20
+> i.e.
+> #<SnarlStruct:0x13221c0>
+> becomes
+> #<SnarlStruct field1: value1, field2: value2...>
+>=20
+> if there's any interest.
+
+I prefer this not happen. This would require all fields to be read, =
+which is hardly cheap. Plus, reading a field can cause a segfault, so =
+I'd prefer all field reads are explicit by the user.
+
+>=20
+> Thoughts?
+>=20
+> In good news, I was able to successfully convert ruby/dl of the Snarl
+> gem into ffi and it works [now ffi compatible--yea].
+>=20
+> Thanks!
+> -r
+>=20
+

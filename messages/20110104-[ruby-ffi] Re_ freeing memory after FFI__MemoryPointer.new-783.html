@@ -1,0 +1,11 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: freeing memory after FFI::MemoryPointer.new</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Wayne Meissner <wmeissner@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/4/11 6:55 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-unicode">On Wednesday, January 5, 2011 6:11:56 AM UTC+10, Alvaro wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi,<p>I wonder if there is something that needs to be done after call to<br>FFI::MemoryPointer.new<br>to free the memory, my extension has memory leaks and it only happens<br>with the binding<br>and not with the original C lib.</p></blockquote><div><br></div><div>As Chuck says, when the last strong reference to an FFI object is removed, it becomes eligible for collection - so you most likely have a persistent reference to the memory pointer that is keeping it alive.</div><div><br></div><div>All objects defined in ruby-ffi follow that pattern - they are auto-release by default. &nbsp;You can set autorelease = false on MemoryPointer instances which means the memory can _never_ be freed, but that is probably a rare occurrence.</div><div><br></div><div>That does not apply to pointers allocated via mapping in say malloc or calloc from libc - those have to be manually managed.</div><div><br></div><div><br></div><div><br></div><div><br></div>
+</div></body>
+</html>
+</table></div>

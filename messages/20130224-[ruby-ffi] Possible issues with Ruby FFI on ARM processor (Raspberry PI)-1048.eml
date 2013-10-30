@@ -1,0 +1,143 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.22.74 with SMTP id b10csp44400laf;
+        Sun, 24 Feb 2013 06:24:04 -0800 (PST)
+X-Received: by 10.68.217.202 with SMTP id pa10mr13243627pbc.11.1361715843633;
+        Sun, 24 Feb 2013 06:24:03 -0800 (PST)
+Return-Path: <ruby-ffi+bncBDQ73F6KTYOBBAOFVCEQKGQEG4OX6XI@googlegroups.com>
+Received: from mail-da0-f61.google.com (mail-da0-f61.google.com [209.85.210.61])
+        by mx.google.com with ESMTPS id bq10si9118499pab.111.2013.02.24.06.24.02
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sun, 24 Feb 2013 06:24:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBAOFVCEQKGQEG4OX6XI@googlegroups.com designates 209.85.210.61 as permitted sender)
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBAOFVCEQKGQEG4OX6XI@googlegroups.com designates 209.85.210.61 as permitted sender) smtp.mail=ruby-ffi+bncBDQ73F6KTYOBBAOFVCEQKGQEG4OX6XI@googlegroups.com;
+       dkim=pass header.i=@burgestrand.se
+Received: by mail-da0-f61.google.com with SMTP id z8sf995833dad.26
+        for <headius@headius.com>; Sun, 24 Feb 2013 06:24:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=eUDVF1UFl/uEE88xHfRLXVuanLPL7DnIZCpeVHHBLrM=;
+        b=sTftjxyCFNTLf6JpB8sF1hIyznErpqgsboz8hP3pzyIQjfE7HLBQk0n1OAnrOAIeI8
+         LBgRByC2oKxDTYCrntZcgz3sP30m8zMzdR51iTByCl7uHUdZ4O2gwLiNtnRVtrgirPb+
+         C2DNBG9oVDMig1Na2gE/8BW4cRwqS1Eb9rufR9wzR4hZQb01RUcBpCjOIq/pN3LMdrXO
+         gLIy3utaCqvgXF4f5wVLlpQZjLsXyopfSFROJSTeF0kPH/2NEAUVnBSHa3EkHb33ch17
+         ibrGiGKvTKzSK/bVFC3FSrZDDPbpaRtQhG6qs8P7XD6lw+9MGpAiYuj4IXeeMn0jCjHM
+         QRZg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=burgestrand.se; s=google-dkim;
+        h=x-received:x-beenthere:x-received:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=eUDVF1UFl/uEE88xHfRLXVuanLPL7DnIZCpeVHHBLrM=;
+        b=dHb4f1Dmmd3AuY3WEOdoufkwQxe7ay6/Zj3bhK6BaF4EkA3MEnncoGmdkCtavhksio
+         MfwifAKNsEw5AKYtAxozDG4LJ39X1RhsC1f0b0A7lzmRHGJvvorLe1tnlt6osGuE0PmR
+         1HUKNeP+kqREmjVAM2E2EU/cf1Xr0Y/CcqPNE=
+X-Received: by 10.49.71.169 with SMTP id w9mr624577qeu.7.1361715842123;
+        Sun, 24 Feb 2013 06:24:02 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.49.0.102 with SMTP id 6ls802750qed.24.gmail; Sun, 24 Feb 2013
+ 06:24:01 -0800 (PST)
+X-Received: by 10.49.71.169 with SMTP id w9mr624576qeu.7.1361715841333;
+        Sun, 24 Feb 2013 06:24:01 -0800 (PST)
+Date: Sun, 24 Feb 2013 06:24:00 -0800 (PST)
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-Id: <e19f03b7-13d0-41cc-8a02-689b880e8626@googlegroups.com>
+Subject: [ruby-ffi] Possible issues with Ruby FFI on ARM processor (Raspberry PI)
+MIME-Version: 1.0
+X-Original-Sender: kim@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_330_23311232.1361715840926"
+
+------=_Part_330_23311232.1361715840926
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+I=92ve been having some issues running one of my gems=20
+(http://rubygems.org/gems/spotify) successfully on Raspberry PI, using the=
+=20
+soft float debian =93weezy=94 OS, downloadable=20
+from http://www.raspberrypi.org/downloads on cruby 1.9.3 (ruby 1.9.3p385=20
+(2013-02-06 revision 39114) [armv6l-linux-eabi]).
+
+I=92ve been troubleshooting some, and created one example written in C, and=
+=20
+one equivalent example written in Ruby using FFI. My suspicion was that=20
+they would behave identically, but the ruby code will sometimes segfault on=
+=20
+exit, while the C code does not.
+
+Now, I=92m not entirely certain that the two examples are completely=20
+equivalent, so I=92d be grateful for any pair of critical eyes on the two=
+=20
+code samples: https://gist.github.com/Burgestrand/7b691591af20c29d6849
+
+My questions are:
+
+1. Are the two (C vs. Ruby) samples really equivalent?
+2. Any ideas for further troubleshooting?
+
+=97 Kim
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+------=_Part_330_23311232.1361715840926
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+
+I=92ve been having some issues running one of my gems (http://rubygems.org/=
+gems/spotify) successfully on Raspberry PI, using the soft float debian =93=
+weezy=94 OS, downloadable from&nbsp;http://www.raspberrypi.org/downloads on=
+ cruby 1.9.3 (ruby 1.9.3p385 (2013-02-06 revision 39114) [armv6l-linux-eabi=
+]).<div><br></div><div>I=92ve been troubleshooting some, and created one ex=
+ample written in C, and one equivalent example written in Ruby using FFI. M=
+y suspicion was that they would behave identically, but the ruby code will =
+sometimes segfault on exit, while the C code does not.</div><div><br></div>=
+<div>Now, I=92m not entirely certain that the two examples are completely e=
+quivalent, so I=92d be grateful for any pair of critical eyes on the two co=
+de samples:&nbsp;https://gist.github.com/Burgestrand/7b691591af20c29d6849</=
+div><div><br></div><div>My questions are:</div><div><br></div><div>1. Are t=
+he two (C vs. Ruby) samples really equivalent?</div><div>2. Any ideas for f=
+urther troubleshooting?</div><div><br></div><div>=97 Kim</div>
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+------=_Part_330_23311232.1361715840926--

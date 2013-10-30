@@ -1,0 +1,66 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] why FFI::MemoryPointer is autoconverted into FFI::Pointer in a FFI::Struct?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Chuck Remes <cremes.devlist@mac.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>3/18/11 7:43 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+
+On Mar 18, 2011, at 5:02 AM, Jesús GS wrote:
+
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>Hi,
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I'm really confuse with this behaviour. I think I'm missing some
+<span class="moz-txt-citetags">&gt; </span>concept of memory management of ffi.
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>Let's imagine a C library with something like:
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>struct foo
+<span class="moz-txt-citetags">&gt; </span>{
+<span class="moz-txt-citetags">&gt; </span>   void *p;
+<span class="moz-txt-citetags">&gt; </span>};
+<span class="moz-txt-citetags">&gt; </span>void some_function( struct foo * in_parameter );
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>From ruby we are gonna create that struct before call the function,
+<span class="moz-txt-citetags">&gt; </span>with something similar to:
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>require 'ffi'
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; true
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>class Foo &lt; FFI::Struct; layout :p, :pointer; end
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;FFI::StructLayout:0x1f0f0c8&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>foo = Foo.new
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;Foo:0x1a15597&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>foo[:p] = my_pointer = FFI::MemoryPointer.new(:int, 100)
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;MemoryPointer address=0xb3c06380 size=400&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>foo[:p]
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;Pointer address=0xb3c06380&gt;
+</pre><blockquote type=cite style="color: #000000;"><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt;&gt;&gt; </span>my_pointer
+</pre></blockquote></blockquote><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>=&gt; #&lt;MemoryPointer address=0xb3c06380 size=400&gt;
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>
+<span class="moz-txt-citetags">&gt; </span>I cannot free a Pointer (only MemoryPointer), so what should I do?
+<span class="moz-txt-citetags">&gt; </span>Create a free_struct_foo( void * p ); function in C? Ignore it because
+<span class="moz-txt-citetags">&gt; </span>I don't need to free that allocated memory or just hope no memory
+<span class="moz-txt-citetags">&gt; </span>leaks will happen?.
+</pre></blockquote><pre wrap>
+
+I handle a similar situation by calling #attach_function on LibC's free function.
+
+cr
+
+</pre></div></body>
+</html>
+</table></div>

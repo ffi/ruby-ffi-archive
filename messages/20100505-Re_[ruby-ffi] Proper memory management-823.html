@@ -1,0 +1,104 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] Proper memory management</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] Proper memory management</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>v01d <phreakuencies@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>5/5/10 9:25 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Ah, that's much better. I didn't know I could use it that way.
+<br>
+<br>Thanks!
+<br>
+<br>On 05/05/2010 11:19 PM, Wayne Meissner wrote:
+<br><blockquote type=cite style="color: #000000;">Use FFI::AutoPointer - its there for exactly this reason (having one
+<br>implementation of the whole "clean up native memory when ruby object
+<br>instance is finalized" is better than having many, slightly broken
+<br>variants).
+<br>
+<br>FFI::AutoPointer also has the advantage on JRuby of <span class="moz-txt-underscore"><span class="moz-txt-tag">_</span>not<span class="moz-txt-tag">_</span></span> using
+<br>ObjectSpace, so a) it will actually work in jruby-1.5.0 and later
+<br>where objectspace is not on by default, and b) is less overhead, since
+<br>its implemented via standard java PhantomReferences.
+<br>
+<br>Use it something like this:
+<br>
+<br>class VectorPointer&lt;&nbsp; FFI::AutoPointer
+<br>
+<br>&nbsp;&nbsp; def self.release(ptr)
+<br>&nbsp;&nbsp;&nbsp; # ptr is the original pointer you passed in to create VectorPointer
+<br>&nbsp;&nbsp;&nbsp;&nbsp; GSLng.backend.gsl_free_vector(ptr)
+<br>&nbsp;&nbsp; end
+<br>end
+<br>
+<br>Then use it like thus:
+<br>&nbsp; ptr = VectorPointer.new(GSLng.backend.gsl_alloc_vector(n))
+<br>
+<br>It is a FFI::Pointer subclass, so you can pass it wherever a :pointer
+<br>parameter is needed, or use it in a Struct :pointer field, etc.
+<br>
+<br>There is also AutoPointer#free() to free the memory earlier than the
+<br>GC cleanup (which is a good idea when you can use it), #autorelease=()
+<br>to toggle on/off the auto cleanup.
+<br>
+<br>
+<br>On 6 May 2010 08:56, v01d<a class="moz-txt-link-rfc2396E" href="mailto:phreakuencies@gmail.com">&lt;phreakuencies@gmail.com&gt;</a>&nbsp; wrote:
+<br><blockquote type=cite style="color: #000000;">Hi,
+<br>I'm in the process of developing a Ruby binding to the GSL numerical
+<br>library using FFI. Recently I stumbled upon a problematic issue
+<br>regarding memory management and finalizers.
+<br>
+<br>Since the GSL library allows creation and destruction of instances
+<br>like this:
+<br>gsl_vector* ptr = gsl_alloc_vector(size_t n);
+<br>...
+<br>gsl_free_vector(ptr);
+<br>
+<br>Then, in Ruby I do something like this:
+<br>
+<br>class Vector
+<br>&nbsp; def initialize(n)
+<br>&nbsp;&nbsp;&nbsp; @ptr = GSLng.backend.gsl_alloc_vector(n)
+<br>&nbsp;&nbsp;&nbsp; Vector.define_finalizer(self, @ptr)
+<br>&nbsp; end
+<br>
+<br>&nbsp; def Vector.define_finalizer(self, ptr)
+<br>&nbsp;&nbsp;&nbsp; ObjectSpace.define_finalizer(self, lambda {<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>id<span class="moz-txt-tag">|</span></code>
+<br>GSLng.backend.gsl_free_vector(ptr)})
+<br>&nbsp; end
+<br>end
+<br>
+<br>The problem is that if later I instatiante a Vector inside a loop,
+<br>like:
+<br>10000.times do
+<br>&nbsp; Vector.new(3)
+<br>end
+<br>
+<br>This obviously eats a lot of memory until GC runs. Now, if I do:
+<br>10000.times do
+<br>&nbsp; Vector.new(3)
+<br>&nbsp; GC.start
+<br>end
+<br>
+<br>the memory that the Vector instances themselves occupy is freed but
+<br>the finalizer is not called (it is later called at program end),
+<br>therefore all of the memory allocated through gsl_alloc_vector() is
+<br>sitting there until program ends.
+<br>
+<br>I know that Ruby doesn't guarantee that finalizers are called in any
+<br>particular moment (even after GC.start, which I thought would
+<br>suffice). So what I'm asking probably is not really related to FFI
+<br>itself, but I wanted to ask here since I imagined this would be a
+<br>common pattern among FFI users. The question is then: is there a
+<br>better way to manage this type of memory? I obviously cant use the
+<br>transaction-like pattern (like File.open) since for a Vector that
+<br>wouldn't make sense. It would be ideal to make the gsl_vector_free
+<br>call when the actual Vector class is free'd. Maybe I need to go to a
+<br>lower level for this and use the C api to register this call in the
+<br>"free" function for this class, but that would be overkill since I
+<br>wanted to avoid using C altogether.
+<br>
+<br>Thank you!
+<br>
+<br></blockquote></blockquote></div></body>
+</html>
+</table></div>

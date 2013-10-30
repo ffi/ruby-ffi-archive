@@ -1,0 +1,76 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.116.12 with SMTP id o12cs135970agc;
+        Wed, 8 Jun 2011 01:18:41 -0700 (PDT)
+Received: by 10.229.137.149 with SMTP id w21mr5321420qct.59.1307521121232;
+        Wed, 08 Jun 2011 01:18:41 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRDa4LzvBBoEjKFdlQ@googlegroups.com>
+Received: from mail-vw0-f62.google.com (mail-vw0-f62.google.com [209.85.212.62])
+        by mx.google.com with ESMTPS id d18si492761qcs.136.2011.06.08.01.18.41
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Jun 2011 01:18:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRDa4LzvBBoEjKFdlQ@googlegroups.com designates 209.85.212.62 as permitted sender) client-ip=209.85.212.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRDa4LzvBBoEjKFdlQ@googlegroups.com designates 209.85.212.62 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRDa4LzvBBoEjKFdlQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws7 with SMTP id 7sf178026vws.7
+        for <headius@headius.com>; Wed, 08 Jun 2011 01:18:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:in-reply-to
+         :references:user-agent:x-http-useragent:message-id:subject:from:to
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=sKeLxbKIr1Hxd4trvE2t4Y3+1DGRySDyjSRskIV3Rkw=;
+        b=552wb43pwXp34xPP8Ea9go6CFdAgU0g5PnPViU7SFhhHdlVarWYkpqBCmIaQIsMNv9
+         4LjUrMTw6qehOWhuvdcUf3LFxV8sTt6UHvBuypRbtA6eeBJNa0x9+vCJ7gtuJP7+Akyv
+         znNDPaS+l2kwlP2+rOyuK2OEbVOW27V7TKxEM=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:in-reply-to:references:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        b=4ahluabuqg7jjdhFNlTqVc0SecuAnR0YTh4xNpoycF8Hn8f5sXhDO/ZRSdntkYpU6f
+         ujOZwjkhNUZBRoqqXoVrlPwp+eLFGmCCmi6sKBHpw302bZJsA0YSUYE72Xt/griPNJXu
+         zdtTIFshCKdAdltIq5Zwjm9T3EA7GpnCnm5MA=
+Received: by 10.220.210.17 with SMTP id gi17mr465701vcb.28.1307521114891;
+        Wed, 08 Jun 2011 01:18:34 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.220.106.1 with SMTP id v1ls49106vco.3.gmail; Wed, 08 Jun 2011
+ 01:18:34 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.220.147.131 with SMTP id l3mr455995vcv.19.1307521114497; Wed,
+ 08 Jun 2011 01:18:34 -0700 (PDT)
+Received: by gh5g2000vbb.googlegroups.com with HTTP; Wed, 8 Jun 2011 01:18:34
+ -0700 (PDT)
+Date: Wed, 8 Jun 2011 01:18:34 -0700 (PDT)
+In-Reply-To: <2ea50fbd-bd24-4ad7-b04c-bc5f936d520e@f31g2000pri.googlegroups.com>
+References: <2ea50fbd-bd24-4ad7-b04c-bc5f936d520e@f31g2000pri.googlegroups.com>
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.77 Safari/534.24,gzip(gfe)
+Message-ID: <cd9eaa65-e044-41a9-8f84-fca5e20d0a03@gh5g2000vbb.googlegroups.com>
+Subject: [ruby-ffi] Re: Newbie ? about porting code from VB to Ruby
+From: candlerb <b.candler@pobox.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: b.candler@pobox.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am not a Windows expert, but have you tried looking at Win32API
+instead of FFI? This may be all that you need. There are plenty of
+examples if you google for them.
+
+http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.html
+http://www.ruby-doc.org/docs/ProgrammingRuby/html/lib_windows.html

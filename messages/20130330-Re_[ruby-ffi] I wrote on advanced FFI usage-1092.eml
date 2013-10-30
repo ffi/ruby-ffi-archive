@@ -1,0 +1,238 @@
+Delivered-To: headius@headius.com
+Received: by 10.152.148.3 with SMTP id to3csp35001lab;
+        Sat, 30 Mar 2013 14:19:07 -0700 (PDT)
+X-Received: by 10.112.139.130 with SMTP id qy2mr3451234lbb.34.1364678347251;
+        Sat, 30 Mar 2013 14:19:07 -0700 (PDT)
+Return-Path: <ruby-ffi+bncBDQ73F6KTYOBBSVN3WFAKGQESA4NNJA@googlegroups.com>
+Received: from mail-lb0-f183.google.com (mail-lb0-f183.google.com [209.85.217.183])
+        by mx.google.com with ESMTPS id ii6si1984814lab.88.2013.03.30.14.19.07
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 30 Mar 2013 14:19:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBSVN3WFAKGQESA4NNJA@googlegroups.com designates 209.85.217.174 as permitted sender) client-ip=209.85.217.174;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of ruby-ffi+bncBDQ73F6KTYOBBSVN3WFAKGQESA4NNJA@googlegroups.com designates 209.85.217.174 as permitted sender) smtp.mail=ruby-ffi+bncBDQ73F6KTYOBBSVN3WFAKGQESA4NNJA@googlegroups.com;
+       dkim=pass header.i=@burgestrand.se
+Received: by mail-lb0-f183.google.com with SMTP id y8sf412807lbh.20
+        for <headius@headius.com>; Sat, 30 Mar 2013 14:19:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-received:x-beenthere:x-received:received-spf:x-received:date:from
+         :to:message-id:in-reply-to:references:subject:x-mailer:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=eu9C2Jtr103LERJ9xH45cm+3duJOiLrHShfO+A418/w=;
+        b=Q4GGUqlRzAUk/IZV+qgngTtybm7ousVzmqS+OFyGcvt39/M7U8rQXu9S0hxsPDM5Tw
+         QfY0aOdBry4MnmC1pFkn5nyqnm8C8h+40yvwf8058XhGNuU+SmUO/uRjN9WFnlSj1j7e
+         Y/e386BfecwG+T3Xq+vwok3hR3zv2mFee1eq+C5vaLrHR/yy7sSbgJPFTHjaDEF38jvU
+         5d+edwAB+TbV5OeQkPoUH/E+Wmu4WvXfqqEUnbr/aXKcaWxEVQo+JOJ/DSF4b7Mf5Ge/
+         O1E9O35i5u1mZrx3E2kHV3ZZbd5KzsCW0/ifUHQgcvbFMtP6hS6PXpxQEjMofeF8B5OM
+         czrg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=burgestrand.se; s=google-dkim;
+        h=x-received:x-beenthere:x-received:received-spf:x-received:date:from
+         :to:message-id:in-reply-to:references:subject:x-mailer:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=eu9C2Jtr103LERJ9xH45cm+3duJOiLrHShfO+A418/w=;
+        b=UlNtPFNaczhySRojALGVWtT/ycXFeC4us3usv2pCA4eB1Vo2J4wyOAHtfqOlr9YVTz
+         WFg/OfN8jgCyOxZHqSFHl+o+VSEgFj1ZXVruwkEqkaqpMfNsX1t0ZvUiw+hJkOQlYgln
+         i+UvfHSB9Z1eOz0xkWyL4KW/W2FyHP779lYEU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20120113;
+        h=x-received:x-beenthere:x-received:received-spf:x-received:date:from
+         :to:message-id:in-reply-to:references:subject:x-mailer:mime-version
+         :x-gm-message-state:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=eu9C2Jtr103LERJ9xH45cm+3duJOiLrHShfO+A418/w=;
+        b=Of+xZT/drUu7ROg4nokTIgEdkjSQMNHaL64dwjsa4nI3ojswAHxozbRVVQU7SmRTgP
+         LB6KFAms8Iwjl6DVBZLe5GtASmywm01tRStreu9I4/WEu6MR4/sAw1NGJCmlI40Jv1ZS
+         I6C0D34qLL4DYz7kFeKxN1CeaHlCIirE8ro+H3CFFZUa0wNLvVeQXyhs6fveSFy/hTlO
+         MpSbgmsfcclQbGclQoGbH5Iy090quKseybHGBeA+2TAzJzLLG/paNbicRkS86c/V4ZUm
+         GOR3/oiFDkAfpGUEGwpy+m46XSN2RAz0prgjZrW4wdVQKBRChHV7RYWNbz1cZSZgnzVK
+         HBkg==
+X-Received: by 10.180.10.198 with SMTP id k6mr178755wib.13.1364678346726;
+        Sat, 30 Mar 2013 14:19:06 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.93.106 with SMTP id ct10ls181453wib.28.canary; Sat, 30 Mar
+ 2013 14:19:06 -0700 (PDT)
+X-Received: by 10.205.115.132 with SMTP id fe4mr573164bkc.4.1364678346194;
+        Sat, 30 Mar 2013 14:19:06 -0700 (PDT)
+Received: from mail-lb0-f174.google.com (mail-lb0-f174.google.com [209.85.217.174])
+        by gmr-mx.google.com with ESMTPS id u1si707665bkv.1.2013.03.30.14.19.05
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Sat, 30 Mar 2013 14:19:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.217.174 is neither permitted nor denied by best guess record for domain of kim@burgestrand.se) client-ip=209.85.217.174;
+Received: by mail-lb0-f174.google.com with SMTP id s10so1052538lbi.5
+        for <ruby-ffi@googlegroups.com>; Sat, 30 Mar 2013 14:19:05 -0700 (PDT)
+X-Received: by 10.112.173.169 with SMTP id bl9mr3302422lbc.37.1364678345572;
+        Sat, 30 Mar 2013 14:19:05 -0700 (PDT)
+Received: from [192.168.1.101] (81-229-85-235-no66.tbcn.telia.com. [81.229.85.235])
+        by mx.google.com with ESMTPS id t20sm944998lbi.5.2013.03.30.14.19.03
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Sat, 30 Mar 2013 14:19:04 -0700 (PDT)
+Date: Sat, 30 Mar 2013 22:19:01 +0100
+From: Kim Burgestrand <kim@burgestrand.se>
+To: ruby-ffi@googlegroups.com
+Message-ID: <E8298812616B4E8A8A8698D81453027D@burgestrand.se>
+In-Reply-To: <9b3c9efc-ee78-4107-a715-45b37457cacd@googlegroups.com>
+References: <CAFRaJGDhjha6_q4Tb1Z+hbstkcgz90xf8pNf=yy2arAwrGU78w@mail.gmail.com>
+ <5156194D.4000100@gmail.com>
+ <9b3c9efc-ee78-4107-a715-45b37457cacd@googlegroups.com>
+Subject: Re: [ruby-ffi] I wrote on advanced FFI usage
+X-Mailer: sparrow 1.6.4 (build 1178)
+MIME-Version: 1.0
+X-Gm-Message-State: ALoCoQmQ8B5w7XbLoKv2iOS+hX2uQKRFiNJQyMfuys3j6SRU1hboiXW/3Gu8ESYNo8kwGrOdt9L8
+X-Original-Sender: kim@burgestrand.se
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 209.85.217.174 is neither permitted nor denied by best guess
+ record for domain of kim@burgestrand.se) smtp.mail=kim@burgestrand.se;
+       dkim=pass header.i=@burgestrand.se
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary="515756c5_4f4ef005_fb"
+
+--515756c5_4f4ef005_fb
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+> wayne: (so now I know the story behind all those issues you raised agains=
+t JRuby)
+Hehe, yes. I wanted to see if I could run some MRI-working code (spotify ge=
+m + OpenAL) on JRuby,
+and in doing that I ran into a few issues. The reason for doing that was be=
+cause I became curious as
+
+I was writing the article. I=92m happy to say I managed to get it running o=
+n JRuby, streaming music from
+the spotify API, bound with FFI, into the OpenAL API, bound with FFI. Reall=
+y cool!
+> postmodern: all of the other blog posts only cover loading a library and =
+attaching some functions.
+Yes. I have not yet found a blog post that explains the basics better than =
+the wiki though. The wiki is
+a nice collection of information, and it was pretty much my bible when I st=
+arted with FFI, together with
+
+
+the FFI source code. I believe there is place for yet another article on FF=
+I, aimed at people beginning
+with FFI for the first time.
+> wayne: Any subclass of FFI::AutoPointer can be used as a function result,=
+ and it automatically wraps the result of the function in that AutoPointer =
+subclass.
+
+This is a really nice way of using FFI, and I actually do this throughout a=
+ll one of my FFI gems. The
+spotify library in particular uses a reference counting mechanism, where so=
+me functions return pointers
+that should have their reference increased, and I do that automatically wit=
+h a similar mechanic to .auto_ptr:
+https://github.com/Burgestrand/spotify/blob/a7deb7b4e9334c95f6c3a2d8f077264=
+dc7d55f8d/lib/spotify/managed_pointer.rb#L76
+
+> 4) Completely replace the FFI api with your own concoction.  Using FFI::D=
+ynamicLibrary, FFI::Function, and FFI::DataConverter, you can write your ow=
+n API for mapping C libraries into ruby.  Thats how JRuby implements legacy=
+ interfaces like dl and Win32API.
+
+I did not know you could do that. Nice!
+
+
+=97 Kim
+
+
+--=20
+
+---=20
+You received this message because you are subscribed to the Google Groups "=
+ruby-ffi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.
+For more options, visit https://groups.google.com/groups/opt_out.
+
+
+
+--515756c5_4f4ef005_fb
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+
+                <div><blockquote type=3D"cite">wayne: (so now I know the st=
+ory behind all those issues you raised against JRuby)</blockquote><div>Hehe=
+, yes. I wanted to see if I could run some MRI-working code (spotify gem + =
+OpenAL) on JRuby,</div><div>and in doing that I ran into a few issues. The =
+reason for doing that was because I became curious as</div></div><div>I was=
+ writing the article. I=92m happy to say I managed to get it running on JRu=
+by, streaming music from</div><div>the spotify API, bound with FFI, into th=
+e OpenAL API, bound with FFI. Really cool!</div><div><div><blockquote type=
+=3D"cite">postmodern: all of the other blog posts only cover loading&nbsp;a=
+ library and attaching some functions.</blockquote><div>Yes. I have not yet=
+ found a blog post that explains the basics better than the wiki though. Th=
+e wiki is</div><div>a nice collection of information, and it was pretty muc=
+h my bible when I started with FFI, together with</div></div></div><div>the=
+ FFI source code. I believe there is place for yet another article on FFI, =
+aimed at people beginning</div><div>with FFI for the first time.</div><div>=
+<blockquote type=3D"cite">wayne:&nbsp;Any subclass of FFI::AutoPointer can =
+be used as a function result, and it automatically wraps the result of the =
+function in that AutoPointer subclass.</blockquote></div>
+                <div><div>This is a really nice way of using FFI, and I act=
+ually do this throughout all one of my FFI gems. The</div><div>spotify libr=
+ary in particular uses a reference counting mechanism, where some functions=
+ return pointers</div><div>that should have their reference increased, and =
+I do that automatically with a similar mechanic to .auto_ptr:</div><div><a =
+href=3D"https://github.com/Burgestrand/spotify/blob/a7deb7b4e9334c95f6c3a2d=
+8f077264dc7d55f8d/lib/spotify/managed_pointer.rb#L76">https://github.com/Bu=
+rgestrand/spotify/blob/a7deb7b4e9334c95f6c3a2d8f077264dc7d55f8d/lib/spotify=
+/managed_pointer.rb#L76</a></div><div></div><blockquote type=3D"cite"><div>=
+4) Completely replace the FFI api with your own concoction. &nbsp;Using FFI=
+::DynamicLibrary, FFI::Function, and FFI::DataConverter, you can write your=
+ own API for mapping C libraries into ruby. &nbsp;Thats how JRuby implement=
+s legacy interfaces like dl and Win32API.</div></blockquote><div>I did not =
+know you could do that. Nice!</div><div></div><div><br></div>=97 Kim</div><=
+blockquote type=3D"cite" style=3D"border-left-style:solid;border-width:1px;=
+margin-left:0px;padding-left:10px;">
+                =20
+                =20
+                =20
+                =20
+                </blockquote>
+                =20
+                <div>
+                    <br>
+                </div>
+           =20
+
+<p></p>
+
+-- <br />
+&nbsp;<br />
+--- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;ruby-ffi&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to ruby-ffi+unsubscribe@googlegroups.com.<br />
+For more options, visit <a href=3D"https://groups.google.com/groups/opt_out=
+">https://groups.google.com/groups/opt_out</a>.<br />
+&nbsp;<br />
+&nbsp;<br />
+
+--515756c5_4f4ef005_fb--
+

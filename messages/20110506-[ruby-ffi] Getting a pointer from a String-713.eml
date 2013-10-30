@@ -1,0 +1,114 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.86.8 with SMTP id j8cs91448agb;
+        Fri, 6 May 2011 06:02:59 -0700 (PDT)
+Received: by 10.52.181.99 with SMTP id dv3mr877948vdc.14.1304686979455;
+        Fri, 06 May 2011 06:02:59 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCJX3mLrcBRD94o_uBBoEWsaTaA@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTPS id fv6si3151714vbb.59.2011.05.06.06.02.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 06 May 2011 06:02:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD94o_uBBoEWsaTaA@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCJX3mLrcBRD94o_uBBoEWsaTaA@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCJX3mLrcBRD94o_uBBoEWsaTaA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwj9 with SMTP id 9sf10434694qwj.7
+        for <headius@headius.com>; Fri, 06 May 2011 06:02:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=fShUTAJjgI2Ii5i19UD3Z5HmnrUVqvoR3FQrfHTWeLE=;
+        b=d+rmWwaURx15BbsWe1mntavwNm8xM5xSHuT9lrXFPAiEIMczg5V1y3nDpEzMPWPvfB
+         nDNzhsgMYxbxhCxb1mg+/DU3KOPa9ZSZVIe2MpueNSagIWL6n2LsSDBA9xypHFUjBOP3
+         Gc4SDd9639kFHsSG2jM64OyTCZ4jYZU2Rb/cg=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:x-google-group-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        b=KwZqkL8iMme1OTVsHPmszl4huAg8lWpUBJ7f+OnylyJEXy5Ri/YwXRRafQYPq0B2Jd
+         6I4CN3JGtTH36GvI3cXpGALYZDWCuqWSL0I+zLv2lWNDE+o9sMXoXR+asU2/eHhZSZjo
+         sqEypy1fCERzAZm91zIkBEfjrjPnF9lSUixFE=
+Received: by 10.224.201.196 with SMTP id fb4mr462601qab.49.1304686973630;
+        Fri, 06 May 2011 06:02:53 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.185.141 with SMTP id co13ls667214qab.2.gmail; Fri, 06 May
+ 2011 06:02:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.224.205.130 with SMTP id fq2mr468261qab.18.1304686973152; Fri,
+ 06 May 2011 06:02:53 -0700 (PDT)
+Received: by o7g2000vbn.googlegroups.com with HTTP; Fri, 6 May 2011 06:02:53
+ -0700 (PDT)
+Date: Fri, 6 May 2011 06:02:53 -0700 (PDT)
+X-IP: 87.114.253.239
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML,
+ like Gecko) Chrome/11.0.696.57 Safari/534.24,gzip(gfe)
+Message-ID: <53c8ded3-22aa-4796-9ca9-e03c84e52c20@o7g2000vbn.googlegroups.com>
+Subject: [ruby-ffi] Getting a pointer from a String
+From: candlerb <bcandler100@googlemail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: bcandler100@googlemail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Take the following code:
+
+    class Msghdr < FFI::Struct
+      layout :name, :pointer,
+        :namelen, :socklen_t,
+        :iov, :pointer,
+        :iovlen, :size_t,
+        :control, :pointer,
+        :controllen, :socklen_t,
+        :flags, :int
+    end
+
+    class IOVec < FFI::Struct
+      layout :base, :pointer,
+        :len, :size_t
+    end
+
+    def sendmsg(mesg)
+      data = FFI::MemoryPointer.new(mesg.bytesize, 1, false)
+      data.put_bytes(0, mesg)
+
+      iov = IOVec.new
+      iov[:base] = data
+      iov[:len] = mesg.bytesize
+
+      header = Msghdr.new
+      header[:iov] = iov
+      header[:iovlen] = 1
+
+This works. However, I would like to avoid copying the incoming String
+object into a new MemoryPointer. Is this possible?
+
+If I write:
+
+    iov[:base] = mesg
+
+then I get an error saying that mesg is not a pointer.
+
+I found method MemoryPointer.from_string, but that just does a copy as
+well.
+
+Have I missed something?
+
+Thanks,
+
+Brian.

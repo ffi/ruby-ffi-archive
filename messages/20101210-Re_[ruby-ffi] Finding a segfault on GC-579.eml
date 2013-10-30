@@ -1,0 +1,127 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs115263fam;
+        Sat, 11 Dec 2010 23:55:15 -0800 (PST)
+Received: by 10.229.235.205 with SMTP id kh13mr2438165qcb.292.1292140514206;
+        Sat, 11 Dec 2010 23:55:14 -0800 (PST)
+Return-Path: <ruby-ffi+bncCMHqssvJERDf_5HoBBoEhu2Uwg@googlegroups.com>
+Received: from mail-qw0-f62.google.com (mail-qw0-f62.google.com [209.85.216.62])
+        by mx.google.com with ESMTP id v27si5286622vbx.84.2010.12.11.23.55.12;
+        Sat, 11 Dec 2010 23:55:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCMHqssvJERDf_5HoBBoEhu2Uwg@googlegroups.com designates 209.85.216.62 as permitted sender) client-ip=209.85.216.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCMHqssvJERDf_5HoBBoEhu2Uwg@googlegroups.com designates 209.85.216.62 as permitted sender) smtp.mail=ruby-ffi+bncCMHqssvJERDf_5HoBBoEhu2Uwg@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by qwk4 with SMTP id 4sf14266945qwk.7
+        for <headius@headius.com>; Sat, 11 Dec 2010 23:55:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received:received-spf:received:received:mime-version
+         :received:in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=nnioY52VMa8SFVBblVuKE3kvkmgzkmS4s79GhAQfZz0=;
+        b=eMUSVx/DBCBfuUPnv0gk2r4i4LM94LE+bfgx8u4JrsrSlMzQZMEENou6y4l8dvgZCN
+         RcSaOzBj/cxyWSHxJMIrBfqul0TRHsdrM8oRWSP+iXMaRqLVqpRRscN2iv6pPu2PGnPs
+         XscVLA3obvrNmFdT8YwOAeaRr9erfNsj2JZS4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type:content-transfer-encoding;
+        b=MlPyMUoDbXu8kjxpNx+yEkjHoZ10xAQNB5yinVNF4VDjocIhvArA0ZKXSVk1HV6301
+         NmNxzeoX9Q84em4EKlVlYGCSskEt5TnL5JF5DL88tyYiJMvKTjTOIDbydU9Ynsnlq7qT
+         z6Cb9ldNga1n76KE/iJCMhuia1lcHLsbrCH1I=
+Received: by 10.229.37.148 with SMTP id x20mr310860qcd.35.1292140511625;
+        Sat, 11 Dec 2010 23:55:11 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.224.172.73 with SMTP id k9ls812443qaz.2.p; Sat, 11 Dec 2010
+ 23:55:11 -0800 (PST)
+Received: by 10.224.2.66 with SMTP id 2mr282664qai.5.1292140511288;
+        Sat, 11 Dec 2010 23:55:11 -0800 (PST)
+Received: by 10.229.234.69 with SMTP id kb5mr41558qcb.11.1291962388652;
+        Thu, 09 Dec 2010 22:26:28 -0800 (PST)
+Received: by 10.229.234.69 with SMTP id kb5mr41557qcb.11.1291962388604;
+        Thu, 09 Dec 2010 22:26:28 -0800 (PST)
+Received: from mail-qw0-f43.google.com (mail-qw0-f43.google.com [209.85.216.43])
+        by gmr-mx.google.com with ESMTP id ey28si564848qcb.7.2010.12.09.22.26.27;
+        Thu, 09 Dec 2010 22:26:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of dark.panda@gmail.com designates 209.85.216.43 as permitted sender) client-ip=209.85.216.43;
+Received: by mail-qw0-f43.google.com with SMTP id 3so3813299qwk.2
+        for <ruby-ffi@googlegroups.com>; Thu, 09 Dec 2010 22:26:27 -0800 (PST)
+Received: by 10.229.229.135 with SMTP id ji7mr309024qcb.100.1291962387285;
+ Thu, 09 Dec 2010 22:26:27 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.229.59.142 with HTTP; Thu, 9 Dec 2010 22:26:07 -0800 (PST)
+In-Reply-To: <AANLkTi=ATbSgz7eWbUW_Jh-Y9MfJYPTW7LnC+sjgt33=@mail.gmail.com>
+References: <7a4d1f7e-4ee0-486d-8ff2-06410c9ba27f@c39g2000yqi.googlegroups.com>
+ <AANLkTi=ATbSgz7eWbUW_Jh-Y9MfJYPTW7LnC+sjgt33=@mail.gmail.com>
+From: J Smith <dark.panda@gmail.com>
+Date: Fri, 10 Dec 2010 01:26:07 -0500
+Message-ID: <AANLkTikQFZEHnzDi56MKPuJhHXS+65owymLbQeY+sMsB@mail.gmail.com>
+Subject: Re: [ruby-ffi] Finding a segfault on GC
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: dark.panda@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of dark.panda@gmail.com designates 209.85.216.43 as permitted sender)
+ smtp.mail=dark.panda@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 10, 2010 at 12:25 AM, Wayne Meissner <wmeissner@gmail.com> wrot=
+e:
+> On 10 December 2010 12:21, dark.panda <dark.panda@gmail.com> wrote:
+>
+>> Anyone have any ideas as to what's going on? I'm at my wits end at
+>> this point. Modifying GEOS itself might not be an option, but if
+>> there's something I can do in Ruby that would be awesome.
+>
+> I haven't looked in depth, but in that cut down gist, it _could_ be this:
+>
+> handle =3D FFIGeos.initGEOS_r(
+> =A0self.method(:notice_handler),
+> =A0self.method(:error_handler)
+> )
+>
+> Stash the return values from self.method() somewhere.
+> e.g.
+>
+> @nh =3D self.method(:notice_handler)
+> @eh =3D self.method(:error_handler)
+> handle =3D FFIGeos.initGEOS_r(@nh, @eh))
+>
+> They don't have to be ivars, but they need to be kept for as long as
+> Geos needs to use the callbacks.
+>
+
+Ah, I think this may well be it! The minimal test runs and, even
+better, so does the entire unit test suite! Cheers!
+
+I wrote up a quick patch to store the values from the error handler
+methods in Thread.current and everything seems to be working as
+expected including multithreading which is tremendous.
+
+I take it that garbage collection was trying to clean up some things
+it shouldn't and that was wreaking havoc, yeah? I'd like to step
+through this in gdb when I get a chance now that I know what to look
+for to try and understand what's happening in more detail, but for now
+I'm ecstatic that things appear to be working. This was the last major
+(known) issue in the library and I think a beta release is due for
+some testing.
+
+Cheers again, and thanks!
+
+J

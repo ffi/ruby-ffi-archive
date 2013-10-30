@@ -1,0 +1,142 @@
+Delivered-To: headius@headius.com
+Received: by 10.142.234.7 with SMTP id g7cs54138wfh;
+        Mon, 2 Nov 2009 17:04:00 -0800 (PST)
+Received: by 10.114.237.24 with SMTP id k24mr9920035wah.5.1257210240000;
+        Mon, 02 Nov 2009 17:04:00 -0800 (PST)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-pw0-f68.google.com (mail-pw0-f68.google.com [209.85.160.68])
+        by mx.google.com with ESMTP id 11si13926658pzk.120.2009.11.02.17.03.58;
+        Mon, 02 Nov 2009 17:03:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.160.68 as permitted sender) client-ip=209.85.160.68;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.160.68 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by pwi1 with SMTP id 1so851925pwi.27
+        for <headius@headius.com>; Mon, 02 Nov 2009 17:03:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :received:received:received:received-spf:received:dkim-signature
+         :domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        bh=A9g+Vb+Qq7Eexu0gaq7CgLcxObJgv3eJQ6Fo9qGtdFY=;
+        b=F1UfVHL0/CBmTga8Nb3m4zy8KkzHeQuhw93bTbDiM6lt8Kq2QXcC7iMCo5s+31pRf5
+         J1+H/uz5SNfFyYe8/s56cRh9YBYvRE8g1biZVuFGnDSYYdgpW/hfO3fJUcBH3T2kXiLC
+         JtxT0K0W3927H68jLC6XiWitTGfKgxZD5HRb8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:received-spf:authentication-results
+         :dkim-signature:domainkey-signature:mime-version:in-reply-to
+         :references:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding:reply-to:sender:precedence:x-google-loop
+         :mailing-list:list-id:list-post:list-help:list-unsubscribe
+         :x-beenthere-env:x-beenthere;
+        b=3c0hMMXqOlVROruLMMDHf/iIuAPkfhnzTO65t/IaTgx2xaUdCuhRY3pdL10g/Xxg3b
+         CDTPABETWFPxSyCsR1ukmMyzQ7bBD6bittqh1B8145E9CwnRrwoO56xwNFrZMvk39FyX
+         cMlYvGfv1qgwOvRW5UHX7RmgpeLhsPsft3WMQ=
+Received: by 10.114.31.10 with SMTP id e10mr127821wae.8.1257210236970;
+        Mon, 02 Nov 2009 17:03:56 -0800 (PST)
+Received: by 10.106.63.16 with SMTP id l16gr86pra.0;
+	Mon, 02 Nov 2009 17:03:56 -0800 (PST)
+X-Sender: wmeissner@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+Received: by 10.141.36.17 with SMTP id o17mr187368rvj.9.1257210236008; Mon, 02 Nov 2009 17:03:56 -0800 (PST)
+Received: by 10.141.36.17 with SMTP id o17mr187367rvj.9.1257210235986; Mon, 02 Nov 2009 17:03:55 -0800 (PST)
+Return-Path: <wmeissner@gmail.com>
+Received: from mail-px0-f201.google.com (mail-px0-f201.google.com [209.85.216.201]) by gmr-mx.google.com with ESMTP id 25si777465pzk.7.2009.11.02.17.03.54; Mon, 02 Nov 2009 17:03:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of wmeissner@gmail.com designates 209.85.216.201 as permitted sender) client-ip=209.85.216.201;
+Received: by pxi39 with SMTP id 39so7840621pxi.30 for <ruby-ffi@googlegroups.com>; Mon, 02 Nov 2009 17:03:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=gamma; h=domainkey-signature:mime-version:received:in-reply-to:references :date:message-id:subject:from:to:content-type :content-transfer-encoding; bh=JICwrmib8/hbYF/6/oQGkCB1HwmYiCZ6cM7afNlHnRg=; b=r49Byy8YThtxL1IEtsJTfl268KB6UqQxdG8lDEetqdEZJO+zqTZHmYyk6EmyWOTyRW KZk4tkuFlmZatphcYQSuaTUqabU5VN7cob4Pa+I+D9M9ExzRKPyBvSXcsnUrKgIZzvGO MyEggCtnSLWMf80Ni7GJjgGm41Qutoni41MtQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=gmail.com; s=gamma; h=mime-version:in-reply-to:references:date:message-id:subject:from:to :content-type:content-transfer-encoding; b=bSHsWVHa9OAVmTgWxEtxeFC3dUKepAQ7hRSsTLcQyx36rFlQ3I1iRGHpcAEbtPhpzU aoGxe31b7pdpdoMv0TElOjWOO4Uq5IWVWdxXBHh52Koo4n/8gAKjen4JEkm4neJ0g6Td 9Z8SKy9kSOlSlIRwZBDqunvKWn5r0XldcZGD8=
+MIME-Version: 1.0
+Received: by 10.140.148.17 with SMTP id v17mr357129rvd.265.1257210234816; Mon,  02 Nov 2009 17:03:54 -0800 (PST)
+In-Reply-To: <4AEF7919.7050408@redhat.com>
+References: <4AEF7919.7050408@redhat.com>
+Date: Tue, 3 Nov 2009 11:03:54 +1000
+Message-ID: <4ccee320911021703k6f38d32fnd3d0d041beaa21d3@mail.gmail.com>
+Subject: [ruby-ffi] Re: Fwd: PPC not getting __WORDSIZE set
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+That does look a bit suspicious.
+
+Given you're packaging for fedora, and fedora has a recent version of
+libffi installed (or can be added as a dependency), you could try
+creating a patch using changeset
+8cbc3f54a875a61e1fb67ac88a25b71940a3ed91
+
+That allows ruby-ffi to build against the system libffi.  Technically
+it always allowed this, but ruby-ffi was a bit overly picky about what
+it wanted from libffi.
+
+You may find you don't even need that patch.  Just having the proper
+libffi-dev packages installed/as dependencies might allow extconf.rb
+to pick it up.
+
+You might also need 1d50e0647ac55e15222f9a6a9d163d7a68022186 to
+properly detect & pass powerpc64 into libtest/GNUmakefile, so it
+builds for the correct arch.
+
+2009/11/3 Bryan Kearney <bkearney@redhat.com>:
+>
+> So.. I am not a strong C guy. If you check this message, it appears that
+> __WORDSIZE is not being set correctly for ppc64. If I look at
+> ffi/ext/ffi_c/libffi/configure I see:
+>
+> =A0 =A0 =A0 =A0ppc64-*linux*|powerpc64-*linux*)
+> =A0 =A0 =A0 =A0 =A0LD=3D"${LD-ld} -m elf32ppclinux"
+> =A0 =A0 =A0 =A0 =A0;;
+>
+>
+> Is this correct? Should it be calling 32 bit libraries
+>
+> -- bk
+>
+> -------- Original Message --------
+> Subject: PPC not getting __WORDSIZE set
+> Date: Mon, 02 Nov 2009 17:15:50 -0500
+> From: Bryan Kearney <bkearney@redhat.com>
+> Reply-To: Development discussions related to Fedora
+> <fedora-devel-list@redhat.com>
+> To: Development discussions related to Fedora <fedora-devel-list@redhat.c=
+om>
+>
+> Word of warning.. I am no too familiar with C across platforms. =A0I am
+> trying to package ruby-ffi (spec file is at [1]) and when I do a scratch
+> build in Koji [2] it runs fine on x86 but is failing in ppc_64. It
+> appears that __WORDSIZE is not being set [3]. I looked at the CFLags for
+> the x86_64 and they are the same, so I assumed things would run fine.
+> Can anyone point me at what to look at next?
+>
+> -- bk
+>
+> [1] Spec file: http://bkearney.fedorapeople.org/ruby-ffi.spec
+> [2] Main Build: http://koji.fedoraproject.org/koji/taskinfo?taskID=3D1783=
+879
+> [3] Failing Build Log:
+> http://koji.fedoraproject.org/koji/getfile?taskID=3D1783882&name=3Dbuild.=
+log
+> [4] SRPM: http://bkearney.fedorapeople.org/ruby-ffi-0.5.1-1.fc11.src.rpm
+>
+> --
+> fedora-devel-list mailing list
+> fedora-devel-list@redhat.com
+> https://www.redhat.com/mailman/listinfo/fedora-devel-list
+>

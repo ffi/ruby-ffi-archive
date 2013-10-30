@@ -1,0 +1,64 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Re: [ruby-ffi] &#39;encoding&#39; type?</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>Re: [ruby-ffi] &#39;encoding&#39; type?</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Matijs van Zuijlen <matijs@matijs.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>1/8/11 4:15 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-flowed" style="font-family: -moz-fixed; font-size: 12px;" lang="x-western">Hi Jon,
+<br>
+<br>On 01/07/2011 08:18 AM, dubl wrote:
+<br><blockquote type=cite style="color: #000000;">hello,
+<br>i'm trying to attach CFStringCreateWithCString..
+<br>
+<br>below is the reference documentation, which allows you to pass null as
+<br>the first argument, a cstring as the second, and an 'encoding' as the
+<br>third..
+<br>
+<br>my question is, how do i attach this?&nbsp; i'm trying
+<br>&nbsp;&nbsp; attach_function :CFStringCreateWithCString,
+<br>[:void,:char,:int], :void
+<br>..using ':int', its erroring out saying 'invalid parameter type' for
+<br>the 0 I pass it...
+<br>
+<br>question is: what symbol do i give it as the third argument, and then
+<br>what do i pass it?
+<br></blockquote>
+<br>You don't give documentation for CFStringEncoding, but if it's an enum, :int 
+should be fine. (You can also tell FFI about the enum, and then use a symbol in 
+the Ruby call).
+<br>
+<br>The first and second argument however don't seem right. Try using :pointer and 
+:string for those, respectively.
+<br>
+<br><blockquote type=cite style="color: #000000;">I admit I'm new to the concept. this is my first attempt at FFI... i'm
+<br>trying to rewrite an old dl/importable version which used the int,
+<br>passing it a 0, and it worked fine.
+<br>
+<br>thanks for the opportunity to ask the question.
+<br>
+<br>Jon
+<br>
+<br>----------------
+<br>CFStringRef CFStringCreateWithCString (
+<br>&nbsp;&nbsp;&nbsp; CFAllocatorRef alloc,
+<br>&nbsp;&nbsp;&nbsp; const char *cStr,
+<br>&nbsp;&nbsp;&nbsp; CFStringEncoding encoding
+<br>);
+<br>Parameters
+<br>alloc
+<br>The allocator to use to allocate memory for the new string. Pass NULL
+<br>or kCFAllocatorDefault to use the current default allocator.
+<br>cStr
+<br>The NULL-terminated C string to be used to create the CFString object.
+<br>The string must use an 8-bit encoding.
+<br>encoding
+<br>The encoding of the characters in the C string. The encoding must
+<br>specify an 8-bit encoding.
+<br>---------------------
+<br></blockquote>
+<br>Regards,
+<br><div class="moz-txt-sig"><span class="moz-txt-tag">--&nbsp;<br></span>Matijs
+<br></div></div></body>
+</html>
+</table></div>

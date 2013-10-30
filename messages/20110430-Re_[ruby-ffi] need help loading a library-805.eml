@@ -1,0 +1,155 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.101.20 with SMTP id y20cs42673agb;
+        Sat, 30 Apr 2011 14:37:22 -0700 (PDT)
+Received: by 10.223.134.75 with SMTP id i11mr1827767fat.39.1304199441402;
+        Sat, 30 Apr 2011 14:37:21 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCOzPnYuqHRCJgvLtBBoEfyohMQ@googlegroups.com>
+Received: from mail-fx0-f62.google.com (mail-fx0-f62.google.com [209.85.161.62])
+        by mx.google.com with ESMTPS id 3si3075676faf.100.2011.04.30.14.37.19
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 30 Apr 2011 14:37:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCJgvLtBBoEfyohMQ@googlegroups.com designates 209.85.161.62 as permitted sender) client-ip=209.85.161.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCOzPnYuqHRCJgvLtBBoEfyohMQ@googlegroups.com designates 209.85.161.62 as permitted sender) smtp.mail=ruby-ffi+bncCOzPnYuqHRCJgvLtBBoEfyohMQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by fxm17 with SMTP id 17sf6298787fxm.7
+        for <headius@headius.com>; Sat, 30 Apr 2011 14:37:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type:content-transfer-encoding;
+        bh=mWv+Em4fzlTVmCq+tgOi4JHfFkLF6HEYP54S9RzKMEw=;
+        b=igxJchg21jFSCPFmCIWXDUPHhQXBdClCyU8mmk9HKQQuC6yw5dL6FwjY/iy/t7RU2u
+         3U2cQjAWNl5QMHImXorPb0h2JeaA95uPJtiYkJstdv3GKlvgyeLgl+JpubFrcpM+Z5Ui
+         X9925aGEMRWJnuHDhefT5ihz/6ikZZ4cO7mk0=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=dTHGQYomWSwYP2bZP3UyiUnEyBHXOc//WliWsL+kbly7Uaor30/Zkr1zJSSIEQowfa
+         XWLySNF2E9akdfS7aZ8bTYCxhcWQNtqkxbROMXWWr/bS/ru1jsCxhF9rZwEMup4no1GW
+         MK6GrE4NSQ07Oi+k9CotXOFDWH3iJ8GNyzg34=
+Received: by 10.223.63.12 with SMTP id z12mr1019946fah.33.1304199434007;
+        Sat, 30 Apr 2011 14:37:14 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.35.21 with SMTP id n21ls1252449bkd.1.gmail; Sat, 30 Apr
+ 2011 14:37:13 -0700 (PDT)
+Received: by 10.204.10.86 with SMTP id o22mr573709bko.18.1304199433299;
+        Sat, 30 Apr 2011 14:37:13 -0700 (PDT)
+Received: by 10.204.10.86 with SMTP id o22mr573708bko.18.1304199433284;
+        Sat, 30 Apr 2011 14:37:13 -0700 (PDT)
+Received: from mail-fx0-f49.google.com (mail-fx0-f49.google.com [209.85.161.49])
+        by gmr-mx.google.com with ESMTPS id e15si750025bke.5.2011.04.30.14.37.12
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 30 Apr 2011 14:37:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of luislavena@gmail.com designates 209.85.161.49 as permitted sender) client-ip=209.85.161.49;
+Received: by mail-fx0-f49.google.com with SMTP id 14so4163412fxm.36
+        for <ruby-ffi@googlegroups.com>; Sat, 30 Apr 2011 14:37:12 -0700 (PDT)
+Received: by 10.223.6.11 with SMTP id 11mr1304899fax.101.1304199432072; Sat,
+ 30 Apr 2011 14:37:12 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.121.17 with HTTP; Sat, 30 Apr 2011 14:36:52 -0700 (PDT)
+In-Reply-To: <BE3DDE80-6E52-452A-A464-77D15A3E2897@mac.com>
+References: <86A00FC7-FC17-4340-91D9-AC489F8651A1@mac.com> <BANLkTik2_Ydh0-h1ihohT8zWFf44vwA4kA@mail.gmail.com>
+ <BE3DDE80-6E52-452A-A464-77D15A3E2897@mac.com>
+From: Luis Lavena <luislavena@gmail.com>
+Date: Sat, 30 Apr 2011 18:36:52 -0300
+Message-ID: <BANLkTi=e_vVfYATLi=jDDyb+DCiqfPszSA@mail.gmail.com>
+Subject: Re: [ruby-ffi] need help loading a library
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: luislavena@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of luislavena@gmail.com designates 209.85.161.49 as permitted sender)
+ smtp.mail=luislavena@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 25, 2011 at 4:59 PM, Chuck Remes <cremes.devlist@mac.com> wrote=
+:
+>
+> Fantastic.
+>
+> In the meantime I will continue working on figuring this out.
+>
+
+Hello Chuck, sorry took me some time to get back to you on this.
+
+I believe I found the root on why ffi is not able to load libzmq.dll,
+where you place libzmq.dll or your wrapper, the issue is associated
+with G++ and std C++ library dependency.
+
+zeromq uses C++ and libstdc++, which automatically triggers the
+dependency on libstdc++-6.dll and that dll depends on
+libgcc_s_sjlj-1.dll.
+
+Not having these DLLs in the PATH will trigger the module not being found:
+
+irb(main):004:0> module ZeroZMQ
+irb(main):005:1> extend FFI::Library
+irb(main):006:1> ffi_lib "libzmq.dll"
+irb(main):007:1> end
+LoadError: Could not open library 'libzmq.dll': The specified module
+could not be found.
+
+        from C:/Users/Luis/.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-m=
+ingw32/lib/ffi/library.rb:75:in
+`block in ffi_lib'
+        from C:/Users/Luis/.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-m=
+ingw32/lib/ffi/library.rb:54:in
+`map'
+        from C:/Users/Luis/.gem/ruby/x86-mingw32/1.9.1/gems/ffi-1.0.7-x86-m=
+ingw32/lib/ffi/library.rb:54:in
+`ffi_lib'
+        from (irb):6:in `<module:ZeroZMQ>'
+        from (irb):4
+        from C:/Users/Luis/Tools/Ruby/ruby-1.9.2-p180-i386-mingw32/bin/irb:=
+12:in
+`<main>'
+irb(main):008:0> exit
+
+Once I've added these libraries to the path (using devkitvars.bat) the
+module start to work.
+
+Now, use stdc++ as shared object is the default behavior of MinGW, and
+I believe other versions of GCC too.
+
+We found something similar with Gordon Thiesfeld when he was updating
+exerb-mingw for a newer version of Pik.
+
+He worked out adding -static-libgcc to g++ during compilation, but I'm
+not sure if you can add that to the configure process as CPPFLAGS:
+
+sh configure --prefix=3DC:/installed/zeromq CPPFLAGS=3D-static-libgcc
+
+I've just tested this and inspecting with Dependency Walker still
+makes the dependency on libstdc++-6.dll
+
+In the meantime, you can copy these dlls from DevKit's mingw/bin
+directory and place in zeromq bin one.
+
+Regards,
+--=20
+Luis Lavena
+AREA 17
+-
+Perfection in design is achieved not when there is nothing more to add,
+but rather when there is nothing more to take away.
+Antoine de Saint-Exup=E9ry

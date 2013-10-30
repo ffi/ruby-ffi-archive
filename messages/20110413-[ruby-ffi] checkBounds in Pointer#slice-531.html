@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] checkBounds in Pointer#slice</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] checkBounds in Pointer#slice</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Charles Strahan <charles.c.strahan@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>4/13/11 11:27 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi@googlegroups.com</td></tr></table><br>
+<div class="moz-text-html"  lang="x-western">Hello,
+<div><br></div><div>I&#39;ve found a potential problem with Pointer#slice:</div><div><div><br></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">irb(main):078:0&gt; mem = FFI::MemoryPointer.new(1,8)</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">=&gt; #&lt;FFI::MemoryPointer address=0x2e997d0 size=8&gt;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">irb(main):079:0&gt; mem.slice(0,9)</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">=&gt; #&lt;FFI::Pointer address=0x2e997d0 size=9&gt;</font></b></div></div><div><br></div><div><br></div><div>As you can see, it&#39;s possible to extend the size of the pointer. However, it&#39;s not possible to offset the pointer past the total original size:</div>
+<div><br></div><div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">irb(main):080:0&gt; mem.slice(8,9)</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">IndexError: Memory access offset=8 size=1 is out of bounds</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">        from (irb):80:in `slice&#39;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">        from (irb):80</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">        from C:/Ruby192/bin/irb:12:in `&lt;main&gt;&#39;</font></b></div></div><div><br></div><div><br></div><div><br></div><div>I see that Pointer#slice is defined as follows:</div>
+<div><br></div><div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">static VALUE</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">slice(VALUE self, long offset, long size)</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">{</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    AbstractMemory* ptr;</font></b></div><div>
+<b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    Pointer* p;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    VALUE retval;</font></b></div><div>
+<b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    </font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    Data_Get_Struct(self, AbstractMemory, ptr);</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    checkBounds(ptr, offset, 1);</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace"><br></font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    retval = Data_Make_Struct(rbffi_PointerClass, Pointer, ptr_mark, -1, p);</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace"><br>
+</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    p-&gt;memory.address = ptr-&gt;address + offset;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    p-&gt;memory.size = size;</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    p-&gt;memory.flags = ptr-&gt;flags;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    p-&gt;memory.typeSize = ptr-&gt;typeSize;</font></b></div>
+<div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    p-&gt;parent = self;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace"><br></font></b></div><div>
+<b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">    return retval;</font></b></div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">}</font></b></div></div><div><br>
+</div><div><br></div><div>Perhaps `<b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">checkBounds(ptr, offset, 1);&#39;</font></b> should be replaced with something like the following?</div><div><br>
+</div><div><b><font class="Apple-style-span" face="&#39;courier new&#39;, monospace">checkBounds(ptr, offset, size == MAX_LONG ? 1 : size);</font></b>        </div><div><br></div><div>... or is the original behavior by design?</div>
+<div><br></div><div><br></div><div>-Charles</div><div><br></div>
+
+</div></body>
+</html>
+</table></div>

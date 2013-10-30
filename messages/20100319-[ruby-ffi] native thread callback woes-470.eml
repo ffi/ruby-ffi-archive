@@ -1,0 +1,161 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.54.10 with SMTP id o10cs24026qag;
+        Fri, 19 Mar 2010 10:37:04 -0700 (PDT)
+Received: by 10.101.85.11 with SMTP id n11mr7705638anl.136.1269020223854;
+        Fri, 19 Mar 2010 10:37:03 -0700 (PDT)
+Return-Path: <3PbajSwcJCOIWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@groups.bounces.google.com>
+Received: from mail-gy0-f190.google.com (mail-gy0-f190.google.com [209.85.160.190])
+        by mx.google.com with ESMTP id 24si3029095gxk.76.2010.03.19.10.37.02;
+        Fri, 19 Mar 2010 10:37:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3PbajSwcJCOIWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@groups.bounces.google.com designates 209.85.160.190 as permitted sender) client-ip=209.85.160.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of 3PbajSwcJCOIWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@groups.bounces.google.com designates 209.85.160.190 as permitted sender) smtp.mail=3PbajSwcJCOIWLEaRigKQEMP.GSQVYFc-JJMKSSKPIKVSYTW.GSQ@groups.bounces.google.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gyc15 with SMTP id 15sf4959002gyc.7
+        for <headius@headius.com>; Fri, 19 Mar 2010 10:37:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:received:from:date
+         :message-id:subject:to:x-original-authentication-results
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:x-thread-url:x-message-url:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=xBOGQcr8zr4htgceUGT2rujkqii7Js79CC/d4QAtp1s=;
+        b=PCxPXRX074U1z1X/DPGfDLuU7nGkCC37lNa0OF6k7QJJ0As2tEZg6awHOsUzoP1isl
+         oCUoZ5QV2U+9sRv4qeT2d9hiipFVk1LXxjthHmTitG8BhkJ8xkoC2VIjPlDF72WGBfhV
+         kUQqMu8fAm5/IQv9uvZe7a1QFqXIK6cNFrvZo=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:date:message-id:subject
+         :to:x-original-authentication-results:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :x-thread-url:x-message-url:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        b=iTrJ1XFCOQdxpu41Drv3ri/EWyFRYy0g5EGy+j9Y23eS/i/rTNFi7C2okxzV3PkUxP
+         XfL/nikr6gKvxJAWOXa8JGVXknBljaXwpb5SOJRGQd5MvtdxzMe7z2EI594OG/WuxrXO
+         X92B81RtqbnsilktXqUySXrchhjt3jBjOWJ5c=
+Received: by 10.91.93.19 with SMTP id v19mr75356agl.18.1269020221279;
+        Fri, 19 Mar 2010 10:37:01 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.5.195 with SMTP id 3ls1146573bkw.3.p; Fri, 19 Mar 2010 
+	10:36:59 -0700 (PDT)
+Received: by 10.204.7.83 with SMTP id c19mr1049134bkc.25.1269020219018;
+        Fri, 19 Mar 2010 10:36:59 -0700 (PDT)
+Received: by 10.204.7.83 with SMTP id c19mr1049133bkc.25.1269020218966;
+        Fri, 19 Mar 2010 10:36:58 -0700 (PDT)
+Return-Path: <shawn42@gmail.com>
+Received: from mail-bw0-f226.google.com (mail-bw0-f226.google.com [209.85.218.226])
+        by gmr-mx.google.com with ESMTP id 12si127264bwz.5.2010.03.19.10.36.57;
+        Fri, 19 Mar 2010 10:36:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shawn42@gmail.com designates 209.85.218.226 as permitted sender) client-ip=209.85.218.226;
+Received: by bwz26 with SMTP id 26so2790823bwz.7
+        for <ruby-ffi@googlegroups.com>; Fri, 19 Mar 2010 10:36:57 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.204.45.231 with SMTP id g39mr2254737bkf.102.1269020217249; 
+	Fri, 19 Mar 2010 10:36:57 -0700 (PDT)
+From: Shawn Anderson <shawn42@gmail.com>
+Date: Fri, 19 Mar 2010 13:36:37 -0400
+Message-ID: <c410d2f21003191036u486e24e9g6e4189cfafa2c45c@mail.gmail.com>
+Subject: [ruby-ffi] native thread callback woes
+To: ruby-ffi@googlegroups.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com: 
+	domain of shawn42@gmail.com designates 209.85.218.226 as permitted sender) 
+	smtp.mail=shawn42@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+X-Original-Sender: shawn42@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, 
+	<mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+X-Thread-Url: http://groups.google.com/group/ruby-ffi/t/df4fd948cde0255e
+X-Message-Url: http://groups.google.com/group/ruby-ffi/msg/4e85a09f08307206
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, 
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=0016e6d77ee4430f3704822acbdc
+
+--0016e6d77ee4430f3704822acbdc
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'm trying to get allegro-ffi to work with the latest 4.9 branch of allegro
+in SVN.  Allegro has recently changed to run everything in a native
+callback.
+ie..
+
+... setup code ...
+al_run_main argc, argv, &method(:run)
+puts "this code will never be called"
+
+running this in ruby 1.9.1 I see the error:
+
+examples/simple_window.rb:13: [BUG] object allocation during garbage
+collection phase
+ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+
+full trace here:
+https://gist.github.com/95d3ccc14fd8fdc1febf
+
+
+Allegro spins off a new native thread (os x only) and calls the callback
+from that native thread.  Apparently os x needs the main thread for its
+event stuff...
+Is there anyway to let this new non-ruby native thread call back into ruby
+code?
+
+
+http://github.com/shawn42/ffi-allegro
+http://alleg.sourceforge.net/
+
+/Shawn
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegroups.com or reply to this email with the words "REMOVE ME" as the subject.
+
+--0016e6d77ee4430f3704822acbdc
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+<div>I&#39;m trying to get allegro-ffi to work with the latest 4.9 branch o=
+f allegro in SVN. =A0Allegro has recently changed to run everything in a na=
+tive callback.</div><div>ie..</div><div><br></div><div>... setup code ...</=
+div>
+
+
+
+<div>al_run_main argc, argv, &amp;method(:run)</div><div>puts &quot;this co=
+de will never be called&quot;</div><div><br></div><div>running this in ruby=
+ 1.9.1 I see the error:</div><div><pre><div class=3D"line" id=3D"LC17">exam=
+ples/simple_window.rb:13: [BUG] object allocation during garbage collection=
+ phase</div>
+
+<div class=3D"line" id=3D"LC18">ruby 1.9.1p378 (2010-01-10 revision 26273) =
+[i386-darwin10.2.0]</div><div class=3D"line" id=3D"LC18"><br></div><div cla=
+ss=3D"line" id=3D"LC18">full trace here:</div><div class=3D"line" id=3D"LC1=
+8"><span class=3D"Apple-style-span" style=3D"font-family: arial; white-spac=
+e: normal; "><a href=3D"https://gist.github.com/95d3ccc14fd8fdc1febf">https=
+://gist.github.com/95d3ccc14fd8fdc1febf</a></span></div>
+
+</pre></div><div><br></div><div>Allegro spins off a new native thread (os x=
+ only) and calls the callback from that native thread. =A0Apparently os x n=
+eeds the main thread for its event stuff...</div><div>Is there anyway to le=
+t this new non-ruby native thread call back into ruby code? =A0</div>
+
+<div><br></div><div><br></div>
+
+<div><a href=3D"http://github.com/shawn42/ffi-allegro" target=3D"_blank">ht=
+tp://github.com/shawn42/ffi-allegro</a></div><div><a href=3D"http://alleg.s=
+ourceforge.net/" target=3D"_blank">http://alleg.sourceforge.net/</a></div><=
+div>
+
+<br></div><div>/Shawn</div>
+
+<p></p>
+
+To unsubscribe from this group, send email to ruby-ffi+unsubscribegooglegro=
+ups.com or reply to this email with the words &quot;REMOVE ME&quot; as the =
+subject.<br />
+
+--0016e6d77ee4430f3704822acbdc--

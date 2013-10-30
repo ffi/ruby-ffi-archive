@@ -1,0 +1,126 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.51.207 with SMTP id e15cs69703bkg;
+        Thu, 2 Sep 2010 11:22:58 -0700 (PDT)
+Received: by 10.100.9.4 with SMTP id 4mr10584320ani.245.1283451772498;
+        Thu, 02 Sep 2010 11:22:52 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCIrlxJa3GxD61v_jBBoEV97vkQ@googlegroups.com>
+Received: from mail-gw0-f62.google.com (mail-gw0-f62.google.com [74.125.83.62])
+        by mx.google.com with ESMTP id c18si1594170ana.161.2010.09.02.11.22.51;
+        Thu, 02 Sep 2010 11:22:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxD61v_jBBoEV97vkQ@googlegroups.com designates 74.125.83.62 as permitted sender) client-ip=74.125.83.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCIrlxJa3GxD61v_jBBoEV97vkQ@googlegroups.com designates 74.125.83.62 as permitted sender) smtp.mail=ruby-ffi+bncCIrlxJa3GxD61v_jBBoEV97vkQ@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by gwb15 with SMTP id 15sf1457386gwb.7
+        for <headius@headius.com>; Thu, 02 Sep 2010 11:22:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=NYFLZ3Ylg7i0bhHk6nBDl2zvDD2Jtw8L9Tpk4Jdz20k=;
+        b=X1wm2D0n20MZRqoOXdro5cvFmoT6nYVDrxq/wyqemTCEJZH6qfGaPkDvivFfS6ccgK
+         5OmOHUk/qlRj8n5BXRqOvEQ29ThoTGmKfL2x1c9V8lJFwrSCzLhTMPIh7b80l+OZlGLI
+         iTFf4jyivv06eb5Hb4FN3PKWyzvXYPpzVkYCc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=hdZQd9ogJ7QHrwwguMeoeOi2rzmkmzftIU3IM+PCXMY+HXj0NqVOXj33G5/UR8S9CZ
+         o3pDUjYRUuwmCfAD3uLFJqWp8QRpeaY/PnA78j4fZFInaXCpKcBdUTOMlSe9Px/N66k7
+         4ahpcvU9WSsrl1b2rq2nYBNL9emlVAsbPdJ3s=
+Received: by 10.101.24.5 with SMTP id b5mr799162anj.10.1283451770486;
+        Thu, 02 Sep 2010 11:22:50 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.151.127.4 with SMTP id e4ls326240ybn.7.p; Thu, 02 Sep 2010
+ 11:22:50 -0700 (PDT)
+Received: by 10.150.50.13 with SMTP id x13mr91473ybx.54.1283451770203;
+        Thu, 02 Sep 2010 11:22:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.90.58.40 with SMTP id g40mr52224aga.23.1283444569403; Thu, 02
+ Sep 2010 09:22:49 -0700 (PDT)
+Received: by i13g2000yqd.googlegroups.com with HTTP; Thu, 2 Sep 2010 09:22:48
+ -0700 (PDT)
+Date: Thu, 2 Sep 2010 09:22:48 -0700 (PDT)
+X-IP: 97.124.68.247
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-us)
+ AppleWebKit/533.17.8 (KHTML, like Gecko) Version/5.0.1 Safari/533.17.8,gzip(gfe)
+Message-ID: <857a7e34-f026-467d-87d0-3a18b81a1b35@i13g2000yqd.googlegroups.com>
+Subject: [ruby-ffi] Help for Beginner - Compiling C Extension on Windows
+From: Karl <threadhead@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: threadhead@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+Boring Background:
+Let me say first that I'm no Windows expert and it's been 20 years
+since I last compiled anything I wrote in C. But I need to access an
+API on a Windows machine (controls a DAQ board) from Ruby. So I'm
+trying to get the first steps down, compiling a C lib I can access
+through ruby.
+
+Also, I apologize if this is the wrong place to post, but it seems
+that this is the only forum that C extension writers on windows
+frequent.
+
+
+Can't Compile Simple C DLL:
+Installed Ruby 1.8.7-p302 from rubyinstaller.org (used the .exe).
+Installed DevKit-4.5.0-20100819-1536-sfx.exe from rubyinstaller.org
+Performed the devkit install, all it working (installing gems that
+require compiling work)
+
+Also tried setup up 'fstab' using this site
+http://geeksharp.com/2010/01/18/windows-ruby-native-gems-1-9-1/ but
+nothing he shows looks remotely like my installation. So I set C:
+\devkit\etc\fstab to:
+  C:/devkit/mingw/lib/gcc/mingw32/4.5.0  /mingw
+
+
+Trying to compile the following:
+#stree.c
+#include <ruby.h>
+
+static VALUE hello_world(VALUE klass)
+{
+  return rb_str_new2("hello world");
+}
+
+void Init_stree()
+{
+  VALUE mStree = rb_define_module("Stree");
+  rb_define_singleton_method(mStree, "hello_world", hello_world, 0);
+}
+
+
+#extconf.rb
+require 'mkmf'
+create_makefile('stree/stree')
+
+
+On the win machine I run: ruby extconf.rb
+  creates the Makefile, no errors
+
+I run: 'make' and receive the following:
+  Compile the C Code to a DLL
+  'cl' is not recognized as an internal or external command, operable
+program or batch file.
+  Could Not Find C:\rails\ext_test\stree\ext\stree\*.obj
+  Done.
+
+
+I'm clueless. Any help is greatly appreciated.

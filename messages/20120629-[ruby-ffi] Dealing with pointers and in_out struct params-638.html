@@ -1,0 +1,44 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Dealing with pointers and in/out struct params</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Dealing with pointers and in/out struct params</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Daniel Berger <djberg96@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>6/29/12 8:09 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hi,
+
+There's a function called ReadFileScatter in the Windows API that
+takes an OVERLAPPED structure as its last (in/out) parameter. It looks
+like this, keeping in mind that I've simplified it a bit to only
+contain the bits I care about,  and it is the right size - 20.
+
+class Overlapped &lt; FFI::Struct
+    layout(
+      :Internal, :pointer,
+      :InternalHigh, :pointer,
+      :Offset, :ulong,
+      :OffsetHigh, :ulong,
+      :hEvent, :ulong
+    )
+end
+
+The member I happen to care about specifically is :Internal, which the
+MSDN docs will tell you is a ULONG_PTR (either an unsigned long or
+unsigned int64, depending on whether or not you're x64).
+
+I created an instance using Overlapped.new and passed it to
+ReadFileScatter, which I can call successfully. The problem is that
+the overlap[:Internal] member isn't populated after the call. I also
+tried explicitly setting the :Internal member to an
+FFI::MemoryPointer.new(:ulong) before passing the struct, but that
+didn't seem to help.
+
+How do I get FFI to populate my overlapped struct's pointer?
+
+Regards,
+
+Dan
+</pre></div></body>
+</html>
+</table></div>

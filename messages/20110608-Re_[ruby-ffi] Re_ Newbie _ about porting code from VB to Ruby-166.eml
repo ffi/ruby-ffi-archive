@@ -1,0 +1,188 @@
+Delivered-To: headius@headius.com
+Received: by 10.90.116.12 with SMTP id o12cs166719agc;
+        Wed, 8 Jun 2011 16:34:19 -0700 (PDT)
+Received: by 10.223.145.24 with SMTP id b24mr38612fav.89.1307576059010;
+        Wed, 08 Jun 2011 16:34:19 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCPWhsY2GBBDzjcDvBBoEdhd35w@googlegroups.com>
+Received: from mail-fx0-f62.google.com (mail-fx0-f62.google.com [209.85.161.62])
+        by mx.google.com with ESMTPS id n11si1066508faa.87.2011.06.08.16.34.17
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Jun 2011 16:34:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBDzjcDvBBoEdhd35w@googlegroups.com designates 209.85.161.62 as permitted sender) client-ip=209.85.161.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCPWhsY2GBBDzjcDvBBoEdhd35w@googlegroups.com designates 209.85.161.62 as permitted sender) smtp.mail=ruby-ffi+bncCPWhsY2GBBDzjcDvBBoEdhd35w@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by fxm17 with SMTP id 17sf1328426fxm.7
+        for <headius@headius.com>; Wed, 08 Jun 2011 16:34:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:x-beenthere:received-spf:mime-version
+         :in-reply-to:references:date:message-id:subject:from:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-google-group-id:list-post
+         :list-help:list-archive:sender:list-subscribe:list-unsubscribe
+         :content-type;
+        bh=f2IY3+EWUBEKLMZWzsyBeGgaYP7TO3QsXgz1H0QT4aM=;
+        b=GwMumolHknQ89bq89Y2u05mtmiwpwdkNDtK4XEokPfBdmGPBBQrs0cW5E+WaT/p2qc
+         HGg/4Xl2keOoQz9wlimcwyBRslWhXEBVP8raOj5SUvSW0hPOzlwb8aMiKqyiXVVgsWKm
+         uJdemhVYKKsZwNjnFohvpDnxf0l4SJv8XXQ9g=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:in-reply-to:references:date
+         :message-id:subject:from:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=lZ0N1heYbiBt/hBkzDVTShtcH67lvoPQ57sTomqtD8AD1nMWRLOJdWJIzZrKvfNeHt
+         uhtlj6JZgv66n8uKIlbdlINYtMYu6GbqFSdrAnv61GdeRur6VqolybwpL6rzQWjaYfS+
+         dwk1AhMv7ikboZWwHT6RfRhHq5wN6MU/sJDto=
+Received: by 10.223.59.16 with SMTP id j16mr4279fah.17.1307576051801;
+        Wed, 08 Jun 2011 16:34:11 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.204.38.88 with SMTP id a24ls2168bke.1.gmail; Wed, 08 Jun 2011
+ 16:34:11 -0700 (PDT)
+Received: by 10.204.46.99 with SMTP id i35mr5831bkf.9.1307576051014;
+        Wed, 08 Jun 2011 16:34:11 -0700 (PDT)
+Received: by 10.204.46.99 with SMTP id i35mr5830bkf.9.1307576050985;
+        Wed, 08 Jun 2011 16:34:10 -0700 (PDT)
+Received: from mail-fx0-f50.google.com (mail-fx0-f50.google.com [209.85.161.50])
+        by gmr-mx.google.com with ESMTPS id m11si3766849fah.1.2011.06.08.16.34.10
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 08 Jun 2011 16:34:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of charles.c.strahan@gmail.com designates 209.85.161.50 as permitted sender) client-ip=209.85.161.50;
+Received: by fxm16 with SMTP id 16so838660fxm.23
+        for <ruby-ffi@googlegroups.com>; Wed, 08 Jun 2011 16:34:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.223.54.148 with SMTP id q20mr39745fag.84.1307576050695; Wed,
+ 08 Jun 2011 16:34:10 -0700 (PDT)
+Received: by 10.223.78.133 with HTTP; Wed, 8 Jun 2011 16:34:10 -0700 (PDT)
+In-Reply-To: <BANLkTikPb0D6HXrBP70ZmjsdPysvVhEceQ@mail.gmail.com>
+References: <2ea50fbd-bd24-4ad7-b04c-bc5f936d520e@f31g2000pri.googlegroups.com>
+	<cd9eaa65-e044-41a9-8f84-fca5e20d0a03@gh5g2000vbb.googlegroups.com>
+	<db6028fa-9027-412c-8f67-ad32571f94e3@z7g2000prh.googlegroups.com>
+	<BANLkTikPb0D6HXrBP70ZmjsdPysvVhEceQ@mail.gmail.com>
+Date: Wed, 8 Jun 2011 18:34:10 -0500
+Message-ID: <BANLkTikhji1AGw3i9z+T6CYLiOPfRp-tVA@mail.gmail.com>
+Subject: Re: [ruby-ffi] Re: Newbie ? about porting code from VB to Ruby
+From: Charles Strahan <charles.c.strahan@gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: charles.c.strahan@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of charles.c.strahan@gmail.com designates 209.85.161.50 as permitted
+ sender) smtp.mail=charles.c.strahan@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=00151747961604bfda04a53bc6f2
+
+--00151747961604bfda04a53bc6f2
+Content-Type: text/plain; charset=ISO-8859-1
+
+Woops, I screwed up the wVersion - should have been a uint16, instead of
+uint8.  The gist should be fixed now.
+
+-Charles
+
+
+On Wed, Jun 8, 2011 at 6:14 PM, Charles Strahan <charles.c.strahan@gmail.com
+> wrote:
+
+> Hi Jesse,
+>
+> Welcome to the Ruby community!
+>
+> I think this will work for you: https://gist.github.com/1015672
+>
+> I tried to annotate the sample as well as I could. If anything is unclear,
+> or doesn't work, please let me know.
+>
+> Unfortunately, I do not have the HLLAPI lib to test with, so I had to base
+> that code off of the docs and some .NET samples.
+>
+> HTH,
+>
+> -Charles
+> <https://gist.github.com/1015672>
+>
+> On Wed, Jun 8, 2011 at 1:11 PM, JesseFair <jfair9@gmail.com> wrote:
+>
+>> I tried Win32API as well but cant find out how to pass the cutom data
+>> type WHLLAPIDATA that the WinHLLAPIStartup function is expecting.
+>> Being new to Ruby I cant find a way to construct something that acts
+>> similar to the above code -.. i.e. custom data types. I was able to
+>> get the examples up and working but they only use simple data types
+>> such as int and string.
+>>
+>>
+>> On Jun 8, 1:18 am, candlerb <b.cand...@pobox.com> wrote:
+>> > I am not a Windows expert, but have you tried looking at Win32API
+>> > instead of FFI? This may be all that you need. There are plenty of
+>> > examples if you google for them.
+>> >
+>> >
+>> http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.htmlhttp://www.ruby-doc.org/docs/ProgrammingRuby/html/lib_windows.html
+>
+>
+>
+
+--00151747961604bfda04a53bc6f2
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Woops, I screwed up the=A0<span class=3D"Apple-style-span" style=3D"color: =
+rgb(153, 0, 115); font-family: &#39;Bitstream Vera Sans Mono&#39;, &#39;Cou=
+rier New&#39;, monospace; font-size: 12px; line-height: 16px; white-space: =
+pre; ">wVersion</span>=A0- should have been a uint16, instead of uint8. =A0=
+The gist should be fixed now.<div>
+<br></div><div>-Charles<br><br></div><div><br><div class=3D"gmail_quote">On=
+ Wed, Jun 8, 2011 at 6:14 PM, Charles Strahan <span dir=3D"ltr">&lt;<a href=
+=3D"mailto:charles.c.strahan@gmail.com">charles.c.strahan@gmail.com</a>&gt;=
+</span> wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">Hi Jesse,<div><br></div><div>Welcome to the=
+ Ruby community!</div><div><br></div><div>I think this will work for you:=
+=A0<a href=3D"https://gist.github.com/1015672" target=3D"_blank">https://gi=
+st.github.com/1015672</a></div>
+<div><br></div><div>I tried to annotate the sample as well as I could. If a=
+nything is unclear, or doesn&#39;t work, please let me know.</div>
+<div><br></div><div>Unfortunately, I do not have the HLLAPI lib to test wit=
+h, so I had to base that code off of the docs and some .NET samples.</div><=
+div><br></div><div>HTH,</div><div><br></div><font color=3D"#888888"><div>
+-Charles</div></font><div><div></div><div class=3D"h5"><div><a href=3D"http=
+s://gist.github.com/1015672" target=3D"_blank"></a><br>
+<br><div class=3D"gmail_quote">On Wed, Jun 8, 2011 at 1:11 PM, JesseFair <s=
+pan dir=3D"ltr">&lt;<a href=3D"mailto:jfair9@gmail.com" target=3D"_blank">j=
+fair9@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" =
+style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+
+I tried Win32API as well but cant find out how to pass the cutom data<br>
+type WHLLAPIDATA that the WinHLLAPIStartup function is expecting.<br>
+Being new to Ruby I cant find a way to construct something that acts<br>
+similar to the above code -.. i.e. custom data types. I was able to<br>
+get the examples up and working but they only use simple data types<br>
+such as int and string.<br>
+<div><br>
+<br>
+On Jun 8, 1:18=A0am, candlerb &lt;<a href=3D"mailto:b.cand...@pobox.com" ta=
+rget=3D"_blank">b.cand...@pobox.com</a>&gt; wrote:<br>
+&gt; I am not a Windows expert, but have you tried looking at Win32API<br>
+&gt; instead of FFI? This may be all that you need. There are plenty of<br>
+&gt; examples if you google for them.<br>
+&gt;<br>
+</div>&gt; <a href=3D"http://www.ruby-doc.org/docs/ProgrammingRuby/html/win=
+32.htmlhttp://www.ruby-doc.org/docs/ProgrammingRuby/html/lib_windows.html" =
+target=3D"_blank">http://www.ruby-doc.org/docs/ProgrammingRuby/html/win32.h=
+tmlhttp://www.ruby-doc.org/docs/ProgrammingRuby/html/lib_windows.html</a></=
+blockquote>
+
+</div><br></div>
+</div></div></blockquote></div><br></div>
+
+--00151747961604bfda04a53bc6f2--

@@ -1,0 +1,175 @@
+Delivered-To: headius@headius.com
+Received: by 10.182.92.135 with SMTP id cm7csp98982obb;
+        Tue, 21 Feb 2012 16:13:31 -0800 (PST)
+Received: by 10.180.102.35 with SMTP id fl3mr24795860wib.22.1329869610777;
+        Tue, 21 Feb 2012 16:13:30 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com>
+Received: from mail-ww0-f62.google.com (mail-ww0-f62.google.com [74.125.82.62])
+        by mx.google.com with ESMTPS id w63si11762166wec.121.2012.02.21.16.13.30
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 21 Feb 2012 16:13:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com designates 74.125.82.62 as permitted sender) client-ip=74.125.82.62;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com designates 74.125.82.62 as permitted sender) smtp.mail=ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by wgbdq12 with SMTP id dq12sf2545211wgb.7
+        for <headius@headius.com>; Tue, 21 Feb 2012 16:13:30 -0800 (PST)
+Return-Path: <ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com>
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCLfk47r_EBCl5pD6BBoEvzwQ_g@googlegroups.com designates 10.216.133.32 as permitted sender) client-ip=10.216.133.32;
+Received: from mr.google.com ([10.216.133.32])
+        by 10.216.133.32 with SMTP id p32mr3684660wei.3.1329869610164 (num_hops = 1);
+        Tue, 21 Feb 2012 16:13:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:received-spf:mime-version:from:date
+         :message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=7MOVArsGGTzuNHFRsMWmRn0a+Z0StfMWgtAcRsSm5Bw=;
+        b=TROmqQEWgsEkwF5yNNUABCBRWf+zb8HquL0EOEaTjWoE+x7GqcuD3i7ElUJbHOlnza
+         rnsqttdQ/UwSjjnXWQiT24fPOINXAyTi3NpLQ0FDX3JD5do37f7W+TmLHf1RqwWcoMWr
+         DQuu2yrq/9AhoZER7QhWoOCF7x79K9uUBx7fc=
+Received: by 10.216.133.32 with SMTP id p32mr1079137wei.3.1329869605915;
+        Tue, 21 Feb 2012 16:13:25 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.180.78.200 with SMTP id d8ls2979286wix.2.gmail; Tue, 21 Feb
+ 2012 16:13:24 -0800 (PST)
+Received: by 10.180.24.69 with SMTP id s5mr2254358wif.0.1329869604719;
+        Tue, 21 Feb 2012 16:13:24 -0800 (PST)
+Received: by 10.216.206.152 with SMTP id l24msweo;
+        Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received: by 10.180.103.135 with SMTP id fw7mr2123653wib.4.1329868779620;
+        Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received: by 10.180.103.135 with SMTP id fw7mr2123652wib.4.1329868779560;
+        Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received: from mail-wi0-f172.google.com (mail-wi0-f172.google.com [209.85.212.172])
+        by gmr-mx.google.com with ESMTPS id ek10si2293030wid.0.2012.02.21.15.59.39
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of jasonlewis.x@gmail.com designates 209.85.212.172 as permitted sender) client-ip=209.85.212.172;
+Received: by wibhm9 with SMTP id hm9so4930708wib.31
+        for <ruby-ffi@googlegroups.com>; Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of jasonlewis.x@gmail.com designates 10.181.11.227 as permitted sender) client-ip=10.181.11.227;
+Received: from mr.google.com ([10.181.11.227])
+        by 10.181.11.227 with SMTP id el3mr29794948wid.18.1329868779535 (num_hops = 1);
+        Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+Received: by 10.181.11.227 with SMTP id el3mr24739038wid.18.1329868779221;
+ Tue, 21 Feb 2012 15:59:39 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.180.19.71 with HTTP; Tue, 21 Feb 2012 15:59:19 -0800 (PST)
+From: Jason Lewis <jasonlewis.x@gmail.com>
+Date: Tue, 21 Feb 2012 18:59:19 -0500
+Message-ID: <CADS6wmfUL95L4LqQE-Ssi4c2gFBjVvGBe7N=CC545u-kUP7C=g@mail.gmail.com>
+Subject: [ruby-ffi] Unsure how to proceed using type defined in header
+To: ruby-ffi@googlegroups.com
+X-Original-Sender: jasonlewis.x@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ domain of jasonlewis.x@gmail.com designates 209.85.212.172 as permitted
+ sender) smtp.mail=jasonlewis.x@gmail.com; dkim=pass header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; boundary=f46d043be25e2ef16704b982348b
+
+--f46d043be25e2ef16704b982348b
+Content-Type: text/plain; charset=UTF-8
+
+Hi all,
+
+I'm in the process of porting the rpam gem over to FFI (I ported the gem
+from 1.8 to 1.9 a while back, this seemed like the logical next step). One
+thing I'm having trouble finding documentation on is handling user-defined
+types from the header when the type being aliased is private to the
+library.
+
+So for instance, in security/pam_appl.h, we have:
+
+
+/*
+ * This is a blind structure; users aren't allowed to see inside a
+ * pam_handle_t, so we don't define struct _pam_handle here.  This is
+ * defined in a file private to the PAM library.  (i.e., it's private
+ * to PAM service modules, too!)
+ */
+typedef struct _pam_handle pam_handle_t;
+
+My first guess is to define a class inheriting from FFI::Struct, but since
+I don't know its layout, I'm not sure how to proceed.
+
+In the C version, it gets initialized as a null pointer, so I then thought
+I could do `typdef :pointer, :pam_handle_t`, but this also seems wrong.
+
+Grateful for any suggestions.
+
+Thanks,
+
+Jason Lewis
+
+Email          jasonlewis.x@gmail.com
+
+Twitter        @canweriotnow <http://twitter.com/canweriotnow>
+
+Blog
+http://duckpunching.github.com/<http://duckpunching.wordpress.com/>
+
+--f46d043be25e2ef16704b982348b
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div><div>Hi all,</div><div><br></div><div>I&#39;m in the process of portin=
+g the rpam gem over to FFI (I ported the gem from 1.8 to 1.9 a while back, =
+this seemed like the logical next step). One thing I&#39;m having trouble f=
+inding documentation on is handling user-defined types from the header when=
+ the type being aliased is private to the library.=C2=A0</div>
+
+<div><br></div><div>So for instance, in security/pam_appl.h, we have:</div>=
+<div><br></div><div><br></div><div><font face=3D"&#39;courier new&#39;, mon=
+ospace">/*</font></div><div><font face=3D"&#39;courier new&#39;, monospace"=
+>=C2=A0* This is a blind structure; users aren&#39;t allowed to see inside =
+a</font></div>
+
+<div><font face=3D"&#39;courier new&#39;, monospace">=C2=A0* pam_handle_t, =
+so we don&#39;t define struct _pam_handle here. =C2=A0This is</font></div><=
+div><font face=3D"&#39;courier new&#39;, monospace">=C2=A0* defined in a fi=
+le private to the PAM library. =C2=A0(i.e., it&#39;s private</font></div>
+
+<div><font face=3D"&#39;courier new&#39;, monospace">=C2=A0* to PAM service=
+ modules, too!)</font></div><div><font face=3D"&#39;courier new&#39;, monos=
+pace">=C2=A0*/</font></div><div><font face=3D"&#39;courier new&#39;, monosp=
+ace">typedef struct _pam_handle pam_handle_t;</font></div>
+
+</div><div><font face=3D"&#39;courier new&#39;, monospace"><br></font></div=
+><div><font face=3D"arial, helvetica, sans-serif">My first guess is to defi=
+ne a class inheriting from FFI::Struct, but since I don&#39;t know its layo=
+ut, I&#39;m not sure how to proceed.</font></div>
+
+<div><font face=3D"arial, helvetica, sans-serif"><br></font></div><div><fon=
+t face=3D"arial, helvetica, sans-serif">In the C version, it gets initializ=
+ed as a null pointer, so I then thought I could do `typdef :pointer, :pam_h=
+andle_t`, but this also seems wrong.</font></div>
+
+<div><font face=3D"arial, helvetica, sans-serif"><br></font></div><div><fon=
+t face=3D"arial, helvetica, sans-serif">Grateful for any suggestions.</font=
+></div><div><font face=3D"arial, helvetica, sans-serif"><br></font></div><d=
+iv>
+
+<font face=3D"arial, helvetica, sans-serif">Thanks,</font></div><br clear=
+=3D"all">Jason Lewis<br><br>Email=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=
+=3D"mailto:jasonlewis.x@gmail.com" target=3D"_blank">jasonlewis.x@gmail.com=
+</a>=C2=A0 =C2=A0=C2=A0=C2=A0<div><br></div><div>Twitter =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0<a href=3D"http://twitter.com/canweriotnow" target=3D"_blank">@ca=
+nweriotnow</a><br>
+
+<br>Blog =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"http://duckpun=
+ching.wordpress.com/" target=3D"_blank">http://duckpunching.github.com/</a>=
+</div><br>
+
+--f46d043be25e2ef16704b982348b--

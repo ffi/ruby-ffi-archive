@@ -1,0 +1,50 @@
+MIME-Version: 1.0
+Received: by 10.142.187.11 with HTTP; Thu, 29 Oct 2009 11:32:59 -0700 (PDT)
+In-Reply-To: <32159AE4-1CD6-4AFC-8964-34327F7D2EDD@gmail.com>
+References: <32159AE4-1CD6-4AFC-8964-34327F7D2EDD@gmail.com>
+Date: Thu, 29 Oct 2009 13:32:59 -0500
+Delivered-To: headius@headius.com
+Message-ID: <f04d2210910291132j1a769f2v8f629d87b7bef858@mail.gmail.com>
+Subject: Re: [ruby-ffi] 0.5.1 install failed on JRuby
+From: Charles Oliver Nutter <headius@headius.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+If I were to guess, I'd say the -java gem hasn't been released?
+
+On Thursday, October 29, 2009, Jerome Riga <lamit.jay@googlemail.com> wrote=
+:
+>
+> Hi all,
+>
+> On my dev environment, it seems that FFI 0.5.1 is trying to build the C-e=
+xtension on the JRuby.
+>
+> $ jgem i ffi --no-ri --no-rdoc --version=3D0.5.0
+> Successfully installed ffi-0.5.0-java
+> 1 gem installed
+>
+> $ jgem i ffi --no-ri --no-rdoc --version=3D0.5.1
+> Building native extensions. =C2=A0This could take a while...
+> ERROR: =C2=A0Error installing ffi:
+>  =C2=A0 =C2=A0 =C2=A0 =C2=A0ERROR: Failed to build gem native extension.
+>
+> /opt/local/bin/jruby extconf.rb
+> WARNING: JRuby does not support native extensions or the `mkmf' library.
+>  =C2=A0 =C2=A0 =C2=A0 =C2=A0 Check wiki.jruby.org for alternatives.
+> extconf.rb:4: undefined method `dir_config' for main:Object (NoMethodErro=
+r)
+>
+>
+> Gem files will remain installed in /opt/local/lib/jruby-1.4.0RC3/lib/ruby=
+/gems/1.8/gems/ffi-0.5.1 for inspection.
+> Results logged to /opt/local/lib/jruby-1.4.0RC3/lib/ruby/gems/1.8/gems/ff=
+i-0.5.1/ext/ffi_c/gem_make.out
+>
+> Could someone verify this, please?
+>
+> Cheers,
+>
+> Jerome Riga
+>

@@ -1,0 +1,92 @@
+Delivered-To: headius@headius.com
+Received: by 10.143.31.9 with SMTP id i9csp40294wfj;
+        Sat, 23 Jun 2012 23:09:49 -0700 (PDT)
+Received: by 10.236.152.97 with SMTP id c61mr8461952yhk.130.1340518189400;
+        Sat, 23 Jun 2012 23:09:49 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCKaviN7JGxCs3pr_BBoE1Y7ZrA@googlegroups.com>
+Received: from mail-gg0-f190.google.com (mail-gg0-f190.google.com [209.85.161.190])
+        by mx.google.com with ESMTPS id d40si4170891ano.110.2012.06.23.23.09.49
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Sat, 23 Jun 2012 23:09:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCs3pr_BBoE1Y7ZrA@googlegroups.com designates 209.85.161.190 as permitted sender) client-ip=209.85.161.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKaviN7JGxCs3pr_BBoE1Y7ZrA@googlegroups.com designates 209.85.161.190 as permitted sender) smtp.mail=ruby-ffi+bncCKaviN7JGxCs3pr_BBoE1Y7ZrA@googlegroups.com; dkim=pass header.i=@googlegroups.com
+Received: by ggcq2 with SMTP id q2sf6223607ggc.7
+        for <headius@headius.com>; Sat, 23 Jun 2012 23:09:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-google-group-id
+         :list-post:list-help:list-archive:sender:list-subscribe
+         :list-unsubscribe:content-type;
+        bh=zhAsmTp9EC5V1kOsX5k1dzE1LGUYgHuO+0VdE8DBeeo=;
+        b=aK6TP+NzgCkLTU3yeht5khzQWuickveXxtcO58Q6fX3qFWuYuL27ClVw5tiiyl5zUB
+         iPJ8TsqcsIVLZkdWj2hYg23LUuzVpa8smcVnpIm2KVGXPtNu8GFYcL5KrFtlG4iIjRSZ
+         AaqAq7r7Y0LsFNz9/cDa4ooGqB7pE06iGoz78=
+Received: by 10.68.129.194 with SMTP id ny2mr749296pbb.17.1340518188689;
+        Sat, 23 Jun 2012 23:09:48 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.68.240.172 with SMTP id wb12ls10536053pbc.3.gmail; Sat, 23 Jun
+ 2012 23:09:48 -0700 (PDT)
+Received: by 10.68.135.99 with SMTP id pr3mr757945pbb.5.1340518188487;
+        Sat, 23 Jun 2012 23:09:48 -0700 (PDT)
+Date: Sat, 23 Jun 2012 23:09:47 -0700 (PDT)
+From: Navaneeth KN <navaneethkn@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <5f3e36db-74c5-435e-b476-79be12b2aadb@googlegroups.com>
+In-Reply-To: <ad53d2ad-1c35-44e3-a7fb-6624d5799909@googlegroups.com>
+References: <1f091970-2c18-4f05-b8c8-9d887390d92c@googlegroups.com>
+ <ad53d2ad-1c35-44e3-a7fb-6624d5799909@googlegroups.com>
+Subject: [ruby-ffi] Re: Reading struct elements returning incorrect values
+MIME-Version: 1.0
+X-Original-Sender: navaneethkn@gmail.com
+X-Original-Authentication-Results: ls.google.com; spf=pass (google.com: domain of
+ navaneethkn@gmail.com designates internal as permitted sender)
+ smtp.mail=navaneethkn@gmail.com; dkim=pass
+ header.i=@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_3_23694448.1340518187899"
+
+------=_Part_3_23694448.1340518187899
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello,
+
+On Saturday, 16 June 2012 11:57:49 UTC+5:30, Wayne Meissner wrote:
+>
+> Shouldn't this line:
+>
+>  item = VarnamLibrary::Token.new(ptr)
+>
+> be:
+>
+>  item = VarnamLibrary::Token.new(tok)
+>
+> i.e. cast the return value from varray_get() to a Token struct?
+>
+
+Yes. That was a small mistake. Thanks for pointing it out. It works well 
+now.
+
+Thanks
+Navaneeth
+
+------=_Part_3_23694448.1340518187899
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hello,<br><br>On Saturday, 16 June 2012 11:57:49 UTC+5:30, Wayne Meissner  wrote:<blockquote class="gmail_quote" style="margin: 0;margin-left: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Shouldn't this line:<div><br><div>&nbsp;item = VarnamLibrary::Token.new(ptr)</div><div><br></div><div>be:</div><div><br></div><div>&nbsp;item = VarnamLibrary::Token.new(tok)</div><div><br></div><div>i.e. cast the return value from varray_get() to a Token struct?</div></div></blockquote><div><br>Yes. That was a small mistake. Thanks for pointing it out. It works well now.<br><br>Thanks</div>Navaneeth<br>
+------=_Part_3_23694448.1340518187899--

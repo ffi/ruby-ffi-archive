@@ -1,0 +1,229 @@
+Delivered-To: headius@headius.com
+Received: by 10.112.5.130 with SMTP id s2csp84606lbs;
+        Fri, 14 Dec 2012 14:32:36 -0800 (PST)
+Received: by 10.60.1.73 with SMTP id 9mr1616565oek.130.1355524355325;
+        Fri, 14 Dec 2012 14:32:35 -0800 (PST)
+Return-Path: <ruby-ffi+bncBD2LPGVBRIEBBAWSV2DAKGQEH26DDGQ@googlegroups.com>
+Received: from mail-oa0-f62.google.com (mail-oa0-f62.google.com [209.85.219.62])
+        by mx.google.com with ESMTPS id q5si6312091oeg.5.2012.12.14.14.32.34
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Fri, 14 Dec 2012 14:32:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBAWSV2DAKGQEH26DDGQ@googlegroups.com designates 209.85.219.62 as permitted sender)
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncBD2LPGVBRIEBBAWSV2DAKGQEH26DDGQ@googlegroups.com designates 209.85.219.62 as permitted sender) smtp.mail=ruby-ffi+bncBD2LPGVBRIEBBAWSV2DAKGQEH26DDGQ@googlegroups.com; dkim=pass header.i=@gmail.com
+Received: by mail-oa0-f62.google.com with SMTP id h2sf1894965oag.17
+        for <headius@headius.com>; Fri, 14 Dec 2012 14:32:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20120806;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=y1VCM5dDZQ9FjOqWTGfgp2aXUuWjHictaTvCoBSz9EI=;
+        b=pbtSVApKY3ABZRtQOFJC/l1uMilYIII+u+Q9IpQLR7BCqzTbUCFirTjytMh7+ZaKhE
+         DcVl2+vSg0xXy6RIAZsj28FmX15ej7bjvYPT0erG3rne7J5YbzDMPDAB7Uy1mF9Da/+b
+         SAgRRrZf+u2H6tNdAmG1cUFoYBFT1/PFdx1pNCpuMsx6ddDQ5HwZt+ppaTqpQ+UKbcfr
+         gu2zB4RLdJc1AHhL97+qii22pwS8azlLvCKXOI8Qb8hq8RWgUjrcPZXd91jzqw45UUjs
+         cIDkLwh4/ik0ExuHNoc/kiI99ZJPzWQF2xWPgtc+qTIfUhAhKHLriO7BZ077NKsUtQf5
+         Eo/w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-beenthere:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-google-group-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        bh=y1VCM5dDZQ9FjOqWTGfgp2aXUuWjHictaTvCoBSz9EI=;
+        b=Afbrmf0HR88A+TkITGWshIPNzYC1NtRQG5V0A9frjktfqvH+oZX7T2+exEi5Wjnh4+
+         eabXZWCHxTRPZnrWPw0VujHtm5UXVRLw410nuBhw7/jhxzWrkAKvtIFJoMpnvQyTWVpT
+         CRkSR0aQpiI/3tJoCLYIhwmwmgG7ZuNWXNIJBRBZhpX/7qG+lG2lujypnSSVjw08Ry1/
+         njR+hOKGp+ac8wXk4WEB3eDZ5TmrV6d7RG4TX6XfTYp3tdYn2p7O5l1QtAO3nQljnmsF
+         UFllcfpNlsoO0hNrZvY8hhOQ2cdaTc40QM2tP2KQGQimEg6YS0f8C5fppeoeKPJTvo5b
+         wKIQ==
+Received: by 10.50.11.196 with SMTP id s4mr1220926igb.9.1355524354676;
+        Fri, 14 Dec 2012 14:32:34 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.50.153.194 with SMTP id vi2ls966607igb.22.gmail; Fri, 14 Dec
+ 2012 14:32:34 -0800 (PST)
+Received: by 10.50.220.231 with SMTP id pz7mr1233729igc.8.1355524354295;
+        Fri, 14 Dec 2012 14:32:34 -0800 (PST)
+Date: Fri, 14 Dec 2012 14:32:33 -0800 (PST)
+From: Wayne Meissner <wmeissner@gmail.com>
+To: ruby-ffi@googlegroups.com
+Message-Id: <c2bad280-8309-4616-beb4-e295856bb69c@googlegroups.com>
+In-Reply-To: <b13b04cc-ef28-416d-b300-ddf902f29674@googlegroups.com>
+References: <b13b04cc-ef28-416d-b300-ddf902f29674@googlegroups.com>
+Subject: [ruby-ffi] Re: (FFI::NotFoundError) when starting rails server
+MIME-Version: 1.0
+X-Original-Sender: wmeissner@gmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+X-Google-Group-Id: 238405446264
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:googlegroups-manage+238405446264+unsubscribe@googlegroups.com>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2_11481123.1355524353632"
+
+------=_Part_2_11481123.1355524353632
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+inotify is a linux specific API ... so it is not available on MacOS.
+
+Remove inotify from your bundle (or whatever gem depends on it).
+
+On Saturday, 15 December 2012 02:31:10 UTC+11, ja...@jaymf.com wrote:
+>
+> Hi - I am a noobie, so please be patient:
+>
+> I am running into an error when launching the rails server.
+>
+> The first error in my list is:
+>
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in 
+> `attach_function': Function 'inotify_init' not found in [libc.dylib] 
+> (FFI::NotFoundError)
+>
+> The rails installation is fresh and clean along with all the gems. 
+> Everything is up to date.
+>
+> I am running Mountain Lion 10.8.2
+>
+> Here is the entire error message when starting the rails server: 
+>
+> [eversite]$rails s -p 3015
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/ffi-1.0.11/lib/ffi/library.rb:249:in 
+> `attach_function': Function 'inotify_init' not found in [libc.dylib] 
+> (FFI::NotFoundError)
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:24:in 
+> `<module:Native>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:9:in 
+> `<module:INotify>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify/native.rb:3:in 
+> `<top (required)>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify.rb:1:in 
+> `require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/rb-inotify-0.8.8/lib/rb-inotify.rb:1:in 
+> `<top (required)>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:68:in 
+> `require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:68:in 
+> `block (2 levels) in require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:66:in 
+> `each'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:66:in 
+> `block in require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:55:in 
+> `each'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler/runtime.rb:55:in 
+> `require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@global/gems/bundler-1.2.3/lib/bundler.rb:128:in 
+> `require'
+> from 
+> /Users/Argo/Documents/rails_projects/eversite/eversite/config/application.rb:13:in 
+> `<top (required)>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:53:in 
+> `require'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:53:in 
+> `block in <top (required)>'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:50:in 
+> `tap'
+> from 
+> /usr/local/rvm/gems/ruby-1.9.3-p194@eversite/gems/railties-3.2.3/lib/rails/commands.rb:50:in 
+> `<top (required)>'
+> from script/rails:6:in `require'
+> from script/rails:6:in `<main>'
+>
+> Can anyone point me in the right direction please?
+>
+> Many thanks.
+>
+>
+------=_Part_2_11481123.1355524353632
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+inotify is a linux specific API ... so it is not available on MacOS.<div><b=
+r></div><div>Remove inotify from your bundle (or whatever gem depends on it=
+).</div><div><br>On Saturday, 15 December 2012 02:31:10 UTC+11, ja...@jaymf=
+.com  wrote:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-lef=
+t: 0.8ex;border-left: 1px #ccc solid;padding-left: 1ex;">Hi - I am a noobie=
+, so please be patient:<div><br></div><div>I am running into an error when =
+launching the rails server.</div><div><br></div><div>The first error in my =
+list is:</div><div><br></div><div>/usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@=
+eversite/gems/ffi-1.0.<wbr>11/lib/ffi/library.rb:249:in `attach_function': =
+Function 'inotify_init' not found in [libc.dylib] (FFI::NotFoundError)<br><=
+/div><div><br></div><div>The rails installation is fresh and clean along wi=
+th all the gems. Everything is up to date.</div><div><br></div><div>I am ru=
+nning Mountain Lion 10.8.2</div><div><br></div><div>Here is the entire erro=
+r message when starting the rails server:&nbsp;</div><div><br></div><div><d=
+iv>[eversite]$rails s -p 3015</div><div>/usr/local/rvm/gems/ruby-1.9.<wbr>3=
+-p194@eversite/gems/ffi-1.0.<wbr>11/lib/ffi/library.rb:249:in `attach_funct=
+ion': Function 'inotify_init' not found in [libc.dylib] (FFI::NotFoundError=
+)</div><div><span style=3D"white-space:pre">=09</span>from /usr/local/rvm/g=
+ems/ruby-1.9.<wbr>3-p194@eversite/gems/rb-<wbr>inotify-0.8.8/lib/rb-inotify=
+/<wbr>native.rb:24:in `&lt;module:Native&gt;'</div><div><span style=3D"whit=
+e-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversi=
+te/gems/rb-<wbr>inotify-0.8.8/lib/rb-inotify/<wbr>native.rb:9:in `&lt;modul=
+e:INotify&gt;'</div><div><span style=3D"white-space:pre">=09</span>from /us=
+r/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversite/gems/rb-<wbr>inotify-0.8.8/l=
+ib/rb-inotify/<wbr>native.rb:3:in `&lt;top (required)&gt;'</div><div><span =
+style=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>=
+3-p194@eversite/gems/rb-<wbr>inotify-0.8.8/lib/rb-inotify.<wbr>rb:1:in `req=
+uire'</div><div><span style=3D"white-space:pre">=09</span>from /usr/local/r=
+vm/gems/ruby-1.9.<wbr>3-p194@eversite/gems/rb-<wbr>inotify-0.8.8/lib/rb-ino=
+tify.<wbr>rb:1:in `&lt;top (required)&gt;'</div><div><span style=3D"white-s=
+pace:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@global/ge=
+ms/bundler-1.<wbr>2.3/lib/bundler/runtime.rb:68:<wbr>in `require'</div><div=
+><span style=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.=
+9.<wbr>3-p194@global/gems/bundler-1.<wbr>2.3/lib/bundler/runtime.rb:68:<wbr=
+>in `block (2 levels) in require'</div><div><span style=3D"white-space:pre"=
+>=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@global/gems/bundle=
+r-1.<wbr>2.3/lib/bundler/runtime.rb:66:<wbr>in `each'</div><div><span style=
+=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p19=
+4@global/gems/bundler-1.<wbr>2.3/lib/bundler/runtime.rb:66:<wbr>in `block i=
+n require'</div><div><span style=3D"white-space:pre">=09</span>from /usr/lo=
+cal/rvm/gems/ruby-1.9.<wbr>3-p194@global/gems/bundler-1.<wbr>2.3/lib/bundle=
+r/runtime.rb:55:<wbr>in `each'</div><div><span style=3D"white-space:pre">=
+=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@global/gems/bundler=
+-1.<wbr>2.3/lib/bundler/runtime.rb:55:<wbr>in `require'</div><div><span sty=
+le=3D"white-space:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p=
+194@global/gems/bundler-1.<wbr>2.3/lib/bundler.rb:128:in `require'</div><di=
+v><span style=3D"white-space:pre">=09</span>from /Users/Argo/Documents/rail=
+s_<wbr>projects/eversite/eversite/<wbr>config/application.rb:13:in `&lt;top=
+ (required)&gt;'</div><div><span style=3D"white-space:pre">=09</span>from /=
+usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversite/gems/railties-<wbr>3.2.3/l=
+ib/rails/commands.rb:<wbr>53:in `require'</div><div><span style=3D"white-sp=
+ace:pre">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversite/g=
+ems/railties-<wbr>3.2.3/lib/rails/commands.rb:<wbr>53:in `block in &lt;top =
+(required)&gt;'</div><div><span style=3D"white-space:pre">=09</span>from /u=
+sr/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversite/gems/railties-<wbr>3.2.3/li=
+b/rails/commands.rb:<wbr>50:in `tap'</div><div><span style=3D"white-space:p=
+re">=09</span>from /usr/local/rvm/gems/ruby-1.9.<wbr>3-p194@eversite/gems/r=
+ailties-<wbr>3.2.3/lib/rails/commands.rb:<wbr>50:in `&lt;top (required)&gt;=
+'</div><div><span style=3D"white-space:pre">=09</span>from script/rails:6:i=
+n `require'</div><div><span style=3D"white-space:pre">=09</span>from script=
+/rails:6:in `&lt;main&gt;'</div></div><div><br></div><div>Can anyone point =
+me in the right direction please?</div><div><br></div><div>Many thanks.</di=
+v><div><br></div></blockquote></div>
+------=_Part_2_11481123.1355524353632--

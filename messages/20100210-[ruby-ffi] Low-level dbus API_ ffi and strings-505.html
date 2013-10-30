@@ -1,0 +1,94 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Low-level dbus API, ffi and strings</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Low-level dbus API, ffi and strings</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>Christoph Kappel <unexist@dorfelite.net></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>2/10/10 4:20 AM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+Hello,
+
+I have some problems calling following C function with a string as
+value:
+
+dbus_bool_t dbus_message_iter_append_basic(DBusMessageIter *iter, int
+type, const void *value)
+
+I attached it via ffi:
+
+attach_function(:dbus_message_iter_append_basic,
+  :dbus_message_iter_append_basic, [ :pointer,
+DBusType, :pointer ], :bool
+)
+
+(DBusType is an enum with the allowed types as integer.)
+
+In C it should look like this and it allows several types casted to
+void:
+
+DBusMessageIter iter;
+char *value = "foobar";
+
+dbus_message_iter_append_basic(&amp;iter, DBUS_TYPE_STRING, &amp;value);
+
+I will now post what I tried with the related error message:
+
+1)
+pname = FFI::MemoryPointer.new(:pointer)
+pname.write_string("subtle")
+dbus_message_iter_append_basic(piter, :type_string, pname)
+
+Ruby exception: IndexError: Memory access offset=0 size=6 is out of
+bounds
+
+2)
+pname = FFI::MemoryPointer.new(:string)
+pname.write_string("subtle")
+dbus_message_iter_append_basic(piter, :type_string, pname)
+
+Ruby exception: ArgumentError: Unknown native type
+
+3)
+pname = FFI::MemoryPointer.from_string("subtle")
+dbus_message_iter_append_basic(piter, :type_string, pname)
+
+Segmentation fault: (Backtrace from valgrind)
+==8501== Invalid read of size 1
+==8501==    at 0x4024878: strlen (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/valgrind<span class="moz-txt-tag">/</span></i>
+vgpreload_memcheck-x86-linux.so)
+==8501==    by 0x5A56B8C: _dbus_marshal_write_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+==8501==    by 0x5A42962: _dbus_type_writer_write_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+==8501==    by 0x5A4789D: dbus_message_iter_append_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+...
+
+4)
+I attached another function and changed value type to :string:
+
+attach_function(:dbus_message_iter_append_string,
+    :dbus_message_iter_append_basic, [ :pointer,
+DBusType, :string ], :bool
+)
+
+Segmentation fault again:
+==8524== Invalid read of size 1
+==8524==    at 0x4024878: strlen (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib/valgrind<span class="moz-txt-tag">/</span></i>
+vgpreload_memcheck-x86-linux.so)
+==8524==    by 0x5A56B8C: _dbus_marshal_write_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+==8524==    by 0x5A42962: _dbus_type_writer_write_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+==8524==    by 0x5A4789D: dbus_message_iter_append_basic (in <i class="moz-txt-slash"><span class="moz-txt-tag">/</span>usr/lib<span class="moz-txt-tag">/</span></i>
+libdbus-1.so.3.4.0)
+...
+
+Any options left?
+
+Thanks in advance.
+
+
+</pre></div></body>
+</html>
+</table></div>

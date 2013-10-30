@@ -1,0 +1,168 @@
+Delivered-To: headius@headius.com
+Received: by 10.223.89.144 with SMTP id e16cs70898fam;
+        Wed, 22 Dec 2010 17:16:08 -0800 (PST)
+Received: by 10.91.185.16 with SMTP id m16mr9361787agp.198.1293066967710;
+        Wed, 22 Dec 2010 17:16:07 -0800 (PST)
+Return-Path: <ruby-ffi+bncCKiIs7vvExDWxcroBBoEOFXkPA@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id y2si13430569ano.70.2010.12.22.17.16.06;
+        Wed, 22 Dec 2010 17:16:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCKiIs7vvExDWxcroBBoEOFXkPA@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCKiIs7vvExDWxcroBBoEOFXkPA@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCKiIs7vvExDWxcroBBoEOFXkPA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxk30 with SMTP id 30sf5805386yxk.7
+        for <headius@headius.com>; Wed, 22 Dec 2010 17:16:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received:received
+         :received:received-spf:received:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        bh=1iFjVK3lnclNHlafDJJnNmQDUBRE7ng8Ak1OFfcQjJI=;
+        b=kNg4HHE09gQ/siwWPLL+/C643WciaeHrrQa07YXiyZ1XxjWi0ORSlV8zW2Ogz+02uN
+         tuoMjQgcOWd3t3e5HEn/6VHDQ8mEwqdrn9+vatN1lmEp00/8ah7YyhcApqC225msT2TJ
+         wonpQFH7qcL4g4fBg0CgKOHZw56CBddnIUoPI=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:received-spf:mime-version:from:in-reply-to:date
+         :message-id:references:to:x-mailer:x-sa-exim-connect-ip
+         :x-sa-exim-mail-from:x-spam-checker-version:x-spam-level
+         :x-spam-status:subject:x-sa-exim-version:x-sa-exim-scanned
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :sender:list-subscribe:list-unsubscribe:content-type
+         :content-transfer-encoding;
+        b=SPYlHpK86jwyBpL7fU4bjOpirlTvb2DF1omadYVR1F5gadyFCtPzAwuQSEKgCg8K3O
+         ryTBcz348FPdtOla0BPnjZxb8WnmFefY49DRnfSF9UH3jXh1Tf7a9+fWUPWVQ4Ie10MC
+         CtxIs0l78imB+4bsXd02zAlcU/JIWx9iWYQRI=
+Received: by 10.100.10.1 with SMTP id 1mr156538anj.71.1293066966050;
+        Wed, 22 Dec 2010 17:16:06 -0800 (PST)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.100.26.21 with SMTP id 21ls1510900anz.2.p; Wed, 22 Dec 2010
+ 17:16:05 -0800 (PST)
+Received: by 10.100.132.12 with SMTP id f12mr1244211and.55.1293066965718;
+        Wed, 22 Dec 2010 17:16:05 -0800 (PST)
+Received: by 10.100.132.12 with SMTP id f12mr1244209and.55.1293066965695;
+        Wed, 22 Dec 2010 17:16:05 -0800 (PST)
+Received: from elle.fallingsnow.net (elle.fallingsnow.net [67.43.164.196])
+        by gmr-mx.google.com with ESMTPS id q5si3225062anf.4.2010.12.22.17.16.05
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Wed, 22 Dec 2010 17:16:05 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of evan@fallingsnow.net designates 67.43.164.196 as permitted sender) client-ip=67.43.164.196;
+Received: from cpe-76-170-131-240.socal.res.rr.com ([76.170.131.240] helo=[10.0.1.200])
+	by elle.fallingsnow.net with esmtpa (Exim 4.72)
+	(envelope-from <evan@fallingsnow.net>)
+	id 1PVZmf-0001OK-Oz
+	for ruby-ffi@googlegroups.com; Wed, 22 Dec 2010 17:16:04 -0800
+Mime-Version: 1.0 (Apple Message framework v1081)
+From: Evan Phoenix <evan@fallingsnow.net>
+In-Reply-To: <AANLkTi=VYho0G3n+V3DYp3Saz-BWGGGLWfFoD+RSuxLG@mail.gmail.com>
+Date: Wed, 22 Dec 2010 17:15:57 -0800
+Message-Id: <692E15F7-E65A-4904-971C-18782BBC89F7@fallingsnow.net>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com> <20101130105256.d687602f.jon.forums@gmail.com> <AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com> <20101201123846.5c4724b5.jon.forums@gmail.com> <AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com> <AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com> <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com> <AANLkTimrfcA9i4vPkoiewHqEWZ4Uju_F60h=6jXbNTtC@mail.gmail.com> <AANLkTi=VYho0G3n+V3DYp3Saz-BWGGGLWfFoD+RSuxLG@mail.gmail.com>
+To: ruby-ffi@googlegroups.com
+X-Mailer: Apple Mail (2.1081)
+X-SA-Exim-Connect-IP: 76.170.131.240
+X-SA-Exim-Mail-From: evan@fallingsnow.net
+X-Spam-Checker-Version: SpamAssassin 3.3.1 (2010-03-16) on elle.fallingsnow.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
+	autolearn=ham version=3.3.1
+Subject: Re: [ruby-ffi] New release of FFI gem
+X-SA-Exim-Version: 4.2.1 (built Wed, 25 Jun 2008 17:14:11 +0000)
+X-SA-Exim-Scanned: Yes (on elle.fallingsnow.net)
+X-Original-Sender: evan@fallingsnow.net
+X-Original-Authentication-Results: gmr-mx.google.com; spf=pass (google.com:
+ best guess record for domain of evan@fallingsnow.net designates 67.43.164.196
+ as permitted sender) smtp.mail=evan@fallingsnow.net
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+See below.
+
+On Dec 22, 2010, at 5:03 PM, Wayne Meissner wrote:
+
+> On 23 December 2010 05:16, Charles Oliver Nutter <headius@headius.com> =
+wrote:
+>>=20
+>> Wayne: Can you summarize what's needed to get 1.8.7 support back in =
+the gem?
+>=20
+> It should (ffi master) build and install on 1.8.x.  The main reason I
+> dropped support for everything but 1.9.2+ on MacOS, was to reduce the
+> surface area of the things I had to support, to actually get a new
+> release out the door.
+>=20
+> I figured that anyone who cared about the other versions+platforms
+> that broke would help to fix them.  This happened with win32 support
+> (thanks to Luis & Jon), which is why it got fixed almost immediately
+> ... but its only been this week that people have started to make noise
+> about 1.8.x not working.
+>=20
+> There are a couple of different problems in 1.8.x
+>=20
+> 1) Blocking calls.  These are C functions which will wait (e.g. on
+> I/O).  Calling one of these will lock up the interpreter until the
+> function returns.  The only way I've found to fix this for 1.8 is to:
+>  a) create a pipe
+>  b) spin up a new native thread, pass it the converted native
+> arguments and the write end of the pipe
+>  c) have the ruby thread go to sleep until the pipe becomes readable
+> via rb_thread_wait_fd()
+>  d) once the native thread returns from the function call, write to =
+the pipe
+>  e) ruby thread wakes up from rb_thread_wait_fd(), closes the pipe,
+> joins on the native thread
+>=20
+> Not exactly rocket surgery, but not trivial either - and there will
+> need to be two implementations, one for pthreads, one for win32
+> (assuming we can't get just settle for 1.9.2+ on win32).
+
+I think that this should be simply ignored on 1.8. These is very good =
+precedent for doing so: CAPI methods. Users regularly write methods in C =
+that perform some long action which blocks all threads. Thus users are =
+used to this very thing for a long time and are generally ok with it.
+
+If a FFI method blocks the same as a C-API method, then FFI doesn't have =
+a bug.
+
+>=20
+> 2) Callbacks from non-ruby threads.  This is possibly more
+> complicated, and there does not appear (unless I missed it) a way in
+> 1.8.x to detect attempts to call into the interpreter from a non-ruby
+> thread.  This manifests as non-obvious crashes, that look to be in
+> completely different sections of code.
+>=20
+>  I think there is a simple way to detect non-ruby threads calling
+> back, just by storing/clearing the current thread id in a global var
+> when entering/exiting native code, and checking that from the callback
+> code.  This would mean the callback just does not get called when
+> called from a non-ruby thread (and possibly an error is logged).
+>=20
+>  Fixing it properly so callbacks from non-ruby threads actually work,
+> will be something similar to what is done for 1.9.x, but with the
+> twist of using a pipe instead of a mutex+condvar.
+
+Again, I think we can safely ignore this functionality on 1.8 and simply =
+report an error if a user attempts it (which can be detected using the =
+global variable techinque). My reasoning is the same as above, namely =
+that you can't write a C-API method that does this, so there is no need =
+for FFI to support it.
+
+ - Evan
+

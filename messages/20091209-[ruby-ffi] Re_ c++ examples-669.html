@@ -1,0 +1,31 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>[ruby-ffi] Re: c++ examples</title>
+<link rel="important stylesheet" href="">
+<style>div.headerdisplayname {font-weight:bold;}</style></head>
+<body>
+<table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part1"><tr><td><div class="headerdisplayname" style="display:inline;">Subject: </div>[ruby-ffi] Re: c++ examples</td></tr><tr><td><div class="headerdisplayname" style="display:inline;">From: </div>rogerdpack <rogerpack2005@gmail.com></td></tr><tr><td><div class="headerdisplayname" style="display:inline;">Date: </div>12/9/09 12:53 PM</td></tr></table><table border=0 cellspacing=0 cellpadding=0 width="100%" class="header-part2"><tr><td><div class="headerdisplayname" style="display:inline;">To: </div>ruby-ffi <ruby-ffi@googlegroups.com></td></tr></table><br>
+<div class="moz-text-plain" wrap=true graphical-quote=true style="font-family: -moz-fixed; font-size: 12px;" lang="x-western"><pre wrap>
+</pre><blockquote type=cite style="color: #000000;"><pre wrap>
+<span class="moz-txt-citetags">&gt; </span>I do not recommend this at all. Using finalizers to release external resources is a very easy way to cause memory leaks and latent bugs.
+</pre></blockquote><pre wrap>
+
+Anybody know if collection at finalize time what the following code
+(from the tutorial) does by default?
+
+module MyLibrary
+  class SomeObject &lt; FFI::ManagedStruct
+    layout :next,  :pointer,
+           :name,  :string,
+           :value, :double,
+
+    def self.release(ptr)
+      MyLibrary.free_object(ptr)
+    end
+  end
+end
+Thanks.
+-r
+</pre></div></body>
+</html>
+</table></div>

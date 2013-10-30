@@ -1,0 +1,51 @@
+MIME-Version: 1.0
+Received: by 10.223.89.144 with HTTP; Wed, 22 Dec 2010 11:16:35 -0800 (PST)
+In-Reply-To: <AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+References: <adfecd20-4ed8-47cc-8727-1a0ddb5cc8b3@37g2000prx.googlegroups.com>
+	<20101130105256.d687602f.jon.forums@gmail.com>
+	<AANLkTimTnQnD=UnLOwPVRMN_Qxhen-yKZQ1iGaXFG9Re@mail.gmail.com>
+	<20101201123846.5c4724b5.jon.forums@gmail.com>
+	<AANLkTi=GXLWgVhrbgS7D76PfAxxW8Bn5R2JxDvF9_WQi@mail.gmail.com>
+	<AANLkTi=vp96Tf1zygEfd3hGbb2NPhbfo7ROw_oBuRj24@mail.gmail.com>
+	<AANLkTikOj7dBzCbVdYtab7NTqukzY8ZSYRmmZjThe9Pi@mail.gmail.com>
+Date: Wed, 22 Dec 2010 13:16:35 -0600
+Delivered-To: headius@headius.com
+Message-ID: <AANLkTimrfcA9i4vPkoiewHqEWZ4Uju_F60h=6jXbNTtC@mail.gmail.com>
+Subject: Re: [ruby-ffi] New release of FFI gem
+From: Charles Oliver Nutter <headius@headius.com>
+To: ruby-ffi@googlegroups.com
+Content-Type: text/plain; charset=UTF-8
+
+On Fri, Dec 3, 2010 at 4:57 AM, Wayne Meissner <wmeissner@gmail.com> wrote:
+>> If FFI is aiming 1.9.2 or bigger, then the rubygem spec needs to be
+>> tweaked to reflect that. I'm not against of ditching 1.8.x support,
+>> but just want to reduce painful support issues for users still using
+>> 1.8.x
+>
+> Agreed, and I just pushed a change the restricts it to >= 1.9.2
+>
+> I'm not against it still working on 1.8.7 - I'm just against:
+>
+> a) doing the work to make it work, and
+> b) dealing with issues when people try to run code that either
+> requires blocking threads, or non-ruby threads calling back into ruby.
+
+I think it's premature to drop 1.8.7 support. The majority of Ruby
+users are still on 1.8.7, and that's not changing rapidly. There's
+also people with production apps and released libraries that depend on
+FFI.
+
+I think we need to find a way to get support back in there ASAP.
+Perhaps that means we need to actively find someone to help Wayne
+maintain the FFI gem (or take over 1.8 support completely). If we
+don't have FFI for 1.8.7, it becomes substantially less useful as a
+cross-impl replacement for extensions.
+
+I appreciate the issues with blocking threads, but I think that's a
+peril for any C extension on 1.8.7. In other words...we punt, since
+there's no solution, and recommend people consider blocking calls when
+using libraries through FFI.
+
+Wayne: Can you summarize what's needed to get 1.8.7 support back in the gem?
+
+- Charlie

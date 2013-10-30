@@ -1,0 +1,93 @@
+Delivered-To: headius@headius.com
+Received: by 10.224.67.198 with SMTP id s6cs254538qai;
+        Mon, 14 Sep 2009 02:29:01 -0700 (PDT)
+Received: by 10.220.107.99 with SMTP id a35mr7391230vcp.45.1252920541556;
+        Mon, 14 Sep 2009 02:29:01 -0700 (PDT)
+Return-Path: <grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com>
+Received: from mail-vw0-f170.google.com (mail-vw0-f170.google.com [209.85.212.170])
+        by mx.google.com with ESMTP id 12si5695002vws.22.2009.09.14.02.29.00;
+        Mon, 14 Sep 2009 02:29:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) client-ip=209.85.212.170;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com designates 209.85.212.170 as permitted sender) smtp.mail=grbounce-oS_-awUAAACicsVXPUFstTOYQmrUJNfw=headius=headius.com@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by vws42 with SMTP id 42so3775049vws.13
+        for <headius@headius.com>; Mon, 14 Sep 2009 02:29:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:received:x-sender:x-apparently-to
+         :mime-version:received:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:content-type:reply-to:sender:precedence
+         :x-google-loop:mailing-list:list-id:list-post:list-help
+         :list-unsubscribe:x-beenthere-env:x-beenthere;
+        bh=7IDHp/iJxceUTUN1ypNXSq6q13VNnfm63L+SIuuXj9M=;
+        b=cEf3f/IqnoSKM0ysn94gVHIryk+oiG7q0STnkA3ntM5OgSL5wxrgpkwzV2Noxje0SH
+         8L81Buy7cR3uY+4US9UbzUjFtGjZQaM1Impmg8GvLLPp3IzalSAFk6hxTcgTBy/t/h2s
+         VVfQPrjqGS2LO4OGTrFTw2MY9ef55THfh2pm4=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-sender:x-apparently-to:mime-version:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:content-type:reply-to
+         :sender:precedence:x-google-loop:mailing-list:list-id:list-post
+         :list-help:list-unsubscribe:x-beenthere-env:x-beenthere;
+        b=l+1By8QPXvLj78Rts6cP3vfJIdJ5X+7OHY0wl2rqOmAg+0UQ/U+EQJcOjUK2xT64Fd
+         xdePZuij4qhPSiUyCKm9HdPflIBLfbgyHL1H6KWfmB0wfIrM+3rZKNq+5U/JVTHsTPuI
+         n669flBVc/TBDikeJBylQvV1lFc4eq0lrOFjU=
+Received: by 10.220.78.31 with SMTP id i31mr10737vck.9.1252920539021;
+        Mon, 14 Sep 2009 02:28:59 -0700 (PDT)
+Received: by 10.230.9.105 with SMTP id k41gr18vbk.0;
+	Mon, 14 Sep 2009 02:28:59 -0700 (PDT)
+X-Sender: themastermind1@gmail.com
+X-Apparently-To: ruby-ffi@googlegroups.com
+MIME-Version: 1.0
+Received: by 10.150.128.18 with SMTP id a18mr1887597ybd.0.1252920538462; Mon,  14 Sep 2009 02:28:58 -0700 (PDT)
+Date: Mon, 14 Sep 2009 02:28:58 -0700 (PDT)
+X-IP: 71.204.189.133
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-us)  AppleWebKit/530.18 (KHTML, like Gecko) Version/4.0.1 Safari/530.18,gzip(gfe),gzip(gfe)
+Message-ID: <c5a49969-580f-4bfd-8d72-23b5e677a28c@l35g2000pra.googlegroups.com>
+Subject: [ruby-ffi] cannot define function pointers that take function pointer
+ arguments  in jruby struct layout
+From: Aman Gupta <themastermind1@gmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+Reply-To: ruby-ffi@googlegroups.com
+Sender: ruby-ffi@googlegroups.com
+Precedence: bulk
+X-Google-Loop: groups
+Mailing-List: list ruby-ffi@googlegroups.com;
+	contact ruby-ffi+owner@googlegroups.com
+List-Id: <ruby-ffi.googlegroups.com>
+List-Post: <mailto:ruby-ffi@googlegroups.com>
+List-Help: <mailto:ruby-ffi+help@googlegroups.com>
+List-Unsubscribe: <http://googlegroups.com/group/ruby-ffi/subscribe>,
+	<mailto:ruby-ffi+unsubscribe@googlegroups.com>
+X-BeenThere-Env: ruby-ffi@googlegroups.com
+X-BeenThere: ruby-ffi@googlegroups.com
+
+
+I'm using ffi-swig-generator on:
+
+typedef void (*MyCallback) (void *data);
+typedef struct {
+  void (*member) (MyCallback cb);
+} MyStruct;
+
+which generates:
+
+  callback(:MyCallback, [ :pointer ], :void)
+  class MyStruct < FFI::Struct
+    layout(
+      :member, callback([ :MyCallback ], :void)
+    )
+  end
+
+This works fine on with ruby-ffi, but on jruby I get:
+
+/custom/jruby/lib/ruby/1.8/ffi/types.rb:17:in `find_type': Unable to
+resolve type 'MyCallback' (FFI::TypeError)
+	from /custom/jruby/lib/ruby/1.8/ffi/library.rb:213:in `find_type'
+	from /custom/jruby/lib/ruby/1.8/ffi/struct.rb:149:in `find_type'
+	from /custom/jruby/lib/ruby/1.8/ffi/library.rb:148:in `callback'
+	from /custom/jruby/lib/ruby/1.8/ffi/library.rb:148:in `each'
+	from /custom/jruby/lib/ruby/1.8/ffi/library.rb:148:in `map'
+	from /custom/jruby/lib/ruby/1.8/ffi/library.rb:148:in `callback'
+

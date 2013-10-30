@@ -1,0 +1,77 @@
+Delivered-To: headius@headius.com
+Received: by 10.204.70.83 with SMTP id c19cs44632bkj;
+        Fri, 29 Oct 2010 20:27:39 -0700 (PDT)
+Received: by 10.150.218.8 with SMTP id q8mr9254405ybg.420.1288409258137;
+        Fri, 29 Oct 2010 20:27:38 -0700 (PDT)
+Return-Path: <ruby-ffi+bncCNSo0OaMAhCnoa7mBBoEwFJhWA@googlegroups.com>
+Received: from mail-yx0-f190.google.com (mail-yx0-f190.google.com [209.85.213.190])
+        by mx.google.com with ESMTP id p7si3357061ybk.40.2010.10.29.20.27.36;
+        Fri, 29 Oct 2010 20:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ruby-ffi+bncCNSo0OaMAhCnoa7mBBoEwFJhWA@googlegroups.com designates 209.85.213.190 as permitted sender) client-ip=209.85.213.190;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of ruby-ffi+bncCNSo0OaMAhCnoa7mBBoEwFJhWA@googlegroups.com designates 209.85.213.190 as permitted sender) smtp.mail=ruby-ffi+bncCNSo0OaMAhCnoa7mBBoEwFJhWA@googlegroups.com; dkim=pass (test mode) header.i=@googlegroups.com
+Received: by yxi11 with SMTP id 11sf6418259yxi.7
+        for <headius@headius.com>; Fri, 29 Oct 2010 20:27:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=beta;
+        h=domainkey-signature:received:x-beenthere:received:received
+         :mime-version:received:received:date:x-ip:user-agent
+         :x-http-useragent:message-id:subject:from:to:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:sender:list-subscribe:list-unsubscribe:content-type;
+        bh=SqxnLQVCjdhAcy8XpnTxh14cLmAlqxP4EJmWaebvI0E=;
+        b=Wwfg+eVpJr7Re8+7Sn0vYNCpSS9mo7CjHht5bp+TlHXiRjLLs5vA27ZHuZBxcDmiIa
+         ZtxyMQiNXPB8zfIxzrMa18sRCiemR+1+mw0OW8RsfL8vES3Vx93uPbYkswo9TllVHh66
+         8xI1MlDK7YH4VShdZ7jCUKLhHh68wQEpAjJGU=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=googlegroups.com; s=beta;
+        h=x-beenthere:mime-version:date:x-ip:user-agent:x-http-useragent
+         :message-id:subject:from:to:x-original-sender:reply-to:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive:sender
+         :list-subscribe:list-unsubscribe:content-type;
+        b=Y1SSHnDf+cqmWLv4bL48bBZML7RZesDH6VviPrcp/rYXuCY+Hj61Buk7u4xiIqouB1
+         W5XzlbRrQY8pmPWx8KfZvFVxfsRbkY/ZLQAW7ZALQerhfh3u1+tBQswDVNqkw+mhHY0v
+         816cyenBTjcsup80WN7SNt1gWltbICzTKu2o8=
+Received: by 10.151.18.29 with SMTP id v29mr1970752ybi.51.1288409255669;
+        Fri, 29 Oct 2010 20:27:35 -0700 (PDT)
+X-BeenThere: ruby-ffi@googlegroups.com
+Received: by 10.150.234.10 with SMTP id g10ls1982815ybh.4.p; Fri, 29 Oct 2010
+ 20:27:35 -0700 (PDT)
+Received: by 10.150.215.20 with SMTP id n20mr988309ybg.39.1288409184783;
+        Fri, 29 Oct 2010 20:26:24 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.150.172.6 with SMTP id u6mr1934049ybe.35.1288399124217; Fri,
+ 29 Oct 2010 17:38:44 -0700 (PDT)
+Received: by u17g2000yqi.googlegroups.com with HTTP; Fri, 29 Oct 2010 17:38:44
+ -0700 (PDT)
+Date: Fri, 29 Oct 2010 17:38:44 -0700 (PDT)
+X-IP: 71.37.141.51
+User-Agent: G2/1.0
+X-HTTP-UserAgent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.10)
+ Gecko/20100914 SUSE/3.6.10-0.3.1 Firefox/3.6.10,gzip(gfe)
+Message-ID: <14efc9ea-566c-4644-97d3-206f1163e1b7@u17g2000yqi.googlegroups.com>
+Subject: [ruby-ffi] How to call system libraries
+From: Steve <please-hack-me@hotmail.com>
+To: ruby-ffi <ruby-ffi@googlegroups.com>
+X-Original-Sender: please-hack-me@hotmail.com
+Reply-To: ruby-ffi@googlegroups.com
+Precedence: list
+Mailing-list: list ruby-ffi@googlegroups.com; contact ruby-ffi+owners@googlegroups.com
+List-ID: <ruby-ffi.googlegroups.com>
+List-Post: <http://groups.google.com/group/ruby-ffi/post?hl=en_US>, <mailto:ruby-ffi@googlegroups.com>
+List-Help: <http://groups.google.com/support/?hl=en_US>, <mailto:ruby-ffi+help@googlegroups.com>
+List-Archive: <http://groups.google.com/group/ruby-ffi?hl=en_US>
+Sender: ruby-ffi@googlegroups.com
+List-Subscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>, <mailto:ruby-ffi+subscribe@googlegroups.com>
+List-Unsubscribe: <http://groups.google.com/group/ruby-ffi/subscribe?hl=en_US>,
+ <mailto:ruby-ffi+unsubscribe@googlegroups.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+I am just leaning FFI and am having problems calling linux network
+functions.
+
+In a C file I might do #include <arpa/inet.h>
+
+However, in ruby ffi neither ffi_lib 'arpa/inet' nor ffi_lib 'inet'
+works. I can't get socket either.
+
+Any help is appreciated!
